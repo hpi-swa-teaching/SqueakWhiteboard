@@ -1,0 +1,10 @@
+[
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'SqueakWhiteboard'
+		},
+		#path : FSAbsolutePath [
+			'src'
+		]
+	}
+]
