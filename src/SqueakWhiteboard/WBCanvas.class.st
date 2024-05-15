@@ -18,6 +18,14 @@ WBCanvas class >> WhiteBoardSize [
 
 {
 	#category : #initialization,
+	#'squeak_changestamp' : 'JK 5/15/2024 12:04'
+}
+WBCanvas >> handlesMouseDown: evt [
+    ^ true.
+]
+
+{
+	#category : #initialization,
 	#'squeak_changestamp' : 'si 5/14/2024 11:16'
 }
 WBCanvas >> initialize [
