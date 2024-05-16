@@ -6,9 +6,10 @@ Class {
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 5/14/2024 12:39'
+	#'squeak_changestamp' : 'si 5/16/2024 18:47'
 }
 WBRectangle >> initialize [
 
 	super initialize.
+	self color: Color blue
 ]

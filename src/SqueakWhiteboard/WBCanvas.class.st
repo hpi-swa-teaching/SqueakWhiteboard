@@ -3,7 +3,7 @@ Class {
 	#superclass : #Morph,
 	#instVars : [
 		'scale',
-		'flags'
+		'elementToSpawn'
 	],
 	#category : #SqueakWhiteboard
 }
@@ -18,30 +18,21 @@ WBCanvas class >> WhiteBoardSize [
 ]
 
 {
-	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 5/16/2024 15:45'
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 5/16/2024 19:23'
 }
-WBCanvas >> enableSpawning [
+WBCanvas >> elementToSpawn [
 
-	self flags: 1
+	^elementToSpawn
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/16/2024 15:43'
+	#'squeak_changestamp' : 'si 5/16/2024 19:23'
 }
-WBCanvas >> flags [
+WBCanvas >> elementToSpawn: anElement [
 
-	^flags
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/16/2024 15:43'
-}
-WBCanvas >> flags: aNumber [
-
-	flags := aNumber
+	elementToSpawn := anElement
 ]
 
 {
@@ -54,7 +45,7 @@ WBCanvas >> handlesMouseDown: evt [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 5/16/2024 15:44'
+	#'squeak_changestamp' : 'si 5/16/2024 18:57'
 }
 WBCanvas >> initialize [
 	
@@ -65,22 +56,27 @@ WBCanvas >> initialize [
 		width: (self class WhiteBoardSize * self scale * 1.5);
 		color: Color white;
 		borderWidth: (self scale * 5);
-		borderColor: Color black;
-		flags: 0.
+		borderColor: Color black.
+	(self spawnTemporaryButtonAt: 100@100)
+		number: 1;
+		color: Color red.
+	(self spawnTemporaryButtonAt: 200@200)
+		number: 2;
+		color: Color yellow.
 	self openInWorld
 	
 ]
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 5/16/2024 15:50'
+	#'squeak_changestamp' : 'si 5/16/2024 19:24'
 }
 WBCanvas >> mouseDown: anEvent [
 	
-	(self flags == 1) ifTrue: 
+	(self elementToSpawn) ifNotNil: 
 		[self 
-			spawnRectangleAt: anEvent cursorPoint;
-		 	flags: 0]
+			spawnAnElement: self elementToSpawn At: anEvent cursorPoint;
+		 	elementToSpawn: nil]
 ]
 
 {
@@ -103,13 +99,25 @@ WBCanvas >> scale: aFactor [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 5/16/2024 15:29'
+	#'squeak_changestamp' : 'si 5/16/2024 18:36'
 }
-WBCanvas >> spawnRectangleAt: aPoint [
+WBCanvas >> spawnAnElement: anElement At: aPoint [
 
-	self addMorph: 
-	(WBRectangle new
-		position: aPoint;
-		color: Color lightBlue;
-		yourself)
+	anElement center: aPoint.	
+	self addMorph: anElement
+]
+
+{
+	#category : #'creating elements',
+	#'squeak_changestamp' : 'si 5/16/2024 19:03'
+}
+WBCanvas >> spawnTemporaryButtonAt: aPoint [
+
+	|temp|
+	temp := WBTemporaryButton new
+		center: aPoint;
+		canvas: self;
+		yourself.
+	self addMorph: temp.
+	^temp
 ]
