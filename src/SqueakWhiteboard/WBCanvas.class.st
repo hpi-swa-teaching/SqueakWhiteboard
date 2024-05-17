@@ -26,13 +26,13 @@ WBCanvas >> handlesMouseDown: evt [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 5/14/2024 11:16'
+	#'squeak_changestamp' : 'ACL 5/17/2024 15:02'
 }
 WBCanvas >> initialize [
 	
 	super initialize.
 	self 
-		scale: 1;
+		scale: 0.5;
 		height: (self class WhiteBoardSize * self scale);
 		width: (self class WhiteBoardSize * self scale * 1.5);
 		color: Color white;
@@ -40,6 +40,15 @@ WBCanvas >> initialize [
 		borderColor: Color black.
 	self openInWorld
 	
+]
+
+{
+	#category : #'creating elements',
+	#'squeak_changestamp' : 'ACL 5/17/2024 15:02'
+}
+WBCanvas >> mouseDown: anEvent [
+
+	self submorphs do: [:m | m removePopUp].
 ]
 
 {
@@ -62,7 +71,7 @@ WBCanvas >> scale: aFactor [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 5/14/2024 12:39'
+	#'squeak_changestamp' : 'ACL 5/17/2024 15:11'
 }
 WBCanvas >> spawnRectangle [
 
