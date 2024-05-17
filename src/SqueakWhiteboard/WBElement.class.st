@@ -76,13 +76,15 @@ WBElement >> makePopUp [
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'is 5/17/2024 16:18'
+	#'squeak_changestamp' : 'si 5/17/2024 20:31'
 }
 WBElement >> mouseDown: anEvent [
 	
 	(self canvas elementToSpawn) ifNil:
-		[self addDropShadow.
-		self dragOffset: self position - anEvent cursorPoint.].
+		[self 
+			addDropShadow;
+			makePopUp;
+			dragOffset: self position - anEvent cursorPoint.].
 	(self canvas elementToSpawn) ifNotNil:
 		[self canvas dropElement]
 ]
