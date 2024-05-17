@@ -69,7 +69,7 @@ WBCanvas >> handlesMouseMove: evt [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 5/16/2024 18:57'
+	#'squeak_changestamp' : 'is 5/17/2024 16:13'
 }
 WBCanvas >> initialize [
 	
@@ -129,14 +129,14 @@ WBCanvas >> scale: aFactor [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 5/17/2024 13:52'
+	#'squeak_changestamp' : 'is 5/17/2024 16:18'
 }
 WBCanvas >> spawnAnElement: anElement At: aPoint [
 
 	self elementToSpawn: 
 	(anElement
 		center: aPoint;
-		dragOffeset: anElement position - aPoint;
+		dragOffset: anElement position - aPoint;
 		canvas: self;
 		addDropShadow;
 		yourself).

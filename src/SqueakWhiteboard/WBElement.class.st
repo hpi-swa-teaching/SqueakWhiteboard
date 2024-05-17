@@ -32,17 +32,17 @@ WBElement >> canvas: aCanvas [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 5/15/2024 13:16'
+	#'squeak_changestamp' : 'is 5/17/2024 16:18'
 }
-WBElement >> dragOffeset [
+WBElement >> dragOffset [
 	^ dragOffeset
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 5/15/2024 13:16'
+	#'squeak_changestamp' : 'is 5/17/2024 16:18'
 }
-WBElement >> dragOffeset: anObject [
+WBElement >> dragOffset: anObject [
 	dragOffeset := anObject
 ]
 
@@ -56,13 +56,13 @@ WBElement >> handlesMouseDown: evt [
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'si 5/17/2024 12:54'
+	#'squeak_changestamp' : 'is 5/17/2024 16:18'
 }
 WBElement >> mouseDown: anEvent [
 	
 	(self canvas elementToSpawn) ifNil:
 		[self addDropShadow.
-		self dragOffeset: self position - anEvent cursorPoint.].
+		self dragOffset: self position - anEvent cursorPoint.].
 	(self canvas elementToSpawn) ifNotNil:
 		[self canvas dropElement]
 ]
@@ -86,11 +86,11 @@ WBElement >> mouseUp: anEvent [
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'si 5/17/2024 12:37'
+	#'squeak_changestamp' : 'is 5/17/2024 16:18'
 }
 WBElement >> moveElement: anEvent [
 	|newPosition |
 	
- 	newPosition := anEvent cursorPoint + self dragOffeset.
+ 	newPosition := anEvent cursorPoint + self dragOffset.
 	self position: newPosition
 ]
