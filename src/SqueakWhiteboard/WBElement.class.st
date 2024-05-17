@@ -56,6 +56,26 @@ WBElement >> handlesMouseDown: evt [
 
 {
 	#category : #'drag&drop',
+	#'squeak_changestamp' : 'ACL 5/17/2024 13:39'
+}
+WBElement >> makePopUp [
+
+| popUp |
+	
+	popUp := WBPopUp new.
+	self addMorph: 
+	(WBPopUp new
+		position: self topRight;
+		yourself	);
+		
+		addMorph:
+	(WBxButton new
+		position: self topRight + (2.25@2.25) + ((popUp popUpButtons -1)*20@0);
+		yourself	)	
+]
+
+{
+	#category : #'drag&drop',
 	#'squeak_changestamp' : 'is 5/17/2024 16:18'
 }
 WBElement >> mouseDown: anEvent [
@@ -78,9 +98,10 @@ WBElement >> mouseMove: anEvent [
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'JK 5/15/2024 12:31'
+	#'squeak_changestamp' : 'ACL 5/17/2024 15:12'
 }
 WBElement >> mouseUp: anEvent [
+	
 	self removeDropShadow.
 ]
 
@@ -93,4 +114,13 @@ WBElement >> moveElement: anEvent [
 	
  	newPosition := anEvent cursorPoint + self dragOffset.
 	self position: newPosition
+]
+
+{
+	#category : #'drag&drop',
+	#'squeak_changestamp' : 'ACL 5/17/2024 15:12'
+}
+WBElement >> removePopUp [
+
+	self submorphs do: [:m | m delete].
 ]

@@ -69,7 +69,7 @@ WBCanvas >> handlesMouseMove: evt [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/17/2024 16:13'
+	#'squeak_changestamp' : 'si 5/17/2024 20:27'
 }
 WBCanvas >> initialize [
 	
@@ -93,10 +93,11 @@ WBCanvas >> initialize [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 5/17/2024 13:54'
+	#'squeak_changestamp' : 'ACL 5/17/2024 15:02'
 }
 WBCanvas >> mouseDown: anEvent [
 
+	self submorphs do: [:m | m removePopUp].
 ]
 
 {
