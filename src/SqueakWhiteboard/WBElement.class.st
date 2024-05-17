@@ -2,10 +2,29 @@ Class {
 	#name : #WBElement,
 	#superclass : #Morph,
 	#instVars : [
-		'dragOffeset'
+		'dragOffeset',
+		'canvas'
 	],
 	#category : #SqueakWhiteboard
 }
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 5/17/2024 12:50'
+}
+WBElement >> canvas [
+
+	^canvas
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 5/17/2024 12:50'
+}
+WBElement >> canvas: aCanvas [
+
+	canvas := aCanvas
+]
 
 {
 	#category : #accessing,
@@ -33,22 +52,24 @@ WBElement >> handlesMouseDown: evt [
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'JK 5/15/2024 13:19'
+	#'squeak_changestamp' : 'si 5/17/2024 12:54'
 }
 WBElement >> mouseDown: anEvent [
-	self addDropShadow.
-	self dragOffeset: self position - anEvent cursorPoint.
 	
+	(self canvas elementToSpawn) ifNil:
+		[self addDropShadow.
+		self dragOffeset: self position - anEvent cursorPoint.].
+	(self canvas elementToSpawn) ifNotNil:
+		[self canvas dropElement]
 ]
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'JK 5/15/2024 13:19'
+	#'squeak_changestamp' : 'si 5/17/2024 12:21'
 }
 WBElement >> mouseMove: anEvent [
-    | newPosition |
-    newPosition := anEvent cursorPoint + self dragOffeset.
-    self position: newPosition
+
+	self moveElement: anEvent
 ]
 
 {
@@ -57,4 +78,15 @@ WBElement >> mouseMove: anEvent [
 }
 WBElement >> mouseUp: anEvent [
 	self removeDropShadow.
+]
+
+{
+	#category : #'drag&drop',
+	#'squeak_changestamp' : 'si 5/17/2024 12:37'
+}
+WBElement >> moveElement: anEvent [
+	|newPosition |
+	
+ 	newPosition := anEvent cursorPoint + self dragOffeset.
+	self position: newPosition
 ]

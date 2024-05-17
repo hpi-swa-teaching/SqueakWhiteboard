@@ -2,29 +2,10 @@ Class {
 	#name : #WBTemporaryButton,
 	#superclass : #WBElement,
 	#instVars : [
-		'canvas',
 		'number'
 	],
 	#category : #SqueakWhiteboard
 }
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/16/2024 18:27'
-}
-WBTemporaryButton >> canvas [
-
-	^canvas
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/16/2024 18:27'
-}
-WBTemporaryButton >> canvas: aCanvas [
-
-	canvas := aCanvas
-]
 
 {
 	#category : #initialisation,
@@ -40,14 +21,14 @@ WBTemporaryButton >> initialize [
 
 {
 	#category : #clicking,
-	#'squeak_changestamp' : 'si 5/16/2024 19:24'
+	#'squeak_changestamp' : 'si 5/17/2024 13:47'
 }
 WBTemporaryButton >> mouseDown: anEvent [
 
 	(self number == 1) ifTrue: 
-		[self canvas elementToSpawn: (WBRectangle new)].
+		[self canvas spawnAnElement: WBRectangle new At: anEvent cursorPoint.].
 	(self number == 2) ifTrue: 
-		[self canvas elementToSpawn: (WBTemporaryCircle new)]
+		[self canvas spawnAnElement: WBTemporaryCircle new At: anEvent cursorPoint.].
 ]
 
 {

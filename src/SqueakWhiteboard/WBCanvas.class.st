@@ -18,6 +18,16 @@ WBCanvas class >> WhiteBoardSize [
 ]
 
 {
+	#category : #'creating elements',
+	#'squeak_changestamp' : 'si 5/17/2024 13:53'
+}
+WBCanvas >> dropElement [
+
+	self elementToSpawn removeDropShadow.
+	self elementToSpawn: nil
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'si 5/16/2024 19:23'
 }
@@ -28,7 +38,7 @@ WBCanvas >> elementToSpawn [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/16/2024 19:23'
+	#'squeak_changestamp' : 'si 5/17/2024 13:01'
 }
 WBCanvas >> elementToSpawn: anElement [
 
@@ -37,10 +47,20 @@ WBCanvas >> elementToSpawn: anElement [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JK 5/15/2024 12:04'
+	#'squeak_changestamp' : 'si 5/17/2024 13:53'
 }
 WBCanvas >> handlesMouseDown: evt [
-    ^ true.
+    
+	^ true.
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'si 5/17/2024 13:53'
+}
+WBCanvas >> handlesMouseMove: evt [
+    
+	^ true.
 ]
 
 {
@@ -69,14 +89,20 @@ WBCanvas >> initialize [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 5/16/2024 19:24'
+	#'squeak_changestamp' : 'si 5/17/2024 13:54'
 }
 WBCanvas >> mouseDown: anEvent [
+
+]
+
+{
+	#category : #'creating elements',
+	#'squeak_changestamp' : 'si 5/17/2024 12:36'
+}
+WBCanvas >> mouseMove: anEvent [
 	
-	(self elementToSpawn) ifNotNil: 
-		[self 
-			spawnAnElement: self elementToSpawn At: anEvent cursorPoint;
-		 	elementToSpawn: nil]
+	(self elementToSpawn) ifNotNil:
+		[self elementToSpawn moveElement: anEvent]
 ]
 
 {
@@ -99,11 +125,17 @@ WBCanvas >> scale: aFactor [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 5/16/2024 18:36'
+	#'squeak_changestamp' : 'si 5/17/2024 13:52'
 }
 WBCanvas >> spawnAnElement: anElement At: aPoint [
 
-	anElement center: aPoint.	
+	self elementToSpawn: 
+	(anElement
+		center: aPoint;
+		dragOffeset: anElement position - aPoint;
+		canvas: self;
+		addDropShadow;
+		yourself).
 	self addMorph: anElement
 ]
 
