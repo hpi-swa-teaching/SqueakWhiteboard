@@ -1,10 +1,14 @@
+"
+The WBPopUp is a menu that opens up when clicking on an element that is in the canvas
+"
 Class {
 	#name : #WBPopUp,
 	#superclass : #Morph,
 	#instVars : [
 		'popUpButtons'
 	],
-	#category : #SqueakWhiteboard
+	#category : #SqueakWhiteboard,
+	#'squeak_changestamp' : 'is 5/17/2024 20:40'
 }
 
 {

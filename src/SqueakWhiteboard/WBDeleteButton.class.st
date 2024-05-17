@@ -1,14 +1,18 @@
+"
+The WBDeleteButton is a button which deletes the element that it is attached to
+"
 Class {
-	#name : #WBxButton,
+	#name : #WBDeleteButton,
 	#superclass : #WBPopUp,
-	#category : #SqueakWhiteboard
+	#category : #SqueakWhiteboard,
+	#'squeak_changestamp' : 'is 5/17/2024 20:42'
 }
 
 {
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'ACL 5/15/2024 16:23'
 }
-WBxButton >> initialize [
+WBDeleteButton >> initialize [
 
 super initialize.
 self color: Color red;
@@ -21,7 +25,7 @@ self color: Color red;
 	#category : #'as yet unclassified',
 	#'squeak_changestamp' : 'ACL 5/17/2024 15:09'
 }
-WBxButton >> mouseDown: anEvent [
+WBDeleteButton >> mouseDown: anEvent [
 
 	owner delete.
 ]

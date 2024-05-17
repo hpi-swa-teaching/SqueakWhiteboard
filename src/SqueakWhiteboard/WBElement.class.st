@@ -56,7 +56,7 @@ WBElement >> handlesMouseDown: evt [
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'ACL 5/17/2024 13:39'
+	#'squeak_changestamp' : 'is 5/17/2024 20:41'
 }
 WBElement >> makePopUp [
 
@@ -69,7 +69,7 @@ WBElement >> makePopUp [
 		yourself	);
 		
 		addMorph:
-	(WBxButton new
+	(WBDeleteButton new
 		position: self topRight + (2.25@2.25) + ((popUp popUpButtons -1)*20@0);
 		yourself	)	
 ]
