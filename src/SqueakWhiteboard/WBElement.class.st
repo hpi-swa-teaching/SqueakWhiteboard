@@ -1,3 +1,6 @@
+"
+The WBElement is an object that can be created within the canvas
+"
 Class {
 	#name : #WBElement,
 	#superclass : #Morph,
@@ -5,7 +8,8 @@ Class {
 		'dragOffeset',
 		'canvas'
 	],
-	#category : #SqueakWhiteboard
+	#category : #SqueakWhiteboard,
+	#'squeak_changestamp' : 'is 5/17/2024 15:58'
 }
 
 {

@@ -1,3 +1,6 @@
+"
+The WBCanvas is the whiteboard on which the user can interact with its functionality
+"
 Class {
 	#name : #WBCanvas,
 	#superclass : #Morph,
@@ -5,7 +8,8 @@ Class {
 		'scale',
 		'elementToSpawn'
 	],
-	#category : #SqueakWhiteboard
+	#category : #SqueakWhiteboard,
+	#'squeak_changestamp' : 'is 5/17/2024 15:53'
 }
 
 {
