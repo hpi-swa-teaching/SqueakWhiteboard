@@ -89,7 +89,7 @@ WBCanvas >> handlesMouseMove: evt [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/18/2024 18:31'
+	#'squeak_changestamp' : 'is 5/19/2024 00:59'
 }
 WBCanvas >> initialize [
 	
@@ -101,7 +101,7 @@ WBCanvas >> initialize [
 		color: Color white;
 		borderWidth: (self scale * 5);
 		borderColor: Color black.
-	(self spawnTemporaryButtonAt: 100@100)
+	(self spawnTemporaryButtonAt: 200@100)
 		number: 1;
 		color: Color red.
 	(self spawnTemporaryButtonAt: 200@200)

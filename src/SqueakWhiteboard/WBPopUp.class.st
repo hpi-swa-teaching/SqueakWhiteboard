@@ -36,11 +36,11 @@ self popUpButtons: 2;
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'ACL 5/15/2024 16:04'
+	#'squeak_changestamp' : 'is 5/18/2024 22:23'
 }
 WBPopUp >> popUpButtons [
 
-	^popUpButtons
+	^ popUpButtons
 ]
 
 {

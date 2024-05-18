@@ -24,11 +24,11 @@ WBToolbar class >> newWithCanvas: aCanvas [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'is 5/18/2024 20:07'
+	#'squeak_changestamp' : 'is 5/19/2024 00:56'
 }
 WBToolbar >> backgroundColor [
 
-	^ Color black
+	^ Color gray
 ]
 
 {
@@ -61,7 +61,7 @@ WBToolbar >> canvas: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/18/2024 19:45'
+	#'squeak_changestamp' : 'is 5/19/2024 00:56'
 }
 WBToolbar >> initialize [
 
@@ -71,14 +71,16 @@ WBToolbar >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/18/2024 19:42'
+	#'squeak_changestamp' : 'is 5/19/2024 00:55'
 }
 WBToolbar >> initializeWithCanvas: aCanvas [
-
+	
 	self initialize;
 		canvas: aCanvas;
-		toolbarHeight: aCanvas extent y * 0.75 truncated;
-		toolbarWidth: aCanvas extent x * 0.1 truncated
+		toolbarHeight: aCanvas extent y * 0.75;
+		toolbarWidth: aCanvas extent x * 0.1;
+		center: (canvas bounds origin x + self extent x / 2) @ 
+			(canvas bounds origin y + ((canvas bounds corner y - canvas bounds origin y))/2)
 ]
 
 {
