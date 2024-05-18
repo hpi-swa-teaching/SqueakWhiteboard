@@ -89,7 +89,7 @@ WBCanvas >> handlesMouseMove: evt [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 5/17/2024 20:27'
+	#'squeak_changestamp' : 'is 5/18/2024 18:31'
 }
 WBCanvas >> initialize [
 	
@@ -107,17 +107,9 @@ WBCanvas >> initialize [
 	(self spawnTemporaryButtonAt: 200@200)
 		number: 2;
 		color: Color yellow.
+	self spawnToolbarWithCanvas: self.
 	self openInWorld
 	
-]
-
-{
-	#category : #'creating elements',
-	#'squeak_changestamp' : 'ACL 5/17/2024 15:02'
-}
-WBCanvas >> mouseDown: anEvent [
-
-	self submorphs do: [:m | m removePopUp].
 ]
 
 {
@@ -177,4 +169,16 @@ WBCanvas >> spawnTemporaryButtonAt: aPoint [
 		yourself.
 	self addMorph: temp.
 	^temp
+]
+
+{
+	#category : #'creating elements',
+	#'squeak_changestamp' : 'is 5/18/2024 18:43'
+}
+WBCanvas >> spawnToolbarWithCanvas: aCanvas [
+	| aToolbar |
+	
+	aToolbar := WBToolbar newWithCanvas: aCanvas.
+	self addMorph: aToolbar
+	
 ]

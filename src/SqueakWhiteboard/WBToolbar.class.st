@@ -14,6 +14,33 @@ Class {
 }
 
 {
+	#category : #'instance creation',
+	#'squeak_changestamp' : 'is 5/18/2024 18:33'
+}
+WBToolbar class >> newWithCanvas: aCanvas [
+
+	^ WBToolbar basicNew initializeWithCanvas: aCanvas
+]
+
+{
+	#category : #layout,
+	#'squeak_changestamp' : 'is 5/18/2024 20:07'
+}
+WBToolbar >> backgroundColor [
+
+	^ Color black
+]
+
+{
+	#category : #layout,
+	#'squeak_changestamp' : 'is 5/18/2024 19:44'
+}
+WBToolbar >> backgroundColor: aColor [
+
+	^ Color gray
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'is 5/18/2024 16:05'
 }
@@ -33,6 +60,28 @@ WBToolbar >> canvas: aCanvas [
 ]
 
 {
+	#category : #initialization,
+	#'squeak_changestamp' : 'is 5/18/2024 19:45'
+}
+WBToolbar >> initialize [
+
+	super initialize.
+	self color: self backgroundColor
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'is 5/18/2024 19:42'
+}
+WBToolbar >> initializeWithCanvas: aCanvas [
+
+	self initialize;
+		canvas: aCanvas;
+		toolbarHeight: aCanvas extent y * 0.75 truncated;
+		toolbarWidth: aCanvas extent x * 0.1 truncated
+]
+
+{
 	#category : #layout,
 	#'squeak_changestamp' : 'is 5/18/2024 17:16'
 }
@@ -43,11 +92,12 @@ WBToolbar >> toolbarHeight [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'is 5/18/2024 17:16'
+	#'squeak_changestamp' : 'is 5/18/2024 18:41'
 }
 WBToolbar >> toolbarHeight: aNumber [
 
-	toolbarHeight := aNumber
+	toolbarHeight := aNumber.
+	self updateDimensions
 ]
 
 {
@@ -61,10 +111,20 @@ WBToolbar >> toolbarWidth [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'is 5/18/2024 17:17'
+	#'squeak_changestamp' : 'is 5/18/2024 19:41'
 }
 WBToolbar >> toolbarWidth: aNumber [
 
-	toolbarWidth := aNumber
-	
+	toolbarWidth := aNumber.
+	self updateDimensions.
+]
+
+{
+	#category : #layout,
+	#'squeak_changestamp' : 'is 5/18/2024 19:15'
+}
+WBToolbar >> updateDimensions [
+
+	self toolbarHeight ifNotNil: [self height:  self toolbarHeight].
+	self toolbarWidth ifNotNil: [self width: self toolbarWidth]
 ]

@@ -129,7 +129,7 @@ WBElement >> moveElement: anEvent [
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'ACL 5/17/2024 15:12'
+	#'squeak_changestamp' : 'is 5/18/2024 20:27'
 }
 WBElement >> removePopUp [
 
