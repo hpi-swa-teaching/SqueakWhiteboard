@@ -56,10 +56,10 @@ WBElement >> handlesMouseDown: evt [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/18/2024 16:08'
+	#'squeak_changestamp' : 'is 5/18/2024 17:42'
 }
 WBElement >> initialize [
-
+	
 	super initialize
 ]
 
@@ -118,12 +118,12 @@ WBElement >> mouseUp: anEvent [
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'is 5/18/2024 17:04'
+	#'squeak_changestamp' : 'is 5/18/2024 17:53'
 }
 WBElement >> moveElement: anEvent [
 	|newPosition |
 	
- 	newPosition := self canvas clampPointToCanvas: anEvent cursorPoint + self dragOffset.
+ 	newPosition := self canvas clampElementToCanvas: self at: anEvent cursorPoint + self dragOffset.
 	self position: newPosition
 ]
 

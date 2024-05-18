@@ -23,12 +23,22 @@ WBCanvas class >> WhiteBoardSize [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'is 5/18/2024 17:02'
+	#'squeak_changestamp' : 'is 5/18/2024 17:56'
+}
+WBCanvas >> clampElementToCanvas: anElement at: aPoint [
+
+	^ (aPoint x clampLow: self bounds origin x high: self bounds corner x - anElement extent x)
+		@(aPoint y clampLow: self bounds origin y high: self bounds corner y - anElement extent y)
+]
+
+{
+	#category : #layout,
+	#'squeak_changestamp' : 'is 5/18/2024 17:55'
 }
 WBCanvas >> clampPointToCanvas: aPoint [
 
-	^ (aPoint x clampLow: (self fullBounds origin x) high: (self fullBounds corner x))
-		@(aPoint y clampLow: (self fullBounds origin y) high: (self fullBounds corner y))
+	^ (aPoint x clampLow: self bounds origin x high: self bounds corner x)
+		@(aPoint y clampLow: self bounds origin y high: self bounds corner y)
 ]
 
 {
