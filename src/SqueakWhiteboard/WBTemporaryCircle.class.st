@@ -9,7 +9,7 @@ Class {
 }
 
 {
-	#category : #initialisation,
+	#category : #initialization,
 	#'squeak_changestamp' : 'si 5/16/2024 18:54'
 }
 WBTemporaryCircle >> initialize [

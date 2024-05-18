@@ -12,7 +12,7 @@ Class {
 }
 
 {
-	#category : #initialisation,
+	#category : #initialization,
 	#'squeak_changestamp' : 'si 5/16/2024 18:25'
 }
 WBTemporaryButton >> initialize [

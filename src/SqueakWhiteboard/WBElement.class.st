@@ -5,7 +5,7 @@ Class {
 	#name : #WBElement,
 	#superclass : #Morph,
 	#instVars : [
-		'dragOffeset',
+		'dragOffset',
 		'canvas'
 	],
 	#category : #SqueakWhiteboard,
@@ -14,11 +14,11 @@ Class {
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/17/2024 12:50'
+	#'squeak_changestamp' : 'is 5/18/2024 16:04'
 }
 WBElement >> canvas [
 
-	^canvas
+	^ canvas
 ]
 
 {
@@ -32,18 +32,18 @@ WBElement >> canvas: aCanvas [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 5/17/2024 16:18'
+	#'squeak_changestamp' : 'is 5/18/2024 15:59'
 }
 WBElement >> dragOffset [
-	^ dragOffeset
+	^ dragOffset
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 5/17/2024 16:18'
+	#'squeak_changestamp' : 'is 5/18/2024 15:59'
 }
 WBElement >> dragOffset: anObject [
-	dragOffeset := anObject
+	dragOffset := anObject
 ]
 
 {
@@ -52,6 +52,15 @@ WBElement >> dragOffset: anObject [
 }
 WBElement >> handlesMouseDown: evt [
     ^ true.
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'is 5/18/2024 16:08'
+}
+WBElement >> initialize [
+
+	super initialize
 ]
 
 {
