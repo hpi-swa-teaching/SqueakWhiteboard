@@ -118,12 +118,12 @@ WBElement >> mouseUp: anEvent [
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'is 5/17/2024 16:18'
+	#'squeak_changestamp' : 'is 5/18/2024 17:04'
 }
 WBElement >> moveElement: anEvent [
 	|newPosition |
 	
- 	newPosition := anEvent cursorPoint + self dragOffset.
+ 	newPosition := self canvas clampPointToCanvas: anEvent cursorPoint + self dragOffset.
 	self position: newPosition
 ]
 
