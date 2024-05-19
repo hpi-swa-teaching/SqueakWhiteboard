@@ -1,12 +1,9 @@
 "
-The WBDeleteButton is a button that deletes the element that it is attached to
+The WBPlaceholderButton is a placeholder button without any actual functionality
 "
 Class {
-	#name : #WBDeleteButton,
+	#name : #WBPlaceholderButton,
 	#superclass : #WBButton,
-	#instVars : [
-		'elementToDelete'
-	],
 	#category : #SqueakWhiteboard,
 	#'squeak_changestamp' : 'is 5/19/2024 02:07'
 }
@@ -15,7 +12,7 @@ Class {
 	#category : #initialization,
 	#'squeak_changestamp' : 'is 5/19/2024 13:00'
 }
-WBDeleteButton >> initialize [
+WBPlaceholderButton >> initialize [
 
 	^ super initialize
 ]

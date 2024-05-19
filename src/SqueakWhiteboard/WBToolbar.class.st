@@ -7,7 +7,8 @@ Class {
 	#instVars : [
 		'canvas',
 		'toolbarHeight',
-		'toolbarWidth'
+		'toolbarWidth',
+		'buttons'
 	],
 	#category : #SqueakWhiteboard,
 	#'squeak_changestamp' : 'is 5/18/2024 17:12'
@@ -41,6 +42,33 @@ WBToolbar >> backgroundColor: aColor [
 ]
 
 {
+	#category : #layout,
+	#'squeak_changestamp' : 'is 5/19/2024 14:03'
+}
+WBToolbar >> buttonSize [
+
+	^ (toolbarWidth min: toolbarHeight)@(toolbarWidth min: toolbarHeight)
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 5/19/2024 11:59'
+}
+WBToolbar >> buttons [
+
+	^ buttons
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 5/19/2024 11:58'
+}
+WBToolbar >> buttons: aCollection [
+
+	buttons := aCollection
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'is 5/18/2024 16:05'
 }
@@ -61,26 +89,45 @@ WBToolbar >> canvas: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/19/2024 00:56'
+	#'squeak_changestamp' : 'is 5/19/2024 15:17'
 }
-WBToolbar >> initialize [
-
+WBToolbar >> initializeWithCanvas: aCanvas [
+	
 	super initialize.
-	self color: self backgroundColor
+	self canvas: aCanvas;
+		toolbarHeight: aCanvas extent y * self toolbarCanvasSizeFactor y;
+		toolbarWidth: aCanvas extent x * self toolbarCanvasSizeFactor x;
+		center: (canvas bounds origin x + self extent x / 2) @ 
+			(canvas bounds origin y + ((canvas bounds corner y - canvas bounds origin y))/2);
+		color: self backgroundColor;
+		placeButtons: (Set withAll: {WBPlaceholderButton new. WBPlaceholderButton new. WBPlaceholderButton new})
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/19/2024 00:55'
+	#'squeak_changestamp' : 'is 5/19/2024 15:17'
 }
-WBToolbar >> initializeWithCanvas: aCanvas [
+WBToolbar >> placeButtons: someButtons [
+	| margin |
 	
-	self initialize;
-		canvas: aCanvas;
-		toolbarHeight: aCanvas extent y * 0.75;
-		toolbarWidth: aCanvas extent x * 0.1;
-		center: (canvas bounds origin x + self extent x / 2) @ 
-			(canvas bounds origin y + ((canvas bounds corner y - canvas bounds origin y))/2)
+	margin := 20.
+	
+	someButtons doWithIndex: [:aButton :anIndex| 
+		aButton margin:  margin;
+			extent: (self buttonSize x - aButton margin)@(self buttonSize y - aButton margin);
+			center: (self bounds origin x + self buttonSize x/2)@(self bounds origin y + (self buttonSize y * anIndex)) - (0@self buttonSize y/2).
+		self addMorph: aButton].
+	self buttons: someButtons.
+	
+]
+
+{
+	#category : #layout,
+	#'squeak_changestamp' : 'is 5/19/2024 11:39'
+}
+WBToolbar >> toolbarCanvasSizeFactor [
+
+	^ 0.075@0.75
 ]
 
 {
