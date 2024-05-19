@@ -89,7 +89,7 @@ WBCanvas >> handlesMouseMove: evt [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/19/2024 00:59'
+	#'squeak_changestamp' : 'nicloeser 5/19/2024 10:37'
 }
 WBCanvas >> initialize [
 	
@@ -107,19 +107,12 @@ WBCanvas >> initialize [
 	(self spawnTemporaryButtonAt: 200@200)
 		number: 2;
 		color: Color yellow.
+	(self spawnTemporaryButtonAt: 200@300)
+		number: 3;
+		color: Color orange.	
 	self spawnToolbarWithCanvas: self.
 	self openInWorld
 	
-]
-
-{
-	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 5/17/2024 12:36'
-}
-WBCanvas >> mouseMove: anEvent [
-	
-	(self elementToSpawn) ifNotNil:
-		[self elementToSpawn moveElement: anEvent]
 ]
 
 {
@@ -142,7 +135,20 @@ WBCanvas >> scale: aFactor [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 5/17/2024 16:18'
+	#'squeak_changestamp' : 'nicloeser 5/19/2024 13:56'
+}
+WBCanvas >> spawnALine: anElement [
+
+	self elementToSpawn: 
+	(anElement
+		canvas: self;
+		yourself).
+	self addMorph: anElement
+]
+
+{
+	#category : #'creating elements',
+	#'squeak_changestamp' : 'nicloeser 5/19/2024 13:51'
 }
 WBCanvas >> spawnAnElement: anElement At: aPoint [
 

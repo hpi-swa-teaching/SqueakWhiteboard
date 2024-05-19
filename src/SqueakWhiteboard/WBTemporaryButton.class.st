@@ -25,14 +25,16 @@ WBTemporaryButton >> initialize [
 
 {
 	#category : #clicking,
-	#'squeak_changestamp' : 'si 5/17/2024 13:47'
+	#'squeak_changestamp' : 'nicloeser 5/19/2024 11:37'
 }
 WBTemporaryButton >> mouseDown: anEvent [
-
+	
 	(self number == 1) ifTrue: 
 		[self canvas spawnAnElement: WBRectangle new At: anEvent cursorPoint.].
 	(self number == 2) ifTrue: 
 		[self canvas spawnAnElement: WBTemporaryCircle new At: anEvent cursorPoint.].
+	(self number == 3) ifTrue: 
+		[self canvas spawnAnElement: WBLine new At: anEvent cursorPoint.].
 ]
 
 {
