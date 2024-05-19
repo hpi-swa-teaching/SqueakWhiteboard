@@ -12,10 +12,10 @@ Class {
 }
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'ACL 5/17/2024 15:07'
+	#category : #initialization,
+	#'squeak_changestamp' : 'is 5/19/2024 16:56'
 }
-WBPopUp >> handlesMouseDown: evt [
+WBPopUp >> handlesMouseDown: anEvent [
     ^ true.
 ]
 
