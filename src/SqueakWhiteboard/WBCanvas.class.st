@@ -70,7 +70,7 @@ WBCanvas >> elementToSpawn: anElement [
 ]
 
 {
-	#category : #initialization,
+	#category : #'creating elements',
 	#'squeak_changestamp' : 'si 5/17/2024 13:53'
 }
 WBCanvas >> handlesMouseDown: evt [
@@ -79,7 +79,7 @@ WBCanvas >> handlesMouseDown: evt [
 ]
 
 {
-	#category : #initialization,
+	#category : #'creating elements',
 	#'squeak_changestamp' : 'si 5/17/2024 13:53'
 }
 WBCanvas >> handlesMouseMove: evt [
@@ -89,7 +89,7 @@ WBCanvas >> handlesMouseMove: evt [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/19/2024 00:59'
+	#'squeak_changestamp' : 'is 5/19/2024 16:54'
 }
 WBCanvas >> initialize [
 	
@@ -101,12 +101,6 @@ WBCanvas >> initialize [
 		color: Color white;
 		borderWidth: (self scale * 5);
 		borderColor: Color black.
-	(self spawnTemporaryButtonAt: 200@100)
-		number: 1;
-		color: Color red.
-	(self spawnTemporaryButtonAt: 200@200)
-		number: 2;
-		color: Color yellow.
 	self spawnToolbarWithCanvas: self.
 	self openInWorld
 	

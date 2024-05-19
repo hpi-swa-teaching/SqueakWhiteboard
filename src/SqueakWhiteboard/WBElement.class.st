@@ -48,9 +48,9 @@ WBElement >> dragOffset: anObject [
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'JK 5/15/2024 12:14'
+	#'squeak_changestamp' : 'is 5/19/2024 16:21'
 }
-WBElement >> handlesMouseDown: evt [
+WBElement >> handlesMouseDown: anEvent [
     ^ true.
 ]
 
@@ -65,7 +65,7 @@ WBElement >> initialize [
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'is 5/19/2024 01:03'
+	#'squeak_changestamp' : 'is 5/19/2024 17:09'
 }
 WBElement >> makePopUp [
 

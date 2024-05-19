@@ -89,7 +89,7 @@ WBToolbar >> canvas: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/19/2024 15:17'
+	#'squeak_changestamp' : 'is 5/19/2024 16:44'
 }
 WBToolbar >> initializeWithCanvas: aCanvas [
 	
@@ -105,7 +105,7 @@ WBToolbar >> initializeWithCanvas: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/19/2024 15:17'
+	#'squeak_changestamp' : 'is 5/19/2024 16:44'
 }
 WBToolbar >> placeButtons: someButtons [
 	| margin |
@@ -114,8 +114,11 @@ WBToolbar >> placeButtons: someButtons [
 	
 	someButtons doWithIndex: [:aButton :anIndex| 
 		aButton margin:  margin;
+			canvas: self canvas;
 			extent: (self buttonSize x - aButton margin)@(self buttonSize y - aButton margin);
-			center: (self bounds origin x + self buttonSize x/2)@(self bounds origin y + (self buttonSize y * anIndex)) - (0@self buttonSize y/2).
+			center: (self bounds origin x + self buttonSize x/2)@(self bounds origin y + (self buttonSize y * anIndex)) - (0@self buttonSize y/2);
+			backgroundColor: Color lightBlue;
+			clickedColor: Color blue.
 		self addMorph: aButton].
 	self buttons: someButtons.
 	
