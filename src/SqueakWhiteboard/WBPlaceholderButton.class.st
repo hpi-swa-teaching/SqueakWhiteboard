@@ -10,17 +10,21 @@ Class {
 
 {
 	#category : #clicking,
-	#'squeak_changestamp' : 'is 5/19/2024 16:51'
+	#'squeak_changestamp' : 'si 5/20/2024 13:53'
 }
 WBPlaceholderButton >> clickFunctionality: anEvent [
 	| randomGenerator randomInt |
 
 	randomGenerator := Random new.
-	randomInt := randomGenerator nextInt: 2.
+	randomInt := randomGenerator nextInt: 3.
 	Transcript show: randomInt; cr.
 	(randomInt = 1) 
-		ifTrue: [self canvas spawnAnElement: WBRectangle new At: anEvent cursorPoint.]
-		ifFalse: [self canvas spawnAnElement: WBTemporaryCircle new At: anEvent cursorPoint.]
+		ifTrue: [self canvas spawnAnElement: WBRectangle new At: anEvent cursorPoint.].
+	(randomInt = 2)
+		ifTrue: [self canvas spawnAnElement: WBTemporaryCircle new At: anEvent cursorPoint.]
+		ifFalse: [self canvas spawnAnElement: WBLine new At: anEvent cursorPoint]
+		
+	
 		
 						 
 ]
