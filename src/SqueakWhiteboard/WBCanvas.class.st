@@ -108,6 +108,15 @@ WBCanvas >> initialize [
 
 {
 	#category : #'creating elements',
+	#'squeak_changestamp' : 'ACL 5/21/2024 14:01'
+}
+WBCanvas >> mouseDown: anEvent [
+
+	self submorphs do: [:m | ((m class  == WBRectangle) | (m class  == WBTemporaryCircle)) ifTrue: [m removePopUp]].
+]
+
+{
+	#category : #'creating elements',
 	#'squeak_changestamp' : 'si 5/17/2024 12:36'
 }
 WBCanvas >> mouseMove: anEvent [

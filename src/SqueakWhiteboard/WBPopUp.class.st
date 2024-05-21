@@ -21,7 +21,7 @@ WBPopUp >> handlesMouseDown: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/17/2024 15:10'
+	#'squeak_changestamp' : 'ACL 5/21/2024 14:03'
 }
 WBPopUp >> initialize [
 
@@ -31,7 +31,8 @@ self popUpButtons: 2;
 	borderColor: Color gray;
 	borderWidth: 1;
 	extent: (self popUpButtons*20)@20;
-	cornerStyle: #rounded.
+	cornerStyle: #rounded;
+	cornerRadius: 7.
 ]
 
 {
