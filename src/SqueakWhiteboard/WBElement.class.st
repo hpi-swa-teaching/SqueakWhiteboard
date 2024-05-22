@@ -65,6 +65,35 @@ WBElement >> initialize [
 
 {
 	#category : #'drag&drop',
+	#'squeak_changestamp' : 'ACL 5/22/2024 19:05'
+}
+WBElement >> makeElementPopUp [
+	| elementPopUp |
+	
+	elementPopUp := WBElementPopUp new.
+	self addMorph: 
+	(WBElementPopUp new
+	
+		position: self topRight;
+		yourself);
+		
+		addMorph: 
+	(WBColorButton new
+		setDefaultValues;
+		position: self topRight + (2.25@2.25) + ((elementPopUp popUpButtons -2)*20@0);
+		yourself);
+		
+		addMorph:
+	(WBDeleteButton new
+		setDefaultValues;
+		position: self topRight + (2.25@2.25) + ((elementPopUp popUpButtons -1)*20@0);
+		yourself)	
+	
+		
+]
+
+{
+	#category : #'drag&drop',
 	#'squeak_changestamp' : 'ACL 5/22/2024 16:56'
 }
 WBElement >> makePopUp [
@@ -93,7 +122,7 @@ WBElement >> makePopUp [
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'ACL 5/22/2024 16:25'
+	#'squeak_changestamp' : 'ACL 5/22/2024 19:06'
 }
 WBElement >> mouseDown: anEvent [
 	
@@ -101,7 +130,7 @@ WBElement >> mouseDown: anEvent [
 		[owner removePopUps.
 		self
 			addDropShadow;
-			makePopUp;
+			makeElementPopUp;
 			comeToFront;
 			dragOffset: self position - anEvent cursorPoint.].
 	(self canvas elementToSpawn) ifNotNil:

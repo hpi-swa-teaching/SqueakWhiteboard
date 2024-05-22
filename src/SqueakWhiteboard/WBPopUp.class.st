@@ -4,9 +4,6 @@ The WBPopUp is a menu that opens up when clicking on an element that is in the c
 Class {
 	#name : #WBPopUp,
 	#superclass : #Morph,
-	#instVars : [
-		'popUpButtons'
-	],
 	#category : #SqueakWhiteboard,
 	#'squeak_changestamp' : 'is 5/17/2024 20:40'
 }
@@ -33,22 +30,4 @@ self popUpButtons: 2;
 	extent: (self popUpButtons*20)@20;
 	cornerStyle: #rounded;
 	cornerRadius: 7.
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'is 5/18/2024 22:23'
-}
-WBPopUp >> popUpButtons [
-
-	^ popUpButtons
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'ACL 5/15/2024 16:04'
-}
-WBPopUp >> popUpButtons: aNumber [
-
-	popUpButtons := aNumber.
 ]
