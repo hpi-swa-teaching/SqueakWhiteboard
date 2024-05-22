@@ -2,13 +2,32 @@ Class {
 	#name : #WBColorPalette,
 	#superclass : #WBPopUp,
 	#instVars : [
-		'colorRows'
+		'colorRows',
+		'colorColumns'
 	],
 	#classInstVars : [
 		'colorRows'
 	],
 	#category : #SqueakWhiteboard
 }
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'ACL 5/22/2024 19:11'
+}
+WBColorPalette >> colorColumns [
+
+	^colorColumns.
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'ACL 5/22/2024 19:11'
+}
+WBColorPalette >> colorColumns: aNumber [
+
+	colorColumns:= aNumber.
+]
 
 {
 	#category : #'as yet unclassified',
@@ -39,11 +58,13 @@ WBColorPalette >> initializeDefault [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'ACL 5/22/2024 18:27'
+	#'squeak_changestamp' : 'ACL 5/22/2024 19:11'
 }
 WBColorPalette >> setDefaultValues [
 
-	self colorRows: 9;
+	self 
+		colorRows: 3;
+		colorColumns: 3;
 		color: Color veryLightGray;
 		borderColor: Color gray;
 		borderWidth: 1;

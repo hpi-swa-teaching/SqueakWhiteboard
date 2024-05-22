@@ -38,11 +38,11 @@ WBColorButton >> initializeWithDefaultValues [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/22/2024 16:59'
+	#'squeak_changestamp' : 'ACL 5/22/2024 19:27'
 }
 WBColorButton >> setDefaultValues [
 
-	self color: Color black;
+	self backgroundColor: Color black;
 		extent: 15@15;
 		cornerStyle: #rounded;
 		cornerRadius: 20

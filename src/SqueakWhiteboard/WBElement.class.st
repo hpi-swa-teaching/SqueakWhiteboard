@@ -94,34 +94,6 @@ WBElement >> makeElementPopUp [
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'ACL 5/22/2024 16:56'
-}
-WBElement >> makePopUp [
-	| popUp |
-	
-	popUp := WBPopUp new.
-	self addMorph: 
-	(WBPopUp new
-		position: self topRight;
-		yourself);
-		
-		addMorph: 
-	(WBColorButton new
-		setDefaultValues;
-		position: self topRight + (2.25@2.25) + ((popUp popUpButtons -2)*20@0);
-		yourself);
-		
-		addMorph:
-	(WBDeleteButton new
-		setDefaultValues;
-		position: self topRight + (2.25@2.25) + ((popUp popUpButtons -1)*20@0);
-		yourself)	
-	
-		
-]
-
-{
-	#category : #'drag&drop',
 	#'squeak_changestamp' : 'ACL 5/22/2024 19:06'
 }
 WBElement >> mouseDown: anEvent [
@@ -168,9 +140,9 @@ WBElement >> moveElement: anEvent [
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'is 5/18/2024 20:27'
+	#'squeak_changestamp' : 'ACL 5/22/2024 19:09'
 }
-WBElement >> removePopUp [
+WBElement >> removeElementPopUp [
 
 	self submorphs do: [:m | m delete].
 ]

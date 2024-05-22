@@ -38,11 +38,11 @@ WBDeleteButton >> initializeWithDefaultValues [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/22/2024 16:59'
+	#'squeak_changestamp' : 'ACL 5/22/2024 19:27'
 }
 WBDeleteButton >> setDefaultValues [
 
-	self color: Color red;
+	self backgroundColor: Color red;
 		clickedColor: Color red muchDarker;
 		extent: 15@15;
 		cornerStyle: #rounded;

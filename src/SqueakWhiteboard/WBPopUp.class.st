@@ -10,20 +10,22 @@ Class {
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/19/2024 16:56'
+	#'squeak_changestamp' : 'ACL 5/22/2024 19:08'
 }
 WBPopUp >> handlesMouseDown: anEvent [
-    ^ true.
+
+	^ true.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/21/2024 14:03'
+	#'squeak_changestamp' : 'ACL 5/22/2024 19:08'
 }
 WBPopUp >> initialize [
 
 super initialize.
-self popUpButtons: 2;
+self 
+	popUpButtons: 2;
 	color: Color veryLightGray;
 	borderColor: Color gray;
 	borderWidth: 1;
