@@ -10,30 +10,41 @@ Class {
 
 {
 	#category : #'instance creation',
-	#'squeak_changestamp' : 'is 5/19/2024 16:59'
+	#'squeak_changestamp' : 'is 5/19/2024 18:04'
 }
 WBDeleteButton class >> newWithDefaultValues [
 
+	WBDeleteButton basicNew initializeWithDefaultValues
 ]
 
 {
 	#category : #clicking,
-	#'squeak_changestamp' : 'is 5/19/2024 17:04'
+	#'squeak_changestamp' : 'ACL 5/23/2024 17:18'
 }
-WBDeleteButton >> clickFunctionality [
-
-	^ owner delete
+WBDeleteButton >> clickFunctionality: anEvent [
+	
+	^ owner delete.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/19/2024 17:01'
+	#'squeak_changestamp' : 'ACL 5/22/2024 16:55'
 }
 WBDeleteButton >> initializeWithDefaultValues [
 
 	super initialize.
-	self color: Color red;
+	self setDefaultValues.
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'ACL 5/23/2024 17:18'
+}
+WBDeleteButton >> setDefaultValues [
+
+	self backgroundColor: Color red;
+		clickedColor: Color red muchDarker;
 		extent: 15@15;
 		cornerStyle: #rounded;
-		cornerRadius: 20
+		cornerRadius: 20.
 ]

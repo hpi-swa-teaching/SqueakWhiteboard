@@ -25,11 +25,11 @@ WBButton class >> newWithCanvas: aCanvas [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'is 5/19/2024 16:08'
+	#'squeak_changestamp' : 'is 5/19/2024 18:26'
 }
 WBButton >> backgroundColor [
 
-	^ backgroundColor
+	^ backgroundColor ifNil: [backgroundColor := Color gray]
 ]
 
 {
@@ -72,11 +72,11 @@ WBButton >> clickFunctionality: anEvent [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'is 5/19/2024 16:09'
+	#'squeak_changestamp' : 'is 5/19/2024 18:26'
 }
 WBButton >> clickedColor [
 
-	^ clickedColor
+	^ clickedColor ifNil: [clickedColor := Color darkGray]
 ]
 
 {
@@ -145,7 +145,7 @@ WBButton >> mouseDown: anEvent [
 
 {
 	#category : #clicking,
-	#'squeak_changestamp' : 'is 5/19/2024 16:49'
+	#'squeak_changestamp' : 'is 5/19/2024 18:36'
 }
 WBButton >> mouseUp: anEvent [
 
