@@ -65,28 +65,36 @@ WBElement >> initialize [
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'is 5/19/2024 18:25'
+	#'squeak_changestamp' : 'ACL 5/23/2024 15:32'
 }
-WBElement >> makePopUp [
-	| popUp |
+WBElement >> makeElementPopUp [
+	| elementPopUp |
 	
-	popUp := WBPopUp new.
+	elementPopUp := WBElementPopUp new.
+	elementPopUp setDefaultValues.
 	self addMorph: 
-	(WBPopUp new
+	(WBElementPopUp new
+		setDefaultValues;
 		position: self topRight;
 		yourself);
+		
+		addMorph: 
+	(WBColorPaletteButton new
+		setDefaultValues;
+		position: self topRight + (2.25@2.25) + ((elementPopUp popUpButtons -2)*20@0);
+		yourself);
+		
 		addMorph:
 	(WBDeleteButton new
 		setDefaultValues;
-		position: self topRight + (2.25@2.25) + ((popUp popUpButtons -1)*20@0);
-		yourself)	
+		position: self topRight + (2.25@2.25) + ((elementPopUp popUpButtons -1)*20@0);
+		yourself).
 	
-		
 ]
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'ACL 5/22/2024 16:25'
+	#'squeak_changestamp' : 'ACL 5/22/2024 19:06'
 }
 WBElement >> mouseDown: anEvent [
 	
@@ -94,7 +102,7 @@ WBElement >> mouseDown: anEvent [
 		[owner removePopUps.
 		self
 			addDropShadow;
-			makePopUp;
+			makeElementPopUp;
 			comeToFront;
 			dragOffset: self position - anEvent cursorPoint.].
 	(self canvas elementToSpawn) ifNotNil:
@@ -132,9 +140,9 @@ WBElement >> moveElement: anEvent [
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'is 5/18/2024 20:27'
+	#'squeak_changestamp' : 'ACL 5/22/2024 19:09'
 }
-WBElement >> removePopUp [
+WBElement >> removeElementPopUp [
 
 	self submorphs do: [:m | m delete].
 ]

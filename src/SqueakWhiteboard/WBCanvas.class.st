@@ -89,13 +89,13 @@ WBCanvas >> handlesMouseMove: evt [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/19/2024 16:54'
+	#'squeak_changestamp' : 'ACL 5/22/2024 19:23'
 }
 WBCanvas >> initialize [
 	
 	super initialize.
 	self 
-		scale: 1;
+		scale: 0.7;
 		height: (self class WhiteBoardSize * self scale);
 		width: (self class WhiteBoardSize * self scale * 1.5);
 		color: Color white;
@@ -127,11 +127,11 @@ WBCanvas >> mouseMove: anEvent [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'ACL 5/22/2024 16:19'
+	#'squeak_changestamp' : 'ACL 5/22/2024 19:10'
 }
 WBCanvas >> removePopUps [
 
-	self submorphs do: [:m | ((m class  == WBRectangle) | (m class  == WBTemporaryCircle)) ifTrue: [m removePopUp]].
+	self submorphs do: [:m | ((m class  == WBRectangle) | (m class  == WBTemporaryCircle)) ifTrue: [m removeElementPopUp]].
 ]
 
 {

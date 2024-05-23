@@ -19,30 +19,26 @@ WBDeleteButton class >> newWithDefaultValues [
 
 {
 	#category : #clicking,
-	#'squeak_changestamp' : 'is 5/19/2024 18:36'
+	#'squeak_changestamp' : 'ACL 5/23/2024 17:18'
 }
 WBDeleteButton >> clickFunctionality: anEvent [
 	
-	^ owner delete
+	^ owner delete.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/19/2024 18:22'
+	#'squeak_changestamp' : 'ACL 5/22/2024 16:55'
 }
 WBDeleteButton >> initializeWithDefaultValues [
 
 	super initialize.
-	self color: Color red;
-		extent: 15@15;
-		cornerStyle: #rounded;
-		cornerRadius: 20;
-		yourself
+	self setDefaultValues.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/19/2024 18:30'
+	#'squeak_changestamp' : 'ACL 5/23/2024 17:18'
 }
 WBDeleteButton >> setDefaultValues [
 
@@ -50,5 +46,5 @@ WBDeleteButton >> setDefaultValues [
 		clickedColor: Color red muchDarker;
 		extent: 15@15;
 		cornerStyle: #rounded;
-		cornerRadius: 20
+		cornerRadius: 20.
 ]
