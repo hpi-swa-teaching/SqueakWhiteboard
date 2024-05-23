@@ -3,7 +3,7 @@ The WBDeleteButton is a button that deletes the element that it is attached to
 "
 Class {
 	#name : #WBDeleteButton,
-	#superclass : #WBButton,
+	#superclass : #WBPopUpButton,
 	#category : #SqueakWhiteboard,
 	#'squeak_changestamp' : 'is 5/19/2024 02:07'
 }
@@ -19,11 +19,11 @@ WBDeleteButton class >> newWithDefaultValues [
 
 {
 	#category : #clicking,
-	#'squeak_changestamp' : 'ACL 5/23/2024 17:18'
+	#'squeak_changestamp' : 'si 5/23/2024 22:23'
 }
 WBDeleteButton >> clickFunctionality: anEvent [
 	
-	^ owner delete.
+	^ element delete.
 ]
 
 {
@@ -38,13 +38,11 @@ WBDeleteButton >> initializeWithDefaultValues [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/23/2024 17:18'
+	#'squeak_changestamp' : 'si 5/23/2024 21:29'
 }
 WBDeleteButton >> setDefaultValues [
 
+	super setDefaultValues.
 	self backgroundColor: Color red;
-		clickedColor: Color red muchDarker;
-		extent: 15@15;
-		cornerStyle: #rounded;
-		cornerRadius: 20.
+		clickedColor: Color red muchDarker.
 ]

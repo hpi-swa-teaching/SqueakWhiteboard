@@ -6,11 +6,32 @@ Class {
 	#superclass : #Morph,
 	#instVars : [
 		'dragOffset',
-		'canvas'
+		'canvas',
+		'popUpMenu'
 	],
 	#category : #SqueakWhiteboard,
 	#'squeak_changestamp' : 'is 5/17/2024 15:58'
 }
+
+{
+	#category : #popUpBar,
+	#'squeak_changestamp' : 'si 5/23/2024 23:49'
+}
+WBElement >> buttonsForPopUpBar [
+
+	^OrderedCollection new
+		add: (WBDeleteButton new
+			canvas: self canvas;
+			element: self);
+		add: (WBColorPaletteButton new
+			canvas: self canvas;
+			element: self);
+		add: (WBCopyButton new
+			canvas: self canvas;
+			element: self);
+		yourself.
+	
+]
 
 {
 	#category : #accessing,
@@ -64,30 +85,15 @@ WBElement >> initialize [
 ]
 
 {
-	#category : #'drag&drop',
-	#'squeak_changestamp' : 'ACL 5/23/2024 15:32'
+	#category : #popUpBar,
+	#'squeak_changestamp' : 'si 5/23/2024 23:49'
 }
 WBElement >> makeElementPopUp [
-	| elementPopUp |
-	
-	elementPopUp := WBElementPopUp new.
-	elementPopUp setDefaultValues.
-	self addMorph: 
-	(WBElementPopUp new
+
+	self popUpMenu: (WBElementPopUp new
 		setDefaultValues;
 		position: self topRight;
-		yourself);
-		
-		addMorph: 
-	(WBColorPaletteButton new
-		setDefaultValues;
-		position: self topRight + (2.25@2.25) + ((elementPopUp popUpButtons -2)*20@0);
-		yourself);
-		
-		addMorph:
-	(WBDeleteButton new
-		setDefaultValues;
-		position: self topRight + (2.25@2.25) + ((elementPopUp popUpButtons -1)*20@0);
+		addButtons: self buttonsForPopUpBar;
 		yourself).
 	
 ]
@@ -139,10 +145,31 @@ WBElement >> moveElement: anEvent [
 ]
 
 {
-	#category : #'drag&drop',
-	#'squeak_changestamp' : 'ACL 5/22/2024 19:09'
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 5/23/2024 22:11'
+}
+WBElement >> popUpMenu [
+
+	^popUpMenu
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 5/23/2024 22:26'
+}
+WBElement >> popUpMenu: aPopUpMenu [
+
+	popUpMenu := aPopUpMenu.
+	popUpMenu ifNotNil: 
+		[self addMorphBack: popUpMenu]
+]
+
+{
+	#category : #popUpBar,
+	#'squeak_changestamp' : 'si 5/23/2024 22:28'
 }
 WBElement >> removeElementPopUp [
 
-	self submorphs do: [:m | m delete].
+	self popUpMenu ifNotNil: 
+		[self popUpMenu delete]
 ]

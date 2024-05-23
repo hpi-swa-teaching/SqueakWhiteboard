@@ -15,6 +15,15 @@ Class {
 }
 
 {
+	#category : #size,
+	#'squeak_changestamp' : 'si 5/23/2024 22:47'
+}
+WBButton class >> cornerRadius [
+
+	^20
+]
+
+{
 	#category : #'instance creation',
 	#'squeak_changestamp' : 'is 5/19/2024 16:36'
 }
@@ -99,11 +108,12 @@ WBButton >> handlesMouseDown: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/19/2024 12:57'
+	#'squeak_changestamp' : 'si 5/23/2024 20:51'
 }
 WBButton >> initialize [
 
-	^ super initialize
+	super initialize.
+	self setDefaultValues
 ]
 
 {
@@ -152,4 +162,15 @@ WBButton >> mouseUp: anEvent [
 	self color: backgroundColor.
 	(self containsPoint: anEvent position) ifTrue: [self clickFunctionality: anEvent]
 	
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'si 5/23/2024 22:52'
+}
+WBButton >> setDefaultValues [
+
+	self
+		cornerStyle: #rounded;
+		cornerRadius: self class cornerRadius.
 ]

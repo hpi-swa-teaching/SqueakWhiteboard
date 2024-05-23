@@ -3,7 +3,7 @@ The WBDeleteButton is a button that deletes the element that it is attached to
 "
 Class {
 	#name : #WBColorPaletteButton,
-	#superclass : #WBButton,
+	#superclass : #WBPopUpButton,
 	#category : #SqueakWhiteboard,
 	#'squeak_changestamp' : '<historical>'
 }
@@ -19,12 +19,11 @@ WBColorPaletteButton class >> newWithDefaultValues [
 
 {
 	#category : #clicking,
-	#'squeak_changestamp' : 'ACL 5/22/2024 23:08'
+	#'squeak_changestamp' : 'si 5/23/2024 23:46'
 }
 WBColorPaletteButton >> clickFunctionality: anEvent [
 
-	self makeColorPalette.
-	
+	self makeColorPalette
 ]
 
 {
@@ -52,42 +51,77 @@ WBColorPaletteButton >> makeColorButtonAt: aPosition Color: aColor [
 ]
 
 {
-	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/23/2024 17:18'
+	#category : #createButtons,
+	#'squeak_changestamp' : 'si 5/23/2024 23:43'
+}
+WBColorPaletteButton >> makeColorButtons [
+
+	^OrderedCollection new
+		add: (WBColorButton new
+			color: Color yellow;
+			backgroundColor: Color yellow;
+			clickedColor: Color yellow);
+		add: (WBColorButton new
+			color: Color orange;
+			backgroundColor: Color orange;
+			clickedColor: Color orange);
+		add: (WBColorButton new
+			color: Color red;
+			backgroundColor: Color red;
+			clickedColor: Color red);
+		add: (WBColorButton new
+			color: Color magenta;
+			backgroundColor: Color magenta;
+			clickedColor: Color magenta);
+		add: (WBColorButton new
+			color: Color blue;
+			backgroundColor: Color blue;
+			clickedColor: Color blue);
+		add: (WBColorButton new
+			color: Color cyan;
+			backgroundColor: Color cyan;
+			clickedColor: Color cyan);
+		add: (WBColorButton new
+			color: Color green;
+			backgroundColor: Color green;
+			clickedColor: Color green);
+		add: (WBColorButton new
+			color: Color gray;
+			backgroundColor: Color gray;
+			clickedColor: Color gray);
+		add: (WBColorButton new
+			color: Color black;
+			backgroundColor: Color black;
+			clickedColor: Color black);
+		yourself.
+]
+
+{
+	#category : #createButtons,
+	#'squeak_changestamp' : 'si 5/23/2024 23:46'
 }
 WBColorPaletteButton >> makeColorPalette [
 	
 	| colorPalette |
 	
-	colorPalette := WBColorPalette new.
+	colorPalette := WBElementPopUp new.
 	self addMorph: colorPalette.
 	colorPalette 
 		setDefaultValues;
 		position: self bottomCenter;
 		comeToFront;
+		addButtons: self makeColorButtons
 		yourself.
-	self
-		makeColorButtonAt: colorPalette topLeft + (3@3) Color: Color yellow;
-		makeColorButtonAt: colorPalette topLeft + (23@3) Color: Color orange;
-		makeColorButtonAt: colorPalette topLeft + (43@3) Color: Color red;
-		makeColorButtonAt: colorPalette topLeft + (3@23) Color: Color magenta;
-		makeColorButtonAt: colorPalette topLeft + (23@23) Color: Color blue;
-		makeColorButtonAt: colorPalette topLeft + (43@23) Color: Color cyan;
-		makeColorButtonAt: colorPalette topLeft + (3@43) Color: Color green;
-		makeColorButtonAt: colorPalette topLeft + (23@43) Color: Color gray;
-		makeColorButtonAt: colorPalette topLeft + (43@43) Color: Color black.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/23/2024 16:10'
+	#'squeak_changestamp' : 'si 5/23/2024 21:28'
 }
 WBColorPaletteButton >> setDefaultValues [
 
+	super setDefaultValues.
 	self
 		backgroundColor: Color black;
-		clickedColor: Color gray darker;
-		extent: 15@15;
-		cornerStyle: #rounded;
-		cornerRadius: 20.
+		clickedColor: Color gray darker.
 ]

@@ -6,31 +6,18 @@ Class {
 
 {
 	#category : #clicking,
-	#'squeak_changestamp' : 'ACL 5/23/2024 17:12'
+	#'squeak_changestamp' : 'si 5/23/2024 23:44'
 }
 WBColorButton >> clickFunctionality: anEvent [
 
-	owner owner color: self color.
+	owner owner element color: self color.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/23/2024 15:43'
+	#'squeak_changestamp' : 'si 5/23/2024 23:12'
 }
 WBColorButton >> initialize [
 
-	super initialize.
-]
-
-{
-	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/23/2024 17:13'
-}
-WBColorButton >> setDefaultValues [
-
-	self
-		extent: 15@15;
-		cornerStyle: #rounded;
-		cornerRadius: 20.
-		
+	super initialize
 ]
