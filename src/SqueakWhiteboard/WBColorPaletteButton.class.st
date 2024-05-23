@@ -29,15 +29,6 @@ WBColorPaletteButton >> clickFunctionality: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/23/2024 17:00'
-}
-WBColorPaletteButton >> getOwner [
-	
-	^self owner.
-]
-
-{
-	#category : #initialization,
 	#'squeak_changestamp' : 'ACL 5/23/2024 15:44'
 }
 WBColorPaletteButton >> initializeWithDefaultValues [
@@ -62,9 +53,10 @@ WBColorPaletteButton >> makeColorButtonAt: aPosition Color: aColor [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/23/2024 16:25'
+	#'squeak_changestamp' : 'ACL 5/23/2024 17:18'
 }
 WBColorPaletteButton >> makeColorPalette [
+	
 	| colorPalette |
 	
 	colorPalette := WBColorPalette new.

@@ -5,25 +5,16 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'ACL 5/23/2024 17:10'
+	#category : #clicking,
+	#'squeak_changestamp' : 'ACL 5/23/2024 17:12'
 }
 WBColorButton >> clickFunctionality: anEvent [
 
-	(owner owner) color: self color.
+	owner owner color: self color.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'ACL 5/23/2024 17:00'
-}
-WBColorButton >> getOwner [
-
-	^self owner.	
-]
-
-{
-	#category : #'as yet unclassified',
+	#category : #initialization,
 	#'squeak_changestamp' : 'ACL 5/23/2024 15:43'
 }
 WBColorButton >> initialize [
@@ -32,14 +23,14 @@ WBColorButton >> initialize [
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'ACL 5/23/2024 16:28'
+	#category : #initialization,
+	#'squeak_changestamp' : 'ACL 5/23/2024 17:13'
 }
 WBColorButton >> setDefaultValues [
 
 	self
 		extent: 15@15;
 		cornerStyle: #rounded;
-		cornerRadius: 20
+		cornerRadius: 20.
 		
 ]

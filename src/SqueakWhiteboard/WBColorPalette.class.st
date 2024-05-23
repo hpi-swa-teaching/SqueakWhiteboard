@@ -12,7 +12,7 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
+	#category : #accessing,
 	#'squeak_changestamp' : 'ACL 5/22/2024 19:11'
 }
 WBColorPalette >> colorColumns [
@@ -21,7 +21,7 @@ WBColorPalette >> colorColumns [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #accessing,
 	#'squeak_changestamp' : 'ACL 5/22/2024 19:11'
 }
 WBColorPalette >> colorColumns: aNumber [
@@ -30,7 +30,7 @@ WBColorPalette >> colorColumns: aNumber [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #accessing,
 	#'squeak_changestamp' : 'ACL 5/22/2024 18:26'
 }
 WBColorPalette >> colorRows [
@@ -39,7 +39,7 @@ WBColorPalette >> colorRows [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #accessing,
 	#'squeak_changestamp' : 'ACL 5/22/2024 18:26'
 }
 WBColorPalette >> colorRows: aNumber [
@@ -48,7 +48,7 @@ WBColorPalette >> colorRows: aNumber [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #initialization,
 	#'squeak_changestamp' : 'ACL 5/22/2024 18:27'
 }
 WBColorPalette >> initializeDefault [
@@ -57,7 +57,7 @@ WBColorPalette >> initializeDefault [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #initialization,
 	#'squeak_changestamp' : 'ACL 5/23/2024 16:26'
 }
 WBColorPalette >> setDefaultValues [

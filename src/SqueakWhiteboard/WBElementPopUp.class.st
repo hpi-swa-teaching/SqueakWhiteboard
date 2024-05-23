@@ -8,25 +8,25 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'ACL 5/22/2024 19:08'
+	#category : #initialization,
+	#'squeak_changestamp' : 'ACL 5/23/2024 17:18'
 }
 WBElementPopUp >> initializeDefault [
 
-	self setDefaultValues
+	self setDefaultValues.
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'ACL 5/22/2024 18:18'
+	#category : #accessing,
+	#'squeak_changestamp' : 'ACL 5/23/2024 17:18'
 }
 WBElementPopUp >> popUpButtons [
 
-	^ popUpButtons
+	^ popUpButtons.
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #accessing,
 	#'squeak_changestamp' : 'ACL 5/22/2024 18:18'
 }
 WBElementPopUp >> popUpButtons: aNumber [
@@ -35,7 +35,7 @@ WBElementPopUp >> popUpButtons: aNumber [
 ]
 
 {
-	#category : #'as yet unclassified',
+	#category : #initialization,
 	#'squeak_changestamp' : 'ACL 5/23/2024 16:26'
 }
 WBElementPopUp >> setDefaultValues [
