@@ -19,10 +19,11 @@ WBColorButton class >> newWithDefaultValues [
 
 {
 	#category : #clicking,
-	#'squeak_changestamp' : 'ACL 5/22/2024 16:57'
+	#'squeak_changestamp' : 'ACL 5/22/2024 23:08'
 }
 WBColorButton >> clickFunctionality: anEvent [
-	
+
+	self makeColorPalette.
 	
 ]
 
@@ -38,11 +39,27 @@ WBColorButton >> initializeWithDefaultValues [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/22/2024 19:27'
+	#'squeak_changestamp' : 'ACL 5/22/2024 23:08'
+}
+WBColorButton >> makeColorPalette [
+	| colorPalette |
+	
+	colorPalette := WBColorPalette new.
+	self addMorph: 
+	(WBColorPalette new
+		setDefaultValues;
+		position: self topCenter;
+		yourself).
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'ACL 5/22/2024 23:13'
 }
 WBColorButton >> setDefaultValues [
 
 	self backgroundColor: Color black;
+		clickedColor: Color gray darker;
 		extent: 15@15;
 		cornerStyle: #rounded;
 		cornerRadius: 20
