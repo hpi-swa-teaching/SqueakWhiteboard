@@ -58,14 +58,14 @@ WBColorPalette >> initializeDefault [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'ACL 5/22/2024 19:11'
+	#'squeak_changestamp' : 'ACL 5/23/2024 16:26'
 }
 WBColorPalette >> setDefaultValues [
 
 	self 
 		colorRows: 3;
 		colorColumns: 3;
-		color: Color veryLightGray;
+		color: Color veryVeryLightGray;
 		borderColor: Color gray;
 		borderWidth: 1;
 		extent: (self colorRows *20)@(self colorColumns *20);

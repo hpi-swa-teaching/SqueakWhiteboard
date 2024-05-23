@@ -36,13 +36,13 @@ WBElementPopUp >> popUpButtons: aNumber [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'ACL 5/22/2024 19:09'
+	#'squeak_changestamp' : 'ACL 5/23/2024 16:26'
 }
 WBElementPopUp >> setDefaultValues [
 
 	self
 		popUpButtons: 2;
-		color: Color veryLightGray;
+		color: Color veryVeryLightGray;
 		borderColor: Color gray;
 		borderWidth: 1;
 		extent: (self popUpButtons*20)@20;

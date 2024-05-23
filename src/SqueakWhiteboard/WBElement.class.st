@@ -65,7 +65,7 @@ WBElement >> initialize [
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'ACL 5/23/2024 10:50'
+	#'squeak_changestamp' : 'ACL 5/23/2024 15:32'
 }
 WBElement >> makeElementPopUp [
 	| elementPopUp |
@@ -79,7 +79,7 @@ WBElement >> makeElementPopUp [
 		yourself);
 		
 		addMorph: 
-	(WBColorButton new
+	(WBColorPaletteButton new
 		setDefaultValues;
 		position: self topRight + (2.25@2.25) + ((elementPopUp popUpButtons -2)*20@0);
 		yourself);
