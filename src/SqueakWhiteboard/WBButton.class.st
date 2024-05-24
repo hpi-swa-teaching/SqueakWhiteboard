@@ -8,7 +8,8 @@ Class {
 		'margin',
 		'backgroundColor',
 		'clickedColor',
-		'canvas'
+		'canvas',
+		'element'
 	],
 	#category : #SqueakWhiteboard,
 	#'squeak_changestamp' : 'is 5/18/2024 17:13'
@@ -95,6 +96,24 @@ WBButton >> clickedColor [
 WBButton >> clickedColor: aColor [
 
 	clickedColor := aColor.
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'ACL 5/24/2024 13:35'
+}
+WBButton >> element [
+
+	^element
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'ACL 5/24/2024 13:36'
+}
+WBButton >> element: anElement [
+
+	element := anElement
 ]
 
 {
