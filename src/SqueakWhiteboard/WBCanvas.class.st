@@ -6,7 +6,8 @@ Class {
 	#superclass : #Morph,
 	#instVars : [
 		'scale',
-		'elementToSpawn'
+		'elementToSpawn',
+		'elements'
 	],
 	#category : #SqueakWhiteboard,
 	#'squeak_changestamp' : 'is 5/17/2024 15:53'
@@ -19,6 +20,16 @@ Class {
 WBCanvas class >> WhiteBoardSize [
 
 	^800
+]
+
+{
+	#category : #'creating elements',
+	#'squeak_changestamp' : 'si 5/24/2024 13:52'
+}
+WBCanvas >> addElement: anElement [
+
+	self elements add: anElement.
+	self addMorph: anElement
 ]
 
 {
@@ -70,6 +81,26 @@ WBCanvas >> elementToSpawn: anElement [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 5/24/2024 13:51'
+}
+WBCanvas >> elements [
+	
+	elements ifNotNil: [^elements].
+	elements := OrderedCollection new.
+	^elements
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 5/24/2024 13:50'
+}
+WBCanvas >> elements: aList [
+	
+	elements := aList
+]
+
+{
 	#category : #'creating elements',
 	#'squeak_changestamp' : 'si 5/17/2024 13:53'
 }
@@ -89,7 +120,7 @@ WBCanvas >> handlesMouseMove: evt [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/22/2024 19:23'
+	#'squeak_changestamp' : 'si 5/24/2024 12:59'
 }
 WBCanvas >> initialize [
 	
@@ -127,11 +158,20 @@ WBCanvas >> mouseMove: anEvent [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'ACL 5/22/2024 19:10'
+	#'squeak_changestamp' : 'si 5/24/2024 14:45'
+}
+WBCanvas >> removeElement: anElement [
+
+	self elements remove: anElement ifAbsent: []
+]
+
+{
+	#category : #'creating elements',
+	#'squeak_changestamp' : 'si 5/24/2024 14:00'
 }
 WBCanvas >> removePopUps [
 
-	self submorphs do: [:m | ((m class  == WBRectangle) | (m class  == WBTemporaryCircle)) ifTrue: [m removeElementPopUp]].
+	self elements do: [:m | m removeElementPopUp].
 ]
 
 {
@@ -154,7 +194,7 @@ WBCanvas >> scale: aFactor [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 5/17/2024 16:18'
+	#'squeak_changestamp' : 'si 5/24/2024 13:52'
 }
 WBCanvas >> spawnAnElement: anElement At: aPoint [
 
@@ -165,7 +205,7 @@ WBCanvas >> spawnAnElement: anElement At: aPoint [
 		canvas: self;
 		addDropShadow;
 		yourself).
-	self addMorph: anElement
+	self addElement: anElement
 ]
 
 {

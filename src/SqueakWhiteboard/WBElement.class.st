@@ -52,18 +52,30 @@ WBElement >> canvas: aCanvas [
 ]
 
 {
+	#category : #delete,
+	#'squeak_changestamp' : 'si 5/24/2024 14:37'
+}
+WBElement >> delete [
+
+	self canvas removeElement: self.	
+	super delete
+]
+
+{
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 5/18/2024 15:59'
+	#'squeak_changestamp' : 'si 5/24/2024 13:11'
 }
 WBElement >> dragOffset [
+	
 	^ dragOffset
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 5/18/2024 15:59'
+	#'squeak_changestamp' : 'si 5/24/2024 13:11'
 }
 WBElement >> dragOffset: anObject [
+
 	dragOffset := anObject
 ]
 
@@ -135,7 +147,7 @@ WBElement >> mouseUp: anEvent [
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'is 5/18/2024 17:53'
+	#'squeak_changestamp' : 'si 5/24/2024 14:41'
 }
 WBElement >> moveElement: anEvent [
 	|newPosition |
