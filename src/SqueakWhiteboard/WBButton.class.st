@@ -166,11 +166,12 @@ WBButton >> mouseUp: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 5/23/2024 22:52'
+	#'squeak_changestamp' : 'ACL 5/24/2024 11:10'
 }
 WBButton >> setDefaultValues [
 
 	self
 		cornerStyle: #rounded;
-		cornerRadius: self class cornerRadius.
+		cornerRadius: self class cornerRadius;
+		clickedColor: self color darker.
 ]

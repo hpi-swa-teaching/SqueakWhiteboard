@@ -10,7 +10,7 @@ Class {
 
 {
 	#category : #'instance creation',
-	#'squeak_changestamp' : 'is 5/19/2024 18:04'
+	#'squeak_changestamp' : 'ACL 5/24/2024 11:31'
 }
 WBColorPaletteButton class >> newWithDefaultValues [
 
@@ -19,16 +19,16 @@ WBColorPaletteButton class >> newWithDefaultValues [
 
 {
 	#category : #clicking,
-	#'squeak_changestamp' : 'si 5/23/2024 23:46'
+	#'squeak_changestamp' : 'ACL 5/24/2024 11:48'
 }
 WBColorPaletteButton >> clickFunctionality: anEvent [
 
-	self makeColorPalette
+	self makeColorPalette.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/23/2024 15:44'
+	#'squeak_changestamp' : 'ACL 5/24/2024 11:32'
 }
 WBColorPaletteButton >> initializeWithDefaultValues [
 
@@ -37,91 +37,58 @@ WBColorPaletteButton >> initializeWithDefaultValues [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/23/2024 16:29'
+	#'squeak_changestamp' : 'ACL 5/24/2024 11:20'
 }
-WBColorPaletteButton >> makeColorButtonAt: aPosition Color: aColor [ 
+WBColorPaletteButton >> makeColorButtonWithColor: aColor [ 
 	
-	self addMorph: 
-	(WBColorButton new
-		setDefaultValues;
-		position: aPosition;
+	^(WBColorButton new
+		color: aColor;
 		backgroundColor: aColor;
 		clickedColor: aColor darker;
-		yourself).
+		yourself)
 ]
 
 {
 	#category : #createButtons,
-	#'squeak_changestamp' : 'si 5/23/2024 23:43'
+	#'squeak_changestamp' : 'ACL 5/24/2024 11:22'
 }
 WBColorPaletteButton >> makeColorButtons [
 
 	^OrderedCollection new
-		add: (WBColorButton new
-			color: Color yellow;
-			backgroundColor: Color yellow;
-			clickedColor: Color yellow);
-		add: (WBColorButton new
-			color: Color orange;
-			backgroundColor: Color orange;
-			clickedColor: Color orange);
-		add: (WBColorButton new
-			color: Color red;
-			backgroundColor: Color red;
-			clickedColor: Color red);
-		add: (WBColorButton new
-			color: Color magenta;
-			backgroundColor: Color magenta;
-			clickedColor: Color magenta);
-		add: (WBColorButton new
-			color: Color blue;
-			backgroundColor: Color blue;
-			clickedColor: Color blue);
-		add: (WBColorButton new
-			color: Color cyan;
-			backgroundColor: Color cyan;
-			clickedColor: Color cyan);
-		add: (WBColorButton new
-			color: Color green;
-			backgroundColor: Color green;
-			clickedColor: Color green);
-		add: (WBColorButton new
-			color: Color gray;
-			backgroundColor: Color gray;
-			clickedColor: Color gray);
-		add: (WBColorButton new
-			color: Color black;
-			backgroundColor: Color black;
-			clickedColor: Color black);
+		add: (self makeColorButtonWithColor: Color yellow);
+		add: (self makeColorButtonWithColor: Color orange);
+		add: (self makeColorButtonWithColor: Color red);
+		add: (self makeColorButtonWithColor: Color magenta);
+		add: (self makeColorButtonWithColor: Color blue);
+		add: (self makeColorButtonWithColor: Color cyan);
+		add: (self makeColorButtonWithColor: Color green);
+		add: (self makeColorButtonWithColor: Color gray);
+		add: (self makeColorButtonWithColor: Color black);
 		yourself.
 ]
 
 {
 	#category : #createButtons,
-	#'squeak_changestamp' : 'si 5/23/2024 23:46'
+	#'squeak_changestamp' : 'ACL 5/24/2024 12:11'
 }
 WBColorPaletteButton >> makeColorPalette [
 	
-	| colorPalette |
-	
-	colorPalette := WBElementPopUp new.
-	self addMorph: colorPalette.
-	colorPalette 
+	self addMorph:
+		(WBElementPopUp new
 		setDefaultValues;
 		position: self bottomCenter;
 		comeToFront;
-		addButtons: self makeColorButtons
-		yourself.
+		addButtons: self makeColorButtons;
+		yourself).
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 5/23/2024 21:28'
+	#'squeak_changestamp' : 'ACL 5/24/2024 11:48'
 }
 WBColorPaletteButton >> setDefaultValues [
 
 	super setDefaultValues.
-	self
-		backgroundColor: Color black;
-		clickedColor: Color gray darker.
+	self backgroundColor: Color black;
+		clickedColor: Color black.
 ]
