@@ -23,3 +23,11 @@ WBPlaceholderButton >> clickFunctionality: anEvent [
 		
 						 
 ]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'si 5/24/2024 09:58'
+}
+WBPlaceholderButton >> setDefaultValues [
+
+]

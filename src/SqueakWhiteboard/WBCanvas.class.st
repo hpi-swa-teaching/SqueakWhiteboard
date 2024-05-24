@@ -170,27 +170,10 @@ WBCanvas >> spawnAnElement: anElement At: aPoint [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 5/16/2024 19:03'
-}
-WBCanvas >> spawnTemporaryButtonAt: aPoint [
-
-	|temp|
-	temp := WBTemporaryButton new
-		center: aPoint;
-		canvas: self;
-		yourself.
-	self addMorph: temp.
-	^temp
-]
-
-{
-	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 5/18/2024 18:43'
+	#'squeak_changestamp' : 'si 5/24/2024 09:57'
 }
 WBCanvas >> spawnToolbarWithCanvas: aCanvas [
-	| aToolbar |
 	
-	aToolbar := WBToolbar newWithCanvas: aCanvas.
-	self addMorph: aToolbar
+	self addMorph: (WBToolbar newWithCanvas: aCanvas)
 	
 ]
