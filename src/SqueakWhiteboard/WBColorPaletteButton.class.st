@@ -37,12 +37,13 @@ WBColorPaletteButton >> initializeWithDefaultValues [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/24/2024 11:20'
+	#'squeak_changestamp' : 'ACL 5/24/2024 15:59'
 }
 WBColorPaletteButton >> makeColorButtonWithColor: aColor [ 
 	
 	^(WBColorButton new
 		color: aColor;
+		canvas: self canvas;
 		backgroundColor: aColor;
 		clickedColor: aColor darker;
 		yourself)
@@ -80,6 +81,15 @@ WBColorPaletteButton >> makeColorPalette [
 		comeToFront;
 		addButtons: self makeColorButtons;
 		yourself).
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'ACL 5/24/2024 13:49'
+}
+WBColorPaletteButton >> removeElementPopUp [
+
+	self submorphs do: [:m | m delete].
 ]
 
 {

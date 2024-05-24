@@ -10,13 +10,12 @@ Class {
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 5/16/2024 18:54'
+	#'squeak_changestamp' : 'ACL 5/24/2024 14:23'
 }
 WBTemporaryCircle >> initialize [
 
 	super initialize.
 	self
 		cornerStyle: #rounded;
-		cornerRadius: 100;
-		color: Color green
+		cornerRadius: 100.
 ]

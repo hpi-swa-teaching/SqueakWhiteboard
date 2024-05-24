@@ -9,6 +9,9 @@ Class {
 		'canvas',
 		'popUpMenu'
 	],
+	#classInstVars : [
+		'globalColor'
+	],
 	#category : #SqueakWhiteboard,
 	#'squeak_changestamp' : 'is 5/17/2024 15:58'
 }
@@ -77,11 +80,11 @@ WBElement >> handlesMouseDown: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/18/2024 17:42'
+	#'squeak_changestamp' : 'ACL 5/24/2024 14:35'
 }
 WBElement >> initialize [
 	
-	super initialize
+	super initialize.
 ]
 
 {

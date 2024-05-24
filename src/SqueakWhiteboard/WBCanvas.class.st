@@ -6,7 +6,8 @@ Class {
 	#superclass : #Morph,
 	#instVars : [
 		'scale',
-		'elementToSpawn'
+		'elementToSpawn',
+		'globalColor'
 	],
 	#category : #SqueakWhiteboard,
 	#'squeak_changestamp' : 'is 5/17/2024 15:53'
@@ -71,6 +72,24 @@ WBCanvas >> elementToSpawn: anElement [
 
 {
 	#category : #'creating elements',
+	#'squeak_changestamp' : 'ACL 5/24/2024 14:57'
+}
+WBCanvas >> globalColor [
+
+	^globalColor.
+]
+
+{
+	#category : #'creating elements',
+	#'squeak_changestamp' : 'ACL 5/24/2024 14:57'
+}
+WBCanvas >> globalColor: aColor [
+
+	globalColor:= aColor.
+]
+
+{
+	#category : #'creating elements',
 	#'squeak_changestamp' : 'si 5/17/2024 13:53'
 }
 WBCanvas >> handlesMouseDown: evt [
@@ -89,7 +108,7 @@ WBCanvas >> handlesMouseMove: evt [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/22/2024 19:23'
+	#'squeak_changestamp' : 'ACL 5/24/2024 15:30'
 }
 WBCanvas >> initialize [
 	
@@ -102,7 +121,8 @@ WBCanvas >> initialize [
 		borderWidth: (self scale * 5);
 		borderColor: Color black.
 	self spawnToolbarWithCanvas: self.
-	self openInWorld
+	self openInWorld.
+	self globalColor: Color cyan.
 	
 ]
 
@@ -127,11 +147,11 @@ WBCanvas >> mouseMove: anEvent [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'ACL 5/22/2024 19:10'
+	#'squeak_changestamp' : 'ACL 5/24/2024 13:52'
 }
 WBCanvas >> removePopUps [
 
-	self submorphs do: [:m | ((m class  == WBRectangle) | (m class  == WBTemporaryCircle)) ifTrue: [m removeElementPopUp]].
+	self submorphs do: [:m | ((m class  == WBRectangle) | (m class  == WBTemporaryCircle) | (m class  == WBToolbar)) ifTrue: [m removeElementPopUp]].
 ]
 
 {
@@ -154,7 +174,7 @@ WBCanvas >> scale: aFactor [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 5/17/2024 16:18'
+	#'squeak_changestamp' : 'ACL 5/24/2024 15:29'
 }
 WBCanvas >> spawnAnElement: anElement At: aPoint [
 
@@ -163,6 +183,7 @@ WBCanvas >> spawnAnElement: anElement At: aPoint [
 		center: aPoint;
 		dragOffset: anElement position - aPoint;
 		canvas: self;
+		color: self globalColor;
 		addDropShadow;
 		yourself).
 	self addMorph: anElement

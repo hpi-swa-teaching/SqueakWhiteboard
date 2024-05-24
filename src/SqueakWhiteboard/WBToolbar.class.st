@@ -89,7 +89,7 @@ WBToolbar >> canvas: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/19/2024 16:44'
+	#'squeak_changestamp' : 'ACL 5/24/2024 15:58'
 }
 WBToolbar >> initializeWithCanvas: aCanvas [
 	
@@ -100,12 +100,15 @@ WBToolbar >> initializeWithCanvas: aCanvas [
 		center: (canvas bounds origin x + self extent x / 2) @ 
 			(canvas bounds origin y + ((canvas bounds corner y - canvas bounds origin y))/2);
 		color: self backgroundColor;
-		placeButtons: (Set withAll: {WBPlaceholderButton new. WBPlaceholderButton new. WBPlaceholderButton new})
+		placeButtons: (Set withAll: {WBPlaceholderButton new.
+									WBPlaceholderButton new.
+									WBPlaceholderButton new.
+									WBColorPaletteButton new.})
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/19/2024 16:44'
+	#'squeak_changestamp' : 'ACL 5/24/2024 13:33'
 }
 WBToolbar >> placeButtons: someButtons [
 	| margin |
@@ -122,6 +125,15 @@ WBToolbar >> placeButtons: someButtons [
 		self addMorph: aButton].
 	self buttons: someButtons.
 	
+]
+
+{
+	#category : #layout,
+	#'squeak_changestamp' : 'ACL 5/24/2024 13:59'
+}
+WBToolbar >> removeElementPopUp [
+
+	self submorphs do: [:m | (m class == WBColorPaletteButton) ifTrue:[m removeElementPopUp]].
 ]
 
 {
