@@ -69,24 +69,6 @@ WBEdgeOfLine >> line: aWBLine [
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'si 5/20/2024 20:30'
-}
-WBEdgeOfLine >> mouseEnter: anEvent [
-
-	"self line showEdges"
-]
-
-{
-	#category : #mouseEvents,
-	#'squeak_changestamp' : 'si 5/20/2024 20:30'
-}
-WBEdgeOfLine >> mouseLeave: anEvent [
-
-	"self line hideEdges"
-]
-
-{
-	#category : #mouseEvents,
 	#'squeak_changestamp' : 'si 5/20/2024 13:38'
 }
 WBEdgeOfLine >> mouseMove: anEvent [

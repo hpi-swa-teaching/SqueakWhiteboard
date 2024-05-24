@@ -89,7 +89,7 @@ WBToolbar >> canvas: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/19/2024 16:44'
+	#'squeak_changestamp' : 'nicloeser 5/24/2024 15:15'
 }
 WBToolbar >> initializeWithCanvas: aCanvas [
 	
@@ -100,12 +100,12 @@ WBToolbar >> initializeWithCanvas: aCanvas [
 		center: (canvas bounds origin x + self extent x / 2) @ 
 			(canvas bounds origin y + ((canvas bounds corner y - canvas bounds origin y))/2);
 		color: self backgroundColor;
-		placeButtons: (Set withAll: {WBPlaceholderButton new. WBPlaceholderButton new. WBPlaceholderButton new})
+		placeButtons: (Set withAll: {WBToolbarButton new. WBToolbarButton new. WBToolbarButton new})
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/19/2024 16:44'
+	#'squeak_changestamp' : 'nicloeser 5/24/2024 15:48'
 }
 WBToolbar >> placeButtons: someButtons [
 	| margin |
@@ -115,6 +115,7 @@ WBToolbar >> placeButtons: someButtons [
 	someButtons doWithIndex: [:aButton :anIndex| 
 		aButton margin:  margin;
 			canvas: self canvas;
+			number: anIndex;
 			extent: (self buttonSize x - aButton margin)@(self buttonSize y - aButton margin);
 			center: (self bounds origin x + self buttonSize x/2)@(self bounds origin y + (self buttonSize y * anIndex)) - (0@self buttonSize y/2);
 			backgroundColor: Color lightBlue;

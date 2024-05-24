@@ -75,16 +75,6 @@ WBLine >> handlesMouseOver: anEvent [
 ]
 
 {
-	#category : #'drag&drop',
-	#'squeak_changestamp' : 'si 5/20/2024 15:36'
-}
-WBLine >> hideEdges [
-
-	self pointFrom hide.
-	self pointTo hide. 
-]
-
-{
 	#category : #initialization,
 	#'squeak_changestamp' : 'si 5/19/2024 20:06'
 }
@@ -98,36 +88,15 @@ WBLine >> initialize [
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'si 5/19/2024 19:30'
+	#'squeak_changestamp' : 'nicloeser 5/24/2024 13:52'
 }
 WBLine >> mouseDown: anEvent [
 
 	(self canvas elementToSpawn) ifNil:
 		[self 
-			addDropShadow;
-			makePopUp;
 			dragOffset: self position - anEvent cursorPoint.].
 	(self canvas elementToSpawn) ifNotNil:
 		[self spawnEdgeOfLineAt: anEvent cursorPoint]
-]
-
-{
-	#category : #'drag&drop',
-	#'squeak_changestamp' : 'si 5/20/2024 16:03'
-}
-WBLine >> mouseEnter: anEvent [
-
-	"(self state = 2) ifTrue: 
-		[self showEdges]"
-]
-
-{
-	#category : #'drag&drop',
-	#'squeak_changestamp' : 'si 5/20/2024 16:03'
-}
-WBLine >> mouseLeave: anEvent [
-
-	"self hideEdges"
 ]
 
 {
@@ -187,7 +156,7 @@ WBLine >> pointTo: aPoint [
 ]
 
 {
-	#category : #buildArrow,
+	#category : #buildLine,
 	#'squeak_changestamp' : 'si 5/20/2024 13:36'
 }
 WBLine >> replaceFromTo [
@@ -210,18 +179,8 @@ WBLine >> replaceFromTo [
 ]
 
 {
-	#category : #'drag&drop',
-	#'squeak_changestamp' : 'si 5/20/2024 15:36'
-}
-WBLine >> showEdges [
-
-	self pointFrom show.
-	self pointTo show. 
-]
-
-{
-	#category : #buildArrow,
-	#'squeak_changestamp' : 'si 5/20/2024 20:29'
+	#category : #buildLine,
+	#'squeak_changestamp' : 'nicloeser 5/24/2024 14:33'
 }
 WBLine >> spawnEdgeOfLineAt: aPoint [
 
@@ -236,7 +195,7 @@ WBLine >> spawnEdgeOfLineAt: aPoint [
 			color: Color black.
 		self canvas dropElement.
 		self replaceFromTo.
-		self state: 2].
+		self state: 2.].
 ]
 
 {
@@ -258,7 +217,7 @@ WBLine >> state: aState [
 ]
 
 {
-	#category : #buildArrow,
+	#category : #buildLine,
 	#'squeak_changestamp' : 'si 5/20/2024 13:35'
 }
 WBLine >> updateEdges [
