@@ -108,7 +108,7 @@ WBToolbar >> initializeWithCanvas: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/24/2024 13:33'
+	#'squeak_changestamp' : 'nicloeser 5/25/2024 11:01'
 }
 WBToolbar >> placeButtons: someButtons [
 	| margin |
@@ -118,6 +118,7 @@ WBToolbar >> placeButtons: someButtons [
 	someButtons doWithIndex: [:aButton :anIndex| 
 		aButton margin:  margin;
 			canvas: self canvas;
+			number: anIndex;
 			extent: (self buttonSize x - aButton margin)@(self buttonSize y - aButton margin);
 			center: (self bounds origin x + self buttonSize x/2)@(self bounds origin y + (self buttonSize y * anIndex)) - (0@self buttonSize y/2);
 			backgroundColor: Color lightBlue;

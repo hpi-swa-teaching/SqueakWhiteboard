@@ -34,7 +34,7 @@ WBButton class >> newWithCanvas: aCanvas [
 ]
 
 {
-	#category : #layout,
+	#category : #accessing,
 	#'squeak_changestamp' : 'is 5/19/2024 18:26'
 }
 WBButton >> backgroundColor [
@@ -43,7 +43,7 @@ WBButton >> backgroundColor [
 ]
 
 {
-	#category : #layout,
+	#category : #accessing,
 	#'squeak_changestamp' : 'is 5/19/2024 16:15'
 }
 WBButton >> backgroundColor: aColor [
@@ -81,7 +81,7 @@ WBButton >> clickFunctionality: anEvent [
 ]
 
 {
-	#category : #layout,
+	#category : #accessing,
 	#'squeak_changestamp' : 'is 5/19/2024 18:26'
 }
 WBButton >> clickedColor [
@@ -90,7 +90,7 @@ WBButton >> clickedColor [
 ]
 
 {
-	#category : #layout,
+	#category : #accessing,
 	#'squeak_changestamp' : 'is 5/19/2024 16:08'
 }
 WBButton >> clickedColor: aColor [
@@ -114,6 +114,24 @@ WBButton >> element [
 WBButton >> element: anElement [
 
 	element := anElement
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'nicloeser 5/24/2024 14:59'
+}
+WBButton >> function [
+	
+	^function
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'nicloeser 5/24/2024 14:59'
+}
+WBButton >> function: aNumber [
+	
+	function := aNumber
 ]
 
 {
@@ -146,21 +164,22 @@ WBButton >> initializeWithCanvas: aCanvas [
 ]
 
 {
-	#category : #layout,
-	#'squeak_changestamp' : 'is 5/19/2024 16:57'
+	#category : #accessing,
+	#'squeak_changestamp' : 'nicloeser 5/24/2024 14:57'
 }
-WBButton >> margin [
-
-	^ margin ifNil: [margin := 0]
+WBButton >> margin [ 
+	^margin
+	
 ]
 
 {
-	#category : #layout,
-	#'squeak_changestamp' : 'is 5/19/2024 11:26'
+	#category : #accessing,
+	#'squeak_changestamp' : 'nicloeser 5/24/2024 14:57'
 }
 WBButton >> margin: aMargin [
-
-	^ margin := aMargin
+		
+	margin := aMargin.
+	
 ]
 
 {
