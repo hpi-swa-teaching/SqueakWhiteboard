@@ -89,7 +89,7 @@ WBToolbar >> canvas: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'nicloeser 5/25/2024 11:03'
+	#'squeak_changestamp' : 'is 5/27/2024 09:35'
 }
 WBToolbar >> initializeWithCanvas: aCanvas [
 	
@@ -100,7 +100,7 @@ WBToolbar >> initializeWithCanvas: aCanvas [
 		center: (canvas bounds origin x + self extent x / 2) @ 
 			(canvas bounds origin y + ((canvas bounds corner y - canvas bounds origin y))/2);
 		color: self backgroundColor;
-		placeButtons: (Set withAll: {WBToolbarButton new.
+		placeButtons: (OrderedCollection withAll: {WBToolbarButton new.
 									WBToolbarButton new.
 									WBToolbarButton new.
 									WBColorPaletteButton new.})
