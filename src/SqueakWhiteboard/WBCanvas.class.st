@@ -74,7 +74,7 @@ WBCanvas >> clampPointToCanvas: aPoint [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 5/27/2024 11:32'
+	#'squeak_changestamp' : 'si 5/27/2024 21:44'
 }
 WBCanvas >> deactivateElement [
 
@@ -187,11 +187,11 @@ WBCanvas >> initialize [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'ACL 5/22/2024 16:20'
+	#'squeak_changestamp' : 'si 5/27/2024 21:44'
 }
 WBCanvas >> mouseDown: anEvent [
 
-	self removePopUps.
+	self deactivateElement
 ]
 
 {
