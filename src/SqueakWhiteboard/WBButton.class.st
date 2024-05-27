@@ -9,7 +9,8 @@ Class {
 		'backgroundColor',
 		'clickedColor',
 		'canvas',
-		'element'
+		'element',
+		'number'
 	],
 	#category : #SqueakWhiteboard,
 	#'squeak_changestamp' : 'is 5/18/2024 17:13'
@@ -200,6 +201,24 @@ WBButton >> mouseUp: anEvent [
 	self color: backgroundColor.
 	(self containsPoint: anEvent position) ifTrue: [self clickFunctionality: anEvent]
 	
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'nicloeser 5/25/2024 11:16'
+}
+WBButton >> number [
+
+	^number
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'nicloeser 5/25/2024 11:16'
+}
+WBButton >> number: anInteger [
+
+	number := anInteger
 ]
 
 {
