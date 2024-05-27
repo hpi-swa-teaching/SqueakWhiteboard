@@ -7,7 +7,9 @@ Class {
 	#instVars : [
 		'scale',
 		'elementToSpawn',
-		'globalColor'
+		'globalColor',
+		'elements',
+		'activeElement'
 	],
 	#category : #SqueakWhiteboard,
 	#'squeak_changestamp' : 'is 5/17/2024 15:53'
@@ -20,6 +22,34 @@ Class {
 WBCanvas class >> WhiteBoardSize [
 
 	^800
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 5/27/2024 11:23'
+}
+WBCanvas >> activeElement [
+
+	^activeElement
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 5/27/2024 11:24'
+}
+WBCanvas >> activeElement: anElement [
+
+	activeElement := anElement
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 5/27/2024 11:38'
+}
+WBCanvas >> addElement: anElement [
+
+	self elements add:  anElement.
+	self addMorph: anElement
 ]
 
 {
@@ -40,6 +70,16 @@ WBCanvas >> clampPointToCanvas: aPoint [
 
 	^ (aPoint x clampLow: self bounds origin x high: self bounds corner x)
 		@(aPoint y clampLow: self bounds origin y high: self bounds corner y)
+]
+
+{
+	#category : #'creating elements',
+	#'squeak_changestamp' : 'si 5/27/2024 11:32'
+}
+WBCanvas >> deactivateElement [
+
+	self activeElement ifNotNil: [self activeElement removeElementPopUp.
+		self activeElement: nil]
 ]
 
 {
@@ -68,6 +108,24 @@ WBCanvas >> elementToSpawn [
 WBCanvas >> elementToSpawn: anElement [
 
 	elementToSpawn := anElement
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 5/27/2024 11:18'
+}
+WBCanvas >> elements [
+
+	^elements
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 5/27/2024 11:18'
+}
+WBCanvas >> elements: aCollection [
+
+	elements := aCollection
 ]
 
 {
@@ -108,7 +166,7 @@ WBCanvas >> handlesMouseMove: evt [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/24/2024 15:30'
+	#'squeak_changestamp' : 'si 5/27/2024 11:19'
 }
 WBCanvas >> initialize [
 	
@@ -119,7 +177,8 @@ WBCanvas >> initialize [
 		width: (self class WhiteBoardSize * self scale * 1.5);
 		color: Color white;
 		borderWidth: (self scale * 5);
-		borderColor: Color black.
+		borderColor: Color black;
+		elements: OrderedCollection new.
 	self spawnToolbarWithCanvas: self.
 	self openInWorld.
 	self globalColor: Color cyan.
@@ -147,11 +206,12 @@ WBCanvas >> mouseMove: anEvent [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'ACL 5/24/2024 13:52'
+	#'squeak_changestamp' : 'si 5/27/2024 11:32'
 }
 WBCanvas >> removePopUps [
 
-	self submorphs do: [:m | ((m class  == WBRectangle) | (m class  == WBTemporaryCircle) | (m class  == WBToolbar)) ifTrue: [m removeElementPopUp]].
+	self activeElement ifNotNil: [self activeElement removeElementPopUp.
+		self activeElement: nil]
 ]
 
 {
@@ -174,7 +234,23 @@ WBCanvas >> scale: aFactor [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'ACL 5/24/2024 15:29'
+	#'squeak_changestamp' : 'si 5/27/2024 11:39'
+}
+WBCanvas >> spawnACopiedElement: anElement At: aPoint [
+
+	self elementToSpawn: 
+	(anElement
+		center: aPoint;
+		dragOffset: anElement position - aPoint;
+		canvas: self;
+		addDropShadow;
+		yourself).
+	self addElement: anElement
+]
+
+{
+	#category : #'creating elements',
+	#'squeak_changestamp' : 'si 5/27/2024 11:39'
 }
 WBCanvas >> spawnAnElement: anElement At: aPoint [
 
@@ -186,7 +262,7 @@ WBCanvas >> spawnAnElement: anElement At: aPoint [
 		color: self globalColor;
 		addDropShadow;
 		yourself).
-	self addMorph: anElement
+	self addElement: anElement
 ]
 
 {

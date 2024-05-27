@@ -6,7 +6,8 @@ Class {
 		'canvas',
 		'state',
 		'pointFrom',
-		'pointTo'
+		'pointTo',
+		'popUpMenu'
 	],
 	#category : #SqueakWhiteboard
 }
@@ -27,6 +28,15 @@ WBLine >> canvas [
 WBLine >> canvas: aCanvas [
 
 	canvas := aCanvas
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 5/27/2024 12:08'
+}
+WBLine >> color: aColor [
+
+	self borderColor: aColor
 ]
 
 {
@@ -156,8 +166,28 @@ WBLine >> pointTo: aPoint [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 5/27/2024 11:51'
+}
+WBLine >> popUpMenu [
+
+	^popUpMenu
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 5/27/2024 11:51'
+}
+WBLine >> popUpMenu: aPopUpMenu [
+
+	popUpMenu := aPopUpMenu.
+	popUpMenu ifNotNil: 
+		[self addMorphBack: popUpMenu]
+]
+
+{
 	#category : #buildLine,
-	#'squeak_changestamp' : 'si 5/20/2024 13:36'
+	#'squeak_changestamp' : 'si 5/27/2024 11:14'
 }
 WBLine >> replaceFromTo [
 
@@ -174,8 +204,10 @@ WBLine >> replaceFromTo [
 		line: self;
 		yourself).
 	self canvas 
-		addMorph: pointFrom;
-		addMorph: pointTo.
+		addMorph: self pointFrom;
+		addMorph: self pointTo;
+		addElement: self pointFrom;
+		addElement: self pointTo.
 ]
 
 {
