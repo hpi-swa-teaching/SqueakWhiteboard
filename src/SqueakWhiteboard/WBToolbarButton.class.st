@@ -10,15 +10,15 @@ Class {
 
 {
 	#category : #clicking,
-	#'squeak_changestamp' : 'nicloeser 5/25/2024 11:18'
+	#'squeak_changestamp' : 'nicloeser 5/27/2024 09:37'
 }
 WBToolbarButton >> clickFunctionality: anEvent [
 
-	(self number = 2) 
+	(self number = 1) 
 		ifTrue: [self canvas spawnAnElement: WBRectangle new At: anEvent cursorPoint.].
-	(self number = 3)
+	(self number = 2)
 		ifTrue: [self canvas spawnAnElement: WBTemporaryCircle new At: anEvent cursorPoint.].
-	(self number = 4)
+	(self number = 3)
 		ifTrue: [self canvas spawnAnElement: WBLine new At: anEvent cursorPoint].
 		
 	
