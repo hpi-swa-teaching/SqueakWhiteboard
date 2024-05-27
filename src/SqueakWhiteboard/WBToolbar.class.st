@@ -15,6 +15,15 @@ Class {
 }
 
 {
+	#category : #layout,
+	#'squeak_changestamp' : 'nicloeser 5/27/2024 14:19'
+}
+WBToolbar class >> margin [ 
+
+	^20
+]
+
+{
 	#category : #'instance creation',
 	#'squeak_changestamp' : 'is 5/18/2024 18:33'
 }
@@ -43,11 +52,11 @@ WBToolbar >> backgroundColor: aColor [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'is 5/19/2024 14:03'
+	#'squeak_changestamp' : 'nicloeser 5/27/2024 14:23'
 }
 WBToolbar >> buttonSize [
 
-	^ (toolbarWidth min: toolbarHeight)@(toolbarWidth min: toolbarHeight)
+	^ ((toolbarWidth min: toolbarHeight) - WBToolbar margin)@((toolbarWidth min: toolbarHeight) - WBToolbar margin)
 ]
 
 {
@@ -89,7 +98,76 @@ WBToolbar >> canvas: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/27/2024 09:35'
+	#'squeak_changestamp' : 'nicloeser 5/27/2024 14:48'
+}
+WBToolbar >> createButtons [
+	
+	self placeButtons: (OrderedCollection withAll: {
+		self getRectangleButton.
+		self getCircleButton.
+		self getLineButton.
+		self getColorsButton.})
+
+	
+]
+
+{
+	#category : #getButton,
+	#'squeak_changestamp' : 'nicloeser 5/27/2024 14:40'
+}
+WBToolbar >> getCircleButton [
+
+	^WBToolbarButton new
+			number: 2;
+			addMorphCentered: (ImageMorph new image: 
+			(self canvas images resize: (WBImage loadCircleButtonImage) to: self buttonSize*0.8));
+			yourself.
+			
+]
+
+{
+	#category : #getButton,
+	#'squeak_changestamp' : 'nicloeser 5/27/2024 14:52'
+}
+WBToolbar >> getColorsButton [
+
+	^WBColorPaletteButton new
+			addMorphCentered: (ImageMorph new image: 
+			(self canvas images resize: (WBImage loadColorsButtonImage) to: self buttonSize*0.8));
+			yourself.
+]
+
+{
+	#category : #getButton,
+	#'squeak_changestamp' : 'nicloeser 5/27/2024 14:52'
+}
+WBToolbar >> getLineButton [
+
+	^WBToolbarButton new
+			number: 3;
+			addMorphCentered: (ImageMorph new image: 
+			(self canvas images resize: (WBImage loadLineButtonImage) to: self buttonSize*0.8));
+			yourself.
+			
+]
+
+{
+	#category : #getButton,
+	#'squeak_changestamp' : 'nicloeser 5/27/2024 14:41'
+}
+WBToolbar >> getRectangleButton [
+
+	^WBToolbarButton new
+			number: 1;
+			addMorphCentered: (ImageMorph new image: 
+			(self canvas images resize: (WBImage loadRectangleButtonImage) to: self buttonSize*0.8));
+			yourself.
+			
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'nicloeser 5/27/2024 10:56'
 }
 WBToolbar >> initializeWithCanvas: aCanvas [
 	
@@ -100,27 +178,20 @@ WBToolbar >> initializeWithCanvas: aCanvas [
 		center: (canvas bounds origin x + self extent x / 2) @ 
 			(canvas bounds origin y + ((canvas bounds corner y - canvas bounds origin y))/2);
 		color: self backgroundColor;
-		placeButtons: (OrderedCollection withAll: {WBToolbarButton new.
-									WBToolbarButton new.
-									WBToolbarButton new.
-									WBColorPaletteButton new.})
+		createButtons.
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'nicloeser 5/25/2024 11:01'
+	#'squeak_changestamp' : 'nicloeser 5/27/2024 14:32'
 }
 WBToolbar >> placeButtons: someButtons [
-	| margin |
-	
-	margin := 20.
 	
 	someButtons doWithIndex: [:aButton :anIndex| 
-		aButton margin:  margin;
+		aButton margin:  WBToolbar margin;
 			canvas: self canvas;
-			number: anIndex;
-			extent: (self buttonSize x - aButton margin)@(self buttonSize y - aButton margin);
-			center: (self bounds origin x + self buttonSize x/2)@(self bounds origin y + (self buttonSize y * anIndex)) - (0@self buttonSize y/2);
+			extent: self buttonSize;
+			center: (self bounds origin x + self toolbarWidth/2)@(self bounds origin y + ((self buttonSize y + WBToolbar margin) * anIndex) ) - (0@self buttonSize y/2);
 			backgroundColor: Color lightBlue;
 			clickedColor: Color blue.
 		self addMorph: aButton].

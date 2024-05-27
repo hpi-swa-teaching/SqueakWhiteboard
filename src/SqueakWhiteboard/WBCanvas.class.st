@@ -7,7 +7,8 @@ Class {
 	#instVars : [
 		'scale',
 		'elementToSpawn',
-		'globalColor'
+		'globalColor',
+		'images'
 	],
 	#category : #SqueakWhiteboard,
 	#'squeak_changestamp' : 'is 5/17/2024 15:53'
@@ -107,12 +108,31 @@ WBCanvas >> handlesMouseMove: evt [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'nicloeser 5/27/2024 12:19'
+}
+WBCanvas >> images [
+
+	^images
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'nicloeser 5/27/2024 12:19'
+}
+WBCanvas >> images: anImageClass [
+
+	images := anImageClass
+]
+
+{
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/24/2024 15:30'
+	#'squeak_changestamp' : 'nicloeser 5/27/2024 13:49'
 }
 WBCanvas >> initialize [
 	
 	super initialize.
+	self images: WBImage new.
 	self 
 		scale: 0.7;
 		height: (self class WhiteBoardSize * self scale);
