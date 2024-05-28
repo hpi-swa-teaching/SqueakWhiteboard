@@ -87,11 +87,11 @@ WBElement >> deactivateElement [
 
 {
 	#category : #appearance,
-	#'squeak_changestamp' : 'is 5/29/2024 01:24'
+	#'squeak_changestamp' : 'is 5/29/2024 01:42'
 }
 WBElement >> defaultSize [
 
-	^ 100
+	^ 100@100
 ]
 
 {

@@ -58,10 +58,13 @@ WBTextbox >> drawOn: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/29/2024 01:25'
+	#'squeak_changestamp' : 'is 5/29/2024 01:43'
 }
 WBTextbox >> initialize [
-
+	| textField |
 	super initialize.
-	self bounds: (0@0 extent: self defaultSize@self defaultSize)
+	self bounds: (0@0 extent: self defaultSize).
+	textField := TextMorph new.
+	textField extent: self defaultSize - ((self borderSize * 2)@(self borderSize * 2)).
+	self addMorphCentered: textField.
 ]

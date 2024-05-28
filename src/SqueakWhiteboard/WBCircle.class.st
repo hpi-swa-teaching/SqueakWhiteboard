@@ -19,10 +19,10 @@ WBCircle >> drawOn: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/29/2024 01:30'
+	#'squeak_changestamp' : 'is 5/29/2024 01:42'
 }
 WBCircle >> initialize [
 
 	super initialize.
-	self bounds: (0@0 extent: self defaultSize@self defaultSize)
+	self bounds: (0@0 extent: self defaultSize)
 ]
