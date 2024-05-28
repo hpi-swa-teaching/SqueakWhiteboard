@@ -16,7 +16,7 @@ Class {
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'nicloeser 5/27/2024 14:19'
+	#'squeak_changestamp' : 'nicloeser 5/28/2024 11:38'
 }
 WBToolbar class >> margin [ 
 
@@ -113,13 +113,13 @@ WBToolbar >> createButtons [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'nicloeser 5/27/2024 14:40'
+	#'squeak_changestamp' : 'nicloeser 5/28/2024 11:50'
 }
 WBToolbar >> getCircleButton [
 
 	^WBToolbarButton new
 			number: 2;
-			addMorphCentered: (ImageMorph new image: 
+			image: (ImageMorph new image: 
 			(self canvas images resize: (WBImage loadCircleButtonImage) to: self buttonSize*0.8));
 			yourself.
 			
@@ -127,25 +127,25 @@ WBToolbar >> getCircleButton [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'nicloeser 5/27/2024 14:52'
+	#'squeak_changestamp' : 'nicloeser 5/28/2024 11:50'
 }
 WBToolbar >> getColorsButton [
 
 	^WBColorPaletteButton new
-			addMorphCentered: (ImageMorph new image: 
+			image: (ImageMorph new image: 
 			(self canvas images resize: (WBImage loadColorsButtonImage) to: self buttonSize*0.8));
 			yourself.
 ]
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'nicloeser 5/27/2024 14:52'
+	#'squeak_changestamp' : 'nicloeser 5/28/2024 11:50'
 }
 WBToolbar >> getLineButton [
 
 	^WBToolbarButton new
 			number: 3;
-			addMorphCentered: (ImageMorph new image: 
+			image: (ImageMorph new image: 
 			(self canvas images resize: (WBImage loadLineButtonImage) to: self buttonSize*0.8));
 			yourself.
 			
@@ -153,13 +153,13 @@ WBToolbar >> getLineButton [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'nicloeser 5/27/2024 14:41'
+	#'squeak_changestamp' : 'nicloeser 5/28/2024 11:50'
 }
 WBToolbar >> getRectangleButton [
 
 	^WBToolbarButton new
 			number: 1;
-			addMorphCentered: (ImageMorph new image: 
+			image: (ImageMorph new image: 
 			(self canvas images resize: (WBImage loadRectangleButtonImage) to: self buttonSize*0.8));
 			yourself.
 			
@@ -183,7 +183,7 @@ WBToolbar >> initializeWithCanvas: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'nicloeser 5/27/2024 14:32'
+	#'squeak_changestamp' : 'nicloeser 5/28/2024 11:49'
 }
 WBToolbar >> placeButtons: someButtons [
 	
@@ -192,6 +192,7 @@ WBToolbar >> placeButtons: someButtons [
 			canvas: self canvas;
 			extent: self buttonSize;
 			center: (self bounds origin x + self toolbarWidth/2)@(self bounds origin y + ((self buttonSize y + WBToolbar margin) * anIndex) ) - (0@self buttonSize y/2);
+			addImage;
 			backgroundColor: Color lightBlue;
 			clickedColor: Color blue.
 		self addMorph: aButton].
