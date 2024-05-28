@@ -10,7 +10,7 @@ Class {
 
 {
 	#category : #clicking,
-	#'squeak_changestamp' : 'is 5/28/2024 19:51'
+	#'squeak_changestamp' : 'nicloeser 5/27/2024 09:37'
 }
 WBToolbarButton >> clickFunctionality: anEvent [
 
@@ -19,8 +19,6 @@ WBToolbarButton >> clickFunctionality: anEvent [
 	(self number = 2)
 		ifTrue: [self canvas spawnAnElement: WBTemporaryCircle new At: anEvent cursorPoint.].
 	(self number = 3)
-		ifTrue: [self canvas spawnAnElement: WBLine new At: anEvent cursorPoint].
-	(self number = 4)
 		ifTrue: [self canvas spawnAnElement: WBLine new At: anEvent cursorPoint].
 		
 	
