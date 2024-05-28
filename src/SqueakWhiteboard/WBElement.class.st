@@ -194,7 +194,7 @@ WBElement >> initializeWithCanvas: aCanvas [
 
 {
 	#category : #popUpBar,
-	#'squeak_changestamp' : 'JK 5/28/2024 14:07'
+	#'squeak_changestamp' : 'JK 5/28/2024 23:16'
 }
 WBElement >> makeElementPopUp [
 
@@ -202,20 +202,21 @@ WBElement >> makeElementPopUp [
 		setDefaultValues;
 		addButtons: self buttonsForPopUpBar;
 		yourself).
+	self addMorph: self popUpMenu.
 	self setPopupPosition.
 	
 ]
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'JK 5/28/2024 14:19'
+	#'squeak_changestamp' : 'JK 5/28/2024 22:53'
 }
 WBElement >> mouseDown: mouseEvent [
 	(self canvas elementToSpawn) ifNil:
 		[self canvas deactivateElement.
 		self dragStart: mouseEvent.
-		self showPopUp.
 		self addResizeFrame.
+		self showPopUp.
 		self canvas activeElement: self.].
 	(self canvas elementToSpawn) ifNotNil:
 		[self canvas dropElement]
@@ -296,10 +297,10 @@ WBElement >> resizeFrame: anObject [
 
 {
 	#category : #popUpBar,
-	#'squeak_changestamp' : 'JK 5/28/2024 14:44'
+	#'squeak_changestamp' : 'JK 5/28/2024 22:29'
 }
 WBElement >> setPopupPosition [
-	self popUpMenu ifNotNil: [self popUpMenu position: self topRight].
+	self popUpMenu ifNotNil: [self popUpMenu center: self topCenter - (0@self popUpMenu height/2) - (0@10)].
 ]
 
 {
