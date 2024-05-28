@@ -7,7 +7,8 @@ Class {
 	#instVars : [
 		'dragOffset',
 		'canvas',
-		'popUpMenu'
+		'popUpMenu',
+		'resizeFrame'
 	],
 	#classInstVars : [
 		'globalColor'
@@ -15,6 +16,18 @@ Class {
 	#category : #SqueakWhiteboard,
 	#'squeak_changestamp' : 'is 5/17/2024 15:58'
 }
+
+{
+	#category : #resize,
+	#'squeak_changestamp' : 'JK 5/28/2024 12:21'
+}
+WBElement >> addResizeFrame [
+	self resizeFrame: (WBResizeFrame newWithParent: self).
+	
+	
+
+	
+]
 
 {
 	#category : #popUpBar,
@@ -55,6 +68,34 @@ WBElement >> canvas: aCanvas [
 ]
 
 {
+	#category : #mouseEvents,
+	#'squeak_changestamp' : 'JK 5/28/2024 12:21'
+}
+WBElement >> deactivateElement [
+	self removePopup.
+	self removeResizeFrame.
+]
+
+{
+	#category : #drag,
+	#'squeak_changestamp' : 'JK 5/26/2024 23:47'
+}
+WBElement >> dragEnd: anEvent [
+	self removeDropShadow.
+]
+
+{
+	#category : #drag,
+	#'squeak_changestamp' : 'JK 5/26/2024 23:47'
+}
+WBElement >> dragMove: mouseEvent [
+	|newPosition |
+	
+ 	newPosition := self canvas clampElementToCanvas: self at: mouseEvent cursorPoint + self dragOffset.
+	self position: newPosition
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'is 5/18/2024 15:59'
 }
@@ -71,7 +112,39 @@ WBElement >> dragOffset: anObject [
 ]
 
 {
-	#category : #'drag&drop',
+	#category : #drag,
+	#'squeak_changestamp' : 'JK 5/27/2024 00:01'
+}
+WBElement >> dragStart: anEvent [
+	self
+		addDropShadow;
+		comeToFront;
+		dragOffset: self position - anEvent cursorPoint.
+]
+
+{
+	#category : #resize,
+	#'squeak_changestamp' : 'JK 5/28/2024 12:20'
+}
+WBElement >> extent: aSize [
+	super extent: aSize.
+	self setPopupPosition.
+	
+	
+
+]
+
+{
+	#category : #mouseEvents,
+	#'squeak_changestamp' : 'JK 5/27/2024 15:56'
+}
+WBElement >> handleMouseOver: anEvent [
+
+	^true
+]
+
+{
+	#category : #mouseEvents,
 	#'squeak_changestamp' : 'is 5/19/2024 16:21'
 }
 WBElement >> handlesMouseDown: anEvent [
@@ -80,71 +153,50 @@ WBElement >> handlesMouseDown: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/24/2024 14:35'
+	#'squeak_changestamp' : 'JK 5/26/2024 23:04'
 }
 WBElement >> initialize [
-	
 	super initialize.
 ]
 
 {
 	#category : #popUpBar,
-	#'squeak_changestamp' : 'si 5/23/2024 23:49'
+	#'squeak_changestamp' : 'JK 5/28/2024 12:20'
 }
 WBElement >> makeElementPopUp [
 
 	self popUpMenu: (WBElementPopUp new
 		setDefaultValues;
-		position: self topRight;
 		addButtons: self buttonsForPopUpBar;
 		yourself).
+	self setPopupPosition.
 	
 ]
 
 {
-	#category : #'drag&drop',
-	#'squeak_changestamp' : 'ACL 5/22/2024 19:06'
+	#category : #mouseEvents,
+	#'squeak_changestamp' : 'JK 5/28/2024 12:21'
 }
-WBElement >> mouseDown: anEvent [
-	
-	(self canvas elementToSpawn) ifNil:
-		[owner removePopUps.
-		self
-			addDropShadow;
-			makeElementPopUp;
-			comeToFront;
-			dragOffset: self position - anEvent cursorPoint.].
-	(self canvas elementToSpawn) ifNotNil:
-		[self canvas dropElement]
+WBElement >> mouseDown: mouseEvent [.
+	self dragStart: mouseEvent.
+	self showPopUp.
+	self addResizeFrame.
 ]
 
 {
-	#category : #'drag&drop',
-	#'squeak_changestamp' : 'si 5/17/2024 12:21'
+	#category : #mouseEvents,
+	#'squeak_changestamp' : 'JK 5/27/2024 16:34'
 }
 WBElement >> mouseMove: anEvent [
-
-	self moveElement: anEvent
+	self dragMove: anEvent
 ]
 
 {
-	#category : #'drag&drop',
-	#'squeak_changestamp' : 'ACL 5/17/2024 15:12'
+	#category : #mouseEvents,
+	#'squeak_changestamp' : 'JK 5/27/2024 11:42'
 }
-WBElement >> mouseUp: anEvent [
-	
-	self removeDropShadow.
-]
-
-{
-	#category : #'drag&drop',
-	#'squeak_changestamp' : 'is 5/18/2024 17:53'
-}
-WBElement >> moveElement: anEvent [
-	|newPosition |
-	
- 	newPosition := self canvas clampElementToCanvas: self at: anEvent cursorPoint + self dragOffset.
-	self position: newPosition
+WBElement >> mouseUp: mouseEvent [
+	self dragEnd: mouseEvent.
 ]
 
 {
@@ -169,10 +221,55 @@ WBElement >> popUpMenu: aPopUpMenu [
 
 {
 	#category : #popUpBar,
-	#'squeak_changestamp' : 'si 5/23/2024 22:28'
+	#'squeak_changestamp' : 'JK 5/27/2024 11:14'
 }
-WBElement >> removeElementPopUp [
-
+WBElement >> removePopup [
 	self popUpMenu ifNotNil: 
 		[self popUpMenu delete]
+]
+
+{
+	#category : #resize,
+	#'squeak_changestamp' : 'JK 5/28/2024 12:21'
+}
+WBElement >> removeResizeFrame [
+	(self resizeFrame) ifNotNil: [self resizeFrame delete].
+	
+
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JK 5/28/2024 12:16'
+}
+WBElement >> resizeFrame [
+	^resizeFrame
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JK 5/28/2024 11:33'
+}
+WBElement >> resizeFrame: anObject [
+	resizeFrame := anObject
+]
+
+{
+	#category : #popUpBar,
+	#'squeak_changestamp' : 'JK 5/28/2024 12:20'
+}
+WBElement >> setPopupPosition [
+	self popUpMenu position: self topRight.
+]
+
+{
+	#category : #popUpBar,
+	#'squeak_changestamp' : 'JK 5/26/2024 23:35'
+}
+WBElement >> showPopUp [
+	(self canvas elementToSpawn) ifNil:
+		[owner removePopUps.
+		self makeElementPopUp.].
+	(self canvas elementToSpawn) ifNotNil:
+		[self canvas dropElement]
 ]

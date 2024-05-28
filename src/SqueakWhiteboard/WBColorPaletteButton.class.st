@@ -28,6 +28,15 @@ WBColorPaletteButton >> clickFunctionality: anEvent [
 
 {
 	#category : #initialization,
+	#'squeak_changestamp' : 'JK 5/27/2024 11:13'
+}
+WBColorPaletteButton >> deactivateElement [
+
+	self submorphs do: [:m | m delete].
+]
+
+{
+	#category : #initialization,
 	#'squeak_changestamp' : 'ACL 5/24/2024 11:32'
 }
 WBColorPaletteButton >> initializeWithDefaultValues [
@@ -81,15 +90,6 @@ WBColorPaletteButton >> makeColorPalette [
 		comeToFront;
 		addButtons: self makeColorButtons;
 		yourself).
-]
-
-{
-	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/24/2024 13:49'
-}
-WBColorPaletteButton >> removeElementPopUp [
-
-	self submorphs do: [:m | m delete].
 ]
 
 {

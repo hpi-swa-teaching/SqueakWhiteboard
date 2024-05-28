@@ -90,6 +90,15 @@ WBCanvas >> globalColor: aColor [
 
 {
 	#category : #'creating elements',
+	#'squeak_changestamp' : 'JK 5/27/2024 15:56'
+}
+WBCanvas >> handleMouseOver: evt [
+    
+	^ true.
+]
+
+{
+	#category : #'creating elements',
 	#'squeak_changestamp' : 'si 5/17/2024 13:53'
 }
 WBCanvas >> handlesMouseDown: evt [
@@ -108,13 +117,13 @@ WBCanvas >> handlesMouseMove: evt [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/24/2024 15:30'
+	#'squeak_changestamp' : 'JK 5/27/2024 16:29'
 }
 WBCanvas >> initialize [
 	
 	super initialize.
 	self 
-		scale: 0.7;
+		scale: 1.0;
 		height: (self class WhiteBoardSize * self scale);
 		width: (self class WhiteBoardSize * self scale * 1.5);
 		color: Color white;
@@ -137,21 +146,21 @@ WBCanvas >> mouseDown: anEvent [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 5/17/2024 12:36'
+	#'squeak_changestamp' : 'JK 5/26/2024 23:47'
 }
 WBCanvas >> mouseMove: anEvent [
 	
 	(self elementToSpawn) ifNotNil:
-		[self elementToSpawn moveElement: anEvent]
+		[self elementToSpawn dragMove: anEvent]
 ]
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'ACL 5/24/2024 13:52'
+	#'squeak_changestamp' : 'JK 5/27/2024 11:13'
 }
 WBCanvas >> removePopUps [
 
-	self submorphs do: [:m | ((m class  == WBRectangle) | (m class  == WBTemporaryCircle) | (m class  == WBToolbar)) ifTrue: [m removeElementPopUp]].
+	self submorphs do: [:m | ((m class  == WBRectangle) | (m class  == WBTemporaryCircle) | (m class  == WBToolbar)) ifTrue: [m deactivateElement]].
 ]
 
 {

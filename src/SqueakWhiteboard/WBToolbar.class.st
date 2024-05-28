@@ -88,6 +88,15 @@ WBToolbar >> canvas: aCanvas [
 ]
 
 {
+	#category : #layout,
+	#'squeak_changestamp' : 'JK 5/27/2024 11:13'
+}
+WBToolbar >> deactivateElement [
+
+	self submorphs do: [:m | (m class == WBColorPaletteButton) ifTrue:[m deactivateElement]].
+]
+
+{
 	#category : #initialization,
 	#'squeak_changestamp' : 'ACL 5/24/2024 15:58'
 }
@@ -125,15 +134,6 @@ WBToolbar >> placeButtons: someButtons [
 		self addMorph: aButton].
 	self buttons: someButtons.
 	
-]
-
-{
-	#category : #layout,
-	#'squeak_changestamp' : 'ACL 5/24/2024 13:59'
-}
-WBToolbar >> removeElementPopUp [
-
-	self submorphs do: [:m | (m class == WBColorPaletteButton) ifTrue:[m removeElementPopUp]].
 ]
 
 {

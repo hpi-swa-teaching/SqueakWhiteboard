@@ -6,11 +6,11 @@ Class {
 
 {
 	#category : #click,
-	#'squeak_changestamp' : 'si 5/23/2024 22:51'
+	#'squeak_changestamp' : 'JK 5/27/2024 11:13'
 }
 WBCopyButton >> clickFunctionality: anEvent [
 
-	self element removeElementPopUp.
+	self element deactivateElement.
 	self canvas spawnAnElement: self element copy At: anEvent cursorPoint.
 ]
 
