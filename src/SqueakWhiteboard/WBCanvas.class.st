@@ -193,7 +193,7 @@ WBCanvas >> images: anImageClass [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/28/2024 20:36'
+	#'squeak_changestamp' : 'is 5/28/2024 22:35'
 }
 WBCanvas >> initialize [
 	
