@@ -100,7 +100,7 @@ WBToolbar >> canvas: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/28/2024 19:56'
+	#'squeak_changestamp' : 'is 5/28/2024 20:00'
 }
 WBToolbar >> createButtons [
 	
@@ -108,7 +108,8 @@ WBToolbar >> createButtons [
 		self getRectangleButton.
 		self getCircleButton.
 		self getLineButton.
-		self getColorsButton.})
+		self getColorsButton.
+		self getTextboxButton.})
 
 	
 ]
@@ -178,7 +179,7 @@ WBToolbar >> getRectangleButton [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'is 5/28/2024 19:54'
+	#'squeak_changestamp' : 'is 5/28/2024 20:01'
 }
 WBToolbar >> getTextboxButton [
 
