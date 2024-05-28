@@ -135,9 +135,10 @@ WBElement >> dragStart: anEvent [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 5/28/2024 12:20'
+	#'squeak_changestamp' : 'is 5/29/2024 01:02'
 }
 WBElement >> extent: aSize [
+
 	super extent: aSize.
 	self setPopupPosition.
 	
@@ -147,11 +148,11 @@ WBElement >> extent: aSize [
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'JK 5/27/2024 15:56'
+	#'squeak_changestamp' : 'is 5/29/2024 01:02'
 }
 WBElement >> handleMouseOver: anEvent [
 
-	^true
+	^ true
 ]
 
 {
@@ -165,9 +166,10 @@ WBElement >> handlesMouseDown: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JK 5/26/2024 23:04'
+	#'squeak_changestamp' : 'is 5/29/2024 01:02'
 }
 WBElement >> initialize [
+
 	super initialize.
 ]
 

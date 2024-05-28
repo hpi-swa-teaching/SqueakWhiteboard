@@ -130,20 +130,20 @@ WBCanvas >> elements: aCollection [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'ACL 5/24/2024 14:57'
+	#'squeak_changestamp' : 'is 5/29/2024 01:03'
 }
 WBCanvas >> globalColor [
 
-	^globalColor.
+	^ globalColor.
 ]
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'ACL 5/24/2024 14:57'
+	#'squeak_changestamp' : 'is 5/29/2024 01:03'
 }
 WBCanvas >> globalColor: aColor [
 
-	globalColor:= aColor.
+	globalColor := aColor.
 ]
 
 {
@@ -277,10 +277,10 @@ WBCanvas >> spawnACopiedElement: anElement At: aPoint [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 5/27/2024 11:39'
+	#'squeak_changestamp' : 'is 5/29/2024 01:09'
 }
 WBCanvas >> spawnAnElement: anElement At: aPoint [
-
+	
 	self elementToSpawn: 
 	(anElement
 		center: aPoint;
