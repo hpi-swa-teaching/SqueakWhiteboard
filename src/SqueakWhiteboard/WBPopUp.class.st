@@ -19,7 +19,7 @@ WBPopUp >> handlesMouseDown: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/22/2024 23:07'
+	#'squeak_changestamp' : 'JK 5/28/2024 22:46'
 }
 WBPopUp >> initialize [
 

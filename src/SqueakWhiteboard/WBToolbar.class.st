@@ -191,7 +191,7 @@ WBToolbar >> getTextboxButton [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/28/2024 15:33'
+	#'squeak_changestamp' : 'JK 5/28/2024 23:23'
 }
 WBToolbar >> initializeWithCanvas: aCanvas [
 	
