@@ -193,7 +193,7 @@ WBCanvas >> images: anImageClass [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/28/2024 19:16'
+	#'squeak_changestamp' : 'is 5/28/2024 22:32'
 }
 WBCanvas >> initialize [
 	
@@ -208,7 +208,7 @@ WBCanvas >> initialize [
 		borderColor: Color black;
 		elements: OrderedCollection new.
 	self spawnToolbar.
-	self openInWindowLabeled: #SqueakMiro.
+	self openInWindowLabeled: #SqueakWhiteboard.
 	self globalColor: Color cyan.
 	
 ]
