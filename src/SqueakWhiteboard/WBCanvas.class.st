@@ -166,7 +166,7 @@ WBCanvas >> handlesMouseMove: evt [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 5/27/2024 11:19'
+	#'squeak_changestamp' : 'is 5/28/2024 10:26'
 }
 WBCanvas >> initialize [
 	
@@ -179,7 +179,8 @@ WBCanvas >> initialize [
 		borderWidth: (self scale * 5);
 		borderColor: Color black;
 		elements: OrderedCollection new.
-	self spawnToolbarWithCanvas: self.
+	self spawnToolbar.
+	self spawnMenuBar.
 	self openInWorld.
 	self globalColor: Color cyan.
 	
@@ -267,10 +268,19 @@ WBCanvas >> spawnAnElement: anElement At: aPoint [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 5/24/2024 09:57'
+	#'squeak_changestamp' : 'is 5/28/2024 10:38'
 }
-WBCanvas >> spawnToolbarWithCanvas: aCanvas [
+WBCanvas >> spawnMenuBar [
+
+	self addMorph: (WBMenuBar newWithCanvas: self)
+]
+
+{
+	#category : #'creating elements',
+	#'squeak_changestamp' : 'is 5/28/2024 10:18'
+}
+WBCanvas >> spawnToolbar [
 	
-	self addMorph: (WBToolbar newWithCanvas: aCanvas)
+	self addMorph: (WBToolbar newWithCanvas: self)
 	
 ]

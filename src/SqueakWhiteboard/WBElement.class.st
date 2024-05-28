@@ -17,6 +17,15 @@ Class {
 }
 
 {
+	#category : #'instance creation',
+	#'squeak_changestamp' : 'is 5/28/2024 10:21'
+}
+WBElement class >> newWithCanvas: aCanvas [
+
+	^ WBElement basicNew initializeWithCanvas: aCanvas
+]
+
+{
 	#category : #popUpBar,
 	#'squeak_changestamp' : 'si 5/23/2024 23:49'
 }
@@ -85,6 +94,16 @@ WBElement >> handlesMouseDown: anEvent [
 WBElement >> initialize [
 	
 	super initialize.
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'is 5/28/2024 10:22'
+}
+WBElement >> initializeWithCanvas: aCanvas [
+
+	super initialize.
+	self canvas: aCanvas
 ]
 
 {
