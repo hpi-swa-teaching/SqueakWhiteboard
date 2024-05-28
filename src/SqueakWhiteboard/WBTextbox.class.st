@@ -58,10 +58,10 @@ WBTextbox >> drawOn: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/29/2024 00:27'
+	#'squeak_changestamp' : 'is 5/29/2024 01:25'
 }
 WBTextbox >> initialize [
 
 	super initialize.
-	self bounds: (0@0 extent: 100@100)
+	self bounds: (0@0 extent: self defaultSize@self defaultSize)
 ]

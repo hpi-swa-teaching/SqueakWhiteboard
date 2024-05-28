@@ -86,6 +86,15 @@ WBElement >> deactivateElement [
 ]
 
 {
+	#category : #appearance,
+	#'squeak_changestamp' : 'is 5/29/2024 01:24'
+}
+WBElement >> defaultSize [
+
+	^ 100
+]
+
+{
 	#category : #drag,
 	#'squeak_changestamp' : 'JK 5/26/2024 23:47'
 }
