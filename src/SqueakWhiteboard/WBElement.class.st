@@ -261,10 +261,10 @@ WBElement >> resizeFrame: anObject [
 
 {
 	#category : #popUpBar,
-	#'squeak_changestamp' : 'JK 5/28/2024 12:20'
+	#'squeak_changestamp' : 'JK 5/28/2024 14:44'
 }
 WBElement >> setPopupPosition [
-	self popUpMenu position: self topRight.
+	self popUpMenu ifNotNil: [self popUpMenu position: self topRight].
 ]
 
 {
