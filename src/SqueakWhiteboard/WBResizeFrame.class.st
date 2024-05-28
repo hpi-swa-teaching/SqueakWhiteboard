@@ -101,8 +101,8 @@ WBResizeFrame >> position: aPosition [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 5/28/2024 12:27'
+	#'squeak_changestamp' : 'is 5/28/2024 15:33'
 }
 WBResizeFrame >> positionHandles [
-	self handles ifNotNil: [self handles do: [:handle | handle setPosition]]
+	self handles ifNotNil: [self handles do: [:handle | handle setLayout]]
 ]

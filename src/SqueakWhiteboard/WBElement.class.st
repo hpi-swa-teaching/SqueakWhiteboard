@@ -106,18 +106,20 @@ WBElement >> dragMove: mouseEvent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 5/18/2024 15:59'
+	#'squeak_changestamp' : 'is 5/28/2024 16:17'
 }
 WBElement >> dragOffset [
+
 	^ dragOffset
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 5/18/2024 15:59'
+	#'squeak_changestamp' : 'is 5/28/2024 16:17'
 }
-WBElement >> dragOffset: anObject [
-	dragOffset := anObject
+WBElement >> dragOffset: aPoint [
+
+	dragOffset := aPoint
 ]
 
 {
@@ -154,9 +156,10 @@ WBElement >> handleMouseOver: anEvent [
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'is 5/19/2024 16:21'
+	#'squeak_changestamp' : 'is 5/28/2024 15:20'
 }
 WBElement >> handlesMouseDown: anEvent [
+
     ^ true.
 ]
 
@@ -209,17 +212,19 @@ WBElement >> mouseDown: mouseEvent [
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'JK 5/27/2024 16:34'
+	#'squeak_changestamp' : 'is 5/28/2024 15:21'
 }
 WBElement >> mouseMove: anEvent [
+
 	self dragMove: anEvent
 ]
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'JK 5/27/2024 11:42'
+	#'squeak_changestamp' : 'is 5/28/2024 15:21'
 }
 WBElement >> mouseUp: mouseEvent [
+
 	self dragEnd: mouseEvent.
 ]
 

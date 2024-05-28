@@ -25,9 +25,9 @@ WBResizeTopLeft >> resizeCursor [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JK 5/27/2024 16:14'
+	#'squeak_changestamp' : 'is 5/28/2024 15:33'
 }
-WBResizeTopLeft >> setPosition [
+WBResizeTopLeft >> setLayout [
 	self center: element topLeft.
 	
 ]

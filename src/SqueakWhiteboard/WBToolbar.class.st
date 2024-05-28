@@ -8,7 +8,8 @@ Class {
 		'canvas',
 		'toolbarHeight',
 		'toolbarWidth',
-		'buttons'
+		'buttons',
+		'backgroundColor'
 	],
 	#category : #SqueakWhiteboard,
 	#'squeak_changestamp' : 'is 5/18/2024 17:12'
@@ -34,20 +35,21 @@ WBToolbar class >> newWithCanvas: aCanvas [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'is 5/19/2024 00:56'
+	#'squeak_changestamp' : 'is 5/28/2024 15:41'
 }
 WBToolbar >> backgroundColor [
 
-	^ Color gray
+	^ backgroundColor ifNil: [backgroundColor := Color gray]
 ]
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'is 5/18/2024 19:44'
+	#'squeak_changestamp' : 'is 5/28/2024 15:47'
 }
 WBToolbar >> backgroundColor: aColor [
 
-	^ Color gray
+	backgroundColor := aColor.
+	self updateColor
 ]
 
 {
@@ -176,18 +178,15 @@ WBToolbar >> getRectangleButton [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'nicloeser 5/27/2024 10:56'
+	#'squeak_changestamp' : 'is 5/28/2024 15:33'
 }
 WBToolbar >> initializeWithCanvas: aCanvas [
 	
 	super initialize.
-	self canvas: aCanvas;
-		toolbarHeight: aCanvas extent y * self toolbarCanvasSizeFactor y;
-		toolbarWidth: aCanvas extent x * self toolbarCanvasSizeFactor x;
-		center: (canvas bounds origin x + self extent x / 2) @ 
-			(canvas bounds origin y + ((canvas bounds corner y - canvas bounds origin y))/2);
-		color: self backgroundColor;
-		createButtons.
+	self 
+		canvas: aCanvas;
+		setLayout;
+		createButtons
 ]
 
 {
@@ -207,6 +206,21 @@ WBToolbar >> placeButtons: someButtons [
 		self addMorph: aButton].
 	self buttons: someButtons.
 	
+]
+
+{
+	#category : #layout,
+	#'squeak_changestamp' : 'is 5/28/2024 15:46'
+}
+WBToolbar >> setLayout [
+
+	self 
+		toolbarHeight: self canvas extent y * self toolbarCanvasSizeFactor y;
+		toolbarWidth: self canvas extent x * self toolbarCanvasSizeFactor x;
+		center: (canvas bounds origin x + self extent x / 2) @ 
+			(canvas bounds origin y + ((canvas bounds corner y - canvas bounds origin y))/2);
+		updateColor.
+		
 ]
 
 {
@@ -254,6 +268,15 @@ WBToolbar >> toolbarWidth: aNumber [
 
 	toolbarWidth := aNumber.
 	self updateDimensions.
+]
+
+{
+	#category : #layout,
+	#'squeak_changestamp' : 'is 5/28/2024 15:45'
+}
+WBToolbar >> updateColor [
+
+	self backgroundColor ifNotNil: [self color: self backgroundColor]
 ]
 
 {

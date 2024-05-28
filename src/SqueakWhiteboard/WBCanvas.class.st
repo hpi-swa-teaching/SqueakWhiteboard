@@ -193,7 +193,7 @@ WBCanvas >> images: anImageClass [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/28/2024 15:18'
+	#'squeak_changestamp' : 'is 5/28/2024 17:07'
 }
 WBCanvas >> initialize [
 	
@@ -209,7 +209,7 @@ WBCanvas >> initialize [
 		elements: OrderedCollection new.
 	self spawnToolbar.
 	self spawnMenuBar.
-	self openInWorld.
+	self openInHand.
 	self globalColor: Color cyan.
 	
 ]

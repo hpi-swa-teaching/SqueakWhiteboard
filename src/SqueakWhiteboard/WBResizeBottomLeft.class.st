@@ -24,9 +24,9 @@ WBResizeBottomLeft >> resizeCursor [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JK 5/27/2024 16:25'
+	#'squeak_changestamp' : 'is 5/28/2024 15:33'
 }
-WBResizeBottomLeft >> setPosition [
+WBResizeBottomLeft >> setLayout [
 	self center: element bottomLeft.
 	
 ]
