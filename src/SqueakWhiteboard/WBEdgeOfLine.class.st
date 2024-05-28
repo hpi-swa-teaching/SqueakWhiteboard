@@ -8,6 +8,25 @@ Class {
 }
 
 {
+	#category : #popUpBar,
+	#'squeak_changestamp' : 'si 5/27/2024 12:06'
+}
+WBEdgeOfLine >> buttonsForPopUpBar [
+
+	^OrderedCollection new
+		add: (WBDeleteButton new
+			canvas: self canvas;
+			element: self line);
+		add: (WBColorPaletteButton new
+			canvas: self canvas;
+			element: self line);
+		add: (WBCopyButton new
+			canvas: self canvas;
+			element: self line);
+		yourself.
+]
+
+{
 	#category : #deleting,
 	#'squeak_changestamp' : 'si 5/20/2024 13:46'
 }
@@ -65,6 +84,37 @@ WBEdgeOfLine >> line [
 WBEdgeOfLine >> line: aWBLine [
 
 	line := aWBLine
+]
+
+{
+	#category : #popUpBar,
+	#'squeak_changestamp' : 'si 5/27/2024 11:49'
+}
+WBEdgeOfLine >> makeElementPopUp [
+
+	self line popUpMenu: (WBElementPopUp new
+		setDefaultValues;
+		position: self topRight;
+		addButtons: self buttonsForPopUpBar;
+		yourself).
+]
+
+{
+	#category : #mouseEvents,
+	#'squeak_changestamp' : 'si 5/27/2024 21:46'
+}
+WBEdgeOfLine >> mouseDown: anEvent [
+	
+	(self canvas elementToSpawn) ifNil:
+		[self canvas deactivateElement.
+		self
+			addDropShadow;
+			makeElementPopUp;
+			comeToFront;
+			dragOffset: self position - anEvent cursorPoint.
+		self canvas activeElement: self line.].
+	(self canvas elementToSpawn) ifNotNil:
+		[self canvas dropElement]
 ]
 
 {

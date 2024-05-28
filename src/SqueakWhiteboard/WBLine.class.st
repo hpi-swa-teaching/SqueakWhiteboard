@@ -6,7 +6,8 @@ Class {
 		'canvas',
 		'state',
 		'pointFrom',
-		'pointTo'
+		'pointTo',
+		'popUpMenu'
 	],
 	#category : #SqueakWhiteboard
 }
@@ -27,6 +28,15 @@ WBLine >> canvas [
 WBLine >> canvas: aCanvas [
 
 	canvas := aCanvas
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 5/27/2024 12:08'
+}
+WBLine >> color: aColor [
+
+	self borderColor: aColor
 ]
 
 {
@@ -88,15 +98,15 @@ WBLine >> initialize [
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'nicloeser 5/24/2024 13:52'
+	#'squeak_changestamp' : 'si 5/27/2024 21:38'
 }
 WBLine >> mouseDown: anEvent [
 
-	(self canvas elementToSpawn) ifNil:
+"	(self canvas elementToSpawn) ifNil:
 		[self 
 			dragOffset: self position - anEvent cursorPoint.].
 	(self canvas elementToSpawn) ifNotNil:
-		[self spawnEdgeOfLineAt: anEvent cursorPoint]
+		[self spawnEdgeOfLineAt: anEvent cursorPoint]"
 ]
 
 {
@@ -106,6 +116,19 @@ WBLine >> mouseDown: anEvent [
 WBLine >> mouseMove: anEvent [
 
 	self moveElement: anEvent
+]
+
+{
+	#category : #'drag&drop',
+	#'squeak_changestamp' : 'si 5/27/2024 21:38'
+}
+WBLine >> mouseUp: anEvent [
+
+	(self canvas elementToSpawn) ifNil:
+		[self 
+			dragOffset: self position - anEvent cursorPoint.].
+	(self canvas elementToSpawn) ifNotNil:
+		[self spawnEdgeOfLineAt: anEvent cursorPoint]
 ]
 
 {
@@ -156,8 +179,38 @@ WBLine >> pointTo: aPoint [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 5/27/2024 11:51'
+}
+WBLine >> popUpMenu [
+
+	^popUpMenu
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 5/27/2024 11:51'
+}
+WBLine >> popUpMenu: aPopUpMenu [
+
+	popUpMenu := aPopUpMenu.
+	popUpMenu ifNotNil: 
+		[self addMorphBack: popUpMenu]
+]
+
+{
+	#category : #popUpBar,
+	#'squeak_changestamp' : 'si 5/27/2024 21:46'
+}
+WBLine >> removeElementPopUp [
+
+	self popUpMenu ifNotNil: 
+		[self popUpMenu delete]
+]
+
+{
 	#category : #buildLine,
-	#'squeak_changestamp' : 'si 5/20/2024 13:36'
+	#'squeak_changestamp' : 'si 5/27/2024 11:14'
 }
 WBLine >> replaceFromTo [
 
@@ -174,8 +227,10 @@ WBLine >> replaceFromTo [
 		line: self;
 		yourself).
 	self canvas 
-		addMorph: pointFrom;
-		addMorph: pointTo.
+		addMorph: self pointFrom;
+		addMorph: self pointTo;
+		addElement: self pointFrom;
+		addElement: self pointTo.
 ]
 
 {

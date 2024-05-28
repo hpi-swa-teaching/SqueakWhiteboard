@@ -8,6 +8,7 @@ Class {
 		'margin',
 		'backgroundColor',
 		'clickedColor',
+		'hoverColor',
 		'canvas',
 		'element',
 		'number'
@@ -73,7 +74,7 @@ WBButton >> canvas: aCanvas [
 ]
 
 {
-	#category : #clicking,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 5/19/2024 16:46'
 }
 WBButton >> clickFunctionality: anEvent [
@@ -82,16 +83,16 @@ WBButton >> clickFunctionality: anEvent [
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'is 5/19/2024 18:26'
+	#category : #appearance,
+	#'squeak_changestamp' : 'is 5/27/2024 19:26'
 }
 WBButton >> clickedColor [
 
-	^ clickedColor ifNil: [clickedColor := Color darkGray]
+	^ clickedColor ifNil: [clickedColor := self color muchDarker]
 ]
 
 {
-	#category : #accessing,
+	#category : #appearance,
 	#'squeak_changestamp' : 'is 5/19/2024 16:08'
 }
 WBButton >> clickedColor: aColor [
@@ -136,12 +137,39 @@ WBButton >> function: aNumber [
 ]
 
 {
-	#category : #clicking,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 5/19/2024 16:21'
 }
 WBButton >> handlesMouseDown: anEvent [
 
 	^ true
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 5/27/2024 19:55'
+}
+WBButton >> handlesMouseOver: evt [
+
+	^ true
+]
+
+{
+	#category : #appearance,
+	#'squeak_changestamp' : 'is 5/27/2024 20:04'
+}
+WBButton >> hoverColor [
+
+	^ hoverColor ifNil: [hoverColor := self color muchLighter]
+]
+
+{
+	#category : #appearance,
+	#'squeak_changestamp' : 'is 5/27/2024 19:27'
+}
+WBButton >> hoverColor: aColor [
+
+	hoverColor := aColor
 ]
 
 {
@@ -165,7 +193,7 @@ WBButton >> initializeWithCanvas: aCanvas [
 ]
 
 {
-	#category : #accessing,
+	#category : #appearance,
 	#'squeak_changestamp' : 'nicloeser 5/24/2024 14:57'
 }
 WBButton >> margin [ 
@@ -174,7 +202,7 @@ WBButton >> margin [
 ]
 
 {
-	#category : #accessing,
+	#category : #appearance,
 	#'squeak_changestamp' : 'nicloeser 5/24/2024 14:57'
 }
 WBButton >> margin: aMargin [
@@ -184,7 +212,7 @@ WBButton >> margin: aMargin [
 ]
 
 {
-	#category : #clicking,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 5/19/2024 16:22'
 }
 WBButton >> mouseDown: anEvent [
@@ -193,7 +221,25 @@ WBButton >> mouseDown: anEvent [
 ]
 
 {
-	#category : #clicking,
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 5/27/2024 19:59'
+}
+WBButton >> mouseEnter: evt [
+
+	self color: self hoverColor.
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 5/27/2024 19:59'
+}
+WBButton >> mouseLeave: evt [
+
+	self color: self backgroundColor
+]
+
+{
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 5/19/2024 18:36'
 }
 WBButton >> mouseUp: anEvent [
