@@ -8,8 +8,11 @@ Class {
 		'margin',
 		'backgroundColor',
 		'clickedColor',
+		'hoverColor',
 		'canvas',
-		'element'
+		'element',
+		'number',
+		'image'
 	],
 	#category : #SqueakWhiteboard,
 	#'squeak_changestamp' : 'is 5/18/2024 17:13'
@@ -34,7 +37,17 @@ WBButton class >> newWithCanvas: aCanvas [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
+	#'squeak_changestamp' : 'nicloeser 5/28/2024 11:49'
+}
+WBButton >> addImage [
+	
+	self addMorphCentered: self image
+	
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'is 5/19/2024 18:26'
 }
 WBButton >> backgroundColor [
@@ -43,7 +56,7 @@ WBButton >> backgroundColor [
 ]
 
 {
-	#category : #layout,
+	#category : #accessing,
 	#'squeak_changestamp' : 'is 5/19/2024 16:15'
 }
 WBButton >> backgroundColor: aColor [
@@ -72,7 +85,7 @@ WBButton >> canvas: aCanvas [
 ]
 
 {
-	#category : #clicking,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 5/19/2024 16:46'
 }
 WBButton >> clickFunctionality: anEvent [
@@ -81,16 +94,16 @@ WBButton >> clickFunctionality: anEvent [
 ]
 
 {
-	#category : #layout,
-	#'squeak_changestamp' : 'is 5/19/2024 18:26'
+	#category : #appearance,
+	#'squeak_changestamp' : 'is 5/27/2024 19:26'
 }
 WBButton >> clickedColor [
 
-	^ clickedColor ifNil: [clickedColor := Color darkGray]
+	^ clickedColor ifNil: [clickedColor := self color muchDarker]
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'is 5/19/2024 16:08'
 }
 WBButton >> clickedColor: aColor [
@@ -117,12 +130,75 @@ WBButton >> element: anElement [
 ]
 
 {
-	#category : #clicking,
+	#category : #accessing,
+	#'squeak_changestamp' : 'nicloeser 5/24/2024 14:59'
+}
+WBButton >> function [
+	
+	^function
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'nicloeser 5/24/2024 14:59'
+}
+WBButton >> function: aNumber [
+	
+	function := aNumber
+]
+
+{
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 5/19/2024 16:21'
 }
 WBButton >> handlesMouseDown: anEvent [
 
 	^ true
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 5/27/2024 19:55'
+}
+WBButton >> handlesMouseOver: evt [
+
+	^ true
+]
+
+{
+	#category : #appearance,
+	#'squeak_changestamp' : 'is 5/27/2024 20:04'
+}
+WBButton >> hoverColor [
+
+	^ hoverColor ifNil: [hoverColor := self color muchLighter]
+]
+
+{
+	#category : #appearance,
+	#'squeak_changestamp' : 'is 5/27/2024 19:27'
+}
+WBButton >> hoverColor: aColor [
+
+	hoverColor := aColor
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'nicloeser 5/28/2024 11:47'
+}
+WBButton >> image [	
+	
+	^image
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'nicloeser 5/28/2024 11:47'
+}
+WBButton >> image: anImage [
+	
+	image := anImage
 ]
 
 {
@@ -146,25 +222,26 @@ WBButton >> initializeWithCanvas: aCanvas [
 ]
 
 {
-	#category : #layout,
-	#'squeak_changestamp' : 'is 5/19/2024 16:57'
+	#category : #appearance,
+	#'squeak_changestamp' : 'nicloeser 5/24/2024 14:57'
 }
-WBButton >> margin [
-
-	^ margin ifNil: [margin := 0]
+WBButton >> margin [ 
+	^margin
+	
 ]
 
 {
-	#category : #layout,
-	#'squeak_changestamp' : 'is 5/19/2024 11:26'
+	#category : #appearance,
+	#'squeak_changestamp' : 'nicloeser 5/24/2024 14:57'
 }
 WBButton >> margin: aMargin [
-
-	^ margin := aMargin
+		
+	margin := aMargin.
+	
 ]
 
 {
-	#category : #clicking,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 5/19/2024 16:22'
 }
 WBButton >> mouseDown: anEvent [
@@ -173,7 +250,25 @@ WBButton >> mouseDown: anEvent [
 ]
 
 {
-	#category : #clicking,
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 5/27/2024 19:59'
+}
+WBButton >> mouseEnter: evt [
+
+	self color: self hoverColor.
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 5/27/2024 19:59'
+}
+WBButton >> mouseLeave: evt [
+
+	self color: self backgroundColor
+]
+
+{
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 5/19/2024 18:36'
 }
 WBButton >> mouseUp: anEvent [
@@ -181,6 +276,24 @@ WBButton >> mouseUp: anEvent [
 	self color: backgroundColor.
 	(self containsPoint: anEvent position) ifTrue: [self clickFunctionality: anEvent]
 	
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'nicloeser 5/25/2024 11:16'
+}
+WBButton >> number [
+
+	^number
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'nicloeser 5/25/2024 11:16'
+}
+WBButton >> number: anInteger [
+
+	number := anInteger
 ]
 
 {
