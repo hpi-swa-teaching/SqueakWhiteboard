@@ -193,7 +193,7 @@ WBCanvas >> images: anImageClass [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/28/2024 22:35'
+	#'squeak_changestamp' : 'is 5/29/2024 00:16'
 }
 WBCanvas >> initialize [
 	
@@ -290,6 +290,15 @@ WBCanvas >> spawnAnElement: anElement At: aPoint [
 		addDropShadow;
 		yourself).
 	self addElement: anElement
+]
+
+{
+	#category : #'creating elements',
+	#'squeak_changestamp' : 'is 5/28/2024 10:38'
+}
+WBCanvas >> spawnMenuBar [
+
+	self addMorph: (WBMenuBar newWithCanvas: self)
 ]
 
 {

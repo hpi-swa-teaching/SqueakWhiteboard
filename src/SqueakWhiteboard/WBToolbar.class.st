@@ -100,7 +100,7 @@ WBToolbar >> canvas: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/28/2024 22:35'
+	#'squeak_changestamp' : 'is 5/28/2024 20:00'
 }
 WBToolbar >> createButtons [
 	
