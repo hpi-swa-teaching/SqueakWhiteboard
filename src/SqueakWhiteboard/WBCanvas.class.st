@@ -74,11 +74,11 @@ WBCanvas >> clampPointToCanvas: aPoint [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 5/27/2024 21:44'
+	#'squeak_changestamp' : 'JK 5/28/2024 14:20'
 }
 WBCanvas >> deactivateElement [
 
-	self activeElement ifNotNil: [self activeElement removeElementPopUp.
+	self activeElement ifNotNil: [self activeElement deactivateElement.
 		self activeElement: nil]
 ]
 
