@@ -40,6 +40,16 @@ WBLine >> color: aColor [
 ]
 
 {
+	#category : #popUpBar,
+	#'squeak_changestamp' : 'JK 5/28/2024 14:37'
+}
+WBLine >> deactivateElement [
+
+	self popUpMenu ifNotNil: 
+		[self popUpMenu delete]
+]
+
+{
 	#category : #deleting,
 	#'squeak_changestamp' : 'si 5/20/2024 13:49'
 }
@@ -48,6 +58,17 @@ WBLine >> delete [
 	self pointFrom deleteSelf.
 	self pointTo deleteSelf.
 	super delete.
+]
+
+{
+	#category : #'drag&drop',
+	#'squeak_changestamp' : 'JK 5/28/2024 14:37'
+}
+WBLine >> dragMove: anEvent [
+	|newPosition |
+	
+ 	newPosition := self canvas clampElementToCanvas: self at: anEvent cursorPoint + self dragOffset.
+	self position: newPosition
 ]
 
 {
@@ -196,16 +217,6 @@ WBLine >> popUpMenu: aPopUpMenu [
 	popUpMenu := aPopUpMenu.
 	popUpMenu ifNotNil: 
 		[self addMorphBack: popUpMenu]
-]
-
-{
-	#category : #popUpBar,
-	#'squeak_changestamp' : 'si 5/27/2024 21:46'
-}
-WBLine >> removeElementPopUp [
-
-	self popUpMenu ifNotNil: 
-		[self popUpMenu delete]
 ]
 
 {

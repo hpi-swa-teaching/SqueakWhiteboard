@@ -11,7 +11,8 @@ Class {
 		'hoverColor',
 		'canvas',
 		'element',
-		'number'
+		'number',
+		'image'
 	],
 	#category : #SqueakWhiteboard,
 	#'squeak_changestamp' : 'is 5/18/2024 17:13'
@@ -33,6 +34,16 @@ WBButton class >> cornerRadius [
 WBButton class >> newWithCanvas: aCanvas [
 
 	WBButton basicNew initializeWithCanvas: aCanvas
+]
+
+{
+	#category : #appearance,
+	#'squeak_changestamp' : 'nicloeser 5/28/2024 11:49'
+}
+WBButton >> addImage [
+	
+	self addMorphCentered: self image
+	
 ]
 
 {
@@ -170,6 +181,24 @@ WBButton >> hoverColor [
 WBButton >> hoverColor: aColor [
 
 	hoverColor := aColor
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'nicloeser 5/28/2024 11:47'
+}
+WBButton >> image [	
+	
+	^image
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'nicloeser 5/28/2024 11:47'
+}
+WBButton >> image: anImage [
+	
+	image := anImage
 ]
 
 {

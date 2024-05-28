@@ -74,11 +74,11 @@ WBCanvas >> clampPointToCanvas: aPoint [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 5/27/2024 21:44'
+	#'squeak_changestamp' : 'JK 5/28/2024 14:20'
 }
 WBCanvas >> deactivateElement [
 
-	self activeElement ifNotNil: [self activeElement removeElementPopUp.
+	self activeElement ifNotNil: [self activeElement deactivateElement.
 		self activeElement: nil]
 ]
 
@@ -148,6 +148,15 @@ WBCanvas >> globalColor: aColor [
 
 {
 	#category : #'creating elements',
+	#'squeak_changestamp' : 'JK 5/27/2024 15:56'
+}
+WBCanvas >> handleMouseOver: evt [
+    
+	^ true.
+]
+
+{
+	#category : #'creating elements',
 	#'squeak_changestamp' : 'si 5/17/2024 13:53'
 }
 WBCanvas >> handlesMouseDown: evt [
@@ -165,14 +174,33 @@ WBCanvas >> handlesMouseMove: evt [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'nicloeser 5/27/2024 12:19'
+}
+WBCanvas >> images [
+
+	^images
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'nicloeser 5/27/2024 12:19'
+}
+WBCanvas >> images: anImageClass [
+
+	images := anImageClass
+]
+
+{
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/28/2024 10:26'
+	#'squeak_changestamp' : 'is 5/28/2024 15:18'
 }
 WBCanvas >> initialize [
 	
 	super initialize.
+	self images: WBImage new.
 	self 
-		scale: 0.7;
+		scale: 1.0;
 		height: (self class WhiteBoardSize * self scale);
 		width: (self class WhiteBoardSize * self scale * 1.5);
 		color: Color white;
@@ -197,21 +225,20 @@ WBCanvas >> mouseDown: anEvent [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 5/17/2024 12:36'
+	#'squeak_changestamp' : 'JK 5/26/2024 23:47'
 }
 WBCanvas >> mouseMove: anEvent [
 	
 	(self elementToSpawn) ifNotNil:
-		[self elementToSpawn moveElement: anEvent]
+		[self elementToSpawn dragMove: anEvent]
 ]
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 5/27/2024 11:32'
+	#'squeak_changestamp' : 'JK 5/28/2024 14:10'
 }
 WBCanvas >> removePopUps [
-
-	self activeElement ifNotNil: [self activeElement removeElementPopUp.
+	self activeElement ifNotNil: [self activeElement deactivateElement.
 		self activeElement: nil]
 ]
 
