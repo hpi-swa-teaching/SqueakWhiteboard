@@ -100,7 +100,7 @@ WBToolbar >> canvas: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/28/2024 20:00'
+	#'squeak_changestamp' : 'nicloeser 5/27/2024 14:48'
 }
 WBToolbar >> createButtons [
 	
@@ -108,8 +108,7 @@ WBToolbar >> createButtons [
 		self getRectangleButton.
 		self getCircleButton.
 		self getLineButton.
-		self getColorsButton.
-		self getTextboxButton.})
+		self getColorsButton.})
 
 	
 ]
@@ -175,19 +174,6 @@ WBToolbar >> getRectangleButton [
 			(self canvas images resize: (WBImage loadRectangleButtonImage) to: self buttonSize*0.8));
 			yourself.
 			
-]
-
-{
-	#category : #getButton,
-	#'squeak_changestamp' : 'is 5/28/2024 20:01'
-}
-WBToolbar >> getTextboxButton [
-
-	^WBToolbarButton new
-			number: 4;
-			image: (ImageMorph new image: 
-			(self canvas images resize: (WBImage loadCircleButtonImage) to: self buttonSize*0.8));
-			yourself.
 ]
 
 {
