@@ -28,12 +28,12 @@ WBDeleteButton >> clickFunctionality: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/22/2024 16:55'
+	#'squeak_changestamp' : 'is 5/28/2024 19:31'
 }
 WBDeleteButton >> initializeWithDefaultValues [
 
 	super initialize.
-	self setDefaultValues.
+	self setDefaultValues
 ]
 
 {
