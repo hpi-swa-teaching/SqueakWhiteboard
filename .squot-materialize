@@ -5,6 +5,14 @@
 		],
 		#encoding : Class [ #PNGReadWriter ]
 	},
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'SqueakWhiteboardTests'
+		},
+		#path : FSAbsolutePath [
+			'src'
+		]
+	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
 			'colorsToolbar.png'
@@ -21,9 +29,7 @@
 		#package : MCPackage {
 			#name : 'SqueakWhiteboard'
 		},
-		#path : FSAbsolutePath [
-			'src'
-		]
+		#path : @7
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [

@@ -2,7 +2,8 @@ Class {
 	#name : #WBTextbox,
 	#superclass : #WBElement,
 	#instVars : [
-		'borderSize'
+		'borderSize',
+		'textField'
 	],
 	#category : #SqueakWhiteboard
 }
@@ -57,14 +58,48 @@ WBTextbox >> drawOn: aCanvas [
 ]
 
 {
+	#category : #layout,
+	#'squeak_changestamp' : 'is 5/29/2024 10:44'
+}
+WBTextbox >> extent: anExtent [
+	
+	textField ifNotNil: [textField extent: anExtent - (self borderSize * 2).].
+	super extent: anExtent.
+]
+
+{
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/29/2024 01:43'
+	#'squeak_changestamp' : 'is 5/29/2024 10:55'
 }
 WBTextbox >> initialize [
 	| textField |
 	super initialize.
 	self bounds: (0@0 extent: self defaultSize).
-	textField := TextMorph new.
+	textField := TextFieldMorph new.
+	textField contents: ''.
+	"self halt."
+	"textField borderStyle: (BorderStyle width: 5 color: Color green)."
 	textField extent: self defaultSize - ((self borderSize * 2)@(self borderSize * 2)).
+	"textField handlesMouseDown: false."
+	
 	self addMorphCentered: textField.
+	self textField: textField
+]
+
+{
+	#category : #private,
+	#'squeak_changestamp' : 'is 5/29/2024 10:35'
+}
+WBTextbox >> textField [
+
+	^ textField
+]
+
+{
+	#category : #private,
+	#'squeak_changestamp' : 'is 5/29/2024 10:35'
+}
+WBTextbox >> textField: aTextField [
+
+	textField := aTextField
 ]
