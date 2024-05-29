@@ -79,7 +79,7 @@ WBColorPaletteButton >> makeColorButtons [
 
 {
 	#category : #createButtons,
-	#'squeak_changestamp' : 'is 5/29/2024 01:07'
+	#'squeak_changestamp' : 'si 5/27/2024 22:25'
 }
 WBColorPaletteButton >> makeColorPalette [
 	
@@ -87,7 +87,7 @@ WBColorPaletteButton >> makeColorPalette [
 		(WBElementPopUp new
 			numberOfColumns: 3;
 			setDefaultValues;
-			position: self topRight;
+			position: self bottomCenter;
 			comeToFront;
 			addButtons: self makeColorButtons;
 			yourself).
