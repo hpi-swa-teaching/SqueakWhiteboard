@@ -14,7 +14,7 @@ Class {
 		'number',
 		'image'
 	],
-	#category : #SqueakWhiteboard,
+	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 5/18/2024 17:13'
 }
 

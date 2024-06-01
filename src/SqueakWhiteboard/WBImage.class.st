@@ -1,7 +1,7 @@
 Class {
 	#name : #WBImage,
 	#superclass : #ImageMorph,
-	#category : #SqueakWhiteboard
+	#category : #'SqueakWhiteboard-Core'
 }
 
 {

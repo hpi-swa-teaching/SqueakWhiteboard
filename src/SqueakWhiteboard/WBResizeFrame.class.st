@@ -5,7 +5,7 @@ Class {
 		'parent',
 		'handles'
 	],
-	#category : #SqueakWhiteboard
+	#category : #'SqueakWhiteboard-Core'
 }
 
 {

@@ -11,7 +11,7 @@ Class {
 		'buttons',
 		'backgroundColor'
 	],
-	#category : #SqueakWhiteboard,
+	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 5/18/2024 17:12'
 }
 

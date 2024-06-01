@@ -4,7 +4,7 @@ The WBPopUp is a menu that opens up when clicking on an element that is in the c
 Class {
 	#name : #WBPopUp,
 	#superclass : #Morph,
-	#category : #SqueakWhiteboard,
+	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 5/17/2024 20:40'
 }
 

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'element'
 	],
-	#category : #SqueakWhiteboard
+	#category : #'SqueakWhiteboard-Core'
 }
 
 {

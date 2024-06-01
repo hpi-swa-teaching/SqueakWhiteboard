@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'line'
 	],
-	#category : #SqueakWhiteboard
+	#category : #'SqueakWhiteboard-Core'
 }
 
 {

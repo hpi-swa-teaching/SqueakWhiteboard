@@ -10,7 +10,7 @@ Class {
 		'popUpMenu',
 		'arrowHead'
 	],
-	#category : #SqueakWhiteboard
+	#category : #'SqueakWhiteboard-Core'
 }
 
 {

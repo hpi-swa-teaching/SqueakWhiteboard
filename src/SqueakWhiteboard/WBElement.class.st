@@ -13,7 +13,7 @@ Class {
 	#classInstVars : [
 		'globalColor'
 	],
-	#category : #SqueakWhiteboard,
+	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 5/17/2024 15:58'
 }
 

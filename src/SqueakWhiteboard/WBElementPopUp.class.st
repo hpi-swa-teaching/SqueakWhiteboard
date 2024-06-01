@@ -6,7 +6,7 @@ Class {
 		'numberOfColumns',
 		'numberOfRows'
 	],
-	#category : #SqueakWhiteboard
+	#category : #'SqueakWhiteboard-Core'
 }
 
 {

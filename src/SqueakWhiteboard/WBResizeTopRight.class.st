@@ -1,7 +1,7 @@
 Class {
 	#name : #WBResizeTopRight,
 	#superclass : #WBResizeHandle,
-	#category : #SqueakWhiteboard
+	#category : #'SqueakWhiteboard-Core'
 }
 
 {

@@ -1,7 +1,7 @@
 Class {
 	#name : #WBColorButton,
 	#superclass : #WBButton,
-	#category : #SqueakWhiteboard
+	#category : #'SqueakWhiteboard-Core'
 }
 
 {

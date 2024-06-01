@@ -8,7 +8,7 @@ Class {
 	#classInstVars : [
 		'colorRows'
 	],
-	#category : #SqueakWhiteboard
+	#category : #'SqueakWhiteboard-Core'
 }
 
 {

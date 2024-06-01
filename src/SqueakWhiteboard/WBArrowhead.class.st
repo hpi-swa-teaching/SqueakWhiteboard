@@ -1,7 +1,7 @@
 Class {
 	#name : #WBArrowhead,
 	#superclass : #PolygonMorph,
-	#category : #SqueakWhiteboard
+	#category : #'SqueakWhiteboard-Core'
 }
 
 {

@@ -5,7 +5,7 @@ Class {
 		'element',
 		'lastPosition'
 	],
-	#category : #SqueakWhiteboard
+	#category : #'SqueakWhiteboard-Core'
 }
 
 {

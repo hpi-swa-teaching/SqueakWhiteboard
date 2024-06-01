@@ -5,7 +5,7 @@ Class {
 		'borderSize',
 		'textField'
 	],
-	#category : #SqueakWhiteboard
+	#category : #'SqueakWhiteboard-Core'
 }
 
 {

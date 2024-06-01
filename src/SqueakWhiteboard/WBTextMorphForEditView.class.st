@@ -4,7 +4,7 @@ This is a custom version of the TextMorphForEditView class
 Class {
 	#name : #WBTextMorphForEditView,
 	#superclass : #TextMorphForEditView,
-	#category : #SqueakWhiteboard,
+	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 6/1/2024 17:19'
 }
 

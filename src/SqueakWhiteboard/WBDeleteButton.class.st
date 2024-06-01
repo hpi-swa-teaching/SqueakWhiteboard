@@ -4,7 +4,7 @@ The WBDeleteButton is a button that deletes the element that it is attached to
 Class {
 	#name : #WBDeleteButton,
 	#superclass : #WBPopUpButton,
-	#category : #SqueakWhiteboard,
+	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 5/19/2024 02:07'
 }
 

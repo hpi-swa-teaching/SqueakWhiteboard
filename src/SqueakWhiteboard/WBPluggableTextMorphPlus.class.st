@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'enabled'
 	],
-	#category : #SqueakWhiteboard,
+	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 6/1/2024 17:19'
 }
 

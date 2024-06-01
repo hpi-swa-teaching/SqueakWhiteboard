@@ -1,7 +1,7 @@
 Class {
 	#name : #WBCopyButton,
 	#superclass : #WBPopUpButton,
-	#category : #SqueakWhiteboard
+	#category : #'SqueakWhiteboard-Core'
 }
 
 {

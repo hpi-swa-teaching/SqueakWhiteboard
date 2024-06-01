@@ -8,7 +8,7 @@ Class {
 		'menuBarWidth',
 		'backgroundColor'
 	],
-	#category : #SqueakWhiteboard
+	#category : #'SqueakWhiteboard-Core'
 }
 
 {
