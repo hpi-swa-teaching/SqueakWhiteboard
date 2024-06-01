@@ -69,14 +69,15 @@ WBTextbox >> extent: anExtent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/29/2024 10:55'
+	#'squeak_changestamp' : 'is 5/30/2024 14:44'
 }
 WBTextbox >> initialize [
 	| textField |
 	super initialize.
 	self bounds: (0@0 extent: self defaultSize).
-	textField := TextFieldMorph new.
-	textField contents: ''.
+	textField := WBTextField new.
+	"textField color: Color transparent."
+	"textField contents: 'Halle mein Name ist Iven'."
 	"self halt."
 	"textField borderStyle: (BorderStyle width: 5 color: Color green)."
 	textField extent: self defaultSize - ((self borderSize * 2)@(self borderSize * 2)).
