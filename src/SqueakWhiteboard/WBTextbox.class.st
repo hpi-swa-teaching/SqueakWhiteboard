@@ -30,6 +30,15 @@ WBTextbox >> borderSize: aSize [
 
 {
 	#category : #appearance,
+	#'squeak_changestamp' : 'is 6/1/2024 17:09'
+}
+WBTextbox >> defaultSize [
+
+	^ 100@100
+]
+
+{
+	#category : #appearance,
 	#'squeak_changestamp' : 'is 5/29/2024 01:11'
 }
 WBTextbox >> drawOn: aCanvas [
