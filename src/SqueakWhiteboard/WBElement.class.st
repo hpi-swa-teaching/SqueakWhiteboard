@@ -40,7 +40,7 @@ WBElement >> addResizeFrame [
 
 {
 	#category : #popUpBar,
-	#'squeak_changestamp' : 'si 5/23/2024 23:49'
+	#'squeak_changestamp' : 'ACL 5/31/2024 10:56'
 }
 WBElement >> buttonsForPopUpBar [
 
@@ -48,10 +48,10 @@ WBElement >> buttonsForPopUpBar [
 		add: (WBDeleteButton new
 			canvas: self canvas;
 			element: self);
-		add: (WBColorPaletteButton new
+		add: (WBCopyButton new
 			canvas: self canvas;
 			element: self);
-		add: (WBCopyButton new
+		add: (WBColorPaletteButton new
 			canvas: self canvas;
 			element: self);
 		yourself.

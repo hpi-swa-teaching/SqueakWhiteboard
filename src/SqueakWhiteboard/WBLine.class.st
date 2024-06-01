@@ -7,10 +7,80 @@ Class {
 		'state',
 		'pointFrom',
 		'pointTo',
-		'popUpMenu'
+		'popUpMenu',
+		'arrowHead'
 	],
 	#category : #SqueakWhiteboard
 }
+
+{
+	#category : #arrow,
+	#'squeak_changestamp' : 'nicloeser 5/30/2024 15:50'
+}
+WBLine >> addArrowHead [
+
+	self arrowHead: WBArrowhead new.
+	self arrowHead center: self pointTo.
+	(self pointTo x > self pointFrom x) ifTrue:[
+		self arrowHead rotationDegrees: self angleForPoints.
+		] 
+	ifFalse:[
+		self arrowHead rotationDegrees: (180 - self angleForPoints).
+	].
+	self addMorph: arrowHead.
+	
+	
+]
+
+{
+	#category : #geometry,
+	#'squeak_changestamp' : 'nicloeser 5/30/2024 15:20'
+}
+WBLine >> angleForEdgeOfLines [
+	|lengthX lengthY length sin|
+	
+	lengthX := self pointTo position x - self  pointFrom position x.
+	lengthY := self pointTo position y - self  pointFrom  position y.
+	length := (lengthX squared + lengthY  squared) safeSquareRoot.
+	sin := lengthY / length.
+	^sin arcSin * (36 / 2 * (3.141592))
+	
+	
+]
+
+{
+	#category : #geometry,
+	#'squeak_changestamp' : 'nicloeser 5/30/2024 15:20'
+}
+WBLine >> angleForPoints [
+	|lengthX lengthY length sin|
+	
+	lengthX := self pointTo x - self  pointFrom x.
+	lengthY := self pointTo y - self  pointFrom y.
+	length := (lengthX squared + lengthY  squared) safeSquareRoot.
+	sin := lengthY / length.
+	^sin arcSin * (36 / 2 * (3.141592))
+	
+	
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'nicloeser 5/30/2024 14:01'
+}
+WBLine >> arrowHead [
+
+	^arrowHead
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'nicloeser 5/30/2024 14:02'
+}
+WBLine >> arrowHead: aMorph [
+
+	arrowHead := aMorph
+]
 
 {
 	#category : #accessing,
@@ -32,11 +102,22 @@ WBLine >> canvas: aCanvas [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/27/2024 12:08'
+	#'squeak_changestamp' : 'nicloeser 5/30/2024 14:55'
 }
 WBLine >> color: aColor [
 
-	self borderColor: aColor
+	self borderColor: aColor.
+	(arrowHead class = WBArrowhead) ifTrue:[
+	self arrowHead 
+		color: aColor;
+		borderColor: aColor
+	].
+	(self pointTo class = WBEdgeOfLine) ifTrue:[
+		self pointTo color: aColor
+	].
+	(self pointFrom class = WBEdgeOfLine) ifTrue:[
+		self pointFrom color: aColor
+	]
 ]
 
 {
@@ -246,7 +327,7 @@ WBLine >> replaceFromTo [
 
 {
 	#category : #buildLine,
-	#'squeak_changestamp' : 'nicloeser 5/24/2024 14:33'
+	#'squeak_changestamp' : 'nicloeser 5/30/2024 14:04'
 }
 WBLine >> spawnEdgeOfLineAt: aPoint [
 
@@ -258,7 +339,8 @@ WBLine >> spawnEdgeOfLineAt: aPoint [
 		self 
 			setVertices: { pointFrom . pointTo };
 			borderWidth: 2;
-			color: Color black.
+			color: Color black;
+			addArrowHead.
 		self canvas dropElement.
 		self replaceFromTo.
 		self state: 2.].
@@ -283,12 +365,27 @@ WBLine >> state: aState [
 ]
 
 {
+	#category : #arrow,
+	#'squeak_changestamp' : 'nicloeser 5/30/2024 15:50'
+}
+WBLine >> updateArrowHead [
+
+	self arrowHead center: pointTo center.
+	(self pointTo x > self pointFrom x) ifTrue:[
+		self arrowHead rotationDegrees: self angleForEdgeOfLines.
+		] 
+	ifFalse:[
+		self arrowHead rotationDegrees: (180 - self angleForEdgeOfLines).
+	].
+]
+
+{
 	#category : #buildLine,
-	#'squeak_changestamp' : 'si 5/20/2024 13:35'
+	#'squeak_changestamp' : 'nicloeser 5/30/2024 14:12'
 }
 WBLine >> updateEdges [
 
-	self setVertices: { pointFrom center . pointTo center }
-
+	self setVertices: { pointFrom center . pointTo center }.
+	self updateArrowHead
 	
 ]
