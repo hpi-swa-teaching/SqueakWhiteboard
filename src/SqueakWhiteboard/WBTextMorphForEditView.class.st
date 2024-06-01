@@ -28,9 +28,22 @@ WBTextMorphForEditView >> cancelEditsSafely [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/1/2024 17:27'
+	#'squeak_changestamp' : 'is 6/1/2024 19:23'
 }
 WBTextMorphForEditView >> handlesMouseDown: evt [
 
 	^ false
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/1/2024 20:25'
+}
+WBTextMorphForEditView >> mouseDown: evt [
+	self halt."
+	evt yellowButtonPressed ifTrue: [
+		(self editor yellowButtonDown: evt) ifTrue:[^self].
+		^ editView yellowButtonActivity: evt shiftPressed]."
+	^ super mouseDown: MouseEvent new
+	
 ]

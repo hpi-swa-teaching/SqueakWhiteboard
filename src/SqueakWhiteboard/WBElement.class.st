@@ -77,7 +77,7 @@ WBElement >> canvas: aCanvas [
 ]
 
 {
-	#category : #mouseEvents,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'JK 5/28/2024 12:21'
 }
 WBElement >> deactivateElement [
@@ -104,11 +104,11 @@ WBElement >> dragEnd: anEvent [
 
 {
 	#category : #drag,
-	#'squeak_changestamp' : 'JK 5/26/2024 23:47'
+	#'squeak_changestamp' : 'is 6/1/2024 19:34'
 }
 WBElement >> dragMove: mouseEvent [
 	|newPosition |
-	
+
  	newPosition := self canvas clampElementToCanvas: self at: mouseEvent cursorPoint + self dragOffset.
 	self position: newPosition
 ]
@@ -133,9 +133,10 @@ WBElement >> dragOffset: aPoint [
 
 {
 	#category : #drag,
-	#'squeak_changestamp' : 'JK 5/27/2024 00:01'
+	#'squeak_changestamp' : 'is 6/1/2024 19:32'
 }
 WBElement >> dragStart: anEvent [
+
 	self
 		addDropShadow;
 		comeToFront;
@@ -156,7 +157,7 @@ WBElement >> extent: aSize [
 ]
 
 {
-	#category : #mouseEvents,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 5/29/2024 01:02'
 }
 WBElement >> handleMouseOver: anEvent [
@@ -165,7 +166,7 @@ WBElement >> handleMouseOver: anEvent [
 ]
 
 {
-	#category : #mouseEvents,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 5/28/2024 15:20'
 }
 WBElement >> handlesMouseDown: anEvent [
@@ -208,10 +209,12 @@ WBElement >> makeElementPopUp [
 ]
 
 {
-	#category : #mouseEvents,
-	#'squeak_changestamp' : 'JK 5/28/2024 22:53'
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/1/2024 20:01'
 }
 WBElement >> mouseDown: mouseEvent [
+
+	mouseEvent redButtonPressed ifTrue: [
 	(self canvas elementToSpawn) ifNil:
 		[self canvas deactivateElement.
 		self dragStart: mouseEvent.
@@ -219,20 +222,22 @@ WBElement >> mouseDown: mouseEvent [
 		self showPopUp.
 		self canvas activeElement: self.].
 	(self canvas elementToSpawn) ifNotNil:
-		[self canvas dropElement]
+		[self canvas dropElement]].
+	
+	mouseEvent yellowButtonPressed ifTrue: [self rightClickFunctionality: mouseEvent]
 ]
 
 {
-	#category : #mouseEvents,
-	#'squeak_changestamp' : 'is 5/28/2024 15:21'
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/1/2024 19:33'
 }
 WBElement >> mouseMove: anEvent [
 
-	self dragMove: anEvent
+	anEvent redButtonPressed ifTrue: [ self dragMove: anEvent]
 ]
 
 {
-	#category : #mouseEvents,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 5/28/2024 15:21'
 }
 WBElement >> mouseUp: mouseEvent [
@@ -258,6 +263,15 @@ WBElement >> popUpMenu: aPopUpMenu [
 	popUpMenu := aPopUpMenu.
 	popUpMenu ifNotNil: 
 		[self addMorphBack: popUpMenu]
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'is 6/1/2024 17:43'
+}
+WBElement >> postDropRoutine [
+
+	^ SubclassResponsibility
 ]
 
 {
@@ -293,6 +307,15 @@ WBElement >> resizeFrame [
 }
 WBElement >> resizeFrame: anObject [
 	resizeFrame := anObject
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/1/2024 20:01'
+}
+WBElement >> rightClickFunctionality: evt [
+
+	^ SubclassResponsibility
 ]
 
 {

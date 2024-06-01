@@ -4,17 +4,39 @@ This is a custom version of the PluggableTextMorphPlus class
 Class {
 	#name : #WBPluggableTextMorphPlus,
 	#superclass : #PluggableTextMorphPlus,
+	#instVars : [
+		'enabled'
+	],
 	#category : #SqueakWhiteboard,
 	#'squeak_changestamp' : 'is 6/1/2024 17:19'
 }
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/1/2024 17:28'
+	#'squeak_changestamp' : 'is 6/1/2024 18:20'
+}
+WBPluggableTextMorphPlus >> enabled [
+
+	^ enabled ifNil: [enabled := false]
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/1/2024 18:42'
+}
+WBPluggableTextMorphPlus >> enabled: aBoolean [
+
+	enabled := aBoolean.
+	super updateStyle
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/1/2024 19:25'
 }
 WBPluggableTextMorphPlus >> handlesMouseDown: evt [
-	
-	^ false
+
+	^ false"self enabled"
 ]
 
 {
@@ -29,21 +51,12 @@ WBPluggableTextMorphPlus >> hasUnacceptedEdits: aBoolean [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/1/2024 16:11'
+	#'squeak_changestamp' : 'is 6/1/2024 18:46'
 }
-WBPluggableTextMorphPlus >> initializeTextMorph [
+WBPluggableTextMorphPlus >> initialize [
 
-	textMorph := self textMorphClass new
-		margins: self class textMargins;
-		setEditView: self;
-		hResizing: #shrinkWrap;
-		vResizing: #shrinkWrap;
-		setProperty: #indicateKeyboardFocus toValue: #never;
-		yourself.
-		
-	LegacyShortcutsFilter legacyShortcutsEnabled
-		ifTrue: [textMorph addKeyboardCaptureFilter: LegacyShortcutsFilter].
-
+	super initialize.
+	self color: Color transparent
 ]
 
 {

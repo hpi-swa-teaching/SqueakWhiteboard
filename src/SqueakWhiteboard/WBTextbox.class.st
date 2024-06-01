@@ -30,11 +30,11 @@ WBTextbox >> borderSize: aSize [
 
 {
 	#category : #appearance,
-	#'squeak_changestamp' : 'is 6/1/2024 17:09'
+	#'squeak_changestamp' : 'is 6/1/2024 17:36'
 }
 WBTextbox >> defaultSize [
 
-	^ 100@100
+	^ 200@200
 ]
 
 {
@@ -78,22 +78,36 @@ WBTextbox >> extent: anExtent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/30/2024 14:44'
+	#'squeak_changestamp' : 'is 6/1/2024 18:44'
 }
 WBTextbox >> initialize [
 	| textField |
 	super initialize.
 	self bounds: (0@0 extent: self defaultSize).
-	textField := WBTextField new.
-	"textField color: Color transparent."
-	"textField contents: 'Halle mein Name ist Iven'."
-	"self halt."
-	"textField borderStyle: (BorderStyle width: 5 color: Color green)."
+	textField := WBPluggableTextMorphPlus new.
 	textField extent: self defaultSize - ((self borderSize * 2)@(self borderSize * 2)).
-	"textField handlesMouseDown: false."
-	
 	self addMorphCentered: textField.
 	self textField: textField
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'is 6/1/2024 18:26'
+}
+WBTextbox >> postDropRoutine [
+
+	self textField enabled: true
+
+	
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/1/2024 20:16'
+}
+WBTextbox >> rightClickFunctionality: evt [
+
+	self textField textMorph mouseDown: evt
 ]
 
 {
