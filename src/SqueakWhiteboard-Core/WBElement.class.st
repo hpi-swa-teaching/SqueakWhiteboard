@@ -210,13 +210,13 @@ WBElement >> makeElementPopUp [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/1/2024 20:01'
+	#'squeak_changestamp' : 'is 6/2/2024 15:57'
 }
 WBElement >> mouseDown: mouseEvent [
 
 	mouseEvent redButtonPressed ifTrue: [
 	(self canvas elementToSpawn) ifNil:
-		[self canvas deactivateElement.
+		[self canvas deactivateElement: mouseEvent.
 		self dragStart: mouseEvent.
 		self addResizeFrame.
 		self showPopUp.

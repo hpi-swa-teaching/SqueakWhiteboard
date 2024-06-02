@@ -9,7 +9,8 @@ Class {
 		'elementToSpawn',
 		'globalColor',
 		'elements',
-		'activeElement'
+		'activeElement',
+		'activeTextbox'
 	],
 	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 5/17/2024 15:53'
@@ -26,11 +27,11 @@ WBCanvas class >> WhiteBoardSize [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/27/2024 11:23'
+	#'squeak_changestamp' : 'is 6/2/2024 15:50'
 }
 WBCanvas >> activeElement [
 
-	^activeElement
+	^ activeElement
 ]
 
 {
@@ -40,6 +41,24 @@ WBCanvas >> activeElement [
 WBCanvas >> activeElement: anElement [
 
 	activeElement := anElement
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/2/2024 15:50'
+}
+WBCanvas >> activeTextbox [
+
+	^ activeTextbox
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/2/2024 15:50'
+}
+WBCanvas >> activeTextbox: aTextbox [
+
+	activeTextbox := aTextbox
 ]
 
 {
@@ -74,12 +93,18 @@ WBCanvas >> clampPointToCanvas: aPoint [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'JK 5/28/2024 14:20'
+	#'squeak_changestamp' : 'is 6/2/2024 15:55'
 }
-WBCanvas >> deactivateElement [
+WBCanvas >> deactivateElement: anEvent [
 
-	self activeElement ifNotNil: [self activeElement deactivateElement.
-		self activeElement: nil]
+	anEvent redButtonPressed ifTrue: [
+		self activeElement ifNotNil: [
+			self activeElement deactivateElement.
+			self activeElement: nil]].
+	anEvent yellowButtonPressed ifTrue: [
+		self activeTextbox ifNotNil: [
+			self activeTextbox deactivateElement.
+			self activeTextbox: nil]]
 ]
 
 {
@@ -216,11 +241,12 @@ WBCanvas >> initialize [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 5/27/2024 21:44'
+	#'squeak_changestamp' : 'is 6/2/2024 15:47'
 }
 WBCanvas >> mouseDown: anEvent [
 
-	self deactivateElement
+	self deactivateElement: anEvent
+	
 ]
 
 {

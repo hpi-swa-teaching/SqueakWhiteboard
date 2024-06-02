@@ -29,6 +29,16 @@ WBTextbox >> borderSize: aSize [
 ]
 
 {
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/2/2024 16:10'
+}
+WBTextbox >> deactivateElement [
+
+	self textField textMorph keyboardFocusChange: false.	
+	super deactivateElement
+]
+
+{
 	#category : #appearance,
 	#'squeak_changestamp' : 'is 6/1/2024 17:36'
 }
@@ -78,7 +88,7 @@ WBTextbox >> extent: anExtent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/1/2024 18:44'
+	#'squeak_changestamp' : 'is 6/2/2024 15:33'
 }
 WBTextbox >> initialize [
 	| textField |
@@ -92,11 +102,12 @@ WBTextbox >> initialize [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/1/2024 20:16'
+	#'squeak_changestamp' : 'is 6/2/2024 15:52'
 }
 WBTextbox >> rightClickFunctionality: evt [
 
-	self textField textMorph mouseDown: evt
+	self canvas activeTextbox: self.
+	self textField mouseDown: evt
 ]
 
 {
