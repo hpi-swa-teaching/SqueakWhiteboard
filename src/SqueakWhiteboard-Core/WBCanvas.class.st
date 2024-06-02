@@ -93,18 +93,25 @@ WBCanvas >> clampPointToCanvas: aPoint [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 6/2/2024 18:11'
+	#'squeak_changestamp' : 'is 6/2/2024 18:55'
 }
-WBCanvas >> deactivateElement: anEvent [
+WBCanvas >> deactivateElement [
 
-	anEvent redButtonPressed ifTrue: [
-		self activeElement ifNotNil: [
-			self activeElement deactivateElement.
-			self activeElement: nil]].
-	anEvent yellowButtonPressed ifTrue: [
-		self activeTextbox ifNotNil: [
-			self activeTextbox deactivateElement: anEvent.
-			self activeTextbox: nil]]
+	self activeElement ifNotNil: [
+		self activeElement deactivateElement.
+		self activeElement: nil]
+
+]
+
+{
+	#category : #'creating elements',
+	#'squeak_changestamp' : 'is 6/2/2024 18:55'
+}
+WBCanvas >> deactivateTextbox [
+
+	self activeTextbox ifNotNil: [
+		self activeTextbox deactivateTextbox.
+		self activeTextbox: nil]
 ]
 
 {
@@ -241,11 +248,13 @@ WBCanvas >> initialize [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 6/2/2024 15:47'
+	#'squeak_changestamp' : 'is 6/2/2024 18:54'
 }
 WBCanvas >> mouseDown: anEvent [
 
-	self deactivateElement: anEvent
+	anEvent redButtonPressed ifTrue: [self deactivateElement].
+	anEvent yellowButtonPressed ifTrue: [self deactivateTextbox]
+	
 	
 ]
 

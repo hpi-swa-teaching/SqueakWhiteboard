@@ -78,9 +78,10 @@ WBElement >> canvas: aCanvas [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'JK 5/28/2024 12:21'
+	#'squeak_changestamp' : 'is 6/2/2024 18:56'
 }
 WBElement >> deactivateElement [
+
 	self removePopup.
 	self removeResizeFrame.
 ]
@@ -210,17 +211,19 @@ WBElement >> makeElementPopUp [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/2/2024 15:57'
+	#'squeak_changestamp' : 'is 6/2/2024 19:02'
 }
 WBElement >> mouseDown: mouseEvent [
 
 	mouseEvent redButtonPressed ifTrue: [
 	(self canvas elementToSpawn) ifNil:
-		[self canvas deactivateElement: mouseEvent.
-		self dragStart: mouseEvent.
-		self addResizeFrame.
-		self showPopUp.
-		self canvas activeElement: self.].
+		[self canvas 
+			deactivateElement;
+			deactivateTextbox.
+		self dragStart: mouseEvent;
+			addResizeFrame;
+			showPopUp.
+		self canvas activeElement: self].
 	(self canvas elementToSpawn) ifNotNil:
 		[self canvas dropElement]].
 	

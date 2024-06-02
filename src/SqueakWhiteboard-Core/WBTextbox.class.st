@@ -30,14 +30,11 @@ WBTextbox >> borderSize: aSize [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/2/2024 18:15'
+	#'squeak_changestamp' : 'is 6/2/2024 19:09'
 }
-WBTextbox >> deactivateElement: evt [
+WBTextbox >> deactivateTextbox [
 
-	"self textField readOnly: true."
-	"self halt."
-	self currentHand releaseKeyboardFocus.
-	super deactivateElement
+	"self currentHand releaseKeyboardFocus"
 ]
 
 {
@@ -104,11 +101,12 @@ WBTextbox >> initialize [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/2/2024 15:52'
+	#'squeak_changestamp' : 'is 6/2/2024 19:07'
 }
 WBTextbox >> rightClickFunctionality: evt [
 
 	self canvas activeTextbox: self.
+	self deactivateElement.
 	self textField mouseDown: evt
 ]
 
