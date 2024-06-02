@@ -28,7 +28,7 @@ WBTextMorphForEditView >> cancelEditsSafely [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/1/2024 19:23'
+	#'squeak_changestamp' : 'is 6/2/2024 15:06'
 }
 WBTextMorphForEditView >> handlesMouseDown: evt [
 
@@ -37,13 +37,15 @@ WBTextMorphForEditView >> handlesMouseDown: evt [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/1/2024 20:25'
+	#'squeak_changestamp' : 'is 6/2/2024 15:11'
 }
 WBTextMorphForEditView >> mouseDown: evt [
-	self halt."
-	evt yellowButtonPressed ifTrue: [
-		(self editor yellowButtonDown: evt) ifTrue:[^self].
-		^ editView yellowButtonActivity: evt shiftPressed]."
-	^ super mouseDown: MouseEvent new
+	"transform rightclick evt into leftclick evt to invoke correct functionality in super class"
+	| leftClickEvt |
+	
+	leftClickEvt := MouseButtonEvent newFrom: evt.
+	leftClickEvt setType: leftClickEvt type  position: leftClickEvt position buttons: leftClickEvt class redButton hand: leftClickEvt hand.
+	leftClickEvt := leftClickEvt transformBy: self.
+	^ super mouseDown: leftClickEvt
 	
 ]

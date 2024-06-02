@@ -91,17 +91,6 @@ WBTextbox >> initialize [
 ]
 
 {
-	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/1/2024 18:26'
-}
-WBTextbox >> postDropRoutine [
-
-	self textField enabled: true
-
-	
-]
-
-{
 	#category : #'event handling',
 	#'squeak_changestamp' : 'is 6/1/2024 20:16'
 }
