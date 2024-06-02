@@ -30,11 +30,13 @@ WBTextbox >> borderSize: aSize [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/2/2024 16:10'
+	#'squeak_changestamp' : 'is 6/2/2024 18:15'
 }
-WBTextbox >> deactivateElement [
+WBTextbox >> deactivateElement: evt [
 
-	self textField textMorph keyboardFocusChange: false.	
+	"self textField readOnly: true."
+	"self halt."
+	self currentHand releaseKeyboardFocus.
 	super deactivateElement
 ]
 

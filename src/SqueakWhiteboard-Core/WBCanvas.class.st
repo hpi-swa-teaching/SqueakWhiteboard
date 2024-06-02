@@ -93,7 +93,7 @@ WBCanvas >> clampPointToCanvas: aPoint [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 6/2/2024 15:55'
+	#'squeak_changestamp' : 'is 6/2/2024 18:11'
 }
 WBCanvas >> deactivateElement: anEvent [
 
@@ -103,7 +103,7 @@ WBCanvas >> deactivateElement: anEvent [
 			self activeElement: nil]].
 	anEvent yellowButtonPressed ifTrue: [
 		self activeTextbox ifNotNil: [
-			self activeTextbox deactivateElement.
+			self activeTextbox deactivateElement: anEvent.
 			self activeTextbox: nil]]
 ]
 
