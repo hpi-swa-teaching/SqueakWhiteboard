@@ -39,16 +39,16 @@ WBPluggableTextMorphPlus >> initialize [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/2/2024 19:20'
+	#'squeak_changestamp' : 'is 6/2/2024 19:37'
 }
 WBPluggableTextMorphPlus >> mouseDown: evt [
 "transform rightclick evt into leftclick evt to invoke correct functionality in super class"
 	| leftClickEvt |
 	
 	leftClickEvt := MouseButtonEvent newFrom: evt.
-	leftClickEvt setType: leftClickEvt type  position: leftClickEvt position buttons: leftClickEvt class redButton hand: leftClickEvt hand.
+	leftClickEvt setType: leftClickEvt type position: leftClickEvt position which: 4 buttons: leftClickEvt class redButton hand: leftClickEvt hand stamp: leftClickEvt timeStamp.
 	leftClickEvt := leftClickEvt transformBy: self.
-	
+
 	^ super mouseDown: leftClickEvt
 ]
 
