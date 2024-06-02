@@ -1,46 +1,40 @@
 [
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'circle.png'
+		],
+		#encoding : Class [ #PNGReadWriter ]
+	},
 	SquotTonelMapper {
 		#package : MCPackage {
-			#name : 'SqueakWhiteboard-Core'
+			#name : 'SqueakWhiteboardTests'
 		},
 		#path : FSAbsolutePath [
 			'src'
 		]
 	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'SqueakWhiteboard-Tests'
-		},
-		#path : @4
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'colorsToolbar.png'
+		],
+		#encoding : @4
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
 			'square2.png'
 		],
-		#encoding : Class [ #PNGReadWriter ]
+		#encoding : @4
+	},
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'SqueakWhiteboard'
+		},
+		#path : @7
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
 			'line.png'
 		],
-		#encoding : @9
-	},
-	SquotImageMapper {
-		#path : FSAbsolutePath [
-			'circle.png'
-		],
-		#encoding : @9
-	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'BaselineOfSqueakWhiteboard'
-		},
-		#path : @4
-	},
-	SquotImageMapper {
-		#path : FSAbsolutePath [
-			'colorsToolbar.png'
-		],
-		#encoding : @9
+		#encoding : @4
 	}
 ]
