@@ -28,9 +28,10 @@ WBElement class >> newWithCanvas: aCanvas [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 5/28/2024 12:21'
+	#'squeak_changestamp' : 'si 6/3/2024 14:29'
 }
 WBElement >> addResizeFrame [
+
 	self resizeFrame: (WBResizeFrame newWithParent: self).
 	
 	
@@ -96,11 +97,22 @@ WBElement >> defaultSize [
 ]
 
 {
+	#category : #delete,
+	#'squeak_changestamp' : 'si 6/3/2024 14:15'
+}
+WBElement >> delete [
+
+	self canvas removeElement: self.	
+	super delete
+]
+
+{
 	#category : #drag,
-	#'squeak_changestamp' : 'JK 5/26/2024 23:47'
+	#'squeak_changestamp' : 'si 6/3/2024 15:49'
 }
 WBElement >> dragEnd: anEvent [
-	self removeDropShadow.
+
+	self removeDropShadow
 ]
 
 {
@@ -270,7 +282,7 @@ WBElement >> popUpMenu: aPopUpMenu [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/1/2024 17:43'
+	#'squeak_changestamp' : 'si 6/3/2024 14:05'
 }
 WBElement >> postDropRoutine [
 
@@ -314,11 +326,11 @@ WBElement >> resizeFrame: anObject [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/1/2024 20:01'
+	#'squeak_changestamp' : 'si 6/3/2024 15:34'
 }
 WBElement >> rightClickFunctionality: evt [
 
-	^ SubclassResponsibility
+	self SubclassResponsibility
 ]
 
 {

@@ -100,7 +100,7 @@ WBToolbar >> canvas: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/28/2024 20:00'
+	#'squeak_changestamp' : 'si 6/3/2024 13:39'
 }
 WBToolbar >> createButtons [
 	
@@ -109,7 +109,8 @@ WBToolbar >> createButtons [
 		self getCircleButton.
 		self getLineButton.
 		self getColorsButton.
-		self getTextboxButton.})
+		self getTextboxButton.
+		self getNoteButton.})
 
 	
 ]
@@ -161,6 +162,19 @@ WBToolbar >> getLineButton [
 			(self canvas images resize: (WBImage loadLineButtonImage) to: self buttonSize*0.8));
 			yourself.
 			
+]
+
+{
+	#category : #getButton,
+	#'squeak_changestamp' : 'si 6/3/2024 13:38'
+}
+WBToolbar >> getNoteButton [
+
+	^WBToolbarButton new
+			number: 5;
+			image: (ImageMorph new image: 
+			(self canvas images resize: (WBImage loadCircleButtonImage) to: self buttonSize*0.8));
+			yourself.
 ]
 
 {
