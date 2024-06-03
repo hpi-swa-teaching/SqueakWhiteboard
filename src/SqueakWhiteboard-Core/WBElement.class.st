@@ -10,12 +10,31 @@ Class {
 		'popUpMenu',
 		'resizeFrame'
 	],
+	#classVars : [
+		'MinSize'
+	],
 	#classInstVars : [
 		'globalColor'
 	],
 	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 5/17/2024 15:58'
 }
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JK 6/3/2024 14:34'
+}
+WBElement class >> minSize [
+	^MinSize ifNil: [MinSize := (WBResizeFrame resizeWidth@WBResizeFrame resizeWidth)].
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JK 6/3/2024 14:28'
+}
+WBElement class >> minSize: anObject [
+	MinSize := anObject
+]
 
 {
 	#category : #'instance creation',
@@ -146,14 +165,14 @@ WBElement >> dragStart: anEvent [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 6/3/2024 14:20'
+	#'squeak_changestamp' : 'JK 6/3/2024 14:34'
 }
 WBElement >> extent: aSize [
 	
 	|newSize|
 	newSize := Point new.
-	newSize := (((aSize x) min: (self canvas bottomRight x - self position x)) max: 0)
-		@(((aSize y) min: (self canvas bottomRight y - self position y)) max: 0).
+	newSize := (((aSize x) min: (self canvas bottomRight x - self position x)) max: (self class minSize x))
+		@(((aSize y) min: (self canvas bottomRight y - self position y)) max: (self class minSize y)).
 	
 	super extent: newSize.
 	self setPopupPosition.
