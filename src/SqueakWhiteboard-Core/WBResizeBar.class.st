@@ -27,17 +27,17 @@ WBResizeBar >> defaultCursor [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 5/27/2024 16:21'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:01'
 }
-WBResizeBar >> element [
+WBResizeBar >> frame [
 	^ element
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 5/27/2024 16:21'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:02'
 }
-WBResizeBar >> element: anObject [
+WBResizeBar >> frame: anObject [
 	element := anObject
 ]
 
@@ -59,13 +59,13 @@ WBResizeBar >> handlesMouseOver: aEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JK 6/3/2024 13:16'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:02'
 }
 WBResizeBar >> initializeWithParent: aMorph [
 	super initialize.
 	self
  		extent: 20@20;
-		element: aMorph;
+		frame: aMorph;
 		setLayout;
 		color: Color transparent.
 		
