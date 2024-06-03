@@ -100,16 +100,17 @@ WBToolbar >> canvas: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/3/2024 21:16'
+	#'squeak_changestamp' : 'si 6/3/2024 21:26'
 }
 WBToolbar >> createButtons [
 	
 	self placeButtons: (OrderedCollection withAll: {
 		self getRectangleButton.
 		self getLineButton.
-		self getColorsButton.
+		self getCircleButton.
+		self getNoteButton.
 		self getTextboxButton.
-		self getNoteButton.})
+		self getColorsButton.})
 
 	
 ]
