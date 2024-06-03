@@ -32,7 +32,7 @@ WBPluggableTextMorphPlus >> enabled: aBoolean [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/3/2024 15:24'
+	#'squeak_changestamp' : 'is 6/3/2024 19:39'
 }
 WBPluggableTextMorphPlus >> handlesMouseDown: evt [
 

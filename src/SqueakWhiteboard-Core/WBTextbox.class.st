@@ -1,3 +1,6 @@
+"
+This class is a hollow rectangular morph, that has a WBPluggableTextMorphPlus to display text
+"
 Class {
 	#name : #WBTextbox,
 	#superclass : #WBElement,
@@ -7,7 +10,8 @@ Class {
 		'lastMouseClick',
 		'doubleClickMaxDelta'
 	],
-	#category : #'SqueakWhiteboard-Core'
+	#category : #'SqueakWhiteboard-Core',
+	#'squeak_changestamp' : 'is 6/3/2024 19:42'
 }
 
 {
@@ -169,11 +173,12 @@ WBTextbox >> lastMouseClick: evt [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/3/2024 18:49'
+	#'squeak_changestamp' : 'is 6/3/2024 19:35'
 }
 WBTextbox >> mouseDown: evt [
 	
 	super mouseDown: evt.
+	evt hand showTemporaryCursor: nil.
 	self detectDoubleClick: evt;
 		 lastMouseClick: evt.
 	
