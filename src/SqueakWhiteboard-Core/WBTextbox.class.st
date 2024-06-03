@@ -1,15 +1,21 @@
+"
+This class is a hollow rectangular morph, that has a WBPluggableTextMorphPlus to display text
+"
 Class {
 	#name : #WBTextbox,
 	#superclass : #WBElement,
 	#instVars : [
 		'borderSize',
-		'textField'
+		'textField',
+		'lastMouseClick',
+		'doubleClickMaxDelta'
 	],
-	#category : #'SqueakWhiteboard-Core'
+	#category : #'SqueakWhiteboard-Core',
+	#'squeak_changestamp' : 'is 6/3/2024 19:42'
 }
 
 {
-	#category : #appearance,
+	#category : #layout,
 	#'squeak_changestamp' : 'is 5/29/2024 01:00'
 }
 WBTextbox >> borderSize [
@@ -18,7 +24,7 @@ WBTextbox >> borderSize [
 ]
 
 {
-	#category : #appearance,
+	#category : #layout,
 	#'squeak_changestamp' : 'is 5/29/2024 00:58'
 }
 WBTextbox >> borderSize: aSize [
@@ -30,15 +36,16 @@ WBTextbox >> borderSize: aSize [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/2/2024 19:26'
+	#'squeak_changestamp' : 'is 6/3/2024 17:56'
 }
 WBTextbox >> deactivateTextbox [
 
-	self currentHand releaseKeyboardFocus
+	self currentHand releaseKeyboardFocus.
+	self textField enabled: false
 ]
 
 {
-	#category : #appearance,
+	#category : #layout,
 	#'squeak_changestamp' : 'is 6/1/2024 17:36'
 }
 WBTextbox >> defaultSize [
@@ -47,8 +54,43 @@ WBTextbox >> defaultSize [
 ]
 
 {
-	#category : #appearance,
-	#'squeak_changestamp' : 'is 5/29/2024 01:11'
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 18:48'
+}
+WBTextbox >> detectDoubleClick: evt [
+	| delta |
+	
+	self lastMouseClick ifNotNil: [delta := evt timeStamp - self lastMouseClick timeStamp].
+	(delta isNumber and: [delta < self doubleClickMaxDelta])
+		ifTrue: [self textField enabled: true;
+					mouseDown: evt.
+				self deactivateElement.
+				self canvas activeTextbox: self].
+			
+	
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 17:48'
+}
+WBTextbox >> doubleClickMaxDelta [
+
+	^ doubleClickMaxDelta ifNil: [doubleClickMaxDelta := 200]
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 17:25'
+}
+WBTextbox >> doubleClickMaxDelta: aDelta [
+
+	doubleClickMaxDelta := aDelta
+]
+
+{
+	#category : #layout,
+	#'squeak_changestamp' : 'is 6/3/2024 14:44'
 }
 WBTextbox >> drawOn: aCanvas [
 
@@ -56,7 +98,6 @@ WBTextbox >> drawOn: aCanvas [
 	
 	outerRectangle := self bounds.
    	innerRectangle := outerRectangle insetBy: self borderSize.
-	
 	vertices := {
             outerRectangle topLeft.
             outerRectangle topRight.
@@ -86,28 +127,61 @@ WBTextbox >> extent: anExtent [
 ]
 
 {
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 18:43'
+}
+WBTextbox >> handlesMouseDown: evt [
+
+	^ (self textField enabled) not
+]
+
+{
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/2/2024 15:33'
+	#'squeak_changestamp' : 'is 6/3/2024 18:56'
 }
 WBTextbox >> initialize [
 	| textField |
+	
 	super initialize.
 	self bounds: (0@0 extent: self defaultSize).
 	textField := WBPluggableTextMorphPlus new.
 	textField extent: self defaultSize - ((self borderSize * 2)@(self borderSize * 2)).
 	self addMorphCentered: textField.
-	self textField: textField
+	self textField: textField.
+	self textField textbox: self
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/2/2024 19:07'
+	#'squeak_changestamp' : 'is 6/3/2024 17:28'
 }
-WBTextbox >> rightClickFunctionality: evt [
+WBTextbox >> lastMouseClick [
 
-	self canvas activeTextbox: self.
-	self deactivateElement.
-	self textField mouseDown: evt
+	^ lastMouseClick
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 17:29'
+}
+WBTextbox >> lastMouseClick: evt [
+
+	lastMouseClick := evt
+
+	
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 19:35'
+}
+WBTextbox >> mouseDown: evt [
+	
+	super mouseDown: evt.
+	evt hand showTemporaryCursor: nil.
+	self detectDoubleClick: evt;
+		 lastMouseClick: evt.
+	
 ]
 
 {

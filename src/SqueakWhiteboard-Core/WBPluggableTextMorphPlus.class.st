@@ -4,17 +4,39 @@ This is a custom version of the PluggableTextMorphPlus class
 Class {
 	#name : #WBPluggableTextMorphPlus,
 	#superclass : #PluggableTextMorphPlus,
+	#instVars : [
+		'enabled',
+		'textbox'
+	],
 	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 6/1/2024 17:19'
 }
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/2/2024 15:10'
+	#'squeak_changestamp' : 'is 6/3/2024 15:26'
+}
+WBPluggableTextMorphPlus >> enabled [
+
+	^ enabled ifNil: [enabled := false]
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 15:28'
+}
+WBPluggableTextMorphPlus >> enabled: aBoolean [
+
+	enabled := aBoolean
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 19:39'
 }
 WBPluggableTextMorphPlus >> handlesMouseDown: evt [
 
-	^ false
+	^ self enabled
 ]
 
 {
@@ -39,17 +61,11 @@ WBPluggableTextMorphPlus >> initialize [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/2/2024 19:37'
+	#'squeak_changestamp' : 'is 6/3/2024 18:39'
 }
 WBPluggableTextMorphPlus >> mouseDown: evt [
-"transform rightclick evt into leftclick evt to invoke correct functionality in super class"
-	| leftClickEvt |
-	
-	leftClickEvt := MouseButtonEvent newFrom: evt.
-	leftClickEvt setType: leftClickEvt type position: leftClickEvt position which: 4 buttons: leftClickEvt class redButton hand: leftClickEvt hand stamp: leftClickEvt timeStamp.
-	leftClickEvt := leftClickEvt transformBy: self.
 
-	^ super mouseDown: leftClickEvt
+	^ super mouseDown: evt.
 ]
 
 {
@@ -59,4 +75,22 @@ WBPluggableTextMorphPlus >> mouseDown: evt [
 WBPluggableTextMorphPlus >> textMorphClass [
 
 	^ WBTextMorphForEditView
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/3/2024 18:55'
+}
+WBPluggableTextMorphPlus >> textbox [
+
+	^ textbox
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/3/2024 18:55'
+}
+WBPluggableTextMorphPlus >> textbox: aTextbox [
+
+	textbox := aTextbox
 ]
