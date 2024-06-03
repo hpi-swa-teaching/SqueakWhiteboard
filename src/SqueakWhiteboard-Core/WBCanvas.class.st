@@ -117,12 +117,11 @@ WBCanvas >> deactivateTextbox [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 6/1/2024 17:46'
+	#'squeak_changestamp' : 'is 6/3/2024 21:15'
 }
 WBCanvas >> dropElement [
 
-	self elementToSpawn removeDropShadow;
-		postDropRoutine.
+	self elementToSpawn removeDropShadow.
 	self elementToSpawn: nil
 ]
 
