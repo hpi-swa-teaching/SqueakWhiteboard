@@ -27,24 +27,6 @@ WBEdgeOfLine >> buttonsForPopUpBar [
 ]
 
 {
-	#category : #deleting,
-	#'squeak_changestamp' : 'si 5/20/2024 13:46'
-}
-WBEdgeOfLine >> delete [
-
-	self line delete
-]
-
-{
-	#category : #deleting,
-	#'squeak_changestamp' : 'si 5/20/2024 13:49'
-}
-WBEdgeOfLine >> deleteSelf [
-
-	super delete
-]
-
-{
 	#category : #mouseEvents,
 	#'squeak_changestamp' : 'si 5/20/2024 15:37'
 }
