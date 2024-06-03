@@ -9,20 +9,20 @@ Class {
 
 {
 	#category : #popUpBar,
-	#'squeak_changestamp' : 'ACL 5/31/2024 11:13'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:02'
 }
 WBEdgeOfLine >> buttonsForPopUpBar [
 
 	^OrderedCollection new
 		add: (WBDeleteButton new
 			canvas: self canvas;
-			element: self line);
+			frame: self line);
 		add: (WBCopyButton new
 			canvas: self canvas;
-			element: self line);
+			frame: self line);
 		add: (WBColorPaletteButton new
 			canvas: self canvas;
-			element: self line);
+			frame: self line);
 		yourself.
 ]
 

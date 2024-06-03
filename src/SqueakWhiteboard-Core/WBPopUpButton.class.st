@@ -9,18 +9,18 @@ Class {
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/23/2024 22:20'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:01'
 }
-WBPopUpButton >> element [
+WBPopUpButton >> frame [
 
 	^element
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/23/2024 22:20'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:02'
 }
-WBPopUpButton >> element: anElement [
+WBPopUpButton >> frame: anElement [
 
 	element := anElement
 ]

@@ -2,8 +2,8 @@ Class {
 	#name : #WBResizeHandle,
 	#superclass : #EllipseMorph,
 	#instVars : [
-		'element',
-		'lastPosition'
+		'lastPosition',
+		'frame'
 	],
 	#category : #'SqueakWhiteboard-Core'
 }
@@ -27,18 +27,18 @@ WBResizeHandle >> defaultCursor [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 5/27/2024 16:21'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:01'
 }
-WBResizeHandle >> element [
-	^ element
+WBResizeHandle >> frame [
+	^ frame
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 5/27/2024 16:21'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:02'
 }
-WBResizeHandle >> element: anObject [
-	element := anObject
+WBResizeHandle >> frame: anObject [
+	frame := anObject
 ]
 
 {
@@ -59,13 +59,13 @@ WBResizeHandle >> handlesMouseOver: aEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JK 6/3/2024 12:53'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:02'
 }
 WBResizeHandle >> initializeWithParent: aMorph [
 	super initialize.
 	self
  		extent: WBResizeFrame resizeWidth@WBResizeFrame resizeWidth;
-		element: aMorph;
+		frame: aMorph;
 		setLayout;
 		color: Color white;
 		borderWidth: 2;
@@ -136,16 +136,16 @@ WBResizeHandle >> resize: movement [
 
 {
 	#category : #cursor,
-	#'squeak_changestamp' : 'JK 5/27/2024 16:08'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:03'
 }
 WBResizeHandle >> resizeCursor [
-	Cursor move show.
+	^SubclassResponsibility
 ]
 
 {
 	#category : #sizing,
-	#'squeak_changestamp' : 'is 5/28/2024 15:33'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:04'
 }
 WBResizeHandle >> setLayout [
-	self center: element position.
+	^SubclassResponsibility
 ]

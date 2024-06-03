@@ -10,31 +10,12 @@ Class {
 		'popUpMenu',
 		'resizeFrame'
 	],
-	#classVars : [
-		'MinSize'
-	],
 	#classInstVars : [
 		'globalColor'
 	],
 	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 5/17/2024 15:58'
 }
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'JK 6/3/2024 14:34'
-}
-WBElement class >> minSize [
-	^MinSize ifNil: [MinSize := (WBResizeFrame resizeWidth@WBResizeFrame resizeWidth)].
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'JK 6/3/2024 14:28'
-}
-WBElement class >> minSize: anObject [
-	MinSize := anObject
-]
 
 {
 	#category : #'instance creation',
@@ -59,20 +40,20 @@ WBElement >> addResizeFrame [
 
 {
 	#category : #popUpBar,
-	#'squeak_changestamp' : 'ACL 5/31/2024 10:56'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:02'
 }
 WBElement >> buttonsForPopUpBar [
 
 	^OrderedCollection new
 		add: (WBDeleteButton new
 			canvas: self canvas;
-			element: self);
+			frame: self);
 		add: (WBCopyButton new
 			canvas: self canvas;
-			element: self);
+			frame: self);
 		add: (WBColorPaletteButton new
 			canvas: self canvas;
-			element: self);
+			frame: self);
 		yourself.
 	
 ]
@@ -165,16 +146,11 @@ WBElement >> dragStart: anEvent [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 6/3/2024 14:34'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:14'
 }
 WBElement >> extent: aSize [
 	
-	|newSize|
-	newSize := Point new.
-	newSize := (((aSize x) min: (self canvas bottomRight x - self position x)) max: (self class minSize x))
-		@(((aSize y) min: (self canvas bottomRight y - self position y)) max: (self class minSize y)).
-	
-	super extent: newSize.
+	super extent: aSize.
 	self setPopupPosition.
 	
 	
@@ -290,22 +266,6 @@ WBElement >> popUpMenu: aPopUpMenu [
 	popUpMenu := aPopUpMenu.
 	popUpMenu ifNotNil: 
 		[self addMorphBack: popUpMenu]
-]
-
-{
-	#category : #resize,
-	#'squeak_changestamp' : 'JK 6/3/2024 14:03'
-}
-WBElement >> position: aPosition [
-	|newPosition|
-	newPosition := Point new.
-	newPosition := ((aPosition x max: (self canvas position x)) max: 0)
-		@((aPosition y max: (self canvas position y)) max: 0).
-	
-	super position: newPosition.
-	
-	
-
 ]
 
 {

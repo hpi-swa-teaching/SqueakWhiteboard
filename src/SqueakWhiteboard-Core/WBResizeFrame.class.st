@@ -2,8 +2,8 @@ Class {
 	#name : #WBResizeFrame,
 	#superclass : #Morph,
 	#instVars : [
-		'parent',
-		'handles'
+		'handles',
+		'element'
 	],
 	#classVars : [
 		'ResizeWidth'
@@ -55,13 +55,29 @@ WBResizeFrame >> createHandles [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'JK 6/3/2024 19:10'
+}
+WBResizeFrame >> element [
+	^ element
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JK 6/3/2024 19:10'
+}
+WBResizeFrame >> element: anObject [
+	element := anObject
+]
+
+{
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 6/3/2024 14:21'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:10'
 }
 WBResizeFrame >> extent: aSize [
 
-	self parent extent: aSize.
-	super extent: parent extent.
+	self element extent: aSize.
+	super extent: element extent.
 	self positionHandles.
 ]
 
@@ -83,44 +99,28 @@ WBResizeFrame >> handles: anObject [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JK 5/28/2024 22:10'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:10'
 }
 WBResizeFrame >> initializeWithParent: aMorph [
 	super initialize.
 	self
-		parent: aMorph;
-		bounds: parent bounds;
+		element: aMorph;
+		bounds: element bounds;
 		color: Color transparent;
 		borderColor: Color gray;
 		borderWidth: 1;
 		createHandles.
-	self parent addMorph: self.
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'JK 5/28/2024 11:11'
-}
-WBResizeFrame >> parent [
-	^ parent
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'JK 5/28/2024 11:11'
-}
-WBResizeFrame >> parent: anObject [
-	parent := anObject
+	self element addMorph: self.
 ]
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 6/3/2024 14:01'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:10'
 }
 WBResizeFrame >> position: aPosition [
 	
-	self parent position: aPosition.
-	super position: parent position.
+	self element position: aPosition.
+	super position: element position.
 	self positionHandles.
 ]
 
@@ -130,4 +130,50 @@ WBResizeFrame >> position: aPosition [
 }
 WBResizeFrame >> positionHandles [
 	self handles ifNotNil: [self handles do: [:handle | handle setLayout]]
+]
+
+{
+	#category : #resize,
+	#'squeak_changestamp' : 'JK 6/3/2024 19:09'
+}
+WBResizeFrame >> resizeBottom: aYCoordinate [
+	
+	|newYCoordinate|
+	newYCoordinate := (aYCoordinate min: self element canvas bottom) max: self top.
+	self height: newYCoordinate - self top.
+]
+
+{
+	#category : #resize,
+	#'squeak_changestamp' : 'JK 6/3/2024 19:09'
+}
+WBResizeFrame >> resizeLeft: aXCoordinate [
+	
+	|newXCoordinate|
+	newXCoordinate := (aXCoordinate min: self right) max: self element canvas left.
+	self width: self right - newXCoordinate.
+	self left: newXCoordinate.
+]
+
+{
+	#category : #resize,
+	#'squeak_changestamp' : 'JK 6/3/2024 19:09'
+}
+WBResizeFrame >> resizeRight: aXCoordinate [
+	
+	|newXCoordinate|
+	newXCoordinate := (aXCoordinate min:  self element canvas right) max: self left. 
+	self width: newXCoordinate - self left.
+]
+
+{
+	#category : #resize,
+	#'squeak_changestamp' : 'JK 6/3/2024 19:09'
+}
+WBResizeFrame >> resizeTop: aYCoordinate [
+	
+	|newYCoordinate|
+	newYCoordinate := (aYCoordinate min: self bottom) max: self element canvas top.
+	self height: self bottom - newYCoordinate.
+	self top: newYCoordinate.
 ]

@@ -6,13 +6,13 @@ Class {
 
 {
 	#category : #clicking,
-	#'squeak_changestamp' : 'is 5/29/2024 01:27'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:01'
 }
 WBColorButton >> clickFunctionality: anEvent [
 
 
-	((owner owner element class == WBRectangle) | (owner owner element class == WBCircle) | (owner owner element class == WBEdgeOfLine) | (owner owner element class == WBLine) | (owner owner element class == WBTextbox))
-		ifTrue: [owner owner element color: self color]
+	((owner owner frame class == WBRectangle) | (owner owner frame class == WBCircle) | (owner owner frame class == WBEdgeOfLine) | (owner owner frame class == WBLine) | (owner owner frame class == WBTextbox))
+		ifTrue: [owner owner frame color: self color]
 		ifFalse: [self canvas globalColor: self color.
 				owner delete.].
 ]

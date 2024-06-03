@@ -113,18 +113,18 @@ WBButton >> clickedColor: aColor [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/24/2024 13:35'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:01'
 }
-WBButton >> element [
+WBButton >> frame [
 
 	^element
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/24/2024 13:36'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:02'
 }
-WBButton >> element: anElement [
+WBButton >> frame: anElement [
 
 	element := anElement
 ]
