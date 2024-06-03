@@ -5,6 +5,9 @@ Class {
 		'parent',
 		'handles'
 	],
+	#classVars : [
+		'ResizeWidth'
+	],
 	#category : #'SqueakWhiteboard-Core'
 }
 
@@ -18,25 +21,47 @@ WBResizeFrame class >> newWithParent: aMorph [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'JK 6/3/2024 12:51'
+}
+WBResizeFrame class >> resizeWidth [
+	^ ResizeWidth ifNil: [ResizeWidth := 20]
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JK 6/3/2024 12:52'
+}
+WBResizeFrame class >> resizeWidth: aNumber [
+	ResizeWidth := aNumber
+	
+]
+
+{
 	#category : #initialization,
-	#'squeak_changestamp' : 'JK 5/28/2024 11:59'
+	#'squeak_changestamp' : 'JK 6/3/2024 13:13'
 }
 WBResizeFrame >> createHandles [
-	self handles: (Array
-		with: (WBResizeTopLeft newWithParent: self)
-		with: (WBResizeTopRight newWithParent: self)
-		with: (WBResizeBottomLeft newWithParent: self)
-		with: (WBResizeBottomRight newWithParent: self)
-	).
+	self handles: OrderedCollection new.
+	self handles
+		add: (WBResizeTopLeft newWithParent: self);
+		add: (WBResizeTopRight newWithParent: self);
+		add: (WBResizeBottomLeft newWithParent: self);
+		add: (WBResizeBottomRight newWithParent: self);
+		add: (WBResizeLeft newWithParent: self);
+		add: (WBResizeRight newWithParent: self);
+		add: (WBResizeTop newWithParent: self);
+		add: (WBResizeBottom newWithParent: self).
 ]
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 5/28/2024 12:27'
+	#'squeak_changestamp' : 'JK 6/3/2024 14:21'
 }
 WBResizeFrame >> extent: aSize [
-	super extent: aSize.
+
 	self parent extent: aSize.
+	super extent: parent extent.
 	self positionHandles.
 ]
 
@@ -90,11 +115,12 @@ WBResizeFrame >> parent: anObject [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 5/28/2024 12:27'
+	#'squeak_changestamp' : 'JK 6/3/2024 14:01'
 }
 WBResizeFrame >> position: aPosition [
+	
 	self parent position: aPosition.
-	super position: aPosition.
+	super position: parent position.
 	self positionHandles.
 ]
 

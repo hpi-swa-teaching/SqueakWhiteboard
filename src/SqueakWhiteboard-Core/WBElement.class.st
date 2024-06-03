@@ -146,11 +146,16 @@ WBElement >> dragStart: anEvent [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 5/29/2024 01:02'
+	#'squeak_changestamp' : 'JK 6/3/2024 14:20'
 }
 WBElement >> extent: aSize [
-
-	super extent: aSize.
+	
+	|newSize|
+	newSize := Point new.
+	newSize := (((aSize x) min: (self canvas bottomRight x - self position x)) max: 0)
+		@(((aSize y) min: (self canvas bottomRight y - self position y)) max: 0).
+	
+	super extent: newSize.
 	self setPopupPosition.
 	
 	
@@ -186,12 +191,12 @@ WBElement >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/28/2024 10:22'
+	#'squeak_changestamp' : 'JK 6/3/2024 14:11'
 }
 WBElement >> initializeWithCanvas: aCanvas [
-
-	super initialize.
-	self canvas: aCanvas
+	
+	self canvas: aCanvas.
+	self initialize.
 ]
 
 {
@@ -266,6 +271,22 @@ WBElement >> popUpMenu: aPopUpMenu [
 	popUpMenu := aPopUpMenu.
 	popUpMenu ifNotNil: 
 		[self addMorphBack: popUpMenu]
+]
+
+{
+	#category : #resize,
+	#'squeak_changestamp' : 'JK 6/3/2024 14:03'
+}
+WBElement >> position: aPosition [
+	|newPosition|
+	newPosition := Point new.
+	newPosition := ((aPosition x max: (self canvas position x)) max: 0)
+		@((aPosition y max: (self canvas position y)) max: 0).
+	
+	super position: newPosition.
+	
+	
+
 ]
 
 {
