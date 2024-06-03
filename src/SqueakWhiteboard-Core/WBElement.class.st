@@ -268,15 +268,6 @@ WBElement >> popUpMenu: aPopUpMenu [
 ]
 
 {
-	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/1/2024 17:43'
-}
-WBElement >> postDropRoutine [
-
-	^ SubclassResponsibility
-]
-
-{
 	#category : #popUpBar,
 	#'squeak_changestamp' : 'JK 5/27/2024 11:14'
 }
