@@ -13,7 +13,7 @@ Class {
 
 {
 	#category : #popUpBar,
-	#'squeak_changestamp' : 'si 6/3/2024 12:25'
+	#'squeak_changestamp' : 'si 6/3/2024 18:39'
 }
 WBPolygonElement >> buttonsForPopUpBar [
 
@@ -21,10 +21,10 @@ WBPolygonElement >> buttonsForPopUpBar [
 		add: (WBDeleteButton new
 			canvas: self canvas;
 			element: self);
-		add: (WBColorPaletteButton new
+		add: (WBCopyButton new
 			canvas: self canvas;
 			element: self);
-		add: (WBCopyButton new
+		add: (WBColorPaletteButton new
 			canvas: self canvas;
 			element: self);
 		yourself.
@@ -122,11 +122,11 @@ WBPolygonElement >> dragStart: anEvent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/3/2024 12:21'
+	#'squeak_changestamp' : 'si 6/3/2024 19:05'
 }
 WBPolygonElement >> edges [
 
-	^edges
+	^edges ifNil: [edges := OrderedCollection new]
 ]
 
 {
@@ -148,27 +148,17 @@ WBPolygonElement >> handlesMouseDown: anEvent [
 ]
 
 {
-	#category : #EventHandeling,
-	#'squeak_changestamp' : 'si 6/3/2024 12:24'
-}
-WBPolygonElement >> handlesMouseOver: anEvent [
-
-	^true
-]
-
-{
 	#category : #popUpBar,
-	#'squeak_changestamp' : 'si 6/3/2024 16:00'
+	#'squeak_changestamp' : 'si 6/3/2024 18:45'
 }
 WBPolygonElement >> makeElementPopUp [
 
 	self popUpMenu: (WBElementPopUp new
 		setDefaultValues;
-		comeToFront;
 		addButtons: self buttonsForPopUpBar;
 		yourself).
-	self setPopupPosition
-	
+	self addMorph: self popUpMenu.
+	self setPopupPosition.
 ]
 
 {
@@ -186,24 +176,6 @@ WBPolygonElement >> mouseDown: anEvent [
 		self canvas activeElement: self].
 	(self canvas elementToSpawn) ifNotNil:
 		[self canvas dropElement]
-]
-
-{
-	#category : #EventHandeling,
-	#'squeak_changestamp' : 'si 6/3/2024 12:24'
-}
-WBPolygonElement >> mouseEnter: anEvent [
-
-	self edges do: [:m| m show]
-]
-
-{
-	#category : #EventHandeling,
-	#'squeak_changestamp' : 'si 6/3/2024 12:24'
-}
-WBPolygonElement >> mouseLeave: anEvent [
-
-	self edges do: [:m| m hide]
 ]
 
 {

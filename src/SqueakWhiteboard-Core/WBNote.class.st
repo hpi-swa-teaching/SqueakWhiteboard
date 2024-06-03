@@ -109,12 +109,11 @@ WBNote >> extent: aSize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/3/2024 12:27'
+	#'squeak_changestamp' : 'si 6/3/2024 19:02'
 }
 WBNote >> initialize [
 
 	super initialize.
-	self edges: OrderedCollection new.
 	self sizeOfNote: self class initialSizeOfNote * 1.5.
 	self sizeOfCorner: self class initialSizeOfCorner * 1.5.
 	self lineColor: self color muchDarker.
