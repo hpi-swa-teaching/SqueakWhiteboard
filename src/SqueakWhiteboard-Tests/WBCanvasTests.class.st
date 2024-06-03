@@ -1,30 +1,55 @@
 Class {
 	#name : #WBCanvasTests,
 	#superclass : #TestCase,
+	#instVars : [
+		'canvas'
+	],
 	#category : #'SqueakWhiteboard-Tests'
 }
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'JK 6/3/2024 21:15'
+}
+WBCanvasTests >> canvas [
+	^ canvas
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JK 6/3/2024 21:15'
+}
+WBCanvasTests >> canvas: anObject [
+	canvas := anObject
+]
+
+{
 	#category : #setUp,
-	#'squeak_changestamp' : 'is 6/2/2024 00:44'
+	#'squeak_changestamp' : 'JK 6/3/2024 21:12'
 }
 WBCanvasTests >> setUp [
+
+	self canvas: WBCanvas new.
 
 ]
 
 {
 	#category : #tearDown,
-	#'squeak_changestamp' : 'is 6/2/2024 00:44'
+	#'squeak_changestamp' : 'JK 6/3/2024 21:12'
 }
 WBCanvasTests >> tearDown [
+
+	self canvas owner delete.
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'is 6/2/2024 00:42'
+	#'squeak_changestamp' : 'JK 6/3/2024 21:13'
 }
-WBCanvasTests >> testTest [
+WBCanvasTests >> testRectangleCreate [
 
-	self assert: 1 = 1
+	|rectangle|
+	rectangle := WBRectangle newWithCanvas: self canvas.
 	
+	self assert: rectangle class = WBRectangle
 ]

@@ -58,19 +58,6 @@ WBElementResizeTests >> testOpenFrame [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'JK 6/3/2024 16:23'
-}
-WBElementResizeTests >> testRectangleCreate [
-
-	|rectangle|
-	rectangle := WBRectangle newWithCanvas: self canvas.
-	
-	self assert: rectangle class = WBElement
-	
-]
-
-{
-	#category : #tests,
 	#'squeak_changestamp' : 'JK 6/3/2024 20:25'
 }
 WBElementResizeTests >> testRectangleResizeBottom [
