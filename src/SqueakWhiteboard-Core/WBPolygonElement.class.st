@@ -5,7 +5,8 @@ Class {
 		'edges',
 		'canvas',
 		'dragOffset',
-		'popUpMenu'
+		'popUpMenu',
+		'resizeFrame'
 	],
 	#category : #'SqueakWhiteboard-Core'
 }
@@ -49,13 +50,12 @@ WBPolygonElement >> canvas: aCanvas [
 
 {
 	#category : #EventHandeling,
-	#'squeak_changestamp' : 'si 6/3/2024 15:31'
+	#'squeak_changestamp' : 'si 6/3/2024 16:00'
 }
 WBPolygonElement >> deactivateElement [
 
-	self halt.
 	self removePopup.
-	"self removeResizeFrame."
+	self removeResizeFrame
 ]
 
 {
@@ -158,16 +158,16 @@ WBPolygonElement >> handlesMouseOver: anEvent [
 
 {
 	#category : #popUpBar,
-	#'squeak_changestamp' : 'si 6/3/2024 12:25'
+	#'squeak_changestamp' : 'si 6/3/2024 16:00'
 }
 WBPolygonElement >> makeElementPopUp [
 
 	self popUpMenu: (WBElementPopUp new
 		setDefaultValues;
-		position: self topRight;
 		comeToFront;
 		addButtons: self buttonsForPopUpBar;
 		yourself).
+	self setPopupPosition
 	
 ]
 
@@ -274,4 +274,54 @@ WBPolygonElement >> removeElementPopUp [
 
 	self popUpMenu ifNotNil: 
 		[self popUpMenu delete]
+]
+
+{
+	#category : #popUpBar,
+	#'squeak_changestamp' : 'si 6/3/2024 15:55'
+}
+WBPolygonElement >> removePopup [
+
+	self popUpMenu ifNotNil: 
+		[self popUpMenu delete]
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/3/2024 15:53'
+}
+WBPolygonElement >> resizeFrame [
+
+	^ resizeFrame
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/3/2024 15:53'
+}
+WBPolygonElement >> resizeFrame: anObject [
+
+	resizeFrame := anObject
+]
+
+{
+	#category : #popUpBar,
+	#'squeak_changestamp' : 'si 6/3/2024 15:59'
+}
+WBPolygonElement >> setPopupPosition [
+
+	self popUpMenu ifNotNil: [self popUpMenu center: self topCenter - (0@self popUpMenu height/2) - (0@10)]
+]
+
+{
+	#category : #popUpBar,
+	#'squeak_changestamp' : 'si 6/3/2024 15:54'
+}
+WBPolygonElement >> showPopUp [
+
+	(self canvas elementToSpawn) ifNil:
+		[owner removePopUps.
+		self makeElementPopUp.].
+	(self canvas elementToSpawn) ifNotNil:
+		[self canvas dropElement]
 ]

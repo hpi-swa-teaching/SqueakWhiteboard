@@ -98,6 +98,16 @@ WBNote >> createVertecies [
 ]
 
 {
+	#category : #resize,
+	#'squeak_changestamp' : 'si 6/3/2024 15:58'
+}
+WBNote >> extent: aSize [
+
+	super extent: aSize.
+	self setPopupPosition.
+]
+
+{
 	#category : #initialization,
 	#'squeak_changestamp' : 'si 6/3/2024 12:27'
 }
@@ -127,6 +137,15 @@ WBNote >> makeShape [
 	self setVertices: arrayOfEdgePoints.
 	"self edges do: [:m | m hide]"		
 
+]
+
+{
+	#category : #resize,
+	#'squeak_changestamp' : 'si 6/3/2024 15:58'
+}
+WBNote >> removeResizeFrame [
+
+	(self resizeFrame) ifNotNil: [self resizeFrame delete]
 ]
 
 {

@@ -300,27 +300,30 @@ WBElement >> removePopup [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 5/28/2024 12:21'
+	#'squeak_changestamp' : 'si 6/3/2024 15:57'
 }
 WBElement >> removeResizeFrame [
-	(self resizeFrame) ifNotNil: [self resizeFrame delete].
+
+	(self resizeFrame) ifNotNil: [self resizeFrame delete]
 	
 
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 5/28/2024 12:16'
+	#'squeak_changestamp' : 'si 6/3/2024 15:53'
 }
 WBElement >> resizeFrame [
-	^resizeFrame
+
+	^ resizeFrame
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 5/28/2024 11:33'
+	#'squeak_changestamp' : 'si 6/3/2024 15:53'
 }
 WBElement >> resizeFrame: anObject [
+
 	resizeFrame := anObject
 ]
 
@@ -335,17 +338,19 @@ WBElement >> rightClickFunctionality: evt [
 
 {
 	#category : #popUpBar,
-	#'squeak_changestamp' : 'JK 5/28/2024 22:29'
+	#'squeak_changestamp' : 'si 6/3/2024 15:58'
 }
 WBElement >> setPopupPosition [
-	self popUpMenu ifNotNil: [self popUpMenu center: self topCenter - (0@self popUpMenu height/2) - (0@10)].
+
+	self popUpMenu ifNotNil: [self popUpMenu center: self topCenter - (0@self popUpMenu height/2) - (0@10)]
 ]
 
 {
 	#category : #popUpBar,
-	#'squeak_changestamp' : 'JK 5/26/2024 23:35'
+	#'squeak_changestamp' : 'si 6/3/2024 15:54'
 }
 WBElement >> showPopUp [
+
 	(self canvas elementToSpawn) ifNil:
 		[owner removePopUps.
 		self makeElementPopUp.].
