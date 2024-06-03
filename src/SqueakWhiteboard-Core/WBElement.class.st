@@ -19,11 +19,11 @@ Class {
 
 {
 	#category : #'instance creation',
-	#'squeak_changestamp' : 'is 5/28/2024 10:21'
+	#'squeak_changestamp' : 'JK 6/3/2024 20:58'
 }
 WBElement class >> newWithCanvas: aCanvas [
 
-	^ WBElement basicNew initializeWithCanvas: aCanvas
+	^ self new initializeWithCanvas: aCanvas
 ]
 
 {
