@@ -9,7 +9,7 @@ Class {
 }
 
 {
-	#category : #appearance,
+	#category : #layout,
 	#'squeak_changestamp' : 'is 5/29/2024 01:00'
 }
 WBTextbox >> borderSize [
@@ -18,7 +18,7 @@ WBTextbox >> borderSize [
 ]
 
 {
-	#category : #appearance,
+	#category : #layout,
 	#'squeak_changestamp' : 'is 5/29/2024 00:58'
 }
 WBTextbox >> borderSize: aSize [
@@ -38,7 +38,7 @@ WBTextbox >> deactivateTextbox [
 ]
 
 {
-	#category : #appearance,
+	#category : #layout,
 	#'squeak_changestamp' : 'is 6/1/2024 17:36'
 }
 WBTextbox >> defaultSize [
@@ -47,8 +47,8 @@ WBTextbox >> defaultSize [
 ]
 
 {
-	#category : #appearance,
-	#'squeak_changestamp' : 'is 5/29/2024 01:11'
+	#category : #layout,
+	#'squeak_changestamp' : 'is 6/3/2024 14:44'
 }
 WBTextbox >> drawOn: aCanvas [
 
@@ -56,7 +56,6 @@ WBTextbox >> drawOn: aCanvas [
 	
 	outerRectangle := self bounds.
    	innerRectangle := outerRectangle insetBy: self borderSize.
-	
 	vertices := {
             outerRectangle topLeft.
             outerRectangle topRight.
