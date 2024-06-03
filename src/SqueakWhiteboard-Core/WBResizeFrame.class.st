@@ -134,46 +134,46 @@ WBResizeFrame >> positionHandles [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:09'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:22'
 }
 WBResizeFrame >> resizeBottom: aYCoordinate [
 	
 	|newYCoordinate|
-	newYCoordinate := (aYCoordinate min: self element canvas bottom) max: self top.
+	newYCoordinate := (aYCoordinate min: self element canvas bottom) max: (self top + ResizeWidth).
 	self height: newYCoordinate - self top.
 ]
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:09'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:20'
 }
 WBResizeFrame >> resizeLeft: aXCoordinate [
 	
 	|newXCoordinate|
-	newXCoordinate := (aXCoordinate min: self right) max: self element canvas left.
+	newXCoordinate := (aXCoordinate min: (self right - ResizeWidth)) max: self element canvas left.
 	self width: self right - newXCoordinate.
 	self left: newXCoordinate.
 ]
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:09'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:22'
 }
 WBResizeFrame >> resizeRight: aXCoordinate [
 	
 	|newXCoordinate|
-	newXCoordinate := (aXCoordinate min:  self element canvas right) max: self left. 
+	newXCoordinate := (aXCoordinate min:  self element canvas right) max: (self left + ResizeWidth). 
 	self width: newXCoordinate - self left.
 ]
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:09'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:21'
 }
 WBResizeFrame >> resizeTop: aYCoordinate [
 	
 	|newYCoordinate|
-	newYCoordinate := (aYCoordinate min: self bottom) max: self element canvas top.
+	newYCoordinate := (aYCoordinate min: (self bottom - ResizeWidth)) max: self element canvas top.
 	self height: self bottom - newYCoordinate.
 	self top: newYCoordinate.
 ]

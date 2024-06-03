@@ -6,11 +6,10 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JK 6/3/2024 19:01'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:26'
 }
 WBResizeLeft >> resize: movement [
-	self frame position: (self frame position x + movement x)@(self frame position y).
-	self frame extent: (self frame extent x - movement x)@(self frame extent y).
+	self frame resizeLeft: self center x + movement x
 ]
 
 {
