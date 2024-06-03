@@ -35,8 +35,9 @@ WBMoveElementTests >> setUp [
 
 {
 	#category : #tearDown,
-	#'squeak_changestamp' : 'JK 6/3/2024 20:41'
+	#'squeak_changestamp' : 'is 6/4/2024 00:56'
 }
 WBMoveElementTests >> tearDown [
+
 	self canvas ifNotNil: [self canvas owner delete]
 ]

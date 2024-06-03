@@ -35,11 +35,11 @@ WBCanvasTests >> setUp [
 
 {
 	#category : #tearDown,
-	#'squeak_changestamp' : 'JK 6/3/2024 21:12'
+	#'squeak_changestamp' : 'is 6/4/2024 00:57'
 }
 WBCanvasTests >> tearDown [
 
-	self canvas owner delete.
+	self canvas ifNotNil: [self canvas owner delete]
 ]
 
 {

@@ -35,11 +35,11 @@ WBElementResizeTests >> setUp [
 
 {
 	#category : #tearDown,
-	#'squeak_changestamp' : 'JK 6/3/2024 16:05'
+	#'squeak_changestamp' : 'is 6/4/2024 01:03'
 }
 WBElementResizeTests >> tearDown [
-
-	self canvas owner delete.
+	
+	self canvas ifNotNil: [self canvas owner delete]
 ]
 
 {
