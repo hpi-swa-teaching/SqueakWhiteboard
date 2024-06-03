@@ -3,10 +3,21 @@ Class {
 	#superclass : #WBElement,
 	#instVars : [
 		'borderSize',
-		'textField'
+		'textField',
+		'doubleClickStepCounter',
+		'doubleClickMaxStep'
 	],
 	#category : #'SqueakWhiteboard-Core'
 }
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 15:45'
+}
+WBTextbox class >> stepTime [
+
+	^ 30
+]
 
 {
 	#category : #layout,
@@ -44,6 +55,51 @@ WBTextbox >> deactivateTextbox [
 WBTextbox >> defaultSize [
 
 	^ 200@200
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 15:36'
+}
+WBTextbox >> detectDoubleClick: evt [
+
+	^false
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 15:57'
+}
+WBTextbox >> doubleClickMaxStep [
+
+	^ doubleClickMaxStep ifNil: [doubleClickMaxStep := 100]
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 15:56'
+}
+WBTextbox >> doubleClickMaxStep: aCount [
+
+	doubleClickMaxStep := aCount
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 15:52'
+}
+WBTextbox >> doubleClickStepCounter [
+
+	^ doubleClickStepCounter ifNil: [doubleClickStepCounter := 0]
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 15:52'
+}
+WBTextbox >> doubleClickStepCounter: aCount [
+
+	doubleClickStepCounter := aCount
 ]
 
 {
@@ -86,16 +142,32 @@ WBTextbox >> extent: anExtent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/2/2024 15:33'
+	#'squeak_changestamp' : 'is 6/3/2024 16:05'
 }
 WBTextbox >> initialize [
 	| textField |
+	
 	super initialize.
 	self bounds: (0@0 extent: self defaultSize).
 	textField := WBPluggableTextMorphPlus new.
 	textField extent: self defaultSize - ((self borderSize * 2)@(self borderSize * 2)).
 	self addMorphCentered: textField.
-	self textField: textField
+	self textField: textField.
+	self startStepping
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 17:21'
+}
+WBTextbox >> mouseDown: evt [
+	| time |
+	time:=  evt timeStamp.
+	self halt.
+	
+	self detectDoubleClick: evt.
+	self doubleClickStepCounter: 0.
+	super mouseDown: evt.
 ]
 
 {
@@ -107,6 +179,27 @@ WBTextbox >> rightClickFunctionality: evt [
 	self canvas activeTextbox: self.
 	self deactivateElement.
 	self textField mouseDown: evt
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 17:17'
+}
+WBTextbox >> step [
+
+	self doubleClickStepCounter + 1
+	"self doubleClickStepCounter < (self doubleClickMaxStep)
+		ifTrue: [self doubleClickStepCounter: self doubleClickStepCounter + 1.]
+		ifFalse: [self Transcript show: 'Intervall überschritten';cr.]"
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 15:49'
+}
+WBTextbox >> stepTime [
+
+	^ self class stepTime
 ]
 
 {

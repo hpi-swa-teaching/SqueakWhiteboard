@@ -4,17 +4,38 @@ This is a custom version of the PluggableTextMorphPlus class
 Class {
 	#name : #WBPluggableTextMorphPlus,
 	#superclass : #PluggableTextMorphPlus,
+	#instVars : [
+		'enabled'
+	],
 	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 6/1/2024 17:19'
 }
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/2/2024 15:10'
+	#'squeak_changestamp' : 'is 6/3/2024 15:26'
+}
+WBPluggableTextMorphPlus >> enabled [
+
+	^ enabled ifNil: [enabled := false]
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 15:28'
+}
+WBPluggableTextMorphPlus >> enabled: aBoolean [
+
+	enabled := aBoolean
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 15:24'
 }
 WBPluggableTextMorphPlus >> handlesMouseDown: evt [
 
-	^ false
+	^ self enabled
 ]
 
 {
