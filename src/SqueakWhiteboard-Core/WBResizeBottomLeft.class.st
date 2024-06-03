@@ -6,11 +6,11 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JK 5/27/2024 17:31'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:07'
 }
 WBResizeBottomLeft >> resize: movement [
-	self element position: (self element position x + movement x)@(self element position y).
-	self element extent: (self element extent x - movement x)@(self element extent y + movement y).
+	self frame resizeLeft: self center x + movement x.
+	self frame resizeBottom: self center y + movement y
 ]
 
 {
@@ -24,9 +24,9 @@ WBResizeBottomLeft >> resizeCursor [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'is 5/28/2024 15:33'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:01'
 }
 WBResizeBottomLeft >> setLayout [
-	self center: element bottomLeft.
+	self center: frame bottomLeft.
 	
 ]

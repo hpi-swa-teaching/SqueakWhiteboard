@@ -146,10 +146,10 @@ WBElement >> dragStart: anEvent [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 5/29/2024 01:02'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:14'
 }
 WBElement >> extent: aSize [
-
+	
 	super extent: aSize.
 	self setPopupPosition.
 	
@@ -186,12 +186,12 @@ WBElement >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/28/2024 10:22'
+	#'squeak_changestamp' : 'JK 6/3/2024 14:11'
 }
 WBElement >> initializeWithCanvas: aCanvas [
-
-	super initialize.
-	self canvas: aCanvas
+	
+	self canvas: aCanvas.
+	self initialize.
 ]
 
 {

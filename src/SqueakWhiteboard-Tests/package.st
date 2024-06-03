@@ -1,4 +1,4 @@
 Package {
-	#'squeak_changestamp' : true,
-	#name : #'SqueakWhiteboard-Tests'
+	#name : #'SqueakWhiteboard-Tests',
+	#'squeak_changestamp' : true
 }

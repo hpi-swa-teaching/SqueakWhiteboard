@@ -6,11 +6,11 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JK 5/28/2024 11:43'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:12'
 }
 WBResizeTopLeft >> resize: movement [
-	self element position: (self element position + movement).
-	self element extent: (self element extent - movement).
+	self frame resizeLeft: self center x + movement x.
+	self frame resizeTop: self center y + movement y
 	
 ]
 
@@ -25,9 +25,9 @@ WBResizeTopLeft >> resizeCursor [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'is 5/28/2024 15:33'
+	#'squeak_changestamp' : 'JK 6/3/2024 19:01'
 }
 WBResizeTopLeft >> setLayout [
-	self center: element topLeft.
+	self center: frame topLeft.
 	
 ]
