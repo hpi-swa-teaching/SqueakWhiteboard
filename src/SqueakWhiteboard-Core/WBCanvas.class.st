@@ -62,7 +62,7 @@ WBCanvas >> activeTextbox: aTextbox [
 ]
 
 {
-	#category : #accessing,
+	#category : #'creating elements',
 	#'squeak_changestamp' : 'si 5/27/2024 11:38'
 }
 WBCanvas >> addElement: anElement [
@@ -93,7 +93,7 @@ WBCanvas >> clampPointToCanvas: aPoint [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 6/2/2024 18:55'
+	#'squeak_changestamp' : 'si 6/3/2024 15:50'
 }
 WBCanvas >> deactivateElement [
 
@@ -117,12 +117,11 @@ WBCanvas >> deactivateTextbox [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 6/1/2024 17:46'
+	#'squeak_changestamp' : 'is 6/3/2024 21:15'
 }
 WBCanvas >> dropElement [
 
-	self elementToSpawn removeDropShadow;
-		postDropRoutine.
+	self elementToSpawn removeDropShadow.
 	self elementToSpawn: nil
 ]
 
@@ -265,6 +264,15 @@ WBCanvas >> mouseMove: anEvent [
 	
 	(self elementToSpawn) ifNotNil:
 		[self elementToSpawn dragMove: anEvent]
+]
+
+{
+	#category : #'creating elements',
+	#'squeak_changestamp' : 'si 6/3/2024 14:18'
+}
+WBCanvas >> removeElement: anElement [
+
+	self elements remove: anElement ifAbsent: []
 ]
 
 {

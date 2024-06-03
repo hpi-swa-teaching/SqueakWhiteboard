@@ -10,7 +10,7 @@ Class {
 
 {
 	#category : #clicking,
-	#'squeak_changestamp' : 'JK 6/3/2024 14:56'
+	#'squeak_changestamp' : 'si 6/3/2024 21:25'
 }
 WBToolbarButton >> clickFunctionality: anEvent [
 
@@ -22,6 +22,8 @@ WBToolbarButton >> clickFunctionality: anEvent [
 		ifTrue: [self canvas spawnAnElement: WBLine new At: anEvent cursorPoint].
 	(self number = 4)
 		ifTrue: [self canvas spawnAnElement: (WBTextbox newWithCanvas: self canvas) At: anEvent cursorPoint].
+	(self number = 5)
+		ifTrue: [self canvas spawnAnElement: (WBNote newWithCanvas: self canvas) At: anEvent cursorPoint].
 		
 	
 		
