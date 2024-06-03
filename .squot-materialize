@@ -25,25 +25,17 @@
 			'src'
 		]
 	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'SqueakWhiteboard'
-		},
+	SquotImageMapper {
 		#path : FSAbsolutePath [
-			'src'
-		]
+			'line.png'
+		],
+		#encoding : @4
 	},
 	SquotTonelMapper {
 		#package : MCPackage {
 			#name : 'SqueakWhiteboard-Tests'
 		},
 		#path : @11
-	},
-	SquotImageMapper {
-		#path : FSAbsolutePath [
-			'line.png'
-		],
-		#encoding : @4
 	},
 	SquotTonelMapper {
 		#package : MCPackage {

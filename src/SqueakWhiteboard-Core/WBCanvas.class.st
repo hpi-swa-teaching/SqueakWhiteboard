@@ -226,7 +226,7 @@ WBCanvas >> images: anImageClass [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/29/2024 00:16'
+	#'squeak_changestamp' : 'JK 6/3/2024 12:29'
 }
 WBCanvas >> initialize [
 	
@@ -237,7 +237,7 @@ WBCanvas >> initialize [
 		height: (self class WhiteBoardSize * self scale);
 		width: (self class WhiteBoardSize * self scale * 1.5);
 		color: Color white;
-		borderWidth: (self scale * 5);
+		borderWidth: 1;
 		borderColor: Color black;
 		elements: OrderedCollection new.
 	self spawnToolbar.
