@@ -10,9 +10,6 @@ SmalltalkCISpec {
 	#testing : {
 		#include : {
 	      		#packages : [ 'SqueakWhiteboard-Tests' ]
-	    	},
-	    	#exclude : {
-	      		#classes : [ #WBElementResizeTests ]
-    		}
+	    	}
 	}
 }
