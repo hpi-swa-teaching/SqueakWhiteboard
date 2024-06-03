@@ -177,11 +177,12 @@ WBElement >> handlesMouseDown: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/29/2024 01:02'
+	#'squeak_changestamp' : 'is 6/3/2024 20:33'
 }
 WBElement >> initialize [
 
 	super initialize.
+	self extent: self defaultSize
 ]
 
 {
