@@ -18,21 +18,24 @@ WBTextMorphForEditView >> acceptContents [
 ]
 
 {
-	#category : #editing,
-	#'squeak_changestamp' : 'is 6/1/2024 17:01'
-}
-WBTextMorphForEditView >> cancelEditsSafely [
-	
-	^ false
-]
-
-{
 	#category : #'event handling',
 	#'squeak_changestamp' : 'is 6/2/2024 15:06'
 }
 WBTextMorphForEditView >> handlesMouseDown: evt [
 
 	^ false
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 19:08'
+}
+WBTextMorphForEditView >> keyStroke: evt [
+	| char |
+	
+	((char := evt keyCharacter) = Character escape) ifTrue:   "cancel"
+		[self editView textbox deactivateTextbox].
+	super keyStroke: evt
 ]
 
 {

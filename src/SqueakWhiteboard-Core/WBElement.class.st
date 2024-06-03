@@ -211,15 +211,13 @@ WBElement >> makeElementPopUp [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/2/2024 19:02'
+	#'squeak_changestamp' : 'is 6/3/2024 18:18'
 }
 WBElement >> mouseDown: mouseEvent [
 
 	mouseEvent redButtonPressed ifTrue: [
 	(self canvas elementToSpawn) ifNil:
-		[self canvas 
-			deactivateElement;
-			deactivateTextbox.
+		[self canvas deactivateElement.
 		self dragStart: mouseEvent;
 			addResizeFrame;
 			showPopUp.
@@ -310,15 +308,6 @@ WBElement >> resizeFrame [
 }
 WBElement >> resizeFrame: anObject [
 	resizeFrame := anObject
-]
-
-{
-	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/1/2024 20:01'
-}
-WBElement >> rightClickFunctionality: evt [
-
-	^ SubclassResponsibility
 ]
 
 {

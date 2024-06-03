@@ -45,7 +45,7 @@ WBCanvas >> activeElement: anElement [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/2/2024 15:50'
+	#'squeak_changestamp' : 'is 6/3/2024 18:20'
 }
 WBCanvas >> activeTextbox [
 
@@ -54,7 +54,7 @@ WBCanvas >> activeTextbox [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/2/2024 15:50'
+	#'squeak_changestamp' : 'is 6/3/2024 18:20'
 }
 WBCanvas >> activeTextbox: aTextbox [
 
@@ -105,13 +105,14 @@ WBCanvas >> deactivateElement [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 6/2/2024 18:55'
+	#'squeak_changestamp' : 'is 6/3/2024 18:29'
 }
 WBCanvas >> deactivateTextbox [
 
 	self activeTextbox ifNotNil: [
 		self activeTextbox deactivateTextbox.
 		self activeTextbox: nil]
+
 ]
 
 {
@@ -162,7 +163,7 @@ WBCanvas >> elements: aCollection [
 ]
 
 {
-	#category : #'creating elements',
+	#category : #accessing,
 	#'squeak_changestamp' : 'is 5/29/2024 01:03'
 }
 WBCanvas >> globalColor [
@@ -171,7 +172,7 @@ WBCanvas >> globalColor [
 ]
 
 {
-	#category : #'creating elements',
+	#category : #accessing,
 	#'squeak_changestamp' : 'is 5/29/2024 01:03'
 }
 WBCanvas >> globalColor: aColor [
@@ -180,7 +181,7 @@ WBCanvas >> globalColor: aColor [
 ]
 
 {
-	#category : #'creating elements',
+	#category : #'event handling',
 	#'squeak_changestamp' : 'JK 5/27/2024 15:56'
 }
 WBCanvas >> handleMouseOver: evt [
@@ -189,7 +190,7 @@ WBCanvas >> handleMouseOver: evt [
 ]
 
 {
-	#category : #'creating elements',
+	#category : #'event handling',
 	#'squeak_changestamp' : 'si 5/17/2024 13:53'
 }
 WBCanvas >> handlesMouseDown: evt [
@@ -198,7 +199,7 @@ WBCanvas >> handlesMouseDown: evt [
 ]
 
 {
-	#category : #'creating elements',
+	#category : #'event handling',
 	#'squeak_changestamp' : 'si 5/17/2024 13:53'
 }
 WBCanvas >> handlesMouseMove: evt [
@@ -247,19 +248,17 @@ WBCanvas >> initialize [
 ]
 
 {
-	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 6/2/2024 18:54'
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 18:23'
 }
 WBCanvas >> mouseDown: anEvent [
-
-	anEvent redButtonPressed ifTrue: [self deactivateElement].
-	anEvent yellowButtonPressed ifTrue: [self deactivateTextbox]
 	
-	
+	self deactivateElement;
+		deactivateTextbox
 ]
 
 {
-	#category : #'creating elements',
+	#category : #'event handling',
 	#'squeak_changestamp' : 'JK 5/26/2024 23:47'
 }
 WBCanvas >> mouseMove: anEvent [

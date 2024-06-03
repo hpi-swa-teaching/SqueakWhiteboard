@@ -4,20 +4,11 @@ Class {
 	#instVars : [
 		'borderSize',
 		'textField',
-		'doubleClickStepCounter',
-		'doubleClickMaxStep'
+		'lastMouseClick',
+		'doubleClickMaxDelta'
 	],
 	#category : #'SqueakWhiteboard-Core'
 }
-
-{
-	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/3/2024 15:45'
-}
-WBTextbox class >> stepTime [
-
-	^ 30
-]
 
 {
 	#category : #layout,
@@ -41,11 +32,12 @@ WBTextbox >> borderSize: aSize [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/2/2024 19:26'
+	#'squeak_changestamp' : 'is 6/3/2024 17:56'
 }
 WBTextbox >> deactivateTextbox [
 
-	self currentHand releaseKeyboardFocus
+	self currentHand releaseKeyboardFocus.
+	self textField enabled: false
 ]
 
 {
@@ -59,47 +51,37 @@ WBTextbox >> defaultSize [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/3/2024 15:36'
+	#'squeak_changestamp' : 'is 6/3/2024 18:48'
 }
 WBTextbox >> detectDoubleClick: evt [
-
-	^false
+	| delta |
+	
+	self lastMouseClick ifNotNil: [delta := evt timeStamp - self lastMouseClick timeStamp].
+	(delta isNumber and: [delta < self doubleClickMaxDelta])
+		ifTrue: [self textField enabled: true;
+					mouseDown: evt.
+				self deactivateElement.
+				self canvas activeTextbox: self].
+			
+	
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/3/2024 15:57'
+	#'squeak_changestamp' : 'is 6/3/2024 17:48'
 }
-WBTextbox >> doubleClickMaxStep [
+WBTextbox >> doubleClickMaxDelta [
 
-	^ doubleClickMaxStep ifNil: [doubleClickMaxStep := 100]
+	^ doubleClickMaxDelta ifNil: [doubleClickMaxDelta := 200]
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/3/2024 15:56'
+	#'squeak_changestamp' : 'is 6/3/2024 17:25'
 }
-WBTextbox >> doubleClickMaxStep: aCount [
+WBTextbox >> doubleClickMaxDelta: aDelta [
 
-	doubleClickMaxStep := aCount
-]
-
-{
-	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/3/2024 15:52'
-}
-WBTextbox >> doubleClickStepCounter [
-
-	^ doubleClickStepCounter ifNil: [doubleClickStepCounter := 0]
-]
-
-{
-	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/3/2024 15:52'
-}
-WBTextbox >> doubleClickStepCounter: aCount [
-
-	doubleClickStepCounter := aCount
+	doubleClickMaxDelta := aDelta
 ]
 
 {
@@ -141,8 +123,17 @@ WBTextbox >> extent: anExtent [
 ]
 
 {
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 18:43'
+}
+WBTextbox >> handlesMouseDown: evt [
+
+	^ (self textField enabled) not
+]
+
+{
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/3/2024 16:05'
+	#'squeak_changestamp' : 'is 6/3/2024 18:56'
 }
 WBTextbox >> initialize [
 	| textField |
@@ -153,53 +144,39 @@ WBTextbox >> initialize [
 	textField extent: self defaultSize - ((self borderSize * 2)@(self borderSize * 2)).
 	self addMorphCentered: textField.
 	self textField: textField.
-	self startStepping
+	self textField textbox: self
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/3/2024 17:21'
+	#'squeak_changestamp' : 'is 6/3/2024 17:28'
+}
+WBTextbox >> lastMouseClick [
+
+	^ lastMouseClick
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 17:29'
+}
+WBTextbox >> lastMouseClick: evt [
+
+	lastMouseClick := evt
+
+	
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/3/2024 18:49'
 }
 WBTextbox >> mouseDown: evt [
-	| time |
-	time:=  evt timeStamp.
-	self halt.
 	
-	self detectDoubleClick: evt.
-	self doubleClickStepCounter: 0.
 	super mouseDown: evt.
-]
-
-{
-	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/2/2024 19:07'
-}
-WBTextbox >> rightClickFunctionality: evt [
-
-	self canvas activeTextbox: self.
-	self deactivateElement.
-	self textField mouseDown: evt
-]
-
-{
-	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/3/2024 17:17'
-}
-WBTextbox >> step [
-
-	self doubleClickStepCounter + 1
-	"self doubleClickStepCounter < (self doubleClickMaxStep)
-		ifTrue: [self doubleClickStepCounter: self doubleClickStepCounter + 1.]
-		ifFalse: [self Transcript show: 'Intervall überschritten';cr.]"
-]
-
-{
-	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/3/2024 15:49'
-}
-WBTextbox >> stepTime [
-
-	^ self class stepTime
+	self detectDoubleClick: evt;
+		 lastMouseClick: evt.
+	
 ]
 
 {
