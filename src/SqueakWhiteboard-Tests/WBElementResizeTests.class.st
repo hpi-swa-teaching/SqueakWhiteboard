@@ -25,21 +25,23 @@ WBElementResizeTests >> canvas: anObject [
 
 {
 	#category : #setUp,
-	#'squeak_changestamp' : 'is 6/4/2024 13:31'
+	#'squeak_changestamp' : 'is 6/4/2024 17:24'
 }
 WBElementResizeTests >> setUp [
 	
+	super setUp.
 	self canvas: WBCanvas new.
 
 ]
 
 {
 	#category : #tearDown,
-	#'squeak_changestamp' : 'is 6/4/2024 01:03'
+	#'squeak_changestamp' : 'is 6/4/2024 17:24'
 }
 WBElementResizeTests >> tearDown [
 	
-	self canvas ifNotNil: [self canvas owner delete]
+	super tearDown.
+	self canvas ifNotNil: [:canvas | canvas owner delete]
 ]
 
 {

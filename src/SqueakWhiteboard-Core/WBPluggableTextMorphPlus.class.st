@@ -70,20 +70,20 @@ WBPluggableTextMorphPlus >> mouseDown: evt [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/4/2024 11:03'
+	#'squeak_changestamp' : 'is 6/4/2024 17:11'
 }
 WBPluggableTextMorphPlus >> mouseEnter: evt [
 
-	
+	"self shouldNotImplement?"
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/4/2024 12:02'
+	#'squeak_changestamp' : 'is 6/4/2024 17:10'
 }
 WBPluggableTextMorphPlus >> mouseLeave: evt [
 
-
+	"self shouldNotImplement?"
 ]
 
 {

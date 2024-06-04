@@ -25,19 +25,21 @@ WBMoveElementTests >> canvas: anObject [
 
 {
 	#category : #setUp,
-	#'squeak_changestamp' : 'JK 6/3/2024 16:05'
+	#'squeak_changestamp' : 'is 6/4/2024 17:24'
 }
 WBMoveElementTests >> setUp [
 
+	super setUp.
 	self canvas: WBCanvas new.
 
 ]
 
 {
 	#category : #tearDown,
-	#'squeak_changestamp' : 'is 6/4/2024 00:56'
+	#'squeak_changestamp' : 'is 6/4/2024 17:24'
 }
 WBMoveElementTests >> tearDown [
 
-	self canvas ifNotNil: [self canvas owner delete]
+	super tearDown.
+	self canvas ifNotNil: [:canvas | canvas owner delete]
 ]
