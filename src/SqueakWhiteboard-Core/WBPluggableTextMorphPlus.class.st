@@ -23,16 +23,25 @@ WBPluggableTextMorphPlus >> enabled [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/3/2024 15:28'
+	#'squeak_changestamp' : 'is 6/4/2024 20:37'
 }
 WBPluggableTextMorphPlus >> enabled: aBoolean [
-
+	
 	enabled := aBoolean
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/3/2024 19:39'
+	#'squeak_changestamp' : 'is 6/4/2024 20:23'
+}
+WBPluggableTextMorphPlus >> handlesKeyboard: evt [
+
+	^ self enabled
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/4/2024 20:20'
 }
 WBPluggableTextMorphPlus >> handlesMouseDown: evt [
 
@@ -41,11 +50,11 @@ WBPluggableTextMorphPlus >> handlesMouseDown: evt [
 
 {
 	#category : #styling,
-	#'squeak_changestamp' : 'is 6/1/2024 17:18'
+	#'squeak_changestamp' : 'is 6/4/2024 20:41'
 }
 WBPluggableTextMorphPlus >> hasUnacceptedEdits: aBoolean [
 	"don't delegate call to super so that orange triangle doesn't appear"
-	 
+	
 	aBoolean ifTrue: [ self updateStyle ].
 ]
 
@@ -57,33 +66,6 @@ WBPluggableTextMorphPlus >> initialize [
 
 	super initialize.
 	self color: Color transparent
-]
-
-{
-	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/3/2024 18:39'
-}
-WBPluggableTextMorphPlus >> mouseDown: evt [
-
-	^ super mouseDown: evt.
-]
-
-{
-	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/4/2024 17:11'
-}
-WBPluggableTextMorphPlus >> mouseEnter: evt [
-
-	"self shouldNotImplement?"
-]
-
-{
-	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/4/2024 17:10'
-}
-WBPluggableTextMorphPlus >> mouseLeave: evt [
-
-	"self shouldNotImplement?"
 ]
 
 {

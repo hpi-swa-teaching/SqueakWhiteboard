@@ -10,11 +10,20 @@ Class {
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/2/2024 15:06'
+	#'squeak_changestamp' : 'is 6/4/2024 20:35'
+}
+WBTextMorphForEditView >> handlesKeyboard: evt [
+	
+	^ self editView enabled
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/4/2024 20:38'
 }
 WBTextMorphForEditView >> handlesMouseDown: evt [
 
-	^ false
+	^ self editView enabled
 ]
 
 {

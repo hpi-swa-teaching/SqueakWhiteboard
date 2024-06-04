@@ -128,10 +128,10 @@ WBTextbox >> extent: anExtent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/3/2024 18:43'
+	#'squeak_changestamp' : 'is 6/4/2024 20:50'
 }
 WBTextbox >> handlesMouseDown: evt [
-
+	
 	^ (self textField enabled) not
 ]
 
@@ -172,12 +172,11 @@ WBTextbox >> lastMouseClick: evt [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/3/2024 19:35'
+	#'squeak_changestamp' : 'is 6/4/2024 20:44'
 }
 WBTextbox >> mouseDown: evt [
 	
 	super mouseDown: evt.
-	evt hand showTemporaryCursor: nil.
 	self detectDoubleClick: evt;
 		 lastMouseClick: evt.
 	

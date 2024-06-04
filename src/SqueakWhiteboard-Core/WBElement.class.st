@@ -180,11 +180,11 @@ WBElement >> handleMouseOver: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 5/28/2024 15:20'
+	#'squeak_changestamp' : 'is 6/4/2024 20:51'
 }
 WBElement >> handlesMouseDown: anEvent [
 
-    ^ true.
+	^ true.
 ]
 
 {
