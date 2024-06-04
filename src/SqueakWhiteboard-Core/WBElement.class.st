@@ -224,7 +224,7 @@ WBElement >> makeElementPopUp [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/3/2024 18:18'
+	#'squeak_changestamp' : 'is 6/4/2024 13:01'
 }
 WBElement >> mouseDown: mouseEvent [
 
@@ -236,9 +236,7 @@ WBElement >> mouseDown: mouseEvent [
 			showPopUp.
 		self canvas activeElement: self].
 	(self canvas elementToSpawn) ifNotNil:
-		[self canvas dropElement]].
-	
-	mouseEvent yellowButtonPressed ifTrue: [self rightClickFunctionality: mouseEvent]
+		[self canvas dropElement]]
 ]
 
 {
@@ -315,15 +313,6 @@ WBElement >> resizeFrame [
 WBElement >> resizeFrame: anObject [
 
 	resizeFrame := anObject
-]
-
-{
-	#category : #'event handling',
-	#'squeak_changestamp' : 'si 6/3/2024 15:34'
-}
-WBElement >> rightClickFunctionality: evt [
-
-	self SubclassResponsibility
 ]
 
 {

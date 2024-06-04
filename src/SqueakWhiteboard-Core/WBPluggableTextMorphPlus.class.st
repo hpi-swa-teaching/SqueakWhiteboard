@@ -79,9 +79,10 @@ WBPluggableTextMorphPlus >> mouseEnter: evt [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/4/2024 11:03'
+	#'squeak_changestamp' : 'is 6/4/2024 12:02'
 }
 WBPluggableTextMorphPlus >> mouseLeave: evt [
+
 
 ]
 
