@@ -10,10 +10,9 @@ Class {
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/29/2024 01:42'
+	#'squeak_changestamp' : 'is 6/4/2024 16:21'
 }
 WBRectangle >> initialize [
 
-	super initialize.
-	self bounds: (0@0 extent: self defaultSize)
+	super initialize
 ]

@@ -25,10 +25,10 @@ WBElementResizeTests >> canvas: anObject [
 
 {
 	#category : #setUp,
-	#'squeak_changestamp' : 'JK 6/3/2024 16:05'
+	#'squeak_changestamp' : 'is 6/4/2024 13:31'
 }
 WBElementResizeTests >> setUp [
-
+	
 	self canvas: WBCanvas new.
 
 ]
@@ -58,7 +58,7 @@ WBElementResizeTests >> testOpenFrame [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'JK 6/3/2024 20:25'
+	#'squeak_changestamp' : 'is 6/4/2024 16:20'
 }
 WBElementResizeTests >> testRectangleResizeBottom [
 

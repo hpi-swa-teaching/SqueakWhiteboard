@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #loadImages,
-	#'squeak_changestamp' : 'nicloeser 5/27/2024 14:39'
+	#'squeak_changestamp' : 'is 6/4/2024 13:28'
 }
 WBImage class >> loadCircleButtonImage [
 	
@@ -15,7 +15,7 @@ WBImage class >> loadCircleButtonImage [
 
 {
 	#category : #loadImages,
-	#'squeak_changestamp' : 'nicloeser 5/27/2024 14:47'
+	#'squeak_changestamp' : 'is 6/4/2024 13:29'
 }
 WBImage class >> loadColorsButtonImage [
 
@@ -24,7 +24,7 @@ WBImage class >> loadColorsButtonImage [
 
 {
 	#category : #loadImages,
-	#'squeak_changestamp' : 'nicloeser 5/27/2024 14:43'
+	#'squeak_changestamp' : 'is 6/4/2024 13:29'
 }
 WBImage class >> loadLineButtonImage [
 
@@ -33,7 +33,7 @@ WBImage class >> loadLineButtonImage [
 
 {
 	#category : #loadImages,
-	#'squeak_changestamp' : 'nicloeser 5/27/2024 13:38'
+	#'squeak_changestamp' : 'is 6/4/2024 13:32'
 }
 WBImage class >> loadRectangleButtonImage [
 
