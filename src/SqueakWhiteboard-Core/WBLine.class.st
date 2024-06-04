@@ -234,15 +234,15 @@ WBLine >> state: aState [
 
 {
 	#category : #arrow,
-	#'squeak_changestamp' : 'si 6/3/2024 19:59'
+	#'squeak_changestamp' : 'nicloeser 6/4/2024 09:28'
 }
 WBLine >> updateArrowHead [
 
 	((self edges at: 1) x > (self edges at: 2) x) ifFalse:[
-		self arrowHead rotationDegrees: (180 - self angleForPoints).
+		self arrowHead rotationDegrees: (-1 * self angleForPoints).
 		] 
 	ifTrue:[
-		self arrowHead rotationDegrees: self angleForPoints.
+		self arrowHead rotationDegrees: (180 + self angleForPoints).
 	].
 	self arrowHead center: (self edges at: 2) center.
 ]
