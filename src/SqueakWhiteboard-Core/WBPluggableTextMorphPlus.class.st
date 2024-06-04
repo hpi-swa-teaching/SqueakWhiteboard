@@ -49,6 +49,15 @@ WBPluggableTextMorphPlus >> handlesMouseDown: evt [
 ]
 
 {
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/4/2024 21:29'
+}
+WBPluggableTextMorphPlus >> handlesMouseOver: evt [
+
+	^ false
+]
+
+{
 	#category : #styling,
 	#'squeak_changestamp' : 'is 6/4/2024 20:41'
 }

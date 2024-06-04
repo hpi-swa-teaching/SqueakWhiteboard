@@ -55,7 +55,7 @@ WBTextbox >> defaultSize [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/3/2024 18:48'
+	#'squeak_changestamp' : 'is 6/4/2024 21:36'
 }
 WBTextbox >> detectDoubleClick: evt [
 	| delta |
@@ -65,7 +65,8 @@ WBTextbox >> detectDoubleClick: evt [
 		ifTrue: [self textField enabled: true;
 					mouseDown: evt.
 				self deactivateElement.
-				self canvas activeTextbox: self].
+				self canvas deactivateTextbox;
+					activeTextbox: self].
 			
 	
 ]
