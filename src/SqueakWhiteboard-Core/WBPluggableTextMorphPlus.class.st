@@ -69,6 +69,23 @@ WBPluggableTextMorphPlus >> mouseDown: evt [
 ]
 
 {
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/4/2024 11:03'
+}
+WBPluggableTextMorphPlus >> mouseEnter: evt [
+
+	
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/4/2024 11:03'
+}
+WBPluggableTextMorphPlus >> mouseLeave: evt [
+
+]
+
+{
 	#category : #private,
 	#'squeak_changestamp' : 'is 6/2/2024 18:30'
 }
