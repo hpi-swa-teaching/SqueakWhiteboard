@@ -193,14 +193,14 @@ WBToolbar >> getRectangleButton [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'is 5/28/2024 20:01'
+	#'squeak_changestamp' : 'is 6/5/2024 09:59'
 }
 WBToolbar >> getTextboxButton [
 
 	^WBToolbarButton new
 			number: 4;
 			image: (ImageMorph new image: 
-			(self canvas images resize: (WBImage loadCircleButtonImage) to: self buttonSize*0.8));
+			(self canvas images resize: (WBImage loadTextboxButtonImage) to: self buttonSize*0.8));
 			yourself.
 ]
 

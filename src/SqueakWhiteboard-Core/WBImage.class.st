@@ -41,6 +41,15 @@ WBImage class >> loadRectangleButtonImage [
 ]
 
 {
+	#category : #loadImages,
+	#'squeak_changestamp' : 'is 6/5/2024 09:58'
+}
+WBImage class >> loadTextboxButtonImage [
+
+	^((GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/textbox.png')
+]
+
+{
 	#category : #initialize,
 	#'squeak_changestamp' : 'nicloeser 5/27/2024 13:34'
 }
