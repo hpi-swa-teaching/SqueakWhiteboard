@@ -33,14 +33,6 @@
 	},
 	SquotTonelMapper {
 		#package : MCPackage {
-			#name : 'SqueakWhiteboard'
-		},
-		#path : FSAbsolutePath [
-			'src'
-		]
-	},
-	SquotTonelMapper {
-		#package : MCPackage {
 			#name : 'SqueakWhiteboard-Core'
 		},
 		#path : @4
