@@ -25,12 +25,12 @@ WBCanvasTests >> canvas: anObject [
 
 {
 	#category : #setUp,
-	#'squeak_changestamp' : 'is 6/4/2024 17:24'
+	#'squeak_changestamp' : 'si 6/7/2024 00:26'
 }
 WBCanvasTests >> setUp [
 
 	super setUp.
-	self canvas: WBCanvas new.
+	self canvas: WBCanvas newForTests.
 
 ]
 
