@@ -9,9 +9,10 @@ Class {
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 6/3/2024 21:15'
+	#'squeak_changestamp' : 'si 6/7/2024 00:30'
 }
 WBCanvasTests >> canvas [
+
 	^ canvas
 ]
 
