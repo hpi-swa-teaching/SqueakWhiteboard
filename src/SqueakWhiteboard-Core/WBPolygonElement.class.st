@@ -287,7 +287,7 @@ WBPolygonElement >> setPopupPosition [
 
 {
 	#category : #popUpBar,
-	#'squeak_changestamp' : 'ACL 6/7/2024 14:11'
+	#'squeak_changestamp' : 'ACL 6/7/2024 14:52'
 }
 WBPolygonElement >> showPopUp [
 
