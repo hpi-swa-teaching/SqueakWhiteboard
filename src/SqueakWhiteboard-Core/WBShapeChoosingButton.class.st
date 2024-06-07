@@ -1,59 +1,61 @@
 Class {
 	#name : #WBShapeChoosingButton,
-	#superclass : #WBButton,
+	#superclass : #WBButtonForPopUp,
 	#category : #'SqueakWhiteboard-Core'
 }
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'si 6/7/2024 01:46'
+	#'squeak_changestamp' : 'si 6/7/2024 22:16'
 }
 WBShapeChoosingButton >> clickFunctionality: anEvent [
 
-	self makePopUp.
+	self popUp ifNil: [self makePopUp.]
+	
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'si 6/7/2024 01:41'
+	#'squeak_changestamp' : 'si 6/7/2024 21:53'
+}
+WBShapeChoosingButton >> makeButtonWithNumber: aNumber [
+
+		^WBToolbarButton new
+			number: aNumber;
+			canvas: self canvas;
+			backgroundColor: Color lightBlue;
+			clickedColor: Color blue;
+			yourself.
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'si 6/7/2024 22:24'
 }
 WBShapeChoosingButton >> makePopUp [
 
-	self addMorph:
-		(WBElementPopUp new
+	self popUp:
+		(WBToolbarPopUp new
 			numberOfColumns: 1;
 			"sizeOfPopUp: self element class sizeOfPopUpForStandardElement; should be like this, until buttons are reworked magic number"
-			sizeOfPopUp: 20;
+			sizeOfPopUp: self owner buttonSize x;
 			setDefaultValues;
 			position: self topRight;
 			comeToFront;
 			addButtons: self makeShapeButtons;
 			yourself).
+		self addMorph: self popUp
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'si 6/7/2024 01:56'
+	#'squeak_changestamp' : 'si 6/7/2024 21:30'
 }
 WBShapeChoosingButton >> makeShapeButtons [
 
-|collection|
-	collection := OrderedCollection new.
-	collection
-		add: (WBToolbarButton new
-			number: 1;
-			image: (ImageMorph new image: 
-			(self canvas images resize: (WBImage loadRectangleButtonImage) to: self owner buttonSize*0.8));
-			yourself);
-		add: (WBToolbarButton new
-			number: 2;
-			image: (ImageMorph new image: 
-			(self canvas images resize: (WBImage loadCircleButtonImage) to: self owner buttonSize*0.8));
-			yourself);
-		add: (WBToolbarButton new
-			number: 3;
-			image: (ImageMorph new image: 
-			(self canvas images resize: (WBImage loadTextboxButtonImage) to: self owner buttonSize*0.8));
-			yourself).
-		^collection
+	^OrderedCollection new
+		add: (self makeButtonWithNumber: 1);
+		add: (self makeButtonWithNumber: 2);
+		add: (self makeButtonWithNumber: 4);
+		yourself.
 ]

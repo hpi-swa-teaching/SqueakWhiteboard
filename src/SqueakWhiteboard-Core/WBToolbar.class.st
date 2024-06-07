@@ -118,11 +118,11 @@ WBToolbar >> createButtons [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'JK 5/27/2024 11:13'
+	#'squeak_changestamp' : 'si 6/7/2024 22:29'
 }
 WBToolbar >> deactivateElement [
 
-	self submorphs do: [:m | (m class == WBColorPaletteButton) ifTrue:[m deactivateElement]].
+	self buttons do: [:m | m deactivateElement].
 ]
 
 {
@@ -233,7 +233,7 @@ WBToolbar >> initializeWithCanvas: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'nicloeser 5/28/2024 11:49'
+	#'squeak_changestamp' : 'si 6/7/2024 21:37'
 }
 WBToolbar >> placeButtons: someButtons [
 	

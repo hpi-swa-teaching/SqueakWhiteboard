@@ -10,7 +10,8 @@ Class {
 		'globalColor',
 		'elements',
 		'activeElement',
-		'activeTextbox'
+		'activeTextbox',
+		'toolbar'
 	],
 	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 5/17/2024 15:53'
@@ -278,12 +279,13 @@ WBCanvas >> initializeForTests [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/3/2024 18:23'
+	#'squeak_changestamp' : 'si 6/7/2024 22:26'
 }
 WBCanvas >> mouseDown: anEvent [
 	
 	self deactivateElement;
-		deactivateTextbox
+		deactivateTextbox.
+	self toolbar deactivateElement
 ]
 
 {
@@ -376,19 +378,39 @@ WBCanvas >> spawnMenuBar [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 5/28/2024 10:18'
+	#'squeak_changestamp' : 'si 6/7/2024 22:29'
 }
 WBCanvas >> spawnToolbar [
 	
-	self addMorph: (WBToolbar newWithCanvas: self)
+	self toolbar: (WBToolbar newWithCanvas: self).
+	self addMorph: self toolbar
 	
 ]
 
 {
 	#category : #forTests,
-	#'squeak_changestamp' : 'si 6/7/2024 00:21'
+	#'squeak_changestamp' : 'si 6/7/2024 22:28'
 }
 WBCanvas >> spawnToolbarForTests [
 	
-	self addMorph: (WBToolbarForTests newWithCanvas: self)
+	self toolbar: (WBToolbarForTests newWithCanvas: self).
+	self addMorph: self toolbar
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/7/2024 22:27'
+}
+WBCanvas >> toolbar [
+
+	^ toolbar
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/7/2024 22:27'
+}
+WBCanvas >> toolbar: aToolbar [
+
+	toolbar := aToolbar
 ]

@@ -96,19 +96,6 @@ WBElementPopUp >> numberOfRows: aNumber [
 
 {
 	#category : #addButtons,
-	#'squeak_changestamp' : 'si 6/7/2024 00:43'
-}
-WBElementPopUp >> placeButton: aButton [
-
-	self addMorph: (aButton
-		extent: ((self sizeOfPopUp - 5) @(self sizeOfPopUp - 5));
-		center: self leftCenter + (self sizeOfPopUp / 2 @ 0) + ((self popUpButtons - 1) * self sizeOfPopUp @ 0);
-		yourself).
-	self popUpButtons: self popUpButtons - 1
-]
-
-{
-	#category : #addButtons,
 	#'squeak_changestamp' : 'si 6/7/2024 00:42'
 }
 WBElementPopUp >> placeButton: aButton At: aPoint [

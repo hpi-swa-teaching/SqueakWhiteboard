@@ -38,12 +38,31 @@ WBButton class >> newWithCanvas: aCanvas [
 
 {
 	#category : #appearance,
-	#'squeak_changestamp' : 'nicloeser 5/28/2024 11:49'
+	#'squeak_changestamp' : 'si 6/7/2024 21:47'
 }
 WBButton >> addImage [
 	
+	self image ifNil: [self addRightImage.].
 	self addMorphCentered: self image
 	
+]
+
+{
+	#category : #appearance,
+	#'squeak_changestamp' : 'si 6/7/2024 21:57'
+}
+WBButton >> addRightImage [
+
+	self number = 1 ifTrue: [self image: (ImageMorph new image: 
+		(self canvas images resize: (WBImage loadRectangleButtonImage) to: self extent * 0.8)).].
+	self number = 2 ifTrue: [self image: (ImageMorph new image: 
+		(self canvas images resize: (WBImage loadCircleButtonImage) to: self extent * 0.8)).].
+	self number = 3 ifTrue: [self image: (ImageMorph new image: 
+		(self canvas images resize: (WBImage loadLineButtonImage) to: self extent * 0.8)).].
+	self number = 4 ifTrue: [self image: (ImageMorph new image: 
+		(self canvas images resize: (WBImage loadTextboxButtonImage) to: self extent * 0.8)).].
+	self number = 5 ifTrue: [self image: (ImageMorph new image: 
+		(self canvas images resize: (WBImage loadRectangleButtonImage) to: self extent * 0.8)).]
 ]
 
 {
@@ -109,6 +128,13 @@ WBButton >> clickedColor [
 WBButton >> clickedColor: aColor [
 
 	clickedColor := aColor.
+]
+
+{
+	#category : #deactivate,
+	#'squeak_changestamp' : 'si 6/7/2024 22:19'
+}
+WBButton >> deactivateElement [
 ]
 
 {
