@@ -100,16 +100,17 @@ WBToolbar >> canvas: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/3/2024 21:26'
+	#'squeak_changestamp' : 'si 6/7/2024 01:46'
 }
 WBToolbar >> createButtons [
 	
 	self placeButtons: (OrderedCollection withAll: {
-		self getRectangleButton.
+		self getShapeChoosingButton.
+		"self getRectangleButton."
 		self getLineButton.
-		self getCircleButton.
+		"self getCircleButton."
 		self getNoteButton.
-		self getTextboxButton.
+		"self getTextboxButton."
 		self getColorsButton.})
 
 	
@@ -185,6 +186,19 @@ WBToolbar >> getRectangleButton [
 
 	^WBToolbarButton new
 			number: 1;
+			image: (ImageMorph new image: 
+			(self canvas images resize: (WBImage loadRectangleButtonImage) to: self buttonSize*0.8));
+			yourself.
+			
+]
+
+{
+	#category : #getButton,
+	#'squeak_changestamp' : 'si 6/7/2024 01:45'
+}
+WBToolbar >> getShapeChoosingButton [
+
+	^WBShapeChoosingButton new
 			image: (ImageMorph new image: 
 			(self canvas images resize: (WBImage loadRectangleButtonImage) to: self buttonSize*0.8));
 			yourself.

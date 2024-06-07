@@ -79,13 +79,15 @@ WBColorPaletteButton >> makeColorButtons [
 
 {
 	#category : #createButtons,
-	#'squeak_changestamp' : 'is 5/29/2024 01:07'
+	#'squeak_changestamp' : 'si 6/7/2024 00:55'
 }
 WBColorPaletteButton >> makeColorPalette [
 	
 	self addMorph:
 		(WBElementPopUp new
 			numberOfColumns: 3;
+			"sizeOfPopUp: self element class sizeOfPopUpForStandardElement; should be like this, until buttons are reworked magic number"
+			sizeOfPopUp: 20;
 			setDefaultValues;
 			position: self topRight;
 			comeToFront;

@@ -27,6 +27,15 @@ WBElement class >> newWithCanvas: aCanvas [
 ]
 
 {
+	#category : #popUp,
+	#'squeak_changestamp' : 'si 6/7/2024 00:46'
+}
+WBElement class >> sizeOfPopUpForStandardElement [
+
+	^20
+]
+
+{
 	#category : #resize,
 	#'squeak_changestamp' : 'si 6/3/2024 14:29'
 }
@@ -209,12 +218,13 @@ WBElement >> initializeWithCanvas: aCanvas [
 
 {
 	#category : #popUpBar,
-	#'squeak_changestamp' : 'JK 5/28/2024 23:16'
+	#'squeak_changestamp' : 'si 6/7/2024 00:46'
 }
 WBElement >> makeElementPopUp [
 
 	self popUpMenu: (WBElementPopUp new
 		setDefaultValues;
+		sizeOfPopUp: self class sizeOfPopUpForStandardElement;
 		addButtons: self buttonsForPopUpBar;
 		yourself).
 	self addMorph: self popUpMenu.

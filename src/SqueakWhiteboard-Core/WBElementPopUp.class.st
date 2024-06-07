@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'popUpButtons',
 		'numberOfColumns',
-		'numberOfRows'
+		'numberOfRows',
+		'sizeOfPopUp'
 	],
 	#category : #'SqueakWhiteboard-Core'
 }
@@ -29,7 +30,7 @@ WBElementPopUp class >> sizeOfPopUp [
 
 {
 	#category : #addButtons,
-	#'squeak_changestamp' : 'si 5/27/2024 22:51'
+	#'squeak_changestamp' : 'si 6/7/2024 00:43'
 }
 WBElementPopUp >> addButtons: aList [
 
@@ -38,11 +39,11 @@ WBElementPopUp >> addButtons: aList [
 		self numberOfColumns: aList size.]
 	ifNotNil: [self numberOfRows: (aList size / self numberOfColumns) ceiling].
 	self popUpButtons: aList size.
-	self extent: (self numberOfColumns  * 20) @ (self numberOfRows *20).
+	self extent: (self numberOfColumns  * self sizeOfPopUp) @ (self numberOfRows * self sizeOfPopUp).
 	row := 0. 
 	column := 0.
 	aList do: 
-		[:m | self placeButton: m At: self position + ((self class sizeOfPopUp / 2) @ (self class sizeOfPopUp / 2)) + ((column * self class sizeOfPopUp) @ (row * self class sizeOfPopUp)).
+		[:m | self placeButton: m At: self position + ((self sizeOfPopUp / 2) @ (self  sizeOfPopUp / 2)) + ((column * self sizeOfPopUp) @ (row * self sizeOfPopUp)).
 		column := column + 1.
 		(column  = (self numberOfColumns)) ifTrue: [column := 0.
 			row := row + 1].]
@@ -95,25 +96,25 @@ WBElementPopUp >> numberOfRows: aNumber [
 
 {
 	#category : #addButtons,
-	#'squeak_changestamp' : 'si 5/23/2024 22:52'
+	#'squeak_changestamp' : 'si 6/7/2024 00:43'
 }
 WBElementPopUp >> placeButton: aButton [
 
 	self addMorph: (aButton
-		extent: ((self class sizeOfPopUp - 5) @(self class sizeOfPopUp - 5));
-		center: self leftCenter + (self class sizeOfPopUp / 2 @ 0) + ((self popUpButtons - 1)*self class sizeOfPopUp @ 0);
+		extent: ((self sizeOfPopUp - 5) @(self sizeOfPopUp - 5));
+		center: self leftCenter + (self sizeOfPopUp / 2 @ 0) + ((self popUpButtons - 1) * self sizeOfPopUp @ 0);
 		yourself).
 	self popUpButtons: self popUpButtons - 1
 ]
 
 {
 	#category : #addButtons,
-	#'squeak_changestamp' : 'si 5/27/2024 22:33'
+	#'squeak_changestamp' : 'si 6/7/2024 00:42'
 }
 WBElementPopUp >> placeButton: aButton At: aPoint [
 
 	self addMorph: (aButton
-		extent: ((self class sizeOfPopUp - 5) @(self class sizeOfPopUp - 5));
+		extent: ((self sizeOfPopUp - 5) @(self sizeOfPopUp - 5));
 		center: aPoint;
 		yourself).
 ]
@@ -138,7 +139,7 @@ WBElementPopUp >> popUpButtons: aNumber [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 5/23/2024 21:31'
+	#'squeak_changestamp' : 'si 6/7/2024 00:45'
 }
 WBElementPopUp >> setDefaultValues [
 
@@ -148,4 +149,22 @@ WBElementPopUp >> setDefaultValues [
 		borderWidth: 1;
 		cornerStyle: #rounded;
 		cornerRadius: self class CornerRadius.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/7/2024 00:40'
+}
+WBElementPopUp >> sizeOfPopUp [
+
+	^ sizeOfPopUp
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/7/2024 00:41'
+}
+WBElementPopUp >> sizeOfPopUp: aNumber [
+
+	sizeOfPopUp := aNumber
 ]
