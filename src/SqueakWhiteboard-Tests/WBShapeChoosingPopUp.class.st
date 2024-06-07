@@ -47,7 +47,7 @@ WBShapeChoosingPopUp >> tearDown [
 
 {
 	#category : #testsForStandardElement,
-	#'squeak_changestamp' : 'si 6/7/2024 23:57'
+	#'squeak_changestamp' : 'si 6/8/2024 00:40'
 }
 WBShapeChoosingPopUp >> testButtonFunctionallity [
 
@@ -57,7 +57,7 @@ WBShapeChoosingPopUp >> testButtonFunctionallity [
 	button clickFunctionality: nil.
 	popUpMenu := button popUp.
 	
-	arteficialMouseClick := WBArtificialMouseClick new clickedPosition: self canvas position + (100 @  100).
+	arteficialMouseClick := MouseButtonEvent new position: self canvas position + (100@100).
 	
 	popUpMenu submorphs do: [:s | s number = 1 ifTrue: [buttonForShape := s]].
 	buttonForShape clickFunctionality: arteficialMouseClick.
