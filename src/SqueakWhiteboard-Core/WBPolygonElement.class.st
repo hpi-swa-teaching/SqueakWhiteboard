@@ -12,6 +12,15 @@ Class {
 }
 
 {
+	#category : #popUp,
+	#'squeak_changestamp' : 'si 6/8/2024 00:24'
+}
+WBPolygonElement class >> sizeOfPopUpForStandardElement [
+ 
+	^ 20
+]
+
+{
 	#category : #popUpBar,
 	#'squeak_changestamp' : 'si 6/3/2024 18:39'
 }
@@ -149,12 +158,13 @@ WBPolygonElement >> handlesMouseDown: anEvent [
 
 {
 	#category : #popUpBar,
-	#'squeak_changestamp' : 'si 6/3/2024 18:45'
+	#'squeak_changestamp' : 'si 6/8/2024 00:24'
 }
 WBPolygonElement >> makeElementPopUp [
 
 	self popUpMenu: (WBElementPopUp new
 		setDefaultValues;
+		sizeOfPopUp: self class sizeOfPopUpForStandardElement;
 		addButtons: self buttonsForPopUpBar;
 		yourself).
 	self addMorph: self popUpMenu.

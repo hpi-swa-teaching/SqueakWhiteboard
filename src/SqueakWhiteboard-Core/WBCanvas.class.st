@@ -360,12 +360,13 @@ WBCanvas >> initializeForTests [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'ACL 6/7/2024 14:19'
+	#'squeak_changestamp' : 'si 6/8/2024 00:22'
 }
 WBCanvas >> mouseDown: anEvent [
 	
 	self deactivateElement;
 		deactivateTextbox.
+	self toolbar deactivateElement.
 	(anEvent yellowButtonPressed) ifTrue: [self dragStart: anEvent]
 ]
 
