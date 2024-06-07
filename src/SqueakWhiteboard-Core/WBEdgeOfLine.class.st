@@ -70,12 +70,13 @@ WBEdgeOfLine >> line: aWBLine [
 
 {
 	#category : #popUpBar,
-	#'squeak_changestamp' : 'si 5/27/2024 11:49'
+	#'squeak_changestamp' : 'si 6/7/2024 00:47'
 }
 WBEdgeOfLine >> makeElementPopUp [
 
 	self line popUpMenu: (WBElementPopUp new
 		setDefaultValues;
+		sizeOfPopUp: self class sizeOfPopUpForStandardElement;
 		position: self topRight;
 		addButtons: self buttonsForPopUpBar;
 		yourself).

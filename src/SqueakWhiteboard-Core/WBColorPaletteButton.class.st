@@ -4,6 +4,9 @@ The WBDeleteButton is a button that deletes the element that it is attached to
 Class {
 	#name : #WBColorPaletteButton,
 	#superclass : #WBPopUpButton,
+	#instVars : [
+		'popUp'
+	],
 	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : '<historical>'
 }
@@ -19,20 +22,21 @@ WBColorPaletteButton class >> newWithDefaultValues [
 
 {
 	#category : #clicking,
-	#'squeak_changestamp' : 'ACL 5/24/2024 11:48'
+	#'squeak_changestamp' : 'si 6/7/2024 22:40'
 }
 WBColorPaletteButton >> clickFunctionality: anEvent [
 
-	self makeColorPalette.
+	self popUp ifNil: [self makeColorPalette.]
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JK 5/27/2024 11:13'
+	#'squeak_changestamp' : 'si 6/7/2024 22:39'
 }
 WBColorPaletteButton >> deactivateElement [
 
-	self submorphs do: [:m | m delete].
+	self popUp ifNotNil: [self popUp delete.].
+	self popUp: nil
 ]
 
 {
@@ -79,18 +83,39 @@ WBColorPaletteButton >> makeColorButtons [
 
 {
 	#category : #createButtons,
-	#'squeak_changestamp' : 'is 5/29/2024 01:07'
+	#'squeak_changestamp' : 'si 6/7/2024 22:37'
 }
 WBColorPaletteButton >> makeColorPalette [
 	
-	self addMorph:
+	self popUp:
 		(WBElementPopUp new
 			numberOfColumns: 3;
+			"sizeOfPopUp: self element class sizeOfPopUpForStandardElement; should be like this, until buttons are reworked magic number"
+			sizeOfPopUp: 20;
 			setDefaultValues;
 			position: self topRight;
 			comeToFront;
 			addButtons: self makeColorButtons;
 			yourself).
+		self addMorph: self popUp
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/7/2024 22:36'
+}
+WBColorPaletteButton >> popUp [
+
+	^ popUp
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/7/2024 22:35'
+}
+WBColorPaletteButton >> popUp: aPopUp [
+
+	popUp := aPopUp
 ]
 
 {

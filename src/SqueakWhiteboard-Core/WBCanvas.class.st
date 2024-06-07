@@ -469,37 +469,39 @@ WBCanvas >> spawnMenuBar [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'ACL 6/7/2024 14:26'
+	#'squeak_changestamp' : 'si 6/7/2024 22:29'
 }
 WBCanvas >> spawnToolbar [
 	
 	self toolbar: (WBToolbar newWithCanvas: self).
-	self addMorph: self toolbar.
+	self addMorph: self toolbar
 	
 ]
 
 {
 	#category : #forTests,
-	#'squeak_changestamp' : 'ACL 6/7/2024 14:04'
+	#'squeak_changestamp' : 'si 6/7/2024 22:28'
 }
 WBCanvas >> spawnToolbarForTests [
 	
 	self toolbar: (WBToolbarForTests newWithCanvas: self).
-	self addMorph: self toolbar.
+	self addMorph: self toolbar
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'ACL 6/7/2024 13:57'
+	#'squeak_changestamp' : 'si 6/7/2024 22:27'
 }
 WBCanvas >> toolbar [
+
 	^ toolbar
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'ACL 6/7/2024 13:57'
+	#'squeak_changestamp' : 'si 6/7/2024 22:27'
 }
-WBCanvas >> toolbar: anObject [
-	toolbar := anObject
+WBCanvas >> toolbar: aToolbar [
+
+	toolbar := aToolbar
 ]

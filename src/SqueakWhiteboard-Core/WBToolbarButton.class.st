@@ -10,7 +10,7 @@ Class {
 
 {
 	#category : #clicking,
-	#'squeak_changestamp' : 'si 6/3/2024 21:25'
+	#'squeak_changestamp' : 'si 6/7/2024 01:38'
 }
 WBToolbarButton >> clickFunctionality: anEvent [
 
