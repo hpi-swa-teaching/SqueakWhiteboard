@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'si 6/7/2024 22:16'
+	#'squeak_changestamp' : 'si 6/7/2024 23:26'
 }
 WBShapeChoosingButton >> clickFunctionality: anEvent [
 
@@ -16,7 +16,7 @@ WBShapeChoosingButton >> clickFunctionality: anEvent [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'si 6/7/2024 21:53'
+	#'squeak_changestamp' : 'si 6/7/2024 23:13'
 }
 WBShapeChoosingButton >> makeButtonWithNumber: aNumber [
 
@@ -25,20 +25,22 @@ WBShapeChoosingButton >> makeButtonWithNumber: aNumber [
 			canvas: self canvas;
 			backgroundColor: Color lightBlue;
 			clickedColor: Color blue;
+			extent: self owner buttonSize;
+			borderColor: Color black;
+			borderWidth: 1;
 			yourself.
 ]
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'si 6/7/2024 22:24'
+	#'squeak_changestamp' : 'si 6/7/2024 23:14'
 }
 WBShapeChoosingButton >> makePopUp [
 
 	self popUp:
 		(WBToolbarPopUp new
 			numberOfColumns: 1;
-			"sizeOfPopUp: self element class sizeOfPopUpForStandardElement; should be like this, until buttons are reworked magic number"
-			sizeOfPopUp: self owner buttonSize x;
+			sizeOfPopUp: (self owner buttonSize x) * 1.3;
 			setDefaultValues;
 			position: self topRight;
 			comeToFront;

@@ -9,11 +9,12 @@ Class {
 
 {
 	#category : #deactivate,
-	#'squeak_changestamp' : 'si 6/7/2024 22:23'
+	#'squeak_changestamp' : 'si 6/7/2024 22:42'
 }
 WBButtonForPopUp >> deactivateElement [
 
-	self popUp: nil.
+	self popUp ifNotNil: [self popUp delete.].
+	self popUp: nil
 ]
 
 {

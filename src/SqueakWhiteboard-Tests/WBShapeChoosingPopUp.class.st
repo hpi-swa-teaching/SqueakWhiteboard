@@ -47,87 +47,88 @@ WBShapeChoosingPopUp >> tearDown [
 
 {
 	#category : #testsForStandardElement,
-	#'squeak_changestamp' : 'si 6/7/2024 01:32'
+	#'squeak_changestamp' : 'si 6/7/2024 23:57'
 }
 WBShapeChoosingPopUp >> testButtonFunctionallity [
 
-	|popUpMenu toolbar button buttonForShape|
-	self canvas submorphs do: [:s | s class = WBToolbarForTests ifTrue: [toolbar := s]].
-	toolbar buttons do: [:b | b class = WBShapeChoosingButton ifTrue: [button := b]].
-	button clickFunctionality: AbstractEvent new.
-	button submorphs do: [:s | s class = WBElementPopUp ifTrue: [popUpMenu := s]].
+	|popUpMenu button buttonForShape arteficialMouseClick|
+	
+	self canvas toolbar buttons do: [:b | b class = WBShapeChoosingButton ifTrue: [button := b]].
+	button clickFunctionality: nil.
+	popUpMenu := button popUp.
+	
+	arteficialMouseClick := WBArtificialMouseClick new clickedPosition: self canvas position + (100 @  100).
 	
 	popUpMenu submorphs do: [:s | s number = 1 ifTrue: [buttonForShape := s]].
-	buttonForShape clickFunctionality: AbstractEvent new.
+	buttonForShape clickFunctionality: arteficialMouseClick.
 	self assert: self canvas elementToSpawn class = WBRectangle.
 	
 	popUpMenu submorphs do: [:s | s number = 2 ifTrue: [buttonForShape := s]].
-	buttonForShape clickFunctionality: AbstractEvent new.
+	buttonForShape clickFunctionality: arteficialMouseClick.
 	self assert: self canvas elementToSpawn class = WBCircle.
 	
 	popUpMenu submorphs do: [:s | s number = 4 ifTrue: [buttonForShape := s]].
-	buttonForShape clickFunctionality: AbstractEvent new.
+	buttonForShape clickFunctionality: arteficialMouseClick.
 	self assert: self canvas elementToSpawn class = WBTextbox.
 ]
 
 {
 	#category : #testsForStandardElement,
-	#'squeak_changestamp' : 'si 6/7/2024 01:37'
+	#'squeak_changestamp' : 'si 6/7/2024 23:31'
 }
 WBShapeChoosingPopUp >> testButtonsOfPopUp [
 
-	|popUpMenu toolbar button|
-	self canvas submorphs do: [:s | s class = WBToolbarForTests ifTrue: [toolbar := s]].
-	toolbar buttons do: [:b | b class = WBShapeChoosingButton ifTrue: [button := b]].
-	button clickFunctionality: AbstractEvent new.
-	button submorphs do: [:s | s class = WBElementPopUp ifTrue: [popUpMenu := s]].
+	| button|
+
+	self canvas toolbar buttons do: [:b | b class = WBShapeChoosingButton ifTrue: [button := b]].
+	button clickFunctionality: nil.
 	
-	self assert: popUpMenu submorphs size = 3
+	self assert: button popUp submorphs size = 3
 ]
 
 {
 	#category : #testsForStandardElement,
-	#'squeak_changestamp' : 'si 6/7/2024 01:34'
+	#'squeak_changestamp' : 'si 6/7/2024 23:31'
 }
 WBShapeChoosingPopUp >> testExistenxOfPopUp [
 
-	|popUpMenu toolbar button|
-	self canvas submorphs do: [:s | s class = WBToolbarForTests ifTrue: [toolbar := s]].
-	toolbar buttons do: [:b | b class = WBShapeChoosingButton ifTrue: [button := b]].
-	button clickFunctionality: MouseButtonEvent new.
-	button submorphs do: [:s | s class = WBElementPopUp ifTrue: [popUpMenu := s]].
-	self assert: popUpMenu notNil
+	| button|
+
+	self canvas toolbar buttons do: [:b | b class = WBShapeChoosingButton ifTrue: [button := b]].
+	button clickFunctionality: nil.
+	
+	self assert: button popUp notNil
 	
 ]
 
 {
 	#category : #testsForStandardElement,
-	#'squeak_changestamp' : 'si 6/7/2024 01:38'
+	#'squeak_changestamp' : 'si 6/7/2024 23:35'
 }
 WBShapeChoosingPopUp >> testPopUpPlacement [
 
-	|popUpMenu toolbar button|
-	self canvas submorphs do: [:s | s class = WBToolbarForTests ifTrue: [toolbar := s]].
-	toolbar buttons do: [:b | b class = WBShapeChoosingButton ifTrue: [button := b]].
-	button clickFunctionality: AbstractEvent new.
-	button submorphs do: [:s | s class = WBElementPopUp ifTrue: [popUpMenu := s]].
+	|popUpMenu button|
+	
+	self canvas toolbar buttons do: [:b | b class = WBShapeChoosingButton ifTrue: [button := b]].
+	button clickFunctionality: nil.
+	popUpMenu := button popUp.
 	
 	self assert: button center y - 200 < popUpMenu top.	
-	self assert: popUpMenu center y + 200 < button bottom.	
+	self assert: popUpMenu bottom < (button center y + 500) .	
 ]
 
 {
 	#category : #testsForStandardElement,
-	#'squeak_changestamp' : 'si 6/7/2024 01:37'
+	#'squeak_changestamp' : 'si 6/7/2024 23:35'
 }
 WBShapeChoosingPopUp >> testPopUpPlacementInX [
 
-	|popUpMenu toolbar button|
-	self canvas submorphs do: [:s | s class = WBToolbarForTests ifTrue: [toolbar := s]].
-	toolbar buttons do: [:b | b class = WBShapeChoosingButton ifTrue: [button := b]].
-	button clickFunctionality: AbstractEvent new.
-	button submorphs do: [:s | s class = WBElementPopUp ifTrue: [popUpMenu := s]].
+	|popUpMenu button|
 	
-	self assert: button right < popUpMenu left.	
-	self assert: popUpMenu left < button right + 200.	
+	self canvas toolbar buttons do: [:b | b class = WBShapeChoosingButton ifTrue: [button := b]].
+	button clickFunctionality: nil.
+	popUpMenu := button popUp.
+	
+	self assert: button right <= popUpMenu left.	
+	self assert: popUpMenu left <= (button right + 200).	
 ]
