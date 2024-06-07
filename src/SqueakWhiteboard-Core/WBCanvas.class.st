@@ -10,7 +10,10 @@ Class {
 		'globalColor',
 		'elements',
 		'activeElement',
-		'activeTextbox'
+		'activeTextbox',
+		'drawingSurface',
+		'dragOffset',
+		'toolbar'
 	],
 	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 5/17/2024 15:53'
@@ -72,12 +75,12 @@ WBCanvas >> activeTextbox: aTextbox [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 5/27/2024 11:38'
+	#'squeak_changestamp' : 'ACL 6/7/2024 10:41'
 }
 WBCanvas >> addElement: anElement [
 
 	self elements add:  anElement.
-	self addMorph: anElement
+	self drawingSurface addMorph: anElement
 ]
 
 {
@@ -98,6 +101,20 @@ WBCanvas >> clampPointToCanvas: aPoint [
 
 	^ (aPoint x clampLow: self bounds origin x high: self bounds corner x)
 		@(aPoint y clampLow: self bounds origin y high: self bounds corner y)
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'ACL 6/7/2024 13:37'
+}
+WBCanvas >> createDrawingSurface [
+	
+	self drawingSurface: (Morph new
+						extent: 0@0;
+						yourself).
+	self addMorph: self drawingSurface.
+	
+	
 ]
 
 {
@@ -122,6 +139,66 @@ WBCanvas >> deactivateTextbox [
 		self activeTextbox deactivateTextbox.
 		self activeTextbox: nil]
 
+]
+
+{
+	#category : #drag,
+	#'squeak_changestamp' : 'ACL 6/7/2024 12:25'
+}
+WBCanvas >> dragEnd: anEvent [
+	
+]
+
+{
+	#category : #drag,
+	#'squeak_changestamp' : 'ACL 6/7/2024 12:22'
+}
+WBCanvas >> dragMove: mouseEvent [
+	| newPosition |
+
+ 	newPosition := mouseEvent cursorPoint + self dragOffset.
+	self drawingSurface position: newPosition.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'ACL 6/7/2024 10:54'
+}
+WBCanvas >> dragOffset [
+	^ dragOffset
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'ACL 6/7/2024 10:54'
+}
+WBCanvas >> dragOffset: anObject [
+	dragOffset := anObject
+]
+
+{
+	#category : #drag,
+	#'squeak_changestamp' : 'ACL 6/7/2024 14:27'
+}
+WBCanvas >> dragStart: anEvent [
+
+	self dragOffset: self drawingSurface position - anEvent cursorPoint.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'ACL 6/7/2024 10:40'
+}
+WBCanvas >> drawingSurface [
+	^ drawingSurface
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'ACL 6/7/2024 10:40'
+}
+WBCanvas >> drawingSurface: anObject [
+	drawingSurface := anObject
 ]
 
 {
@@ -235,7 +312,7 @@ WBCanvas >> images: anImageClass [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JK 6/3/2024 12:29'
+	#'squeak_changestamp' : 'ACL 6/7/2024 14:26'
 }
 WBCanvas >> initialize [
 	
@@ -252,12 +329,15 @@ WBCanvas >> initialize [
 	self spawnToolbar.
 	self openInWindowLabeled: #SqueakWhiteboard.
 	self globalColor: Color cyan.
+	self createDrawingSurface.
+	self toolbar comeToFront.
+	self clipSubmorphs: true.
 	
 ]
 
 {
 	#category : #forTests,
-	#'squeak_changestamp' : 'si 6/7/2024 00:18'
+	#'squeak_changestamp' : 'ACL 6/7/2024 14:02'
 }
 WBCanvas >> initializeForTests [
 	
@@ -274,26 +354,39 @@ WBCanvas >> initializeForTests [
 	self spawnToolbarForTests.
 	self openInWindowLabeled: #SqueakWhiteboard.
 	self globalColor: Color cyan.
+	self createDrawingSurface.
+	self clipSubmorphs: true.
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/3/2024 18:23'
+	#'squeak_changestamp' : 'ACL 6/7/2024 14:19'
 }
 WBCanvas >> mouseDown: anEvent [
 	
 	self deactivateElement;
-		deactivateTextbox
+		deactivateTextbox.
+	(anEvent yellowButtonPressed) ifTrue: [self dragStart: anEvent]
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'JK 5/26/2024 23:47'
+	#'squeak_changestamp' : 'ACL 6/7/2024 11:53'
 }
 WBCanvas >> mouseMove: anEvent [
 	
 	(self elementToSpawn) ifNotNil:
-		[self elementToSpawn dragMove: anEvent]
+		[self elementToSpawn dragMove: anEvent].
+	anEvent yellowButtonPressed ifTrue:[self dragMove: anEvent]
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'ACL 6/7/2024 11:42'
+}
+WBCanvas >> mouseUp: anEvent [
+	
+	self dragEnd: anEvent.
 ]
 
 {
@@ -334,7 +427,7 @@ WBCanvas >> scale: aFactor [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 5/27/2024 11:39'
+	#'squeak_changestamp' : 'ACL 6/7/2024 14:30'
 }
 WBCanvas >> spawnACopiedElement: anElement At: aPoint [
 
@@ -345,12 +438,12 @@ WBCanvas >> spawnACopiedElement: anElement At: aPoint [
 		canvas: self;
 		addDropShadow;
 		yourself).
-	self addElement: anElement
+	self addElement: anElement.
 ]
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 5/29/2024 01:09'
+	#'squeak_changestamp' : 'ACL 6/7/2024 14:47'
 }
 WBCanvas >> spawnAnElement: anElement At: aPoint [
 	
@@ -362,7 +455,7 @@ WBCanvas >> spawnAnElement: anElement At: aPoint [
 		color: self globalColor;
 		addDropShadow;
 		yourself).
-	self addElement: anElement
+	self addElement: anElement.
 ]
 
 {
@@ -376,19 +469,37 @@ WBCanvas >> spawnMenuBar [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 5/28/2024 10:18'
+	#'squeak_changestamp' : 'ACL 6/7/2024 14:26'
 }
 WBCanvas >> spawnToolbar [
 	
-	self addMorph: (WBToolbar newWithCanvas: self)
+	self toolbar: (WBToolbar newWithCanvas: self).
+	self addMorph: self toolbar.
 	
 ]
 
 {
 	#category : #forTests,
-	#'squeak_changestamp' : 'si 6/7/2024 00:21'
+	#'squeak_changestamp' : 'ACL 6/7/2024 14:04'
 }
 WBCanvas >> spawnToolbarForTests [
 	
-	self addMorph: (WBToolbarForTests newWithCanvas: self)
+	self toolbar: (WBToolbarForTests newWithCanvas: self).
+	self addMorph: self toolbar.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'ACL 6/7/2024 13:57'
+}
+WBCanvas >> toolbar [
+	^ toolbar
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'ACL 6/7/2024 13:57'
+}
+WBCanvas >> toolbar: anObject [
+	toolbar := anObject
 ]
