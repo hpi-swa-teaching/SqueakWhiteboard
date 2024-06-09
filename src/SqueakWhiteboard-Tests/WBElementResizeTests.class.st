@@ -25,12 +25,12 @@ WBElementResizeTests >> canvas: anObject [
 
 {
 	#category : #setUp,
-	#'squeak_changestamp' : 'si 6/7/2024 00:26'
+	#'squeak_changestamp' : 'is 6/9/2024 15:47'
 }
 WBElementResizeTests >> setUp [
 	
 	super setUp.
-	self canvas: WBCanvas newForTests.
+	self canvas: WBCanvas new.
 
 ]
 

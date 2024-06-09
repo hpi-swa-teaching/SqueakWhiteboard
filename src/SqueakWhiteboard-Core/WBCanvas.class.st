@@ -29,15 +29,6 @@ WBCanvas class >> WhiteBoardSize [
 ]
 
 {
-	#category : #forTests,
-	#'squeak_changestamp' : 'si 6/7/2024 00:18'
-}
-WBCanvas class >> newForTests [
-
-	^ WBCanvas basicNew initializeForTests
-]
-
-{
 	#category : #accessing,
 	#'squeak_changestamp' : 'is 6/2/2024 15:50'
 }
@@ -336,29 +327,6 @@ WBCanvas >> initialize [
 ]
 
 {
-	#category : #forTests,
-	#'squeak_changestamp' : 'ACL 6/7/2024 14:02'
-}
-WBCanvas >> initializeForTests [
-	
-	super initialize.
-	self images: WBImage new.
-	self 
-		scale: 1.0;
-		height: (self class WhiteBoardSize * self scale);
-		width: (self class WhiteBoardSize * self scale * 1.5);
-		color: Color white;
-		borderWidth: 1;
-		borderColor: Color black;
-		elements: OrderedCollection new.
-	self spawnToolbarForTests.
-	self openInWindowLabeled: #SqueakWhiteboard.
-	self globalColor: Color cyan.
-	self createDrawingSurface.
-	self clipSubmorphs: true.
-]
-
-{
 	#category : #'event handling',
 	#'squeak_changestamp' : 'si 6/8/2024 00:22'
 }
@@ -477,16 +445,6 @@ WBCanvas >> spawnToolbar [
 	self toolbar: (WBToolbar newWithCanvas: self).
 	self addMorph: self toolbar
 	
-]
-
-{
-	#category : #forTests,
-	#'squeak_changestamp' : 'si 6/7/2024 22:28'
-}
-WBCanvas >> spawnToolbarForTests [
-	
-	self toolbar: (WBToolbarForTests newWithCanvas: self).
-	self addMorph: self toolbar
 ]
 
 {

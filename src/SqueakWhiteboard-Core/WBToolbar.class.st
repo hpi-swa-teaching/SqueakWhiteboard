@@ -127,95 +127,112 @@ WBToolbar >> deactivateElement [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'nicloeser 5/28/2024 11:50'
+	#'squeak_changestamp' : 'is 6/9/2024 15:38'
 }
 WBToolbar >> getCircleButton [
-
-	^WBToolbarButton new
-			number: 2;
-			image: (ImageMorph new image: 
-			(self canvas images resize: (WBImage loadCircleButtonImage) to: self buttonSize*0.8));
-			yourself.
+	| circleImage circleButton|
+	
+	circleButton := WBToolbarButton new number: 2.
+	circleImage := WBImage loadCircleButtonImage.
+	
+	circleImage notNil ifTrue: 
+		[circleButton image: (ImageMorph new image: (self canvas images resize: circleImage to: self buttonSize*0.8))].
+	^ circleButton
 			
 ]
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'nicloeser 5/28/2024 11:50'
+	#'squeak_changestamp' : 'is 6/9/2024 15:39'
 }
 WBToolbar >> getColorsButton [
-
-	^WBColorPaletteButton new
-			image: (ImageMorph new image: 
-			(self canvas images resize: (WBImage loadColorsButtonImage) to: self buttonSize*0.8));
-			yourself.
+	| colorsImage colorsButton|
+	
+	colorsButton := WBColorPaletteButton new.
+	colorsImage := WBImage loadColorsButtonImage.
+	
+	colorsImage notNil ifTrue: 
+		[colorsButton image: (ImageMorph new image: (self canvas images resize: colorsImage to: self buttonSize*0.8))].
+	^ colorsButton
 ]
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'nicloeser 5/28/2024 11:50'
+	#'squeak_changestamp' : 'is 6/9/2024 15:39'
 }
 WBToolbar >> getLineButton [
-
-	^WBToolbarButton new
-			number: 3;
-			image: (ImageMorph new image: 
-			(self canvas images resize: (WBImage loadLineButtonImage) to: self buttonSize*0.8));
-			yourself.
+	| lineImage lineButton|
+	
+	lineButton := WBToolbarButton new number: 3.
+	lineImage := WBImage loadLineButtonImage.
+	
+	lineImage notNil ifTrue: 
+		[lineButton image: (ImageMorph new image: (self canvas images resize: lineImage to: self buttonSize*0.8))].
+	^ lineButton
+	
 			
 ]
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'si 6/3/2024 13:38'
+	#'squeak_changestamp' : 'is 6/9/2024 15:41'
 }
 WBToolbar >> getNoteButton [
-
-	^WBToolbarButton new
-			number: 5;
-			image: (ImageMorph new image: 
-			(self canvas images resize: (WBImage loadCircleButtonImage) to: self buttonSize*0.8));
-			yourself.
+	| noteImage noteButton|
+	
+	noteButton := WBToolbarButton new number: 5.
+	noteImage := WBImage loadCircleButtonImage.
+	
+	noteImage notNil ifTrue: 
+		[noteButton image: (ImageMorph new image: (self canvas images resize: noteImage to: self buttonSize*0.8))].
+	^ noteButton
 ]
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'nicloeser 5/28/2024 11:50'
+	#'squeak_changestamp' : 'is 6/9/2024 15:42'
 }
 WBToolbar >> getRectangleButton [
+	| rectangleImage rectangleButton |
+	
+	rectangleButton := WBToolbarButton new number: 1.
+	rectangleImage := WBImage loadRectangleButtonImage.
 
-	^WBToolbarButton new
-			number: 1;
-			image: (ImageMorph new image: 
-			(self canvas images resize: (WBImage loadRectangleButtonImage) to: self buttonSize*0.8));
-			yourself.
+	rectangleImage notNil ifTrue: 
+		[rectangleButton image: (ImageMorph new image: (self canvas images resize: rectangleImage to: self buttonSize*0.8))].
+	^ rectangleButton
 			
 ]
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'si 6/7/2024 01:45'
+	#'squeak_changestamp' : 'is 6/9/2024 15:43'
 }
 WBToolbar >> getShapeChoosingButton [
+	| shapeChoosingImage shapeChoosingButton |
+	
+	shapeChoosingButton := WBShapeChoosingButton new.
+	shapeChoosingImage := WBImage loadRectangleButtonImage.
 
-	^WBShapeChoosingButton new
-			image: (ImageMorph new image: 
-			(self canvas images resize: (WBImage loadRectangleButtonImage) to: self buttonSize*0.8));
-			yourself.
+	shapeChoosingImage notNil ifTrue: 
+		[shapeChoosingButton image: (ImageMorph new image: (self canvas images resize: shapeChoosingImage to: self buttonSize*0.8))].
+	^ shapeChoosingButton
 			
 ]
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'is 6/5/2024 09:59'
+	#'squeak_changestamp' : 'is 6/9/2024 15:44'
 }
 WBToolbar >> getTextboxButton [
+	| textboxImage textboxButton |
+	
+	textboxButton := WBToolbarButton new number: 4.
+	textboxImage := WBImage loadTextboxButtonImage.
 
-	^WBToolbarButton new
-			number: 4;
-			image: (ImageMorph new image: 
-			(self canvas images resize: (WBImage loadTextboxButtonImage) to: self buttonSize*0.8));
-			yourself.
+	textboxImage notNil ifTrue: 
+		[textboxButton image: (ImageMorph new image: (self canvas images resize: textboxImage to: self buttonSize*0.8))].
+	^ textboxButton
 ]
 
 {

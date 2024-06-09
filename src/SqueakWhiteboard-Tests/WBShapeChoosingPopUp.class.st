@@ -26,12 +26,12 @@ WBShapeChoosingPopUp >> canvas: anObject [
 
 {
 	#category : #setUp,
-	#'squeak_changestamp' : 'si 6/7/2024 00:29'
+	#'squeak_changestamp' : 'is 6/9/2024 15:47'
 }
 WBShapeChoosingPopUp >> setUp [
 
 	super setUp.
-	self canvas: WBCanvas newForTests.
+	self canvas: WBCanvas new.
 
 ]
 
