@@ -38,12 +38,13 @@ WBButton class >> newWithCanvas: aCanvas [
 
 {
 	#category : #appearance,
-	#'squeak_changestamp' : 'si 6/7/2024 21:47'
+	#'squeak_changestamp' : 'is 6/9/2024 15:55'
 }
 WBButton >> addImage [
 	
 	self image ifNil: [self addRightImage.].
-	self addMorphCentered: self image
+	self image ifNotNil: [self addMorphCentered: self image]
+	
 	
 ]
 
