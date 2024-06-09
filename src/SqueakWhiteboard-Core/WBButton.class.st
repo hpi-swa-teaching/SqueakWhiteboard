@@ -49,20 +49,25 @@ WBButton >> addImage [
 
 {
 	#category : #appearance,
-	#'squeak_changestamp' : 'si 6/7/2024 21:57'
+	#'squeak_changestamp' : 'is 6/9/2024 13:33'
 }
 WBButton >> addRightImage [
-
-	self number = 1 ifTrue: [self image: (ImageMorph new image: 
-		(self canvas images resize: (WBImage loadRectangleButtonImage) to: self extent * 0.8)).].
-	self number = 2 ifTrue: [self image: (ImageMorph new image: 
-		(self canvas images resize: (WBImage loadCircleButtonImage) to: self extent * 0.8)).].
-	self number = 3 ifTrue: [self image: (ImageMorph new image: 
-		(self canvas images resize: (WBImage loadLineButtonImage) to: self extent * 0.8)).].
-	self number = 4 ifTrue: [self image: (ImageMorph new image: 
-		(self canvas images resize: (WBImage loadTextboxButtonImage) to: self extent * 0.8)).].
-	self number = 5 ifTrue: [self image: (ImageMorph new image: 
-		(self canvas images resize: (WBImage loadRectangleButtonImage) to: self extent * 0.8)).]
+	| rectangleImage circleImage lineImage textboxImage |
+	rectangleImage := (WBImage loadRectangleButtonImage).
+	circleImage := (WBImage loadCircleButtonImage).
+	lineImage := (WBImage loadLineButtonImage).
+	textboxImage := (WBImage loadTextboxButtonImage).
+	
+	(self number = 1 and: rectangleImage notNil) ifTrue: [self image: (ImageMorph new image: 
+		(self canvas images resize: rectangleImage to: self extent * 0.8)).].
+	(self number = 2 and: circleImage notNil) ifTrue: [self image: (ImageMorph new image: 
+		(self canvas images resize: circleImage to: self extent * 0.8)).].
+	(self number = 3 and: lineImage notNil) ifTrue: [self image: (ImageMorph new image: 
+		(self canvas images resize: lineImage to: self extent * 0.8)).].
+	(self number = 4 and: textboxImage notNil) ifTrue: [self image: (ImageMorph new image: 
+		(self canvas images resize: textboxImage to: self extent * 0.8)).].
+	(self number = 5 and: rectangleImage notNil) ifTrue: [self image: (ImageMorph new image: 
+		(self canvas images resize: rectangleImage to: self extent * 0.8)).]
 ]
 
 {
