@@ -1,6 +1,6 @@
 # Squeak Style Guide
 
-Hier finden Sie sämtliche Dokumentation für den Codestyle des SWA-Projekts von der Gruppe 16 aka. die Programmier Pandas für das Spiel: "SQUEAK IS YOU" 
+Hier finden Sie sämtliche Dokumentation für den Codestyle des SWT-Projekts von der Gruppe 16 aka. die Programmier Pandas für SqueakWhiteboard
 
 ## Beispiel für schönen Code
 
