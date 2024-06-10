@@ -1,12 +1,15 @@
 # Squeak Style Guide
 
-Hier finden Sie sämtliche Dokumentation für den Codestyle des SWT-Projekts von der Gruppe 16 aka. die Programmier Pandas für SqueakWhiteboard
+Hier finden Sie sämtliche Dokumentation für den Codestyle des SWT-Projekts SqueakWhiteboard
 
 ## Beispiel für schönen Code
 
 ```smalltalk
+MethodName
 | y |
-(true or: [false not] or: [nil isNil]) ifFalse: [self halt].
+
+(true or: [false not] or: [nil isNil])
+    ifFalse: [self halt].
 y := self size + super size.
 {$a . #a . 'a’ . 1 . 1,0}
     do: [:each | Transcript
@@ -26,7 +29,7 @@ y := self size + super size.
 
         aVehicle hasFourWheels `VS.` aVehicle fourWheels
 6. Use a phrase beginning with a verb for methods that answer a Boolean
-7. __NO__ magic numbers => put them in variables witg getters/setters
+7. __NO__ magic numbers => put them in variables with getters/setters
 8. Spell out identifiers
 9. Avoid the parameter type or name in the method name
 
