@@ -80,12 +80,11 @@ WBImage >> initialize [
 
 {
 	#category : #edit,
-	#'squeak_changestamp' : 'si 6/11/2024 18:45'
+	#'squeak_changestamp' : 'si 6/11/2024 18:49'
 }
 WBImage >> resize: anImage to: anExtent [
 	|resizedImage|
 	
-	self halt.
 	resizedImage := Form extent: anExtent depth: anImage depth.
 	resizedImage := anImage scaledToSize: anExtent.
 	^resizedImage
