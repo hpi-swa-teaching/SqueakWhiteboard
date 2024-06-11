@@ -255,7 +255,7 @@ WBButton >> initializeWithCanvas: aCanvas [
 
 {
 	#category : #appearance,
-	#'squeak_changestamp' : 'nicloeser 5/24/2024 14:57'
+	#'squeak_changestamp' : 'is 6/11/2024 19:05'
 }
 WBButton >> margin [ 
 	^margin

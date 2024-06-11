@@ -8,7 +8,11 @@ Class {
 		'dragOffset',
 		'canvas',
 		'popUpMenu',
-		'resizeFrame'
+		'resizeFrame',
+		'textBorderOffset',
+		'textField',
+		'lastMouseClick',
+		'doubleClickMaxDelta'
 	],
 	#classInstVars : [
 		'globalColor'
@@ -97,6 +101,17 @@ WBElement >> deactivateElement [
 ]
 
 {
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/11/2024 20:15'
+}
+WBElement >> deactivateTextbox [
+
+	self currentHand releaseKeyboardFocus.
+	self textField enabled: false.
+	self textField hideScrollBars
+]
+
+{
 	#category : #appearance,
 	#'squeak_changestamp' : 'is 5/29/2024 01:42'
 }
@@ -113,6 +128,39 @@ WBElement >> delete [
 
 	self canvas removeElement: self.	
 	super delete
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/11/2024 21:00'
+}
+WBElement >> detectDoubleClick: evt [
+	| delta |
+	
+	self lastMouseClick ifNotNil: [delta := evt timeStamp - self lastMouseClick timeStamp].
+	(delta isNumber and: [delta < self doubleClickMaxDelta])
+		ifTrue: [self textField enabled: true;
+					mouseDown: evt.
+				self deactivateElement.
+				self canvas activeTextbox: self].
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/11/2024 17:58'
+}
+WBElement >> doubleClickMaxDelta [
+
+	^ doubleClickMaxDelta ifNil: [doubleClickMaxDelta := 200]
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/11/2024 17:57'
+}
+WBElement >> doubleClickMaxDelta: aDelta [
+
+	doubleClickMaxDelta := aDelta
 ]
 
 {
@@ -167,12 +215,13 @@ WBElement >> dragStart: anEvent [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:14'
+	#'squeak_changestamp' : 'is 6/11/2024 19:28'
 }
-WBElement >> extent: aSize [
+WBElement >> extent: anExtent [
 	
-	super extent: aSize.
-	self setPopupPosition.
+	super extent: anExtent.
+	textField ifNotNil: [textField extent: anExtent - (self textBorderOffset * 2).].
+	self setPopupPosition
 	
 	
 
@@ -189,21 +238,28 @@ WBElement >> handleMouseOver: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/4/2024 20:51'
+	#'squeak_changestamp' : 'is 6/11/2024 17:54'
 }
 WBElement >> handlesMouseDown: anEvent [
 
-	^ true.
+	^ (self textField enabled) not
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/3/2024 20:33'
+	#'squeak_changestamp' : 'is 6/11/2024 17:30'
 }
 WBElement >> initialize [
+	| textField |
 
 	super initialize.
-	self extent: self defaultSize
+	self extent: self defaultSize.
+	textField := WBPluggableTextMorphPlus new.
+	textField extent: self defaultSize - ((self textBorderOffset * 2) @ (self textBorderOffset * 2)).
+	self addMorphCentered: textField.
+	self textField: textField.
+	self textField textbox: self
+	
 ]
 
 {
@@ -214,6 +270,24 @@ WBElement >> initializeWithCanvas: aCanvas [
 	
 	self canvas: aCanvas.
 	self initialize.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/11/2024 17:57'
+}
+WBElement >> lastMouseClick [
+
+	^ lastMouseClick
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/11/2024 17:57'
+}
+WBElement >> lastMouseClick: evt [
+
+	lastMouseClick := evt
 ]
 
 {
@@ -234,19 +308,23 @@ WBElement >> makeElementPopUp [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/4/2024 13:01'
+	#'squeak_changestamp' : 'is 6/11/2024 20:59'
 }
 WBElement >> mouseDown: mouseEvent [
 
 	mouseEvent redButtonPressed ifTrue: [
-	(self canvas elementToSpawn) ifNil:
-		[self canvas deactivateElement.
-		self dragStart: mouseEvent;
-			addResizeFrame;
-			showPopUp.
-		self canvas activeElement: self].
-	(self canvas elementToSpawn) ifNotNil:
-		[self canvas dropElement]]
+		(self canvas elementToSpawn) isNil 
+			ifTrue:
+				[self canvas deactivateElement.
+				self dragStart: mouseEvent;
+				addResizeFrame;
+				showPopUp.
+				self canvas activeElement: self]
+			ifFalse:
+				[self canvas dropElement].
+		self canvas deactivateTextbox.
+		self detectDoubleClick: mouseEvent;
+			lastMouseClick: mouseEvent]
 ]
 
 {
@@ -345,4 +423,43 @@ WBElement >> showPopUp [
 		self makeElementPopUp.].
 	(self canvas elementToSpawn) ifNotNil:
 		[self canvas dropElement]
+]
+
+{
+	#category : #appearance,
+	#'squeak_changestamp' : 'is 6/11/2024 17:26'
+}
+WBElement >> textBorderOffset [
+
+	^ textBorderOffset ifNil: [ textBorderOffset := 10]
+]
+
+{
+	#category : #appearance,
+	#'squeak_changestamp' : 'is 6/11/2024 17:25'
+}
+WBElement >> textBorderOffset: anOffset [
+
+	textBorderOffset := anOffset
+
+	
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/11/2024 17:33'
+}
+WBElement >> textField [
+
+	^ textField
+
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/11/2024 17:32'
+}
+WBElement >> textField: aTextfield [
+
+	textField := aTextfield
 ]

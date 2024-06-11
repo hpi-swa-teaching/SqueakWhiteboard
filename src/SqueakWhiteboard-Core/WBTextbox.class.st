@@ -55,7 +55,7 @@ WBTextbox >> defaultSize [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/4/2024 21:36'
+	#'squeak_changestamp' : 'is 6/11/2024 20:39'
 }
 WBTextbox >> detectDoubleClick: evt [
 	| delta |

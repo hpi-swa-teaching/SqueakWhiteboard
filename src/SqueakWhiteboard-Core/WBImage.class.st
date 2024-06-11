@@ -19,12 +19,12 @@ WBImage class >> loadCircleButtonImage [
 
 {
 	#category : #loadImages,
-	#'squeak_changestamp' : 'is 6/9/2024 12:54'
+	#'squeak_changestamp' : 'is 6/11/2024 18:25'
 }
 WBImage class >> loadColorsButtonImage [
 	| form |
 
-	[form := (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/colorsToolbar.png'] on: Error do: 
+	[form := (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/colorsToolbar.png'] on: Error do:
 		[:ex | Transcript show: 'Caught an exception: ', ex printString; cr.
 		^ nil].
 	^ form
@@ -45,7 +45,7 @@ WBImage class >> loadLineButtonImage [
 
 {
 	#category : #loadImages,
-	#'squeak_changestamp' : 'is 6/9/2024 12:54'
+	#'squeak_changestamp' : 'is 6/11/2024 18:59'
 }
 WBImage class >> loadRectangleButtonImage [
 	| form |
@@ -80,7 +80,7 @@ WBImage >> initialize [
 
 {
 	#category : #edit,
-	#'squeak_changestamp' : 'nicloeser 5/27/2024 14:13'
+	#'squeak_changestamp' : 'is 6/11/2024 18:45'
 }
 WBImage >> resize: anImage to: anExtent [
 	|resizedImage|
