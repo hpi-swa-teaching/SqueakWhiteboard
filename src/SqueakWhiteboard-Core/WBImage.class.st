@@ -45,14 +45,14 @@ WBImage class >> loadLineButtonImage [
 
 {
 	#category : #loadImages,
-	#'squeak_changestamp' : 'is 6/9/2024 12:54'
+	#'squeak_changestamp' : 'si 6/11/2024 18:37'
 }
 WBImage class >> loadRectangleButtonImage [
 	| form |
 
 	[form := (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/square2.png'] on: Error do: 
 		[:ex | Transcript show: 'Caught an exception: ', ex printString; cr.
-		^ nil].
+		^ ImageMorph new].
 	^ form
 ]
 

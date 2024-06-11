@@ -3,7 +3,7 @@ The WBPlaceholderButton is a placeholder button without any actual functionality
 "
 Class {
 	#name : #WBToolbarButton,
-	#superclass : #WBButton,
+	#superclass : #WBOldButton,
 	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 5/19/2024 02:07'
 }
