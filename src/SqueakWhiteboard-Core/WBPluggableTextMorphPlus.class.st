@@ -23,11 +23,14 @@ WBPluggableTextMorphPlus >> enabled [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/11/2024 20:16'
+	#'squeak_changestamp' : 'is 6/11/2024 22:09'
 }
 WBPluggableTextMorphPlus >> enabled: aBoolean [
-	
-	enabled := aBoolean
+
+	enabled := aBoolean.
+	aBoolean
+		 ifTrue: [self vShowScrollBar]
+		ifFalse: [self vHideScrollBar]
 ]
 
 {
@@ -69,13 +72,13 @@ WBPluggableTextMorphPlus >> hasUnacceptedEdits: aBoolean [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/11/2024 19:53'
+	#'squeak_changestamp' : 'is 6/11/2024 22:04'
 }
 WBPluggableTextMorphPlus >> initialize [
 
 	super initialize.
 	self color: Color transparent;
-		borderColor: Color transparent
+		borderWidth: 0
 ]
 
 {

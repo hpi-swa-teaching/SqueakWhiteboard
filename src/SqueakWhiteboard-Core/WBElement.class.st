@@ -102,13 +102,12 @@ WBElement >> deactivateElement [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/11/2024 20:15'
+	#'squeak_changestamp' : 'is 6/11/2024 22:10'
 }
 WBElement >> deactivateTextbox [
 
 	self currentHand releaseKeyboardFocus.
-	self textField enabled: false.
-	self textField hideScrollBars
+	self textField enabled: false
 ]
 
 {
