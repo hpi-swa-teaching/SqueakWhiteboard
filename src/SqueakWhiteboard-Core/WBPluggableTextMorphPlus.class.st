@@ -71,7 +71,7 @@ WBPluggableTextMorphPlus >> hasUnacceptedEdits: aBoolean [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/12/2024 11:06'
+	#'squeak_changestamp' : 'is 6/12/2024 19:20'
 }
 WBPluggableTextMorphPlus >> initialize [
 

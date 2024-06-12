@@ -41,7 +41,7 @@ WBTextMorphForEditView >> keyStroke: evt [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/3/2024 19:38'
+	#'squeak_changestamp' : 'is 6/12/2024 19:29'
 }
 WBTextMorphForEditView >> setDefaultContentsIfNil [
 	"Set the default contents"
