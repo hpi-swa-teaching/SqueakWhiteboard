@@ -12,7 +12,8 @@ Class {
 		'textBorderOffset',
 		'textField',
 		'lastMouseClick',
-		'doubleClickMaxDelta'
+		'doubleClickMaxDelta',
+		'supportsText'
 	],
 	#classInstVars : [
 		'globalColor'
@@ -37,6 +38,18 @@ WBElement class >> newWithCanvas: aCanvas [
 WBElement class >> sizeOfPopUpForStandardElement [
 
 	^20
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/12/2024 16:09'
+}
+WBElement >> activateTextbox: evt [
+
+	self textField enabled: true;
+		mouseDown: evt.
+	self deactivateElement.
+	self canvas activeTextbox: self
 ]
 
 {
@@ -131,17 +144,14 @@ WBElement >> delete [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/11/2024 21:00'
+	#'squeak_changestamp' : 'is 6/12/2024 16:09'
 }
 WBElement >> detectDoubleClick: evt [
 	| delta |
 	
 	self lastMouseClick ifNotNil: [delta := evt timeStamp - self lastMouseClick timeStamp].
 	(delta isNumber and: [delta < self doubleClickMaxDelta])
-		ifTrue: [self textField enabled: true;
-					mouseDown: evt.
-				self deactivateElement.
-				self canvas activeTextbox: self].
+		ifTrue: [ self activateTextbox: evt ].
 ]
 
 {
@@ -421,6 +431,24 @@ WBElement >> showPopUp [
 		self makeElementPopUp.].
 	(self canvas elementToSpawn) ifNotNil:
 		[self canvas dropElement]
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/12/2024 16:26'
+}
+WBElement >> suportsText [
+
+	^ supportsText ifNil: [ supportsText := true ]
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/12/2024 16:25'
+}
+WBElement >> supportsText: aBoolean [
+
+	supportsText := aBoolean
 ]
 
 {

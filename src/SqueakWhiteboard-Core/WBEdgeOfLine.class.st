@@ -37,7 +37,7 @@ WBEdgeOfLine >> handlesMouseOver: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 5/20/2024 15:41'
+	#'squeak_changestamp' : 'is 6/12/2024 16:27'
 }
 WBEdgeOfLine >> initialize [
 	
@@ -47,7 +47,8 @@ WBEdgeOfLine >> initialize [
 		cornerRadius: 100;
 		width: 10;
 		height: 10;
-		color: Color black.
+		color: Color black;
+		supportsText: false
 ]
 
 {

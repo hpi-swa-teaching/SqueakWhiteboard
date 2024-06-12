@@ -412,19 +412,20 @@ WBCanvas >> spawnACopiedElement: anElement At: aPoint [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'ACL 6/7/2024 14:47'
+	#'squeak_changestamp' : 'is 6/12/2024 16:35'
 }
-WBCanvas >> spawnAnElement: anElement At: aPoint [
+WBCanvas >> spawnAnElement: anElement At: aMouseEvent [
 	
 	self elementToSpawn: 
 	(anElement
-		center: aPoint;
-		dragOffset: anElement position - aPoint;
+		center: aMouseEvent cursorPoint;
+		dragOffset: anElement position - aMouseEvent cursorPoint;
 		canvas: self;
 		color: self globalColor;
 		addDropShadow;
 		yourself).
 	self addElement: anElement.
+	self elementToSpawn suportsText ifTrue: [self elementToSpawn activateTextbox: aMouseEvent]
 ]
 
 {

@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/3/2024 13:31'
+	#'squeak_changestamp' : 'is 6/12/2024 16:27'
 }
 WBEdgeOfNote >> initialize [
 	
@@ -15,7 +15,8 @@ WBEdgeOfNote >> initialize [
 		extent: 5 @ 5;
 		cornerStyle: #rounded;
 		cornerRadius: 100;
-		color: Color black
+		color: Color black;
+		supportsText: false
 ]
 
 {

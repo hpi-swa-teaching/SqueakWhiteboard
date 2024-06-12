@@ -22,14 +22,14 @@ WBPluggableTextMorphPlus >> enabled [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/12/2024 01:04'
+	#'squeak_changestamp' : 'is 6/12/2024 11:08'
 }
 WBPluggableTextMorphPlus >> enabled: aBoolean [
 
 	enabled := aBoolean.
 	aBoolean
-		 ifTrue: [self vShowScrollBar]
-		ifFalse: [self vHideScrollBar]
+		 ifTrue: [self showScrollBars]
+		ifFalse: [self hideScrollBars]
 ]
 
 {
@@ -79,6 +79,16 @@ WBPluggableTextMorphPlus >> initialize [
 	self color: Color transparent;
 		borderWidth: 0;
 		retractable: true
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'is 6/12/2024 16:06'
+}
+WBPluggableTextMorphPlus >> initializeTextMorph [
+
+	super initializeTextMorph.
+	self textMorph centered "does nothing? Maybe gets overridden?"
 ]
 
 {
