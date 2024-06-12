@@ -47,7 +47,7 @@ WBShapeChoosingPopUp >> tearDown [
 
 {
 	#category : #testsForStandardElement,
-	#'squeak_changestamp' : 'si 6/8/2024 00:40'
+	#'squeak_changestamp' : 'is 6/12/2024 20:39'
 }
 WBShapeChoosingPopUp >> testButtonFunctionallity [
 
@@ -65,16 +65,12 @@ WBShapeChoosingPopUp >> testButtonFunctionallity [
 	
 	popUpMenu submorphs do: [:s | s number = 2 ifTrue: [buttonForShape := s]].
 	buttonForShape clickFunctionality: arteficialMouseClick.
-	self assert: self canvas elementToSpawn class = WBCircle.
-	
-	popUpMenu submorphs do: [:s | s number = 4 ifTrue: [buttonForShape := s]].
-	buttonForShape clickFunctionality: arteficialMouseClick.
-	self assert: self canvas elementToSpawn class = WBTextbox.
+	self assert: self canvas elementToSpawn class = WBCircle
 ]
 
 {
 	#category : #testsForStandardElement,
-	#'squeak_changestamp' : 'si 6/7/2024 23:31'
+	#'squeak_changestamp' : 'is 6/12/2024 20:39'
 }
 WBShapeChoosingPopUp >> testButtonsOfPopUp [
 
@@ -83,7 +79,7 @@ WBShapeChoosingPopUp >> testButtonsOfPopUp [
 	self canvas toolbar buttons do: [:b | b class = WBShapeChoosingButton ifTrue: [button := b]].
 	button clickFunctionality: nil.
 	
-	self assert: button popUp submorphs size = 3
+	self assert: button popUp submorphs size = 2
 ]
 
 {
