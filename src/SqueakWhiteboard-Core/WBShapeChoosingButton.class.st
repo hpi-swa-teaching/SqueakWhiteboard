@@ -51,13 +51,12 @@ WBShapeChoosingButton >> makePopUp [
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'si 6/7/2024 21:30'
+	#'squeak_changestamp' : 'is 6/12/2024 20:31'
 }
 WBShapeChoosingButton >> makeShapeButtons [
 
 	^OrderedCollection new
 		add: (self makeButtonWithNumber: 1);
 		add: (self makeButtonWithNumber: 2);
-		add: (self makeButtonWithNumber: 4);
 		yourself.
 ]
