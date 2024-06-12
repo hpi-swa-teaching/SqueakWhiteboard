@@ -173,7 +173,7 @@ WBPolygonElement >> makeElementPopUp [
 
 {
 	#category : #EventHandeling,
-	#'squeak_changestamp' : 'si 6/3/2024 15:47'
+	#'squeak_changestamp' : 'is 6/12/2024 17:44'
 }
 WBPolygonElement >> mouseDown: anEvent [
 	
@@ -185,7 +185,7 @@ WBPolygonElement >> mouseDown: anEvent [
 			showPopUp.
 		self canvas activeElement: self].
 	(self canvas elementToSpawn) ifNotNil:
-		[self canvas dropElement]
+		[self canvas dropElement: anEvent]
 ]
 
 {
@@ -297,13 +297,11 @@ WBPolygonElement >> setPopupPosition [
 
 {
 	#category : #popUpBar,
-	#'squeak_changestamp' : 'ACL 6/7/2024 14:52'
+	#'squeak_changestamp' : 'is 6/12/2024 16:52'
 }
 WBPolygonElement >> showPopUp [
 
 	(self canvas elementToSpawn) ifNil:
 		[self canvas removePopUps.
-		self makeElementPopUp.].
-	(self canvas elementToSpawn) ifNotNil:
-		[self canvas dropElement]
+		self makeElementPopUp.]
 ]

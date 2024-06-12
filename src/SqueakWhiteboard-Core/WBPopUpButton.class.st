@@ -1,6 +1,6 @@
 Class {
 	#name : #WBPopUpButton,
-	#superclass : #WBOldButton,
+	#superclass : #WBButton,
 	#instVars : [
 		'element'
 	],

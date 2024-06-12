@@ -9,8 +9,7 @@ Class {
 		'toolbarHeight',
 		'toolbarWidth',
 		'buttons',
-		'backgroundColor',
-		'aPoint'
+		'backgroundColor'
 	],
 	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 5/18/2024 17:12'
@@ -51,24 +50,6 @@ WBToolbar >> backgroundColor: aColor [
 
 	backgroundColor := aColor.
 	self updateColor
-]
-
-{
-	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/11/2024 18:06'
-}
-WBToolbar >> buttonForRectangle [
-
-	^ [aPoint | self createRectangleAt: aPoint]
-]
-
-{
-	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/11/2024 18:08'
-}
-WBToolbar >> buttonFunctionallityForRectangle [
-
-	^ [:aPoint | self createRectangleAt: aPoint]
 ]
 
 {
@@ -119,13 +100,13 @@ WBToolbar >> canvas: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/12/2024 12:51'
+	#'squeak_changestamp' : 'si 6/7/2024 01:46'
 }
 WBToolbar >> createButtons [
 	
 	self placeButtons: (OrderedCollection withAll: {
 		self getShapeChoosingButton.
-		self getRectangleButton.
+		"self getRectangleButton."
 		self getLineButton.
 		"self getCircleButton."
 		self getNoteButton.
@@ -133,15 +114,6 @@ WBToolbar >> createButtons [
 		self getColorsButton.})
 
 	
-]
-
-{
-	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 6/11/2024 18:08'
-}
-WBToolbar >> createRectangleAt: aPoint [
-
-	self canvas spawnAnElement: (WBRectangle newWithCanvas: self canvas) At: aPoint.
 ]
 
 {
@@ -218,17 +190,16 @@ WBToolbar >> getNoteButton [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'si 6/11/2024 18:38'
+	#'squeak_changestamp' : 'is 6/9/2024 15:42'
 }
 WBToolbar >> getRectangleButton [
 	| rectangleImage rectangleButton |
 	
-	rectangleButton := WBButton new 
-		block: self buttonFunctionallityForRectangle;
-		creator:	 self.
+	rectangleButton := WBToolbarButton new number: 1.
 	rectangleImage := WBImage loadRectangleButtonImage.
-	
-	rectangleButton image: (ImageMorph new image: (self canvas images resize: rectangleImage to: self buttonSize*0.8)).
+
+	rectangleImage notNil ifTrue: 
+		[rectangleButton image: (ImageMorph new image: (self canvas images resize: rectangleImage to: self buttonSize*0.8))].
 	^ rectangleButton
 			
 ]

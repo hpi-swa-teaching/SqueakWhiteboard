@@ -82,16 +82,6 @@ WBPluggableTextMorphPlus >> initialize [
 ]
 
 {
-	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/12/2024 16:06'
-}
-WBPluggableTextMorphPlus >> initializeTextMorph [
-
-	super initializeTextMorph.
-	self textMorph centered "does nothing? Maybe gets overridden?"
-]
-
-{
 	#category : #private,
 	#'squeak_changestamp' : 'is 6/2/2024 18:30'
 }

@@ -85,7 +85,7 @@ WBEdgeOfLine >> makeElementPopUp [
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'si 5/27/2024 21:46'
+	#'squeak_changestamp' : 'is 6/12/2024 17:43'
 }
 WBEdgeOfLine >> mouseDown: anEvent [
 	
@@ -98,7 +98,7 @@ WBEdgeOfLine >> mouseDown: anEvent [
 			dragOffset: self position - anEvent cursorPoint.
 		self canvas activeElement: self line.].
 	(self canvas elementToSpawn) ifNotNil:
-		[self canvas dropElement]
+		[self canvas dropElement: anEvent]
 ]
 
 {

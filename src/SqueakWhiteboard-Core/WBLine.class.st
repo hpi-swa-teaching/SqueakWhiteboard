@@ -159,7 +159,7 @@ WBLine >> mouseMove: anEvent [
 
 {
 	#category : #eventHandeling,
-	#'squeak_changestamp' : 'si 5/27/2024 21:38'
+	#'squeak_changestamp' : 'is 6/12/2024 17:44'
 }
 WBLine >> mouseUp: anEvent [
 
@@ -167,7 +167,7 @@ WBLine >> mouseUp: anEvent [
 		[self 
 			dragOffset: self position - anEvent cursorPoint.].
 	(self canvas elementToSpawn) ifNotNil:
-		[self spawnEdgeOfLineAt: anEvent cursorPoint]
+		[self spawnEdgeOfLineAt: anEvent]
 ]
 
 {
@@ -183,20 +183,20 @@ WBLine >> moveElement: anEvent [
 
 {
 	#category : #buildLine,
-	#'squeak_changestamp' : 'si 6/3/2024 19:52'
+	#'squeak_changestamp' : 'is 6/12/2024 17:45'
 }
-WBLine >> spawnEdgeOfLineAt: aPoint [
+WBLine >> spawnEdgeOfLineAt: aMouseEvent [
 
 	(self state = 0) ifTrue:
 		[self edges add: (WBEdgeOfLine new
-		center: aPoint;
+		center: aMouseEvent cursorPoint;
 		canvas: self canvas;
 		line: self;
 		yourself).
 		self state: 1]
 	ifFalse:
 		[self edges add: (WBEdgeOfLine new
-		center: aPoint;
+		center: aMouseEvent cursorPoint;
 		canvas: self canvas;
 		line: self;
 		yourself).
@@ -209,7 +209,7 @@ WBLine >> spawnEdgeOfLineAt: aPoint [
 			addMorph: (self edges at: 2);
 			addElement: (self edges at: 1);
 			addElement: (self edges at: 2);
-			dropElement.
+			dropElement: aMouseEvent.
 		self updateEdges.
 		self state: 2.].
 ]

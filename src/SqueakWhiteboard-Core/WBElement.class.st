@@ -42,10 +42,11 @@ WBElement class >> sizeOfPopUpForStandardElement [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/12/2024 16:09'
+	#'squeak_changestamp' : 'is 6/12/2024 17:52'
 }
 WBElement >> activateTextbox: evt [
-
+	
+	self canvas deactivateTextbox.
 	self textField enabled: true;
 		mouseDown: evt.
 	self deactivateElement.
@@ -256,7 +257,7 @@ WBElement >> handlesMouseDown: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/12/2024 11:06'
+	#'squeak_changestamp' : 'is 6/12/2024 18:03'
 }
 WBElement >> initialize [
 	| textField |
@@ -265,6 +266,7 @@ WBElement >> initialize [
 	self extent: self defaultSize.
 	textField := WBPluggableTextMorphPlus new.
 	textField extent: self defaultSize - ((self textBorderOffset * 2) @ (self textBorderOffset * 2)).
+	textField textMorph centered.
 	self addMorphCentered: textField.
 	self textField: textField
 	
@@ -316,7 +318,7 @@ WBElement >> makeElementPopUp [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/11/2024 20:59'
+	#'squeak_changestamp' : 'is 6/12/2024 17:51'
 }
 WBElement >> mouseDown: mouseEvent [
 
@@ -329,8 +331,7 @@ WBElement >> mouseDown: mouseEvent [
 				showPopUp.
 				self canvas activeElement: self]
 			ifFalse:
-				[self canvas dropElement].
-		self canvas deactivateTextbox.
+				[self canvas dropElement: mouseEvent].
 		self detectDoubleClick: mouseEvent;
 			lastMouseClick: mouseEvent]
 ]
@@ -422,22 +423,20 @@ WBElement >> setPopupPosition [
 
 {
 	#category : #popUpBar,
-	#'squeak_changestamp' : 'ACL 6/7/2024 11:44'
+	#'squeak_changestamp' : 'is 6/12/2024 17:42'
 }
 WBElement >> showPopUp [
 
 	(self canvas elementToSpawn) ifNil:
 		[self canvas removePopUps.
-		self makeElementPopUp.].
-	(self canvas elementToSpawn) ifNotNil:
-		[self canvas dropElement]
+		self makeElementPopUp.]
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/12/2024 16:26'
+	#'squeak_changestamp' : 'is 6/12/2024 17:47'
 }
-WBElement >> suportsText [
+WBElement >> supportsText [
 
 	^ supportsText ifNil: [ supportsText := true ]
 ]

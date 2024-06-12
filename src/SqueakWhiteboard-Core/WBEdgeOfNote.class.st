@@ -21,7 +21,7 @@ WBEdgeOfNote >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/3/2024 13:31'
+	#'squeak_changestamp' : 'is 6/12/2024 17:43'
 }
 WBEdgeOfNote >> mouseDown: anEvent [
 	
@@ -31,7 +31,7 @@ WBEdgeOfNote >> mouseDown: anEvent [
 			comeToFront;
 			dragOffset: self position - anEvent cursorPoint.].
 	(self canvas elementToSpawn) ifNotNil:
-		[self canvas dropElement]
+		[self canvas dropElement: anEvent]
 ]
 
 {
