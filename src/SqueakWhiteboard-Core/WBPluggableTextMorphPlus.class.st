@@ -5,8 +5,7 @@ Class {
 	#name : #WBPluggableTextMorphPlus,
 	#superclass : #PluggableTextMorphPlus,
 	#instVars : [
-		'enabled',
-		'textbox'
+		'enabled'
 	],
 	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 6/1/2024 17:19'
@@ -23,7 +22,7 @@ WBPluggableTextMorphPlus >> enabled [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/11/2024 22:09'
+	#'squeak_changestamp' : 'is 6/12/2024 01:04'
 }
 WBPluggableTextMorphPlus >> enabled: aBoolean [
 
@@ -72,13 +71,14 @@ WBPluggableTextMorphPlus >> hasUnacceptedEdits: aBoolean [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/11/2024 22:04'
+	#'squeak_changestamp' : 'is 6/12/2024 11:06'
 }
 WBPluggableTextMorphPlus >> initialize [
 
 	super initialize.
 	self color: Color transparent;
-		borderWidth: 0
+		borderWidth: 0;
+		retractable: true
 ]
 
 {
@@ -88,22 +88,4 @@ WBPluggableTextMorphPlus >> initialize [
 WBPluggableTextMorphPlus >> textMorphClass [
 
 	^ WBTextMorphForEditView
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/3/2024 18:55'
-}
-WBPluggableTextMorphPlus >> textbox [
-
-	^ textbox
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/3/2024 18:55'
-}
-WBPluggableTextMorphPlus >> textbox: aTextbox [
-
-	textbox := aTextbox
 ]

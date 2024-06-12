@@ -138,7 +138,7 @@ WBTextbox >> handlesMouseDown: evt [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/4/2024 16:21'
+	#'squeak_changestamp' : 'is 6/12/2024 11:06'
 }
 WBTextbox >> initialize [
 	| textField |
@@ -147,8 +147,7 @@ WBTextbox >> initialize [
 	textField := WBPluggableTextMorphPlus new.
 	textField extent: self defaultSize - ((self borderSize * 2)@(self borderSize * 2)).
 	self addMorphCentered: textField.
-	self textField: textField.
-	self textField textbox: self
+	self textField: textField
 ]
 
 {

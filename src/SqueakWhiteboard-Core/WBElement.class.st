@@ -246,7 +246,7 @@ WBElement >> handlesMouseDown: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/11/2024 17:30'
+	#'squeak_changestamp' : 'is 6/12/2024 11:06'
 }
 WBElement >> initialize [
 	| textField |
@@ -256,8 +256,7 @@ WBElement >> initialize [
 	textField := WBPluggableTextMorphPlus new.
 	textField extent: self defaultSize - ((self textBorderOffset * 2) @ (self textBorderOffset * 2)).
 	self addMorphCentered: textField.
-	self textField: textField.
-	self textField textbox: self
+	self textField: textField
 	
 ]
 
