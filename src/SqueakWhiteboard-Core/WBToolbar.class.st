@@ -55,20 +55,56 @@ WBToolbar >> backgroundColor: aColor [
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/11/2024 18:06'
+	#'squeak_changestamp' : 'si 6/12/2024 23:12'
 }
-WBToolbar >> buttonForRectangle [
+WBToolbar >> buttonFunctionallityForCircle [
 
-	^ [aPoint | self createRectangleAt: aPoint]
+	^ [:aPoint :aColor | self canvas spawnAnElement: WBCircle new At: aPoint]
 ]
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/11/2024 18:08'
+	#'squeak_changestamp' : 'si 6/12/2024 23:13'
+}
+WBToolbar >> buttonFunctionallityForGlobalColor [
+
+	^ [:aPoint :aColor | self canvas globalColor: aColor]
+]
+
+{
+	#category : #buttonFunctionallities,
+	#'squeak_changestamp' : 'si 6/12/2024 23:13'
+}
+WBToolbar >> buttonFunctionallityForLine [
+
+	^ [:aPoint :aColor  | self canvas spawnAnElement: WBLine new At: aPoint]
+]
+
+{
+	#category : #buttonFunctionallities,
+	#'squeak_changestamp' : 'si 6/12/2024 23:13'
+}
+WBToolbar >> buttonFunctionallityForNote [
+
+	^ [:aPoint :aColor  | self canvas spawnAnElement: WBNote new At: aPoint]
+]
+
+{
+	#category : #buttonFunctionallities,
+	#'squeak_changestamp' : 'si 6/12/2024 23:13'
 }
 WBToolbar >> buttonFunctionallityForRectangle [
 
-	^ [:aPoint | self createRectangleAt: aPoint]
+	^ [:aPoint :aColor | self canvas spawnAnElement: WBRectangle new At: aPoint]
+]
+
+{
+	#category : #buttonFunctionallities,
+	#'squeak_changestamp' : 'si 6/12/2024 23:13'
+}
+WBToolbar >> buttonFunctionallityForTextbox [
+
+	^ [:aPoint :aColor | self canvas spawnAnElement: WBTextbox new At: aPoint]
 ]
 
 {
@@ -136,15 +172,6 @@ WBToolbar >> createButtons [
 ]
 
 {
-	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 6/11/2024 18:08'
-}
-WBToolbar >> createRectangleAt: aPoint [
-
-	self canvas spawnAnElement: (WBRectangle newWithCanvas: self canvas) At: aPoint.
-]
-
-{
 	#category : #layout,
 	#'squeak_changestamp' : 'si 6/7/2024 22:29'
 }
@@ -155,12 +182,13 @@ WBToolbar >> deactivateElement [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'is 6/9/2024 15:38'
+	#'squeak_changestamp' : 'si 6/13/2024 00:25'
 }
 WBToolbar >> getCircleButton [
 	| circleImage circleButton|
 	
-	circleButton := WBToolbarButton new number: 2.
+	circleButton := WBButton new 
+		block: self buttonFunctionallityForCircle.
 	circleImage := WBImage loadCircleButtonImage.
 	
 	circleImage notNil ifTrue: 
@@ -171,12 +199,13 @@ WBToolbar >> getCircleButton [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'is 6/9/2024 15:39'
+	#'squeak_changestamp' : 'si 6/13/2024 00:25'
 }
 WBToolbar >> getColorsButton [
 	| colorsImage colorsButton|
 	
-	colorsButton := WBColorPaletteButton new.
+	colorsButton := WBButton new 
+		block: self buttonFunctionallityForGlobalColor.
 	colorsImage := WBImage loadColorsButtonImage.
 	
 	colorsImage notNil ifTrue: 
@@ -186,12 +215,13 @@ WBToolbar >> getColorsButton [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'is 6/9/2024 15:39'
+	#'squeak_changestamp' : 'si 6/13/2024 00:25'
 }
 WBToolbar >> getLineButton [
 	| lineImage lineButton|
 	
-	lineButton := WBToolbarButton new number: 3.
+	lineButton := WBButton new 
+		block: self buttonFunctionallityForLine.
 	lineImage := WBImage loadLineButtonImage.
 	
 	lineImage notNil ifTrue: 
@@ -203,12 +233,13 @@ WBToolbar >> getLineButton [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'is 6/9/2024 15:41'
+	#'squeak_changestamp' : 'si 6/13/2024 00:25'
 }
 WBToolbar >> getNoteButton [
 	| noteImage noteButton|
 	
-	noteButton := WBToolbarButton new number: 5.
+	noteButton := WBButton new 
+		block: self buttonFunctionallityForNote.
 	noteImage := WBImage loadCircleButtonImage.
 	
 	noteImage notNil ifTrue: 
@@ -218,14 +249,13 @@ WBToolbar >> getNoteButton [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'si 6/11/2024 18:38'
+	#'squeak_changestamp' : 'si 6/13/2024 00:25'
 }
 WBToolbar >> getRectangleButton [
 	| rectangleImage rectangleButton |
 	
 	rectangleButton := WBButton new 
-		block: self buttonFunctionallityForRectangle;
-		creator:	 self.
+		block: self buttonFunctionallityForRectangle.
 	rectangleImage := WBImage loadRectangleButtonImage.
 	
 	rectangleButton image: (ImageMorph new image: (self canvas images resize: rectangleImage to: self buttonSize*0.8)).
@@ -251,12 +281,13 @@ WBToolbar >> getShapeChoosingButton [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'is 6/9/2024 15:44'
+	#'squeak_changestamp' : 'si 6/13/2024 00:26'
 }
 WBToolbar >> getTextboxButton [
 	| textboxImage textboxButton |
 	
-	textboxButton := WBToolbarButton new number: 4.
+	textboxButton := WBButton new 
+		block: self buttonFunctionallityForTextbox.
 	textboxImage := WBImage loadTextboxButtonImage.
 
 	textboxImage notNil ifTrue: 
@@ -279,13 +310,12 @@ WBToolbar >> initializeWithCanvas: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/7/2024 21:37'
+	#'squeak_changestamp' : 'si 6/13/2024 00:26'
 }
 WBToolbar >> placeButtons: someButtons [
 	
 	someButtons doWithIndex: [:aButton :anIndex| 
 		aButton margin:  WBToolbar margin;
-			canvas: self canvas;
 			extent: self buttonSize;
 			center: (self bounds origin x + self toolbarWidth/2)@(self bounds origin y + ((self buttonSize y + WBToolbar margin) * anIndex) ) - (0@self buttonSize y/2);
 			addImage;
