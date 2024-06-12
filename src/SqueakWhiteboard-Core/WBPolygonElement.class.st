@@ -6,7 +6,8 @@ Class {
 		'canvas',
 		'dragOffset',
 		'popUpMenu',
-		'resizeFrame'
+		'resizeFrame',
+		'supportsText'
 	],
 	#category : #'SqueakWhiteboard-Core'
 }
@@ -304,4 +305,22 @@ WBPolygonElement >> showPopUp [
 	(self canvas elementToSpawn) ifNil:
 		[self canvas removePopUps.
 		self makeElementPopUp.]
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/12/2024 21:00'
+}
+WBPolygonElement >> supportsText [
+
+	^ supportsText ifNil: [supportsText := false]
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/12/2024 20:59'
+}
+WBPolygonElement >> supportsText: aBoolean [
+
+	^ supportsText := aBoolean
 ]
