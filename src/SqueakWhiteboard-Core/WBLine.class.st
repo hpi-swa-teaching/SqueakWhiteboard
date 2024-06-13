@@ -76,7 +76,7 @@ WBLine >> color: aColor [
 ]
 
 {
-	#category : #popUpBar,
+	#category : #popUp,
 	#'squeak_changestamp' : 'si 6/3/2024 18:52'
 }
 WBLine >> deactivateElement [

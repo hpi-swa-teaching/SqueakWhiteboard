@@ -5,7 +5,7 @@ Class {
 		'edges',
 		'canvas',
 		'dragOffset',
-		'popUpMenu',
+		'popUp',
 		'resizeFrame'
 	],
 	#category : #'SqueakWhiteboard-Core'
@@ -58,7 +58,7 @@ WBPolygonElement >> canvas: aCanvas [
 ]
 
 {
-	#category : #EventHandeling,
+	#category : #eventHandeling,
 	#'squeak_changestamp' : 'si 6/3/2024 16:00'
 }
 WBPolygonElement >> deactivateElement [
@@ -88,15 +88,10 @@ WBPolygonElement >> dragEnd: anEvent [
 
 {
 	#category : #'drag&drop',
-	#'squeak_changestamp' : 'si 6/3/2024 13:44'
+	#'squeak_changestamp' : 'si 6/13/2024 16:23'
 }
 WBPolygonElement >> dragMove: anEvent [
-	|newPosition |
-	
- 	newPosition := self canvas clampElementToCanvas: self at: anEvent cursorPoint + self dragOffset.
-	self position: newPosition.
-	self edges do: [:m |m dragOffset: m position - anEvent cursorPoint. 
-		m dragMove: anEvent]
+
 ]
 
 {
@@ -148,7 +143,7 @@ WBPolygonElement >> edges: aList [
 ]
 
 {
-	#category : #EventHandeling,
+	#category : #eventHandeling,
 	#'squeak_changestamp' : 'si 6/3/2024 12:24'
 }
 WBPolygonElement >> handlesMouseDown: anEvent [
@@ -172,7 +167,23 @@ WBPolygonElement >> makeElementPopUp [
 ]
 
 {
-	#category : #EventHandeling,
+	#category : #popUp,
+	#'squeak_changestamp' : 'si 6/13/2024 16:09'
+}
+WBPolygonElement >> makePopUpAt: aPoint with: aCollection columns: aNumber [
+
+	self popUp: (WBPopUp new
+		setDefaultValues;
+		sizeOfPopUp: self class sizeOfPopUpForStandardElement;
+		numberOfColumns: aNumber;
+		addButtons: aCollection;
+		yourself).
+	self addMorph: self popUp.
+	self popUp center: aPoint - (self popUp bottomCenter - self popUp center)
+]
+
+{
+	#category : #eventHandeling,
 	#'squeak_changestamp' : 'si 6/3/2024 15:47'
 }
 WBPolygonElement >> mouseDown: anEvent [
@@ -189,7 +200,7 @@ WBPolygonElement >> mouseDown: anEvent [
 ]
 
 {
-	#category : #EventHandeling,
+	#category : #eventHandeling,
 	#'squeak_changestamp' : 'si 6/3/2024 12:24'
 }
 WBPolygonElement >> mouseMove: anEvent [
@@ -198,7 +209,7 @@ WBPolygonElement >> mouseMove: anEvent [
 ]
 
 {
-	#category : #EventHandeling,
+	#category : #eventHandeling,
 	#'squeak_changestamp' : 'si 6/3/2024 12:25'
 }
 WBPolygonElement >> mouseUp: anEvent [
@@ -221,22 +232,22 @@ WBPolygonElement >> moveElement: anEvent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/3/2024 12:22'
+	#'squeak_changestamp' : 'si 6/13/2024 16:10'
 }
-WBPolygonElement >> popUpMenu [
+WBPolygonElement >> popUp [
 
-	^popUpMenu
+	^popUp
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/3/2024 12:22'
+	#'squeak_changestamp' : 'si 6/13/2024 16:11'
 }
-WBPolygonElement >> popUpMenu: aPopUpMenu [
+WBPolygonElement >> popUp: aPopUpMenu [
 
-	popUpMenu := aPopUpMenu.
-	popUpMenu ifNotNil: 
-		[self addMorphBack: popUpMenu]
+	popUp := aPopUpMenu.
+	popUp ifNotNil: 
+		[self addMorphBack: popUp]
 ]
 
 {
@@ -260,12 +271,12 @@ WBPolygonElement >> removeElementPopUp [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/3/2024 15:55'
+	#'squeak_changestamp' : 'si 6/13/2024 16:09'
 }
 WBPolygonElement >> removePopup [
 
-	self popUpMenu ifNotNil: 
-		[self popUpMenu delete]
+	self popUp ifNotNil: 
+		[self popUp delete]
 ]
 
 {
@@ -288,22 +299,22 @@ WBPolygonElement >> resizeFrame: anObject [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/3/2024 15:59'
+	#'squeak_changestamp' : 'si 6/13/2024 16:09'
 }
 WBPolygonElement >> setPopupPosition [
 
-	self popUpMenu ifNotNil: [self popUpMenu center: self topCenter - (0@self popUpMenu height/2) - (0@10)]
+	^ self topCenter - (0 @ self class sizeOfPopUpForStandardElement / 2) - (0 @ 10)
 ]
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/13/2024 00:06'
+	#'squeak_changestamp' : 'si 6/13/2024 16:10'
 }
 WBPolygonElement >> showPopUp [
 
 	(self canvas elementToSpawn) ifNil:
 		[self canvas deactivateElement.
-		self makeElementPopUp.].
+		self makePopUpAt: self setPopupPosition with: self buttonsForPopUpBar columns: nil].
 	(self canvas elementToSpawn) ifNotNil:
 		[self canvas dropElement]
 ]

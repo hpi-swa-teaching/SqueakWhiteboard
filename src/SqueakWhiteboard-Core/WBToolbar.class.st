@@ -287,14 +287,14 @@ WBToolbar >> getColorsButton [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'si 6/13/2024 15:55'
+	#'squeak_changestamp' : 'si 6/13/2024 16:14'
 }
 WBToolbar >> getDeleteAllButton [
 	| rectangleImage rectangleButton |
 	
 	rectangleButton := WBButton new 
 		block: self buttonFunctionallityForDeleteAll;
-		backgroundColor: Color red.
+		backgroundColor: Color red muchLighter.
 	rectangleImage := WBImage loadDeleteAllButtonImage.
 	
 	rectangleButton image: (ImageMorph new image: (self canvas images resize: rectangleImage to: self buttonSize*0.8)).

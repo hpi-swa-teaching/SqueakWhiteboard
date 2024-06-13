@@ -58,43 +58,20 @@ WBNote >> color: aColor [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/3/2024 14:08'
+	#'squeak_changestamp' : 'si 6/13/2024 16:21'
 }
 WBNote >> createVertecies [
 	
 	self edges removeAll.
-	self edges add: (WBEdgeOfNote new 
-		center: self center - (self sizeOfNote @ self sizeOfNote);
-		canvas: self canvas;
-		yourself).
-	self edges add: (WBEdgeOfNote new 
-		center: self center + ((self sizeOfNote - self sizeOfCorner) @ (-1* self sizeOfNote));
-		canvas: self canvas;
-		yourself).
-	self edges add: (WBEdgeOfNote new 
-		center: self center + ( self sizeOfNote @ (-1 * (self sizeOfNote - sizeOfCorner)));
-		canvas: self canvas;
-		yourself).
-	self edges add: (WBEdgeOfNote new 
-		center: self center + ((self sizeOfNote - sizeOfCorner) @ (-1 * (self sizeOfNote - sizeOfCorner)));
-		canvas: self canvas;
-		yourself).
-	self edges add: (WBEdgeOfNote new 
-		center: self center + ((self sizeOfNote - sizeOfCorner) @ (-1* self sizeOfNote));
-		canvas: self canvas;
-		yourself).
-	self edges add: (WBEdgeOfNote new 
-		center: self center + ( self sizeOfNote @ (-1 * (self sizeOfNote - self sizeOfCorner)));
-		canvas: self canvas;
-		yourself).
-	self edges add: (WBEdgeOfNote new 
-		center: self center + (self sizeOfNote @ self sizeOfNote);
-		canvas: self canvas;
-		yourself).
-	self edges add: (WBEdgeOfNote new 
-		center: self center - (self sizeOfNote @  (-1 * (self sizeOfNote)));
-		canvas: self canvas;
-		yourself).
+	self edges 
+		add: self center - (self sizeOfNote @ self sizeOfNote);
+	 	add: self center + ((self sizeOfNote - self sizeOfCorner) @ (-1* self sizeOfNote));
+		add: self center + ( self sizeOfNote @ (-1 * (self sizeOfNote - sizeOfCorner)));
+		add: self center + ((self sizeOfNote - sizeOfCorner) @ (-1 * (self sizeOfNote - sizeOfCorner)));
+		add: self center + ((self sizeOfNote - sizeOfCorner) @ (-1* self sizeOfNote));
+		add: self center + ( self sizeOfNote @ (-1 * (self sizeOfNote - self sizeOfCorner)));
+		add: self center + (self sizeOfNote @ self sizeOfNote);
+		add: self center - (self sizeOfNote @  (-1 * (self sizeOfNote))).
 ]
 
 {
@@ -123,7 +100,7 @@ WBNote >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/3/2024 13:48'
+	#'squeak_changestamp' : 'si 6/13/2024 16:23'
 }
 WBNote >> makeShape [
 
@@ -131,10 +108,9 @@ WBNote >> makeShape [
 	
 	arrayOfEdgePoints := Array new: self edges size.
 	indexOfArray := 1.
-	self edges do: [:m | arrayOfEdgePoints at: indexOfArray put: m center.
+	self edges do: [:m | arrayOfEdgePoints at: indexOfArray put: m.
 		indexOfArray := indexOfArray + 1.].
-	self setVertices: arrayOfEdgePoints.
-	"self edges do: [:m | m hide]"		
+	self setVertices: arrayOfEdgePoints
 
 ]
 
