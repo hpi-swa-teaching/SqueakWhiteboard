@@ -71,14 +71,15 @@ WBPluggableTextMorphPlus >> hasUnacceptedEdits: aBoolean [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/12/2024 19:20'
+	#'squeak_changestamp' : 'is 6/14/2024 00:09'
 }
 WBPluggableTextMorphPlus >> initialize [
 
 	super initialize.
 	self color: Color transparent;
 		borderWidth: 0;
-		retractable: true
+		retractable: true;
+		wrapFlag: true
 ]
 
 {
