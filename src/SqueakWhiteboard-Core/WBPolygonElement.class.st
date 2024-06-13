@@ -21,7 +21,7 @@ WBPolygonElement class >> sizeOfPopUpForStandardElement [
 ]
 
 {
-	#category : #popUpBar,
+	#category : #popUp,
 	#'squeak_changestamp' : 'si 6/3/2024 18:39'
 }
 WBPolygonElement >> buttonsForPopUpBar [
@@ -157,12 +157,12 @@ WBPolygonElement >> handlesMouseDown: anEvent [
 ]
 
 {
-	#category : #popUpBar,
-	#'squeak_changestamp' : 'si 6/8/2024 00:24'
+	#category : #popUp,
+	#'squeak_changestamp' : 'si 6/13/2024 13:25'
 }
 WBPolygonElement >> makeElementPopUp [
 
-	self popUpMenu: (WBElementPopUp new
+	self popUpMenu: (WBPopUp new
 		setDefaultValues;
 		sizeOfPopUp: self class sizeOfPopUpForStandardElement;
 		addButtons: self buttonsForPopUpBar;
@@ -249,7 +249,7 @@ WBPolygonElement >> postDropRoutine [
 ]
 
 {
-	#category : #popUpBar,
+	#category : #popUp,
 	#'squeak_changestamp' : 'si 6/3/2024 12:25'
 }
 WBPolygonElement >> removeElementPopUp [
@@ -259,7 +259,7 @@ WBPolygonElement >> removeElementPopUp [
 ]
 
 {
-	#category : #popUpBar,
+	#category : #popUp,
 	#'squeak_changestamp' : 'si 6/3/2024 15:55'
 }
 WBPolygonElement >> removePopup [
@@ -287,7 +287,7 @@ WBPolygonElement >> resizeFrame: anObject [
 ]
 
 {
-	#category : #popUpBar,
+	#category : #popUp,
 	#'squeak_changestamp' : 'si 6/3/2024 15:59'
 }
 WBPolygonElement >> setPopupPosition [
@@ -296,7 +296,7 @@ WBPolygonElement >> setPopupPosition [
 ]
 
 {
-	#category : #popUpBar,
+	#category : #popUp,
 	#'squeak_changestamp' : 'si 6/13/2024 00:06'
 }
 WBPolygonElement >> showPopUp [

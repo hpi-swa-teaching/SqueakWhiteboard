@@ -65,8 +65,8 @@ WBCanvas >> activeTextbox: aTextbox [
 ]
 
 {
-	#category : #'creating elements',
-	#'squeak_changestamp' : 'ACL 6/7/2024 10:41'
+	#category : #'handle elements',
+	#'squeak_changestamp' : 'si 6/13/2024 15:39'
 }
 WBCanvas >> addElement: anElement [
 
@@ -133,6 +133,19 @@ WBCanvas >> deactivateTextbox [
 ]
 
 {
+	#category : #'handle elements',
+	#'squeak_changestamp' : 'si 6/13/2024 15:44'
+}
+WBCanvas >> deleteAllElements [
+	"maybe it could be cleaner but intuitive way didnt work"
+	| aCollection |
+
+	aCollection := self elements copy.
+	aCollection do: [:e | e delete].
+	self elements removeAll
+]
+
+{
 	#category : #drag,
 	#'squeak_changestamp' : 'ACL 6/7/2024 12:25'
 }
@@ -193,7 +206,7 @@ WBCanvas >> drawingSurface: anObject [
 ]
 
 {
-	#category : #'creating elements',
+	#category : #'handle elements',
 	#'squeak_changestamp' : 'is 6/3/2024 21:15'
 }
 WBCanvas >> dropElement [
@@ -359,21 +372,12 @@ WBCanvas >> mouseUp: anEvent [
 ]
 
 {
-	#category : #'creating elements',
+	#category : #'handle elements',
 	#'squeak_changestamp' : 'si 6/3/2024 14:18'
 }
 WBCanvas >> removeElement: anElement [
 
 	self elements remove: anElement ifAbsent: []
-]
-
-{
-	#category : #'creating elements',
-	#'squeak_changestamp' : 'JK 5/28/2024 14:10'
-}
-WBCanvas >> removePopUps [
-	self activeElement ifNotNil: [self activeElement deactivateElement.
-		self activeElement: nil]
 ]
 
 {
