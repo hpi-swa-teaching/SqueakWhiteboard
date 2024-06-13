@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'dragOffset',
 		'canvas',
-		'popUpMenu',
+		'popUps',
 		'resizeFrame'
 	],
 	#classInstVars : [
@@ -36,6 +36,15 @@ WBElement class >> sizeOfPopUpForStandardElement [
 ]
 
 {
+	#category : #popUpBar,
+	#'squeak_changestamp' : 'si 6/13/2024 11:52'
+}
+WBElement >> addPopUp: aPopUp [
+
+	self popUps add: aPopUp
+]
+
+{
 	#category : #resize,
 	#'squeak_changestamp' : 'si 6/3/2024 14:29'
 }
@@ -50,44 +59,44 @@ WBElement >> addResizeFrame [
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/12/2024 23:22'
+	#'squeak_changestamp' : 'si 6/13/2024 11:03'
 }
 WBElement >> buttonFunctionallityForColor [
 
-	^ [:aPoint :aColor |self color: aColor]
+	^ [:aButton |self color: aButton color]
 ]
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/13/2024 00:16'
+	#'squeak_changestamp' : 'si 6/13/2024 11:20'
 }
 WBElement >> buttonFunctionallityForColorPalette [
 
-	^ [:aPoint :aColor |]
+	^ [:aButton | self makeElementPopUpAt: (aButton topCenter - 5) with: self makeColorButtons columns: 3]
 ]
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/12/2024 23:24'
+	#'squeak_changestamp' : 'si 6/13/2024 11:03'
 }
 WBElement >> buttonFunctionallityForCopy [
 
-	^ [:aPoint :aColor | self canvas deactivateElement. 
-		self canvas spawnACopiedElement: self copy At: aPoint.]
+	^ [:aButton | self canvas deactivateElement. 
+		self canvas spawnACopiedElement: self copy At: aButton currentEvent cursorPoint.]
 ]
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/12/2024 23:23'
+	#'squeak_changestamp' : 'si 6/13/2024 11:04'
 }
 WBElement >> buttonFunctionallityForDelete [
 
-	^ [:aPoint :aColor |self delete]
+	^ [:aButton |self delete]
 ]
 
 {
-	#category : #popUpBar,
-	#'squeak_changestamp' : 'si 6/13/2024 00:24'
+	#category : #createButtons,
+	#'squeak_changestamp' : 'si 6/13/2024 11:13'
 }
 WBElement >> buttonsForPopUpBar [
 
@@ -98,9 +107,9 @@ WBElement >> buttonsForPopUpBar [
 		add: (WBButton new
 			block: self buttonFunctionallityForCopy;
 			backgroundColor: Color lightBlue muchDarker);
-		add: (WBColorPaletteButton new
-			canvas: self canvas;
-			element: self);
+		add: (WBButton new
+			block: self buttonFunctionallityForColorPalette;
+			backgroundColor: Color black);
 		yourself.
 	
 ]
@@ -254,18 +263,68 @@ WBElement >> initializeWithCanvas: aCanvas [
 ]
 
 {
+	#category : #createButtons,
+	#'squeak_changestamp' : 'si 6/13/2024 11:09'
+}
+WBElement >> makeColorButtonWithColor: aColor [ 
+	
+	^(WBButton new
+		color: aColor;
+		backgroundColor: aColor;
+		clickedColor: aColor darker;
+		block: self buttonFunctionallityForColor;
+		yourself)
+]
+
+{
+	#category : #createButtons,
+	#'squeak_changestamp' : 'si 6/13/2024 11:07'
+}
+WBElement >> makeColorButtons [
+
+	^OrderedCollection new
+		add: (self makeColorButtonWithColor: Color yellow);
+		add: (self makeColorButtonWithColor: Color orange);
+		add: (self makeColorButtonWithColor: Color red);
+		add: (self makeColorButtonWithColor: Color magenta);
+		add: (self makeColorButtonWithColor: Color blue);
+		add: (self makeColorButtonWithColor: Color cyan);
+		add: (self makeColorButtonWithColor: Color green);
+		add: (self makeColorButtonWithColor: Color gray);
+		add: (self makeColorButtonWithColor: Color black);
+		yourself.
+]
+
+{
 	#category : #popUpBar,
-	#'squeak_changestamp' : 'si 6/13/2024 00:18'
+	#'squeak_changestamp' : 'si 6/13/2024 11:52'
 }
 WBElement >> makeElementPopUpAt: aPoint with: aCollection [
 
-	self popUpMenu: (WBElementPopUp new
+	self addPopUp: (WBElementPopUp new
 		setDefaultValues;
 		sizeOfPopUp: self class sizeOfPopUpForStandardElement;
 		addButtons: aCollection;
 		yourself).
 	self addMorph: self popUpMenu.
 	self popUpMenu center: aPoint
+	
+]
+
+{
+	#category : #popUpBar,
+	#'squeak_changestamp' : 'si 6/13/2024 11:36'
+}
+WBElement >> makeElementPopUpAt: aPoint with: aCollection columns: aNumber [
+
+	self popUpMenu: (WBElementPopUp new
+		setDefaultValues;
+		sizeOfPopUp: self class sizeOfPopUpForStandardElement;
+		numberOfColumns: aNumber;
+		addButtons: aCollection;
+		yourself).
+	self addMorph: self popUpMenu.
+	self popUpMenu center: aPoint - (self popUpMenu bottomCenter - self popUpMenu center)
 	
 ]
 
@@ -322,6 +381,24 @@ WBElement >> popUpMenu: aPopUpMenu [
 	popUpMenu := aPopUpMenu.
 	popUpMenu ifNotNil: 
 		[self addMorphBack: popUpMenu]
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/13/2024 11:50'
+}
+WBElement >> popUps [
+
+	^ popUps ifNil: [^ self popUps: OrderedCollection new.].
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/13/2024 11:49'
+}
+WBElement >> popUps: aCollection [
+
+	popUps := aCollection
 ]
 
 {

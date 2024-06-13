@@ -1,3 +1,6 @@
+"
+The WBButton is the parent class of all button versions
+"
 Class {
 	#name : #WBButton,
 	#superclass : #Morph,
@@ -7,9 +10,11 @@ Class {
 		'clickedColor',
 		'hoverColor',
 		'block',
-		'image'
+		'image',
+		'currentEvent'
 	],
-	#category : #'SqueakWhiteboard-Core'
+	#category : #'SqueakWhiteboard-Core',
+	#'squeak_changestamp' : 'is 5/18/2024 17:13'
 }
 
 {
@@ -78,11 +83,12 @@ WBButton >> block: aBlock [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'si 6/12/2024 23:22'
+	#'squeak_changestamp' : 'si 6/13/2024 10:59'
 }
 WBButton >> clickFunctionality: anEvent [
 
-	self block value: anEvent cursorPoint value: self color
+	self currentEvent: anEvent.
+	self block value: self
 ]
 
 {
@@ -101,6 +107,24 @@ WBButton >> clickedColor [
 WBButton >> clickedColor: aColor [
 
 	clickedColor := aColor
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/13/2024 10:58'
+}
+WBButton >> currentEvent [
+
+	^ currentEvent
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/13/2024 10:58'
+}
+WBButton >> currentEvent: anObject [
+
+	currentEvent := anObject
 ]
 
 {

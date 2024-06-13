@@ -30,7 +30,7 @@ WBElementPopUp class >> sizeOfPopUp [
 
 {
 	#category : #addButtons,
-	#'squeak_changestamp' : 'si 6/7/2024 00:43'
+	#'squeak_changestamp' : 'si 6/13/2024 11:36'
 }
 WBElementPopUp >> addButtons: aList [
 

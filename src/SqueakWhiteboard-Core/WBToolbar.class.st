@@ -55,56 +55,56 @@ WBToolbar >> backgroundColor: aColor [
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/12/2024 23:12'
+	#'squeak_changestamp' : 'si 6/13/2024 11:00'
 }
 WBToolbar >> buttonFunctionallityForCircle [
 
-	^ [:aPoint :aColor | self canvas spawnAnElement: WBCircle new At: aPoint]
+	^ [:aButton | self canvas spawnAnElement: WBCircle new At: aButton currentEvent cursorPoint]
 ]
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/12/2024 23:13'
+	#'squeak_changestamp' : 'si 6/13/2024 11:00'
 }
 WBToolbar >> buttonFunctionallityForGlobalColor [
 
-	^ [:aPoint :aColor | self canvas globalColor: aColor]
+	^ [:aButton | self canvas spawnAnElement: WBCircle new At: aButton currentEvent cursorPoint]
 ]
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/12/2024 23:13'
+	#'squeak_changestamp' : 'si 6/13/2024 11:01'
 }
 WBToolbar >> buttonFunctionallityForLine [
 
-	^ [:aPoint :aColor  | self canvas spawnAnElement: WBLine new At: aPoint]
+	^ [:aButton | self canvas spawnAnElement: WBLine new At: aButton currentEvent cursorPoint]
 ]
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/12/2024 23:13'
+	#'squeak_changestamp' : 'si 6/13/2024 11:01'
 }
 WBToolbar >> buttonFunctionallityForNote [
 
-	^ [:aPoint :aColor  | self canvas spawnAnElement: WBNote new At: aPoint]
+	^ [:aButton | self canvas spawnAnElement: WBNote new At: aButton currentEvent cursorPoint]
 ]
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/12/2024 23:13'
+	#'squeak_changestamp' : 'si 6/13/2024 11:01'
 }
 WBToolbar >> buttonFunctionallityForRectangle [
 
-	^ [:aPoint :aColor | self canvas spawnAnElement: WBRectangle new At: aPoint]
+	^ [:aButton | self canvas spawnAnElement: WBRectangle new At: aButton currentEvent cursorPoint]
 ]
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/12/2024 23:13'
+	#'squeak_changestamp' : 'si 6/13/2024 11:01'
 }
 WBToolbar >> buttonFunctionallityForTextbox [
 
-	^ [:aPoint :aColor | self canvas spawnAnElement: WBTextbox new At: aPoint]
+	^ [:aButton | self canvas spawnAnElement: WBTextbox new At: aButton currentEvent cursorPoint]
 ]
 
 {
@@ -155,18 +155,18 @@ WBToolbar >> canvas: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/12/2024 12:51'
+	#'squeak_changestamp' : 'si 6/13/2024 11:01'
 }
 WBToolbar >> createButtons [
 	
 	self placeButtons: (OrderedCollection withAll: {
-		self getShapeChoosingButton.
+		"self getShapeChoosingButton."
 		self getRectangleButton.
 		self getLineButton.
-		"self getCircleButton."
+		self getCircleButton.
 		self getNoteButton.
-		"self getTextboxButton."
-		self getColorsButton.})
+		self getTextboxButton.
+		"self getColorsButton."})
 
 	
 ]
