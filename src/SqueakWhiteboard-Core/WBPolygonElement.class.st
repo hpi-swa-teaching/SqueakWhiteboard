@@ -343,14 +343,14 @@ WBPolygonElement >> setPopupPosition [
 ]
 
 {
-	#category : #popUpBar,
-	#'squeak_changestamp' : 'is 6/12/2024 16:52'
+	#category : #popUp,
+	#'squeak_changestamp' : 'si 6/14/2024 12:42'
 }
 WBPolygonElement >> showPopUp [
 
 	(self canvas elementToSpawn) ifNil:
-		[self canvas removePopUps.
-		self makeElementPopUp.]
+		[self canvas deactivateElement.
+		self makePopUpAt: self setPopupPosition with: self buttonsForPopUpBar columns: nil.] 
 ]
 
 {

@@ -506,13 +506,13 @@ WBElement >> setPopupPosition [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/14/2024 12:30'
+	#'squeak_changestamp' : 'si 6/14/2024 12:41'
 }
 WBElement >> showPopUp [
 
 	(self canvas elementToSpawn) ifNil:
-		[self canvas removePopUps.
-		self makeElementPopUp.] 
+		[self canvas deactivateElement.
+		self makePopUpAt: self setPopupPosition with: self buttonsForPopUpBar columns: nil.] 
 ]
 
 {

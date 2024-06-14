@@ -56,11 +56,11 @@ WBToolbar >> backgroundColor: aColor [
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/13/2024 15:30'
+	#'squeak_changestamp' : 'si 6/14/2024 12:36'
 }
 WBToolbar >> buttonFunctionallityForCircle [
 
-	^ [:aButton | self canvas spawnAnElement: (WBCircle newWithCanvas: self canvas) At: aButton currentEvent cursorPoint]
+	^ [:aButton | self canvas spawnAnElement: (WBCircle newWithCanvas: self canvas) At: aButton currentEvent]
 ]
 
 {
@@ -92,29 +92,29 @@ WBToolbar >> buttonFunctionallityForGlobalColor [
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/13/2024 15:32'
+	#'squeak_changestamp' : 'si 6/14/2024 12:36'
 }
 WBToolbar >> buttonFunctionallityForLine [
 
-	^ [:aButton | self canvas spawnAnElement: WBLine new At: aButton currentEvent cursorPoint]
+	^ [:aButton | self canvas spawnAnElement: WBLine new At: aButton currentEvent]
 ]
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/13/2024 15:30'
+	#'squeak_changestamp' : 'si 6/14/2024 12:36'
 }
 WBToolbar >> buttonFunctionallityForNote [
 
-	^ [:aButton | self canvas spawnAnElement: (WBNote newWithCanvas: self canvas) At: aButton currentEvent cursorPoint]
+	^ [:aButton | self canvas spawnAnElement: (WBNote newWithCanvas: self canvas) At: aButton currentEvent]
 ]
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/13/2024 15:31'
+	#'squeak_changestamp' : 'si 6/14/2024 12:36'
 }
 WBToolbar >> buttonFunctionallityForRectangle [
 
-	^ [:aButton | self canvas spawnAnElement: (WBRectangle newWithCanvas: self canvas) At: aButton currentEvent cursorPoint]
+	^ [:aButton | self canvas spawnAnElement: (WBRectangle newWithCanvas: self canvas) At: aButton currentEvent]
 ]
 
 {
@@ -124,15 +124,6 @@ WBToolbar >> buttonFunctionallityForRectangle [
 WBToolbar >> buttonFunctionallityForShapeChoosing [
 
 	^ [:aButton | self makePopUpAt: aButton rightCenter + (self class margin @ 0) with: self createShapeChoosingButtons columns: 1]
-]
-
-{
-	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/13/2024 11:01'
-}
-WBToolbar >> buttonFunctionallityForTextbox [
-
-	^ [:aButton | self canvas spawnAnElement: WBTextbox new At: aButton currentEvent cursorPoint]
 ]
 
 {
@@ -214,7 +205,7 @@ WBToolbar >> createShapeChoosingButtons [
 
 {
 	#category : #createButtons,
-	#'squeak_changestamp' : 'si 6/13/2024 15:12'
+	#'squeak_changestamp' : 'si 6/14/2024 12:42'
 }
 WBToolbar >> createToolbarButtons [
 	
@@ -222,7 +213,6 @@ WBToolbar >> createToolbarButtons [
 		self getShapeChoosingButton.
 		self getLineButton.
 		self getNoteButton.
-		self getTextboxButton.
 		self getColorsButton.
 		self getDeleteAllButton})
 
@@ -367,22 +357,6 @@ WBToolbar >> getShapeChoosingButton [
 		[shapeChoosingButton image: (ImageMorph new image: (self canvas images resize: shapeChoosingImage to: self buttonSize*0.8))].
 	^ shapeChoosingButton
 			
-]
-
-{
-	#category : #getButton,
-	#'squeak_changestamp' : 'si 6/13/2024 00:26'
-}
-WBToolbar >> getTextboxButton [
-	| textboxImage textboxButton |
-	
-	textboxButton := WBButton new 
-		block: self buttonFunctionallityForTextbox.
-	textboxImage := WBImage loadTextboxButtonImage.
-
-	textboxImage notNil ifTrue: 
-		[textboxButton image: (ImageMorph new image: (self canvas images resize: textboxImage to: self buttonSize*0.8))].
-	^ textboxButton
 ]
 
 {
