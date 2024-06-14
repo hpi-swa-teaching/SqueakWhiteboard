@@ -124,7 +124,7 @@ WBLine >> handlesMouseOver: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 5/19/2024 20:06'
+	#'squeak_changestamp' : 'is 6/14/2024 18:06'
 }
 WBLine >> initialize [
 

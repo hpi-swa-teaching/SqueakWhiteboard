@@ -59,7 +59,7 @@ WBResizeHandle >> handlesMouseOver: aEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:02'
+	#'squeak_changestamp' : 'is 6/14/2024 18:06'
 }
 WBResizeHandle >> initializeWithParent: aMorph [
 	super initialize.

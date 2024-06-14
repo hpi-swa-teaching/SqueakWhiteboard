@@ -28,7 +28,7 @@ WBNote class >> initialSizeOfNote [
 
 {
 	#category : #'initialize-release',
-	#'squeak_changestamp' : 'si 6/3/2024 13:36'
+	#'squeak_changestamp' : 'is 6/14/2024 18:06'
 }
 WBNote class >> newWithCanvas: aCanvas [
 
@@ -76,16 +76,17 @@ WBNote >> createVertecies [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'si 6/14/2024 14:53'
+	#'squeak_changestamp' : 'is 6/14/2024 18:16'
 }
-WBNote >> extent: aSize [
+WBNote >> extent: anExtent [
 
-	super extent: aSize
+	super extent: anExtent.
+	textField ifNotNil: [textField extent: anExtent - (self textBorderOffset * 2)]
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/3/2024 19:02'
+	#'squeak_changestamp' : 'is 6/14/2024 18:18'
 }
 WBNote >> initialize [
 
@@ -94,7 +95,8 @@ WBNote >> initialize [
 	self sizeOfCorner: self class initialSizeOfCorner * 1.5.
 	self lineColor: self color muchDarker.
 	self createVertecies.
-	self makeShape
+	self makeShape.
+	self handler addTextfieldWithSize: self extent
 ]
 
 {
@@ -124,11 +126,11 @@ WBNote >> removeResizeFrame [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/3/2024 12:26'
+	#'squeak_changestamp' : 'is 6/14/2024 18:17'
 }
 WBNote >> sizeOfCorner [
 
-	^sizeOfCorner
+	^ sizeOfCorner
 ]
 
 {
@@ -142,11 +144,11 @@ WBNote >> sizeOfCorner: aNumber [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/3/2024 12:27'
+	#'squeak_changestamp' : 'is 6/14/2024 18:17'
 }
 WBNote >> sizeOfNote [
 
-	^sizeOfNote
+	^ sizeOfNote
 ]
 
 {
@@ -156,4 +158,13 @@ WBNote >> sizeOfNote [
 WBNote >> sizeOfNote: aNumber [
 
 	sizeOfNote := aNumber 
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/14/2024 17:53'
+}
+WBNote >> supportsText [
+
+	^ supportsText ifNil: [supportsText := true]
 ]

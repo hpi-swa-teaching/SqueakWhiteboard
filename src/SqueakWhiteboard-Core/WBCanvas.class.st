@@ -101,7 +101,7 @@ WBCanvas >> createDrawingSurface [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 6/3/2024 15:50'
+	#'squeak_changestamp' : 'is 6/14/2024 17:25'
 }
 WBCanvas >> deactivateElement [
 
@@ -201,23 +201,13 @@ WBCanvas >> drawingSurface: anObject [
 ]
 
 {
-	#category : #'handle elements',
-	#'squeak_changestamp' : 'is 6/3/2024 21:15'
-}
-WBCanvas >> dropElement [
-
-	self elementToSpawn removeDropShadow.
-	self elementToSpawn: nil
-]
-
-{
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 6/12/2024 17:50'
+	#'squeak_changestamp' : 'is 6/14/2024 17:54'
 }
 WBCanvas >> dropElement: aMouseEvent [
 
 	self elementToSpawn removeDropShadow.
-	self elementToSpawn supportsText ifTrue: [self elementToSpawn activateTextbox: aMouseEvent].
+	self elementToSpawn supportsText ifTrue: [self elementToSpawn handler activateTextbox: aMouseEvent].
 	self elementToSpawn: nil 
 ]
 
@@ -322,7 +312,7 @@ WBCanvas >> images: anImage [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/14/2024 13:18'
+	#'squeak_changestamp' : 'is 6/14/2024 18:06'
 }
 WBCanvas >> initialize [
 	

@@ -177,7 +177,7 @@ WBButton >> image: anImage [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 5/23/2024 20:51'
+	#'squeak_changestamp' : 'is 6/14/2024 18:06'
 }
 WBButton >> initialize [
 

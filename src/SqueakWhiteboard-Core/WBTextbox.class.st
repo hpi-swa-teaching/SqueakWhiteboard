@@ -55,7 +55,7 @@ WBTextbox >> defaultSize [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/11/2024 20:39'
+	#'squeak_changestamp' : 'is 6/14/2024 17:11'
 }
 WBTextbox >> detectDoubleClick: evt [
 	| delta |
@@ -64,7 +64,7 @@ WBTextbox >> detectDoubleClick: evt [
 	(delta isNumber and: [delta < self doubleClickMaxDelta])
 		ifTrue: [self textField enabled: true;
 					mouseDown: evt.
-				self deactivateElement.
+				self canvas deactivateElement.
 				self canvas deactivateTextbox;
 					activeTextbox: self].
 			
@@ -138,7 +138,7 @@ WBTextbox >> handlesMouseDown: evt [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/12/2024 11:06'
+	#'squeak_changestamp' : 'is 6/14/2024 18:06'
 }
 WBTextbox >> initialize [
 	| textField |
@@ -172,12 +172,12 @@ WBTextbox >> lastMouseClick: evt [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/4/2024 20:44'
+	#'squeak_changestamp' : 'is 6/14/2024 16:42'
 }
 WBTextbox >> mouseDown: evt [
 	
 	super mouseDown: evt.
-	self detectDoubleClick: evt;
+	self handler detectDoubleClick: evt;
 		 lastMouseClick: evt.
 	
 ]

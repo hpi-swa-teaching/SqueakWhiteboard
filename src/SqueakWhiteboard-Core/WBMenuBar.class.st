@@ -109,7 +109,7 @@ WBMenuBar >> handlesMouseDown: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/28/2024 18:45'
+	#'squeak_changestamp' : 'is 6/14/2024 18:06'
 }
 WBMenuBar >> initializeWithCanvas: aCanvas [
 

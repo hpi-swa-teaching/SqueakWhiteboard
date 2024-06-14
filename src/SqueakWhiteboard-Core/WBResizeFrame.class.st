@@ -99,7 +99,7 @@ WBResizeFrame >> handles: anObject [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:10'
+	#'squeak_changestamp' : 'is 6/14/2024 18:06'
 }
 WBResizeFrame >> initializeWithParent: aMorph [
 	super initialize.

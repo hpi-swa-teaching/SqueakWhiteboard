@@ -361,7 +361,7 @@ WBToolbar >> getShapeChoosingButton [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/13/2024 13:51'
+	#'squeak_changestamp' : 'is 6/14/2024 18:06'
 }
 WBToolbar >> initializeWithCanvas: aCanvas [
 	
@@ -374,11 +374,11 @@ WBToolbar >> initializeWithCanvas: aCanvas [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/14/2024 12:02'
+	#'squeak_changestamp' : 'is 6/14/2024 17:11'
 }
 WBToolbar >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
-	self popUp ifNotNil: [self deactivateElement].
+	self popUp ifNotNil: [self canvas deactivateElement].
 	self popUp: (WBPopUp new
 		setDefaultValues;
 		sizeOfPopUp: (self buttonSize x);

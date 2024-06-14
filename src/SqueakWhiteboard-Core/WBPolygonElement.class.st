@@ -8,7 +8,11 @@ Class {
 		'popUp',
 		'resizeFrame',
 		'supportsText',
-		'handler'
+		'handler',
+		'textBorderOffset',
+		'lastMouseClick',
+		'doubleClickMaxDelta',
+		'textField'
 	],
 	#category : #'SqueakWhiteboard-Core'
 }
@@ -41,7 +45,7 @@ WBPolygonElement >> canvas: aCanvas [
 ]
 
 {
-	#category : #eventHandeling,
+	#category : #'event handeling',
 	#'squeak_changestamp' : 'si 6/14/2024 14:53'
 }
 WBPolygonElement >> deactivateElement [
@@ -58,6 +62,24 @@ WBPolygonElement >> delete [
 
 	self canvas removeElement: self.
 	super delete
+]
+
+{
+	#category : #'event handeling',
+	#'squeak_changestamp' : 'is 6/14/2024 16:23'
+}
+WBPolygonElement >> doubleClickMaxDelta [
+
+	^ doubleClickMaxDelta ifNil: [doubleClickMaxDelta := 200]
+]
+
+{
+	#category : #'event handeling',
+	#'squeak_changestamp' : 'is 6/14/2024 16:23'
+}
+WBPolygonElement >> doubleClickMaxDelta: aDelta [
+
+	doubleClickMaxDelta := aDelta
 ]
 
 {
@@ -145,7 +167,7 @@ WBPolygonElement >> handler: anObject [
 ]
 
 {
-	#category : #eventHandeling,
+	#category : #'event handeling',
 	#'squeak_changestamp' : 'si 6/3/2024 12:24'
 }
 WBPolygonElement >> handlesMouseDown: anEvent [
@@ -155,7 +177,7 @@ WBPolygonElement >> handlesMouseDown: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/14/2024 15:43'
+	#'squeak_changestamp' : 'is 6/14/2024 18:06'
 }
 WBPolygonElement >> initialize [
 
@@ -164,24 +186,45 @@ WBPolygonElement >> initialize [
 ]
 
 {
-	#category : #eventHandeling,
-	#'squeak_changestamp' : 'si 6/14/2024 14:52'
+	#category : #'event handeling',
+	#'squeak_changestamp' : 'is 6/14/2024 16:22'
 }
-WBPolygonElement >> mouseDown: anEvent [
-	
-	(self canvas elementToSpawn) ifNil:
-		[self canvas 
-			deactivateElement.
-		self dragStart: anEvent;
-			addResizeFrame.
-		self handler showPopUp.
-		self canvas activeElement: self].
-	(self canvas elementToSpawn) ifNotNil:
-		[self canvas dropElement: anEvent]
+WBPolygonElement >> lastMouseClick [
+
+	^ lastMouseClick
 ]
 
 {
-	#category : #eventHandeling,
+	#category : #'event handeling',
+	#'squeak_changestamp' : 'is 6/14/2024 16:23'
+}
+WBPolygonElement >> lastMouseClick: evt [
+
+	lastMouseClick := evt
+]
+
+{
+	#category : #'event handeling',
+	#'squeak_changestamp' : 'is 6/14/2024 16:58'
+}
+WBPolygonElement >> mouseDown: anEvent [
+	
+	(self canvas elementToSpawn) isNil
+		ifTrue:
+			[self canvas 
+				deactivateElement.
+			self dragStart: anEvent;
+				addResizeFrame.
+			self handler showPopUp.
+			self canvas activeElement: self]
+		ifFalse:
+			[self canvas dropElement: anEvent].
+	self handler detectDoubleClick: anEvent.
+	self lastMouseClick: anEvent
+]
+
+{
+	#category : #'event handeling',
 	#'squeak_changestamp' : 'si 6/14/2024 11:44'
 }
 WBPolygonElement >> mouseMove: anEvent [
@@ -190,7 +233,7 @@ WBPolygonElement >> mouseMove: anEvent [
 ]
 
 {
-	#category : #eventHandeling,
+	#category : #'event handeling',
 	#'squeak_changestamp' : 'si 6/3/2024 12:25'
 }
 WBPolygonElement >> mouseUp: anEvent [
@@ -261,4 +304,40 @@ WBPolygonElement >> supportsText [
 WBPolygonElement >> supportsText: aBoolean [
 
 	^ supportsText := aBoolean
+]
+
+{
+	#category : #appearance,
+	#'squeak_changestamp' : 'is 6/14/2024 16:19'
+}
+WBPolygonElement >> textBorderOffset [
+
+	^ textBorderOffset ifNil: [ textBorderOffset := 10]
+]
+
+{
+	#category : #appearance,
+	#'squeak_changestamp' : 'is 6/14/2024 16:19'
+}
+WBPolygonElement >> textBorderOffset: anOffset [
+
+	textBorderOffset := anOffset
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/14/2024 17:49'
+}
+WBPolygonElement >> textField [
+
+	^ textField
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/14/2024 17:49'
+}
+WBPolygonElement >> textField: aTextField [
+
+	textField := aTextField
 ]

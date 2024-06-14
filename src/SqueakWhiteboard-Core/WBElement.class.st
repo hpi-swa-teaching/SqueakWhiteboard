@@ -42,19 +42,6 @@ WBElement class >> sizeOfPopUpForStandardElement [
 ]
 
 {
-	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/12/2024 17:52'
-}
-WBElement >> activateTextbox: evt [
-	
-	self canvas deactivateTextbox.
-	self textField enabled: true;
-		mouseDown: evt.
-	self deactivateElement.
-	self canvas activeTextbox: self
-]
-
-{
 	#category : #resize,
 	#'squeak_changestamp' : 'si 6/3/2024 14:29'
 }
@@ -87,12 +74,12 @@ WBElement >> canvas: aCanvas [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'si 6/14/2024 14:45'
+	#'squeak_changestamp' : 'is 6/14/2024 17:21'
 }
 WBElement >> deactivateElement [
 
 	self handler removePopup.
-	self removeResizeFrame.
+	self removeResizeFrame
 ]
 
 {
@@ -122,18 +109,6 @@ WBElement >> delete [
 
 	self canvas removeElement: self.	
 	super delete
-]
-
-{
-	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/12/2024 16:09'
-}
-WBElement >> detectDoubleClick: evt [
-	| delta |
-	
-	self lastMouseClick ifNotNil: [delta := evt timeStamp - self lastMouseClick timeStamp].
-	(delta isNumber and: [delta < self doubleClickMaxDelta])
-		ifTrue: [ self activateTextbox: evt ].
 ]
 
 {
@@ -255,25 +230,21 @@ WBElement >> handlesMouseDown: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/14/2024 15:43'
+	#'squeak_changestamp' : 'is 6/14/2024 18:06'
 }
 WBElement >> initialize [
-	| textField |
+	
 
 	super initialize.
 	self extent: self defaultSize.
-	textField := WBPluggableTextMorphPlus new.
-	textField extent: self defaultSize - ((self textBorderOffset * 2) @ (self textBorderOffset * 2)).
-	self addMorphCentered: textField.
-	textField textMorph centered. 
-	self textField: textField.
-	self handler: (WBElementHandler new element: self)
+	self handler: (WBElementHandler new element: self).
+	self handler addTextfieldWithSize: self extent
 	
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JK 6/3/2024 14:11'
+	#'squeak_changestamp' : 'is 6/14/2024 18:06'
 }
 WBElement >> initializeWithCanvas: aCanvas [
 	
@@ -301,22 +272,24 @@ WBElement >> lastMouseClick: evt [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'si 6/14/2024 14:37'
+	#'squeak_changestamp' : 'is 6/14/2024 17:34'
 }
 WBElement >> mouseDown: mouseEvent [
 
 	mouseEvent redButtonPressed ifTrue: [
 		(self canvas elementToSpawn) isNil 
 			ifTrue:
-				[self canvas deactivateElement.
+				[self canvas 
+					deactivateElement;
+					deactivateTextbox.
 				self dragStart: mouseEvent;
 					addResizeFrame.
 				self handler showPopUp.
 				self canvas activeElement: self]
 			ifFalse:
 				[self canvas dropElement: mouseEvent].
-		self detectDoubleClick: mouseEvent;
-			lastMouseClick: mouseEvent]
+		self handler detectDoubleClick: mouseEvent.
+		self lastMouseClick: mouseEvent]
 ]
 
 {

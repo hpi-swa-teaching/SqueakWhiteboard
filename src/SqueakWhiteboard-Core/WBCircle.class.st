@@ -19,7 +19,7 @@ WBCircle >> drawOn: aCanvas [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/4/2024 16:21'
+	#'squeak_changestamp' : 'is 6/14/2024 18:06'
 }
 WBCircle >> initialize [
 

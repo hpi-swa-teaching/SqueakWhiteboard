@@ -8,6 +8,33 @@ Class {
 }
 
 {
+	#category : #text,
+	#'squeak_changestamp' : 'is 6/14/2024 17:56'
+}
+WBElementHandler >> activateTextbox: evt [
+	
+	self element canvas deactivateTextbox.
+	self element textField enabled: true;
+		mouseDown: evt.
+	self element deactivateElement.
+	self element canvas activeTextbox: self
+]
+
+{
+	#category : #text,
+	#'squeak_changestamp' : 'is 6/14/2024 18:18'
+}
+WBElementHandler >> addTextfieldWithSize: anExtent [
+	| textField |
+	
+	textField := WBPluggableTextMorphPlus new.
+	textField extent: anExtent - ((self element textBorderOffset * 2) @ (self element textBorderOffset * 2)).
+	textField textMorph centered. 
+	self element addMorphCentered: textField.
+	self element textField: textField
+]
+
+{
 	#category : #'button functionalities',
 	#'squeak_changestamp' : 'si 6/14/2024 14:47'
 }
@@ -61,6 +88,29 @@ WBElementHandler >> buttonsForPopUpBar [
 			block: self buttonFunctionallityForColorPalette;
 			backgroundColor: Color black);
 		yourself.
+]
+
+{
+	#category : #text,
+	#'squeak_changestamp' : 'is 6/14/2024 17:24'
+}
+WBElementHandler >> deactivateTextbox [
+
+	self element currentHand releaseKeyboardFocus.
+	self element textField enabled: false
+]
+
+{
+	#category : #text,
+	#'squeak_changestamp' : 'is 6/14/2024 18:24'
+}
+WBElementHandler >> detectDoubleClick: evt [
+	| delta |
+	
+	self element supportsText ifFalse: [^ false].
+	self element lastMouseClick ifNotNil: [delta := evt timeStamp - self element lastMouseClick timeStamp].
+	(delta isNumber and: [delta < self element doubleClickMaxDelta])
+		ifTrue: [ self activateTextbox: evt ]
 ]
 
 {

@@ -63,7 +63,7 @@ WBEdgeOfLine >> deleteSelf [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/12/2024 16:27'
+	#'squeak_changestamp' : 'is 6/14/2024 18:06'
 }
 WBEdgeOfLine >> initialize [
 	
@@ -113,4 +113,13 @@ WBEdgeOfLine >> mouseUp: anEvent [
 
 	super mouseUp: anEvent.
 	self line updateEdges
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/14/2024 18:22'
+}
+WBEdgeOfLine >> supportsText [
+
+	^ supportsText ifNil: [ supportsText := false ]
 ]
