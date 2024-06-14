@@ -9,10 +9,9 @@ Class {
 		'backgroundColor',
 		'clickedColor',
 		'hoverColor',
-		'canvas',
-		'element',
-		'number',
-		'image'
+		'block',
+		'image',
+		'currentEvent'
 	],
 	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 5/18/2024 17:13'
@@ -28,94 +27,62 @@ WBButton class >> cornerRadius [
 ]
 
 {
-	#category : #'instance creation',
-	#'squeak_changestamp' : 'is 5/19/2024 16:36'
-}
-WBButton class >> newWithCanvas: aCanvas [
-
-	WBButton basicNew initializeWithCanvas: aCanvas
-]
-
-{
 	#category : #appearance,
-	#'squeak_changestamp' : 'is 6/9/2024 15:55'
+	#'squeak_changestamp' : 'si 6/14/2024 12:34'
 }
 WBButton >> addImage [
 	
-	self image ifNil: [self addRightImage.].
 	self image ifNotNil: [self addMorphCentered: self image]
 	
 	
 ]
 
 {
-	#category : #appearance,
-	#'squeak_changestamp' : 'is 6/9/2024 13:33'
-}
-WBButton >> addRightImage [
-	| rectangleImage circleImage lineImage textboxImage |
-	rectangleImage := (WBImage loadRectangleButtonImage).
-	circleImage := (WBImage loadCircleButtonImage).
-	lineImage := (WBImage loadLineButtonImage).
-	textboxImage := (WBImage loadTextboxButtonImage).
-	
-	(self number = 1 and: rectangleImage notNil) ifTrue: [self image: (ImageMorph new image: 
-		(self canvas images resize: rectangleImage to: self extent * 0.8)).].
-	(self number = 2 and: circleImage notNil) ifTrue: [self image: (ImageMorph new image: 
-		(self canvas images resize: circleImage to: self extent * 0.8)).].
-	(self number = 3 and: lineImage notNil) ifTrue: [self image: (ImageMorph new image: 
-		(self canvas images resize: lineImage to: self extent * 0.8)).].
-	(self number = 4 and: textboxImage notNil) ifTrue: [self image: (ImageMorph new image: 
-		(self canvas images resize: textboxImage to: self extent * 0.8)).].
-	(self number = 5 and: rectangleImage notNil) ifTrue: [self image: (ImageMorph new image: 
-		(self canvas images resize: rectangleImage to: self extent * 0.8)).]
-]
-
-{
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 5/19/2024 18:26'
+	#'squeak_changestamp' : 'si 6/14/2024 12:21'
 }
 WBButton >> backgroundColor [
 
-	^ backgroundColor ifNil: [backgroundColor := Color gray]
+	^ backgroundColor ifNil: [backgroundColor := Color lightBlue]
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 5/19/2024 16:15'
+	#'squeak_changestamp' : 'si 6/13/2024 00:14'
 }
 WBButton >> backgroundColor: aColor [
 
 	backgroundColor := aColor.
-	self color: backgroundColor
-	
+	self color: aColor
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 5/19/2024 16:32'
+	#'squeak_changestamp' : 'si 6/14/2024 12:34'
 }
-WBButton >> canvas [
+WBButton >> block [
 
-	^ canvas
+	^ block
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 5/19/2024 16:32'
+	#'squeak_changestamp' : 'si 6/14/2024 12:34'
 }
-WBButton >> canvas: aCanvas [
+WBButton >> block: aBlock [
 
-	^ canvas := aCanvas
+	block := aBlock
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 5/19/2024 16:46'
+	#'squeak_changestamp' : 'si 6/14/2024 12:48'
 }
 WBButton >> clickFunctionality: anEvent [
 
-	^ SubclassResponsibility
+	self 
+		currentEvent: anEvent.
+		block value: self.
 ]
 
 {
@@ -137,46 +104,21 @@ WBButton >> clickedColor: aColor [
 ]
 
 {
-	#category : #deactivate,
-	#'squeak_changestamp' : 'si 6/7/2024 22:19'
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/13/2024 10:58'
 }
-WBButton >> deactivateElement [
-]
+WBButton >> currentEvent [
 
-{
-	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/24/2024 13:35'
-}
-WBButton >> element [
-
-	^element
-]
-
-{
-	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/24/2024 13:36'
-}
-WBButton >> element: anElement [
-
-	element := anElement
+	^ currentEvent
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'nicloeser 5/24/2024 14:59'
+	#'squeak_changestamp' : 'si 6/14/2024 12:49'
 }
-WBButton >> function [
-	
-	^function
-]
+WBButton >> currentEvent: anEvent [
 
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'nicloeser 5/24/2024 14:59'
-}
-WBButton >> function: aNumber [
-	
-	function := aNumber
+	currentEvent := anEvent
 ]
 
 {
@@ -217,11 +159,11 @@ WBButton >> hoverColor: aColor [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'nicloeser 5/28/2024 11:47'
+	#'squeak_changestamp' : 'si 6/14/2024 12:50'
 }
 WBButton >> image [	
 	
-	^image
+	^ image
 ]
 
 {
@@ -244,21 +186,12 @@ WBButton >> initialize [
 ]
 
 {
-	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/19/2024 16:35'
-}
-WBButton >> initializeWithCanvas: aCanvas [
-
-	super initialize.
-	self canvas: aCanvas
-]
-
-{
 	#category : #appearance,
-	#'squeak_changestamp' : 'is 6/11/2024 19:05'
+	#'squeak_changestamp' : 'si 6/14/2024 12:51'
 }
 WBButton >> margin [ 
-	^margin
+
+	^ margin
 	
 ]
 
@@ -274,25 +207,25 @@ WBButton >> margin: aMargin [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 5/19/2024 16:22'
+	#'squeak_changestamp' : 'si 6/14/2024 12:21'
 }
 WBButton >> mouseDown: anEvent [
 	
-	self color: clickedColor
+	self color: self clickedColor
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 5/27/2024 19:59'
+	#'squeak_changestamp' : 'si 6/14/2024 12:21'
 }
 WBButton >> mouseEnter: evt [
 
-	self color: self hoverColor.
+	self color: self hoverColor
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 5/27/2024 19:59'
+	#'squeak_changestamp' : 'si 6/14/2024 12:21'
 }
 WBButton >> mouseLeave: evt [
 
@@ -301,41 +234,23 @@ WBButton >> mouseLeave: evt [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 5/19/2024 18:36'
+	#'squeak_changestamp' : 'si 6/14/2024 12:21'
 }
 WBButton >> mouseUp: anEvent [
 
-	self color: backgroundColor.
+	self color: self backgroundColor.
 	(self containsPoint: anEvent position) ifTrue: [self clickFunctionality: anEvent]
 	
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'nicloeser 5/25/2024 11:16'
-}
-WBButton >> number [
-
-	^number
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'nicloeser 5/25/2024 11:16'
-}
-WBButton >> number: anInteger [
-
-	number := anInteger
-]
-
-{
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/24/2024 11:10'
+	#'squeak_changestamp' : 'si 6/14/2024 12:50'
 }
 WBButton >> setDefaultValues [
 
 	self
 		cornerStyle: #rounded;
 		cornerRadius: self class cornerRadius;
-		clickedColor: self color darker.
+		color: Color lightBlue
 ]

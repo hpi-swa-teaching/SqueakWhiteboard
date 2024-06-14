@@ -13,7 +13,8 @@ Class {
 		'activeTextbox',
 		'drawingSurface',
 		'dragOffset',
-		'toolbar'
+		'toolbar',
+		'images'
 	],
 	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 5/17/2024 15:53'
@@ -65,8 +66,8 @@ WBCanvas >> activeTextbox: aTextbox [
 ]
 
 {
-	#category : #'creating elements',
-	#'squeak_changestamp' : 'ACL 6/7/2024 10:41'
+	#category : #'handle elements',
+	#'squeak_changestamp' : 'si 6/13/2024 15:39'
 }
 WBCanvas >> addElement: anElement [
 
@@ -76,33 +77,23 @@ WBCanvas >> addElement: anElement [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'is 5/18/2024 17:56'
+	#'squeak_changestamp' : 'si 6/14/2024 13:08'
 }
 WBCanvas >> clampElementToCanvas: anElement at: aPoint [
 
-	^ (aPoint x clampLow: self bounds origin x high: self bounds corner x - anElement extent x)
-		@(aPoint y clampLow: self bounds origin y high: self bounds corner y - anElement extent y)
-]
-
-{
-	#category : #layout,
-	#'squeak_changestamp' : 'is 5/18/2024 17:55'
-}
-WBCanvas >> clampPointToCanvas: aPoint [
-
-	^ (aPoint x clampLow: self bounds origin x high: self bounds corner x)
-		@(aPoint y clampLow: self bounds origin y high: self bounds corner y)
+	^ (aPoint x clampLow: self bounds origin x high: self bounds corner x - anElement extent x) @ (aPoint y clampLow: self bounds origin y high: self bounds corner y - anElement extent y)
+	
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 6/7/2024 13:37'
+	#'squeak_changestamp' : 'si 6/14/2024 13:08'
 }
 WBCanvas >> createDrawingSurface [
 	
 	self drawingSurface: (Morph new
-						extent: 0@0;
-						yourself).
+		extent: 0@0;
+		yourself).
 	self addMorph: self drawingSurface.
 	
 	
@@ -133,11 +124,24 @@ WBCanvas >> deactivateTextbox [
 ]
 
 {
+	#category : #'handle elements',
+	#'squeak_changestamp' : 'si 6/14/2024 13:10'
+}
+WBCanvas >> deleteAllElements [
+	"maybe it could be cleaner but intuitive way didnt work"
+	| aCollection |
+
+	aCollection := self elements copy.
+	aCollection do: [:e | e delete].
+	self elements removeAll
+]
+
+{
 	#category : #drag,
-	#'squeak_changestamp' : 'ACL 6/7/2024 12:25'
+	#'squeak_changestamp' : 'si 6/14/2024 13:10'
 }
 WBCanvas >> dragEnd: anEvent [
-	
+	"nötig?"
 ]
 
 {
@@ -153,43 +157,57 @@ WBCanvas >> dragMove: mouseEvent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'ACL 6/7/2024 10:54'
+	#'squeak_changestamp' : 'si 6/14/2024 13:11'
 }
 WBCanvas >> dragOffset [
+
 	^ dragOffset
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'ACL 6/7/2024 10:54'
+	#'squeak_changestamp' : 'si 6/14/2024 13:11'
 }
 WBCanvas >> dragOffset: anObject [
+
 	dragOffset := anObject
 ]
 
 {
 	#category : #drag,
-	#'squeak_changestamp' : 'ACL 6/7/2024 14:27'
+	#'squeak_changestamp' : 'si 6/14/2024 13:11'
 }
 WBCanvas >> dragStart: anEvent [
 
-	self dragOffset: self drawingSurface position - anEvent cursorPoint.
+	self dragOffset: self drawingSurface position - anEvent cursorPoint
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'ACL 6/7/2024 10:40'
+	#'squeak_changestamp' : 'si 6/14/2024 13:11'
 }
 WBCanvas >> drawingSurface [
+
 	^ drawingSurface
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'ACL 6/7/2024 10:40'
+	#'squeak_changestamp' : 'si 6/14/2024 13:11'
 }
 WBCanvas >> drawingSurface: anObject [
+
 	drawingSurface := anObject
+]
+
+{
+	#category : #'handle elements',
+	#'squeak_changestamp' : 'is 6/3/2024 21:15'
+}
+WBCanvas >> dropElement [
+
+	self elementToSpawn removeDropShadow.
+	self elementToSpawn: nil
 ]
 
 {
@@ -205,11 +223,11 @@ WBCanvas >> dropElement: aMouseEvent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/16/2024 19:23'
+	#'squeak_changestamp' : 'si 6/14/2024 13:11'
 }
 WBCanvas >> elementToSpawn [
 
-	^elementToSpawn
+	^ elementToSpawn
 ]
 
 {
@@ -223,11 +241,11 @@ WBCanvas >> elementToSpawn: anElement [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/27/2024 11:18'
+	#'squeak_changestamp' : 'si 6/14/2024 13:12'
 }
 WBCanvas >> elements [
 
-	^elements
+	^ elements ifNil: [^ self element: OrderedCollection new]
 ]
 
 {
@@ -286,25 +304,25 @@ WBCanvas >> handlesMouseMove: evt [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'nicloeser 5/27/2024 12:19'
+	#'squeak_changestamp' : 'si 6/14/2024 13:16'
 }
 WBCanvas >> images [
 
-	^images
+	^ images
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'nicloeser 5/27/2024 12:19'
+	#'squeak_changestamp' : 'si 6/14/2024 13:16'
 }
-WBCanvas >> images: anImageClass [
+WBCanvas >> images: anImage [
 
-	images := anImageClass
+	images := anImage	
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 6/7/2024 14:26'
+	#'squeak_changestamp' : 'si 6/14/2024 13:18'
 }
 WBCanvas >> initialize [
 	
@@ -317,14 +335,13 @@ WBCanvas >> initialize [
 		color: Color white;
 		borderWidth: 1;
 		borderColor: Color black;
-		elements: OrderedCollection new.
-	self spawnToolbar.
-	self openInWindowLabeled: #SqueakWhiteboard.
-	self globalColor: Color cyan.
-	self createDrawingSurface.
-	self toolbar comeToFront.
-	self clipSubmorphs: true.
-	
+		elements: OrderedCollection new;
+		spawnToolbar;
+		openInWindowLabeled: #SqueakWhiteboard;
+		globalColor: Color cyan;
+		createDrawingSurface;
+		clipSubmorphs: true.
+	self toolbar comeToFront
 ]
 
 {
@@ -360,7 +377,7 @@ WBCanvas >> mouseUp: anEvent [
 ]
 
 {
-	#category : #'creating elements',
+	#category : #'handle elements',
 	#'squeak_changestamp' : 'si 6/3/2024 14:18'
 }
 WBCanvas >> removeElement: anElement [
@@ -369,21 +386,12 @@ WBCanvas >> removeElement: anElement [
 ]
 
 {
-	#category : #'creating elements',
-	#'squeak_changestamp' : 'JK 5/28/2024 14:10'
-}
-WBCanvas >> removePopUps [
-	self activeElement ifNotNil: [self activeElement deactivateElement.
-		self activeElement: nil]
-]
-
-{
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/14/2024 10:49'
+	#'squeak_changestamp' : 'si 6/14/2024 13:19'
 }
 WBCanvas >> scale [
 
-	^scale
+	^ scale
 ]
 
 {

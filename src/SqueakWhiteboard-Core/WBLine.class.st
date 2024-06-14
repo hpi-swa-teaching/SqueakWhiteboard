@@ -76,7 +76,7 @@ WBLine >> color: aColor [
 ]
 
 {
-	#category : #popUpBar,
+	#category : #popUp,
 	#'squeak_changestamp' : 'si 6/3/2024 18:52'
 }
 WBLine >> deactivateElement [
@@ -150,11 +150,11 @@ WBLine >> mouseDown: anEvent [
 
 {
 	#category : #eventHandeling,
-	#'squeak_changestamp' : 'si 5/19/2024 19:12'
+	#'squeak_changestamp' : 'si 6/14/2024 11:45'
 }
 WBLine >> mouseMove: anEvent [
 
-	self moveElement: anEvent
+	self dragMove: anEvent
 ]
 
 {

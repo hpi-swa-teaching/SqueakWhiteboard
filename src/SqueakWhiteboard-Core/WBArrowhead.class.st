@@ -5,14 +5,24 @@ Class {
 }
 
 {
+	#category : #defaults,
+	#'squeak_changestamp' : 'si 6/14/2024 12:48'
+}
+WBArrowhead class >> defaultVertecies [
+
+	^ {0@0. 20@10. 0@20}
+]
+
+{
 	#category : #initialization,
-	#'squeak_changestamp' : 'nicloeser 5/30/2024 14:35'
+	#'squeak_changestamp' : 'si 6/14/2024 12:48'
 }
 WBArrowhead >> initialize [
 	
 	super initialize.
 	self
 		addFlexShellIfNecessary;
-		setVertices: {0@0. 20@10. 0@20};
-		fillStyle: Color black.
+		setVertices: self class defaultVertecies;
+		fillStyle: Color black;
+		goBehind.
 ]
