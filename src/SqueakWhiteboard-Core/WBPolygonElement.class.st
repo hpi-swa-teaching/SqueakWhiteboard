@@ -155,11 +155,11 @@ WBPolygonElement >> handlesMouseDown: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/14/2024 14:51'
+	#'squeak_changestamp' : 'is 6/14/2024 15:43'
 }
 WBPolygonElement >> initialize [
 
-	self handler: (WBHandler new element: self).
+	self handler: (WBElementHandler new element: self).
 	super initialize
 ]
 

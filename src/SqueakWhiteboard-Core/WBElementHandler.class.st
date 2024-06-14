@@ -1,5 +1,5 @@
 Class {
-	#name : #WBHandler,
+	#name : #WBElementHandler,
 	#superclass : #Object,
 	#instVars : [
 		'element'
@@ -11,7 +11,7 @@ Class {
 	#category : #'button functionalities',
 	#'squeak_changestamp' : 'si 6/14/2024 14:47'
 }
-WBHandler >> buttonFunctionallityForColor [
+WBElementHandler >> buttonFunctionallityForColor [
 
 	^ [:aButton | self element color: aButton color]
 ]
@@ -20,7 +20,7 @@ WBHandler >> buttonFunctionallityForColor [
 	#category : #'button functionalities',
 	#'squeak_changestamp' : 'si 6/14/2024 14:49'
 }
-WBHandler >> buttonFunctionallityForColorPalette [
+WBElementHandler >> buttonFunctionallityForColorPalette [
 
 	^ [:aButton | self element popUp makePopUpAt: aButton topCenter - (0 @ (self element class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: 3]
 ]
@@ -29,7 +29,7 @@ WBHandler >> buttonFunctionallityForColorPalette [
 	#category : #'button functionalities',
 	#'squeak_changestamp' : 'si 6/14/2024 14:48'
 }
-WBHandler >> buttonFunctionallityForCopy [
+WBElementHandler >> buttonFunctionallityForCopy [
 
 	^ [:aButton | self element canvas deactivateElement. 
 		self element canvas spawnACopiedElement: self element copy At: aButton currentEvent cursorPoint.]
@@ -39,7 +39,7 @@ WBHandler >> buttonFunctionallityForCopy [
 	#category : #'button functionalities',
 	#'squeak_changestamp' : 'si 6/14/2024 14:48'
 }
-WBHandler >> buttonFunctionallityForDelete [
+WBElementHandler >> buttonFunctionallityForDelete [
 
 	^ [:aButton |self element delete]
 ]
@@ -48,7 +48,7 @@ WBHandler >> buttonFunctionallityForDelete [
 	#category : #'create buttons',
 	#'squeak_changestamp' : 'si 6/14/2024 14:39'
 }
-WBHandler >> buttonsForPopUpBar [
+WBElementHandler >> buttonsForPopUpBar [
 
 	^ OrderedCollection new
 		add: (WBButton new
@@ -67,7 +67,7 @@ WBHandler >> buttonsForPopUpBar [
 	#category : #accessing,
 	#'squeak_changestamp' : 'si 6/14/2024 14:27'
 }
-WBHandler >> element [
+WBElementHandler >> element [
 
 	^ element
 ]
@@ -76,7 +76,7 @@ WBHandler >> element [
 	#category : #accessing,
 	#'squeak_changestamp' : 'si 6/14/2024 14:27'
 }
-WBHandler >> element: anObject [
+WBElementHandler >> element: anObject [
 
 	element := anObject
 ]
@@ -85,7 +85,7 @@ WBHandler >> element: anObject [
 	#category : #'create buttons',
 	#'squeak_changestamp' : 'si 6/14/2024 14:39'
 }
-WBHandler >> makeColorButtonWithColor: aColor [ 
+WBElementHandler >> makeColorButtonWithColor: aColor [ 
 	
 	^ (WBButton new
 		color: aColor;
@@ -99,7 +99,7 @@ WBHandler >> makeColorButtonWithColor: aColor [
 	#category : #'create buttons',
 	#'squeak_changestamp' : 'si 6/14/2024 14:39'
 }
-WBHandler >> makeColorButtons [
+WBElementHandler >> makeColorButtons [
 
 	^ OrderedCollection new
 		add: (self makeColorButtonWithColor: Color yellow);
@@ -118,7 +118,7 @@ WBHandler >> makeColorButtons [
 	#category : #popUp,
 	#'squeak_changestamp' : 'si 6/14/2024 14:30'
 }
-WBHandler >> makePopUpAt: aPoint with: aCollection columns: aNumber [
+WBElementHandler >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
 	self element popUp: (WBPopUp new
 		setDefaultValues;
@@ -134,7 +134,7 @@ WBHandler >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 	#category : #popUp,
 	#'squeak_changestamp' : 'si 6/14/2024 14:31'
 }
-WBHandler >> removePopup [
+WBElementHandler >> removePopup [
 
 	self element popUp ifNotNil: 
 		[self element popUp delete]
@@ -144,7 +144,7 @@ WBHandler >> removePopup [
 	#category : #popUp,
 	#'squeak_changestamp' : 'si 6/14/2024 14:31'
 }
-WBHandler >> setPopupPosition [
+WBElementHandler >> setPopupPosition [
 
 	^ self element topCenter - (0 @ (self element class sizeOfPopUpForStandardElement / 2))
 ]
@@ -153,7 +153,7 @@ WBHandler >> setPopupPosition [
 	#category : #popUp,
 	#'squeak_changestamp' : 'si 6/14/2024 14:46'
 }
-WBHandler >> showPopUp [
+WBElementHandler >> showPopUp [
 
 	(self element canvas elementToSpawn) ifNil:
 		[self element canvas deactivateElement.
