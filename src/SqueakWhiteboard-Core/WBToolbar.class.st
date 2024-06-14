@@ -65,11 +65,11 @@ WBToolbar >> buttonFunctionallityForCircle [
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/13/2024 14:07'
+	#'squeak_changestamp' : 'si 6/14/2024 12:06'
 }
 WBToolbar >> buttonFunctionallityForColorPalette [
 
-	^ [:aButton | self makePopUpAt: aButton rightCenter + 20 with: self createColorButtons columns: 3]
+	^ [:aButton | self makePopUpAt: aButton rightCenter + (self class margin @ 0) with: self createColorButtons columns: 3]
 ]
 
 {
@@ -119,11 +119,11 @@ WBToolbar >> buttonFunctionallityForRectangle [
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/13/2024 14:13'
+	#'squeak_changestamp' : 'si 6/14/2024 12:05'
 }
 WBToolbar >> buttonFunctionallityForShapeChoosing [
 
-	^ [:aButton | self makePopUpAt: aButton rightCenter + 20 with: self createShapeChoosingButtons columns: 1]
+	^ [:aButton | self makePopUpAt: aButton rightCenter + (self class margin @ 0) with: self createShapeChoosingButtons columns: 1]
 ]
 
 {
@@ -137,11 +137,11 @@ WBToolbar >> buttonFunctionallityForTextbox [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'nicloeser 5/27/2024 14:23'
+	#'squeak_changestamp' : 'si 6/14/2024 12:12'
 }
 WBToolbar >> buttonSize [
 
-	^ ((toolbarWidth min: toolbarHeight) - WBToolbar margin)@((toolbarWidth min: toolbarHeight) - WBToolbar margin)
+	^ ((self toolbarWidth min: self toolbarHeight) - self class margin) @ ((self toolbarWidth min: self toolbarHeight) - self class margin)
 ]
 
 {
@@ -400,7 +400,7 @@ WBToolbar >> initializeWithCanvas: aCanvas [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/13/2024 14:26'
+	#'squeak_changestamp' : 'si 6/14/2024 12:02'
 }
 WBToolbar >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 

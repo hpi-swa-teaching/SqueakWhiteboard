@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'nicloeser 5/30/2024 14:35'
+	#'squeak_changestamp' : 'si 6/14/2024 11:49'
 }
 WBArrowhead >> initialize [
 	
@@ -14,5 +14,6 @@ WBArrowhead >> initialize [
 	self
 		addFlexShellIfNecessary;
 		setVertices: {0@0. 20@10. 0@20};
-		fillStyle: Color black.
+		fillStyle: Color black;
+		goBehind.
 ]

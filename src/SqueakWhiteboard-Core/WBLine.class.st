@@ -150,11 +150,11 @@ WBLine >> mouseDown: anEvent [
 
 {
 	#category : #eventHandeling,
-	#'squeak_changestamp' : 'si 5/19/2024 19:12'
+	#'squeak_changestamp' : 'si 6/14/2024 11:45'
 }
 WBLine >> mouseMove: anEvent [
 
-	self moveElement: anEvent
+	self dragMove: anEvent
 ]
 
 {

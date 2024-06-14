@@ -59,11 +59,11 @@ WBElement >> buttonFunctionallityForColor [
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/13/2024 13:46'
+	#'squeak_changestamp' : 'si 6/14/2024 12:09'
 }
 WBElement >> buttonFunctionallityForColorPalette [
 
-	^ [:aButton | self popUp makePopUpAt: (aButton topCenter - 5) with: self makeColorButtons columns: 3]
+	^ [:aButton | self popUp makePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: 3]
 ]
 
 {
@@ -410,11 +410,11 @@ WBElement >> resizeFrame: anObject [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/13/2024 00:11'
+	#'squeak_changestamp' : 'si 6/14/2024 12:08'
 }
 WBElement >> setPopupPosition [
 
-	^ self topCenter - (0 @ self class sizeOfPopUpForStandardElement / 2) - (0 @ 10)
+	^ self topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2))
 ]
 
 {
