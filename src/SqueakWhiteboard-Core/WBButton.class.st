@@ -9,10 +9,9 @@ Class {
 		'backgroundColor',
 		'clickedColor',
 		'hoverColor',
-		'canvas',
-		'element',
-		'number',
-		'image'
+		'block',
+		'image',
+		'currentEvent'
 	],
 	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 5/18/2024 17:13'
@@ -73,31 +72,21 @@ WBButton >> addRightImage [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 5/19/2024 18:26'
+	#'squeak_changestamp' : 'si 6/14/2024 12:21'
 }
 WBButton >> backgroundColor [
 
-	^ backgroundColor ifNil: [backgroundColor := Color gray]
+	^ backgroundColor ifNil: [backgroundColor := Color lightBlue]
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 5/19/2024 16:15'
+	#'squeak_changestamp' : 'si 6/13/2024 00:14'
 }
 WBButton >> backgroundColor: aColor [
 
 	backgroundColor := aColor.
-	self color: backgroundColor
-	
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'is 5/19/2024 16:32'
-}
-WBButton >> canvas [
-
-	^ canvas
+	self color: aColor
 ]
 
 {
@@ -111,11 +100,12 @@ WBButton >> canvas: aCanvas [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 5/19/2024 16:46'
+	#'squeak_changestamp' : 'si 6/13/2024 10:59'
 }
 WBButton >> clickFunctionality: anEvent [
 
-	^ SubclassResponsibility
+	self currentEvent: anEvent.
+	self block value: self
 ]
 
 {
@@ -137,8 +127,26 @@ WBButton >> clickedColor: aColor [
 ]
 
 {
-	#category : #deactivate,
-	#'squeak_changestamp' : 'si 6/7/2024 22:19'
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/13/2024 10:58'
+}
+WBButton >> currentEvent [
+
+	^ currentEvent
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/13/2024 10:58'
+}
+WBButton >> currentEvent: anObject [
+
+	currentEvent := anObject
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'si 6/12/2024 21:48'
 }
 WBButton >> deactivateElement [
 ]
@@ -274,25 +282,25 @@ WBButton >> margin: aMargin [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 5/19/2024 16:22'
+	#'squeak_changestamp' : 'si 6/14/2024 12:21'
 }
 WBButton >> mouseDown: anEvent [
 	
-	self color: clickedColor
+	self color: self clickedColor
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 5/27/2024 19:59'
+	#'squeak_changestamp' : 'si 6/14/2024 12:21'
 }
 WBButton >> mouseEnter: evt [
 
-	self color: self hoverColor.
+	self color: self hoverColor
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 5/27/2024 19:59'
+	#'squeak_changestamp' : 'si 6/14/2024 12:21'
 }
 WBButton >> mouseLeave: evt [
 
@@ -301,11 +309,11 @@ WBButton >> mouseLeave: evt [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 5/19/2024 18:36'
+	#'squeak_changestamp' : 'si 6/14/2024 12:21'
 }
 WBButton >> mouseUp: anEvent [
 
-	self color: backgroundColor.
+	self color: self backgroundColor.
 	(self containsPoint: anEvent position) ifTrue: [self clickFunctionality: anEvent]
 	
 ]
@@ -330,12 +338,12 @@ WBButton >> number: anInteger [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 5/24/2024 11:10'
+	#'squeak_changestamp' : 'si 6/14/2024 12:21'
 }
 WBButton >> setDefaultValues [
 
 	self
 		cornerStyle: #rounded;
 		cornerRadius: self class cornerRadius;
-		clickedColor: self color darker.
+		color: Color lightBlue
 ]

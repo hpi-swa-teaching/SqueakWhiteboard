@@ -67,21 +67,58 @@ WBElement >> addResizeFrame [
 ]
 
 {
-	#category : #popUpBar,
-	#'squeak_changestamp' : 'ACL 5/31/2024 10:56'
+	#category : #buttonFunctionallities,
+	#'squeak_changestamp' : 'si 6/13/2024 11:03'
+}
+WBElement >> buttonFunctionallityForColor [
+
+	^ [:aButton |self color: aButton color]
+]
+
+{
+	#category : #buttonFunctionallities,
+	#'squeak_changestamp' : 'si 6/14/2024 12:09'
+}
+WBElement >> buttonFunctionallityForColorPalette [
+
+	^ [:aButton | self popUp makePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: 3]
+]
+
+{
+	#category : #buttonFunctionallities,
+	#'squeak_changestamp' : 'si 6/13/2024 11:03'
+}
+WBElement >> buttonFunctionallityForCopy [
+
+	^ [:aButton | self canvas deactivateElement. 
+		self canvas spawnACopiedElement: self copy At: aButton currentEvent cursorPoint.]
+]
+
+{
+	#category : #buttonFunctionallities,
+	#'squeak_changestamp' : 'si 6/13/2024 11:04'
+}
+WBElement >> buttonFunctionallityForDelete [
+
+	^ [:aButton |self delete]
+]
+
+{
+	#category : #createButtons,
+	#'squeak_changestamp' : 'si 6/13/2024 11:13'
 }
 WBElement >> buttonsForPopUpBar [
 
 	^OrderedCollection new
-		add: (WBDeleteButton new
-			canvas: self canvas;
-			element: self);
-		add: (WBCopyButton new
-			canvas: self canvas;
-			element: self);
-		add: (WBColorPaletteButton new
-			canvas: self canvas;
-			element: self);
+		add: (WBButton new
+			block: self buttonFunctionallityForDelete;
+			backgroundColor: Color red);
+		add: (WBButton new
+			block: self buttonFunctionallityForCopy;
+			backgroundColor: Color lightBlue muchDarker);
+		add: (WBButton new
+			block: self buttonFunctionallityForColorPalette;
+			backgroundColor: Color black);
 		yourself.
 	
 ]
@@ -97,7 +134,7 @@ WBElement >> canvas [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/17/2024 12:50'
+	#'squeak_changestamp' : 'si 6/13/2024 15:31'
 }
 WBElement >> canvas: aCanvas [
 
@@ -301,18 +338,52 @@ WBElement >> lastMouseClick: evt [
 ]
 
 {
-	#category : #popUpBar,
-	#'squeak_changestamp' : 'si 6/7/2024 00:46'
+	#category : #createButtons,
+	#'squeak_changestamp' : 'si 6/13/2024 11:09'
 }
-WBElement >> makeElementPopUp [
+WBElement >> makeColorButtonWithColor: aColor [ 
+	
+	^(WBButton new
+		color: aColor;
+		backgroundColor: aColor;
+		clickedColor: aColor darker;
+		block: self buttonFunctionallityForColor;
+		yourself)
+]
 
-	self popUpMenu: (WBElementPopUp new
+{
+	#category : #createButtons,
+	#'squeak_changestamp' : 'si 6/13/2024 11:07'
+}
+WBElement >> makeColorButtons [
+
+	^OrderedCollection new
+		add: (self makeColorButtonWithColor: Color yellow);
+		add: (self makeColorButtonWithColor: Color orange);
+		add: (self makeColorButtonWithColor: Color red);
+		add: (self makeColorButtonWithColor: Color magenta);
+		add: (self makeColorButtonWithColor: Color blue);
+		add: (self makeColorButtonWithColor: Color cyan);
+		add: (self makeColorButtonWithColor: Color green);
+		add: (self makeColorButtonWithColor: Color gray);
+		add: (self makeColorButtonWithColor: Color black);
+		yourself.
+]
+
+{
+	#category : #popUp,
+	#'squeak_changestamp' : 'si 6/13/2024 13:43'
+}
+WBElement >> makePopUpAt: aPoint with: aCollection columns: aNumber [
+
+	self popUp: (WBPopUp new
 		setDefaultValues;
 		sizeOfPopUp: self class sizeOfPopUpForStandardElement;
-		addButtons: self buttonsForPopUpBar;
+		numberOfColumns: aNumber;
+		addButtons: aCollection;
 		yourself).
-	self addMorph: self popUpMenu.
-	self setPopupPosition.
+	self addMorph: self popUp.
+	self popUp center: aPoint - (self popUp bottomCenter - self popUp center)
 	
 ]
 
@@ -356,11 +427,22 @@ WBElement >> mouseUp: mouseEvent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/23/2024 22:11'
+	#'squeak_changestamp' : 'si 6/13/2024 13:36'
 }
-WBElement >> popUpMenu [
+WBElement >> popUp [
 
-	^popUpMenu
+	^ popUp
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/13/2024 13:38'
+}
+WBElement >> popUp: aPopUp [
+
+	popUp := aPopUp.
+	popUp ifNotNil: 
+		[self addMorphBack: popUp]
 ]
 
 {
@@ -375,12 +457,13 @@ WBElement >> popUpMenu: aPopUpMenu [
 ]
 
 {
-	#category : #popUpBar,
-	#'squeak_changestamp' : 'JK 5/27/2024 11:14'
+	#category : #popUp,
+	#'squeak_changestamp' : 'si 6/13/2024 13:39'
 }
 WBElement >> removePopup [
-	self popUpMenu ifNotNil: 
-		[self popUpMenu delete]
+
+	self popUp ifNotNil: 
+		[self popUp delete]
 ]
 
 {
@@ -413,23 +496,25 @@ WBElement >> resizeFrame: anObject [
 ]
 
 {
-	#category : #popUpBar,
-	#'squeak_changestamp' : 'si 6/3/2024 15:58'
+	#category : #popUp,
+	#'squeak_changestamp' : 'si 6/14/2024 12:08'
 }
 WBElement >> setPopupPosition [
 
-	self popUpMenu ifNotNil: [self popUpMenu center: self topCenter - (0@self popUpMenu height/2) - (0@10)]
+	^ self topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2))
 ]
 
 {
-	#category : #popUpBar,
-	#'squeak_changestamp' : 'is 6/12/2024 17:42'
+	#category : #popUp,
+	#'squeak_changestamp' : 'si 6/13/2024 13:44'
 }
 WBElement >> showPopUp [
 
 	(self canvas elementToSpawn) ifNil:
-		[self canvas removePopUps.
-		self makeElementPopUp.]
+		[self canvas deactivateElement.
+		self makePopUpAt: self setPopupPosition with: self buttonsForPopUpBar columns: nil].
+	(self canvas elementToSpawn) ifNotNil:
+		[self canvas dropElement]
 ]
 
 {

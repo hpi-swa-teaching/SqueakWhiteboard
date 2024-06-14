@@ -8,31 +8,29 @@ Class {
 }
 
 {
-	#category : #popUpBar,
-	#'squeak_changestamp' : 'ACL 5/31/2024 11:13'
+	#category : #resize,
+	#'squeak_changestamp' : 'si 6/14/2024 11:48'
 }
-WBEdgeOfLine >> buttonsForPopUpBar [
-
-	^OrderedCollection new
-		add: (WBDeleteButton new
-			canvas: self canvas;
-			element: self line);
-		add: (WBCopyButton new
-			canvas: self canvas;
-			element: self line);
-		add: (WBColorPaletteButton new
-			canvas: self canvas;
-			element: self line);
-		yourself.
+WBEdgeOfLine >> addResizeFrame [
 ]
 
 {
-	#category : #mouseEvents,
-	#'squeak_changestamp' : 'si 5/20/2024 15:37'
+	#category : #buttonFunctionallities,
+	#'squeak_changestamp' : 'si 6/14/2024 11:50'
 }
-WBEdgeOfLine >> handlesMouseOver: anEvent [
+WBEdgeOfLine >> buttonFunctionallityForCopy [
 
-	^true
+	^ [:aButton | self canvas deactivateElement. 
+		self canvas spawnACopiedElement: self line copy At: aButton currentEvent cursorPoint.]
+]
+
+{
+	#category : #buttonFunctionallities,
+	#'squeak_changestamp' : 'si 6/14/2024 11:48'
+}
+WBEdgeOfLine >> buttonFunctionallityForDelete [
+
+	^ [:aButton |self line delete]
 ]
 
 {
@@ -70,44 +68,12 @@ WBEdgeOfLine >> line: aWBLine [
 ]
 
 {
-	#category : #popUpBar,
-	#'squeak_changestamp' : 'si 6/7/2024 00:47'
-}
-WBEdgeOfLine >> makeElementPopUp [
-
-	self line popUpMenu: (WBElementPopUp new
-		setDefaultValues;
-		sizeOfPopUp: self class sizeOfPopUpForStandardElement;
-		position: self topRight;
-		addButtons: self buttonsForPopUpBar;
-		yourself).
-]
-
-{
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'is 6/12/2024 17:43'
-}
-WBEdgeOfLine >> mouseDown: anEvent [
-	
-	(self canvas elementToSpawn) ifNil:
-		[self canvas deactivateElement.
-		self
-			addDropShadow;
-			makeElementPopUp;
-			comeToFront;
-			dragOffset: self position - anEvent cursorPoint.
-		self canvas activeElement: self line.].
-	(self canvas elementToSpawn) ifNotNil:
-		[self canvas dropElement: anEvent]
-]
-
-{
-	#category : #mouseEvents,
-	#'squeak_changestamp' : 'si 5/20/2024 13:38'
+	#'squeak_changestamp' : 'si 6/14/2024 11:46'
 }
 WBEdgeOfLine >> mouseMove: anEvent [
 
-	super mouseMove: anEvent.
+	super dragMove: anEvent.
 	self line updateEdges
 ]
 
