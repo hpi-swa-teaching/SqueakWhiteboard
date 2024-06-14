@@ -5,7 +5,7 @@ Class {
 		'edges',
 		'canvas',
 		'dragOffset',
-		'popUpMenu',
+		'popUp',
 		'resizeFrame',
 		'supportsText'
 	],
@@ -79,11 +79,11 @@ WBPolygonElement >> buttonsForPopUpBar [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/3/2024 12:21'
+	#'squeak_changestamp' : 'si 6/14/2024 13:24'
 }
 WBPolygonElement >> canvas [
 
-	^canvas
+	^ canvas
 ]
 
 {
@@ -167,11 +167,11 @@ WBPolygonElement >> dragStart: anEvent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/3/2024 19:05'
+	#'squeak_changestamp' : 'si 6/14/2024 13:24'
 }
 WBPolygonElement >> edges [
 
-	^edges ifNil: [edges := OrderedCollection new]
+	^ edges ifNil: [edges := OrderedCollection new]
 ]
 
 {
@@ -194,11 +194,11 @@ WBPolygonElement >> handlesMouseDown: anEvent [
 
 {
 	#category : #createButtons,
-	#'squeak_changestamp' : 'si 6/14/2024 11:39'
+	#'squeak_changestamp' : 'si 6/14/2024 13:24'
 }
 WBPolygonElement >> makeColorButtonWithColor: aColor [ 
 	
-	^(WBButton new
+	^ (WBButton new
 		color: aColor;
 		backgroundColor: aColor;
 		clickedColor: aColor darker;
@@ -208,11 +208,11 @@ WBPolygonElement >> makeColorButtonWithColor: aColor [
 
 {
 	#category : #createButtons,
-	#'squeak_changestamp' : 'si 6/14/2024 11:39'
+	#'squeak_changestamp' : 'si 6/14/2024 13:24'
 }
 WBPolygonElement >> makeColorButtons [
 
-	^OrderedCollection new
+	^ OrderedCollection new
 		add: (self makeColorButtonWithColor: Color yellow);
 		add: (self makeColorButtonWithColor: Color orange);
 		add: (self makeColorButtonWithColor: Color red);
@@ -278,11 +278,11 @@ WBPolygonElement >> mouseUp: anEvent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/13/2024 16:10'
+	#'squeak_changestamp' : 'si 6/14/2024 13:26'
 }
 WBPolygonElement >> popUp [
 
-	^popUp
+	^ popUp
 ]
 
 {
@@ -335,11 +335,11 @@ WBPolygonElement >> resizeFrame: anObject [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/13/2024 16:09'
+	#'squeak_changestamp' : 'si 6/14/2024 13:27'
 }
 WBPolygonElement >> setPopupPosition [
 
-	^ self topCenter - (0 @ self class sizeOfPopUpForStandardElement / 2) - (0 @ 10)
+	^ self topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2))
 ]
 
 {

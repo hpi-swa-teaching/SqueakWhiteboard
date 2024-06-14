@@ -16,6 +16,15 @@ WBEdgeOfLine >> addResizeFrame [
 
 {
 	#category : #buttonFunctionallities,
+	#'squeak_changestamp' : 'si 6/14/2024 12:45'
+}
+WBEdgeOfLine >> buttonFunctionallityForColor [
+
+	^ [:aButton |self line color: aButton color]
+]
+
+{
+	#category : #buttonFunctionallities,
 	#'squeak_changestamp' : 'si 6/14/2024 11:50'
 }
 WBEdgeOfLine >> buttonFunctionallityForCopy [

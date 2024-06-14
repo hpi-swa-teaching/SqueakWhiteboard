@@ -6,27 +6,27 @@ Class {
 
 {
 	#category : #loadImages,
-	#'squeak_changestamp' : 'is 6/9/2024 12:54'
+	#'squeak_changestamp' : 'si 6/14/2024 13:22'
 }
 WBImage class >> loadCircleButtonImage [
 	| form |
 
 	[form := (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/circle.png'] on: Error do: 
 		[:ex | Transcript show: 'Caught an exception: ', ex printString; cr.
-		^ nil].
+		^ (FormCanvas extent: 100 @ 100 depth: 32)].
 	^ form
 ]
 
 {
 	#category : #loadImages,
-	#'squeak_changestamp' : 'is 6/11/2024 18:25'
+	#'squeak_changestamp' : 'si 6/14/2024 13:22'
 }
 WBImage class >> loadColorsButtonImage [
 	| form |
 
 	[form := (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/colorsToolbar.png'] on: Error do:
 		[:ex | Transcript show: 'Caught an exception: ', ex printString; cr.
-		^ nil].
+		^ (FormCanvas extent: 100 @ 100 depth: 32)].
 	^ form
 ]
 
@@ -45,14 +45,14 @@ WBImage class >> loadDeleteAllButtonImage [
 
 {
 	#category : #loadImages,
-	#'squeak_changestamp' : 'is 6/9/2024 12:54'
+	#'squeak_changestamp' : 'si 6/14/2024 13:22'
 }
 WBImage class >> loadLineButtonImage [
 	| form |
 
 	[form := (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/line.png'] on: Error do: 
 		[:ex | Transcript show: 'Caught an exception: ', ex printString; cr.
-		^ nil].
+		^ (FormCanvas extent: 100 @ 100 depth: 32)].
 	^ form
 ]
 
@@ -71,14 +71,14 @@ WBImage class >> loadNoteButtonImage [
 
 {
 	#category : #loadImages,
-	#'squeak_changestamp' : 'is 6/11/2024 18:59'
+	#'squeak_changestamp' : 'si 6/14/2024 13:22'
 }
 WBImage class >> loadRectangleButtonImage [
 	| form |
 
 	[form := (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/square2.png'] on: Error do: 
 		[:ex | Transcript show: 'Caught an exception: ', ex printString; cr.
-		^ nil].
+		^ (FormCanvas extent: 100 @ 100 depth: 32)].
 	^ form
 ]
 
@@ -97,14 +97,14 @@ WBImage class >> loadShapeChoosingButtonImage [
 
 {
 	#category : #loadImages,
-	#'squeak_changestamp' : 'is 6/9/2024 12:54'
+	#'squeak_changestamp' : 'si 6/14/2024 13:22'
 }
 WBImage class >> loadTextboxButtonImage [
 	| form |
 
 	[form := (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/textbox.png'] on: Error do: 
 		[:ex | Transcript show: 'Caught an exception: ', ex printString; cr.
-		^ nil].
+		^ (FormCanvas extent: 100 @ 100 depth: 32)].
 	^ form
 ]
 

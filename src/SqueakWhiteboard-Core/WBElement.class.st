@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'dragOffset',
 		'canvas',
-		'popUpMenu',
+		'popUp',
 		'resizeFrame',
 		'textBorderOffset',
 		'textField',
@@ -443,17 +443,6 @@ WBElement >> popUp: aPopUp [
 	popUp := aPopUp.
 	popUp ifNotNil: 
 		[self addMorphBack: popUp]
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/23/2024 22:26'
-}
-WBElement >> popUpMenu: aPopUpMenu [
-
-	popUpMenu := aPopUpMenu.
-	popUpMenu ifNotNil: 
-		[self addMorphBack: popUpMenu]
 ]
 
 {

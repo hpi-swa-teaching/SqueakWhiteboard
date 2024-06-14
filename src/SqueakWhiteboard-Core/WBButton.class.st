@@ -27,15 +27,6 @@ WBButton class >> cornerRadius [
 ]
 
 {
-	#category : #'instance creation',
-	#'squeak_changestamp' : 'is 5/19/2024 16:36'
-}
-WBButton class >> newWithCanvas: aCanvas [
-
-	WBButton basicNew initializeWithCanvas: aCanvas
-]
-
-{
 	#category : #appearance,
 	#'squeak_changestamp' : 'si 6/14/2024 12:34'
 }
@@ -84,22 +75,14 @@ WBButton >> block: aBlock [
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'is 5/19/2024 16:32'
-}
-WBButton >> canvas: aCanvas [
-
-	^ canvas := aCanvas
-]
-
-{
 	#category : #'event handling',
-	#'squeak_changestamp' : 'si 6/13/2024 10:59'
+	#'squeak_changestamp' : 'si 6/14/2024 12:48'
 }
 WBButton >> clickFunctionality: anEvent [
 
-	self currentEvent: anEvent.
-	self block value: self
+	self 
+		currentEvent: anEvent.
+		block value: self.
 ]
 
 {
@@ -131,18 +114,11 @@ WBButton >> currentEvent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/13/2024 10:58'
+	#'squeak_changestamp' : 'si 6/14/2024 12:49'
 }
-WBButton >> currentEvent: anObject [
+WBButton >> currentEvent: anEvent [
 
-	currentEvent := anObject
-]
-
-{
-	#category : #'event handling',
-	#'squeak_changestamp' : 'si 6/12/2024 21:48'
-}
-WBButton >> deactivateElement [
+	currentEvent := anEvent
 ]
 
 {
@@ -183,11 +159,11 @@ WBButton >> hoverColor: aColor [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'nicloeser 5/28/2024 11:47'
+	#'squeak_changestamp' : 'si 6/14/2024 12:50'
 }
 WBButton >> image [	
 	
-	^image
+	^ image
 ]
 
 {
@@ -210,22 +186,12 @@ WBButton >> initialize [
 ]
 
 {
-	#category : #initialization,
-	#'squeak_changestamp' : 'is 5/19/2024 16:35'
-}
-WBButton >> initializeWithCanvas: aCanvas [
-
-	super initialize.
-	self canvas: aCanvas
-]
-
-{
 	#category : #appearance,
-	#'squeak_changestamp' : 'si 6/14/2024 12:35'
+	#'squeak_changestamp' : 'si 6/14/2024 12:51'
 }
 WBButton >> margin [ 
 
-	^margin
+	^ margin
 	
 ]
 
@@ -279,7 +245,7 @@ WBButton >> mouseUp: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/14/2024 12:21'
+	#'squeak_changestamp' : 'si 6/14/2024 12:50'
 }
 WBButton >> setDefaultValues [
 
