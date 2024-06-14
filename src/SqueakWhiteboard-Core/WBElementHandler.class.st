@@ -65,7 +65,7 @@ WBElementHandler >> buttonsForPopUpBar [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/14/2024 14:27'
+	#'squeak_changestamp' : 'is 6/14/2024 15:44'
 }
 WBElementHandler >> element [
 
