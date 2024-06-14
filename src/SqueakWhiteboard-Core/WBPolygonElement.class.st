@@ -7,7 +7,8 @@ Class {
 		'dragOffset',
 		'popUp',
 		'resizeFrame',
-		'supportsText'
+		'supportsText',
+		'handler'
 	],
 	#category : #'SqueakWhiteboard-Core'
 }
@@ -19,62 +20,6 @@ Class {
 WBPolygonElement class >> sizeOfPopUpForStandardElement [
  
 	^ 20
-]
-
-{
-	#category : #buttonFunctionalities,
-	#'squeak_changestamp' : 'si 6/14/2024 11:40'
-}
-WBPolygonElement >> buttonFunctionallityForColor [
-
-	^ [:aButton |self color: aButton color]
-]
-
-{
-	#category : #buttonFunctionalities,
-	#'squeak_changestamp' : 'si 6/14/2024 11:40'
-}
-WBPolygonElement >> buttonFunctionallityForColorPalette [
-
-	^ [:aButton | self popUp makePopUpAt: (aButton topCenter - 5) with: self makeColorButtons columns: 3]
-]
-
-{
-	#category : #buttonFunctionalities,
-	#'squeak_changestamp' : 'si 6/14/2024 11:40'
-}
-WBPolygonElement >> buttonFunctionallityForCopy [
-
-	^ [:aButton | self canvas deactivateElement. 
-		self canvas spawnACopiedElement: self copy At: aButton currentEvent cursorPoint.]
-]
-
-{
-	#category : #buttonFunctionalities,
-	#'squeak_changestamp' : 'si 6/14/2024 11:40'
-}
-WBPolygonElement >> buttonFunctionallityForDelete [
-
-	^ [:aButton |self delete]
-]
-
-{
-	#category : #createButtons,
-	#'squeak_changestamp' : 'si 6/14/2024 11:39'
-}
-WBPolygonElement >> buttonsForPopUpBar [
-
-	^OrderedCollection new
-		add: (WBButton new
-			block: self buttonFunctionallityForDelete;
-			backgroundColor: Color red);
-		add: (WBButton new
-			block: self buttonFunctionallityForCopy;
-			backgroundColor: Color lightBlue muchDarker);
-		add: (WBButton new
-			block: self buttonFunctionallityForColorPalette;
-			backgroundColor: Color black);
-		yourself.
 ]
 
 {
@@ -97,11 +42,11 @@ WBPolygonElement >> canvas: aCanvas [
 
 {
 	#category : #eventHandeling,
-	#'squeak_changestamp' : 'si 6/3/2024 16:00'
+	#'squeak_changestamp' : 'si 6/14/2024 14:53'
 }
 WBPolygonElement >> deactivateElement [
 
-	self removePopup.
+	self handler removePopup.
 	self removeResizeFrame
 ]
 
@@ -184,6 +129,22 @@ WBPolygonElement >> edges: aList [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/14/2024 14:49'
+}
+WBPolygonElement >> handler [
+	^ handler
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/14/2024 14:49'
+}
+WBPolygonElement >> handler: anObject [
+	handler := anObject
+]
+
+{
 	#category : #eventHandeling,
 	#'squeak_changestamp' : 'si 6/3/2024 12:24'
 }
@@ -193,57 +154,18 @@ WBPolygonElement >> handlesMouseDown: anEvent [
 ]
 
 {
-	#category : #createButtons,
-	#'squeak_changestamp' : 'si 6/14/2024 13:24'
+	#category : #initialization,
+	#'squeak_changestamp' : 'si 6/14/2024 14:51'
 }
-WBPolygonElement >> makeColorButtonWithColor: aColor [ 
-	
-	^ (WBButton new
-		color: aColor;
-		backgroundColor: aColor;
-		clickedColor: aColor darker;
-		block: self buttonFunctionallityForColor;
-		yourself)
-]
+WBPolygonElement >> initialize [
 
-{
-	#category : #createButtons,
-	#'squeak_changestamp' : 'si 6/14/2024 13:24'
-}
-WBPolygonElement >> makeColorButtons [
-
-	^ OrderedCollection new
-		add: (self makeColorButtonWithColor: Color yellow);
-		add: (self makeColorButtonWithColor: Color orange);
-		add: (self makeColorButtonWithColor: Color red);
-		add: (self makeColorButtonWithColor: Color magenta);
-		add: (self makeColorButtonWithColor: Color blue);
-		add: (self makeColorButtonWithColor: Color cyan);
-		add: (self makeColorButtonWithColor: Color green);
-		add: (self makeColorButtonWithColor: Color gray);
-		add: (self makeColorButtonWithColor: Color black);
-		yourself.
-]
-
-{
-	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/13/2024 16:09'
-}
-WBPolygonElement >> makePopUpAt: aPoint with: aCollection columns: aNumber [
-
-	self popUp: (WBPopUp new
-		setDefaultValues;
-		sizeOfPopUp: self class sizeOfPopUpForStandardElement;
-		numberOfColumns: aNumber;
-		addButtons: aCollection;
-		yourself).
-	self addMorph: self popUp.
-	self popUp center: aPoint - (self popUp bottomCenter - self popUp center)
+	self handler: (WBHandler new element: self).
+	super initialize
 ]
 
 {
 	#category : #eventHandeling,
-	#'squeak_changestamp' : 'is 6/12/2024 17:44'
+	#'squeak_changestamp' : 'si 6/14/2024 14:52'
 }
 WBPolygonElement >> mouseDown: anEvent [
 	
@@ -251,8 +173,8 @@ WBPolygonElement >> mouseDown: anEvent [
 		[self canvas 
 			deactivateElement.
 		self dragStart: anEvent;
-			addResizeFrame;
-			showPopUp.
+			addResizeFrame.
+		self handler showPopUp.
 		self canvas activeElement: self].
 	(self canvas elementToSpawn) ifNotNil:
 		[self canvas dropElement: anEvent]
@@ -306,16 +228,6 @@ WBPolygonElement >> postDropRoutine [
 ]
 
 {
-	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/13/2024 16:09'
-}
-WBPolygonElement >> removePopup [
-
-	self popUp ifNotNil: 
-		[self popUp delete]
-]
-
-{
 	#category : #accessing,
 	#'squeak_changestamp' : 'si 6/3/2024 15:53'
 }
@@ -331,26 +243,6 @@ WBPolygonElement >> resizeFrame [
 WBPolygonElement >> resizeFrame: anObject [
 
 	resizeFrame := anObject
-]
-
-{
-	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/14/2024 13:27'
-}
-WBPolygonElement >> setPopupPosition [
-
-	^ self topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2))
-]
-
-{
-	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/14/2024 12:42'
-}
-WBPolygonElement >> showPopUp [
-
-	(self canvas elementToSpawn) ifNil:
-		[self canvas deactivateElement.
-		self makePopUpAt: self setPopupPosition with: self buttonsForPopUpBar columns: nil.] 
 ]
 
 {

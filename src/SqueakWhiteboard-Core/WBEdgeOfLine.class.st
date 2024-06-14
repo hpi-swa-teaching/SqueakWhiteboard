@@ -9,37 +9,56 @@ Class {
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'si 6/14/2024 11:48'
+	#'squeak_changestamp' : 'si 6/14/2024 14:59'
 }
 WBEdgeOfLine >> addResizeFrame [
 ]
 
 {
-	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/14/2024 12:45'
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/14/2024 15:02'
 }
-WBEdgeOfLine >> buttonFunctionallityForColor [
+WBEdgeOfLine >> color: aColor [
 
-	^ [:aButton |self line color: aButton color]
+	self line 
+		ifNotNil: [self line color: aColor]
+		ifNil: [super color: aColor]
 ]
 
 {
-	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/14/2024 11:50'
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/14/2024 15:00'
 }
-WBEdgeOfLine >> buttonFunctionallityForCopy [
+WBEdgeOfLine >> colorSelf: aColor [
 
-	^ [:aButton | self canvas deactivateElement. 
-		self canvas spawnACopiedElement: self line copy At: aButton currentEvent cursorPoint.]
+	super color: aColor
 ]
 
 {
-	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/14/2024 11:48'
+	#category : #copying,
+	#'squeak_changestamp' : 'si 6/14/2024 15:07'
 }
-WBEdgeOfLine >> buttonFunctionallityForDelete [
+WBEdgeOfLine >> copy [
 
-	^ [:aButton |self line delete]
+	^ self line copy
+]
+
+{
+	#category : #delete,
+	#'squeak_changestamp' : 'si 6/14/2024 14:56'
+}
+WBEdgeOfLine >> delete [
+
+	self line delete 
+]
+
+{
+	#category : #delete,
+	#'squeak_changestamp' : 'si 6/14/2024 14:57'
+}
+WBEdgeOfLine >> deleteSelf [
+
+	super delete
 ]
 
 {

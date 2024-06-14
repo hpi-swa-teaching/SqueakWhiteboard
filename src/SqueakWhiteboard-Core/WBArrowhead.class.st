@@ -15,7 +15,7 @@ WBArrowhead class >> defaultVertecies [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/14/2024 12:48'
+	#'squeak_changestamp' : 'si 6/14/2024 15:16'
 }
 WBArrowhead >> initialize [
 	

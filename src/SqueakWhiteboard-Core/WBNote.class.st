@@ -76,12 +76,11 @@ WBNote >> createVertecies [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'si 6/3/2024 15:58'
+	#'squeak_changestamp' : 'si 6/14/2024 14:53'
 }
 WBNote >> extent: aSize [
 
-	super extent: aSize.
-	self setPopupPosition.
+	super extent: aSize
 ]
 
 {

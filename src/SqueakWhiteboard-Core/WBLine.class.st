@@ -42,11 +42,11 @@ WBLine >> angleForPoints [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/3/2024 19:38'
+	#'squeak_changestamp' : 'si 6/14/2024 15:17'
 }
 WBLine >> arrowHead [
 
-	^arrowHead ifNil: [self arrowHead: WBArrowhead new]
+	^ arrowHead
 ]
 
 {
@@ -61,18 +61,17 @@ WBLine >> arrowHead: aMorph [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/3/2024 19:50'
+	#'squeak_changestamp' : 'si 6/14/2024 15:16'
 }
 WBLine >> color: aColor [
 
 	self borderColor: aColor.
-	(arrowHead class = WBArrowhead) ifTrue:[
-	self arrowHead 
+	self arrowHead ifNotNil: 
+	[self arrowHead 
 		color: aColor;
-		borderColor: aColor
-	].
+		borderColor: aColor].
 	self edges isEmpty ifFalse:
-		[self edges do: [:e | e color: aColor]]
+		[self edges do: [:e | e colorSelf: aColor]]
 ]
 
 {
@@ -86,11 +85,11 @@ WBLine >> deactivateElement [
 
 {
 	#category : #deleting,
-	#'squeak_changestamp' : 'si 6/3/2024 19:46'
+	#'squeak_changestamp' : 'si 6/14/2024 14:57'
 }
 WBLine >> delete [
 
-	self edges do: [:e | e delete].
+	self edges do: [:e | e deleteSelf].
 	super delete.
 ]
 
@@ -107,11 +106,11 @@ WBLine >> dragMove: anEvent [
 
 {
 	#category : #eventHandeling,
-	#'squeak_changestamp' : 'si 5/19/2024 19:19'
+	#'squeak_changestamp' : 'si 6/14/2024 15:12'
 }
 WBLine >> handlesMouseDown: anEvent [
  
-	^true
+	^ true
 ]
 
 {
@@ -137,15 +136,10 @@ WBLine >> initialize [
 
 {
 	#category : #eventHandeling,
-	#'squeak_changestamp' : 'si 5/27/2024 21:38'
+	#'squeak_changestamp' : 'si 6/14/2024 15:10'
 }
 WBLine >> mouseDown: anEvent [
 
-"	(self canvas elementToSpawn) ifNil:
-		[self 
-			dragOffset: self position - anEvent cursorPoint.].
-	(self canvas elementToSpawn) ifNotNil:
-		[self spawnEdgeOfLineAt: anEvent cursorPoint]"
 ]
 
 {
@@ -183,23 +177,24 @@ WBLine >> moveElement: anEvent [
 
 {
 	#category : #buildLine,
-	#'squeak_changestamp' : 'is 6/12/2024 17:45'
+	#'squeak_changestamp' : 'si 6/14/2024 15:17'
 }
 WBLine >> spawnEdgeOfLineAt: aMouseEvent [
 
 	(self state = 0) ifTrue:
 		[self edges add: (WBEdgeOfLine new
-		center: aMouseEvent cursorPoint;
-		canvas: self canvas;
-		line: self;
-		yourself).
+			center: aMouseEvent cursorPoint;
+			canvas: self canvas;
+			line: self;
+			yourself).
 		self state: 1]
 	ifFalse:
 		[self edges add: (WBEdgeOfLine new
-		center: aMouseEvent cursorPoint;
-		canvas: self canvas;
-		line: self;
-		yourself).
+			center: aMouseEvent cursorPoint;
+			canvas: self canvas;
+			line: self;
+			yourself).
+		self arrowHead: WBArrowhead new.
 		self 
 			borderWidth: 2;
 			color: Color black;

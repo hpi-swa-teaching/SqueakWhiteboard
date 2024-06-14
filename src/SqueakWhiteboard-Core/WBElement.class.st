@@ -13,7 +13,8 @@ Class {
 		'textField',
 		'lastMouseClick',
 		'doubleClickMaxDelta',
-		'supportsText'
+		'supportsText',
+		'handler'
 	],
 	#classInstVars : [
 		'globalColor'
@@ -67,63 +68,6 @@ WBElement >> addResizeFrame [
 ]
 
 {
-	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/13/2024 11:03'
-}
-WBElement >> buttonFunctionallityForColor [
-
-	^ [:aButton |self color: aButton color]
-]
-
-{
-	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/14/2024 12:09'
-}
-WBElement >> buttonFunctionallityForColorPalette [
-
-	^ [:aButton | self popUp makePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: 3]
-]
-
-{
-	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/13/2024 11:03'
-}
-WBElement >> buttonFunctionallityForCopy [
-
-	^ [:aButton | self canvas deactivateElement. 
-		self canvas spawnACopiedElement: self copy At: aButton currentEvent cursorPoint.]
-]
-
-{
-	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/13/2024 11:04'
-}
-WBElement >> buttonFunctionallityForDelete [
-
-	^ [:aButton |self delete]
-]
-
-{
-	#category : #createButtons,
-	#'squeak_changestamp' : 'si 6/13/2024 11:13'
-}
-WBElement >> buttonsForPopUpBar [
-
-	^OrderedCollection new
-		add: (WBButton new
-			block: self buttonFunctionallityForDelete;
-			backgroundColor: Color red);
-		add: (WBButton new
-			block: self buttonFunctionallityForCopy;
-			backgroundColor: Color lightBlue muchDarker);
-		add: (WBButton new
-			block: self buttonFunctionallityForColorPalette;
-			backgroundColor: Color black);
-		yourself.
-	
-]
-
-{
 	#category : #accessing,
 	#'squeak_changestamp' : 'is 5/18/2024 16:04'
 }
@@ -143,11 +87,11 @@ WBElement >> canvas: aCanvas [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/2/2024 18:56'
+	#'squeak_changestamp' : 'si 6/14/2024 14:45'
 }
 WBElement >> deactivateElement [
 
-	self removePopup.
+	self handler removePopup.
 	self removeResizeFrame.
 ]
 
@@ -262,13 +206,12 @@ WBElement >> dragStart: anEvent [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/12/2024 19:23'
+	#'squeak_changestamp' : 'si 6/14/2024 14:45'
 }
 WBElement >> extent: anExtent [
 	
 	super extent: anExtent.
-	textField ifNotNil: [textField extent: anExtent - (self textBorderOffset * 2)].
-	self setPopupPosition
+	textField ifNotNil: [textField extent: anExtent - (self textBorderOffset * 2)]
 	
 	
 
@@ -284,6 +227,24 @@ WBElement >> handleMouseOver: anEvent [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/14/2024 14:28'
+}
+WBElement >> handler [
+
+	^ handler
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/14/2024 14:28'
+}
+WBElement >> handler: aHanlder [
+
+	handler := aHanlder
+]
+
+{
 	#category : #'event handling',
 	#'squeak_changestamp' : 'is 6/11/2024 17:54'
 }
@@ -294,7 +255,7 @@ WBElement >> handlesMouseDown: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/12/2024 20:34'
+	#'squeak_changestamp' : 'si 6/14/2024 14:36'
 }
 WBElement >> initialize [
 	| textField |
@@ -305,7 +266,8 @@ WBElement >> initialize [
 	textField extent: self defaultSize - ((self textBorderOffset * 2) @ (self textBorderOffset * 2)).
 	self addMorphCentered: textField.
 	textField textMorph centered. 
-	self textField: textField
+	self textField: textField.
+	self handler: (WBHandler new element: self)
 	
 ]
 
@@ -338,58 +300,8 @@ WBElement >> lastMouseClick: evt [
 ]
 
 {
-	#category : #createButtons,
-	#'squeak_changestamp' : 'si 6/13/2024 11:09'
-}
-WBElement >> makeColorButtonWithColor: aColor [ 
-	
-	^(WBButton new
-		color: aColor;
-		backgroundColor: aColor;
-		clickedColor: aColor darker;
-		block: self buttonFunctionallityForColor;
-		yourself)
-]
-
-{
-	#category : #createButtons,
-	#'squeak_changestamp' : 'si 6/13/2024 11:07'
-}
-WBElement >> makeColorButtons [
-
-	^OrderedCollection new
-		add: (self makeColorButtonWithColor: Color yellow);
-		add: (self makeColorButtonWithColor: Color orange);
-		add: (self makeColorButtonWithColor: Color red);
-		add: (self makeColorButtonWithColor: Color magenta);
-		add: (self makeColorButtonWithColor: Color blue);
-		add: (self makeColorButtonWithColor: Color cyan);
-		add: (self makeColorButtonWithColor: Color green);
-		add: (self makeColorButtonWithColor: Color gray);
-		add: (self makeColorButtonWithColor: Color black);
-		yourself.
-]
-
-{
-	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/13/2024 13:43'
-}
-WBElement >> makePopUpAt: aPoint with: aCollection columns: aNumber [
-
-	self popUp: (WBPopUp new
-		setDefaultValues;
-		sizeOfPopUp: self class sizeOfPopUpForStandardElement;
-		numberOfColumns: aNumber;
-		addButtons: aCollection;
-		yourself).
-	self addMorph: self popUp.
-	self popUp center: aPoint - (self popUp bottomCenter - self popUp center)
-	
-]
-
-{
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/12/2024 17:51'
+	#'squeak_changestamp' : 'si 6/14/2024 14:37'
 }
 WBElement >> mouseDown: mouseEvent [
 
@@ -398,8 +310,8 @@ WBElement >> mouseDown: mouseEvent [
 			ifTrue:
 				[self canvas deactivateElement.
 				self dragStart: mouseEvent;
-				addResizeFrame;
-				showPopUp.
+					addResizeFrame.
+				self handler showPopUp.
 				self canvas activeElement: self]
 			ifFalse:
 				[self canvas dropElement: mouseEvent].
@@ -446,16 +358,6 @@ WBElement >> popUp: aPopUp [
 ]
 
 {
-	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/13/2024 13:39'
-}
-WBElement >> removePopup [
-
-	self popUp ifNotNil: 
-		[self popUp delete]
-]
-
-{
 	#category : #resize,
 	#'squeak_changestamp' : 'si 6/3/2024 15:57'
 }
@@ -482,26 +384,6 @@ WBElement >> resizeFrame [
 WBElement >> resizeFrame: anObject [
 
 	resizeFrame := anObject
-]
-
-{
-	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/14/2024 12:08'
-}
-WBElement >> setPopupPosition [
-
-	^ self topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2))
-]
-
-{
-	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/14/2024 12:41'
-}
-WBElement >> showPopUp [
-
-	(self canvas elementToSpawn) ifNil:
-		[self canvas deactivateElement.
-		self makePopUpAt: self setPopupPosition with: self buttonsForPopUpBar columns: nil.] 
 ]
 
 {
