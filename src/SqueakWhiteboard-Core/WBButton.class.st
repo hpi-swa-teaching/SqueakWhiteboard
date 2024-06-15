@@ -76,13 +76,13 @@ WBButton >> block: aBlock [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/15/2024 13:48'
+	#'squeak_changestamp' : 'is 6/15/2024 14:19'
 }
 WBButton >> clickFunctionality: anEvent [
 
 	self 
 		currentEvent: anEvent.
-		block ifNotNil: [ block value: self ]
+		block value: self 
 ]
 
 {

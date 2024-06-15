@@ -48,12 +48,12 @@ WBButtonTests >> tearDown [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'is 6/15/2024 13:47'
+	#'squeak_changestamp' : 'is 6/15/2024 14:22'
 }
 WBButtonTests >> testButtonClickColor [
 	| aButton aMouseEvent |
 	
-	aButton := WBButton new.
+	aButton := WBButton new block: [:b | nil].
 	self assert: aButton color = aButton backgroundColor.
 	
 	aMouseEvent := MouseButtonEvent new.
