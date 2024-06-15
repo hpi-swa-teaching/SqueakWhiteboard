@@ -76,13 +76,13 @@ WBButton >> block: aBlock [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'si 6/14/2024 12:48'
+	#'squeak_changestamp' : 'is 6/15/2024 13:48'
 }
 WBButton >> clickFunctionality: anEvent [
 
 	self 
 		currentEvent: anEvent.
-		block value: self.
+		block ifNotNil: [ block value: self ]
 ]
 
 {
@@ -234,7 +234,7 @@ WBButton >> mouseLeave: evt [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'si 6/14/2024 12:21'
+	#'squeak_changestamp' : 'is 6/15/2024 13:33'
 }
 WBButton >> mouseUp: anEvent [
 
