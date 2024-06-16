@@ -55,10 +55,10 @@ WBElement >> activateTextbox: evt [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'si 6/3/2024 14:29'
+	#'squeak_changestamp' : 'is 6/16/2024 20:34'
 }
 WBElement >> addResizeFrame [
-
+	
 	self resizeFrame: (WBResizeFrame newWithParent: self).
 	
 	
@@ -262,12 +262,12 @@ WBElement >> dragStart: anEvent [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/12/2024 19:23'
+	#'squeak_changestamp' : 'is 6/16/2024 20:40'
 }
 WBElement >> extent: anExtent [
 	
 	super extent: anExtent.
-	textField ifNotNil: [textField extent: anExtent - (self textBorderOffset * 2)].
+	textField ifNotNil: [textField extent: anExtent].
 	self setPopupPosition
 	
 	
@@ -294,19 +294,28 @@ WBElement >> handlesMouseDown: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/13/2024 12:16'
+	#'squeak_changestamp' : 'is 6/16/2024 20:13'
 }
 WBElement >> initialize [
-	| textField |
 
 	super initialize.
 	self extent: self defaultSize.
+	self initializeTextfield
+	
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'is 6/16/2024 20:24'
+}
+WBElement >> initializeTextfield [
+	| textField |
+	
 	textField := WBPluggableTextMorphPlus new.
-	textField extent: self defaultSize - ((self textBorderOffset * 2) @ (self textBorderOffset * 2)).
+	textField extent: self defaultSize - (self textBorderOffset @ self textBorderOffset).
 	self addMorphCentered: textField.
 	textField textMorph centered. 
 	self textField: textField
-	
 ]
 
 {
@@ -389,7 +398,7 @@ WBElement >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/13/2024 12:10'
+	#'squeak_changestamp' : 'is 6/16/2024 20:30'
 }
 WBElement >> mouseDown: mouseEvent [
 

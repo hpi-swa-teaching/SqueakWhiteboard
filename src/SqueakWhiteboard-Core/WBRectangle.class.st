@@ -9,6 +9,15 @@ Class {
 }
 
 {
+	#category : #appearance,
+	#'squeak_changestamp' : 'is 6/16/2024 20:15'
+}
+WBRectangle >> drawOn: aCanvas [
+
+	aCanvas fillRectangle: self bounds color: self color.
+]
+
+{
 	#category : #initialization,
 	#'squeak_changestamp' : 'is 6/4/2024 16:21'
 }

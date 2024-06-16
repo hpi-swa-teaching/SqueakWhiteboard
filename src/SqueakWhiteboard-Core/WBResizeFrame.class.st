@@ -72,13 +72,14 @@ WBResizeFrame >> element: anObject [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:10'
+	#'squeak_changestamp' : 'is 6/16/2024 20:09'
 }
 WBResizeFrame >> extent: aSize [
 
 	self element extent: aSize.
 	super extent: element extent.
 	self positionHandles.
+	self element removeProperty: #dropShadow
 ]
 
 {
@@ -99,9 +100,10 @@ WBResizeFrame >> handles: anObject [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:10'
+	#'squeak_changestamp' : 'is 6/16/2024 20:40'
 }
 WBResizeFrame >> initializeWithParent: aMorph [
+	
 	super initialize.
 	self
 		element: aMorph;
@@ -110,7 +112,7 @@ WBResizeFrame >> initializeWithParent: aMorph [
 		borderColor: Color gray;
 		borderWidth: 1;
 		createHandles.
-	self element addMorph: self.
+	self element addMorph: self
 ]
 
 {
