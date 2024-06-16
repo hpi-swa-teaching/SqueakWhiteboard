@@ -76,12 +76,12 @@ WBNote >> createVertecies [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/14/2024 18:16'
+	#'squeak_changestamp' : 'is 6/17/2024 00:28'
 }
 WBNote >> extent: anExtent [
 
 	super extent: anExtent.
-	textField ifNotNil: [textField extent: anExtent - (self textBorderOffset * 2)]
+	textField ifNotNil: [textField extent: anExtent - self textBorderOffset]
 ]
 
 {

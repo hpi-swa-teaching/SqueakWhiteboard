@@ -72,10 +72,10 @@ WBResizeFrame >> element: anObject [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/17/2024 00:10'
+	#'squeak_changestamp' : 'is 6/17/2024 00:28'
 }
 WBResizeFrame >> extent: aSize [
-
+	
 	self element extent: aSize.
 	super extent: element extent.
 	self positionHandles.
