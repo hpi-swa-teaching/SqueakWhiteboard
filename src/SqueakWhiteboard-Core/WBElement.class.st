@@ -42,14 +42,14 @@ WBElement class >> sizeOfPopUpForStandardElement [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/12/2024 17:52'
+	#'squeak_changestamp' : 'is 6/17/2024 01:10'
 }
 WBElement >> activateTextbox: evt [
 	
 	self canvas deactivateTextbox.
+	self canvas deactivateElement.
 	self textField enabled: true;
 		mouseDown: evt.
-	self deactivateElement.
 	self canvas activeTextbox: self
 ]
 
@@ -153,11 +153,10 @@ WBElement >> deactivateElement [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/11/2024 22:10'
+	#'squeak_changestamp' : 'is 6/17/2024 01:00'
 }
 WBElement >> deactivateTextbox [
 
-	self currentHand releaseKeyboardFocus.
 	self textField enabled: false
 ]
 

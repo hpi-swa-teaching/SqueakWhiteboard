@@ -22,14 +22,16 @@ WBPluggableTextMorphPlus >> enabled [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/12/2024 11:08'
+	#'squeak_changestamp' : 'is 6/17/2024 01:00'
 }
 WBPluggableTextMorphPlus >> enabled: aBoolean [
 
 	enabled := aBoolean.
 	aBoolean
 		 ifTrue: [self showScrollBars]
-		ifFalse: [self hideScrollBars]
+		ifFalse: 
+			[self hideScrollBars.
+			self owner currentHand releaseKeyboardFocus]
 ]
 
 {
