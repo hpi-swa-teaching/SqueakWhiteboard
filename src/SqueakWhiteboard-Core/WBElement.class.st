@@ -3,7 +3,7 @@ The WBElement is an object that can be created within the canvas
 "
 Class {
 	#name : #WBElement,
-	#superclass : #Morph,
+	#superclass : #PolygonMorph,
 	#instVars : [
 		'dragOffset',
 		'canvas',
@@ -262,12 +262,12 @@ WBElement >> dragStart: anEvent [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/16/2024 20:45'
+	#'squeak_changestamp' : 'is 6/16/2024 21:09'
 }
 WBElement >> extent: anExtent [
 	
 	super extent: anExtent.
-	textField ifNotNil: [textField extent: anExtent - self textBorderOffset].
+	self textField ifNotNil: [self updateTextfieldExtent: anExtent].
 	self setPopupPosition
 	
 	
@@ -294,7 +294,7 @@ WBElement >> handlesMouseDown: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/16/2024 20:13'
+	#'squeak_changestamp' : 'is 6/16/2024 20:53'
 }
 WBElement >> initialize [
 
@@ -306,13 +306,13 @@ WBElement >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/16/2024 20:24'
+	#'squeak_changestamp' : 'is 6/16/2024 21:12'
 }
 WBElement >> initializeTextfield [
 	| textField |
 	
 	textField := WBPluggableTextMorphPlus new.
-	textField extent: self defaultSize - (self textBorderOffset @ self textBorderOffset).
+	textField extent: self extent - (self textBorderOffset @ self textBorderOffset).
 	self addMorphCentered: textField.
 	textField textMorph centered. 
 	self textField: textField
@@ -570,4 +570,13 @@ WBElement >> textField [
 WBElement >> textField: aTextfield [
 
 	textField := aTextfield
+]
+
+{
+	#category : #resize,
+	#'squeak_changestamp' : 'is 6/16/2024 21:12'
+}
+WBElement >> updateTextfieldExtent: anExtent [
+
+	textField extent: anExtent - self textBorderOffset
 ]

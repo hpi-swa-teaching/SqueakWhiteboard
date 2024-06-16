@@ -10,7 +10,7 @@ Class {
 
 {
 	#category : #appearance,
-	#'squeak_changestamp' : 'is 6/16/2024 20:15'
+	#'squeak_changestamp' : 'is 6/16/2024 20:49'
 }
 WBRectangle >> drawOn: aCanvas [
 
