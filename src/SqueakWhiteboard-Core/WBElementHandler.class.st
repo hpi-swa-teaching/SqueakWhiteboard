@@ -22,13 +22,13 @@ WBElementHandler >> activateTextbox: evt [
 
 {
 	#category : #text,
-	#'squeak_changestamp' : 'is 6/14/2024 18:18'
+	#'squeak_changestamp' : 'is 6/17/2024 00:07'
 }
 WBElementHandler >> addTextfieldWithSize: anExtent [
 	| textField |
 	
 	textField := WBPluggableTextMorphPlus new.
-	textField extent: anExtent - ((self element textBorderOffset * 2) @ (self element textBorderOffset * 2)).
+	textField extent: anExtent - (self element textBorderOffset @ self element textBorderOffset).
 	textField textMorph centered. 
 	self element addMorphCentered: textField.
 	self element textField: textField

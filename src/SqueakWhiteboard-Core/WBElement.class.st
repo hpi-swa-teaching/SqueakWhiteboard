@@ -181,12 +181,12 @@ WBElement >> dragStart: anEvent [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'si 6/14/2024 14:45'
+	#'squeak_changestamp' : 'is 6/17/2024 00:05'
 }
 WBElement >> extent: anExtent [
 	
 	super extent: anExtent.
-	textField ifNotNil: [textField extent: anExtent - (self textBorderOffset * 2)]
+	textField ifNotNil: [textField extent: anExtent - self textBorderOffset]
 	
 	
 
