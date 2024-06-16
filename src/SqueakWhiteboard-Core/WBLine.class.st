@@ -1,6 +1,6 @@
 Class {
 	#name : #WBLine,
-	#superclass : #WBPolygonElement,
+	#superclass : #WBElement,
 	#instVars : [
 		'state',
 		'arrowHead'
@@ -230,6 +230,15 @@ WBLine >> state [
 WBLine >> state: aState [
 
 	state := aState
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/16/2024 22:55'
+}
+WBLine >> supportsText [
+
+	^ supportsText ifNil: [ supportsText := false]
 ]
 
 {

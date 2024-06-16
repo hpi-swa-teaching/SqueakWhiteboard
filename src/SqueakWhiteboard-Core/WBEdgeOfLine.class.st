@@ -95,3 +95,12 @@ WBEdgeOfLine >> mouseUp: anEvent [
 	super mouseUp: anEvent.
 	self line updateEdges
 ]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/16/2024 22:55'
+}
+WBEdgeOfLine >> supportsText [
+
+	^ supportsText ifNil: [ supportsText := false ]
+]

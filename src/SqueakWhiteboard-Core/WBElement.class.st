@@ -13,7 +13,8 @@ Class {
 		'textField',
 		'lastMouseClick',
 		'doubleClickMaxDelta',
-		'supportsText'
+		'supportsText',
+		'edges'
 	],
 	#classInstVars : [
 		'globalColor'
@@ -258,6 +259,24 @@ WBElement >> dragStart: anEvent [
 		addDropShadow;
 		comeToFront;
 		dragOffset: self position - anEvent cursorPoint.
+]
+
+{
+	#category : #appearance,
+	#'squeak_changestamp' : 'is 6/16/2024 22:52'
+}
+WBElement >> edges [
+
+	^ edges ifNil: [edges := OrderedCollection new]
+]
+
+{
+	#category : #appearance,
+	#'squeak_changestamp' : 'is 6/16/2024 22:52'
+}
+WBElement >> edges: aCollection [
+
+	edges := aCollection
 ]
 
 {

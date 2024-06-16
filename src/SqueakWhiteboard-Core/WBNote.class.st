@@ -1,6 +1,6 @@
 Class {
 	#name : #WBNote,
-	#superclass : #WBPolygonElement,
+	#superclass : #WBElement,
 	#instVars : [
 		'sizeOfNote',
 		'sizeOfCorner'

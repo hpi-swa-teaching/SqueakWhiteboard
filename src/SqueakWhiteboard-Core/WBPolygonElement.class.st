@@ -307,12 +307,11 @@ WBPolygonElement >> postDropRoutine [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/13/2024 16:09'
+	#'squeak_changestamp' : 'is 6/16/2024 22:50'
 }
 WBPolygonElement >> removePopup [
 
-	self popUp ifNotNil: 
-		[self popUp delete]
+	self popUp ifNotNil: [self popUp delete]
 ]
 
 {
