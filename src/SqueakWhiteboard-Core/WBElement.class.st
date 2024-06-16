@@ -262,12 +262,12 @@ WBElement >> dragStart: anEvent [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/16/2024 20:40'
+	#'squeak_changestamp' : 'is 6/16/2024 20:45'
 }
 WBElement >> extent: anExtent [
 	
 	super extent: anExtent.
-	textField ifNotNil: [textField extent: anExtent].
+	textField ifNotNil: [textField extent: anExtent - self textBorderOffset].
 	self setPopupPosition
 	
 	
