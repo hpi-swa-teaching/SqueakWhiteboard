@@ -293,7 +293,7 @@ WBElement >> handlesMouseDown: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/13/2024 12:16'
+	#'squeak_changestamp' : 'is 6/17/2024 01:51'
 }
 WBElement >> initialize [
 	| textField |

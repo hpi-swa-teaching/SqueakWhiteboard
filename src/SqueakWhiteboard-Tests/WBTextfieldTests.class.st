@@ -48,6 +48,18 @@ WBTextfieldTests >> tearDown [
 
 {
 	#category : #Testing,
+	#'squeak_changestamp' : 'is 6/17/2024 01:51'
+}
+WBTextfieldTests >> testCenteredText [
+	| anElement |
+	
+	anElement := WBElement newWithCanvas:  self canvas.
+	"alignment = 2 means centered"
+	self assert: anElement textField textMorph textStyle alignment = 2
+]
+
+{
+	#category : #Testing,
 	#'squeak_changestamp' : 'is 6/17/2024 01:09'
 }
 WBTextfieldTests >> testTextfieldActivation [
