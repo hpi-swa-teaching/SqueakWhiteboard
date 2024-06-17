@@ -388,7 +388,7 @@ WBElement >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/13/2024 12:10'
+	#'squeak_changestamp' : 'is 6/17/2024 15:53'
 }
 WBElement >> mouseDown: mouseEvent [
 

@@ -301,13 +301,14 @@ WBToolbar >> getColorsButton [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'is 6/17/2024 13:44'
+	#'squeak_changestamp' : 'is 6/17/2024 15:52'
 }
 WBToolbar >> getDeleteAllButton [
 
 	^ WBButton new 
 		block: self buttonFunctionalityForDeleteAll;
-		 image: (ImageMorph new image: (self canvas images resize: WBImage loadDeleteAllButtonImage to: self buttonSize*0.8));
+		backgroundColor: Color red muchLighter;
+		image: (ImageMorph new image: (self canvas images resize: WBImage loadDeleteAllButtonImage to: self buttonSize*0.8));
 		yourself
 			
 ]
