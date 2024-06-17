@@ -47,84 +47,75 @@ WBShapeChoosingPopUp >> tearDown [
 
 {
 	#category : #testsForStandardElement,
-	#'squeak_changestamp' : 'is 6/12/2024 20:39'
+	#'squeak_changestamp' : 'si 6/17/2024 12:07'
 }
 WBShapeChoosingPopUp >> testButtonFunctionallity [
+| button buttonForShape|
 
-	|popUpMenu button buttonForShape arteficialMouseClick|
+	button := self canvas toolbar buttons at: 1.
+	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	
-	self canvas toolbar buttons do: [:b | b class = WBShapeChoosingButton ifTrue: [button := b]].
-	button clickFunctionality: nil.
-	popUpMenu := button popUp.
-	
-	arteficialMouseClick := MouseButtonEvent new position: self canvas position + (100@100).
-	
-	popUpMenu submorphs do: [:s | s number = 1 ifTrue: [buttonForShape := s]].
-	buttonForShape clickFunctionality: arteficialMouseClick.
+	buttonForShape := self canvas toolbar popUp submorphs at: 1. 
+	buttonForShape clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	self assert: self canvas elementToSpawn class = WBRectangle.
 	
-	popUpMenu submorphs do: [:s | s number = 2 ifTrue: [buttonForShape := s]].
-	buttonForShape clickFunctionality: arteficialMouseClick.
+	buttonForShape := self canvas toolbar popUp submorphs at: 2. 
+	buttonForShape clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	self assert: self canvas elementToSpawn class = WBCircle
 ]
 
 {
 	#category : #testsForStandardElement,
-	#'squeak_changestamp' : 'is 6/12/2024 20:39'
+	#'squeak_changestamp' : 'si 6/17/2024 11:59'
 }
 WBShapeChoosingPopUp >> testButtonsOfPopUp [
 
 	| button|
 
-	self canvas toolbar buttons do: [:b | b class = WBShapeChoosingButton ifTrue: [button := b]].
-	button clickFunctionality: nil.
+	button := self canvas toolbar buttons at: 1.
+	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	
-	self assert: button popUp submorphs size = 2
+	self assert: self canvas toolbar popUp submorphs size = 2
 ]
 
 {
 	#category : #testsForStandardElement,
-	#'squeak_changestamp' : 'si 6/7/2024 23:31'
+	#'squeak_changestamp' : 'si 6/17/2024 11:58'
 }
-WBShapeChoosingPopUp >> testExistenxOfPopUp [
+WBShapeChoosingPopUp >> testExistenceOfPopUp [
 
 	| button|
 
-	self canvas toolbar buttons do: [:b | b class = WBShapeChoosingButton ifTrue: [button := b]].
-	button clickFunctionality: nil.
+	button := self canvas toolbar buttons at: 1.
+	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	
-	self assert: button popUp notNil
-	
+	self assert: self canvas toolbar popUp notNil
 ]
 
 {
 	#category : #testsForStandardElement,
-	#'squeak_changestamp' : 'si 6/7/2024 23:35'
-}
-WBShapeChoosingPopUp >> testPopUpPlacement [
-
-	|popUpMenu button|
-	
-	self canvas toolbar buttons do: [:b | b class = WBShapeChoosingButton ifTrue: [button := b]].
-	button clickFunctionality: nil.
-	popUpMenu := button popUp.
-	
-	self assert: button center y - 200 < popUpMenu top.	
-	self assert: popUpMenu bottom < (button center y + 500) .	
-]
-
-{
-	#category : #testsForStandardElement,
-	#'squeak_changestamp' : 'si 6/7/2024 23:35'
+	#'squeak_changestamp' : 'si 6/17/2024 12:02'
 }
 WBShapeChoosingPopUp >> testPopUpPlacementInX [
+| button|
 
-	|popUpMenu button|
+	button := self canvas toolbar buttons at: 1.
+	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	
-	self canvas toolbar buttons do: [:b | b class = WBShapeChoosingButton ifTrue: [button := b]].
-	button clickFunctionality: nil.
-	popUpMenu := button popUp.
+	self assert: button right <= self canvas toolbar popUp left.	
+	self assert: self canvas toolbar popUp left <= (button right + 200).	
+]
+
+{
+	#category : #testsForStandardElement,
+	#'squeak_changestamp' : 'si 6/17/2024 12:01'
+}
+WBShapeChoosingPopUp >> testPopUpPlacementInY [
+| button|
+
+	button := self canvas toolbar buttons at: 1.
+	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	
-	self assert: button right <= popUpMenu left.	
-	self assert: popUpMenu left <= (button right + 200).	
+	self assert: button center y - 200 < self canvas toolbar popUp top.	
+	self assert: self canvas toolbar popUp bottom < (button center y + 500) 
 ]
