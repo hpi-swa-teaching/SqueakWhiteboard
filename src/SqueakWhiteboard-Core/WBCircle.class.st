@@ -3,7 +3,7 @@ The WBTemporaryButton is a placeholder for functionality that is coming later
 "
 Class {
 	#name : #WBCircle,
-	#superclass : #WBElement,
+	#superclass : #WBStandartElement,
 	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 5/17/2024 15:59'
 }
@@ -15,13 +15,4 @@ Class {
 WBCircle >> drawOn: aCanvas [
 
 	aCanvas fillOval: self bounds color: self color.
-]
-
-{
-	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/4/2024 16:21'
-}
-WBCircle >> initialize [
-
-	super initialize
 ]

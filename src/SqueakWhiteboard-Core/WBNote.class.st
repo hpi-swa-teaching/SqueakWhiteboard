@@ -27,26 +27,6 @@ WBNote class >> initialSizeOfNote [
 ]
 
 {
-	#category : #'initialize-release',
-	#'squeak_changestamp' : 'si 6/3/2024 13:36'
-}
-WBNote class >> newWithCanvas: aCanvas [
-
-	^self basicNew
-		canvas: aCanvas;
-		initialize
-]
-
-{
-	#category : #resize,
-	#'squeak_changestamp' : 'si 6/3/2024 15:11'
-}
-WBNote >> addResizeFrame [
-
-	self resizeFrame: (WBResizeFrame newWithParent: self).
-]
-
-{
 	#category : #accessing,
 	#'squeak_changestamp' : 'si 6/3/2024 12:26'
 }
@@ -75,16 +55,6 @@ WBNote >> createVertecies [
 ]
 
 {
-	#category : #resize,
-	#'squeak_changestamp' : 'si 6/3/2024 15:58'
-}
-WBNote >> extent: aSize [
-
-	super extent: aSize.
-	self setPopupPosition.
-]
-
-{
 	#category : #initialization,
 	#'squeak_changestamp' : 'si 6/3/2024 19:02'
 }
@@ -100,11 +70,11 @@ WBNote >> initialize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/13/2024 16:23'
+	#'squeak_changestamp' : 'is 6/18/2024 00:01'
 }
 WBNote >> makeShape [
 
-	|arrayOfEdgePoints indexOfArray|
+	| arrayOfEdgePoints indexOfArray |
 	
 	arrayOfEdgePoints := Array new: self edges size.
 	indexOfArray := 1.
@@ -115,21 +85,12 @@ WBNote >> makeShape [
 ]
 
 {
-	#category : #resize,
-	#'squeak_changestamp' : 'si 6/3/2024 15:58'
-}
-WBNote >> removeResizeFrame [
-
-	(self resizeFrame) ifNotNil: [self resizeFrame delete]
-]
-
-{
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/3/2024 12:26'
+	#'squeak_changestamp' : 'is 6/18/2024 00:02'
 }
 WBNote >> sizeOfCorner [
 
-	^sizeOfCorner
+	^ sizeOfCorner
 ]
 
 {
@@ -143,11 +104,11 @@ WBNote >> sizeOfCorner: aNumber [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/3/2024 12:27'
+	#'squeak_changestamp' : 'is 6/18/2024 00:02'
 }
 WBNote >> sizeOfNote [
 
-	^sizeOfNote
+	^ sizeOfNote
 ]
 
 {

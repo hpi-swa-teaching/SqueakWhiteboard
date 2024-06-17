@@ -3,7 +3,7 @@ The WBElement is an object that can be created within the canvas
 "
 Class {
 	#name : #WBElement,
-	#superclass : #Morph,
+	#superclass : #Object,
 	#instVars : [
 		'dragOffset',
 		'canvas',
@@ -13,7 +13,8 @@ Class {
 		'textField',
 		'lastMouseClick',
 		'doubleClickMaxDelta',
-		'supportsText'
+		'supportsText',
+		'element'
 	],
 	#classInstVars : [
 		'globalColor'
@@ -33,11 +34,11 @@ WBElement class >> newWithCanvas: aCanvas [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/7/2024 00:46'
+	#'squeak_changestamp' : 'is 6/18/2024 00:25'
 }
 WBElement class >> sizeOfPopUpForStandardElement [
 
-	^20
+	^ 20
 ]
 
 {
@@ -67,7 +68,7 @@ WBElement >> addResizeFrame [
 ]
 
 {
-	#category : #buttonFunctionallities,
+	#category : #buttonFunctionalities,
 	#'squeak_changestamp' : 'si 6/17/2024 11:31'
 }
 WBElement >> buttonFunctionalityForColor [
@@ -76,7 +77,7 @@ WBElement >> buttonFunctionalityForColor [
 ]
 
 {
-	#category : #buttonFunctionallities,
+	#category : #buttonFunctionalities,
 	#'squeak_changestamp' : 'si 6/17/2024 11:29'
 }
 WBElement >> buttonFunctionalityForColorPalette [
@@ -85,7 +86,7 @@ WBElement >> buttonFunctionalityForColorPalette [
 ]
 
 {
-	#category : #buttonFunctionallities,
+	#category : #buttonFunctionalities,
 	#'squeak_changestamp' : 'si 6/17/2024 11:32'
 }
 WBElement >> buttonFunctionalityForCopy [
@@ -95,7 +96,7 @@ WBElement >> buttonFunctionalityForCopy [
 ]
 
 {
-	#category : #buttonFunctionallities,
+	#category : #buttonFunctionalities,
 	#'squeak_changestamp' : 'si 6/17/2024 11:32'
 }
 WBElement >> buttonFunctionalityForDelete [
@@ -105,11 +106,11 @@ WBElement >> buttonFunctionalityForDelete [
 
 {
 	#category : #createButtons,
-	#'squeak_changestamp' : 'si 6/17/2024 11:32'
+	#'squeak_changestamp' : 'is 6/18/2024 00:14'
 }
 WBElement >> buttonsForPopUpBar [
 
-	^OrderedCollection new
+	^ OrderedCollection new
 		add: (WBButton new
 			block: self buttonFunctionalityForDelete;
 			backgroundColor: Color red);
@@ -143,12 +144,12 @@ WBElement >> canvas: aCanvas [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/2/2024 18:56'
+	#'squeak_changestamp' : 'is 6/18/2024 00:15'
 }
 WBElement >> deactivateElement [
 
 	self removePopup.
-	self removeResizeFrame.
+	self removeResizeFrame
 ]
 
 {
@@ -260,6 +261,24 @@ WBElement >> dragStart: anEvent [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/17/2024 23:45'
+}
+WBElement >> element [
+
+	^ element
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/17/2024 23:44'
+}
+WBElement >> element: anElement [
+
+	element := anElement
+]
+
+{
 	#category : #resize,
 	#'squeak_changestamp' : 'is 6/17/2024 23:30'
 }
@@ -275,37 +294,47 @@ WBElement >> extent: anExtent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 5/29/2024 01:02'
+	#'squeak_changestamp' : 'is 6/18/2024 00:06'
 }
-WBElement >> handleMouseOver: anEvent [
+WBElement >> handlesMouseDown: anEvent [
+
+	supportsText ifTrue: [ ^ (self textField enabled) not ] ifFalse: [ ^true ]
+	
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/18/2024 00:07'
+}
+WBElement >> handlesMouseOver: anEvent [
 
 	^ true
 ]
 
 {
-	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/11/2024 17:54'
+	#category : #initialization,
+	#'squeak_changestamp' : 'is 6/18/2024 00:01'
 }
-WBElement >> handlesMouseDown: anEvent [
+WBElement >> initialize [
 
-	^ (self textField enabled) not
+	super initialize.
+	self extent: self defaultSize.
+	supportsText ifTrue: [self initializeTextfield]
+	
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/17/2024 23:30'
+	#'squeak_changestamp' : 'is 6/18/2024 00:01'
 }
-WBElement >> initialize [
-	| textField |
-
-	super initialize.
-	self extent: self defaultSize.
-	textField := WBPluggableTextMorphPlus new.
-	textField extent: self defaultSize - (self textBorderOffset @ self textBorderOffset).
-	self addMorphCentered: textField.
-	textField textMorph centered. 
-	self textField: textField
+WBElement >> initializeTextfield [
+	| textfield |
 	
+	textfield := WBPluggableTextMorphPlus new.
+	textfield extent: self defaultSize - (self textBorderOffset @ self textBorderOffset).
+	self addMorphCentered: textfield.
+	textfield textMorph centered. 
+	self textField: textfield
 ]
 
 {
@@ -338,11 +367,11 @@ WBElement >> lastMouseClick: evt [
 
 {
 	#category : #createButtons,
-	#'squeak_changestamp' : 'si 6/17/2024 11:31'
+	#'squeak_changestamp' : 'is 6/18/2024 00:17'
 }
 WBElement >> makeColorButtonWithColor: aColor [ 
 	
-	^(WBButton new
+	^ (WBButton new
 		color: aColor;
 		backgroundColor: aColor;
 		clickedColor: aColor darker;
@@ -352,11 +381,11 @@ WBElement >> makeColorButtonWithColor: aColor [
 
 {
 	#category : #createButtons,
-	#'squeak_changestamp' : 'si 6/13/2024 11:07'
+	#'squeak_changestamp' : 'is 6/18/2024 00:18'
 }
 WBElement >> makeColorButtons [
 
-	^OrderedCollection new
+	^ OrderedCollection new
 		add: (self makeColorButtonWithColor: Color yellow);
 		add: (self makeColorButtonWithColor: Color orange);
 		add: (self makeColorButtonWithColor: Color red);
@@ -437,23 +466,21 @@ WBElement >> popUp [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/13/2024 13:38'
+	#'squeak_changestamp' : 'is 6/18/2024 00:23'
 }
 WBElement >> popUp: aPopUp [
 
 	popUp := aPopUp.
-	popUp ifNotNil: 
-		[self addMorphBack: popUp]
+	popUp ifNotNil: [self addMorphBack: popUp]
 ]
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/13/2024 13:39'
+	#'squeak_changestamp' : 'is 6/18/2024 00:24'
 }
 WBElement >> removePopup [
 
-	self popUp ifNotNil: 
-		[self popUp delete]
+	self popUp ifNotNil: [self popUp delete]
 ]
 
 {
@@ -478,11 +505,11 @@ WBElement >> resizeFrame [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/3/2024 15:53'
+	#'squeak_changestamp' : 'is 6/18/2024 00:24'
 }
-WBElement >> resizeFrame: anObject [
+WBElement >> resizeFrame: aFrame [
 
-	resizeFrame := anObject
+	resizeFrame := aFrame
 ]
 
 {
@@ -496,13 +523,13 @@ WBElement >> setPopupPosition [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/14/2024 12:41'
+	#'squeak_changestamp' : 'is 6/18/2024 00:24'
 }
 WBElement >> showPopUp [
 
 	(self canvas elementToSpawn) ifNil:
 		[self canvas deactivateElement.
-		self makePopUpAt: self setPopupPosition with: self buttonsForPopUpBar columns: nil.] 
+		self makePopUpAt: self setPopupPosition with: self buttonsForPopUpBar columns: nil] 
 ]
 
 {

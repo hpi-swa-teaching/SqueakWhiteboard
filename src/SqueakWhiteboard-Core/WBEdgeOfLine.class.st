@@ -1,6 +1,6 @@
 Class {
 	#name : #WBEdgeOfLine,
-	#superclass : #WBElement,
+	#superclass : #WBStandartElement,
 	#instVars : [
 		'line'
 	],

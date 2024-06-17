@@ -10,43 +10,43 @@ Class {
 
 {
 	#category : #geometry,
-	#'squeak_changestamp' : 'si 6/3/2024 19:16'
+	#'squeak_changestamp' : 'is 6/18/2024 00:03'
 }
 WBLine >> angleForEdgeOfLines [
-	|lengthX lengthY length sin|
+	| lengthX lengthY length sin |
 	
 	lengthX := (self edges at: 2) position x - (self edges at: 1) position x.
 	lengthY :=(self edges at: 2) position y - (self edges at: 1)  position y.
 	length := (lengthX squared + lengthY  squared) safeSquareRoot.
 	sin := lengthY / length.
-	^sin arcSin * (36 / 2 * (3.141592))
+	^ sin arcSin * (36 / 2 * (3.141592))
 	
 	
 ]
 
 {
 	#category : #geometry,
-	#'squeak_changestamp' : 'si 6/3/2024 20:00'
+	#'squeak_changestamp' : 'is 6/18/2024 00:03'
 }
 WBLine >> angleForPoints [
-	|lengthX lengthY length sin|
+	| lengthX lengthY length sin |
 	
 	lengthX := (self edges at: 2) x - (self edges at: 1) x.
 	lengthY :=(self edges at: 2) y - (self edges at: 1) y.
 	length := (lengthX squared + lengthY  squared) safeSquareRoot.
 	sin := lengthY / length.
-	^sin arcSin * (36 / 2 * (3.141592))
+	^ sin arcSin * (36 / 2 * (3.141592))
 	
 	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/3/2024 19:38'
+	#'squeak_changestamp' : 'is 6/18/2024 00:03'
 }
 WBLine >> arrowHead [
 
-	^arrowHead ifNil: [self arrowHead: WBArrowhead new]
+	^ arrowHead ifNil: [self arrowHead: WBArrowhead new]
 ]
 
 {
@@ -61,16 +61,15 @@ WBLine >> arrowHead: aMorph [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/3/2024 19:50'
+	#'squeak_changestamp' : 'is 6/18/2024 00:04'
 }
 WBLine >> color: aColor [
 
 	self borderColor: aColor.
-	(arrowHead class = WBArrowhead) ifTrue:[
-	self arrowHead 
+	(arrowHead class = WBArrowhead) ifTrue:
+		[self arrowHead 
 		color: aColor;
-		borderColor: aColor
-	].
+		borderColor: aColor].
 	self edges isEmpty ifFalse:
 		[self edges do: [:e | e color: aColor]]
 ]
@@ -86,41 +85,12 @@ WBLine >> deactivateElement [
 
 {
 	#category : #deleting,
-	#'squeak_changestamp' : 'si 6/3/2024 19:46'
+	#'squeak_changestamp' : 'is 6/18/2024 00:04'
 }
 WBLine >> delete [
 
 	self edges do: [:e | e delete].
-	super delete.
-]
-
-{
-	#category : #'drag&drop',
-	#'squeak_changestamp' : 'JK 5/28/2024 14:37'
-}
-WBLine >> dragMove: anEvent [
-	|newPosition |
-	
- 	newPosition := self canvas clampElementToCanvas: self at: anEvent cursorPoint + self dragOffset.
-	self position: newPosition
-]
-
-{
-	#category : #eventHandeling,
-	#'squeak_changestamp' : 'si 5/19/2024 19:19'
-}
-WBLine >> handlesMouseDown: anEvent [
- 
-	^true
-]
-
-{
-	#category : #eventHandeling,
-	#'squeak_changestamp' : 'si 5/20/2024 15:28'
-}
-WBLine >> handlesMouseOver: anEvent [
-
-	^true
+	super delete
 ]
 
 {
@@ -150,35 +120,13 @@ WBLine >> mouseDown: anEvent [
 
 {
 	#category : #eventHandeling,
-	#'squeak_changestamp' : 'si 6/14/2024 11:45'
-}
-WBLine >> mouseMove: anEvent [
-
-	self dragMove: anEvent
-]
-
-{
-	#category : #eventHandeling,
-	#'squeak_changestamp' : 'is 6/12/2024 17:44'
+	#'squeak_changestamp' : 'is 6/18/2024 00:10'
 }
 WBLine >> mouseUp: anEvent [
 
-	(self canvas elementToSpawn) ifNil:
-		[self 
-			dragOffset: self position - anEvent cursorPoint.].
-	(self canvas elementToSpawn) ifNotNil:
-		[self spawnEdgeOfLineAt: anEvent]
-]
-
-{
-	#category : #'drag&drop',
-	#'squeak_changestamp' : 'si 5/19/2024 19:12'
-}
-WBLine >> moveElement: anEvent [
-	|newPosition |
-	
- 	newPosition := self canvas clampElementToCanvas: self at: anEvent cursorPoint + self dragOffset.
-	self position: newPosition
+	(self canvas elementToSpawn) isNil
+		ifTrue: [self dragOffset: self position - anEvent cursorPoint]
+		ifFalse: [self spawnEdgeOfLineAt: anEvent]
 ]
 
 {
@@ -216,11 +164,11 @@ WBLine >> spawnEdgeOfLineAt: aMouseEvent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/19/2024 19:21'
+	#'squeak_changestamp' : 'is 6/18/2024 00:10'
 }
 WBLine >> state [
 
-	^state
+	^ state
 ]
 
 {
@@ -234,16 +182,13 @@ WBLine >> state: aState [
 
 {
 	#category : #arrow,
-	#'squeak_changestamp' : 'nicloeser 6/4/2024 09:28'
+	#'squeak_changestamp' : 'is 6/18/2024 00:11'
 }
 WBLine >> updateArrowHead [
 
-	((self edges at: 1) x > (self edges at: 2) x) ifFalse:[
-		self arrowHead rotationDegrees: (-1 * self angleForPoints).
-		] 
-	ifTrue:[
-		self arrowHead rotationDegrees: (180 + self angleForPoints).
-	].
+	((self edges at: 1) x > (self edges at: 2) x) 
+		ifFalse:[self arrowHead rotationDegrees: (-1 * self angleForPoints)] 
+		ifTrue:[self arrowHead rotationDegrees: (180 + self angleForPoints)].
 	self arrowHead center: (self edges at: 2) center.
 ]
 
