@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 13:50'
+	#'squeak_changestamp' : 'si 6/17/2024 15:56'
 }
 WBDeletePopUpTests >> testButtonFunctionalityForCancel [
 | button buttonForCancel mouseEvent|
@@ -54,7 +54,7 @@ WBDeletePopUpTests >> testButtonFunctionalityForConfirm [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 12:17'
+	#'squeak_changestamp' : 'si 6/17/2024 19:16'
 }
 WBDeletePopUpTests >> testButtonsOfPopUp [
 
