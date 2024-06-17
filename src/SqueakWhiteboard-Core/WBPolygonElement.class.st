@@ -23,27 +23,27 @@ WBPolygonElement class >> sizeOfPopUpForStandardElement [
 
 {
 	#category : #buttonFunctionalities,
-	#'squeak_changestamp' : 'si 6/14/2024 11:40'
+	#'squeak_changestamp' : 'si 6/17/2024 11:31'
 }
-WBPolygonElement >> buttonFunctionallityForColor [
+WBPolygonElement >> buttonFunctionalityForColor [
 
 	^ [:aButton |self color: aButton color]
 ]
 
 {
 	#category : #buttonFunctionalities,
-	#'squeak_changestamp' : 'si 6/14/2024 11:40'
+	#'squeak_changestamp' : 'si 6/17/2024 11:29'
 }
-WBPolygonElement >> buttonFunctionallityForColorPalette [
+WBPolygonElement >> buttonFunctionalityForColorPalette [
 
 	^ [:aButton | self popUp makePopUpAt: (aButton topCenter - 5) with: self makeColorButtons columns: 3]
 ]
 
 {
 	#category : #buttonFunctionalities,
-	#'squeak_changestamp' : 'si 6/14/2024 11:40'
+	#'squeak_changestamp' : 'si 6/17/2024 11:32'
 }
-WBPolygonElement >> buttonFunctionallityForCopy [
+WBPolygonElement >> buttonFunctionalityForCopy [
 
 	^ [:aButton | self canvas deactivateElement. 
 		self canvas spawnACopiedElement: self copy At: aButton currentEvent cursorPoint.]
@@ -51,28 +51,28 @@ WBPolygonElement >> buttonFunctionallityForCopy [
 
 {
 	#category : #buttonFunctionalities,
-	#'squeak_changestamp' : 'si 6/14/2024 11:40'
+	#'squeak_changestamp' : 'si 6/17/2024 11:32'
 }
-WBPolygonElement >> buttonFunctionallityForDelete [
+WBPolygonElement >> buttonFunctionalityForDelete [
 
 	^ [:aButton |self delete]
 ]
 
 {
 	#category : #createButtons,
-	#'squeak_changestamp' : 'si 6/14/2024 11:39'
+	#'squeak_changestamp' : 'si 6/17/2024 11:32'
 }
 WBPolygonElement >> buttonsForPopUpBar [
 
 	^OrderedCollection new
 		add: (WBButton new
-			block: self buttonFunctionallityForDelete;
+			block: self buttonFunctionalityForDelete;
 			backgroundColor: Color red);
 		add: (WBButton new
-			block: self buttonFunctionallityForCopy;
+			block: self buttonFunctionalityForCopy;
 			backgroundColor: Color lightBlue muchDarker);
 		add: (WBButton new
-			block: self buttonFunctionallityForColorPalette;
+			block: self buttonFunctionalityForColorPalette;
 			backgroundColor: Color black);
 		yourself.
 ]
@@ -194,7 +194,7 @@ WBPolygonElement >> handlesMouseDown: anEvent [
 
 {
 	#category : #createButtons,
-	#'squeak_changestamp' : 'si 6/14/2024 13:24'
+	#'squeak_changestamp' : 'si 6/17/2024 11:31'
 }
 WBPolygonElement >> makeColorButtonWithColor: aColor [ 
 	
@@ -202,7 +202,7 @@ WBPolygonElement >> makeColorButtonWithColor: aColor [
 		color: aColor;
 		backgroundColor: aColor;
 		clickedColor: aColor darker;
-		block: self buttonFunctionallityForColor;
+		block: self buttonFunctionalityForColor;
 		yourself)
 ]
 

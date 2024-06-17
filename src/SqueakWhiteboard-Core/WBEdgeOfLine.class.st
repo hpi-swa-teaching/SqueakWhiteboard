@@ -16,18 +16,18 @@ WBEdgeOfLine >> addResizeFrame [
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/14/2024 12:45'
+	#'squeak_changestamp' : 'si 6/17/2024 11:31'
 }
-WBEdgeOfLine >> buttonFunctionallityForColor [
+WBEdgeOfLine >> buttonFunctionalityForColor [
 
 	^ [:aButton |self line color: aButton color]
 ]
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/14/2024 11:50'
+	#'squeak_changestamp' : 'si 6/17/2024 11:32'
 }
-WBEdgeOfLine >> buttonFunctionallityForCopy [
+WBEdgeOfLine >> buttonFunctionalityForCopy [
 
 	^ [:aButton | self canvas deactivateElement. 
 		self canvas spawnACopiedElement: self line copy At: aButton currentEvent cursorPoint.]
@@ -35,9 +35,9 @@ WBEdgeOfLine >> buttonFunctionallityForCopy [
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/14/2024 11:48'
+	#'squeak_changestamp' : 'si 6/17/2024 11:32'
 }
-WBEdgeOfLine >> buttonFunctionallityForDelete [
+WBEdgeOfLine >> buttonFunctionalityForDelete [
 
 	^ [:aButton |self line delete]
 ]

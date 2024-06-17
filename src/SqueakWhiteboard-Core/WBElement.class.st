@@ -68,27 +68,27 @@ WBElement >> addResizeFrame [
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/13/2024 11:03'
+	#'squeak_changestamp' : 'si 6/17/2024 11:31'
 }
-WBElement >> buttonFunctionallityForColor [
+WBElement >> buttonFunctionalityForColor [
 
 	^ [:aButton |self color: aButton color]
 ]
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/14/2024 12:09'
+	#'squeak_changestamp' : 'si 6/17/2024 11:29'
 }
-WBElement >> buttonFunctionallityForColorPalette [
+WBElement >> buttonFunctionalityForColorPalette [
 
 	^ [:aButton | self popUp makePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: 3]
 ]
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/13/2024 11:03'
+	#'squeak_changestamp' : 'si 6/17/2024 11:32'
 }
-WBElement >> buttonFunctionallityForCopy [
+WBElement >> buttonFunctionalityForCopy [
 
 	^ [:aButton | self canvas deactivateElement. 
 		self canvas spawnACopiedElement: self copy At: aButton currentEvent cursorPoint.]
@@ -96,28 +96,28 @@ WBElement >> buttonFunctionallityForCopy [
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/13/2024 11:04'
+	#'squeak_changestamp' : 'si 6/17/2024 11:32'
 }
-WBElement >> buttonFunctionallityForDelete [
+WBElement >> buttonFunctionalityForDelete [
 
 	^ [:aButton |self delete]
 ]
 
 {
 	#category : #createButtons,
-	#'squeak_changestamp' : 'si 6/13/2024 11:13'
+	#'squeak_changestamp' : 'si 6/17/2024 11:32'
 }
 WBElement >> buttonsForPopUpBar [
 
 	^OrderedCollection new
 		add: (WBButton new
-			block: self buttonFunctionallityForDelete;
+			block: self buttonFunctionalityForDelete;
 			backgroundColor: Color red);
 		add: (WBButton new
-			block: self buttonFunctionallityForCopy;
+			block: self buttonFunctionalityForCopy;
 			backgroundColor: Color lightBlue muchDarker);
 		add: (WBButton new
-			block: self buttonFunctionallityForColorPalette;
+			block: self buttonFunctionalityForColorPalette;
 			backgroundColor: Color black);
 		yourself.
 	
@@ -338,7 +338,7 @@ WBElement >> lastMouseClick: evt [
 
 {
 	#category : #createButtons,
-	#'squeak_changestamp' : 'si 6/13/2024 11:09'
+	#'squeak_changestamp' : 'si 6/17/2024 11:31'
 }
 WBElement >> makeColorButtonWithColor: aColor [ 
 	
@@ -346,7 +346,7 @@ WBElement >> makeColorButtonWithColor: aColor [
 		color: aColor;
 		backgroundColor: aColor;
 		clickedColor: aColor darker;
-		block: self buttonFunctionallityForColor;
+		block: self buttonFunctionalityForColor;
 		yourself)
 ]
 

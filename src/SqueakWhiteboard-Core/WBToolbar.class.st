@@ -56,72 +56,90 @@ WBToolbar >> backgroundColor: aColor [
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/14/2024 12:36'
+	#'squeak_changestamp' : 'si 6/17/2024 11:29'
 }
-WBToolbar >> buttonFunctionallityForCircle [
+WBToolbar >> buttonFunctionalityForCircle [
 
 	^ [:aButton | self canvas spawnAnElement: (WBCircle newWithCanvas: self canvas) At: aButton currentEvent]
 ]
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/14/2024 12:06'
+	#'squeak_changestamp' : 'si 6/17/2024 11:29'
 }
-WBToolbar >> buttonFunctionallityForColorPalette [
+WBToolbar >> buttonFunctionalityForColorPalette [
 
 	^ [:aButton | self makePopUpAt: aButton rightCenter + (self class margin @ 0) with: self createColorButtons columns: 3]
 ]
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/13/2024 15:12'
+	#'squeak_changestamp' : 'si 6/17/2024 11:29'
 }
-WBToolbar >> buttonFunctionallityForDeleteAll [
+WBToolbar >> buttonFunctionalityForDeleteAll [
+
+	^ [:aButton | self makePopUpAt: aButton rightCenter + (self class margin @ 0) with: self createDeleteConfirmButtons columns: 1]
+]
+
+{
+	#category : #buttonFunctionallities,
+	#'squeak_changestamp' : 'si 6/17/2024 11:30'
+}
+WBToolbar >> buttonFunctionalityForDeleteCancel [
+
+	^ [:aButton | self deactivateElement]
+]
+
+{
+	#category : #buttonFunctionallities,
+	#'squeak_changestamp' : 'si 6/17/2024 11:30'
+}
+WBToolbar >> buttonFunctionalityForDeleteConfirm [
 
 	^ [:aButton | self canvas deleteAllElements]
 ]
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/13/2024 13:50'
+	#'squeak_changestamp' : 'si 6/17/2024 11:30'
 }
-WBToolbar >> buttonFunctionallityForGlobalColor [
+WBToolbar >> buttonFunctionalityForGlobalColor [
 
 	^ [:aButton | self canvas globalColor: aButton color]
 ]
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/14/2024 12:36'
+	#'squeak_changestamp' : 'si 6/17/2024 11:30'
 }
-WBToolbar >> buttonFunctionallityForLine [
+WBToolbar >> buttonFunctionalityForLine [
 
 	^ [:aButton | self canvas spawnAnElement: WBLine new At: aButton currentEvent]
 ]
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/14/2024 12:36'
+	#'squeak_changestamp' : 'si 6/17/2024 11:30'
 }
-WBToolbar >> buttonFunctionallityForNote [
+WBToolbar >> buttonFunctionalityForNote [
 
 	^ [:aButton | self canvas spawnAnElement: (WBNote newWithCanvas: self canvas) At: aButton currentEvent]
 ]
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/14/2024 12:36'
+	#'squeak_changestamp' : 'si 6/17/2024 11:30'
 }
-WBToolbar >> buttonFunctionallityForRectangle [
+WBToolbar >> buttonFunctionalityForRectangle [
 
 	^ [:aButton | self canvas spawnAnElement: (WBRectangle newWithCanvas: self canvas) At: aButton currentEvent]
 ]
 
 {
 	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/14/2024 12:05'
+	#'squeak_changestamp' : 'si 6/17/2024 11:31'
 }
-WBToolbar >> buttonFunctionallityForShapeChoosing [
+WBToolbar >> buttonFunctionalityForShapeChoosing [
 
 	^ [:aButton | self makePopUpAt: aButton rightCenter + (self class margin @ 0) with: self createShapeChoosingButtons columns: 1]
 ]
@@ -193,6 +211,18 @@ WBToolbar >> createColorButtons [
 
 {
 	#category : #createButtons,
+	#'squeak_changestamp' : 'si 6/17/2024 11:23'
+}
+WBToolbar >> createDeleteConfirmButtons [
+
+	^OrderedCollection new
+		add: self getDeleteConfirmButton;
+		add: self getDeleteCancelButton;
+		yourself.
+]
+
+{
+	#category : #createButtons,
 	#'squeak_changestamp' : 'si 6/13/2024 14:12'
 }
 WBToolbar >> createShapeChoosingButtons [
@@ -230,13 +260,13 @@ WBToolbar >> deactivateElement [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'si 6/13/2024 00:25'
+	#'squeak_changestamp' : 'si 6/17/2024 11:29'
 }
 WBToolbar >> getCircleButton [
 	| circleImage circleButton|
 	
 	circleButton := WBButton new 
-		block: self buttonFunctionallityForCircle.
+		block: self buttonFunctionalityForCircle.
 	circleImage := WBImage loadCircleButtonImage.
 	
 	circleImage notNil ifTrue: 
@@ -247,7 +277,7 @@ WBToolbar >> getCircleButton [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'si 6/13/2024 14:01'
+	#'squeak_changestamp' : 'si 6/17/2024 11:30'
 }
 WBToolbar >> getColorButtonWithColor: aColor [ 
 	
@@ -255,19 +285,19 @@ WBToolbar >> getColorButtonWithColor: aColor [
 		color: aColor;
 		backgroundColor: aColor;
 		clickedColor: aColor darker;
-		block: self buttonFunctionallityForGlobalColor;
+		block: self buttonFunctionalityForGlobalColor;
 		yourself)
 ]
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'si 6/13/2024 14:00'
+	#'squeak_changestamp' : 'si 6/17/2024 11:29'
 }
 WBToolbar >> getColorsButton [
 	| colorsImage colorsButton|
 	
 	colorsButton := WBButton new 
-		block: self buttonFunctionallityForColorPalette.
+		block: self buttonFunctionalityForColorPalette.
 	colorsImage := WBImage loadColorsButtonImage.
 	
 	colorsImage notNil ifTrue: 
@@ -277,13 +307,13 @@ WBToolbar >> getColorsButton [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'si 6/13/2024 16:14'
+	#'squeak_changestamp' : 'si 6/17/2024 11:29'
 }
 WBToolbar >> getDeleteAllButton [
 	| rectangleImage rectangleButton |
 	
 	rectangleButton := WBButton new 
-		block: self buttonFunctionallityForDeleteAll;
+		block: self buttonFunctionalityForDeleteAll;
 		backgroundColor: Color red muchLighter.
 	rectangleImage := WBImage loadDeleteAllButtonImage.
 	
@@ -294,13 +324,41 @@ WBToolbar >> getDeleteAllButton [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'si 6/13/2024 00:25'
+	#'squeak_changestamp' : 'si 6/17/2024 11:30'
+}
+WBToolbar >> getDeleteCancelButton [
+	
+	^ WBButton new 
+		block: self buttonFunctionalityForDeleteCancel;
+		backgroundColor: Color red muchLighter;
+		yourself.
+	
+			
+]
+
+{
+	#category : #getButton,
+	#'squeak_changestamp' : 'si 6/17/2024 11:30'
+}
+WBToolbar >> getDeleteConfirmButton [
+	
+	^ WBButton new 
+		block: self buttonFunctionalityForDeleteConfirm;
+		backgroundColor: Color green muchLighter;
+		yourself.
+	
+			
+]
+
+{
+	#category : #getButton,
+	#'squeak_changestamp' : 'si 6/17/2024 11:30'
 }
 WBToolbar >> getLineButton [
 	| lineImage lineButton|
 	
 	lineButton := WBButton new 
-		block: self buttonFunctionallityForLine.
+		block: self buttonFunctionalityForLine.
 	lineImage := WBImage loadLineButtonImage.
 	
 	lineImage notNil ifTrue: 
@@ -312,13 +370,13 @@ WBToolbar >> getLineButton [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'si 6/13/2024 15:56'
+	#'squeak_changestamp' : 'si 6/17/2024 11:30'
 }
 WBToolbar >> getNoteButton [
 	| noteImage noteButton|
 	
 	noteButton := WBButton new 
-		block: self buttonFunctionallityForNote.
+		block: self buttonFunctionalityForNote.
 	noteImage := WBImage loadNoteButtonImage.
 	
 	noteImage notNil ifTrue: 
@@ -328,13 +386,13 @@ WBToolbar >> getNoteButton [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'si 6/13/2024 00:25'
+	#'squeak_changestamp' : 'si 6/17/2024 11:30'
 }
 WBToolbar >> getRectangleButton [
 	| rectangleImage rectangleButton |
 	
 	rectangleButton := WBButton new 
-		block: self buttonFunctionallityForRectangle.
+		block: self buttonFunctionalityForRectangle.
 	rectangleImage := WBImage loadRectangleButtonImage.
 	
 	rectangleButton image: (ImageMorph new image: (self canvas images resize: rectangleImage to: self buttonSize*0.8)).
@@ -344,13 +402,13 @@ WBToolbar >> getRectangleButton [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'si 6/13/2024 15:56'
+	#'squeak_changestamp' : 'si 6/17/2024 11:31'
 }
 WBToolbar >> getShapeChoosingButton [
 	| shapeChoosingImage shapeChoosingButton |
 	
 	shapeChoosingButton := WBButton new 
-		block: self buttonFunctionallityForShapeChoosing.
+		block: self buttonFunctionalityForShapeChoosing.
 	shapeChoosingImage := WBImage loadShapeChoosingButtonImage.
 
 	shapeChoosingImage notNil ifTrue: 
