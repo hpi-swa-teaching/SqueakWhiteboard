@@ -252,11 +252,13 @@ WBToolbar >> createToolbarButtons [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'si 6/13/2024 15:42'
+	#'squeak_changestamp' : 'si 6/17/2024 13:43'
 }
 WBToolbar >> deactivateElement [
 
-	self popUp ifNotNil: [self popUp delete]
+	self popUp ifNotNil: 
+		[self popUp delete.
+		self popUp: nil]
 ]
 
 {

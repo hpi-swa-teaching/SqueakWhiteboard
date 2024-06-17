@@ -5,7 +5,7 @@ Class {
 }
 
 {
-	#category : #testsForStandardElement,
+	#category : #tests,
 	#'squeak_changestamp' : 'si 6/17/2024 12:07'
 }
 WBShapeChoosingPopUpTests >> testButtonFunctionallity [
@@ -24,7 +24,7 @@ WBShapeChoosingPopUpTests >> testButtonFunctionallity [
 ]
 
 {
-	#category : #testsForStandardElement,
+	#category : #tests,
 	#'squeak_changestamp' : 'si 6/17/2024 11:59'
 }
 WBShapeChoosingPopUpTests >> testButtonsOfPopUp [
@@ -38,7 +38,7 @@ WBShapeChoosingPopUpTests >> testButtonsOfPopUp [
 ]
 
 {
-	#category : #testsForStandardElement,
+	#category : #tests,
 	#'squeak_changestamp' : 'si 6/17/2024 11:58'
 }
 WBShapeChoosingPopUpTests >> testExistenceOfPopUp [
@@ -52,7 +52,7 @@ WBShapeChoosingPopUpTests >> testExistenceOfPopUp [
 ]
 
 {
-	#category : #testsForStandardElement,
+	#category : #tests,
 	#'squeak_changestamp' : 'si 6/17/2024 12:18'
 }
 WBShapeChoosingPopUpTests >> testPopUpPlacementInX [
@@ -66,7 +66,7 @@ WBShapeChoosingPopUpTests >> testPopUpPlacementInX [
 ]
 
 {
-	#category : #testsForStandardElement,
+	#category : #tests,
 	#'squeak_changestamp' : 'si 6/17/2024 12:01'
 }
 WBShapeChoosingPopUpTests >> testPopUpPlacementInY [
