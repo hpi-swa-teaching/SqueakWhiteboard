@@ -261,18 +261,14 @@ WBToolbar >> deactivateElement [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'si 6/17/2024 11:29'
+	#'squeak_changestamp' : 'is 6/17/2024 13:43'
 }
 WBToolbar >> getCircleButton [
-	| circleImage circleButton|
-	
-	circleButton := WBButton new 
-		block: self buttonFunctionalityForCircle.
-	circleImage := WBImage loadCircleButtonImage.
-	
-	circleImage notNil ifTrue: 
-		[circleButton image: (ImageMorph new image: (self canvas images resize: circleImage to: self buttonSize*0.8))].
-	^ circleButton
+
+	^ WBButton new 
+		block: self buttonFunctionalityForCircle;
+		 image: (ImageMorph new image: (self canvas images resize: WBImage loadCircleButtonImage to: self buttonSize*0.8));
+		yourself
 			
 ]
 
@@ -292,34 +288,27 @@ WBToolbar >> getColorButtonWithColor: aColor [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'si 6/17/2024 11:29'
+	#'squeak_changestamp' : 'is 6/17/2024 13:43'
 }
 WBToolbar >> getColorsButton [
-	| colorsImage colorsButton|
-	
-	colorsButton := WBButton new 
-		block: self buttonFunctionalityForColorPalette.
-	colorsImage := WBImage loadColorsButtonImage.
-	
-	colorsImage notNil ifTrue: 
-		[colorsButton image: (ImageMorph new image: (self canvas images resize: colorsImage to: self buttonSize*0.8))].
-	^ colorsButton
+
+	^ WBButton new 
+		block: self buttonFunctionalityForColorPalette;
+		 image: (ImageMorph new image: (self canvas images resize: WBImage loadColorsButtonImage to: self buttonSize*0.8));
+		yourself
+			
 ]
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'si 6/17/2024 11:29'
+	#'squeak_changestamp' : 'is 6/17/2024 13:44'
 }
 WBToolbar >> getDeleteAllButton [
-	| rectangleImage rectangleButton |
-	
-	rectangleButton := WBButton new 
+
+	^ WBButton new 
 		block: self buttonFunctionalityForDeleteAll;
-		backgroundColor: Color red muchLighter.
-	rectangleImage := WBImage loadDeleteAllButtonImage.
-	
-	rectangleButton image: (ImageMorph new image: (self canvas images resize: rectangleImage to: self buttonSize*0.8)).
-	^ rectangleButton
+		 image: (ImageMorph new image: (self canvas images resize: WBImage loadDeleteAllButtonImage to: self buttonSize*0.8));
+		yourself
 			
 ]
 
@@ -353,68 +342,53 @@ WBToolbar >> getDeleteConfirmButton [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'si 6/17/2024 11:30'
+	#'squeak_changestamp' : 'is 6/17/2024 13:45'
 }
 WBToolbar >> getLineButton [
-	| lineImage lineButton|
-	
-	lineButton := WBButton new 
-		block: self buttonFunctionalityForLine.
-	lineImage := WBImage loadLineButtonImage.
-	
-	lineImage notNil ifTrue: 
-		[lineButton image: (ImageMorph new image: (self canvas images resize: lineImage to: self buttonSize*0.8))].
-	^ lineButton
+
+	^ WBButton new 
+	block: self buttonFunctionalityForLine;
+	 image: (ImageMorph new image: (self canvas images resize: WBImage loadLineButtonImage to: self buttonSize*0.8));
+	yourself
 	
 			
 ]
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'si 6/17/2024 11:30'
+	#'squeak_changestamp' : 'is 6/17/2024 13:45'
 }
 WBToolbar >> getNoteButton [
-	| noteImage noteButton|
-	
-	noteButton := WBButton new 
-		block: self buttonFunctionalityForNote.
-	noteImage := WBImage loadNoteButtonImage.
-	
-	noteImage notNil ifTrue: 
-		[noteButton image: (ImageMorph new image: (self canvas images resize: noteImage to: self buttonSize*0.8))].
-	^ noteButton
+
+	^ WBButton new 
+		block: self buttonFunctionalityForNote;
+		image: (ImageMorph new image: (self canvas images resize: WBImage loadNoteButtonImage to: self buttonSize*0.8));
+		yourself
 ]
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'si 6/17/2024 11:30'
+	#'squeak_changestamp' : 'is 6/17/2024 13:42'
 }
 WBToolbar >> getRectangleButton [
-	| rectangleImage rectangleButton |
 	
-	rectangleButton := WBButton new 
-		block: self buttonFunctionalityForRectangle.
-	rectangleImage := WBImage loadRectangleButtonImage.
-	
-	rectangleButton image: (ImageMorph new image: (self canvas images resize: rectangleImage to: self buttonSize*0.8)).
-	^ rectangleButton
+	^ WBButton new 
+		block: self buttonFunctionalityForRectangle;
+		 image: (ImageMorph new image: (self canvas images resize: WBImage loadRectangleButtonImage to: self buttonSize*0.8));
+		yourself
 			
 ]
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'si 6/17/2024 11:31'
+	#'squeak_changestamp' : 'is 6/17/2024 13:46'
 }
 WBToolbar >> getShapeChoosingButton [
-	| shapeChoosingImage shapeChoosingButton |
-	
-	shapeChoosingButton := WBButton new 
-		block: self buttonFunctionalityForShapeChoosing.
-	shapeChoosingImage := WBImage loadShapeChoosingButtonImage.
 
-	shapeChoosingImage notNil ifTrue: 
-		[shapeChoosingButton image: (ImageMorph new image: (self canvas images resize: shapeChoosingImage to: self buttonSize*0.8))].
-	^ shapeChoosingButton
+	^ WBButton new 
+		block: self buttonFunctionalityForShapeChoosing;
+		image: (ImageMorph new image: (self canvas images resize: WBImage loadShapeChoosingButtonImage to: self buttonSize*0.8));
+		yourself
 			
 ]
 
