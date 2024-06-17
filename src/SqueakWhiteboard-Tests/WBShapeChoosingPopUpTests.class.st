@@ -1,55 +1,14 @@
 Class {
-	#name : #WBShapeChoosingPopUp,
-	#superclass : #TestCase,
-	#instVars : [
-		'canvas'
-	],
+	#name : #WBShapeChoosingPopUpTests,
+	#superclass : #WBToolbarButtonTests,
 	#category : #'SqueakWhiteboard-Tests'
 }
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/7/2024 00:29'
-}
-WBShapeChoosingPopUp >> canvas [
-	^ canvas
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/7/2024 00:30'
-}
-WBShapeChoosingPopUp >> canvas: anObject [
-
-	canvas := anObject
-]
-
-{
-	#category : #setUp,
-	#'squeak_changestamp' : 'is 6/15/2024 12:59'
-}
-WBShapeChoosingPopUp >> setUp [
-
-	super setUp.
-	self canvas: WBCanvas new
-
-]
-
-{
-	#category : #tearDown,
-	#'squeak_changestamp' : 'si 6/7/2024 00:29'
-}
-WBShapeChoosingPopUp >> tearDown [
-
-	super tearDown.
-	self canvas ifNotNil: [:canvas | canvas owner delete]
-]
 
 {
 	#category : #testsForStandardElement,
 	#'squeak_changestamp' : 'si 6/17/2024 12:07'
 }
-WBShapeChoosingPopUp >> testButtonFunctionallity [
+WBShapeChoosingPopUpTests >> testButtonFunctionallity [
 | button buttonForShape|
 
 	button := self canvas toolbar buttons at: 1.
@@ -68,7 +27,7 @@ WBShapeChoosingPopUp >> testButtonFunctionallity [
 	#category : #testsForStandardElement,
 	#'squeak_changestamp' : 'si 6/17/2024 11:59'
 }
-WBShapeChoosingPopUp >> testButtonsOfPopUp [
+WBShapeChoosingPopUpTests >> testButtonsOfPopUp [
 
 	| button|
 
@@ -82,7 +41,7 @@ WBShapeChoosingPopUp >> testButtonsOfPopUp [
 	#category : #testsForStandardElement,
 	#'squeak_changestamp' : 'si 6/17/2024 11:58'
 }
-WBShapeChoosingPopUp >> testExistenceOfPopUp [
+WBShapeChoosingPopUpTests >> testExistenceOfPopUp [
 
 	| button|
 
@@ -94,23 +53,23 @@ WBShapeChoosingPopUp >> testExistenceOfPopUp [
 
 {
 	#category : #testsForStandardElement,
-	#'squeak_changestamp' : 'si 6/17/2024 12:02'
+	#'squeak_changestamp' : 'si 6/17/2024 12:18'
 }
-WBShapeChoosingPopUp >> testPopUpPlacementInX [
+WBShapeChoosingPopUpTests >> testPopUpPlacementInX [
 | button|
 
 	button := self canvas toolbar buttons at: 1.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	
 	self assert: button right <= self canvas toolbar popUp left.	
-	self assert: self canvas toolbar popUp left <= (button right + 200).	
+	self assert: self canvas toolbar popUp left <= (button right + 200)
 ]
 
 {
 	#category : #testsForStandardElement,
 	#'squeak_changestamp' : 'si 6/17/2024 12:01'
 }
-WBShapeChoosingPopUp >> testPopUpPlacementInY [
+WBShapeChoosingPopUpTests >> testPopUpPlacementInY [
 | button|
 
 	button := self canvas toolbar buttons at: 1.
