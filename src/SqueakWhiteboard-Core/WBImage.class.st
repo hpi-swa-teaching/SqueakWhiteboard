@@ -6,106 +6,74 @@ Class {
 
 {
 	#category : #loadImages,
-	#'squeak_changestamp' : 'si 6/14/2024 13:22'
+	#'squeak_changestamp' : 'is 6/17/2024 12:27'
 }
 WBImage class >> loadCircleButtonImage [
-	| form |
-
-	[form := (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/circle.png'] on: Error do: 
-		[:ex | Transcript show: 'Caught an exception: ', ex printString; cr.
-		^ (FormCanvas extent: 100 @ 100 depth: 32)].
-	^ form
+	
+	^ (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/circle.png'
 ]
 
 {
 	#category : #loadImages,
-	#'squeak_changestamp' : 'si 6/14/2024 13:22'
+	#'squeak_changestamp' : 'is 6/17/2024 12:27'
 }
 WBImage class >> loadColorsButtonImage [
-	| form |
-
-	[form := (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/colorsToolbar.png'] on: Error do:
-		[:ex | Transcript show: 'Caught an exception: ', ex printString; cr.
-		^ (FormCanvas extent: 100 @ 100 depth: 32)].
-	^ form
+	
+	^ (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/colorsToolbar.png'
 ]
 
 {
 	#category : #loadImages,
-	#'squeak_changestamp' : 'si 6/13/2024 15:55'
+	#'squeak_changestamp' : 'is 6/17/2024 12:27'
 }
 WBImage class >> loadDeleteAllButtonImage [
-	| form |
-
-	[form := (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/delete_big.png'] on: Error do: 
-		[:ex | Transcript show: 'Caught an exception: ', ex printString; cr.
-		^ FormCanvas extent: (100 @ 100) depth: 32].
-	^ form
+	
+	^ (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/delete_big.png'
 ]
 
 {
 	#category : #loadImages,
-	#'squeak_changestamp' : 'si 6/14/2024 13:22'
+	#'squeak_changestamp' : 'is 6/17/2024 12:26'
 }
 WBImage class >> loadLineButtonImage [
-	| form |
-
-	[form := (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/line.png'] on: Error do: 
-		[:ex | Transcript show: 'Caught an exception: ', ex printString; cr.
-		^ (FormCanvas extent: 100 @ 100 depth: 32)].
-	^ form
+	
+	^ (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/line.png'
 ]
 
 {
 	#category : #loadImages,
-	#'squeak_changestamp' : 'si 6/13/2024 15:54'
+	#'squeak_changestamp' : 'is 6/17/2024 12:26'
 }
 WBImage class >> loadNoteButtonImage [
-	| form |
-
-	[form := (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/note.png'] on: Error do: 
-		[:ex | Transcript show: 'Caught an exception: ', ex printString; cr.
-		^ FormCanvas extent: (100 @ 100) depth: 32].
-	^ form
+	
+	^ (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/note.png'
 ]
 
 {
 	#category : #loadImages,
-	#'squeak_changestamp' : 'si 6/14/2024 13:22'
+	#'squeak_changestamp' : 'is 6/17/2024 12:26'
 }
 WBImage class >> loadRectangleButtonImage [
-	| form |
-
-	[form := (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/square2.png'] on: Error do: 
-		[:ex | Transcript show: 'Caught an exception: ', ex printString; cr.
-		^ (FormCanvas extent: 100 @ 100 depth: 32)].
-	^ form
+	
+	^ (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/square2.png'
 ]
 
 {
 	#category : #loadImages,
-	#'squeak_changestamp' : 'si 6/13/2024 15:54'
+	#'squeak_changestamp' : 'is 6/17/2024 12:26'
 }
 WBImage class >> loadShapeChoosingButtonImage [
-	| form |
-
-	[form := (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/shapechoosing.png'] on: Error do: 
-		[:ex | Transcript show: 'Caught an exception: ', ex printString; cr.
-		^ FormCanvas extent: (100 @ 100) depth: 32].
-	^ form
+	
+	^ (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/shapechoosing.png'
 ]
 
 {
 	#category : #loadImages,
-	#'squeak_changestamp' : 'si 6/14/2024 13:22'
+	#'squeak_changestamp' : 'is 6/17/2024 12:26'
 }
 WBImage class >> loadTextboxButtonImage [
-	| form |
-
-	[form := (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/textbox.png'] on: Error do: 
-		[:ex | Transcript show: 'Caught an exception: ', ex printString; cr.
-		^ (FormCanvas extent: 100 @ 100 depth: 32)].
-	^ form
+	
+	^ (GitAssetLoader for: 'SqueakWhiteboard') loadForm: '/textbox.png'
 ]
 
 {

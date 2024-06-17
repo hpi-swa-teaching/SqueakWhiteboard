@@ -27,6 +27,43 @@ WBPolygonElement class >> sizeOfPopUpForStandardElement [
 ]
 
 {
+	#category : #buttonFunctionalities,
+	#'squeak_changestamp' : 'si 6/17/2024 11:31'
+}
+WBPolygonElement >> buttonFunctionalityForColor [
+
+	^ [:aButton |self color: aButton color]
+]
+
+{
+	#category : #buttonFunctionalities,
+	#'squeak_changestamp' : 'si 6/17/2024 11:29'
+}
+WBPolygonElement >> buttonFunctionalityForColorPalette [
+
+	^ [:aButton | self popUp makePopUpAt: (aButton topCenter - 5) with: self makeColorButtons columns: 3]
+]
+
+{
+	#category : #buttonFunctionalities,
+	#'squeak_changestamp' : 'si 6/17/2024 11:32'
+}
+WBPolygonElement >> buttonFunctionalityForCopy [
+
+	^ [:aButton | self canvas deactivateElement. 
+		self canvas spawnACopiedElement: self copy At: aButton currentEvent cursorPoint.]
+]
+
+{
+	#category : #buttonFunctionalities,
+	#'squeak_changestamp' : 'si 6/17/2024 11:32'
+}
+WBPolygonElement >> buttonFunctionalityForDelete [
+
+	^ [:aButton |self delete]
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'si 6/14/2024 13:24'
 }

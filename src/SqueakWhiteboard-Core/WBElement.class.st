@@ -55,6 +55,43 @@ WBElement >> addResizeFrame [
 ]
 
 {
+	#category : #buttonFunctionallities,
+	#'squeak_changestamp' : 'si 6/17/2024 11:31'
+}
+WBElement >> buttonFunctionalityForColor [
+
+	^ [:aButton |self color: aButton color]
+]
+
+{
+	#category : #buttonFunctionallities,
+	#'squeak_changestamp' : 'si 6/17/2024 11:29'
+}
+WBElement >> buttonFunctionalityForColorPalette [
+
+	^ [:aButton | self popUp makePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: 3]
+]
+
+{
+	#category : #buttonFunctionallities,
+	#'squeak_changestamp' : 'si 6/17/2024 11:32'
+}
+WBElement >> buttonFunctionalityForCopy [
+
+	^ [:aButton | self canvas deactivateElement. 
+		self canvas spawnACopiedElement: self copy At: aButton currentEvent cursorPoint.]
+]
+
+{
+	#category : #buttonFunctionallities,
+	#'squeak_changestamp' : 'si 6/17/2024 11:32'
+}
+WBElement >> buttonFunctionalityForDelete [
+
+	^ [:aButton |self delete]
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'is 5/18/2024 16:04'
 }
@@ -84,11 +121,10 @@ WBElement >> deactivateElement [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/11/2024 22:10'
+	#'squeak_changestamp' : 'is 6/17/2024 01:00'
 }
 WBElement >> deactivateTextbox [
 
-	self currentHand releaseKeyboardFocus.
 	self textField enabled: false
 ]
 
@@ -230,7 +266,7 @@ WBElement >> handlesMouseDown: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/14/2024 18:06'
+	#'squeak_changestamp' : 'is 6/17/2024 21:32'
 }
 WBElement >> initialize [
 	
@@ -272,7 +308,7 @@ WBElement >> lastMouseClick: evt [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/14/2024 17:34'
+	#'squeak_changestamp' : 'is 6/17/2024 21:32'
 }
 WBElement >> mouseDown: mouseEvent [
 

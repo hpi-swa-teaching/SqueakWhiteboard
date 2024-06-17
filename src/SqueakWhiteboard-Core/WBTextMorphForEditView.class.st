@@ -28,7 +28,7 @@ WBTextMorphForEditView >> handlesMouseDown: evt [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/12/2024 11:06'
+	#'squeak_changestamp' : 'is 6/17/2024 01:28'
 }
 WBTextMorphForEditView >> keyStroke: evt [
 	"When esc is pressed, the focus from the textfield should be removed"
