@@ -15,7 +15,7 @@ WBEdgeOfLine >> addResizeFrame [
 ]
 
 {
-	#category : #buttonFunctionallities,
+	#category : #'button functionalities',
 	#'squeak_changestamp' : 'si 6/17/2024 11:31'
 }
 WBEdgeOfLine >> buttonFunctionalityForColor [
@@ -24,7 +24,7 @@ WBEdgeOfLine >> buttonFunctionalityForColor [
 ]
 
 {
-	#category : #buttonFunctionallities,
+	#category : #'button functionalities',
 	#'squeak_changestamp' : 'si 6/17/2024 11:32'
 }
 WBEdgeOfLine >> buttonFunctionalityForCopy [
@@ -34,7 +34,7 @@ WBEdgeOfLine >> buttonFunctionalityForCopy [
 ]
 
 {
-	#category : #buttonFunctionallities,
+	#category : #'button functionalities',
 	#'squeak_changestamp' : 'si 6/17/2024 11:32'
 }
 WBEdgeOfLine >> buttonFunctionalityForDelete [
@@ -77,7 +77,7 @@ WBEdgeOfLine >> line: aWBLine [
 ]
 
 {
-	#category : #mouseEvents,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'si 6/14/2024 11:46'
 }
 WBEdgeOfLine >> mouseMove: anEvent [
@@ -87,7 +87,7 @@ WBEdgeOfLine >> mouseMove: anEvent [
 ]
 
 {
-	#category : #mouseEvents,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'si 5/20/2024 13:38'
 }
 WBEdgeOfLine >> mouseUp: anEvent [

@@ -26,6 +26,15 @@ WBPolygonElement >> edges: aList [
 ]
 
 {
+	#category : #initialization,
+	#'squeak_changestamp' : 'is 6/18/2024 00:45'
+}
+WBPolygonElement >> initializeElement [
+
+	^ PolygonMorph initialize
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'is 6/12/2024 21:00'
 }

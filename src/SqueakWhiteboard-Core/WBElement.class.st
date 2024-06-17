@@ -56,11 +56,11 @@ WBElement >> activateTextbox: evt [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'si 6/3/2024 14:29'
+	#'squeak_changestamp' : 'is 6/18/2024 00:52'
 }
 WBElement >> addResizeFrame [
 
-	self resizeFrame: (WBResizeFrame newWithParent: self).
+	self resizeFrame: (WBResizeFrame newWithParent: self element).
 	
 	
 
@@ -68,16 +68,16 @@ WBElement >> addResizeFrame [
 ]
 
 {
-	#category : #buttonFunctionalities,
-	#'squeak_changestamp' : 'si 6/17/2024 11:31'
+	#category : #'button functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 00:50'
 }
 WBElement >> buttonFunctionalityForColor [
 
-	^ [:aButton |self color: aButton color]
+	^ [:aButton |self element color: aButton color]
 ]
 
 {
-	#category : #buttonFunctionalities,
+	#category : #'button functionalities',
 	#'squeak_changestamp' : 'si 6/17/2024 11:29'
 }
 WBElement >> buttonFunctionalityForColorPalette [
@@ -86,8 +86,8 @@ WBElement >> buttonFunctionalityForColorPalette [
 ]
 
 {
-	#category : #buttonFunctionalities,
-	#'squeak_changestamp' : 'si 6/17/2024 11:32'
+	#category : #'button functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 00:53'
 }
 WBElement >> buttonFunctionalityForCopy [
 
@@ -96,7 +96,7 @@ WBElement >> buttonFunctionalityForCopy [
 ]
 
 {
-	#category : #buttonFunctionalities,
+	#category : #'button functionalities',
 	#'squeak_changestamp' : 'si 6/17/2024 11:32'
 }
 WBElement >> buttonFunctionalityForDelete [
@@ -105,7 +105,7 @@ WBElement >> buttonFunctionalityForDelete [
 ]
 
 {
-	#category : #createButtons,
+	#category : #'button creation',
 	#'squeak_changestamp' : 'is 6/18/2024 00:14'
 }
 WBElement >> buttonsForPopUpBar [
@@ -250,14 +250,14 @@ WBElement >> dragOffset: aPoint [
 
 {
 	#category : #drag,
-	#'squeak_changestamp' : 'is 6/1/2024 19:32'
+	#'squeak_changestamp' : 'is 6/18/2024 00:57'
 }
 WBElement >> dragStart: anEvent [
 
-	self
+	(self element)
 		addDropShadow;
-		comeToFront;
-		dragOffset: self position - anEvent cursorPoint.
+		comeToFront.
+	self dragOffset: self position - anEvent cursorPoint.
 ]
 
 {
@@ -280,11 +280,11 @@ WBElement >> element: anElement [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/17/2024 23:30'
+	#'squeak_changestamp' : 'is 6/18/2024 00:57'
 }
 WBElement >> extent: anExtent [
 	
-	super extent: anExtent.
+	self element extent: anExtent.
 	textField ifNotNil: [textField extent: anExtent - self textBorderOffset].
 	self setPopupPosition
 	
@@ -313,26 +313,36 @@ WBElement >> handlesMouseOver: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/18/2024 00:01'
+	#'squeak_changestamp' : 'is 6/18/2024 00:59'
 }
 WBElement >> initialize [
 
 	super initialize.
-	self extent: self defaultSize.
+	self element: self initializeElement.
+	self element extent: self defaultSize.
 	supportsText ifTrue: [self initializeTextfield]
 	
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/18/2024 00:01'
+	#'squeak_changestamp' : 'is 6/18/2024 00:42'
+}
+WBElement >> initializeElement [
+
+	^ self subclassResponsibility
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'is 6/18/2024 01:00'
 }
 WBElement >> initializeTextfield [
 	| textfield |
 	
 	textfield := WBPluggableTextMorphPlus new.
 	textfield extent: self defaultSize - (self textBorderOffset @ self textBorderOffset).
-	self addMorphCentered: textfield.
+	self element addMorphCentered: textfield.
 	textfield textMorph centered. 
 	self textField: textfield
 ]
@@ -366,7 +376,7 @@ WBElement >> lastMouseClick: evt [
 ]
 
 {
-	#category : #createButtons,
+	#category : #'button creation',
 	#'squeak_changestamp' : 'is 6/18/2024 00:17'
 }
 WBElement >> makeColorButtonWithColor: aColor [ 
@@ -380,7 +390,7 @@ WBElement >> makeColorButtonWithColor: aColor [
 ]
 
 {
-	#category : #createButtons,
+	#category : #'button creation',
 	#'squeak_changestamp' : 'is 6/18/2024 00:18'
 }
 WBElement >> makeColorButtons [
@@ -466,12 +476,12 @@ WBElement >> popUp [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/18/2024 00:23'
+	#'squeak_changestamp' : 'is 6/18/2024 01:02'
 }
 WBElement >> popUp: aPopUp [
 
 	popUp := aPopUp.
-	popUp ifNotNil: [self addMorphBack: popUp]
+	popUp ifNotNil: [self element addMorphBack: popUp]
 ]
 
 {

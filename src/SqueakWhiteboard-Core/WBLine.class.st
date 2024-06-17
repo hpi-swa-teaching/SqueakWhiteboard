@@ -106,7 +106,7 @@ WBLine >> initialize [
 ]
 
 {
-	#category : #eventHandeling,
+	#category : #'event handeling',
 	#'squeak_changestamp' : 'si 5/27/2024 21:38'
 }
 WBLine >> mouseDown: anEvent [
@@ -119,7 +119,7 @@ WBLine >> mouseDown: anEvent [
 ]
 
 {
-	#category : #eventHandeling,
+	#category : #'event handeling',
 	#'squeak_changestamp' : 'is 6/18/2024 00:10'
 }
 WBLine >> mouseUp: anEvent [
