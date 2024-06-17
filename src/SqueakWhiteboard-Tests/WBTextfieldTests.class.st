@@ -155,7 +155,7 @@ WBTextfieldTests >> testTextfieldDeactivationViaEscape [
 
 {
 	#category : #Testing,
-	#'squeak_changestamp' : 'is 6/17/2024 01:39'
+	#'squeak_changestamp' : 'is 6/17/2024 23:37'
 }
 WBTextfieldTests >> testTextfieldResize [
 	| anElement elementBounds textfieldBounds |
@@ -165,29 +165,29 @@ WBTextfieldTests >> testTextfieldResize [
 	textfieldBounds := anElement textField bounds.
 	elementBounds := anElement bounds.
 	
-	self assert: elementBounds origin = ((textfieldBounds origin x - anElement textBorderOffset) @ (textfieldBounds origin y - anElement textBorderOffset)).
-	self assert: elementBounds corner = ((textfieldBounds corner x + anElement textBorderOffset) @ (textfieldBounds corner y + anElement textBorderOffset)).
+	self assert: elementBounds origin = ((textfieldBounds origin x - (anElement textBorderOffset/2)) @ (textfieldBounds origin y - (anElement textBorderOffset/2))).
+	self assert: elementBounds corner = ((textfieldBounds corner x + (anElement textBorderOffset/2)) @ (textfieldBounds corner y + (anElement textBorderOffset/2))).
 	
 	anElement extent: anElement extent * 0.25.
 	textfieldBounds := anElement textField bounds.
 	elementBounds := anElement bounds.
 	
-	self assert: elementBounds origin = ((textfieldBounds origin x - anElement textBorderOffset) @ (textfieldBounds origin y - anElement textBorderOffset)).
-	self assert: elementBounds corner = ((textfieldBounds corner x + anElement textBorderOffset) @ (textfieldBounds corner y + anElement textBorderOffset)).
+	self assert: elementBounds origin = ((textfieldBounds origin x - (anElement textBorderOffset/2)) @ (textfieldBounds origin y - (anElement textBorderOffset/2))).
+	self assert: elementBounds corner = ((textfieldBounds corner x + (anElement textBorderOffset/2)) @ (textfieldBounds corner y + (anElement textBorderOffset/2))).
 	
 	anElement extent: anElement extent * (-2).
 	textfieldBounds := anElement textField bounds.
 	elementBounds := anElement bounds.
 	
-	self assert: elementBounds origin = ((textfieldBounds origin x - anElement textBorderOffset) @ (textfieldBounds origin y - anElement textBorderOffset)).
-	self assert: elementBounds corner = ((textfieldBounds corner x + anElement textBorderOffset) @ (textfieldBounds corner y + anElement textBorderOffset))
+	self assert: elementBounds origin = ((textfieldBounds origin x - (anElement textBorderOffset/2)) @ (textfieldBounds origin y - (anElement textBorderOffset/2))).
+	self assert: elementBounds corner = ((textfieldBounds corner x + (anElement textBorderOffset/2)) @ (textfieldBounds corner y + (anElement textBorderOffset/2)))
 	
 	
 ]
 
 {
 	#category : #Testing,
-	#'squeak_changestamp' : 'is 6/17/2024 01:36'
+	#'squeak_changestamp' : 'is 6/17/2024 23:37'
 }
 WBTextfieldTests >> testTextfieldSize [
 	| anElement textfieldBounds elementBounds |
@@ -196,8 +196,8 @@ WBTextfieldTests >> testTextfieldSize [
 	textfieldBounds := anElement textField bounds.
 	elementBounds := anElement  bounds.
 	
-	self assert: elementBounds origin = ((textfieldBounds origin x - anElement textBorderOffset) @ (textfieldBounds origin y - anElement textBorderOffset)).
-	self assert: elementBounds corner = ((textfieldBounds corner x + anElement textBorderOffset) @ (textfieldBounds corner y + anElement textBorderOffset))
+	self assert: elementBounds origin = ((textfieldBounds origin x - (anElement textBorderOffset/2)) @ (textfieldBounds origin y - (anElement textBorderOffset/2))).
+	self assert: elementBounds corner = ((textfieldBounds corner x + (anElement textBorderOffset/2)) @ (textfieldBounds corner y + (anElement textBorderOffset/2)))
 	
 	
 	

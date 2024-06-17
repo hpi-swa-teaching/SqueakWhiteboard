@@ -261,12 +261,12 @@ WBElement >> dragStart: anEvent [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/12/2024 19:23'
+	#'squeak_changestamp' : 'is 6/17/2024 23:30'
 }
 WBElement >> extent: anExtent [
 	
 	super extent: anExtent.
-	textField ifNotNil: [textField extent: anExtent - (self textBorderOffset * 2)].
+	textField ifNotNil: [textField extent: anExtent - self textBorderOffset].
 	self setPopupPosition
 	
 	
@@ -293,7 +293,7 @@ WBElement >> handlesMouseDown: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/17/2024 01:51'
+	#'squeak_changestamp' : 'is 6/17/2024 23:30'
 }
 WBElement >> initialize [
 	| textField |
@@ -301,7 +301,7 @@ WBElement >> initialize [
 	super initialize.
 	self extent: self defaultSize.
 	textField := WBPluggableTextMorphPlus new.
-	textField extent: self defaultSize - ((self textBorderOffset * 2) @ (self textBorderOffset * 2)).
+	textField extent: self defaultSize - (self textBorderOffset @ self textBorderOffset).
 	self addMorphCentered: textField.
 	textField textMorph centered. 
 	self textField: textField
