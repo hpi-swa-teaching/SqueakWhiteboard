@@ -72,14 +72,13 @@ WBResizeFrame >> element: anObject [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/17/2024 23:28'
+	#'squeak_changestamp' : 'is 6/18/2024 10:53'
 }
 WBResizeFrame >> extent: aSize [
 
 	self element extent: aSize.
 	super extent: element extent.
-	self positionHandles.
-	self element removeProperty: #dropShadow
+	self positionHandles
 ]
 
 {
