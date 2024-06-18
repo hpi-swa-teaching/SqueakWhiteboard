@@ -221,13 +221,13 @@ WBElement >> dragEnd: anEvent [
 
 {
 	#category : #drag,
-	#'squeak_changestamp' : 'is 6/1/2024 19:34'
+	#'squeak_changestamp' : 'is 6/18/2024 09:26'
 }
 WBElement >> dragMove: mouseEvent [
 	|newPosition |
 
- 	newPosition := self canvas clampElementToCanvas: self at: mouseEvent cursorPoint + self dragOffset.
-	self position: newPosition
+ 	newPosition := self canvas clampElementToCanvas: self element at: mouseEvent cursorPoint + self dragOffset.
+	self element position: newPosition
 ]
 
 {
