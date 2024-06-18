@@ -95,14 +95,13 @@ WBLine >> delete [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 5/19/2024 20:06'
+	#'squeak_changestamp' : 'is 6/18/2024 15:52'
 }
 WBLine >> initialize [
 
 	super initialize.
-	self 
-		setVertices: { 1@1 . 1@1 };
-		state: 0.
+	self element setVertices: { 1@1 . 1@1 }.
+	self state: 0.
 ]
 
 {
@@ -131,35 +130,36 @@ WBLine >> mouseUp: anEvent [
 
 {
 	#category : #buildLine,
-	#'squeak_changestamp' : 'is 6/12/2024 17:45'
+	#'squeak_changestamp' : 'is 6/18/2024 15:54'
 }
 WBLine >> spawnEdgeOfLineAt: aMouseEvent [
 
-	(self state = 0) ifTrue:
-		[self edges add: (WBEdgeOfLine new
-		center: aMouseEvent cursorPoint;
-		canvas: self canvas;
-		line: self;
-		yourself).
-		self state: 1]
-	ifFalse:
-		[self edges add: (WBEdgeOfLine new
-		center: aMouseEvent cursorPoint;
-		canvas: self canvas;
-		line: self;
-		yourself).
-		self 
-			borderWidth: 2;
-			color: Color black;
-			updateArrowHead.
-		self canvas 
-			addMorph: (self edges at: 1);
-			addMorph: (self edges at: 2);
-			addElement: (self edges at: 1);
-			addElement: (self edges at: 2);
-			dropElement: aMouseEvent.
-		self updateEdges.
-		self state: 2.].
+	(self state = 0) 
+		ifTrue:
+			[self edges add: (WBEdgeOfLine new
+			center: aMouseEvent cursorPoint;
+			canvas: self canvas;
+			line: self element;
+			yourself).
+			self state: 1]
+		ifFalse:
+			[self edges add: (WBEdgeOfLine new
+			center: aMouseEvent cursorPoint;
+			canvas: self canvas;
+			line: self element;
+			yourself).
+			self 
+				borderWidth: 2;
+				color: Color black;
+				updateArrowHead.
+			self canvas 
+				addMorph: (self edges at: 1);
+				addMorph: (self edges at: 2);
+				addElement: (self edges at: 1);
+				addElement: (self edges at: 2);
+				dropElement: aMouseEvent.
+			self updateEdges.
+			self state: 2].
 ]
 
 {

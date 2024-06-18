@@ -77,6 +77,24 @@ WBElement >> addResizeFrame [
 ]
 
 {
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 15:55'
+}
+WBElement >> borderColor: aColor [
+	
+	self element borderColor: aColor
+]
+
+{
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 15:54'
+}
+WBElement >> borderWidth: aWidth [
+
+	self element borderWidth: aWidth
+]
+
+{
 	#category : #'button functionalities',
 	#'squeak_changestamp' : 'is 6/18/2024 00:50'
 }
@@ -200,13 +218,13 @@ WBElement >> defaultSize [
 ]
 
 {
-	#category : #delete,
-	#'squeak_changestamp' : 'si 6/3/2024 14:15'
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 16:33'
 }
 WBElement >> delete [
 
-	self canvas removeElement: self.	
-	super delete
+	self element delete.
+	self delete
 ]
 
 {
@@ -457,7 +475,7 @@ WBElement >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/17/2024 15:53'
+	#'squeak_changestamp' : 'is 6/18/2024 15:44'
 }
 WBElement >> mouseDown: mouseEvent [
 
@@ -581,16 +599,16 @@ WBElement >> setPopupPosition [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/18/2024 14:22'
+	#'squeak_changestamp' : 'is 6/18/2024 15:42'
 }
 WBElement >> setupEventHandling [
 "pass event triggers from the element itself to the methods of the WBElement"
 	
 	"self element on: #handlesMouseDown send: #handlesMouseDown to: self.
 	self element on: #hanldesMouseOver send: #hanldesMouseOver to: self."
-	self element on: #mouseDown send: #mouseDown to: self.
-	self element on: #mouseUp send: #mouseUp to: self.
-	self element on: #mouseMove send: #mouseMove to: self
+	self element on: #mouseDown send: #mouseDown: to: self.
+	self element on: #mouseUp send: #mouseUp: to: self.
+	self element on: #mouseMove send: #mouseMove: to: self
 ]
 
 {
