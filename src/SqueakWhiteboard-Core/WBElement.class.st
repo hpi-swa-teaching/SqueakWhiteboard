@@ -97,11 +97,13 @@ WBElement >> buttonFunctionalityForCopy [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/17/2024 11:32'
+	#'squeak_changestamp' : 'is 6/18/2024 11:44'
 }
 WBElement >> buttonFunctionalityForDelete [
 
-	^ [:aButton |self delete]
+	^ [:aButton |
+		self element delete.
+		self delete]
 ]
 
 {
