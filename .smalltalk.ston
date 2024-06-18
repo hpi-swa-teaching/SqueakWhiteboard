@@ -8,7 +8,7 @@ SmalltalkCISpec {
 		}
 	],
 	#testing : {
-		#packages : ['SqueakWhiteboard-Tests']
+		#packages : ['SqueakWhiteboard-Tests'],
 		#coverage : {
 		      #packages : [ 'SqueakWhiteboard-Core' ]
 		}
