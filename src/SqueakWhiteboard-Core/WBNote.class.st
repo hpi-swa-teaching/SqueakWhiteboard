@@ -56,7 +56,7 @@ WBNote >> createVertecies [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/18/2024 18:32'
+	#'squeak_changestamp' : 'si 6/3/2024 19:02'
 }
 WBNote >> initialize [
 
@@ -64,9 +64,8 @@ WBNote >> initialize [
 	self sizeOfNote: self class initialSizeOfNote * 1.5.
 	self sizeOfCorner: self class initialSizeOfCorner * 1.5.
 	self lineColor: self color muchDarker.
-	self createVertecies;
-		makeShape;
-		supportsText: true
+	self createVertecies.
+	self makeShape
 ]
 
 {

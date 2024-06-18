@@ -60,20 +60,20 @@ WBEdgeOfLine >> initialize [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/20/2024 13:31'
+	#'squeak_changestamp' : 'is 6/18/2024 19:03'
 }
 WBEdgeOfLine >> line [
 
-	^line
+	^ line
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/20/2024 13:30'
+	#'squeak_changestamp' : 'is 6/18/2024 19:03'
 }
-WBEdgeOfLine >> line: aWBLine [
+WBEdgeOfLine >> line: aLine [
 
-	line := aWBLine
+	line := aLine
 ]
 
 {
@@ -94,4 +94,13 @@ WBEdgeOfLine >> mouseUp: anEvent [
 
 	super mouseUp: anEvent.
 	self line updateEdges
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/18/2024 18:28'
+}
+WBEdgeOfLine >> supportsText [
+
+	^ supportsText ifNil: [ supportsText := false ]
 ]

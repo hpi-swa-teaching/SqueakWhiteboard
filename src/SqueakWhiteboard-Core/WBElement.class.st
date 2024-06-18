@@ -245,7 +245,7 @@ WBElement >> color: aColor [
 
 {
 	#category : #'morph functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 18:30'
+	#'squeak_changestamp' : 'is 6/18/2024 18:55'
 }
 WBElement >> cornerRadius: aRadius [
 
@@ -254,7 +254,7 @@ WBElement >> cornerRadius: aRadius [
 
 {
 	#category : #'morph functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 18:31'
+	#'squeak_changestamp' : 'is 6/18/2024 18:55'
 }
 WBElement >> cornerStyle: aStyle [
 
@@ -423,7 +423,7 @@ WBElement >> handlesMouseOver: anEvent [
 
 {
 	#category : #'morph functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 18:33'
+	#'squeak_changestamp' : 'is 6/18/2024 18:55'
 }
 WBElement >> height: aHeight [
 
@@ -455,7 +455,7 @@ WBElement >> initializeElement [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/18/2024 18:32'
+	#'squeak_changestamp' : 'is 6/18/2024 18:53'
 }
 WBElement >> initializeTextfield [
 	| textfield |
@@ -494,15 +494,6 @@ WBElement >> lastMouseClick [
 WBElement >> lastMouseClick: evt [
 
 	lastMouseClick := evt
-]
-
-{
-	#category : #'polygonmorph functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 18:12'
-}
-WBElement >> lineColor: aColor [
-
-	self morph lineColor: aColor
 ]
 
 {
@@ -707,15 +698,6 @@ WBElement >> setPopupPosition [
 ]
 
 {
-	#category : #'polygonmorph functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 18:14'
-}
-WBElement >> setVertices: someVertices [
-
-	self morph setVertices: someVertices
-]
-
-{
 	#category : #'event handling',
 	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
@@ -799,9 +781,27 @@ WBElement >> textField: aTextfield [
 
 {
 	#category : #'morph functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 18:33'
+	#'squeak_changestamp' : 'is 6/18/2024 18:55'
 }
 WBElement >> width: aWidth [
 
 	self morph width: aWidth
+]
+
+{
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 18:56'
+}
+WBElement >> x [
+
+	^ self morph x
+]
+
+{
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 18:56'
+}
+WBElement >> y [
+
+	^ self morph y
 ]

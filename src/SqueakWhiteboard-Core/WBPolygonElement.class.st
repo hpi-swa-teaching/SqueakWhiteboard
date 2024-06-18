@@ -36,10 +36,37 @@ WBPolygonElement >> initializeElement [
 ]
 
 {
+	#category : #'polygonmorph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 19:08'
+}
+WBPolygonElement >> lineColor: aColor [
+
+	self morph lineColor: aColor
+]
+
+{
+	#category : #'polygonmorph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 19:08'
+}
+WBPolygonElement >> setVertices: someVertices [
+
+	self morph setVertices: someVertices
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'is 6/12/2024 21:00'
 }
 WBPolygonElement >> supportsText [
 
 	^ supportsText ifNil: [supportsText := false]
+]
+
+{
+	#category : #'polygonmorph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 19:12'
+}
+WBPolygonElement >> updateEdges [
+
+	self morph updateEdges
 ]

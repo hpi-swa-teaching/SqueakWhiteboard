@@ -42,21 +42,21 @@ WBLine >> angleForPoints [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/18/2024 00:03'
+	#'squeak_changestamp' : 'is 6/18/2024 18:57'
 }
 WBLine >> arrowHead [
 
-	^ arrowHead ifNil: [self arrowHead: WBArrowhead new]
+	^ arrowHead ifNil: [ arrowHead := WBArrowhead new]
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/3/2024 19:38'
+	#'squeak_changestamp' : 'is 6/18/2024 18:57'
 }
-WBLine >> arrowHead: aMorph [
+WBLine >> arrowHead: anElement [
 
-	arrowHead := aMorph.
-	self addMorph: aMorph
+	arrowHead := anElement.
+	self addMorph: anElement morph
 ]
 
 {
@@ -130,7 +130,7 @@ WBLine >> mouseUp: anEvent [
 
 {
 	#category : #buildLine,
-	#'squeak_changestamp' : 'is 6/18/2024 17:32'
+	#'squeak_changestamp' : 'is 6/18/2024 19:03'
 }
 WBLine >> spawnEdgeOfLineAt: aMouseEvent [
 
@@ -139,7 +139,7 @@ WBLine >> spawnEdgeOfLineAt: aMouseEvent [
 			[self edges add: (WBEdgeOfLine new
 			center: aMouseEvent cursorPoint;
 			canvas: self canvas;
-			line: self morph;
+			line: self;
 			yourself).
 			self state: 1]
 		ifFalse:
@@ -153,8 +153,8 @@ WBLine >> spawnEdgeOfLineAt: aMouseEvent [
 				color: Color black;
 				updateArrowHead.
 			self canvas 
-				addMorph: (self edges at: 1);
-				addMorph: (self edges at: 2);
+				addElement: (self edges at: 1);
+				addElement: (self edges at: 2);
 				addElement: (self edges at: 1);
 				addElement: (self edges at: 2);
 				dropElement: aMouseEvent.
