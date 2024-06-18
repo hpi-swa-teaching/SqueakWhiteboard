@@ -9,5 +9,8 @@ SmalltalkCISpec {
 	],
 	#testing : {
 		#packages : ['SqueakWhiteboard-Tests']
+		#coverage : {
+		      #packages : [ 'SqueakWhiteboard-Core' ],
+		}
 	}
 }
