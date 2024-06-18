@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'is 6/18/2024 23:43'
+	#'squeak_changestamp' : 'si 6/18/2024 23:56'
 }
 WBGlobalColorPopUpTests >> testButtonFunctionality [
 	| button buttonForColor |
@@ -18,33 +18,49 @@ WBGlobalColorPopUpTests >> testButtonFunctionality [
 	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	self assert: self canvas globalColor = Color black.
 	
+	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
+	
 	buttonForColor := self canvas toolbar popUp submorphs at: 2. 
 	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	self assert: self canvas globalColor = Color gray.
 	
-		buttonForColor := self canvas toolbar popUp submorphs at: 3. 
+	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
+	
+	buttonForColor := self canvas toolbar popUp submorphs at: 3. 
 	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	self assert: self canvas globalColor = Color green.
+	
+	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	
 	buttonForColor := self canvas toolbar popUp submorphs at: 4. 
 	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	self assert: self canvas globalColor = Color cyan.
 	
+	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
+	
 		buttonForColor := self canvas toolbar popUp submorphs at: 5. 
 	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	self assert: self canvas globalColor = Color blue.
+	
+	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	
 	buttonForColor := self canvas toolbar popUp submorphs at: 6. 
 	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	self assert: self canvas globalColor = Color magenta.
 	
+	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
+	
 		buttonForColor := self canvas toolbar popUp submorphs at: 7. 
 	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	self assert: self canvas globalColor = Color red.
 	
+	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
+	
 	buttonForColor := self canvas toolbar popUp submorphs at: 8. 
 	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	self assert: self canvas globalColor = Color orange.
+	
+	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	
 		buttonForColor := self canvas toolbar popUp submorphs at: 9. 
 	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
