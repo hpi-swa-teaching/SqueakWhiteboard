@@ -6,10 +6,10 @@ Class {
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 14:12'
+	#'squeak_changestamp' : 'is 6/18/2024 23:43'
 }
-WBGlobalColorPopUpTests >> testButtonFunctionallity [
-| button buttonForColor|
+WBGlobalColorPopUpTests >> testButtonFunctionality [
+	| button buttonForColor |
 
 	button := self canvas toolbar buttons at: 4.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
@@ -54,10 +54,9 @@ WBGlobalColorPopUpTests >> testButtonFunctionallity [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 14:06'
+	#'squeak_changestamp' : 'is 6/18/2024 23:44'
 }
 WBGlobalColorPopUpTests >> testButtonsOfPopUp [
-
 	| button|
 
 	button := self canvas toolbar buttons at: 4.
@@ -68,10 +67,9 @@ WBGlobalColorPopUpTests >> testButtonsOfPopUp [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 14:05'
+	#'squeak_changestamp' : 'is 6/18/2024 23:44'
 }
 WBGlobalColorPopUpTests >> testExistenceOfPopUp [
-
 	| button|
 
 	button := self canvas toolbar buttons at: 4.
@@ -82,10 +80,10 @@ WBGlobalColorPopUpTests >> testExistenceOfPopUp [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 14:08'
+	#'squeak_changestamp' : 'is 6/18/2024 23:44'
 }
 WBGlobalColorPopUpTests >> testPopUpPlacementInX [
-| button|
+	| button|
 
 	button := self canvas toolbar buttons at: 4.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
@@ -96,10 +94,10 @@ WBGlobalColorPopUpTests >> testPopUpPlacementInX [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 14:08'
+	#'squeak_changestamp' : 'is 6/18/2024 23:44'
 }
 WBGlobalColorPopUpTests >> testPopUpPlacementInY [
-| button|
+	| button |
 
 	button := self canvas toolbar buttons at: 4.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).

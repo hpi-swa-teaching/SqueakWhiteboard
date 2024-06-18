@@ -6,9 +6,9 @@ Class {
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 12:07'
+	#'squeak_changestamp' : 'is 6/18/2024 23:41'
 }
-WBShapeChoosingPopUpTests >> testButtonFunctionallity [
+WBShapeChoosingPopUpTests >> testButtonFunctionality [
 | button buttonForShape|
 
 	button := self canvas toolbar buttons at: 1.
