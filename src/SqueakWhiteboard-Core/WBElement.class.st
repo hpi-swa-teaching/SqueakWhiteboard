@@ -150,23 +150,21 @@ WBElement >> buttonFunctionalityForColorPalette [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 00:53'
+	#'squeak_changestamp' : 'is 6/18/2024 19:57'
 }
 WBElement >> buttonFunctionalityForCopy [
 
 	^ [:aButton | self canvas deactivateElement. 
-		self canvas spawnACopiedElement: self copy At: aButton currentEvent cursorPoint.]
+		self canvas spawnACopiedElement: self veryDeepCopy At: aButton currentEvent cursorPoint.]
 ]
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 17:32'
+	#'squeak_changestamp' : 'is 6/18/2024 19:52'
 }
 WBElement >> buttonFunctionalityForDelete [
 
-	^ [:aButton |
-		self morph delete.
-		self delete]
+	^ [:aButton | self delete ]
 ]
 
 {
@@ -291,12 +289,13 @@ WBElement >> defaultSize [
 
 {
 	#category : #'morph functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 17:32'
+	#'squeak_changestamp' : 'is 6/18/2024 19:55'
 }
 WBElement >> delete [
 
 	self morph delete.
-	self delete
+	self canvas elements remove: self
+	"self delete"
 ]
 
 {

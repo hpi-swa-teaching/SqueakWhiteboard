@@ -42,21 +42,21 @@ WBLine >> angleForPoints [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/18/2024 18:57'
+	#'squeak_changestamp' : 'is 6/18/2024 19:27'
 }
 WBLine >> arrowHead [
 
-	^ arrowHead ifNil: [ arrowHead := WBArrowhead new]
+	^ arrowHead ifNil: [ self arrowHead: WBArrowhead new]
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/18/2024 18:57'
+	#'squeak_changestamp' : 'is 6/18/2024 19:28'
 }
-WBLine >> arrowHead: anElement [
+WBLine >> arrowHead: anArrowhead [
 
-	arrowHead := anElement.
-	self addMorph: anElement morph
+	arrowHead := anArrowhead.
+	self morph addMorph: anArrowhead
 ]
 
 {
@@ -130,7 +130,7 @@ WBLine >> mouseUp: anEvent [
 
 {
 	#category : #buildLine,
-	#'squeak_changestamp' : 'is 6/18/2024 19:03'
+	#'squeak_changestamp' : 'is 6/18/2024 19:25'
 }
 WBLine >> spawnEdgeOfLineAt: aMouseEvent [
 
@@ -146,15 +146,13 @@ WBLine >> spawnEdgeOfLineAt: aMouseEvent [
 			[self edges add: (WBEdgeOfLine new
 			center: aMouseEvent cursorPoint;
 			canvas: self canvas;
-			line: self morph;
+			line: self;
 			yourself).
 			self 
 				borderWidth: 2;
 				color: Color black;
 				updateArrowHead.
 			self canvas 
-				addElement: (self edges at: 1);
-				addElement: (self edges at: 2);
 				addElement: (self edges at: 1);
 				addElement: (self edges at: 2);
 				dropElement: aMouseEvent.
@@ -182,10 +180,10 @@ WBLine >> state: aState [
 
 {
 	#category : #arrow,
-	#'squeak_changestamp' : 'is 6/18/2024 00:11'
+	#'squeak_changestamp' : 'is 6/18/2024 19:38'
 }
 WBLine >> updateArrowHead [
-
+	self halt.
 	((self edges at: 1) x > (self edges at: 2) x) 
 		ifFalse:[self arrowHead rotationDegrees: (-1 * self angleForPoints)] 
 		ifTrue:[self arrowHead rotationDegrees: (180 + self angleForPoints)].
@@ -194,10 +192,10 @@ WBLine >> updateArrowHead [
 
 {
 	#category : #buildLine,
-	#'squeak_changestamp' : 'si 6/3/2024 20:03'
+	#'squeak_changestamp' : 'is 6/18/2024 19:24'
 }
 WBLine >> updateEdges [
-
+	
 	self setVertices: { (self edges at: 2) center . (self edges at: 1) center }.
 	self updateArrowHead
 	

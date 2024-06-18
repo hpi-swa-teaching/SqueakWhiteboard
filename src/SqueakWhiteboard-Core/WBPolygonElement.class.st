@@ -61,12 +61,3 @@ WBPolygonElement >> supportsText [
 
 	^ supportsText ifNil: [supportsText := false]
 ]
-
-{
-	#category : #'polygonmorph functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 19:12'
-}
-WBPolygonElement >> updateEdges [
-
-	self morph updateEdges
-]

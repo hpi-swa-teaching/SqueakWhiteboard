@@ -377,15 +377,6 @@ WBCanvas >> mouseUp: anEvent [
 ]
 
 {
-	#category : #'handle elements',
-	#'squeak_changestamp' : 'si 6/3/2024 14:18'
-}
-WBCanvas >> removeElement: anElement [
-
-	self elements remove: anElement ifAbsent: []
-]
-
-{
 	#category : #accessing,
 	#'squeak_changestamp' : 'si 6/14/2024 13:19'
 }
