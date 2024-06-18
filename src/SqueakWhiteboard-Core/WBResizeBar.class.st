@@ -10,10 +10,11 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JK 5/27/2024 14:53'
+	#'squeak_changestamp' : 'is 6/18/2024 18:04'
 }
 WBResizeBar class >> newWithParent: aMorph [
-	^self new initializeWithParent: aMorph.
+
+	^ self new initializeWithParent: aMorph.
 	
 ]
 
@@ -59,9 +60,10 @@ WBResizeBar >> handlesMouseOver: aEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:02'
+	#'squeak_changestamp' : 'is 6/18/2024 18:05'
 }
 WBResizeBar >> initializeWithParent: aMorph [
+
 	super initialize.
 	self
  		extent: 20@20;

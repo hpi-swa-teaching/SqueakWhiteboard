@@ -67,12 +67,12 @@ WBCanvas >> activeTextbox: aTextbox [
 
 {
 	#category : #'handle elements',
-	#'squeak_changestamp' : 'si 6/13/2024 15:39'
+	#'squeak_changestamp' : 'is 6/18/2024 16:48'
 }
 WBCanvas >> addElement: anElement [
 
 	self elements add:  anElement.
-	self drawingSurface addMorph: anElement
+	self drawingSurface addMorph: anElement morph
 ]
 
 {
@@ -213,7 +213,7 @@ WBCanvas >> dropElement [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 6/12/2024 17:50'
+	#'squeak_changestamp' : 'is 6/18/2024 17:36'
 }
 WBCanvas >> dropElement: aMouseEvent [
 

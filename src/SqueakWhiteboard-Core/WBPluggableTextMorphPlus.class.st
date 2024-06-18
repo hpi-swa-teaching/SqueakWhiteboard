@@ -5,11 +5,30 @@ Class {
 	#name : #WBPluggableTextMorphPlus,
 	#superclass : #PluggableTextMorphPlus,
 	#instVars : [
-		'enabled'
+		'enabled',
+		'element'
 	],
 	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 6/1/2024 17:19'
 }
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/18/2024 17:41'
+}
+WBPluggableTextMorphPlus >> element [
+
+	^ element
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/18/2024 17:40'
+}
+WBPluggableTextMorphPlus >> element: anElement [
+
+	element := anElement
+]
 
 {
 	#category : #'event handling',

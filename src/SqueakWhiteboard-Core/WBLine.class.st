@@ -95,12 +95,12 @@ WBLine >> delete [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/18/2024 15:52'
+	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
 WBLine >> initialize [
 
 	super initialize.
-	self element setVertices: { 1@1 . 1@1 }.
+	self morph setVertices: { 1@1 . 1@1 }.
 	self state: 0.
 ]
 
@@ -130,7 +130,7 @@ WBLine >> mouseUp: anEvent [
 
 {
 	#category : #buildLine,
-	#'squeak_changestamp' : 'is 6/18/2024 15:54'
+	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
 WBLine >> spawnEdgeOfLineAt: aMouseEvent [
 
@@ -139,14 +139,14 @@ WBLine >> spawnEdgeOfLineAt: aMouseEvent [
 			[self edges add: (WBEdgeOfLine new
 			center: aMouseEvent cursorPoint;
 			canvas: self canvas;
-			line: self element;
+			line: self morph;
 			yourself).
 			self state: 1]
 		ifFalse:
 			[self edges add: (WBEdgeOfLine new
 			center: aMouseEvent cursorPoint;
 			canvas: self canvas;
-			line: self element;
+			line: self morph;
 			yourself).
 			self 
 				borderWidth: 2;

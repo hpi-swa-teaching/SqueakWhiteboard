@@ -1,5 +1,5 @@
 Class {
-	#name : #WBStandartElement,
+	#name : #WBRectangularElement,
 	#superclass : #WBElement,
 	#category : #'SqueakWhiteboard-Core'
 }
@@ -8,7 +8,7 @@ Class {
 	#category : #initialization,
 	#'squeak_changestamp' : 'is 6/18/2024 12:18'
 }
-WBStandartElement >> initializeElement [
+WBRectangularElement >> initializeElement [
 
 	^ Morph new
 ]

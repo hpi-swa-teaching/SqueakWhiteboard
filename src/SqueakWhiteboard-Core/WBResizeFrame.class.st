@@ -13,10 +13,11 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JK 5/28/2024 11:10'
+	#'squeak_changestamp' : 'is 6/18/2024 18:05'
 }
 WBResizeFrame class >> newWithParent: aMorph [
-	^self new initializeWithParent: aMorph.
+
+	^ self new initializeWithParent: aMorph.
 	
 ]
 
@@ -56,52 +57,57 @@ WBResizeFrame >> createHandles [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:10'
+	#'squeak_changestamp' : 'is 6/18/2024 17:56'
 }
 WBResizeFrame >> element [
+
 	^ element
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:10'
+	#'squeak_changestamp' : 'is 6/18/2024 17:54'
 }
-WBResizeFrame >> element: anObject [
-	element := anObject
+WBResizeFrame >> element: anElement [
+
+	element := anElement
 ]
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/18/2024 10:54'
+	#'squeak_changestamp' : 'is 6/18/2024 18:02'
 }
 WBResizeFrame >> extent: aSize [
 
 	self element extent: aSize.
-	super extent: element extent.
+	super extent: aSize.
 	self positionHandles
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 5/28/2024 12:12'
+	#'squeak_changestamp' : 'is 6/18/2024 17:53'
 }
 WBResizeFrame >> handles [
+
 	^ handles
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 5/28/2024 11:59'
+	#'squeak_changestamp' : 'is 6/18/2024 17:53'
 }
 WBResizeFrame >> handles: anObject [
+
 	handles := anObject
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:10'
+	#'squeak_changestamp' : 'is 6/18/2024 18:05'
 }
 WBResizeFrame >> initializeWithParent: aMorph [
+
 	super initialize.
 	self
 		element: aMorph;
@@ -115,7 +121,7 @@ WBResizeFrame >> initializeWithParent: aMorph [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:10'
+	#'squeak_changestamp' : 'is 6/18/2024 17:56'
 }
 WBResizeFrame >> position: aPosition [
 	
@@ -134,7 +140,7 @@ WBResizeFrame >> positionHandles [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:22'
+	#'squeak_changestamp' : 'is 6/18/2024 17:56'
 }
 WBResizeFrame >> resizeBottom: aYCoordinate [
 	
@@ -145,7 +151,7 @@ WBResizeFrame >> resizeBottom: aYCoordinate [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:20'
+	#'squeak_changestamp' : 'is 6/18/2024 17:56'
 }
 WBResizeFrame >> resizeLeft: aXCoordinate [
 	
@@ -157,7 +163,7 @@ WBResizeFrame >> resizeLeft: aXCoordinate [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:22'
+	#'squeak_changestamp' : 'is 6/18/2024 17:57'
 }
 WBResizeFrame >> resizeRight: aXCoordinate [
 	
@@ -168,7 +174,7 @@ WBResizeFrame >> resizeRight: aXCoordinate [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:21'
+	#'squeak_changestamp' : 'is 6/18/2024 17:57'
 }
 WBResizeFrame >> resizeTop: aYCoordinate [
 	

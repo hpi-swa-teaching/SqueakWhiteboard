@@ -14,7 +14,7 @@ Class {
 		'lastMouseClick',
 		'doubleClickMaxDelta',
 		'supportsText',
-		'element'
+		'morph'
 	],
 	#classInstVars : [
 		'globalColor'
@@ -56,20 +56,38 @@ WBElement >> activateTextbox: evt [
 
 {
 	#category : #'morph functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 14:01'
+	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
 WBElement >> addDropShadow [
 
-	self element addDropShadow
+	self morph addDropShadow
+]
+
+{
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 18:03'
+}
+WBElement >> addMorph: aMorph [
+
+	self morph addMorph: aMorph
+]
+
+{
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 18:04'
+}
+WBElement >> addMorphCentered: aMorph [
+
+	self morph addMorphCentered: aMorph
 ]
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/18/2024 00:52'
+	#'squeak_changestamp' : 'is 6/18/2024 17:59'
 }
 WBElement >> addResizeFrame [
 
-	self resizeFrame: (WBResizeFrame newWithParent: self element).
+	self resizeFrame: (WBResizeFrame newWithParent: self).
 	
 	
 
@@ -78,29 +96,47 @@ WBElement >> addResizeFrame [
 
 {
 	#category : #'morph functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 15:55'
+	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
 WBElement >> borderColor: aColor [
 	
-	self element borderColor: aColor
+	self morph borderColor: aColor
 ]
 
 {
 	#category : #'morph functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 15:54'
+	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
 WBElement >> borderWidth: aWidth [
 
-	self element borderWidth: aWidth
+	self morph borderWidth: aWidth
+]
+
+{
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 18:00'
+}
+WBElement >> bounds [
+
+	^ self morph bounds
+]
+
+{
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 18:00'
+}
+WBElement >> bounds: someBounds [
+
+	self morph bounds: someBounds
 ]
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 00:50'
+	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
 WBElement >> buttonFunctionalityForColor [
 
-	^ [:aButton |self element color: aButton color]
+	^ [:aButton |self morph color: aButton color]
 ]
 
 {
@@ -124,12 +160,12 @@ WBElement >> buttonFunctionalityForCopy [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 11:44'
+	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
 WBElement >> buttonFunctionalityForDelete [
 
 	^ [:aButton |
-		self element delete.
+		self morph delete.
 		self delete]
 ]
 
@@ -173,20 +209,56 @@ WBElement >> canvas: aCanvas [
 
 {
 	#category : #'morph functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 13:58'
+	#'squeak_changestamp' : 'is 6/18/2024 18:12'
 }
-WBElement >> center: aPoint [
+WBElement >> center [
 
-	self element center: aPoint
+	^ self morph center
 ]
 
 {
 	#category : #'morph functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 14:00'
+	#'squeak_changestamp' : 'is 6/18/2024 17:32'
+}
+WBElement >> center: aPoint [
+
+	self morph center: aPoint
+]
+
+{
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 17:46'
+}
+WBElement >> color [
+
+	^ self morph color
+]
+
+{
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
 WBElement >> color: aColor [
 
-	self element color: aColor
+	self morph color: aColor
+]
+
+{
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 18:30'
+}
+WBElement >> cornerRadius: aRadius [
+
+	self morph cornerRadius: aRadius
+]
+
+{
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 18:31'
+}
+WBElement >> cornerStyle: aStyle [
+
+	self morph cornerStyle: aStyle
 ]
 
 {
@@ -219,11 +291,11 @@ WBElement >> defaultSize [
 
 {
 	#category : #'morph functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 16:33'
+	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
 WBElement >> delete [
 
-	self element delete.
+	self morph delete.
 	self delete
 ]
 
@@ -268,13 +340,13 @@ WBElement >> dragEnd: anEvent [
 
 {
 	#category : #drag,
-	#'squeak_changestamp' : 'is 6/18/2024 09:26'
+	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
 WBElement >> dragMove: mouseEvent [
 	|newPosition |
 
- 	newPosition := self canvas clampElementToCanvas: self element at: mouseEvent cursorPoint + self dragOffset.
-	self element position: newPosition
+ 	newPosition := self canvas clampElementToCanvas: self morph at: mouseEvent cursorPoint + self dragOffset.
+	self morph position: newPosition
 ]
 
 {
@@ -297,41 +369,32 @@ WBElement >> dragOffset: aPoint [
 
 {
 	#category : #drag,
-	#'squeak_changestamp' : 'is 6/18/2024 00:57'
+	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
 WBElement >> dragStart: anEvent [
 
-	(self element)
+	(self morph)
 		addDropShadow;
 		comeToFront.
 	self dragOffset: self position - anEvent cursorPoint.
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/17/2024 23:45'
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 18:04'
 }
-WBElement >> element [
+WBElement >> extent [
 
-	^ element
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/17/2024 23:44'
-}
-WBElement >> element: anElement [
-
-	element := anElement
+	^ self morph extent
 ]
 
 {
 	#category : #'morph functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 00:57'
+	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
 WBElement >> extent: anExtent [
 	
-	self element extent: anExtent.
+	self morph extent: anExtent.
 	textField ifNotNil: [textField extent: anExtent - self textBorderOffset].
 	self setPopupPosition
 	
@@ -359,13 +422,22 @@ WBElement >> handlesMouseOver: anEvent [
 ]
 
 {
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 18:33'
+}
+WBElement >> height: aHeight [
+
+	self morph height: aHeight
+]
+
+{
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/18/2024 12:13'
+	#'squeak_changestamp' : 'is 6/18/2024 17:33'
 }
 WBElement >> initialize [
 
 	super initialize.
-	self element: self initializeElement;
+	self morph: self initializeElement;
 		extent: self defaultSize.
 	self setupEventHandling.
 	self supportsText ifTrue: [self initializeTextfield]
@@ -383,15 +455,16 @@ WBElement >> initializeElement [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/18/2024 01:00'
+	#'squeak_changestamp' : 'is 6/18/2024 18:32'
 }
 WBElement >> initializeTextfield [
 	| textfield |
 	
 	textfield := WBPluggableTextMorphPlus new.
-	textfield extent: self defaultSize - (self textBorderOffset @ self textBorderOffset).
-	self element addMorphCentered: textfield.
-	textfield textMorph centered. 
+	textfield extent: self extent - (self textBorderOffset @ self textBorderOffset);
+		element: self.
+	textfield textMorph centered.
+	self morph addMorphCentered: textfield.
 	self textField: textfield
 ]
 
@@ -421,6 +494,15 @@ WBElement >> lastMouseClick [
 WBElement >> lastMouseClick: evt [
 
 	lastMouseClick := evt
+]
+
+{
+	#category : #'polygonmorph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 18:12'
+}
+WBElement >> lineColor: aColor [
+
+	self morph lineColor: aColor
 ]
 
 {
@@ -458,7 +540,7 @@ WBElement >> makeColorButtons [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/13/2024 13:43'
+	#'squeak_changestamp' : 'is 6/18/2024 17:38'
 }
 WBElement >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
@@ -468,9 +550,27 @@ WBElement >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 		numberOfColumns: aNumber;
 		addButtons: aCollection;
 		yourself).
-	self addMorph: self popUp.
+	self morph addMorph: self popUp.
 	self popUp center: aPoint - (self popUp bottomCenter - self popUp center)
 	
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/18/2024 17:32'
+}
+WBElement >> morph [
+
+	^ morph
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/18/2024 17:32'
+}
+WBElement >> morph: aMorph [
+
+	morph := aMorph
 ]
 
 {
@@ -524,30 +624,39 @@ WBElement >> popUp [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/18/2024 01:02'
+	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
 WBElement >> popUp: aPopUp [
 
 	popUp := aPopUp.
-	popUp ifNotNil: [self element addMorphBack: popUp]
+	popUp ifNotNil: [self morph addMorphBack: popUp]
 ]
 
 {
 	#category : #'morph functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 13:59'
+	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
 WBElement >> position [
 
-	^ self element position
+	^ self morph position
 ]
 
 {
 	#category : #'morph functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 13:58'
+	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
 WBElement >> position: aPosition [
 
-	self element position:  aPosition
+	self morph position:  aPosition
+]
+
+{
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 17:35'
+}
+WBElement >> removeDropShadow [
+
+	self morph removeDropShadow
 ]
 
 {
@@ -590,25 +699,34 @@ WBElement >> resizeFrame: aFrame [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'is 6/18/2024 12:19'
+	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
 WBElement >> setPopupPosition [
 
-	^ self element topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2))
+	^ self morph topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2))
+]
+
+{
+	#category : #'polygonmorph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 18:14'
+}
+WBElement >> setVertices: someVertices [
+
+	self morph setVertices: someVertices
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/18/2024 15:42'
+	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
 WBElement >> setupEventHandling [
 "pass event triggers from the element itself to the methods of the WBElement"
 	
 	"self element on: #handlesMouseDown send: #handlesMouseDown to: self.
 	self element on: #hanldesMouseOver send: #hanldesMouseOver to: self."
-	self element on: #mouseDown send: #mouseDown: to: self.
-	self element on: #mouseUp send: #mouseUp: to: self.
-	self element on: #mouseMove send: #mouseMove: to: self
+	self morph on: #mouseDown send: #mouseDown: to: self.
+	self morph on: #mouseUp send: #mouseUp: to: self.
+	self morph on: #mouseMove send: #mouseMove: to: self
 ]
 
 {
@@ -677,4 +795,13 @@ WBElement >> textField [
 WBElement >> textField: aTextfield [
 
 	textField := aTextfield
+]
+
+{
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 18:33'
+}
+WBElement >> width: aWidth [
+
+	self morph width: aWidth
 ]
