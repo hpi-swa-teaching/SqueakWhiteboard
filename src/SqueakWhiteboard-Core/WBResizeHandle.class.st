@@ -10,10 +10,11 @@ Class {
 
 {
 	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JK 5/27/2024 14:53'
+	#'squeak_changestamp' : 'is 6/18/2024 18:05'
 }
 WBResizeHandle class >> newWithParent: aMorph [
-	^self new initializeWithParent: aMorph.
+
+	^ self new initializeWithParent: aMorph.
 	
 ]
 
@@ -59,9 +60,10 @@ WBResizeHandle >> handlesMouseOver: aEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:02'
+	#'squeak_changestamp' : 'is 6/18/2024 18:05'
 }
 WBResizeHandle >> initializeWithParent: aMorph [
+
 	super initialize.
 	self
  		extent: WBResizeFrame resizeWidth@WBResizeFrame resizeWidth;
@@ -118,9 +120,10 @@ WBResizeHandle >> mouseLeave: aEvent [
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'is 5/28/2024 15:33'
+	#'squeak_changestamp' : 'is 6/18/2024 17:52'
 }
 WBResizeHandle >> mouseMove: mouseEvent [
+
 	self resize: (mouseEvent cursorPoint - self lastPosition).
 	self lastPosition: mouseEvent cursorPoint.
 	self setLayout.

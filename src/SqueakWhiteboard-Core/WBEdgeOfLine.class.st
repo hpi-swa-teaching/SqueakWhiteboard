@@ -1,6 +1,6 @@
 Class {
 	#name : #WBEdgeOfLine,
-	#superclass : #WBElement,
+	#superclass : #WBRectangularElement,
 	#instVars : [
 		'line'
 	],
@@ -15,7 +15,7 @@ WBEdgeOfLine >> addResizeFrame [
 ]
 
 {
-	#category : #buttonFunctionallities,
+	#category : #'button functionalities',
 	#'squeak_changestamp' : 'si 6/17/2024 11:31'
 }
 WBEdgeOfLine >> buttonFunctionalityForColor [
@@ -24,7 +24,7 @@ WBEdgeOfLine >> buttonFunctionalityForColor [
 ]
 
 {
-	#category : #buttonFunctionallities,
+	#category : #'button functionalities',
 	#'squeak_changestamp' : 'si 6/17/2024 11:32'
 }
 WBEdgeOfLine >> buttonFunctionalityForCopy [
@@ -34,7 +34,7 @@ WBEdgeOfLine >> buttonFunctionalityForCopy [
 ]
 
 {
-	#category : #buttonFunctionallities,
+	#category : #'button functionalities',
 	#'squeak_changestamp' : 'si 6/17/2024 11:32'
 }
 WBEdgeOfLine >> buttonFunctionalityForDelete [
@@ -60,24 +60,24 @@ WBEdgeOfLine >> initialize [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/20/2024 13:31'
+	#'squeak_changestamp' : 'is 6/18/2024 19:03'
 }
 WBEdgeOfLine >> line [
 
-	^line
+	^ line
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/20/2024 13:30'
+	#'squeak_changestamp' : 'is 6/18/2024 19:03'
 }
-WBEdgeOfLine >> line: aWBLine [
+WBEdgeOfLine >> line: aLine [
 
-	line := aWBLine
+	line := aLine
 ]
 
 {
-	#category : #mouseEvents,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'si 6/14/2024 11:46'
 }
 WBEdgeOfLine >> mouseMove: anEvent [
@@ -87,11 +87,20 @@ WBEdgeOfLine >> mouseMove: anEvent [
 ]
 
 {
-	#category : #mouseEvents,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'si 5/20/2024 13:38'
 }
 WBEdgeOfLine >> mouseUp: anEvent [
 
 	super mouseUp: anEvent.
 	self line updateEdges
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/18/2024 18:28'
+}
+WBEdgeOfLine >> supportsText [
+
+	^ supportsText ifNil: [ supportsText := false ]
 ]

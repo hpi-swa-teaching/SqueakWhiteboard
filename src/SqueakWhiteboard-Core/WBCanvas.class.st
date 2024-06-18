@@ -67,12 +67,12 @@ WBCanvas >> activeTextbox: aTextbox [
 
 {
 	#category : #'handle elements',
-	#'squeak_changestamp' : 'si 6/13/2024 15:39'
+	#'squeak_changestamp' : 'is 6/18/2024 16:48'
 }
 WBCanvas >> addElement: anElement [
 
 	self elements add:  anElement.
-	self drawingSurface addMorph: anElement
+	self drawingSurface addMorph: anElement morph
 ]
 
 {
@@ -87,14 +87,15 @@ WBCanvas >> clampElementToCanvas: anElement at: aPoint [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/14/2024 13:08'
+	#'squeak_changestamp' : 'is 6/18/2024 16:34'
 }
 WBCanvas >> createDrawingSurface [
 	
-	self drawingSurface: (Morph new
-		extent: 0@0;
-		yourself).
-	self addMorph: self drawingSurface.
+	self drawingSurface: 
+		(Morph new 
+			extent: 0@0; 
+			yourself).
+	self addMorph: self drawingSurface
 	
 	
 ]
@@ -146,13 +147,13 @@ WBCanvas >> dragEnd: anEvent [
 
 {
 	#category : #drag,
-	#'squeak_changestamp' : 'ACL 6/7/2024 12:22'
+	#'squeak_changestamp' : 'is 6/18/2024 16:33'
 }
 WBCanvas >> dragMove: mouseEvent [
 	| newPosition |
 
  	newPosition := mouseEvent cursorPoint + self dragOffset.
-	self drawingSurface position: newPosition.
+	self drawingSurface position: newPosition
 ]
 
 {
@@ -212,7 +213,7 @@ WBCanvas >> dropElement [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 6/12/2024 17:50'
+	#'squeak_changestamp' : 'is 6/18/2024 17:36'
 }
 WBCanvas >> dropElement: aMouseEvent [
 
@@ -241,11 +242,11 @@ WBCanvas >> elementToSpawn: anElement [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/14/2024 13:12'
+	#'squeak_changestamp' : 'is 6/18/2024 16:35'
 }
 WBCanvas >> elements [
 
-	^ elements ifNil: [^ self element: OrderedCollection new]
+	^ elements ifNil: [ elements := OrderedCollection new]
 ]
 
 {
@@ -259,47 +260,47 @@ WBCanvas >> elements: aCollection [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 5/29/2024 01:03'
+	#'squeak_changestamp' : 'is 6/18/2024 16:36'
 }
 WBCanvas >> globalColor [
 
-	^ globalColor.
+	^ globalColor
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 5/29/2024 01:03'
+	#'squeak_changestamp' : 'is 6/18/2024 16:36'
 }
 WBCanvas >> globalColor: aColor [
 
-	globalColor := aColor.
+	globalColor := aColor
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'JK 5/27/2024 15:56'
-}
-WBCanvas >> handleMouseOver: evt [
-    
-	^ true.
-]
-
-{
-	#category : #'event handling',
-	#'squeak_changestamp' : 'si 5/17/2024 13:53'
+	#'squeak_changestamp' : 'is 6/18/2024 16:36'
 }
 WBCanvas >> handlesMouseDown: evt [
     
-	^ true.
+	^ true
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'si 5/17/2024 13:53'
+	#'squeak_changestamp' : 'is 6/18/2024 16:36'
 }
 WBCanvas >> handlesMouseMove: evt [
     
-	^ true.
+	^ true
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/18/2024 16:36'
+}
+WBCanvas >> handlesMouseOver: evt [
+    
+	^ true
 ]
 
 {
@@ -358,31 +359,21 @@ WBCanvas >> mouseDown: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'ACL 6/7/2024 11:53'
+	#'squeak_changestamp' : 'is 6/18/2024 16:37'
 }
 WBCanvas >> mouseMove: anEvent [
 	
-	(self elementToSpawn) ifNotNil:
-		[self elementToSpawn dragMove: anEvent].
-	anEvent yellowButtonPressed ifTrue:[self dragMove: anEvent]
+	(self elementToSpawn) ifNotNil: [ self elementToSpawn dragMove: anEvent ].
+	anEvent yellowButtonPressed ifTrue: [ self dragMove: anEvent ]
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'ACL 6/7/2024 11:42'
+	#'squeak_changestamp' : 'is 6/18/2024 16:37'
 }
 WBCanvas >> mouseUp: anEvent [
 	
-	self dragEnd: anEvent.
-]
-
-{
-	#category : #'handle elements',
-	#'squeak_changestamp' : 'si 6/3/2024 14:18'
-}
-WBCanvas >> removeElement: anElement [
-
-	self elements remove: anElement ifAbsent: []
+	self dragEnd: anEvent
 ]
 
 {
@@ -421,7 +412,7 @@ WBCanvas >> spawnACopiedElement: anElement At: aPoint [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 6/12/2024 16:44'
+	#'squeak_changestamp' : 'is 6/18/2024 22:38'
 }
 WBCanvas >> spawnAnElement: anElement At: aMouseEvent [
 	
@@ -433,7 +424,7 @@ WBCanvas >> spawnAnElement: anElement At: aMouseEvent [
 		color: self globalColor;
 		addDropShadow;
 		yourself).
-	self addElement: anElement
+	self addElement: anElement 
 ]
 
 {

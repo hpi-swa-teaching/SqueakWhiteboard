@@ -48,39 +48,59 @@ WBTextfieldTests >> tearDown [
 
 {
 	#category : #Testing,
-	#'squeak_changestamp' : 'is 6/17/2024 01:51'
+	#'squeak_changestamp' : 'is 6/18/2024 22:49'
 }
 WBTextfieldTests >> testCenteredText [
 	| anElement |
 	
-	anElement := WBElement newWithCanvas:  self canvas.
+	anElement := WBRectangle newWithCanvas:  self canvas.
 	"alignment = 2 means centered"
 	self assert: anElement textField textMorph textStyle alignment = 2
 ]
 
 {
 	#category : #Testing,
-	#'squeak_changestamp' : 'is 6/17/2024 01:09'
+	#'squeak_changestamp' : 'is 6/18/2024 23:18'
+}
+WBTextfieldTests >> testSupportsText [
+	| anElement |
+	
+	anElement := WBRectangle newWithCanvas:  self canvas.
+	anElement supportsText:  false.
+	self assert: (anElement textField) isNil = true.
+	anElement supportsText:  true.
+	self assert: (anElement textField) isNil = false.
+	anElement supportsText:  false.
+	self assert: (anElement textField) isNil = true.
+]
+
+{
+	#category : #Testing,
+	#'squeak_changestamp' : 'is 6/18/2024 23:02'
 }
 WBTextfieldTests >> testTextfieldActivation [
-	| anElement aFirstMouseEvent aSecondMouseEvent aThirdMouseEvent |
+	| elements aFirstMouseEvent aSecondMouseEvent aThirdMouseEvent |
 	
-	anElement := WBElement newWithCanvas: self canvas.
+	elements := OrderedCollection withAll: 
+	{ WBRectangle newWithCanvas: self canvas. WBCircle newWithCanvas: self canvas. WBNote newWithCanvas: self canvas . WBLine newWithCanvas: self canvas . WBEdgeOfLine newWithCanvas: self canvas}.
 	aFirstMouseEvent := MouseButtonEvent new.
-	aFirstMouseEvent setType: #mouseDown position: anElement position which: 4 buttons: aFirstMouseEvent class redButton hand: HandMorph new stamp: 0.
+	aFirstMouseEvent setType: #mouseDown position: elements first position which: 4 buttons: aFirstMouseEvent class redButton hand: HandMorph new stamp: 0.
 	aSecondMouseEvent := MouseButtonEvent new.
-	aSecondMouseEvent setType: #mouseDown position: anElement position which: 4 buttons: aSecondMouseEvent class redButton hand: HandMorph new stamp: anElement doubleClickMaxDelta + 1.
+	aSecondMouseEvent setType: #mouseDown position: elements first position which: 4 buttons: aSecondMouseEvent class redButton hand: HandMorph new stamp: elements first doubleClickMaxDelta + 1.
 	aThirdMouseEvent := MouseButtonEvent new.
-	aThirdMouseEvent setType: #mouseDown position: anElement position which: 4 buttons: aThirdMouseEvent class redButton hand: HandMorph new stamp: anElement doubleClickMaxDelta + 2.
+	aThirdMouseEvent setType: #mouseDown position: elements first position which: 4 buttons: aThirdMouseEvent class redButton hand: HandMorph new stamp: elements first doubleClickMaxDelta + 2.
 	
-	self assert: anElement textField enabled = false.
-	anElement mouseDown: aFirstMouseEvent.
-	anElement mouseDown: aSecondMouseEvent.
-	self assert: anElement textField enabled = false.
-	anElement mouseDown: aThirdMouseEvent.
-	self assert: anElement textField enabled = true.
-	self assert: self canvas activeElement = nil.
-	self assert: self canvas activeTextbox = anElement.
+	elements do: [:anElement | 
+		anElement supportsText ifTrue: [
+			self assert: anElement textField enabled = false.
+			anElement mouseDown: aFirstMouseEvent.
+			anElement mouseDown: aSecondMouseEvent.
+			self assert: anElement textField enabled = false.
+			anElement mouseDown: aThirdMouseEvent.
+			self assert: anElement textField enabled = true.
+			self assert: self canvas activeElement = nil.
+			self assert: self canvas activeTextbox = anElement]].
+	
 	
 	
 	
@@ -88,35 +108,39 @@ WBTextfieldTests >> testTextfieldActivation [
 
 {
 	#category : #Testing,
-	#'squeak_changestamp' : 'is 6/17/2024 01:19'
+	#'squeak_changestamp' : 'is 6/18/2024 23:04'
 }
 WBTextfieldTests >> testTextfieldDeactivationViaCanvas [
-	| anElement aFirstMouseEvent aSecondMouseEvent|
+	| elements aFirstMouseEvent aSecondMouseEvent|
 	
-	anElement := WBElement newWithCanvas: self canvas.
+	elements := OrderedCollection withAll: 
+	{ WBRectangle newWithCanvas: self canvas. WBCircle newWithCanvas: self canvas. WBNote newWithCanvas: self canvas . WBLine newWithCanvas: self canvas . WBEdgeOfLine newWithCanvas: self canvas}.
 	aFirstMouseEvent := MouseButtonEvent new.
-	aFirstMouseEvent setType: #mouseDown position: anElement position which: 4 buttons: aFirstMouseEvent class redButton hand: HandMorph new stamp: 0.
+	aFirstMouseEvent setType: #mouseDown position: elements first position which: 4 buttons: aFirstMouseEvent class redButton hand: HandMorph new stamp: 0.
 	aSecondMouseEvent := MouseButtonEvent new.
-	aSecondMouseEvent setType: #mouseDown position: anElement position + (1@1) which: 4 buttons: aSecondMouseEvent class redButton hand: HandMorph new stamp: 0.
+	aSecondMouseEvent setType: #mouseDown position: elements first position + (1@1) which: 4 buttons: aSecondMouseEvent class redButton hand: HandMorph new stamp: 0.
 	
-	anElement activateTextbox: aFirstMouseEvent.
-	self assert: self canvas activeElement = nil.
-	self assert: self canvas activeTextbox = anElement.
-	self canvas mouseDown: aSecondMouseEvent.
-	self assert: anElement textField enabled = false.
-	self assert: self canvas activeTextbox = nil.
+	elements do: [:anElement |
+		anElement supportsText ifTrue: [
+			anElement activateTextbox: aFirstMouseEvent.
+			self assert: self canvas activeElement = nil.
+			self assert: self canvas activeTextbox = anElement.
+			self canvas mouseDown: aSecondMouseEvent.
+			self assert: anElement textField enabled = false.
+			self assert: self canvas activeTextbox = nil]].
+	
 	
 ]
 
 {
 	#category : #Testing,
-	#'squeak_changestamp' : 'is 6/17/2024 01:19'
+	#'squeak_changestamp' : 'is 6/18/2024 22:49'
 }
 WBTextfieldTests >> testTextfieldDeactivationViaElement [
 	| aFirstElement aSecondElement aFirstMouseEvent aSecondMouseEvent|
 	
-	aFirstElement := WBElement newWithCanvas: self canvas.
-	aSecondElement := WBElement newWithCanvas: self canvas.
+	aFirstElement := WBRectangle newWithCanvas: self canvas.
+	aSecondElement := WBRectangle newWithCanvas: self canvas.
 	aSecondElement position: aFirstElement position + aSecondElement extent.
 	aFirstMouseEvent := MouseButtonEvent new.
 	aFirstMouseEvent setType: #mouseDown position: aFirstElement position which: 4 buttons: aFirstMouseEvent class redButton hand: HandMorph new stamp: 0.
@@ -133,12 +157,12 @@ WBTextfieldTests >> testTextfieldDeactivationViaElement [
 
 {
 	#category : #Testing,
-	#'squeak_changestamp' : 'is 6/17/2024 01:29'
+	#'squeak_changestamp' : 'is 6/18/2024 22:50'
 }
 WBTextfieldTests >> testTextfieldDeactivationViaEscape [
 | anElement aMouseEvent aKeyboardEvent|
 	
-	anElement := WBElement newWithCanvas: self canvas.
+	anElement := WBRectangle newWithCanvas: self canvas.
 	aMouseEvent := MouseButtonEvent new.
 	aMouseEvent setType: #mouseDown position: anElement position which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
 	aKeyboardEvent := KeyboardEvent new.
@@ -155,12 +179,12 @@ WBTextfieldTests >> testTextfieldDeactivationViaEscape [
 
 {
 	#category : #Testing,
-	#'squeak_changestamp' : 'is 6/17/2024 23:37'
+	#'squeak_changestamp' : 'is 6/18/2024 22:50'
 }
 WBTextfieldTests >> testTextfieldResize [
 	| anElement elementBounds textfieldBounds |
 	
-	anElement := WBElement newWithCanvas: self canvas.
+	anElement := WBRectangle newWithCanvas: self canvas.
 	anElement extent: anElement extent * 2.
 	textfieldBounds := anElement textField bounds.
 	elementBounds := anElement bounds.
@@ -187,12 +211,12 @@ WBTextfieldTests >> testTextfieldResize [
 
 {
 	#category : #Testing,
-	#'squeak_changestamp' : 'is 6/17/2024 23:37'
+	#'squeak_changestamp' : 'is 6/18/2024 22:50'
 }
 WBTextfieldTests >> testTextfieldSize [
 	| anElement textfieldBounds elementBounds |
 	
-	anElement := WBElement newWithCanvas: self canvas.
+	anElement := WBRectangle newWithCanvas: self canvas.
 	textfieldBounds := anElement textField bounds.
 	elementBounds := anElement  bounds.
 	
