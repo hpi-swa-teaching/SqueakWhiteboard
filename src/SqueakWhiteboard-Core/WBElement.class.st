@@ -42,7 +42,7 @@ WBElement class >> sizeOfPopUpForStandardElement [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/17/2024 01:10'
+	#'squeak_changestamp' : 'si 6/17/2024 13:39'
 }
 WBElement >> activateTextbox: evt [
 	
