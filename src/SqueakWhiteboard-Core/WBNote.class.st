@@ -10,20 +10,11 @@ Class {
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/3/2024 13:36'
+	#'squeak_changestamp' : 'is 6/18/2024 22:19'
 }
-WBNote class >> initialSizeOfCorner [
+WBNote class >> defaultSizeOfCorner [
 
-	^10
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/3/2024 13:36'
-}
-WBNote class >> initialSizeOfNote [
-
-	^25
+	^20@20
 ]
 
 {
@@ -38,34 +29,36 @@ WBNote >> color: aColor [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/13/2024 16:21'
+	#'squeak_changestamp' : 'is 6/18/2024 22:20'
 }
 WBNote >> createVertecies [
-	
+
 	self edges removeAll.
 	self edges 
-		add: self center - (self sizeOfNote @ self sizeOfNote);
-	 	add: self center + ((self sizeOfNote - self sizeOfCorner) @ (-1* self sizeOfNote));
-		add: self center + ( self sizeOfNote @ (-1 * (self sizeOfNote - sizeOfCorner)));
-		add: self center + ((self sizeOfNote - sizeOfCorner) @ (-1 * (self sizeOfNote - sizeOfCorner)));
-		add: self center + ((self sizeOfNote - sizeOfCorner) @ (-1* self sizeOfNote));
-		add: self center + ( self sizeOfNote @ (-1 * (self sizeOfNote - self sizeOfCorner)));
-		add: self center + (self sizeOfNote @ self sizeOfNote);
-		add: self center - (self sizeOfNote @  (-1 * (self sizeOfNote))).
+		add: self center - (self sizeOfNote/2);
+	 	add: self center + (((self sizeOfNote x / 2) - self sizeOfCorner y) @ (-1* (self sizeOfNote y/ 2)));
+		add: self center + ((self sizeOfNote x /  2) @ (-1 * ((self sizeOfNote y / 2) - self sizeOfCorner y)));
+		add: self center + (((self sizeOfNote x / 2) - self sizeOfCorner x) @ (-1 * ((self sizeOfNote y / 2) - self sizeOfCorner y)));
+		add: self center + (((self sizeOfNote x / 2) - self sizeOfCorner x) @ (-1* (self sizeOfNote y / 2)));
+		add: self center + ((self sizeOfNote x / 2) @ (-1 * ((self sizeOfNote y / 2) - self sizeOfCorner y)));
+		add: self center + ((self sizeOfNote x / 2) @ (self sizeOfNote y / 2));
+		add: self center - ((self sizeOfNote x / 2) @  (-1 * (self sizeOfNote y / 2))).
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/3/2024 19:02'
+	#'squeak_changestamp' : 'is 6/18/2024 22:26'
 }
 WBNote >> initialize [
 
 	super initialize.
-	self sizeOfNote: self class initialSizeOfNote * 1.5.
-	self sizeOfCorner: self class initialSizeOfCorner * 1.5.
-	self lineColor: self color muchDarker.
-	self createVertecies.
-	self makeShape
+	self 
+		sizeOfNote: self class defaultSize;
+	 	sizeOfCorner: self class defaultSizeOfCorner;
+		lineColor: self color muchDarker; 
+		createVertecies;
+		makeShape;
+		initializeTextfield
 ]
 
 {

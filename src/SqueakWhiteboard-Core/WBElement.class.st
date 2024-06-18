@@ -25,6 +25,15 @@ Class {
 
 {
 	#category : #'instance creation',
+	#'squeak_changestamp' : 'is 6/18/2024 22:28'
+}
+WBElement class >> defaultSize [
+
+	^ 100@100
+]
+
+{
+	#category : #'instance creation',
 	#'squeak_changestamp' : 'JK 6/3/2024 20:58'
 }
 WBElement class >> newWithCanvas: aCanvas [
@@ -110,6 +119,15 @@ WBElement >> borderColor: aColor [
 WBElement >> borderWidth: aWidth [
 
 	self morph borderWidth: aWidth
+]
+
+{
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 22:47'
+}
+WBElement >> bottom [
+
+	^ self morph bottom
 ]
 
 {
@@ -279,22 +297,13 @@ WBElement >> deactivateTextbox [
 ]
 
 {
-	#category : #appearance,
-	#'squeak_changestamp' : 'is 5/29/2024 01:42'
-}
-WBElement >> defaultSize [
-
-	^ 100@100
-]
-
-{
 	#category : #'morph functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 19:55'
+	#'squeak_changestamp' : 'is 6/18/2024 21:41'
 }
 WBElement >> delete [
 
 	self morph delete.
-	self canvas elements remove: self
+	(self canvas elements includes: self) ifTrue: [self canvas elements remove: self].
 	"self delete"
 ]
 
@@ -431,13 +440,13 @@ WBElement >> height: aHeight [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/18/2024 17:33'
+	#'squeak_changestamp' : 'is 6/18/2024 22:42'
 }
 WBElement >> initialize [
-
+	
 	super initialize.
 	self morph: self initializeElement;
-		extent: self defaultSize.
+		extent: self class defaultSize.
 	self setupEventHandling.
 	self supportsText ifTrue: [self initializeTextfield]
 	
@@ -454,11 +463,11 @@ WBElement >> initializeElement [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/18/2024 18:53'
+	#'squeak_changestamp' : 'is 6/18/2024 22:24'
 }
 WBElement >> initializeTextfield [
 	| textfield |
-	
+
 	textfield := WBPluggableTextMorphPlus new.
 	textfield extent: self extent - (self textBorderOffset @ self textBorderOffset);
 		element: self.
@@ -493,6 +502,15 @@ WBElement >> lastMouseClick [
 WBElement >> lastMouseClick: evt [
 
 	lastMouseClick := evt
+]
+
+{
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 22:47'
+}
+WBElement >> left [
+
+	^ self morph left
 ]
 
 {
@@ -688,6 +706,15 @@ WBElement >> resizeFrame: aFrame [
 ]
 
 {
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 22:47'
+}
+WBElement >> right [
+
+	^ self morph right
+]
+
+{
 	#category : #popUp,
 	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
@@ -698,13 +725,11 @@ WBElement >> setPopupPosition [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/18/2024 17:32'
+	#'squeak_changestamp' : 'is 6/18/2024 21:10'
 }
 WBElement >> setupEventHandling [
 "pass event triggers from the element itself to the methods of the WBElement"
 	
-	"self element on: #handlesMouseDown send: #handlesMouseDown to: self.
-	self element on: #hanldesMouseOver send: #hanldesMouseOver to: self."
 	self morph on: #mouseDown send: #mouseDown: to: self.
 	self morph on: #mouseUp send: #mouseUp: to: self.
 	self morph on: #mouseMove send: #mouseMove: to: self
@@ -732,11 +757,17 @@ WBElement >> supportsText [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/12/2024 16:25'
+	#'squeak_changestamp' : 'is 6/18/2024 23:17'
 }
 WBElement >> supportsText: aBoolean [
 
-	supportsText := aBoolean
+	supportsText := aBoolean.
+	aBoolean 
+		ifTrue: [self textField ifNil: [self initializeTextfield]] 
+		ifFalse: [self textField ifNotNil: 
+			[self canvas deactivateTextbox.
+			self textField delete.
+			self textField: nil]]
 ]
 
 {
@@ -776,6 +807,15 @@ WBElement >> textField [
 WBElement >> textField: aTextfield [
 
 	textField := aTextfield
+]
+
+{
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 22:47'
+}
+WBElement >> top [
+
+	^ self morph top
 ]
 
 {

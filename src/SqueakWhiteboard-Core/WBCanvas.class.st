@@ -412,7 +412,7 @@ WBCanvas >> spawnACopiedElement: anElement At: aPoint [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 6/18/2024 16:38'
+	#'squeak_changestamp' : 'is 6/18/2024 22:38'
 }
 WBCanvas >> spawnAnElement: anElement At: aMouseEvent [
 	
@@ -424,7 +424,7 @@ WBCanvas >> spawnAnElement: anElement At: aMouseEvent [
 		color: self globalColor;
 		addDropShadow;
 		yourself).
-	self addElement: anElement
+	self addElement: anElement 
 ]
 
 {

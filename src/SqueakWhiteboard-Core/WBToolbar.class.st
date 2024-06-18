@@ -102,11 +102,12 @@ WBToolbar >> buttonFunctionalityForDeleteConfirm [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/17/2024 11:30'
+	#'squeak_changestamp' : 'is 6/18/2024 21:14'
 }
 WBToolbar >> buttonFunctionalityForGlobalColor [
 
-	^ [:aButton | self canvas globalColor: aButton color]
+	^ [:aButton | self canvas globalColor: aButton color.
+		self deactivateElement]
 ]
 
 {

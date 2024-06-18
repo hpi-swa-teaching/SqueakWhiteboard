@@ -42,21 +42,22 @@ WBLine >> angleForPoints [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/18/2024 19:27'
+	#'squeak_changestamp' : 'is 6/18/2024 21:12'
 }
 WBLine >> arrowHead [
 
-	^ arrowHead ifNil: [ self arrowHead: WBArrowhead new]
+	^ arrowHead ifNil: 
+		[ arrowHead := WBArrowhead new. 
+		self morph addMorph: self arrowHead ] 
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/18/2024 19:28'
+	#'squeak_changestamp' : 'is 6/18/2024 21:11'
 }
 WBLine >> arrowHead: anArrowhead [
 
-	arrowHead := anArrowhead.
-	self morph addMorph: anArrowhead
+	arrowHead := anArrowhead
 ]
 
 {
@@ -130,7 +131,7 @@ WBLine >> mouseUp: anEvent [
 
 {
 	#category : #buildLine,
-	#'squeak_changestamp' : 'is 6/18/2024 19:25'
+	#'squeak_changestamp' : 'is 6/18/2024 22:34'
 }
 WBLine >> spawnEdgeOfLineAt: aMouseEvent [
 
@@ -180,10 +181,10 @@ WBLine >> state: aState [
 
 {
 	#category : #arrow,
-	#'squeak_changestamp' : 'is 6/18/2024 19:38'
+	#'squeak_changestamp' : 'is 6/18/2024 21:13'
 }
 WBLine >> updateArrowHead [
-	self halt.
+
 	((self edges at: 1) x > (self edges at: 2) x) 
 		ifFalse:[self arrowHead rotationDegrees: (-1 * self angleForPoints)] 
 		ifTrue:[self arrowHead rotationDegrees: (180 + self angleForPoints)].
