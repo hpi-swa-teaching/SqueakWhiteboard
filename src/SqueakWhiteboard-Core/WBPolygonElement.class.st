@@ -27,12 +27,12 @@ WBPolygonElement >> edges: aList [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/18/2024 11:32'
+	#'squeak_changestamp' : 'is 6/18/2024 12:18'
 }
 WBPolygonElement >> initializeElement [
 
-	^ PolygonMorph initialize
-	"on: #mouseDown send: #handleMouseDown to element"
+	^ PolygonMorph new
+	
 ]
 
 {

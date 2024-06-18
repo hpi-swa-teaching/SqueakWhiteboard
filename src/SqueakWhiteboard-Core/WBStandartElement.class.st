@@ -6,9 +6,9 @@ Class {
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/18/2024 01:03'
+	#'squeak_changestamp' : 'is 6/18/2024 12:18'
 }
 WBStandartElement >> initializeElement [
 
-	^ Morph initialize
+	^ Morph new
 ]

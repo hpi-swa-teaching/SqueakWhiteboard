@@ -55,6 +55,15 @@ WBElement >> activateTextbox: evt [
 ]
 
 {
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 14:01'
+}
+WBElement >> addDropShadow [
+
+	self element addDropShadow
+]
+
+{
 	#category : #resize,
 	#'squeak_changestamp' : 'is 6/18/2024 00:52'
 }
@@ -142,6 +151,24 @@ WBElement >> canvas [
 WBElement >> canvas: aCanvas [
 
 	canvas := aCanvas
+]
+
+{
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 13:58'
+}
+WBElement >> center: aPoint [
+
+	self element center: aPoint
+]
+
+{
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 14:00'
+}
+WBElement >> color: aColor [
+
+	self element color: aColor
 ]
 
 {
@@ -281,7 +308,7 @@ WBElement >> element: anElement [
 ]
 
 {
-	#category : #resize,
+	#category : #'morph functionalities',
 	#'squeak_changestamp' : 'is 6/18/2024 00:57'
 }
 WBElement >> extent: anExtent [
@@ -315,14 +342,15 @@ WBElement >> handlesMouseOver: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/18/2024 00:59'
+	#'squeak_changestamp' : 'is 6/18/2024 12:13'
 }
 WBElement >> initialize [
 
 	super initialize.
-	self element: self initializeElement.
-	self element extent: self defaultSize.
-	supportsText ifTrue: [self initializeTextfield]
+	self element: self initializeElement;
+		extent: self defaultSize.
+	self setupEventHandling.
+	self supportsText ifTrue: [self initializeTextfield]
 	
 ]
 
@@ -487,6 +515,24 @@ WBElement >> popUp: aPopUp [
 ]
 
 {
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 13:59'
+}
+WBElement >> position [
+
+	^ self element position
+]
+
+{
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 13:58'
+}
+WBElement >> position: aPosition [
+
+	self element position:  aPosition
+]
+
+{
 	#category : #popUp,
 	#'squeak_changestamp' : 'is 6/18/2024 00:24'
 }
@@ -526,11 +572,25 @@ WBElement >> resizeFrame: aFrame [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/14/2024 12:08'
+	#'squeak_changestamp' : 'is 6/18/2024 12:19'
 }
 WBElement >> setPopupPosition [
 
-	^ self topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2))
+	^ self element topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2))
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/18/2024 14:22'
+}
+WBElement >> setupEventHandling [
+"pass event triggers from the element itself to the methods of the WBElement"
+	
+	"self element on: #handlesMouseDown send: #handlesMouseDown to: self.
+	self element on: #hanldesMouseOver send: #hanldesMouseOver to: self."
+	self element on: #mouseDown send: #mouseDown to: self.
+	self element on: #mouseUp send: #mouseUp to: self.
+	self element on: #mouseMove send: #mouseMove to: self
 ]
 
 {

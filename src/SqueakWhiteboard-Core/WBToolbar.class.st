@@ -55,8 +55,8 @@ WBToolbar >> backgroundColor: aColor [
 ]
 
 {
-	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/17/2024 11:29'
+	#category : #'button functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 12:25'
 }
 WBToolbar >> buttonFunctionalityForCircle [
 
@@ -64,7 +64,7 @@ WBToolbar >> buttonFunctionalityForCircle [
 ]
 
 {
-	#category : #buttonFunctionallities,
+	#category : #'button functionalities',
 	#'squeak_changestamp' : 'si 6/17/2024 11:29'
 }
 WBToolbar >> buttonFunctionalityForColorPalette [
@@ -73,7 +73,7 @@ WBToolbar >> buttonFunctionalityForColorPalette [
 ]
 
 {
-	#category : #buttonFunctionallities,
+	#category : #'button functionalities',
 	#'squeak_changestamp' : 'si 6/17/2024 11:29'
 }
 WBToolbar >> buttonFunctionalityForDeleteAll [
@@ -82,7 +82,7 @@ WBToolbar >> buttonFunctionalityForDeleteAll [
 ]
 
 {
-	#category : #buttonFunctionallities,
+	#category : #'button functionalities',
 	#'squeak_changestamp' : 'si 6/17/2024 11:30'
 }
 WBToolbar >> buttonFunctionalityForDeleteCancel [
@@ -91,7 +91,7 @@ WBToolbar >> buttonFunctionalityForDeleteCancel [
 ]
 
 {
-	#category : #buttonFunctionallities,
+	#category : #'button functionalities',
 	#'squeak_changestamp' : 'si 6/17/2024 11:39'
 }
 WBToolbar >> buttonFunctionalityForDeleteConfirm [
@@ -101,7 +101,7 @@ WBToolbar >> buttonFunctionalityForDeleteConfirm [
 ]
 
 {
-	#category : #buttonFunctionallities,
+	#category : #'button functionalities',
 	#'squeak_changestamp' : 'si 6/17/2024 11:30'
 }
 WBToolbar >> buttonFunctionalityForGlobalColor [
@@ -110,17 +110,17 @@ WBToolbar >> buttonFunctionalityForGlobalColor [
 ]
 
 {
-	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/17/2024 11:30'
+	#category : #'button functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 12:25'
 }
 WBToolbar >> buttonFunctionalityForLine [
 
-	^ [:aButton | self canvas spawnAnElement: WBLine new At: aButton currentEvent]
+	^ [:aButton | self canvas spawnAnElement: (WBLine new) At: aButton currentEvent]
 ]
 
 {
-	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/17/2024 11:30'
+	#category : #'button functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 12:25'
 }
 WBToolbar >> buttonFunctionalityForNote [
 
@@ -128,8 +128,8 @@ WBToolbar >> buttonFunctionalityForNote [
 ]
 
 {
-	#category : #buttonFunctionallities,
-	#'squeak_changestamp' : 'si 6/17/2024 11:30'
+	#category : #'button functionalities',
+	#'squeak_changestamp' : 'is 6/18/2024 12:25'
 }
 WBToolbar >> buttonFunctionalityForRectangle [
 
@@ -137,7 +137,7 @@ WBToolbar >> buttonFunctionalityForRectangle [
 ]
 
 {
-	#category : #buttonFunctionallities,
+	#category : #'button functionalities',
 	#'squeak_changestamp' : 'si 6/17/2024 11:31'
 }
 WBToolbar >> buttonFunctionalityForShapeChoosing [
