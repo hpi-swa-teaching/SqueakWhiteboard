@@ -76,17 +76,16 @@ WBButton >> block: aBlock [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/15/2024 14:19'
+	#'squeak_changestamp' : 'si 6/19/2024 11:58'
 }
 WBButton >> clickFunctionality: anEvent [
 
-	self 
-		currentEvent: anEvent.
-		block value: self 
+	self currentEvent: anEvent.
+	self block value: self
 ]
 
 {
-	#category : #appearance,
+	#category : #accessing,
 	#'squeak_changestamp' : 'is 5/27/2024 19:26'
 }
 WBButton >> clickedColor [
@@ -95,7 +94,7 @@ WBButton >> clickedColor [
 ]
 
 {
-	#category : #appearance,
+	#category : #accessing,
 	#'squeak_changestamp' : 'is 5/19/2024 16:08'
 }
 WBButton >> clickedColor: aColor [
@@ -140,7 +139,7 @@ WBButton >> handlesMouseOver: evt [
 ]
 
 {
-	#category : #appearance,
+	#category : #accessing,
 	#'squeak_changestamp' : 'is 5/27/2024 20:04'
 }
 WBButton >> hoverColor [
@@ -149,7 +148,7 @@ WBButton >> hoverColor [
 ]
 
 {
-	#category : #appearance,
+	#category : #accessing,
 	#'squeak_changestamp' : 'is 5/27/2024 19:27'
 }
 WBButton >> hoverColor: aColor [
@@ -186,7 +185,7 @@ WBButton >> initialize [
 ]
 
 {
-	#category : #appearance,
+	#category : #accessing,
 	#'squeak_changestamp' : 'si 6/14/2024 12:51'
 }
 WBButton >> margin [ 
@@ -196,7 +195,7 @@ WBButton >> margin [
 ]
 
 {
-	#category : #appearance,
+	#category : #accessing,
 	#'squeak_changestamp' : 'nicloeser 5/24/2024 14:57'
 }
 WBButton >> margin: aMargin [

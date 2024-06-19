@@ -291,13 +291,13 @@ WBToolbar >> getColorButtonWithColor: aColor [
 
 {
 	#category : #getButton,
-	#'squeak_changestamp' : 'is 6/17/2024 13:43'
+	#'squeak_changestamp' : 'si 6/19/2024 11:59'
 }
 WBToolbar >> getColorsButton [
 
 	^ WBButton new 
 		block: self buttonFunctionalityForColorPalette;
-		 image: (ImageMorph new image: (self canvas images resize: WBImage loadColorsButtonImage to: self buttonSize*0.8));
+		image: (ImageMorph new image: (self canvas images resize: WBImage loadColorsButtonImage to: self buttonSize*0.8));
 		yourself
 			
 ]

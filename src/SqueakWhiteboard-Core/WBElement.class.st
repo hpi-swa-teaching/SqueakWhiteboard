@@ -34,11 +34,11 @@ WBElement class >> defaultSize [
 
 {
 	#category : #'instance creation',
-	#'squeak_changestamp' : 'JK 6/3/2024 20:58'
+	#'squeak_changestamp' : 'si 6/19/2024 11:53'
 }
 WBElement class >> newWithCanvas: aCanvas [
 
-	^ self new initializeWithCanvas: aCanvas
+	^ self basicNew initializeWithCanvas: aCanvas
 ]
 
 {

@@ -6,10 +6,10 @@ Class {
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 15:56'
+	#'squeak_changestamp' : 'si 6/19/2024 11:42'
 }
 WBDeletePopUpTests >> testButtonFunctionalityForCancel [
-| button buttonForCancel mouseEvent|
+	| button buttonForCancel mouseEvent |
 	
 	mouseEvent := MouseButtonEvent new.
 	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
