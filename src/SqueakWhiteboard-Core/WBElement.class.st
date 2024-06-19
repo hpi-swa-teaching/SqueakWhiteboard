@@ -91,6 +91,15 @@ WBElement >> addMorphCentered: aMorph [
 ]
 
 {
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'is 6/19/2024 16:23'
+}
+WBElement >> addOwnMorphTo: aMorph [
+
+	aMorph addMorph: self morph
+]
+
+{
 	#category : #resize,
 	#'squeak_changestamp' : 'is 6/18/2024 17:59'
 }

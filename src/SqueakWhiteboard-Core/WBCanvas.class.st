@@ -67,12 +67,12 @@ WBCanvas >> activeTextbox: aTextbox [
 
 {
 	#category : #'handle elements',
-	#'squeak_changestamp' : 'is 6/18/2024 16:48'
+	#'squeak_changestamp' : 'is 6/19/2024 16:23'
 }
 WBCanvas >> addElement: anElement [
 
 	self elements add:  anElement.
-	self drawingSurface addMorph: anElement morph
+	anElement addOwnMorphTo: self drawingSurface
 ]
 
 {
