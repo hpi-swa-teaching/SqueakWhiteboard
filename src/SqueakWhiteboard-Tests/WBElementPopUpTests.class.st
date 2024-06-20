@@ -196,3 +196,31 @@ WBElementPopUpTests >> testFunctionalityOfDelete [
 		
 	self assert: self canvas elements size = 0
 ]
+
+{
+	#category : #tests,
+	#'squeak_changestamp' : 'si 6/21/2024 00:51'
+}
+WBElementPopUpTests >> testFunctionalityOfSwitchVisibilityOfArrowHead [
+| element mouseEvent1 mouseEvent2|
+	
+	mouseEvent1 := MouseButtonEvent new.
+	mouseEvent1 setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent1 class redButton hand: HandMorph new stamp: 0.
+	mouseEvent2 := MouseButtonEvent new.
+	mouseEvent2 setType: #mouseDown position: self canvas position + (200 @ 200) which: 4 buttons: mouseEvent2 class redButton hand: HandMorph new stamp: 0.
+	element := (WBLine newWithCanvas: self canvas).
+	
+	self canvas spawnAnElement: (element) At: (MouseButtonEvent new position: self canvas position + (100@100)).
+	element mouseUp: mouseEvent1.
+	element mouseUp: mouseEvent2.
+	
+	
+	(element edges at: 1) mouseDown: mouseEvent1.
+	((element edges at: 1) popUp submorphs at: 1) clickFunctionality: mouseEvent1.
+	
+	self assert: element arrowHead isVisible = false.
+	
+	((element edges at: 1) popUp submorphs at: 1) clickFunctionality: mouseEvent1.
+	
+	self assert: element arrowHead isVisible = true.
+]

@@ -18,9 +18,10 @@ WBCanvasTests >> canvas [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 6/3/2024 21:15'
+	#'squeak_changestamp' : 'si 6/21/2024 00:53'
 }
 WBCanvasTests >> canvas: anObject [
+
 	canvas := anObject
 ]
 
