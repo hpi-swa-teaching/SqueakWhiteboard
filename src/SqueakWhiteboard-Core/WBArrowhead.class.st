@@ -9,7 +9,7 @@ Class {
 
 {
 	#category : #defaults,
-	#'squeak_changestamp' : 'si 6/14/2024 12:48'
+	#'squeak_changestamp' : 'si 6/21/2024 00:29'
 }
 WBArrowhead class >> defaultVertecies [
 

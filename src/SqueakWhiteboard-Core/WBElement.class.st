@@ -290,7 +290,7 @@ WBElement >> cornerStyle: aStyle [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/18/2024 00:15'
+	#'squeak_changestamp' : 'si 6/21/2024 00:24'
 }
 WBElement >> deactivateElement [
 

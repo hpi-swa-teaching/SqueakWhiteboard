@@ -208,6 +208,19 @@ WBLine >> state: aState [
 ]
 
 {
+	#category : #geometry,
+	#'squeak_changestamp' : 'si 6/20/2024 23:58'
+}
+WBLine >> switchDirection [
+	| aPosition | 
+	
+	aPosition := (self edges at: 1) center.
+	(self edges at:1) center: (self edges at:2) center.
+	(self edges at:2) center: aPosition.
+	self updateEdges
+]
+
+{
 	#category : #arrow,
 	#'squeak_changestamp' : 'si 6/20/2024 23:39'
 }

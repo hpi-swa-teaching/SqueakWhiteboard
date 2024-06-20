@@ -16,11 +16,11 @@ WBEdgeOfLine >> addResizeFrame [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/20/2024 23:34'
+	#'squeak_changestamp' : 'si 6/21/2024 00:07'
 }
 WBEdgeOfLine >> buttonFunctionalityForArrowSwitch [
 
-	^ [:aButton | self line switchVisibilityOfArrowHead]
+	^ [:aButton | self checkArrwoDirection]
 ]
 
 {
@@ -63,6 +63,18 @@ WBEdgeOfLine >> buttonsForPopUpBar [
 			block: self buttonFunctionalityForArrowSwitch;
 			backgroundColor: Color green).
 	^ aCollection
+]
+
+{
+	#category : #geometry,
+	#'squeak_changestamp' : 'si 6/21/2024 00:12'
+}
+WBEdgeOfLine >> checkArrwoDirection [
+
+	(self line edges at: 1) = self
+		ifTrue: [self switchDirection.
+			self line switchVisibilityOfArrowHead]
+		ifFalse: [self line switchVisibilityOfArrowHead] 
 ]
 
 {
@@ -132,4 +144,16 @@ WBEdgeOfLine >> setDefaultValues [
 		height: 10;
 		color: Color black;
 		supportsText: false
+]
+
+{
+	#category : #geometry,
+	#'squeak_changestamp' : 'si 6/21/2024 00:24'
+}
+WBEdgeOfLine >> switchDirection [
+
+	self line switchDirection.
+	self canvas deactivateElement.
+	(self line edges at: 2) showPopUp.
+	self canvas activeElement: (self line edges at: 2)
 ]
