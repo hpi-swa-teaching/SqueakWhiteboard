@@ -1,6 +1,9 @@
 Class {
 	#name : #WBArrowhead,
 	#superclass : #PolygonMorph,
+	#instVars : [
+		'isVisible'
+	],
 	#category : #'SqueakWhiteboard-Core'
 }
 
@@ -25,4 +28,25 @@ WBArrowhead >> initialize [
 		setVertices: self class defaultVertecies;
 		fillStyle: Color black;
 		goBehind.
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/20/2024 23:01'
+}
+WBArrowhead >> isVisible [
+
+	^ isVisible
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/20/2024 23:02'
+}
+WBArrowhead >> isVisible: aBoolean [
+
+	isVisible := aBoolean.
+	aBoolean 
+		ifTrue: [self show]
+		ifFalse: [self hide]
 ]

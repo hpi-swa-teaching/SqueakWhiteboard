@@ -16,6 +16,15 @@ WBEdgeOfLine >> addResizeFrame [
 
 {
 	#category : #'button functionalities',
+	#'squeak_changestamp' : 'si 6/20/2024 23:34'
+}
+WBEdgeOfLine >> buttonFunctionalityForArrowSwitch [
+
+	^ [:aButton | self line switchVisibilityOfArrowHead]
+]
+
+{
+	#category : #'button functionalities',
 	#'squeak_changestamp' : 'si 6/17/2024 11:31'
 }
 WBEdgeOfLine >> buttonFunctionalityForColor [
@@ -43,11 +52,25 @@ WBEdgeOfLine >> buttonFunctionalityForDelete [
 ]
 
 {
+	#category : #'button creation',
+	#'squeak_changestamp' : 'si 6/20/2024 23:37'
+}
+WBEdgeOfLine >> buttonsForPopUpBar [
+	| aCollection |
+	
+	aCollection := super buttonsForPopUpBar.
+	aCollection add: (WBButton new
+			block: self buttonFunctionalityForArrowSwitch;
+			backgroundColor: Color green).
+	^ aCollection
+]
+
+{
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/12/2024 16:27'
+	#'squeak_changestamp' : 'si 6/20/2024 23:26'
 }
 WBEdgeOfLine >> initialize [
-	
+
 	super initialize.
 	self
 		cornerStyle: #rounded;
@@ -94,4 +117,19 @@ WBEdgeOfLine >> mouseUp: anEvent [
 
 	super mouseUp: anEvent.
 	self line updateEdges
+]
+
+{
+	#category : #initialization,
+	#'squeak_changestamp' : 'si 6/20/2024 23:24'
+}
+WBEdgeOfLine >> setDefaultValues [
+
+	self
+		cornerStyle: #rounded;
+		cornerRadius: 100;
+		width: 10;
+		height: 10;
+		color: Color black;
+		supportsText: false
 ]

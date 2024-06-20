@@ -42,12 +42,12 @@ WBLine >> angleForPoints [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/18/2024 21:12'
+	#'squeak_changestamp' : 'si 6/20/2024 23:39'
 }
 WBLine >> arrowHead [
 
 	^ arrowHead ifNil: 
-		[ arrowHead := WBArrowhead new. 
+		[ arrowHead := WBArrowhead new isVisible: true. 
 		self morph addMorph: self arrowHead ] 
 ]
 
@@ -58,6 +58,15 @@ WBLine >> arrowHead [
 WBLine >> arrowHead: anArrowhead [
 
 	arrowHead := anArrowhead
+]
+
+{
+	#category : #'button creation',
+	#'squeak_changestamp' : 'si 6/20/2024 23:34'
+}
+WBLine >> buttonsForPopUpBar [
+
+	^ super buttonsForPopUpBar add: self buttonFunctionalityForArrowSwitch
 ]
 
 {
@@ -95,6 +104,22 @@ WBLine >> delete [
 ]
 
 {
+	#category : #buttonFunctionalities,
+	#'squeak_changestamp' : 'si 6/20/2024 23:05'
+}
+WBLine >> getSwitchArrowButton [
+]
+
+{
+	#category : #arrow,
+	#'squeak_changestamp' : 'si 6/20/2024 23:03'
+}
+WBLine >> hideArrowHead [
+
+	self arrowHead isVisible: false
+]
+
+{
 	#category : #initialization,
 	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
@@ -107,15 +132,9 @@ WBLine >> initialize [
 
 {
 	#category : #'event handeling',
-	#'squeak_changestamp' : 'si 5/27/2024 21:38'
+	#'squeak_changestamp' : 'si 6/20/2024 23:00'
 }
 WBLine >> mouseDown: anEvent [
-
-"	(self canvas elementToSpawn) ifNil:
-		[self 
-			dragOffset: self position - anEvent cursorPoint.].
-	(self canvas elementToSpawn) ifNotNil:
-		[self spawnEdgeOfLineAt: anEvent cursorPoint]"
 ]
 
 {
@@ -130,21 +149,30 @@ WBLine >> mouseUp: anEvent [
 ]
 
 {
+	#category : #arrow,
+	#'squeak_changestamp' : 'si 6/20/2024 23:03'
+}
+WBLine >> showArrowHead [
+
+	self arrowHead isVisible: true
+]
+
+{
 	#category : #buildLine,
-	#'squeak_changestamp' : 'is 6/18/2024 22:34'
+	#'squeak_changestamp' : 'si 6/20/2024 23:26'
 }
 WBLine >> spawnEdgeOfLineAt: aMouseEvent [
 
 	(self state = 0) 
 		ifTrue:
-			[self edges add: (WBEdgeOfLine new
-			center: aMouseEvent cursorPoint;
-			canvas: self canvas;
-			line: self;
-			yourself).
-			self state: 1]
+			[self edges add: ((WBEdgeOfLine newWithCanvas: self canvas)
+				canvas: self canvas;
+				center: aMouseEvent cursorPoint;
+				line: self;
+				yourself).
+				self state: 1]
 		ifFalse:
-			[self edges add: (WBEdgeOfLine new
+			[self edges add: ((WBEdgeOfLine newWithCanvas: self canvas)
 			center: aMouseEvent cursorPoint;
 			canvas: self canvas;
 			line: self;
@@ -177,6 +205,17 @@ WBLine >> state [
 WBLine >> state: aState [
 
 	state := aState
+]
+
+{
+	#category : #arrow,
+	#'squeak_changestamp' : 'si 6/20/2024 23:39'
+}
+WBLine >> switchVisibilityOfArrowHead [
+
+	self arrowHead isVisible
+		ifTrue: [self arrowHead isVisible: false]
+		ifFalse: [self arrowHead isVisible: true]
 ]
 
 {
