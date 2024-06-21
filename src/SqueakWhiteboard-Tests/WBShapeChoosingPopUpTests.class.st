@@ -6,10 +6,10 @@ Class {
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'is 6/18/2024 23:41'
+	#'squeak_changestamp' : 'is 6/21/2024 18:54'
 }
 WBShapeChoosingPopUpTests >> testButtonFunctionality [
-| button buttonForShape|
+	| button buttonForShape |
 
 	button := self canvas toolbar buttons at: 1.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
@@ -25,11 +25,10 @@ WBShapeChoosingPopUpTests >> testButtonFunctionality [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 11:59'
+	#'squeak_changestamp' : 'is 6/21/2024 18:54'
 }
 WBShapeChoosingPopUpTests >> testButtonsOfPopUp [
-
-	| button|
+	| button |
 
 	button := self canvas toolbar buttons at: 1.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
@@ -39,11 +38,10 @@ WBShapeChoosingPopUpTests >> testButtonsOfPopUp [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 11:58'
+	#'squeak_changestamp' : 'is 6/21/2024 18:54'
 }
 WBShapeChoosingPopUpTests >> testExistenceOfPopUp [
-
-	| button|
+	| button |
 
 	button := self canvas toolbar buttons at: 1.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
@@ -53,10 +51,10 @@ WBShapeChoosingPopUpTests >> testExistenceOfPopUp [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 12:18'
+	#'squeak_changestamp' : 'is 6/21/2024 18:54'
 }
 WBShapeChoosingPopUpTests >> testPopUpPlacementInX [
-| button|
+	| button |
 
 	button := self canvas toolbar buttons at: 1.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
@@ -67,10 +65,10 @@ WBShapeChoosingPopUpTests >> testPopUpPlacementInX [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 12:01'
+	#'squeak_changestamp' : 'is 6/21/2024 18:54'
 }
 WBShapeChoosingPopUpTests >> testPopUpPlacementInY [
-| button|
+	| button |
 
 	button := self canvas toolbar buttons at: 1.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).

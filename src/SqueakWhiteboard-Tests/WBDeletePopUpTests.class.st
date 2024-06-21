@@ -6,14 +6,13 @@ Class {
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/19/2024 11:42'
+	#'squeak_changestamp' : 'is 6/21/2024 18:53'
 }
 WBDeletePopUpTests >> testButtonFunctionalityForCancel [
 	| button buttonForCancel mouseEvent |
 	
 	mouseEvent := MouseButtonEvent new.
 	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
-	
 	button := self canvas toolbar buttons at: 5.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	
@@ -30,10 +29,10 @@ WBDeletePopUpTests >> testButtonFunctionalityForCancel [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 13:53'
+	#'squeak_changestamp' : 'is 6/21/2024 18:53'
 }
 WBDeletePopUpTests >> testButtonFunctionalityForConfirm [
-| button buttonForConfirm mouseEvent|
+	| button buttonForConfirm mouseEvent |
 	
 	mouseEvent := MouseButtonEvent new.
 	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
@@ -54,11 +53,10 @@ WBDeletePopUpTests >> testButtonFunctionalityForConfirm [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 19:16'
+	#'squeak_changestamp' : 'is 6/21/2024 18:53'
 }
 WBDeletePopUpTests >> testButtonsOfPopUp [
-
-	| button|
+	| button |
 
 	button := self canvas toolbar buttons at: 5.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
@@ -68,10 +66,9 @@ WBDeletePopUpTests >> testButtonsOfPopUp [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 12:16'
+	#'squeak_changestamp' : 'is 6/21/2024 18:53'
 }
 WBDeletePopUpTests >> testExistenceOfPopUp [
-
 	| button|
 
 	button := self canvas toolbar buttons at: 5.
@@ -82,10 +79,10 @@ WBDeletePopUpTests >> testExistenceOfPopUp [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 12:18'
+	#'squeak_changestamp' : 'is 6/21/2024 18:53'
 }
 WBDeletePopUpTests >> testPopUpPlacementInX [
-| button|
+	| button |
 
 	button := self canvas toolbar buttons at: 5.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
@@ -96,10 +93,10 @@ WBDeletePopUpTests >> testPopUpPlacementInX [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 12:18'
+	#'squeak_changestamp' : 'is 6/21/2024 18:53'
 }
 WBDeletePopUpTests >> testPopUpPlacementInY [
-| button|
+	| button |
 
 	button := self canvas toolbar buttons at: 5.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).

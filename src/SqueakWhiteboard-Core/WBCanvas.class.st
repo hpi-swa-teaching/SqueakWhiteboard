@@ -77,9 +77,9 @@ WBCanvas >> addElement: anElement [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'si 6/14/2024 13:08'
+	#'squeak_changestamp' : 'is 6/21/2024 21:10'
 }
-WBCanvas >> clampElementToCanvas: anElement at: aPoint [
+WBCanvas >> clampedPositionOfElement: anElement at: aPoint [
 
 	^ (aPoint x clampLow: self bounds origin x high: self bounds corner x - anElement extent x) @ (aPoint y clampLow: self bounds origin y high: self bounds corner y - anElement extent y)
 	
@@ -199,16 +199,6 @@ WBCanvas >> drawingSurface [
 WBCanvas >> drawingSurface: anObject [
 
 	drawingSurface := anObject
-]
-
-{
-	#category : #'handle elements',
-	#'squeak_changestamp' : 'is 6/3/2024 21:15'
-}
-WBCanvas >> dropElement [
-
-	self elementToSpawn removeDropShadow.
-	self elementToSpawn: nil
 ]
 
 {
@@ -425,15 +415,6 @@ WBCanvas >> spawnAnElement: anElement At: aMouseEvent [
 		addDropShadow;
 		yourself).
 	self addElement: anElement 
-]
-
-{
-	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 5/28/2024 10:38'
-}
-WBCanvas >> spawnMenuBar [
-
-	self addMorph: (WBMenuBar newWithCanvas: self)
 ]
 
 {
