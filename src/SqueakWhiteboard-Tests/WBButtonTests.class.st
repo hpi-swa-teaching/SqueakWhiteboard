@@ -95,3 +95,32 @@ WBButtonTests >> testButtonHoverColor [
 	
 	
 ]
+
+{
+	#category : #testing,
+	#'squeak_changestamp' : 'is 6/22/2024 00:36'
+}
+WBButtonTests >> testMouseEvents [
+	| aButton aMouseEvent |
+	
+	aButton := self canvas toolbar buttons at: 1.
+	aMouseEvent := MouseButtonEvent new.
+	aMouseEvent setType: #mouseDown position: (aButton position + aButton extent + (1@1)) which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
+	self assert: (aButton handlesMouseOver: aMouseEvent) = true.
+	self assert: (aButton handlesMouseDown: aMouseEvent) = true.
+	
+	"Test whether button actives on mouseUp"
+	aButton mouseDown: aMouseEvent.
+	self assert: aButton currentEvent = nil.
+	
+	"Test whether button activates only if position of mouse is still above button. Currently the mouse isn't"
+	aButton mouseUp: aMouseEvent.
+	self assert: aButton currentEvent = nil.
+	
+	aMouseEvent position: aButton position.
+	aButton mouseUp: aMouseEvent.
+	self assert: aButton currentEvent = aMouseEvent
+	
+	
+	
+]

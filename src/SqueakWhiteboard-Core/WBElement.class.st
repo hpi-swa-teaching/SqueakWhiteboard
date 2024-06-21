@@ -359,10 +359,10 @@ WBElement >> dragEnd: anEvent [
 
 {
 	#category : #drag,
-	#'squeak_changestamp' : 'is 6/21/2024 20:57'
+	#'squeak_changestamp' : 'is 6/22/2024 00:48'
 }
 WBElement >> dragMove: mouseEvent [
-	|newPosition |
+	| newPosition |
 
  	newPosition := self canvas clampedPositionOfElement: self morph at: mouseEvent cursorPoint + self dragOffset.
 	self morph position: newPosition

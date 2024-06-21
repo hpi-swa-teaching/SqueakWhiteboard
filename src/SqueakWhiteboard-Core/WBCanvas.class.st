@@ -202,16 +202,6 @@ WBCanvas >> drawingSurface: anObject [
 ]
 
 {
-	#category : #'handle elements',
-	#'squeak_changestamp' : 'is 6/3/2024 21:15'
-}
-WBCanvas >> dropElement [
-
-	self elementToSpawn removeDropShadow.
-	self elementToSpawn: nil
-]
-
-{
 	#category : #'creating elements',
 	#'squeak_changestamp' : 'is 6/18/2024 17:36'
 }
@@ -425,15 +415,6 @@ WBCanvas >> spawnAnElement: anElement At: aMouseEvent [
 		addDropShadow;
 		yourself).
 	self addElement: anElement 
-]
-
-{
-	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 5/28/2024 10:38'
-}
-WBCanvas >> spawnMenuBar [
-
-	self addMorph: (WBMenuBar newWithCanvas: self)
 ]
 
 {

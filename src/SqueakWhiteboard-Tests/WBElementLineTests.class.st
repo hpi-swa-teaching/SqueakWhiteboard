@@ -1,50 +1,8 @@
 Class {
 	#name : #WBElementLineTests,
-	#superclass : #TestCase,
-	#instVars : [
-		'canvas'
-	],
+	#superclass : #WBElementTests,
 	#category : #'SqueakWhiteboard-Tests'
 }
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/21/2024 00:53'
-}
-WBElementLineTests >> canvas [
-
-	^ canvas
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/21/2024 00:53'
-}
-WBElementLineTests >> canvas: anObject [
-
-	canvas := anObject
-]
-
-{
-	#category : #setUp,
-	#'squeak_changestamp' : 'si 6/21/2024 00:54'
-}
-WBElementLineTests >> setUp [
-
-	super setUp.
-	self canvas: WBCanvas new
-
-]
-
-{
-	#category : #tearDown,
-	#'squeak_changestamp' : 'si 6/21/2024 00:53'
-}
-WBElementLineTests >> tearDown [
-
-	super tearDown.
-	self canvas ifNotNil: [:canvas | canvas owner delete]
-]
 
 {
 	#category : #tests,

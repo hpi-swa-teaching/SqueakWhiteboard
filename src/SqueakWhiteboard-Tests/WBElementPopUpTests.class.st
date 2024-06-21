@@ -1,50 +1,8 @@
 Class {
 	#name : #WBElementPopUpTests,
-	#superclass : #TestCase,
-	#instVars : [
-		'canvas'
-	],
+	#superclass : #WBElementTests,
 	#category : #'SqueakWhiteboard-Tests'
 }
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/17/2024 14:36'
-}
-WBElementPopUpTests >> canvas [
-
-	^ canvas
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/17/2024 14:37'
-}
-WBElementPopUpTests >> canvas: aCanvas [
-
-	canvas := aCanvas 
-]
-
-{
-	#category : #setUp,
-	#'squeak_changestamp' : 'si 6/17/2024 14:23'
-}
-WBElementPopUpTests >> setUp [
-
-	super setUp.
-	self canvas: WBCanvas new
-
-]
-
-{
-	#category : #tearDown,
-	#'squeak_changestamp' : 'si 6/17/2024 14:23'
-}
-WBElementPopUpTests >> tearDown [
-
-	super tearDown.
-	self canvas ifNotNil: [:canvas | canvas owner delete]
-]
 
 {
 	#category : #tests,

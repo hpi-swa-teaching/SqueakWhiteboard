@@ -63,7 +63,7 @@ WBCanvasTests >> testActiveElement [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'is 6/21/2024 21:12'
+	#'squeak_changestamp' : 'is 6/21/2024 23:52'
 }
 WBCanvasTests >> testClampElementToCanvas [
 	| aPoint anElement |
@@ -73,7 +73,10 @@ WBCanvasTests >> testClampElementToCanvas [
 	self assert: (self canvas clampedPositionOfElement: anElement at: aPoint) = aPoint.
 	
 	aPoint := self canvas bounds corner + (anElement extent * 2).
-	self assert: (self canvas clampedPositionOfElement: anElement at: aPoint)  = (self canvas bounds corner - anElement extent)
+	self assert: (self canvas clampedPositionOfElement: anElement at: aPoint)  = (self canvas bounds corner - anElement extent).
+	
+	aPoint := self canvas bounds origin - (anElement extent * 2).
+	self assert: (self canvas clampedPositionOfElement: anElement at: aPoint)  = (self canvas bounds origin)
 ]
 
 {
@@ -93,6 +96,21 @@ WBCanvasTests >> testElementsCollection [
 	self assert: self canvas elements size = 1
 	
 		
+]
+
+{
+	#category : #tests,
+	#'squeak_changestamp' : 'is 6/22/2024 00:42'
+}
+WBCanvasTests >> testMouseEvents [
+	| aMouseEvent |
+	
+	aMouseEvent := MouseButtonEvent new.
+	aMouseEvent setType: #mouseDown position: (0 @ 0) which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
+	
+	self assert: (self canvas handlesMouseOver: aMouseEvent) = true.
+	self assert: (self canvas handlesMouseMove: aMouseEvent) = true.
+	self assert: (self canvas handlesMouseDown: aMouseEvent) = true
 ]
 
 {
