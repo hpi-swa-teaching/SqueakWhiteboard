@@ -48,11 +48,10 @@ WBElementLineTests >> tearDown [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/21/2024 01:04'
+	#'squeak_changestamp' : 'is 6/21/2024 18:54'
 }
 WBElementLineTests >> testSpawningViaClicking [
-
-	| element mouseEvent1 mouseEvent2|
+	| element mouseEvent1 mouseEvent2 |
 	
 	mouseEvent1 := MouseButtonEvent new.
 	mouseEvent1 setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent1 class redButton hand: HandMorph new stamp: 0.

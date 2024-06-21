@@ -108,10 +108,10 @@ WBTextfieldTests >> testTextfieldActivation [
 
 {
 	#category : #Testing,
-	#'squeak_changestamp' : 'is 6/18/2024 23:04'
+	#'squeak_changestamp' : 'is 6/21/2024 19:00'
 }
 WBTextfieldTests >> testTextfieldDeactivationViaCanvas [
-	| elements aFirstMouseEvent aSecondMouseEvent|
+	| elements aFirstMouseEvent aSecondMouseEvent |
 	
 	elements := OrderedCollection withAll: 
 	{ WBRectangle newWithCanvas: self canvas. WBCircle newWithCanvas: self canvas. WBNote newWithCanvas: self canvas . WBLine newWithCanvas: self canvas . WBEdgeOfLine newWithCanvas: self canvas}.
@@ -134,10 +134,10 @@ WBTextfieldTests >> testTextfieldDeactivationViaCanvas [
 
 {
 	#category : #Testing,
-	#'squeak_changestamp' : 'is 6/18/2024 22:49'
+	#'squeak_changestamp' : 'is 6/21/2024 19:00'
 }
 WBTextfieldTests >> testTextfieldDeactivationViaElement [
-	| aFirstElement aSecondElement aFirstMouseEvent aSecondMouseEvent|
+	| aFirstElement aSecondElement aFirstMouseEvent aSecondMouseEvent |
 	
 	aFirstElement := WBRectangle newWithCanvas: self canvas.
 	aSecondElement := WBRectangle newWithCanvas: self canvas.
@@ -157,10 +157,10 @@ WBTextfieldTests >> testTextfieldDeactivationViaElement [
 
 {
 	#category : #Testing,
-	#'squeak_changestamp' : 'is 6/18/2024 22:50'
+	#'squeak_changestamp' : 'is 6/21/2024 19:01'
 }
 WBTextfieldTests >> testTextfieldDeactivationViaEscape [
-| anElement aMouseEvent aKeyboardEvent|
+	| anElement aMouseEvent aKeyboardEvent |
 	
 	anElement := WBRectangle newWithCanvas: self canvas.
 	aMouseEvent := MouseButtonEvent new.

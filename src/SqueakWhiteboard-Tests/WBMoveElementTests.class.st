@@ -43,12 +43,3 @@ WBMoveElementTests >> tearDown [
 	super tearDown.
 	self canvas ifNotNil: [:canvas | canvas owner delete]
 ]
-
-{
-	#category : #testing,
-	#'squeak_changestamp' : 'si 6/8/2024 00:42'
-}
-WBMoveElementTests >> testtest [
-
-	self assert: 1 = 1.
-]

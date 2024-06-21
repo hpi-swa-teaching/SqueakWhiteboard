@@ -48,12 +48,30 @@ WBCanvasTests >> tearDown [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'JK 6/3/2024 21:13'
+	#'squeak_changestamp' : 'is 6/21/2024 18:50'
+}
+WBCanvasTests >> testElementsCollection [
+	| elementToDelete |
+	
+	self assert: self canvas elements size = 0.
+	self canvas addElement: (WBRectangle newWithCanvas: self canvas).
+	self assert: self canvas elements size = 1.
+	elementToDelete := WBRectangle newWithCanvas: self canvas.
+	self canvas addElement: elementToDelete.
+	self assert: self canvas elements size = 2.
+	elementToDelete delete.
+	self assert: self canvas elements size = 1
+	
+		
+]
+
+{
+	#category : #tests,
+	#'squeak_changestamp' : 'is 6/21/2024 18:54'
 }
 WBCanvasTests >> testRectangleCreate [
-
 	|rectangle|
-	rectangle := WBRectangle newWithCanvas: self canvas.
 	
+	rectangle := WBRectangle newWithCanvas: self canvas.
 	self assert: rectangle class = WBRectangle
 ]

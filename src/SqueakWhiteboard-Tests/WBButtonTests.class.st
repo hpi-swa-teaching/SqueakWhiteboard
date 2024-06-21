@@ -48,7 +48,7 @@ WBButtonTests >> tearDown [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'is 6/15/2024 14:22'
+	#'squeak_changestamp' : 'is 6/21/2024 18:52'
 }
 WBButtonTests >> testButtonClickColor [
 	| aButton aMouseEvent |
@@ -58,14 +58,11 @@ WBButtonTests >> testButtonClickColor [
 	
 	aMouseEvent := MouseButtonEvent new.
 	aMouseEvent setType: #mouseDown position: aButton position which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 1.
-
 	aButton mouseDown: aMouseEvent.
-	
 	self assert: aButton color = aButton clickedColor.
 	
 	aButton mouseUp: aMouseEvent.
-	
-	self assert: aButton color = aButton backgroundColor.
+	self assert: aButton color = aButton backgroundColor
 	
 	
 	
@@ -76,7 +73,7 @@ WBButtonTests >> testButtonClickColor [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'is 6/15/2024 13:28'
+	#'squeak_changestamp' : 'is 6/21/2024 18:52'
 }
 WBButtonTests >> testButtonHoverColor [
 	| aButton aMouseEvent |
@@ -86,13 +83,11 @@ WBButtonTests >> testButtonHoverColor [
 	
 	aMouseEvent := MouseEvent new position: aButton position.
 	aButton mouseEnter: aMouseEvent.
-	
 	self assert: aButton color = aButton hoverColor.
 	
 	aMouseEvent position: aMouseEvent position + aButton extent + 1000.
 	aButton mouseLeave: aMouseEvent.
-	
-	self assert: aButton color = aButton backgroundColor.
+	self assert: aButton color = aButton backgroundColor
 	
 	
 	

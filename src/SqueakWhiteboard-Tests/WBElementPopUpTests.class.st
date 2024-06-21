@@ -48,10 +48,10 @@ WBElementPopUpTests >> tearDown [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 14:39'
+	#'squeak_changestamp' : 'is 6/21/2024 18:55'
 }
 WBElementPopUpTests >> testButtonsOfPopUp [
-| element mouseEvent |
+	| element mouseEvent |
 	
 	mouseEvent := MouseButtonEvent new.
 	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
@@ -66,10 +66,10 @@ WBElementPopUpTests >> testButtonsOfPopUp [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 14:34'
+	#'squeak_changestamp' : 'is 6/21/2024 18:55'
 }
 WBElementPopUpTests >> testExistenceOfPopUp [
-| element mouseEvent |
+	| element mouseEvent |
 	
 	mouseEvent := MouseButtonEvent new.
 	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
@@ -85,10 +85,10 @@ WBElementPopUpTests >> testExistenceOfPopUp [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 19:15'
+	#'squeak_changestamp' : 'is 6/21/2024 18:56'
 }
 WBElementPopUpTests >> testFunctionalityOfColor [
-| element mouseEvent buttonForColor|
+	| element mouseEvent buttonForColor |
 	
 	mouseEvent := MouseButtonEvent new.
 	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
@@ -139,10 +139,10 @@ WBElementPopUpTests >> testFunctionalityOfColor [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 19:08'
+	#'squeak_changestamp' : 'is 6/21/2024 18:56'
 }
 WBElementPopUpTests >> testFunctionalityOfColorPopUp [
-| element mouseEvent |
+	| element mouseEvent |
 	
 	mouseEvent := MouseButtonEvent new.
 	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
@@ -152,17 +152,17 @@ WBElementPopUpTests >> testFunctionalityOfColorPopUp [
 	element := self canvas elements at: 1.
 	
 	element mouseDown: mouseEvent.
-	(element popUp submorphs at: 1) clickFunctionality: 	mouseEvent.
+	(element popUp submorphs at: 1) clickFunctionality: mouseEvent.
 		
 	self assert: element popUp notNil
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 19:07'
+	#'squeak_changestamp' : 'is 6/21/2024 18:56'
 }
 WBElementPopUpTests >> testFunctionalityOfCopy [
-| element mouseEvent |
+	| element mouseEvent |
 	
 	mouseEvent := MouseButtonEvent new.
 	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
@@ -172,17 +172,17 @@ WBElementPopUpTests >> testFunctionalityOfCopy [
 	element := self canvas elements at: 1.
 	
 	element mouseDown: mouseEvent.
-	(element popUp submorphs at: 2) clickFunctionality: 	mouseEvent.
+	(element popUp submorphs at: 2) clickFunctionality: mouseEvent.
 		
 	self assert: self canvas elementToSpawn class = element class
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/17/2024 14:54'
+	#'squeak_changestamp' : 'is 6/21/2024 18:56'
 }
 WBElementPopUpTests >> testFunctionalityOfDelete [
-| element mouseEvent |
+	| element mouseEvent |
 	
 	mouseEvent := MouseButtonEvent new.
 	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
@@ -192,17 +192,17 @@ WBElementPopUpTests >> testFunctionalityOfDelete [
 	element := self canvas elements at: 1.
 	
 	element mouseDown: mouseEvent.
-	(element popUp submorphs at: 3) clickFunctionality: 	mouseEvent.
+	(element popUp submorphs at: 3) clickFunctionality: mouseEvent.
 		
 	self assert: self canvas elements size = 0
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/21/2024 00:51'
+	#'squeak_changestamp' : 'is 6/21/2024 18:57'
 }
 WBElementPopUpTests >> testFunctionalityOfSwitchVisibilityOfArrowHead [
-| element mouseEvent1 mouseEvent2|
+	| element mouseEvent1 mouseEvent2 |
 	
 	mouseEvent1 := MouseButtonEvent new.
 	mouseEvent1 setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent1 class redButton hand: HandMorph new stamp: 0.
@@ -222,5 +222,5 @@ WBElementPopUpTests >> testFunctionalityOfSwitchVisibilityOfArrowHead [
 	
 	((element edges at: 1) popUp submorphs at: 1) clickFunctionality: mouseEvent1.
 	
-	self assert: element arrowHead isVisible = true.
+	self assert: element arrowHead isVisible = true
 ]
