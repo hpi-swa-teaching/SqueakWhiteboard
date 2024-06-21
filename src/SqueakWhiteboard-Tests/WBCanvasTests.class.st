@@ -47,7 +47,7 @@ WBCanvasTests >> tearDown [
 ]
 
 {
-	#category : #tests,
+	#category : #testing,
 	#'squeak_changestamp' : 'is 6/21/2024 20:36'
 }
 WBCanvasTests >> testActiveElement [
@@ -62,7 +62,7 @@ WBCanvasTests >> testActiveElement [
 ]
 
 {
-	#category : #tests,
+	#category : #testing,
 	#'squeak_changestamp' : 'is 6/21/2024 23:52'
 }
 WBCanvasTests >> testClampElementToCanvas [
@@ -80,7 +80,7 @@ WBCanvasTests >> testClampElementToCanvas [
 ]
 
 {
-	#category : #tests,
+	#category : #testing,
 	#'squeak_changestamp' : 'is 6/21/2024 18:50'
 }
 WBCanvasTests >> testElementsCollection [
@@ -99,7 +99,7 @@ WBCanvasTests >> testElementsCollection [
 ]
 
 {
-	#category : #tests,
+	#category : #testing,
 	#'squeak_changestamp' : 'is 6/22/2024 00:42'
 }
 WBCanvasTests >> testMouseEvents [
@@ -114,7 +114,7 @@ WBCanvasTests >> testMouseEvents [
 ]
 
 {
-	#category : #tests,
+	#category : #testing,
 	#'squeak_changestamp' : 'is 6/21/2024 18:54'
 }
 WBCanvasTests >> testRectangleCreate [
