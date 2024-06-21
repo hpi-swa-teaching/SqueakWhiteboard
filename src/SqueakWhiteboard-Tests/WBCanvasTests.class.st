@@ -48,6 +48,36 @@ WBCanvasTests >> tearDown [
 
 {
 	#category : #tests,
+	#'squeak_changestamp' : 'is 6/21/2024 20:36'
+}
+WBCanvasTests >> testActiveElement [
+	| anActiveElement aMouseEvent |
+	
+	anActiveElement := WBRectangle newWithCanvas: self canvas.
+	aMouseEvent := MouseButtonEvent new.
+	aMouseEvent setType: #mouseDown position: anActiveElement position which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
+	anActiveElement mouseDown: aMouseEvent.
+	self assert: self canvas activeElement = anActiveElement
+	
+]
+
+{
+	#category : #tests,
+	#'squeak_changestamp' : 'is 6/21/2024 21:12'
+}
+WBCanvasTests >> testClampElementToCanvas [
+	| aPoint anElement |
+	
+	aPoint := self canvas center.
+	anElement := WBRectangle newWithCanvas: self canvas.
+	self assert: (self canvas clampedPositionOfElement: anElement at: aPoint) = aPoint.
+	
+	aPoint := self canvas bounds corner + (anElement extent * 2).
+	self assert: (self canvas clampedPositionOfElement: anElement at: aPoint)  = (self canvas bounds corner - anElement extent)
+]
+
+{
+	#category : #tests,
 	#'squeak_changestamp' : 'is 6/21/2024 18:50'
 }
 WBCanvasTests >> testElementsCollection [
