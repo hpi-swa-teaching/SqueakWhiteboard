@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'is 6/21/2024 18:55'
+	#'squeak_changestamp' : 'ACL 6/23/2024 17:52'
 }
 WBElementPopUpTests >> testButtonsOfPopUp [
 	| element mouseEvent |
@@ -19,7 +19,7 @@ WBElementPopUpTests >> testButtonsOfPopUp [
 	element := self canvas elements at: 1.
 	
 	element mouseDown: mouseEvent.
-	self assert: element popUp submorphs size = 3	
+	self assert: element popUp submorphs size = 4
 ]
 
 {
@@ -43,7 +43,81 @@ WBElementPopUpTests >> testExistenceOfPopUp [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'is 6/21/2024 18:56'
+	#'squeak_changestamp' : 'ACL 6/23/2024 18:05'
+}
+WBElementPopUpTests >> testFunctionalityOfBorderColor [
+	| element mouseEvent buttonForColor |
+	
+	mouseEvent := MouseButtonEvent new.
+	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
+	
+	self canvas spawnAnElement: (WBRectangle new) At: (MouseButtonEvent new position: self canvas position + (100@100)).
+	self canvas dropElement: mouseEvent.
+	element := self canvas elements at: 1.
+	
+	element mouseDown: mouseEvent.
+	(element popUp submorphs at: 1) clickFunctionality: 	mouseEvent.
+		
+	buttonForColor := element popUp popUp submorphs at: 1. 
+	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
+	self assert: element morph borderColor = Color black.
+	
+	buttonForColor := element popUp popUp submorphs at: 2.
+	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
+	self assert: element morph borderColor = Color gray.
+	
+	buttonForColor := element popUp popUp submorphs at: 3.
+	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
+	self assert: element morph borderColor = Color green.
+	
+	buttonForColor := element popUp popUp submorphs at: 4.
+	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
+	self assert: element morph borderColor = Color cyan.
+	
+	buttonForColor := element popUp popUp submorphs at: 5.
+	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
+	self assert: element morph borderColor = Color blue.
+	
+	buttonForColor := element popUp popUp submorphs at: 6.
+	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
+	self assert: element morph borderColor = Color magenta.
+	
+	buttonForColor := element popUp popUp submorphs at: 7.
+	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
+	self assert: element morph borderColor = Color red.
+	
+	buttonForColor := element popUp popUp submorphs at: 8.
+	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
+	self assert: element morph borderColor = Color orange.
+	
+	buttonForColor := element popUp popUp submorphs at: 9. 
+	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
+	self assert: element morph borderColor = Color yellow
+]
+
+{
+	#category : #tests,
+	#'squeak_changestamp' : 'ACL 6/23/2024 18:01'
+}
+WBElementPopUpTests >> testFunctionalityOfBorderColorPopUp [
+	| element mouseEvent |
+	
+	mouseEvent := MouseButtonEvent new.
+	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
+	
+	self canvas spawnAnElement: (WBRectangle new) At: (MouseButtonEvent new position: self canvas position + (100@100)).
+	self canvas dropElement: mouseEvent.
+	element := self canvas elements at: 1.
+	
+	element mouseDown: mouseEvent.
+	(element popUp submorphs at: 1) clickFunctionality: mouseEvent.
+		
+	self assert: element popUp notNil
+]
+
+{
+	#category : #tests,
+	#'squeak_changestamp' : 'ACL 6/23/2024 18:00'
 }
 WBElementPopUpTests >> testFunctionalityOfColor [
 	| element mouseEvent buttonForColor |
@@ -56,7 +130,7 @@ WBElementPopUpTests >> testFunctionalityOfColor [
 	element := self canvas elements at: 1.
 	
 	element mouseDown: mouseEvent.
-	(element popUp submorphs at: 1) clickFunctionality: 	mouseEvent.
+	(element popUp submorphs at: 2) clickFunctionality: 	mouseEvent.
 		
 	buttonForColor := element popUp popUp submorphs at: 1. 
 	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
@@ -97,7 +171,7 @@ WBElementPopUpTests >> testFunctionalityOfColor [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'is 6/21/2024 18:56'
+	#'squeak_changestamp' : 'ACL 6/23/2024 18:00'
 }
 WBElementPopUpTests >> testFunctionalityOfColorPopUp [
 	| element mouseEvent |
@@ -110,14 +184,14 @@ WBElementPopUpTests >> testFunctionalityOfColorPopUp [
 	element := self canvas elements at: 1.
 	
 	element mouseDown: mouseEvent.
-	(element popUp submorphs at: 1) clickFunctionality: mouseEvent.
+	(element popUp submorphs at: 2) clickFunctionality: mouseEvent.
 		
 	self assert: element popUp notNil
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'is 6/21/2024 18:56'
+	#'squeak_changestamp' : 'ACL 6/23/2024 17:54'
 }
 WBElementPopUpTests >> testFunctionalityOfCopy [
 	| element mouseEvent |
@@ -130,14 +204,14 @@ WBElementPopUpTests >> testFunctionalityOfCopy [
 	element := self canvas elements at: 1.
 	
 	element mouseDown: mouseEvent.
-	(element popUp submorphs at: 2) clickFunctionality: mouseEvent.
+	(element popUp submorphs at: 3) clickFunctionality: mouseEvent.
 		
 	self assert: self canvas elementToSpawn class = element class
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'is 6/21/2024 18:56'
+	#'squeak_changestamp' : 'ACL 6/23/2024 17:54'
 }
 WBElementPopUpTests >> testFunctionalityOfDelete [
 	| element mouseEvent |
@@ -150,7 +224,7 @@ WBElementPopUpTests >> testFunctionalityOfDelete [
 	element := self canvas elements at: 1.
 	
 	element mouseDown: mouseEvent.
-	(element popUp submorphs at: 3) clickFunctionality: mouseEvent.
+	(element popUp submorphs at: 4) clickFunctionality: mouseEvent.
 		
 	self assert: self canvas elements size = 0
 ]
