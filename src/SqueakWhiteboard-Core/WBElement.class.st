@@ -165,6 +165,26 @@ WBElement >> bounds: someBounds [
 
 {
 	#category : #'button functionalities',
+	#'squeak_changestamp' : 'ACL 6/23/2024 16:08'
+}
+WBElement >> buttonFunctionalityForBorderColor [
+
+	^ [:aButton | self morph borderColor: aButton color.
+		self morph borderWidth: 3]
+]
+
+{
+	#category : #'button functionalities',
+	#'squeak_changestamp' : 'ACL 6/23/2024 17:17'
+}
+WBElement >> buttonFunctionalityForBorderColorPalette [
+
+	^ [:aButton | self popUp removeSubmorphs.
+		self popUp makePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeBorderColorButtons columns: 3]
+]
+
+{
+	#category : #'button functionalities',
 	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
 WBElement >> buttonFunctionalityForColor [
@@ -174,11 +194,12 @@ WBElement >> buttonFunctionalityForColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/17/2024 11:29'
+	#'squeak_changestamp' : 'ACL 6/23/2024 17:16'
 }
 WBElement >> buttonFunctionalityForColorPalette [
 
-	^ [:aButton | self popUp makePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: 3]
+	^ [:aButton | self popUp removeSubmorphs.
+		self popUp makePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: 3]
 ]
 
 {
@@ -202,7 +223,7 @@ WBElement >> buttonFunctionalityForDelete [
 
 {
 	#category : #'button creation',
-	#'squeak_changestamp' : 'is 6/23/2024 01:31'
+	#'squeak_changestamp' : 'ACL 6/23/2024 15:51'
 }
 WBElement >> buttonsForPopUpBar [
 
@@ -212,9 +233,12 @@ WBElement >> buttonsForPopUpBar [
 			backgroundColor: Color red);
 		add: (WBButton new
 			block: self buttonFunctionalityForCopy;
-			backgroundColor: Color lightBlue muchDarker);
+			backgroundColor: Color blue muchDarker);
 		add: (WBButton new
 			block: self buttonFunctionalityForColorPalette;
+			backgroundColor: Color gray);
+		add: (WBButton new
+			block: self buttonFunctionalityForBorderColorPalette;
 			backgroundColor: Color black);
 		yourself
 	
@@ -527,6 +551,39 @@ WBElement >> lastMouseClick: anEvent [
 WBElement >> left [
 
 	^ self morph left
+]
+
+{
+	#category : #'button creation',
+	#'squeak_changestamp' : 'ACL 6/23/2024 15:52'
+}
+WBElement >> makeBorderColorButtonWithColor: aColor [ 
+	
+	^ WBButton new 
+		color: aColor;
+		backgroundColor: aColor;
+		clickedColor: aColor darker;
+		block: self buttonFunctionalityForBorderColor;
+		yourself
+]
+
+{
+	#category : #'button creation',
+	#'squeak_changestamp' : 'ACL 6/23/2024 15:54'
+}
+WBElement >> makeBorderColorButtons [
+
+	^ OrderedCollection new
+		add: (self makeBorderColorButtonWithColor: Color yellow);
+		add: (self makeBorderColorButtonWithColor: Color orange);
+		add: (self makeBorderColorButtonWithColor: Color red);
+		add: (self makeBorderColorButtonWithColor: Color magenta);
+		add: (self makeBorderColorButtonWithColor: Color blue);
+		add: (self makeBorderColorButtonWithColor: Color cyan);
+		add: (self makeBorderColorButtonWithColor: Color green);
+		add: (self makeBorderColorButtonWithColor: Color gray);
+		add: (self makeBorderColorButtonWithColor: Color black);
+		yourself
 ]
 
 {

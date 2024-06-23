@@ -186,6 +186,15 @@ WBPopUp >> popUpButtons: aNumber [
 ]
 
 {
+	#category : #popUp,
+	#'squeak_changestamp' : 'ACL 6/23/2024 17:33'
+}
+WBPopUp >> removeSubmorphs [
+	
+	self submorphs do: [:each |((each owner) class  == 'WBPopUp') ifTrue:[each delete]]
+]
+
+{
 	#category : #initialization,
 	#'squeak_changestamp' : 'is 6/23/2024 01:52'
 }
