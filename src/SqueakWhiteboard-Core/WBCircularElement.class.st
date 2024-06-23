@@ -1,7 +1,11 @@
+"
+This class represents all circular Elements
+"
 Class {
 	#name : #WBCircularElement,
 	#superclass : #WBElement,
-	#category : #'SqueakWhiteboard-Core'
+	#category : #'SqueakWhiteboard-Core',
+	#'squeak_changestamp' : 'is 6/23/2024 02:16'
 }
 
 {

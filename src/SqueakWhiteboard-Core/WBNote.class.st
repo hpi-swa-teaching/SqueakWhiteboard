@@ -1,3 +1,6 @@
+"
+This class represents a concrete note
+"
 Class {
 	#name : #WBNote,
 	#superclass : #WBPolygonElement,
@@ -5,16 +8,17 @@ Class {
 		'sizeOfNote',
 		'sizeOfCorner'
 	],
-	#category : #'SqueakWhiteboard-Core'
+	#category : #'SqueakWhiteboard-Core',
+	#'squeak_changestamp' : 'is 6/23/2024 02:18'
 }
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/18/2024 22:19'
+	#'squeak_changestamp' : 'is 6/23/2024 01:46'
 }
 WBNote class >> defaultSizeOfCorner [
 
-	^20@20
+	^ 20@20
 ]
 
 {
@@ -29,7 +33,7 @@ WBNote >> color: aColor [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/18/2024 22:20'
+	#'squeak_changestamp' : 'is 6/23/2024 01:42'
 }
 WBNote >> createVertecies [
 
@@ -42,12 +46,12 @@ WBNote >> createVertecies [
 		add: self center + (((self sizeOfNote x / 2) - self sizeOfCorner x) @ (-1* (self sizeOfNote y / 2)));
 		add: self center + ((self sizeOfNote x / 2) @ (-1 * ((self sizeOfNote y / 2) - self sizeOfCorner y)));
 		add: self center + ((self sizeOfNote x / 2) @ (self sizeOfNote y / 2));
-		add: self center - ((self sizeOfNote x / 2) @  (-1 * (self sizeOfNote y / 2))).
+		add: self center - ((self sizeOfNote x / 2) @  (-1 * (self sizeOfNote y / 2)))
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/18/2024 22:26'
+	#'squeak_changestamp' : 'is 6/23/2024 01:43'
 }
 WBNote >> initialize [
 
@@ -58,12 +62,13 @@ WBNote >> initialize [
 		lineColor: self color muchDarker; 
 		createVertecies;
 		makeShape;
-		initializeTextfield
+		initializeTextfield;
+		supportsText: true
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/18/2024 00:01'
+	#'squeak_changestamp' : 'is 6/23/2024 01:43'
 }
 WBNote >> makeShape [
 
@@ -72,7 +77,7 @@ WBNote >> makeShape [
 	arrayOfEdgePoints := Array new: self edges size.
 	indexOfArray := 1.
 	self edges do: [:m | arrayOfEdgePoints at: indexOfArray put: m.
-		indexOfArray := indexOfArray + 1.].
+		indexOfArray := indexOfArray + 1].
 	self setVertices: arrayOfEdgePoints
 
 ]
@@ -111,13 +116,4 @@ WBNote >> sizeOfNote [
 WBNote >> sizeOfNote: aNumber [
 
 	sizeOfNote := aNumber 
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/18/2024 18:18'
-}
-WBNote >> supportsText [
-
-	^ supportsText ifNil: [ supportsText := true ]
 ]

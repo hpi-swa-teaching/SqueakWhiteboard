@@ -1,10 +1,14 @@
+"
+This class represents the two end points of a WBLine
+"
 Class {
 	#name : #WBEdgeOfLine,
 	#superclass : #WBRectangularElement,
 	#instVars : [
 		'line'
 	],
-	#category : #'SqueakWhiteboard-Core'
+	#category : #'SqueakWhiteboard-Core',
+	#'squeak_changestamp' : 'is 6/23/2024 02:19'
 }
 
 {
@@ -34,12 +38,12 @@ WBEdgeOfLine >> buttonFunctionalityForColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/17/2024 11:32'
+	#'squeak_changestamp' : 'is 6/23/2024 01:44'
 }
 WBEdgeOfLine >> buttonFunctionalityForCopy [
 
 	^ [:aButton | self canvas deactivateElement. 
-		self canvas spawnACopiedElement: self line copy At: aButton currentEvent cursorPoint.]
+		self canvas spawnACopiedElement: self line copy At: aButton currentEvent cursorPoint]
 ]
 
 {
@@ -67,12 +71,13 @@ WBEdgeOfLine >> buttonsForPopUpBar [
 
 {
 	#category : #geometry,
-	#'squeak_changestamp' : 'si 6/21/2024 00:12'
+	#'squeak_changestamp' : 'is 6/23/2024 01:45'
 }
 WBEdgeOfLine >> checkArrwoDirection [
 
 	(self line edges at: 1) = self
-		ifTrue: [self switchDirection.
+		ifTrue: 
+			[self switchDirection.
 			self line switchVisibilityOfArrowHead]
 		ifFalse: [self line switchVisibilityOfArrowHead] 
 ]

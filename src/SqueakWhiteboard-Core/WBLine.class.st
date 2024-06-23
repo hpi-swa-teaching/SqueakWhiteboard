@@ -1,3 +1,7 @@
+"
+This class represents a concrete Line.
+The end points of the Line are WBEdgeOfLine
+"
 Class {
 	#name : #WBLine,
 	#superclass : #WBPolygonElement,
@@ -5,7 +9,8 @@ Class {
 		'state',
 		'arrowHead'
 	],
-	#category : #'SqueakWhiteboard-Core'
+	#category : #'SqueakWhiteboard-Core',
+	#'squeak_changestamp' : 'is 6/23/2024 02:19'
 }
 
 {
@@ -42,13 +47,13 @@ WBLine >> angleForPoints [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/20/2024 23:39'
+	#'squeak_changestamp' : 'is 6/23/2024 01:40'
 }
 WBLine >> arrowHead [
 
 	^ arrowHead ifNil: 
-		[ arrowHead := WBArrowhead new isVisible: true. 
-		self morph addMorph: self arrowHead ] 
+		[arrowHead := WBArrowhead new isVisible: true. 
+		self morph addMorph: self arrowHead] 
 ]
 
 {
@@ -104,13 +109,6 @@ WBLine >> delete [
 ]
 
 {
-	#category : #buttonFunctionalities,
-	#'squeak_changestamp' : 'si 6/20/2024 23:05'
-}
-WBLine >> getSwitchArrowButton [
-]
-
-{
 	#category : #arrow,
 	#'squeak_changestamp' : 'si 6/20/2024 23:03'
 }
@@ -121,13 +119,13 @@ WBLine >> hideArrowHead [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/18/2024 17:32'
+	#'squeak_changestamp' : 'is 6/23/2024 01:40'
 }
 WBLine >> initialize [
 
 	super initialize.
 	self morph setVertices: { 1@1 . 1@1 }.
-	self state: 0.
+	self state: 0
 ]
 
 {
@@ -159,7 +157,7 @@ WBLine >> showArrowHead [
 
 {
 	#category : #buildLine,
-	#'squeak_changestamp' : 'si 6/20/2024 23:26'
+	#'squeak_changestamp' : 'is 6/23/2024 01:41'
 }
 WBLine >> spawnEdgeOfLineAt: aMouseEvent [
 
@@ -186,7 +184,7 @@ WBLine >> spawnEdgeOfLineAt: aMouseEvent [
 				addElement: (self edges at: 2);
 				dropElement: aMouseEvent.
 			self updateEdges.
-			self state: 2].
+			self state: 2]
 ]
 
 {
@@ -233,14 +231,14 @@ WBLine >> switchVisibilityOfArrowHead [
 
 {
 	#category : #arrow,
-	#'squeak_changestamp' : 'is 6/18/2024 21:13'
+	#'squeak_changestamp' : 'is 6/23/2024 01:41'
 }
 WBLine >> updateArrowHead [
 
 	((self edges at: 1) x > (self edges at: 2) x) 
 		ifFalse:[self arrowHead rotationDegrees: (-1 * self angleForPoints)] 
 		ifTrue:[self arrowHead rotationDegrees: (180 + self angleForPoints)].
-	self arrowHead center: (self edges at: 2) center.
+	self arrowHead center: (self edges at: 2) center
 ]
 
 {

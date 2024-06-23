@@ -1,7 +1,11 @@
+"
+This class is used to load Assets from the GitAssetloader
+"
 Class {
 	#name : #WBImage,
 	#superclass : #ImageMorph,
-	#category : #'SqueakWhiteboard-Core'
+	#category : #'SqueakWhiteboard-Core',
+	#'squeak_changestamp' : 'is 6/23/2024 02:20'
 }
 
 {
@@ -87,12 +91,12 @@ WBImage >> initialize [
 
 {
 	#category : #edit,
-	#'squeak_changestamp' : 'is 6/11/2024 18:45'
+	#'squeak_changestamp' : 'is 6/23/2024 02:21'
 }
-WBImage >> resize: anImage to: anExtent [
-	|resizedImage|
+WBImage >> resize: aForm to: anExtent [
+	| resizedImage |
 	
-	resizedImage := Form extent: anExtent depth: anImage depth.
-	resizedImage := anImage scaledToSize: anExtent.
-	^resizedImage
+	resizedImage := Form extent: anExtent depth: aForm depth.
+	resizedImage := aForm scaledToSize: anExtent.
+	^ resizedImage
 ]

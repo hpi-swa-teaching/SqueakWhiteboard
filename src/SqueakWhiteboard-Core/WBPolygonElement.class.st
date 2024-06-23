@@ -1,10 +1,14 @@
+"
+This class represents all polygon Elements
+"
 Class {
 	#name : #WBPolygonElement,
 	#superclass : #WBElement,
 	#instVars : [
 		'edges'
 	],
-	#category : #'SqueakWhiteboard-Core'
+	#category : #'SqueakWhiteboard-Core',
+	#'squeak_changestamp' : 'is 6/23/2024 02:17'
 }
 
 {
