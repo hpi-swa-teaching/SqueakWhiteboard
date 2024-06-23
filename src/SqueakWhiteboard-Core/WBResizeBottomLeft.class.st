@@ -1,32 +1,39 @@
+"
+This class implements resizing a WBElement by dragging on its bottom left corner
+"
 Class {
 	#name : #WBResizeBottomLeft,
 	#superclass : #WBResizeHandle,
-	#category : #'SqueakWhiteboard-Core'
+	#category : #'SqueakWhiteboard-Core',
+	#'squeak_changestamp' : 'is 6/23/2024 02:25'
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JK 6/3/2024 19:07'
+	#category : #sizing,
+	#'squeak_changestamp' : 'is 6/23/2024 02:01'
 }
 WBResizeBottomLeft >> resize: movement [
+
 	self frame resizeLeft: self center x + movement x.
 	self frame resizeBottom: self center y + movement y
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JK 5/27/2024 16:25'
+	#category : #sizing,
+	#'squeak_changestamp' : 'is 6/23/2024 02:01'
 }
 WBResizeBottomLeft >> resizeCursor [
-	Cursor resizeBottomLeft show.
+
+	Cursor resizeBottomLeft show
 	
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JK 6/3/2024 19:01'
+	#category : #sizing,
+	#'squeak_changestamp' : 'is 6/23/2024 02:01'
 }
 WBResizeBottomLeft >> setLayout [
-	self center: frame bottomLeft.
+
+	self center: frame bottomLeft
 	
 ]

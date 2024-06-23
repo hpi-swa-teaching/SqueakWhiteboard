@@ -1,3 +1,6 @@
+"
+This class implements resizing a WBElement by dragging on its sides
+"
 Class {
 	#name : #WBResizeBar,
 	#superclass : #Morph,
@@ -5,62 +8,68 @@ Class {
 		'element',
 		'lastPosition'
 	],
-	#category : #'SqueakWhiteboard-Core'
+	#category : #'SqueakWhiteboard-Core',
+	#'squeak_changestamp' : 'is 6/23/2024 02:24'
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'is 6/18/2024 18:04'
+	#category : #'instance creation',
+	#'squeak_changestamp' : 'is 6/23/2024 01:50'
 }
 WBResizeBar class >> newWithParent: aMorph [
 
-	^ self new initializeWithParent: aMorph.
+	^ self new initializeWithParent: aMorph
 	
 ]
 
 {
 	#category : #cursor,
-	#'squeak_changestamp' : 'JK 5/27/2024 15:46'
+	#'squeak_changestamp' : 'is 6/23/2024 01:53'
 }
 WBResizeBar >> defaultCursor [
-	Cursor normal show.
+
+	Cursor normal show
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:01'
+	#'squeak_changestamp' : 'is 6/23/2024 01:52'
 }
 WBResizeBar >> frame [
+
 	^ element
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:02'
+	#'squeak_changestamp' : 'is 6/23/2024 01:53'
 }
-WBResizeBar >> frame: anObject [
-	element := anObject
+WBResizeBar >> frame: anElement [
+
+	element := anElement
 ]
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'JK 5/28/2024 12:28'
+	#'squeak_changestamp' : 'is 6/23/2024 01:53'
 }
 WBResizeBar >> handlesMouseDown: aEvent [
-	^true
+
+	^ true
 ]
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'JK 5/28/2024 12:28'
+	#'squeak_changestamp' : 'is 6/23/2024 01:53'
 }
 WBResizeBar >> handlesMouseOver: aEvent [
-	^true.
+
+	^ true
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/18/2024 18:05'
+	#'squeak_changestamp' : 'is 6/23/2024 01:53'
 }
 WBResizeBar >> initializeWithParent: aMorph [
 
@@ -70,82 +79,90 @@ WBResizeBar >> initializeWithParent: aMorph [
 		frame: aMorph;
 		setLayout;
 		color: Color transparent.
-		
-	aMorph addMorph: self.
+	aMorph addMorph: self
 		
 	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 5/27/2024 16:56'
+	#'squeak_changestamp' : 'is 6/23/2024 01:53'
 }
 WBResizeBar >> lastPosition [
+
 	^ lastPosition
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 5/27/2024 16:56'
+	#'squeak_changestamp' : 'is 6/23/2024 01:53'
 }
 WBResizeBar >> lastPosition: anObject [
+
 	lastPosition := anObject
 ]
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'JK 5/28/2024 12:28'
+	#'squeak_changestamp' : 'is 6/23/2024 01:53'
 }
 WBResizeBar >> mouseDown: mouseEvent [
-	self lastPosition: mouseEvent cursorPoint.
+
+	self lastPosition: mouseEvent cursorPoint
 ]
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'JK 5/27/2024 16:05'
+	#'squeak_changestamp' : 'is 6/23/2024 01:53'
 }
 WBResizeBar >> mouseEnter: aEvent [
-	self resizeCursor.
+
+	self resizeCursor
 ]
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'JK 5/27/2024 16:06'
+	#'squeak_changestamp' : 'is 6/23/2024 01:53'
 }
 WBResizeBar >> mouseLeave: aEvent [
-	self defaultCursor.
+
+	self defaultCursor
 ]
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'is 5/28/2024 15:33'
+	#'squeak_changestamp' : 'is 6/23/2024 01:53'
 }
 WBResizeBar >> mouseMove: mouseEvent [
+
 	self resize: (mouseEvent cursorPoint - self lastPosition).
 	self lastPosition: mouseEvent cursorPoint.
-	self setLayout.
+	self setLayout
 ]
 
 {
 	#category : #sizing,
-	#'squeak_changestamp' : 'JK 5/28/2024 12:31'
+	#'squeak_changestamp' : 'is 6/23/2024 01:54'
 }
 WBResizeBar >> resize: movement [
-	^SubclassResponsibility.
+
+	^ self SubclassResponsibility
 ]
 
 {
 	#category : #cursor,
-	#'squeak_changestamp' : 'JK 5/27/2024 16:08'
+	#'squeak_changestamp' : 'is 6/23/2024 01:53'
 }
 WBResizeBar >> resizeCursor [
-	Cursor move show.
+
+	Cursor move show
 ]
 
 {
 	#category : #sizing,
-	#'squeak_changestamp' : 'is 5/28/2024 15:33'
+	#'squeak_changestamp' : 'is 6/23/2024 01:54'
 }
 WBResizeBar >> setLayout [
-	self center: element position.
+
+	self center: element position
 ]

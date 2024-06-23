@@ -1,5 +1,5 @@
 "
-The WBButton is the parent class of all button versions
+This class represents a generic button which takes in blocks that get executed on mouseUp
 "
 Class {
 	#name : #WBButton,
@@ -14,16 +14,16 @@ Class {
 		'currentEvent'
 	],
 	#category : #'SqueakWhiteboard-Core',
-	#'squeak_changestamp' : 'is 5/18/2024 17:13'
+	#'squeak_changestamp' : 'is 6/23/2024 02:12'
 }
 
 {
 	#category : #size,
-	#'squeak_changestamp' : 'si 5/23/2024 22:47'
+	#'squeak_changestamp' : 'is 6/23/2024 01:27'
 }
 WBButton class >> cornerRadius [
 
-	^20
+	^ 20
 ]
 
 {
@@ -95,11 +95,11 @@ WBButton >> clickedColor [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 5/19/2024 16:08'
+	#'squeak_changestamp' : 'is 6/23/2024 01:15'
 }
 WBButton >> clickedColor: aColor [
 
-	clickedColor := aColor.
+	clickedColor := aColor
 ]
 
 {
@@ -131,9 +131,9 @@ WBButton >> handlesMouseDown: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 5/27/2024 19:55'
+	#'squeak_changestamp' : 'is 6/23/2024 01:16'
 }
-WBButton >> handlesMouseOver: evt [
+WBButton >> handlesMouseOver: anEvent [
 
 	^ true
 ]
@@ -196,11 +196,11 @@ WBButton >> margin [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'nicloeser 5/24/2024 14:57'
+	#'squeak_changestamp' : 'is 6/23/2024 01:16'
 }
 WBButton >> margin: aMargin [
 		
-	margin := aMargin.
+	margin := aMargin
 	
 ]
 
@@ -224,9 +224,9 @@ WBButton >> mouseEnter: evt [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'si 6/14/2024 12:21'
+	#'squeak_changestamp' : 'is 6/23/2024 01:17'
 }
-WBButton >> mouseLeave: evt [
+WBButton >> mouseLeave: anEvent [
 
 	self color: self backgroundColor
 ]

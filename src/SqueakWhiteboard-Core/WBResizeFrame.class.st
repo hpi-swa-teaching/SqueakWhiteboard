@@ -1,3 +1,6 @@
+"
+This class creates resize related handles for a WBElement
+"
 Class {
 	#name : #WBResizeFrame,
 	#superclass : #Morph,
@@ -8,41 +11,45 @@ Class {
 	#classVars : [
 		'ResizeWidth'
 	],
-	#category : #'SqueakWhiteboard-Core'
+	#category : #'SqueakWhiteboard-Core',
+	#'squeak_changestamp' : 'is 6/23/2024 02:25'
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'is 6/18/2024 18:05'
+	#category : #'instance creation',
+	#'squeak_changestamp' : 'is 6/23/2024 01:56'
 }
 WBResizeFrame class >> newWithParent: aMorph [
 
-	^ self new initializeWithParent: aMorph.
+	^ self new initializeWithParent: aMorph
 	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 6/3/2024 12:51'
+	#'squeak_changestamp' : 'is 6/23/2024 01:56'
 }
 WBResizeFrame class >> resizeWidth [
+
 	^ ResizeWidth ifNil: [ResizeWidth := 20]
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 6/3/2024 12:52'
+	#'squeak_changestamp' : 'is 6/23/2024 01:56'
 }
 WBResizeFrame class >> resizeWidth: aNumber [
+
 	ResizeWidth := aNumber
 	
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'JK 6/3/2024 13:13'
+	#'squeak_changestamp' : 'is 6/23/2024 01:57'
 }
 WBResizeFrame >> createHandles [
+
 	self handles: OrderedCollection new.
 	self handles
 		add: (WBResizeTopLeft newWithParent: self);
@@ -52,7 +59,7 @@ WBResizeFrame >> createHandles [
 		add: (WBResizeLeft newWithParent: self);
 		add: (WBResizeRight newWithParent: self);
 		add: (WBResizeTop newWithParent: self);
-		add: (WBResizeBottom newWithParent: self).
+		add: (WBResizeBottom newWithParent: self)
 ]
 
 {
@@ -104,7 +111,7 @@ WBResizeFrame >> handles: anObject [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/18/2024 18:05'
+	#'squeak_changestamp' : 'is 6/23/2024 01:57'
 }
 WBResizeFrame >> initializeWithParent: aMorph [
 
@@ -116,70 +123,71 @@ WBResizeFrame >> initializeWithParent: aMorph [
 		borderColor: Color gray;
 		borderWidth: 1;
 		createHandles.
-	self element addMorph: self.
+	self element addMorph: self
 ]
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/18/2024 17:56'
+	#'squeak_changestamp' : 'is 6/23/2024 01:57'
 }
 WBResizeFrame >> position: aPosition [
 	
 	self element position: aPosition.
 	super position: element position.
-	self positionHandles.
+	self positionHandles
 ]
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 5/28/2024 15:33'
+	#'squeak_changestamp' : 'is 6/23/2024 01:57'
 }
 WBResizeFrame >> positionHandles [
+
 	self handles ifNotNil: [self handles do: [:handle | handle setLayout]]
 ]
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/18/2024 17:56'
+	#'squeak_changestamp' : 'is 6/23/2024 01:57'
 }
 WBResizeFrame >> resizeBottom: aYCoordinate [
+	| newYCoordinate |
 	
-	|newYCoordinate|
 	newYCoordinate := (aYCoordinate min: self element canvas bottom) max: (self top + ResizeWidth).
-	self height: newYCoordinate - self top.
+	self height: newYCoordinate - self top
 ]
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/18/2024 17:56'
+	#'squeak_changestamp' : 'is 6/23/2024 01:58'
 }
 WBResizeFrame >> resizeLeft: aXCoordinate [
+	| newXCoordinate |
 	
-	|newXCoordinate|
 	newXCoordinate := (aXCoordinate min: (self right - ResizeWidth)) max: self element canvas left.
 	self width: self right - newXCoordinate.
-	self left: newXCoordinate.
+	self left: newXCoordinate
 ]
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/18/2024 17:57'
+	#'squeak_changestamp' : 'is 6/23/2024 01:58'
 }
 WBResizeFrame >> resizeRight: aXCoordinate [
+	| newXCoordinate |
 	
-	|newXCoordinate|
 	newXCoordinate := (aXCoordinate min:  self element canvas right) max: (self left + ResizeWidth). 
-	self width: newXCoordinate - self left.
+	self width: newXCoordinate - self left
 ]
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/18/2024 17:57'
+	#'squeak_changestamp' : 'is 6/23/2024 01:58'
 }
 WBResizeFrame >> resizeTop: aYCoordinate [
+	| newYCoordinate |
 	
-	|newYCoordinate|
 	newYCoordinate := (aYCoordinate min: (self bottom - ResizeWidth)) max: self element canvas top.
 	self height: self bottom - newYCoordinate.
-	self top: newYCoordinate.
+	self top: newYCoordinate
 ]

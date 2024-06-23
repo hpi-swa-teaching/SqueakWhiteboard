@@ -1,32 +1,39 @@
+"
+This class implements resizing a WBElement by dragging on its upper right corner
+"
 Class {
 	#name : #WBResizeTopRight,
 	#superclass : #WBResizeHandle,
-	#category : #'SqueakWhiteboard-Core'
+	#category : #'SqueakWhiteboard-Core',
+	#'squeak_changestamp' : 'is 6/23/2024 02:26'
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JK 6/3/2024 19:13'
+	#category : #sizing,
+	#'squeak_changestamp' : 'is 6/23/2024 02:02'
 }
 WBResizeTopRight >> resize: movement [
+
 	self frame resizeRight: self center x + movement x.
 	self frame resizeTop: self center y + movement y
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JK 5/27/2024 16:26'
+	#category : #sizing,
+	#'squeak_changestamp' : 'is 6/23/2024 02:02'
 }
 WBResizeTopRight >> resizeCursor [
-	Cursor resizeTopRight show.
+
+	Cursor resizeTopRight show
 	
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JK 6/3/2024 19:01'
+	#category : #sizing,
+	#'squeak_changestamp' : 'is 6/23/2024 02:02'
 }
 WBResizeTopRight >> setLayout [
-	self center: frame topRight.
+
+	self center: frame topRight
 	
 ]

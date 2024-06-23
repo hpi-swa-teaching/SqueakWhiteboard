@@ -41,13 +41,13 @@ WBPluggableTextMorphPlus >> enabled [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/17/2024 01:00'
+	#'squeak_changestamp' : 'is 6/23/2024 01:47'
 }
 WBPluggableTextMorphPlus >> enabled: aBoolean [
 
 	enabled := aBoolean.
 	aBoolean
-		 ifTrue: [self showScrollBars]
+		ifTrue: [self showScrollBars]
 		ifFalse: 
 			[self hideScrollBars.
 			self owner currentHand releaseKeyboardFocus]
@@ -55,27 +55,27 @@ WBPluggableTextMorphPlus >> enabled: aBoolean [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/4/2024 20:23'
+	#'squeak_changestamp' : 'is 6/23/2024 01:48'
 }
-WBPluggableTextMorphPlus >> handlesKeyboard: evt [
+WBPluggableTextMorphPlus >> handlesKeyboard: anEvent [
 
 	^ self enabled
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/4/2024 20:20'
+	#'squeak_changestamp' : 'is 6/23/2024 01:48'
 }
-WBPluggableTextMorphPlus >> handlesMouseDown: evt [
+WBPluggableTextMorphPlus >> handlesMouseDown: anEvent [
 
 	^ self enabled
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/4/2024 21:29'
+	#'squeak_changestamp' : 'is 6/23/2024 01:49'
 }
-WBPluggableTextMorphPlus >> handlesMouseOver: evt [
+WBPluggableTextMorphPlus >> handlesMouseOver: anEvent [
 
 	^ false
 ]
@@ -93,12 +93,13 @@ WBPluggableTextMorphPlus >> hasUnacceptedEdits: aBoolean [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/14/2024 00:09'
+	#'squeak_changestamp' : 'is 6/23/2024 01:48'
 }
 WBPluggableTextMorphPlus >> initialize [
 
 	super initialize.
-	self color: Color transparent;
+	self color: 
+		Color transparent;
 		borderWidth: 0;
 		retractable: true;
 		wrapFlag: true

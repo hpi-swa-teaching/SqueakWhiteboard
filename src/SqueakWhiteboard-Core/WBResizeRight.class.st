@@ -1,31 +1,38 @@
+"
+This class implements resizing a WBElement by dragging on its right side
+"
 Class {
 	#name : #WBResizeRight,
 	#superclass : #WBResizeBar,
-	#category : #'SqueakWhiteboard-Core'
+	#category : #'SqueakWhiteboard-Core',
+	#'squeak_changestamp' : 'is 6/23/2024 02:24'
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JK 6/3/2024 19:25'
+	#category : #sizing,
+	#'squeak_changestamp' : 'is 6/23/2024 01:55'
 }
 WBResizeRight >> resize: movement [
+
 	self frame resizeRight: self center x + movement x
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JK 6/3/2024 13:05'
+	#category : #sizing,
+	#'squeak_changestamp' : 'is 6/23/2024 01:55'
 }
 WBResizeRight >> resizeCursor [
-	Cursor resizeRight show.
+
+	Cursor resizeRight show
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'JK 6/3/2024 19:01'
+	#category : #sizing,
+	#'squeak_changestamp' : 'is 6/23/2024 01:55'
 }
 WBResizeRight >> setLayout [
+
 	self height: self frame height - WBResizeFrame resizeWidth.
 	self width: WBResizeFrame resizeWidth.
-	self center: element rightCenter.
+	self center: element rightCenter
 ]

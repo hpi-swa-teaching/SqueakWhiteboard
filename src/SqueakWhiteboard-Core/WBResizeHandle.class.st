@@ -1,3 +1,6 @@
+"
+This class implements resizing a WBElement by dragging on its corners
+"
 Class {
 	#name : #WBResizeHandle,
 	#superclass : #EllipseMorph,
@@ -5,62 +8,68 @@ Class {
 		'lastPosition',
 		'frame'
 	],
-	#category : #'SqueakWhiteboard-Core'
+	#category : #'SqueakWhiteboard-Core',
+	#'squeak_changestamp' : 'is 6/23/2024 02:25'
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'is 6/18/2024 18:05'
+	#category : #'instance creation',
+	#'squeak_changestamp' : 'is 6/23/2024 01:57'
 }
 WBResizeHandle class >> newWithParent: aMorph [
 
-	^ self new initializeWithParent: aMorph.
+	^ self new initializeWithParent: aMorph
 	
 ]
 
 {
 	#category : #cursor,
-	#'squeak_changestamp' : 'JK 5/27/2024 15:46'
+	#'squeak_changestamp' : 'is 6/23/2024 01:59'
 }
 WBResizeHandle >> defaultCursor [
-	Cursor normal show.
+
+	Cursor normal show
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:01'
+	#'squeak_changestamp' : 'is 6/23/2024 01:59'
 }
 WBResizeHandle >> frame [
+
 	^ frame
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:02'
+	#'squeak_changestamp' : 'is 6/23/2024 01:59'
 }
 WBResizeHandle >> frame: anObject [
+
 	frame := anObject
 ]
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'JK 5/28/2024 12:28'
+	#'squeak_changestamp' : 'is 6/23/2024 01:59'
 }
-WBResizeHandle >> handlesMouseDown: aEvent [
-	^true
+WBResizeHandle >> handlesMouseDown: anEvent [
+
+	^ true
 ]
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'JK 5/28/2024 12:28'
+	#'squeak_changestamp' : 'is 6/23/2024 01:59'
 }
-WBResizeHandle >> handlesMouseOver: aEvent [
-	^true.
+WBResizeHandle >> handlesMouseOver: anEvent [
+
+	^ true
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/18/2024 18:05'
+	#'squeak_changestamp' : 'is 6/23/2024 01:59'
 }
 WBResizeHandle >> initializeWithParent: aMorph [
 
@@ -72,83 +81,90 @@ WBResizeHandle >> initializeWithParent: aMorph [
 		color: Color white;
 		borderWidth: 2;
 		borderColor: Color gray.
-		
-	aMorph addMorph: self.
+	aMorph addMorph: self
 		
 	
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 5/27/2024 16:56'
+	#'squeak_changestamp' : 'is 6/23/2024 01:59'
 }
 WBResizeHandle >> lastPosition [
+
 	^ lastPosition
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'JK 5/27/2024 16:56'
+	#'squeak_changestamp' : 'is 6/23/2024 02:00'
 }
-WBResizeHandle >> lastPosition: anObject [
-	lastPosition := anObject
+WBResizeHandle >> lastPosition: aPosition [
+
+	lastPosition := aPosition
 ]
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'JK 5/28/2024 12:28'
+	#'squeak_changestamp' : 'is 6/23/2024 02:00'
 }
-WBResizeHandle >> mouseDown: mouseEvent [
-	self lastPosition: mouseEvent cursorPoint.
+WBResizeHandle >> mouseDown: anEvent [
+
+	self lastPosition: anEvent cursorPoint
 ]
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'JK 5/27/2024 16:05'
+	#'squeak_changestamp' : 'is 6/23/2024 02:00'
 }
-WBResizeHandle >> mouseEnter: aEvent [
-	self resizeCursor.
+WBResizeHandle >> mouseEnter: anEvent [
+
+	self resizeCursor
 ]
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'JK 5/27/2024 16:06'
+	#'squeak_changestamp' : 'is 6/23/2024 02:00'
 }
 WBResizeHandle >> mouseLeave: aEvent [
-	self defaultCursor.
+
+	self defaultCursor
 ]
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'is 6/18/2024 17:52'
+	#'squeak_changestamp' : 'is 6/23/2024 02:00'
 }
-WBResizeHandle >> mouseMove: mouseEvent [
+WBResizeHandle >> mouseMove: anEvent [
 
-	self resize: (mouseEvent cursorPoint - self lastPosition).
-	self lastPosition: mouseEvent cursorPoint.
-	self setLayout.
+	self resize: (anEvent cursorPoint - self lastPosition).
+	self lastPosition: anEvent cursorPoint.
+	self setLayout
 ]
 
 {
 	#category : #sizing,
-	#'squeak_changestamp' : 'JK 5/28/2024 12:31'
+	#'squeak_changestamp' : 'is 6/23/2024 02:00'
 }
 WBResizeHandle >> resize: movement [
-	^SubclassResponsibility.
+
+	^ self SubclassResponsibility
 ]
 
 {
 	#category : #cursor,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:03'
+	#'squeak_changestamp' : 'is 6/23/2024 02:01'
 }
 WBResizeHandle >> resizeCursor [
-	^SubclassResponsibility
+
+	^ self SubclassResponsibility
 ]
 
 {
 	#category : #sizing,
-	#'squeak_changestamp' : 'JK 6/3/2024 19:04'
+	#'squeak_changestamp' : 'is 6/23/2024 02:01'
 }
 WBResizeHandle >> setLayout [
-	^SubclassResponsibility
+
+	^ self SubclassResponsibility
 ]

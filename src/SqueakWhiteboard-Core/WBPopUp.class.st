@@ -1,5 +1,5 @@
 "
-The WBPopUp is a menu that opens up when clicking on an element that is in the canvas
+The class represents a menu that opens up when clicking on an element that is displayed on the canvas
 "
 Class {
 	#name : #WBPopUp,
@@ -12,43 +12,43 @@ Class {
 		'popUp'
 	],
 	#category : #'SqueakWhiteboard-Core',
-	#'squeak_changestamp' : 'is 5/17/2024 20:40'
+	#'squeak_changestamp' : 'is 6/23/2024 02:22'
 }
 
 {
 	#category : #size,
-	#'squeak_changestamp' : 'si 5/23/2024 20:31'
+	#'squeak_changestamp' : 'is 6/23/2024 01:49'
 }
-WBPopUp class >> CornerRadius [
+WBPopUp class >> cornerRadius [
 
-	^7
+	^ 7
 ]
 
 {
 	#category : #size,
-	#'squeak_changestamp' : 'si 5/23/2024 20:30'
+	#'squeak_changestamp' : 'is 6/23/2024 01:49'
 }
 WBPopUp class >> sizeOfPopUp [
 
-	^20
+	^ 20
 ]
 
 {
 	#category : #size,
-	#'squeak_changestamp' : 'si 6/13/2024 13:47'
+	#'squeak_changestamp' : 'is 6/23/2024 01:49'
 }
 WBPopUp class >> sizeOfPopUpForStandardElement [
 
-	^20
+	^ 20
 ]
 
 {
-	#category : #addButtons,
-	#'squeak_changestamp' : 'si 6/13/2024 11:36'
+	#category : #'adding buttons',
+	#'squeak_changestamp' : 'is 6/23/2024 01:51'
 }
 WBPopUp >> addButtons: aList [
 
-	|row column|
+	| row column |
 	self numberOfColumns ifNil: [self numberOfRows: 1.
 		self numberOfColumns: aList size.]
 	ifNotNil: [self numberOfRows: (aList size / self numberOfColumns) ceiling].
@@ -59,8 +59,9 @@ WBPopUp >> addButtons: aList [
 	aList do: 
 		[:m | self placeButton: m At: self position + ((self sizeOfPopUp / 2) @ (self  sizeOfPopUp / 2)) + ((column * self sizeOfPopUp) @ (row * self sizeOfPopUp)).
 		column := column + 1.
-		(column  = (self numberOfColumns)) ifTrue: [column := 0.
-			row := row + 1].]
+		(column  = (self numberOfColumns)) ifTrue: 
+			[column := 0.
+			row := row + 1]]
 ]
 
 {
@@ -83,27 +84,28 @@ WBPopUp >> initialize [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'si 6/13/2024 13:44'
+	#'squeak_changestamp' : 'is 6/23/2024 01:51'
 }
 WBPopUp >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
-	self popUp: (WBPopUp new
-		setDefaultValues;
-		sizeOfPopUp: self class sizeOfPopUpForStandardElement;
-		numberOfColumns: aNumber;
-		addButtons: aCollection;
-		yourself).
+	self popUp: 
+		(WBPopUp new
+			setDefaultValues;
+			sizeOfPopUp: self class sizeOfPopUpForStandardElement;
+			numberOfColumns: aNumber;
+			addButtons: aCollection;
+			yourself).
 	self addMorph: self popUp.
 	self popUp center: aPoint - (self popUp bottomCenter - self popUp center)
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/27/2024 22:22'
+	#'squeak_changestamp' : 'is 6/23/2024 01:51'
 }
 WBPopUp >> numberOfColumns [
 
-	^numberOfColumns
+	^ numberOfColumns
 ]
 
 {
@@ -117,11 +119,11 @@ WBPopUp >> numberOfColumns: aNumber [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/27/2024 22:23'
+	#'squeak_changestamp' : 'is 6/23/2024 01:51'
 }
 WBPopUp >> numberOfRows [
 
-	^numberOfRows
+	^ numberOfRows
 ]
 
 {
@@ -134,15 +136,16 @@ WBPopUp >> numberOfRows: aNumber [
 ]
 
 {
-	#category : #addButtons,
-	#'squeak_changestamp' : 'si 6/13/2024 14:20'
+	#category : #'adding buttons',
+	#'squeak_changestamp' : 'is 6/23/2024 01:51'
 }
 WBPopUp >> placeButton: aButton At: aPoint [
 
-	self addMorph: (aButton
-		extent: ((self sizeOfPopUp - 5) @(self sizeOfPopUp - 5));
-		center: aPoint;
-		yourself).
+	self addMorph: 
+		(aButton
+			extent: ((self sizeOfPopUp - 5) @(self sizeOfPopUp - 5));
+			center: aPoint;
+			yourself).
 	aButton image ifNotNil: [aButton addImage]
 ]
 
@@ -166,25 +169,25 @@ WBPopUp >> popUp: aPopUp [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'ACL 5/23/2024 17:18'
+	#'squeak_changestamp' : 'is 6/23/2024 01:51'
 }
 WBPopUp >> popUpButtons [
 
-	^ popUpButtons.
+	^ popUpButtons
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'ACL 5/22/2024 18:18'
+	#'squeak_changestamp' : 'is 6/23/2024 01:52'
 }
 WBPopUp >> popUpButtons: aNumber [
 
-	popUpButtons := aNumber.
+	popUpButtons := aNumber
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/7/2024 00:45'
+	#'squeak_changestamp' : 'is 6/23/2024 01:52'
 }
 WBPopUp >> setDefaultValues [
 
@@ -193,7 +196,7 @@ WBPopUp >> setDefaultValues [
 		borderColor: Color gray;
 		borderWidth: 1;
 		cornerStyle: #rounded;
-		cornerRadius: self class CornerRadius.
+		cornerRadius: self class cornerRadius
 ]
 
 {

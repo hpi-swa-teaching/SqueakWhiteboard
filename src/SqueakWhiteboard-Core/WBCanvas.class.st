@@ -1,5 +1,5 @@
 "
-The WBCanvas is the whiteboard on which the user can interact with its functionality
+This class represents the whiteboard on which the user can interact with UI
 "
 Class {
 	#name : #WBCanvas,
@@ -17,16 +17,16 @@ Class {
 		'images'
 	],
 	#category : #'SqueakWhiteboard-Core',
-	#'squeak_changestamp' : 'is 5/17/2024 15:53'
+	#'squeak_changestamp' : 'is 6/23/2024 02:27'
 }
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/14/2024 11:08'
+	#'squeak_changestamp' : 'is 6/23/2024 01:27'
 }
 WBCanvas class >> WhiteBoardSize [
 
-	^800
+	^ 800
 ]
 
 {
@@ -102,47 +102,38 @@ WBCanvas >> createDrawingSurface [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 6/3/2024 15:50'
+	#'squeak_changestamp' : 'is 6/23/2024 01:18'
 }
 WBCanvas >> deactivateElement [
 
-	self activeElement ifNotNil: [
-		self activeElement deactivateElement.
+	self activeElement ifNotNil: 
+		[self activeElement deactivateElement.
 		self activeElement: nil]
 
 ]
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 6/3/2024 18:29'
+	#'squeak_changestamp' : 'is 6/23/2024 01:18'
 }
 WBCanvas >> deactivateTextbox [
 
-	self activeTextbox ifNotNil: [
-		self activeTextbox deactivateTextbox.
+	self activeTextbox ifNotNil: 
+		[self activeTextbox deactivateTextbox.
 		self activeTextbox: nil]
 
 ]
 
 {
 	#category : #'handle elements',
-	#'squeak_changestamp' : 'si 6/14/2024 13:10'
+	#'squeak_changestamp' : 'is 6/23/2024 01:19'
 }
 WBCanvas >> deleteAllElements [
-	"maybe it could be cleaner but intuitive way didnt work"
 	| aCollection |
 
 	aCollection := self elements copy.
 	aCollection do: [:e | e delete].
 	self elements removeAll
-]
-
-{
-	#category : #drag,
-	#'squeak_changestamp' : 'si 6/14/2024 13:10'
-}
-WBCanvas >> dragEnd: anEvent [
-	"nötig?"
 ]
 
 {
@@ -268,27 +259,27 @@ WBCanvas >> globalColor: aColor [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/18/2024 16:36'
+	#'squeak_changestamp' : 'is 6/23/2024 01:23'
 }
-WBCanvas >> handlesMouseDown: evt [
+WBCanvas >> handlesMouseDown: anEvent [
     
 	^ true
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/18/2024 16:36'
+	#'squeak_changestamp' : 'is 6/23/2024 01:23'
 }
-WBCanvas >> handlesMouseMove: evt [
+WBCanvas >> handlesMouseMove: anEvent [
     
 	^ true
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/18/2024 16:36'
+	#'squeak_changestamp' : 'is 6/23/2024 01:23'
 }
-WBCanvas >> handlesMouseOver: evt [
+WBCanvas >> handlesMouseOver: anEvent [
     
 	^ true
 ]
@@ -313,7 +304,7 @@ WBCanvas >> images: anImage [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/14/2024 13:18'
+	#'squeak_changestamp' : 'is 6/23/2024 01:27'
 }
 WBCanvas >> initialize [
 	
@@ -322,7 +313,7 @@ WBCanvas >> initialize [
 	self 
 		scale: 1.0;
 		height: (self class WhiteBoardSize * self scale);
-		width: (self class WhiteBoardSize * self scale * 1.5);
+		width: (self class WhiteBoardSize * self scale * self widthToHeightRatio);
 		color: Color white;
 		borderWidth: 1;
 		borderColor: Color black;
@@ -337,11 +328,12 @@ WBCanvas >> initialize [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'si 6/8/2024 00:22'
+	#'squeak_changestamp' : 'is 6/23/2024 01:24'
 }
 WBCanvas >> mouseDown: anEvent [
 	
-	self deactivateElement;
+	self 
+		deactivateElement;
 		deactivateTextbox.
 	self toolbar deactivateElement.
 	(anEvent yellowButtonPressed) ifTrue: [self dragStart: anEvent]
@@ -349,21 +341,12 @@ WBCanvas >> mouseDown: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/18/2024 16:37'
+	#'squeak_changestamp' : 'is 6/23/2024 01:24'
 }
 WBCanvas >> mouseMove: anEvent [
 	
-	(self elementToSpawn) ifNotNil: [ self elementToSpawn dragMove: anEvent ].
-	anEvent yellowButtonPressed ifTrue: [ self dragMove: anEvent ]
-]
-
-{
-	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/18/2024 16:37'
-}
-WBCanvas >> mouseUp: anEvent [
-	
-	self dragEnd: anEvent
+	(self elementToSpawn) ifNotNil: [self elementToSpawn dragMove: anEvent].
+	anEvent yellowButtonPressed ifTrue: [self dragMove: anEvent]
 ]
 
 {
@@ -386,34 +369,34 @@ WBCanvas >> scale: aFactor [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'ACL 6/7/2024 14:30'
+	#'squeak_changestamp' : 'is 6/23/2024 01:24'
 }
 WBCanvas >> spawnACopiedElement: anElement At: aPoint [
 
 	self elementToSpawn: 
-	(anElement
-		center: aPoint;
-		dragOffset: anElement position - aPoint;
-		canvas: self;
-		addDropShadow;
-		yourself).
-	self addElement: anElement.
+		(anElement
+			center: aPoint;
+			dragOffset: anElement position - aPoint;
+			canvas: self;
+			addDropShadow;
+			yourself).
+	self addElement: anElement
 ]
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 6/18/2024 22:38'
+	#'squeak_changestamp' : 'is 6/23/2024 01:25'
 }
 WBCanvas >> spawnAnElement: anElement At: aMouseEvent [
 	
 	self elementToSpawn: 
-	(anElement
-		center: aMouseEvent cursorPoint;
-		dragOffset: anElement position - aMouseEvent cursorPoint;
-		canvas: self;
-		color: self globalColor;
-		addDropShadow;
-		yourself).
+		(anElement
+			center: aMouseEvent cursorPoint;
+			dragOffset: anElement position - aMouseEvent cursorPoint;
+			canvas: self;
+			color: self globalColor;
+			addDropShadow;
+			yourself).
 	self addElement: anElement 
 ]
 
@@ -444,4 +427,13 @@ WBCanvas >> toolbar [
 WBCanvas >> toolbar: aToolbar [
 
 	toolbar := aToolbar
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/23/2024 01:26'
+}
+WBCanvas >> widthToHeightRatio [
+
+	^ 1.5
 ]

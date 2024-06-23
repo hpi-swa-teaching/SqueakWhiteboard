@@ -1,33 +1,37 @@
+"
+This class represents the arrow-part of a WBLine
+"
 Class {
 	#name : #WBArrowhead,
 	#superclass : #PolygonMorph,
 	#instVars : [
 		'isVisible'
 	],
-	#category : #'SqueakWhiteboard-Core'
+	#category : #'SqueakWhiteboard-Core',
+	#'squeak_changestamp' : 'is 6/23/2024 02:11'
 }
 
 {
 	#category : #defaults,
-	#'squeak_changestamp' : 'si 6/21/2024 00:29'
+	#'squeak_changestamp' : 'is 6/23/2024 01:28'
 }
-WBArrowhead class >> defaultVertecies [
+WBArrowhead class >> defaultVertices [
 
 	^ {0@0. 20@10. 0@20}
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/14/2024 12:48'
+	#'squeak_changestamp' : 'is 6/23/2024 01:28'
 }
 WBArrowhead >> initialize [
 	
 	super initialize.
 	self
 		addFlexShellIfNecessary;
-		setVertices: self class defaultVertecies;
+		setVertices: self class defaultVertices;
 		fillStyle: Color black;
-		goBehind.
+		goBehind
 ]
 
 {

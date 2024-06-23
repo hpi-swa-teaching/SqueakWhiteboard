@@ -10,33 +10,33 @@ Class {
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/4/2024 20:35'
+	#'squeak_changestamp' : 'is 6/23/2024 02:02'
 }
-WBTextMorphForEditView >> handlesKeyboard: evt [
+WBTextMorphForEditView >> handlesKeyboard: anEvent [
 	
 	^ self editView enabled
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/4/2024 20:38'
+	#'squeak_changestamp' : 'is 6/23/2024 02:02'
 }
-WBTextMorphForEditView >> handlesMouseDown: evt [
+WBTextMorphForEditView >> handlesMouseDown: anEvent [
 
 	^ self editView enabled
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/18/2024 17:44'
+	#'squeak_changestamp' : 'is 6/23/2024 02:03'
 }
-WBTextMorphForEditView >> keyStroke: evt [
+WBTextMorphForEditView >> keyStroke: anEvent [
 	"When esc is pressed, the focus from the textfield should be removed"
 	| char |
 	
-	((char := evt keyCharacter) = Character escape) ifTrue: 
-		[self editView element canvas deactivateTextbox]. "hurts law of demeter. Should be refactored"
-	super keyStroke: evt
+	((char := anEvent keyCharacter) = Character escape) ifTrue: 
+		[self editView element canvas deactivateTextbox]. "hurts law of demeter. Should be refactored in the near future"
+	super keyStroke: anEvent
 ]
 
 {
