@@ -1,5 +1,5 @@
 "
-This class represents the arrow-part of a WBLine
+This class represents the arrow part of a WBLine
 "
 Class {
 	#name : #WBArrowhead,
@@ -8,7 +8,7 @@ Class {
 		'isVisible'
 	],
 	#category : #'SqueakWhiteboard-Core',
-	#'squeak_changestamp' : 'is 6/23/2024 02:11'
+	#'squeak_changestamp' : 'is 6/23/2024 02:31'
 }
 
 {
