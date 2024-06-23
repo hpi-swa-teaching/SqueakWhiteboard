@@ -193,7 +193,7 @@ WBToolbar >> canvas: aCanvas [
 ]
 
 {
-	#category : #createButtons,
+	#category : #'button creation',
 	#'squeak_changestamp' : 'is 6/23/2024 02:04'
 }
 WBToolbar >> createColorButtons [
@@ -212,7 +212,7 @@ WBToolbar >> createColorButtons [
 ]
 
 {
-	#category : #createButtons,
+	#category : #'button creation',
 	#'squeak_changestamp' : 'is 6/23/2024 02:04'
 }
 WBToolbar >> createDeleteConfirmButtons [
@@ -224,7 +224,7 @@ WBToolbar >> createDeleteConfirmButtons [
 ]
 
 {
-	#category : #createButtons,
+	#category : #'button creation',
 	#'squeak_changestamp' : 'is 6/23/2024 02:04'
 }
 WBToolbar >> createShapeChoosingButtons [
@@ -236,7 +236,7 @@ WBToolbar >> createShapeChoosingButtons [
 ]
 
 {
-	#category : #createButtons,
+	#category : #'button creation',
 	#'squeak_changestamp' : 'si 6/14/2024 12:42'
 }
 WBToolbar >> createToolbarButtons [
@@ -263,7 +263,7 @@ WBToolbar >> deactivateElement [
 ]
 
 {
-	#category : #getButton,
+	#category : #'get buttons',
 	#'squeak_changestamp' : 'is 6/23/2024 02:09'
 }
 WBToolbar >> getCircleButton [
@@ -276,7 +276,7 @@ WBToolbar >> getCircleButton [
 ]
 
 {
-	#category : #getButton,
+	#category : #'get buttons',
 	#'squeak_changestamp' : 'is 6/23/2024 02:05'
 }
 WBToolbar >> getColorButtonWithColor: aColor [ 
@@ -290,7 +290,7 @@ WBToolbar >> getColorButtonWithColor: aColor [
 ]
 
 {
-	#category : #getButton,
+	#category : #'get buttons',
 	#'squeak_changestamp' : 'is 6/23/2024 02:09'
 }
 WBToolbar >> getColorsButton [
@@ -303,7 +303,7 @@ WBToolbar >> getColorsButton [
 ]
 
 {
-	#category : #getButton,
+	#category : #'get buttons',
 	#'squeak_changestamp' : 'is 6/23/2024 02:09'
 }
 WBToolbar >> getDeleteAllButton [
@@ -317,7 +317,7 @@ WBToolbar >> getDeleteAllButton [
 ]
 
 {
-	#category : #getButton,
+	#category : #'get buttons',
 	#'squeak_changestamp' : 'is 6/23/2024 02:05'
 }
 WBToolbar >> getDeleteCancelButton [
@@ -331,7 +331,7 @@ WBToolbar >> getDeleteCancelButton [
 ]
 
 {
-	#category : #getButton,
+	#category : #'get buttons',
 	#'squeak_changestamp' : 'is 6/23/2024 02:05'
 }
 WBToolbar >> getDeleteConfirmButton [
@@ -345,7 +345,7 @@ WBToolbar >> getDeleteConfirmButton [
 ]
 
 {
-	#category : #getButton,
+	#category : #'get buttons',
 	#'squeak_changestamp' : 'is 6/23/2024 02:10'
 }
 WBToolbar >> getLineButton [
@@ -359,7 +359,7 @@ WBToolbar >> getLineButton [
 ]
 
 {
-	#category : #getButton,
+	#category : #'get buttons',
 	#'squeak_changestamp' : 'is 6/23/2024 02:10'
 }
 WBToolbar >> getNoteButton [
@@ -371,7 +371,7 @@ WBToolbar >> getNoteButton [
 ]
 
 {
-	#category : #getButton,
+	#category : #'get buttons',
 	#'squeak_changestamp' : 'is 6/23/2024 02:10'
 }
 WBToolbar >> getRectangleButton [
@@ -384,7 +384,7 @@ WBToolbar >> getRectangleButton [
 ]
 
 {
-	#category : #getButton,
+	#category : #'get buttons',
 	#'squeak_changestamp' : 'is 6/23/2024 02:10'
 }
 WBToolbar >> getShapeChoosingButton [
