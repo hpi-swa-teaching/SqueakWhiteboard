@@ -180,6 +180,15 @@ WBToolbar >> buttonFunctionalityForShapeChoosing [
 ]
 
 {
+	#category : #'button functionalities',
+	#'squeak_changestamp' : 'is 6/25/2024 15:34'
+}
+WBToolbar >> buttonFunctionalityForTextbox [
+
+	^ [:aButton | self canvas spawnAnElement: (WBDynamicTextbox newWithCanvas: self canvas) At: aButton currentEvent]
+]
+
+{
 	#category : #layout,
 	#'squeak_changestamp' : 'si 6/14/2024 12:12'
 }
@@ -464,6 +473,19 @@ WBToolbar >> getShapeChoosingButton [
 	^ WBButton new 
 		block: self buttonFunctionalityForShapeChoosing;
 		image: (ImageMorph new image: (self canvas images resize: WBImage loadShapeChoosingButtonImage to: self imageSize));
+		yourself
+			
+]
+
+{
+	#category : #'get buttons',
+	#'squeak_changestamp' : 'is 6/25/2024 15:36'
+}
+WBToolbar >> getTextboxButton [
+	
+	^ WBButton new 
+		block: self buttonFunctionalityForTextbox;
+		image: (ImageMorph new image: (self canvas images resize: WBImage loadTextboxButtonImage to: self imageSize));
 		yourself
 			
 ]
