@@ -233,7 +233,7 @@ WBTextfieldTests >> testTextfieldKeyboardEventHandling [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'is 6/22/2024 01:37'
+	#'squeak_changestamp' : 'JK 6/25/2024 16:22'
 }
 WBTextfieldTests >> testTextfieldMouseEventHandling [
 	| anElement aFirstMouseEvent aSecondMouseEvent prevCursor |

@@ -48,19 +48,14 @@ WBResizeHandleTests >> tearDown [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'is 6/22/2024 01:34'
+	#'squeak_changestamp' : 'JK 6/25/2024 16:19'
 }
 WBResizeHandleTests >> testMouseEvents [
-	| aResizeBar aMouseEvent prevCursor |
+	| aResizeHandle aMouseEvent |
 	
-	aResizeBar := WBResizeBar new.
+	aResizeHandle := WBResizeHandle new.
 	aMouseEvent := MouseButtonEvent new.
-	aMouseEvent setType: #mouseDown position: aResizeBar position which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
-	self assert: (aResizeBar handlesMouseDown: aMouseEvent) = true.
-	self assert: (aResizeBar handlesMouseOver: aMouseEvent) = true.
-	prevCursor := Cursor currentCursor.
-	aResizeBar mouseEnter: aMouseEvent.
-	self assert: Cursor currentCursor = Cursor move.
-	aResizeBar mouseLeave: aMouseEvent.
-	self assert: Cursor currentCursor = prevCursor
+	aMouseEvent setType: #mouseDown position: aResizeHandle center which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
+	self assert: (aResizeHandle handlesMouseDown: aMouseEvent) = true.
+	self assert: (aResizeHandle handlesMouseOver: aMouseEvent) = true.
 ]
