@@ -157,7 +157,7 @@ WBElementPopUpTests >> testFunctionalityOfDelete [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'is 6/21/2024 18:57'
+	#'squeak_changestamp' : 'si 6/25/2024 14:19'
 }
 WBElementPopUpTests >> testFunctionalityOfSwitchVisibilityOfArrowHead [
 	| element mouseEvent1 mouseEvent2 |
@@ -166,7 +166,7 @@ WBElementPopUpTests >> testFunctionalityOfSwitchVisibilityOfArrowHead [
 	mouseEvent1 setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent1 class redButton hand: HandMorph new stamp: 0.
 	mouseEvent2 := MouseButtonEvent new.
 	mouseEvent2 setType: #mouseDown position: self canvas position + (200 @ 200) which: 4 buttons: mouseEvent2 class redButton hand: HandMorph new stamp: 0.
-	element := (WBLine newWithCanvas: self canvas).
+	element := (WBLine new arrowHead: true).
 	
 	self canvas spawnAnElement: (element) At: (MouseButtonEvent new position: self canvas position + (100@100)).
 	element mouseUp: mouseEvent1.
