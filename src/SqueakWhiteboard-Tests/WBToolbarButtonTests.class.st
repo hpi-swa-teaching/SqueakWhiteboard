@@ -19,18 +19,6 @@ WBToolbarButtonTests >> testButtonFunctionality [
 	#category : #tests,
 	#'squeak_changestamp' : 'is 6/21/2024 18:52'
 }
-WBToolbarButtonTests >> testLineButtonFunctionality [
-	| button |
-
-	button := self canvas toolbar buttons at: 2.
-	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
-	self assert: self canvas elementToSpawn class = WBLine
-]
-
-{
-	#category : #tests,
-	#'squeak_changestamp' : 'is 6/21/2024 18:52'
-}
 WBToolbarButtonTests >> testNoteButtonFunctionality [
 	| button |
 

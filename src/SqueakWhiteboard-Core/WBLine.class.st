@@ -47,18 +47,16 @@ WBLine >> angleForPoints [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/23/2024 01:40'
+	#'squeak_changestamp' : 'si 6/25/2024 13:41'
 }
 WBLine >> arrowHead [
 
-	^ arrowHead ifNil: 
-		[arrowHead := WBArrowhead new isVisible: true. 
-		self morph addMorph: self arrowHead] 
+	^ arrowHead
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/18/2024 21:11'
+	#'squeak_changestamp' : 'si 6/25/2024 14:09'
 }
 WBLine >> arrowHead: anArrowhead [
 
@@ -72,6 +70,21 @@ WBLine >> arrowHead: anArrowhead [
 WBLine >> buttonsForPopUpBar [
 
 	^ super buttonsForPopUpBar add: self buttonFunctionalityForArrowSwitch
+]
+
+{
+	#category : #arrow,
+	#'squeak_changestamp' : 'si 6/25/2024 14:10'
+}
+WBLine >> checkForArrowHead [
+
+	self arrowHead
+		ifFalse: [self arrowHead: (WBArrowhead new isVisible: false).
+			self addMorph: self arrowHead.
+			self updateArrowHead.]
+		ifTrue: [self arrowHead: (WBArrowhead new isVisible: true).
+			self addMorph: self arrowHead.
+			self updateArrowHead.]
 ]
 
 {
@@ -157,7 +170,7 @@ WBLine >> showArrowHead [
 
 {
 	#category : #buildLine,
-	#'squeak_changestamp' : 'is 6/23/2024 01:41'
+	#'squeak_changestamp' : 'si 6/25/2024 13:39'
 }
 WBLine >> spawnEdgeOfLineAt: aMouseEvent [
 
@@ -178,7 +191,7 @@ WBLine >> spawnEdgeOfLineAt: aMouseEvent [
 			self 
 				borderWidth: 2;
 				color: Color black;
-				updateArrowHead.
+				checkForArrowHead.
 			self canvas 
 				addElement: (self edges at: 1);
 				addElement: (self edges at: 2);

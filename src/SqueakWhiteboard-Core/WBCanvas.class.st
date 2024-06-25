@@ -14,7 +14,8 @@ Class {
 		'drawingSurface',
 		'dragOffset',
 		'toolbar',
-		'images'
+		'images',
+		'text'
 	],
 	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 6/23/2024 02:27'
@@ -101,19 +102,19 @@ WBCanvas >> createDrawingSurface [
 ]
 
 {
-	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 6/23/2024 01:18'
+	#category : #'handle elements',
+	#'squeak_changestamp' : 'si 6/25/2024 15:05'
 }
 WBCanvas >> deactivateElement [
 
 	self activeElement ifNotNil: 
 		[self activeElement deactivateElement.
-		self activeElement: nil]
+		self activeElement: nil].
 
 ]
 
 {
-	#category : #'creating elements',
+	#category : #'handle elements',
 	#'squeak_changestamp' : 'is 6/23/2024 01:18'
 }
 WBCanvas >> deactivateTextbox [
@@ -328,12 +329,13 @@ WBCanvas >> initialize [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/23/2024 01:24'
+	#'squeak_changestamp' : 'si 6/25/2024 15:05'
 }
 WBCanvas >> mouseDown: anEvent [
 	
 	self 
 		deactivateElement;
+		removeText;
 		deactivateTextbox.
 	self toolbar deactivateElement.
 	(anEvent yellowButtonPressed) ifTrue: [self dragStart: anEvent]
@@ -347,6 +349,17 @@ WBCanvas >> mouseMove: anEvent [
 	
 	(self elementToSpawn) ifNotNil: [self elementToSpawn dragMove: anEvent].
 	anEvent yellowButtonPressed ifTrue: [self dragMove: anEvent]
+]
+
+{
+	#category : #'show text',
+	#'squeak_changestamp' : 'si 6/25/2024 15:08'
+}
+WBCanvas >> removeText [
+
+	self text ifNotNil:
+		[self text abandon.
+		self text: nil]
 ]
 
 {
@@ -365,6 +378,21 @@ WBCanvas >> scale [
 WBCanvas >> scale: aFactor [
 	
 	scale := aFactor
+]
+
+{
+	#category : #'show text',
+	#'squeak_changestamp' : 'si 6/25/2024 14:48'
+}
+WBCanvas >> showText: aString [
+
+	self text: (TextMorph new
+		contents: aString;
+		fontName: #Calibri pointSize: 25;
+		lock;
+		yourself).
+	self addMorph: text.
+	self text center: self center.
 ]
 
 {
@@ -409,6 +437,24 @@ WBCanvas >> spawnToolbar [
 	self toolbar: (WBToolbar newWithCanvas: self).
 	self addMorph: self toolbar
 	
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/25/2024 14:30'
+}
+WBCanvas >> text [ 
+
+	^ text
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/25/2024 14:31'
+}
+WBCanvas >> text: anElement [ 
+
+	text := anElement
 ]
 
 {
