@@ -36,6 +36,17 @@ WBToolbar class >> newWithCanvas: aCanvas [
 ]
 
 {
+	#category : #text,
+	#'squeak_changestamp' : 'si 6/25/2024 14:46'
+}
+WBToolbar class >> textForDeleteAll [
+
+	^ 'Do you really want to delete all elements on the canvas?
+	Click read for cancel.
+	Click green for confirm.'
+]
+
+{
 	#category : #layout,
 	#'squeak_changestamp' : 'is 5/28/2024 15:41'
 }
@@ -56,6 +67,15 @@ WBToolbar >> backgroundColor: aColor [
 
 {
 	#category : #'button functionalities',
+	#'squeak_changestamp' : 'si 6/25/2024 14:07'
+}
+WBToolbar >> buttonFunctionalityForArrow [
+
+	^ [:aButton | self canvas spawnAnElement: (WBLine new arrowHead: true) At: aButton currentEvent]
+]
+
+{
+	#category : #'button functionalities',
 	#'squeak_changestamp' : 'is 6/18/2024 12:25'
 }
 WBToolbar >> buttonFunctionalityForCircle [
@@ -65,38 +85,42 @@ WBToolbar >> buttonFunctionalityForCircle [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/17/2024 11:29'
+	#'squeak_changestamp' : 'si 6/25/2024 14:40'
 }
 WBToolbar >> buttonFunctionalityForColorPalette [
 
-	^ [:aButton | self makePopUpAt: aButton rightCenter + (self class margin @ 0) with: self createColorButtons columns: 3]
+	^ [:aButton | self makePopUpAt: aButton rightCenter + (self class margin + (self buttonSize x * (3 / 2)) @ 0) with: self createColorButtons columns: 3]
 ]
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/17/2024 11:29'
+	#'squeak_changestamp' : 'si 6/25/2024 14:46'
 }
 WBToolbar >> buttonFunctionalityForDeleteAll [
 
-	^ [:aButton | self makePopUpAt: aButton rightCenter + (self class margin @ 0) with: self createDeleteConfirmButtons columns: 1]
+	^ [:aButton | self canvas showText: self class textForDeleteAll.
+		self makePopUpAt: self canvas text bottomCenter + (0 @ (self class margin + self buttonSize x)) with: self createDeleteConfirmButtons columns: nil]
 ]
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/17/2024 11:30'
+	#'squeak_changestamp' : 'si 6/25/2024 15:06'
 }
 WBToolbar >> buttonFunctionalityForDeleteCancel [
 
-	^ [:aButton | self deactivateElement]
+	^ [:aButton | self deactivateElement.
+		self canvas removeText.]
 ]
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/17/2024 11:39'
+	#'squeak_changestamp' : 'si 6/25/2024 15:06'
 }
 WBToolbar >> buttonFunctionalityForDeleteConfirm [
 
-	^ [:aButton | self canvas deleteAllElements.
+	^ [:aButton | self canvas 
+		deleteAllElements;
+		removeText.
 		self deactivateElement]
 ]
 
@@ -112,11 +136,20 @@ WBToolbar >> buttonFunctionalityForGlobalColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 12:25'
+	#'squeak_changestamp' : 'si 6/25/2024 14:09'
 }
 WBToolbar >> buttonFunctionalityForLine [
 
-	^ [:aButton | self canvas spawnAnElement: (WBLine new) At: aButton currentEvent]
+	^ [:aButton | self canvas spawnAnElement: (WBLine new arrowHead: false) At: aButton currentEvent]
+]
+
+{
+	#category : #'button functionalities',
+	#'squeak_changestamp' : 'si 6/25/2024 14:39'
+}
+WBToolbar >> buttonFunctionalityForLineChoosing [
+
+	^ [:aButton | self makePopUpAt: aButton rightCenter + (self class margin + (self buttonSize x / 2) @ 0) with: self createLineChoosingButtons columns: 1]
 ]
 
 {
@@ -139,11 +172,11 @@ WBToolbar >> buttonFunctionalityForRectangle [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/17/2024 11:31'
+	#'squeak_changestamp' : 'si 6/25/2024 14:39'
 }
 WBToolbar >> buttonFunctionalityForShapeChoosing [
 
-	^ [:aButton | self makePopUpAt: aButton rightCenter + (self class margin @ 0) with: self createShapeChoosingButtons columns: 1]
+	^ [:aButton | self makePopUpAt: aButton rightCenter + (self class margin + (self buttonSize x / 2) @ 0) with: self createShapeChoosingButtons columns: 1]
 ]
 
 {
@@ -225,6 +258,18 @@ WBToolbar >> createDeleteConfirmButtons [
 
 {
 	#category : #'button creation',
+	#'squeak_changestamp' : 'si 6/25/2024 13:43'
+}
+WBToolbar >> createLineChoosingButtons [
+
+	^OrderedCollection new
+		add: self getLineButton;
+		add: self getArrowButton;
+		yourself
+]
+
+{
+	#category : #'button creation',
 	#'squeak_changestamp' : 'is 6/23/2024 02:04'
 }
 WBToolbar >> createShapeChoosingButtons [
@@ -237,13 +282,13 @@ WBToolbar >> createShapeChoosingButtons [
 
 {
 	#category : #'button creation',
-	#'squeak_changestamp' : 'si 6/14/2024 12:42'
+	#'squeak_changestamp' : 'si 6/25/2024 13:46'
 }
 WBToolbar >> createToolbarButtons [
 	
 	self placeButtons: (OrderedCollection withAll: {
 		self getShapeChoosingButton.
-		self getLineButton.
+		self getLineChoosingButton.
 		self getNoteButton.
 		self getColorsButton.
 		self getDeleteAllButton})
@@ -260,6 +305,20 @@ WBToolbar >> deactivateElement [
 	self popUp ifNotNil: 
 		[self popUp delete.
 		self popUp: nil]
+]
+
+{
+	#category : #'get buttons',
+	#'squeak_changestamp' : 'si 6/25/2024 13:47'
+}
+WBToolbar >> getArrowButton [
+
+	^ WBButton new 
+		block: self buttonFunctionalityForArrow;
+		image: (ImageMorph new image: (self canvas images resize: WBImage loadCircleButtonImage to: self imageSize));
+		yourself
+	
+			
 ]
 
 {
@@ -360,6 +419,19 @@ WBToolbar >> getLineButton [
 
 {
 	#category : #'get buttons',
+	#'squeak_changestamp' : 'si 6/25/2024 13:46'
+}
+WBToolbar >> getLineChoosingButton [
+
+	^ WBButton new 
+		block: self buttonFunctionalityForLineChoosing;
+		image: (ImageMorph new image: (self canvas images resize: WBImage loadShapeChoosingButtonImage to: self imageSize));
+		yourself
+			
+]
+
+{
+	#category : #'get buttons',
 	#'squeak_changestamp' : 'is 6/23/2024 02:10'
 }
 WBToolbar >> getNoteButton [
@@ -420,7 +492,7 @@ WBToolbar >> initializeWithCanvas: aCanvas [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'is 6/23/2024 02:07'
+	#'squeak_changestamp' : 'si 6/25/2024 14:38'
 }
 WBToolbar >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
@@ -433,7 +505,7 @@ WBToolbar >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 			addButtons: aCollection;
 			yourself).
 	self addMorph: self popUp.
-	self popUp center: aPoint + (self popUp center - self popUp leftCenter)
+	self popUp center: aPoint
 ]
 
 {
