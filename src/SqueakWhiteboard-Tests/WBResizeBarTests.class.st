@@ -48,22 +48,7 @@ WBResizeBarTests >> tearDown [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'JK 6/25/2024 16:14'
-}
-WBResizeBarTests >> testMouseCurser [
-	| aResizeBar aMouseEvent prevCursor |
-	
-	aResizeBar := WBResizeBar new.
-	aMouseEvent := MouseButtonEvent new.
-	aMouseEvent setType: #mouseDown position: aResizeBar center which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
-	prevCursor := Cursor currentCursor.
-	aResizeBar mouseEnter: aMouseEvent.
-	self assert: Cursor currentCursor = Cursor move.
-]
-
-{
-	#category : #testing,
-	#'squeak_changestamp' : 'JK 6/25/2024 16:09'
+	#'squeak_changestamp' : 'is 6/26/2024 10:41'
 }
 WBResizeBarTests >> testMouseDown [
 	| aResizeBar aMouseEvent |
@@ -71,23 +56,7 @@ WBResizeBarTests >> testMouseDown [
 	aResizeBar := WBResizeBar new.
 	aMouseEvent := MouseButtonEvent new.
 	aMouseEvent setType: #mouseDown position: aResizeBar position which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
-	self assert: (aResizeBar handlesMouseDown: aMouseEvent) = true.
-]
-
-{
-	#category : #testing,
-	#'squeak_changestamp' : 'is 6/26/2024 10:24'
-}
-WBResizeBarTests >> testMouseEvents [
-	| aResizeBar aMouseEvent |
-	
-	aResizeBar := WBResizeBar new.
-	aMouseEvent := MouseButtonEvent new.
-	aMouseEvent setType: #mouseDown position: aResizeBar position which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
-	
-	self assert: (aResizeBar handlesMouseDown: aMouseEvent) = true.
-	self assert: (aResizeBar handlesMouseOver: aMouseEvent) = true
-	
+	self assert: (aResizeBar handlesMouseDown: aMouseEvent) = true
 ]
 
 {

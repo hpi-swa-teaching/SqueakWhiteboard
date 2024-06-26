@@ -48,9 +48,9 @@ WBElementTests >> tearDown [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'is 6/22/2024 00:55'
+	#'squeak_changestamp' : 'is 6/26/2024 10:42'
 }
-WBElementTests >> testMouseEvents [
+WBElementTests >> testMouseDown [
 	| aMouseEvent anElement |
 	
 	anElement := WBRectangle newWithCanvas: self canvas.

@@ -48,16 +48,30 @@ WBResizeHandleTests >> tearDown [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'is 6/26/2024 10:26'
+	#'squeak_changestamp' : 'is 6/26/2024 10:42'
 }
-WBResizeHandleTests >> testMouseEvents [
+WBResizeHandleTests >> testMouseDown [
 	| aResizeHandle aMouseEvent |
 	
 	aResizeHandle := WBResizeBar new.
 	aMouseEvent := MouseButtonEvent new.
 	aMouseEvent setType: #mouseDown position: aResizeHandle position which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
 	
-	self assert: (aResizeHandle handlesMouseDown: aMouseEvent) = true.
+	self assert: (aResizeHandle handlesMouseDown: aMouseEvent) = true
+	
+]
+
+{
+	#category : #testing,
+	#'squeak_changestamp' : 'is 6/26/2024 10:42'
+}
+WBResizeHandleTests >> testMouseOver [
+	| aResizeHandle aMouseEvent |
+	
+	aResizeHandle := WBResizeBar new.
+	aMouseEvent := MouseButtonEvent new.
+	aMouseEvent setType: #mouseDown position: aResizeHandle position which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
+	
 	self assert: (aResizeHandle handlesMouseOver: aMouseEvent) = true
 	
 ]
