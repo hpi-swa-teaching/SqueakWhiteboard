@@ -677,6 +677,15 @@ WBElement >> position: aPosition [
 ]
 
 {
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/25/2024 16:17'
+}
+WBElement >> postDropRoutine: anEvent [
+
+	supportsText ifTrue: [self activateTextbox: anEvent]
+]
+
+{
 	#category : #'morph functionalities',
 	#'squeak_changestamp' : 'is 6/18/2024 17:35'
 }

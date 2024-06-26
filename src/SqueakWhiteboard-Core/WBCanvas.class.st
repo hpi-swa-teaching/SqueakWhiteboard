@@ -195,12 +195,13 @@ WBCanvas >> drawingSurface: anObject [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 6/18/2024 17:36'
+	#'squeak_changestamp' : 'is 6/25/2024 16:00'
 }
-WBCanvas >> dropElement: aMouseEvent [
+WBCanvas >> dropElement: anEvent [
 
-	self elementToSpawn removeDropShadow.
-	self elementToSpawn supportsText ifTrue: [self elementToSpawn activateTextbox: aMouseEvent].
+	self elementToSpawn 
+		removeDropShadow;
+		postDropRoutine: anEvent.
 	self elementToSpawn: nil 
 ]
 

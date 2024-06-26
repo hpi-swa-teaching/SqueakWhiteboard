@@ -279,7 +279,7 @@ WBToolbar >> createLineChoosingButtons [
 
 {
 	#category : #'button creation',
-	#'squeak_changestamp' : 'is 6/23/2024 02:04'
+	#'squeak_changestamp' : 'is 6/25/2024 15:46'
 }
 WBToolbar >> createShapeChoosingButtons [
 
@@ -291,7 +291,7 @@ WBToolbar >> createShapeChoosingButtons [
 
 {
 	#category : #'button creation',
-	#'squeak_changestamp' : 'si 6/25/2024 13:46'
+	#'squeak_changestamp' : 'is 6/25/2024 15:47'
 }
 WBToolbar >> createToolbarButtons [
 	
@@ -299,6 +299,7 @@ WBToolbar >> createToolbarButtons [
 		self getShapeChoosingButton.
 		self getLineChoosingButton.
 		self getNoteButton.
+		self getTextboxButton.
 		self getColorsButton.
 		self getDeleteAllButton})
 
