@@ -81,6 +81,18 @@ WBCanvasTests >> testClampElementToCanvas [
 
 {
 	#category : #testing,
+	#'squeak_changestamp' : 'ACL 6/26/2024 11:26'
+}
+WBCanvasTests >> testCreateDrawingSurface [
+	|drawingSurface|
+	
+	self canvas createDrawingSurface.
+	drawingSurface := self canvas drawingSurface.
+	self assert: drawingSurface class = Morph
+]
+
+{
+	#category : #testing,
 	#'squeak_changestamp' : 'is 6/21/2024 18:50'
 }
 WBCanvasTests >> testElementsCollection [
@@ -111,6 +123,36 @@ WBCanvasTests >> testMouseDown [
 	self assert: (self canvas handlesMouseOver: aMouseEvent) = true.
 	self assert: (self canvas handlesMouseMove: aMouseEvent) = true.
 	self assert: (self canvas handlesMouseDown: aMouseEvent) = true
+]
+
+{
+	#category : #testing,
+	#'squeak_changestamp' : 'ACL 6/26/2024 12:14'
+}
+WBCanvasTests >> testMoveCanvas [
+	|drawingSurface rectangle aMouseEvent|
+	
+	self canvas createDrawingSurface.
+	drawingSurface := self canvas drawingSurface.
+	rectangle := WBRectangle newWithCanvas: self canvas.
+	rectangle position: 20@20.
+	
+	"aMouseEvent := MouseButtonEvent new.
+	aMouseEvent setType: #mouseDown position: (0@0) which: 3 buttons: aMouseEvent class yellowButton hand: HandMorph new stamp: 0.
+	aMouseEvent setType: #mouseMove startPoint: 0@0 endPoint: 10@10 trail: {0@0. 10@10} buttons: aMouseEvent class yellowButton hand: HandMorph stamp: 0.
+	aMouseEvent setType: #mouseUp position: (10@10) which: 3 buttons: aMouseEvent class yellowButton hand: HandMorph new stamp: 0."
+	
+	aMouseEvent := MouseEvent new.
+	aMouseEvent setType: #mouseDown position: (0@0) which: 3 buttons: aMouseEvent class yellowButton hand: HandMorph new stamp: 0.
+	rectangle handleEvent: aMouseEvent.
+	
+	aMouseEvent := MouseEvent new setType: #mouseMove position: 10 @ 10 buttons: 1.
+	rectangle handleEvent: aMouseEvent.
+	
+	aMouseEvent := MouseEvent new setType: #mouseUp position: (10@10) which: 3 buttons: aMouseEvent class yellowButton hand: HandMorph new stamp: 0.
+      rectangle handleEvent: aMouseEvent.
+
+      self assert: (rectangle position: 30@30).
 ]
 
 {
