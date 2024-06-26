@@ -96,7 +96,7 @@ WBDeletePopUpTests >> testPopUpPlacementInX [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/25/2024 14:58'
+	#'squeak_changestamp' : 'JK 6/25/2024 16:40'
 }
 WBDeletePopUpTests >> testPopUpPlacementInY [
 	| button |
@@ -105,5 +105,5 @@ WBDeletePopUpTests >> testPopUpPlacementInY [
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	
 	self assert: self canvas center y <= self canvas toolbar popUp top.	
-	self assert: self canvas toolbar popUp bottom <= (self canvas center y + 200)
+	self assert: self canvas toolbar popUp bottom <= (self canvas bottom)
 ]

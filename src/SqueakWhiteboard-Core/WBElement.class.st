@@ -165,6 +165,26 @@ WBElement >> bounds: someBounds [
 
 {
 	#category : #'button functionalities',
+	#'squeak_changestamp' : 'ACL 6/23/2024 16:08'
+}
+WBElement >> buttonFunctionalityForBorderColor [
+
+	^ [:aButton | self morph borderColor: aButton color.
+		self morph borderWidth: 3]
+]
+
+{
+	#category : #'button functionalities',
+	#'squeak_changestamp' : 'ACL 6/26/2024 10:30'
+}
+WBElement >> buttonFunctionalityForBorderColorPalette [
+
+	^ [:aButton | self popUp removePalette.
+		self popUp makePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeBorderColorButtons columns: 3]
+]
+
+{
+	#category : #'button functionalities',
 	#'squeak_changestamp' : 'is 6/18/2024 17:32'
 }
 WBElement >> buttonFunctionalityForColor [
@@ -174,11 +194,12 @@ WBElement >> buttonFunctionalityForColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/17/2024 11:29'
+	#'squeak_changestamp' : 'ACL 6/26/2024 10:30'
 }
 WBElement >> buttonFunctionalityForColorPalette [
 
-	^ [:aButton | self popUp makePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: 3]
+	^ [:aButton | self popUp removePalette.
+		self popUp makePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: 3]
 ]
 
 {
@@ -202,7 +223,7 @@ WBElement >> buttonFunctionalityForDelete [
 
 {
 	#category : #'button creation',
-	#'squeak_changestamp' : 'is 6/23/2024 01:31'
+	#'squeak_changestamp' : 'ACL 6/23/2024 15:51'
 }
 WBElement >> buttonsForPopUpBar [
 
@@ -212,9 +233,12 @@ WBElement >> buttonsForPopUpBar [
 			backgroundColor: Color red);
 		add: (WBButton new
 			block: self buttonFunctionalityForCopy;
-			backgroundColor: Color lightBlue muchDarker);
+			backgroundColor: Color blue muchDarker);
 		add: (WBButton new
 			block: self buttonFunctionalityForColorPalette;
+			backgroundColor: Color gray);
+		add: (WBButton new
+			block: self buttonFunctionalityForBorderColorPalette;
 			backgroundColor: Color black);
 		yourself
 	
@@ -412,13 +436,13 @@ WBElement >> extent [
 
 {
 	#category : #'morph functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 17:32'
+	#'squeak_changestamp' : 'JK 6/25/2024 15:43'
 }
 WBElement >> extent: anExtent [
 	
 	self morph extent: anExtent.
 	textField ifNotNil: [textField extent: anExtent - self textBorderOffset].
-	self setPopupPosition
+	self popUp ifNotNil: [self setPopupPosition]
 	
 	
 
@@ -531,6 +555,39 @@ WBElement >> left [
 
 {
 	#category : #'button creation',
+	#'squeak_changestamp' : 'ACL 6/23/2024 15:52'
+}
+WBElement >> makeBorderColorButtonWithColor: aColor [ 
+	
+	^ WBButton new 
+		color: aColor;
+		backgroundColor: aColor;
+		clickedColor: aColor darker;
+		block: self buttonFunctionalityForBorderColor;
+		yourself
+]
+
+{
+	#category : #'button creation',
+	#'squeak_changestamp' : 'ACL 6/23/2024 15:54'
+}
+WBElement >> makeBorderColorButtons [
+
+	^ OrderedCollection new
+		add: (self makeBorderColorButtonWithColor: Color yellow);
+		add: (self makeBorderColorButtonWithColor: Color orange);
+		add: (self makeBorderColorButtonWithColor: Color red);
+		add: (self makeBorderColorButtonWithColor: Color magenta);
+		add: (self makeBorderColorButtonWithColor: Color blue);
+		add: (self makeBorderColorButtonWithColor: Color cyan);
+		add: (self makeBorderColorButtonWithColor: Color green);
+		add: (self makeBorderColorButtonWithColor: Color gray);
+		add: (self makeBorderColorButtonWithColor: Color black);
+		yourself
+]
+
+{
+	#category : #'button creation',
 	#'squeak_changestamp' : 'is 6/23/2024 01:33'
 }
 WBElement >> makeColorButtonWithColor: aColor [ 
@@ -564,9 +621,21 @@ WBElement >> makeColorButtons [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'is 6/23/2024 01:33'
+	#'squeak_changestamp' : 'JK 6/25/2024 15:33'
 }
 WBElement >> makePopUpAt: aPoint with: aCollection columns: aNumber [
+
+	self makePopWith: aCollection columns: aNumber.
+	self popUp center: aPoint - (self popUp bottomCenter - self popUp center)
+	
+	
+]
+
+{
+	#category : #popUp,
+	#'squeak_changestamp' : 'JK 6/25/2024 15:32'
+}
+WBElement >> makePopWith: aCollection columns: aNumber [
 
 	self popUp: 
 		(WBPopUp new
@@ -576,7 +645,6 @@ WBElement >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 			addButtons: aCollection;
 			yourself).
 	self morph addMorph: self popUp.
-	self popUp center: aPoint - (self popUp bottomCenter - self popUp center)
 	
 ]
 
@@ -754,11 +822,11 @@ WBElement >> right [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'is 6/18/2024 17:32'
+	#'squeak_changestamp' : 'JK 6/25/2024 16:01'
 }
 WBElement >> setPopupPosition [
-
-	^ self morph topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2))
+	self popUp center:  self topCenter - (0@10) - (0@(self popUp height/2))
+	
 ]
 
 {
@@ -775,13 +843,14 @@ WBElement >> setupEventHandling [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'is 6/23/2024 01:35'
+	#'squeak_changestamp' : 'JK 6/25/2024 15:53'
 }
 WBElement >> showPopUp [
 
 	self canvas elementToSpawn ifNil:
 		[self canvas deactivateElement.
-		self makePopUpAt: self setPopupPosition with: self buttonsForPopUpBar columns: nil] 
+		self makePopWith: self buttonsForPopUpBar columns: nil.
+		self setPopupPosition] 
 ]
 
 {
@@ -851,6 +920,15 @@ WBElement >> textField: aTextfield [
 WBElement >> top [
 
 	^ self morph top
+]
+
+{
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'JK 6/25/2024 15:39'
+}
+WBElement >> topCenter [
+
+	^ self morph topCenter
 ]
 
 {

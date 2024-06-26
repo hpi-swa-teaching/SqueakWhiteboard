@@ -98,9 +98,9 @@ WBButtonTests >> testButtonHoverColor [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'is 6/22/2024 00:36'
+	#'squeak_changestamp' : 'is 6/26/2024 10:42'
 }
-WBButtonTests >> testMouseEvents [
+WBButtonTests >> testMouseDown [
 	| aButton aMouseEvent |
 	
 	aButton := self canvas toolbar buttons at: 1.
