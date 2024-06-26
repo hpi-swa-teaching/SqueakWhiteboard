@@ -187,11 +187,11 @@ WBPopUp >> popUpButtons: aNumber [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'ACL 6/23/2024 17:47'
+	#'squeak_changestamp' : 'ACL 6/26/2024 10:45'
 }
-WBPopUp >> removeSubmorphs [
+WBPopUp >> removePalette [
 	  
-	self submorphs do: [:each |(each submorphs do: [:m | (m class  == 'WBButton') ifTrue:[m delete]])]
+	self submorphs do: [:each | (each class = WBPopUp) ifTrue: [each delete]]
 ]
 
 {
