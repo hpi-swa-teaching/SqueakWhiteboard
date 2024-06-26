@@ -175,11 +175,11 @@ WBElement >> buttonFunctionalityForBorderColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 6/26/2024 11:03'
+	#'squeak_changestamp' : 'ACL 6/26/2024 11:14'
 }
 WBElement >> buttonFunctionalityForBorderColorPalette [
 
-	^ [:aButton | self popUp popUp delete.
+	^ [:aButton | (self popUp popUp) ifNotNil: [self popUp popUp delete].
 		self popUp makePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeBorderColorButtons columns: 3]
 ]
 
@@ -194,11 +194,11 @@ WBElement >> buttonFunctionalityForColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 6/26/2024 11:04'
+	#'squeak_changestamp' : 'ACL 6/26/2024 11:14'
 }
 WBElement >> buttonFunctionalityForColorPalette [
 
-	^ [:aButton | self popUp popUp delete.
+	^ [:aButton | (self popUp popUp) ifNotNil: [self popUp popUp delete].
 		self popUp makePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: 3]
 ]
 
