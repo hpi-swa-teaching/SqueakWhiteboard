@@ -100,9 +100,9 @@ WBCanvasTests >> testElementsCollection [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'is 6/22/2024 00:42'
+	#'squeak_changestamp' : 'is 6/26/2024 10:42'
 }
-WBCanvasTests >> testMouseEvents [
+WBCanvasTests >> testMouseDown [
 	| aMouseEvent |
 	
 	aMouseEvent := MouseButtonEvent new.
