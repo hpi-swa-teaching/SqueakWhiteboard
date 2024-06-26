@@ -449,25 +449,6 @@ WBElement >> extent: anExtent [
 ]
 
 {
-	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/23/2024 01:32'
-}
-WBElement >> handlesMouseDown: anEvent [
-
-	supportsText ifTrue: [^ (self textField enabled) not] ifFalse: [^true]
-	
-]
-
-{
-	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/18/2024 00:07'
-}
-WBElement >> handlesMouseOver: anEvent [
-
-	^ true
-]
-
-{
 	#category : #'morph functionalities',
 	#'squeak_changestamp' : 'is 6/18/2024 18:55'
 }
@@ -831,7 +812,7 @@ WBElement >> setPopupPosition [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/18/2024 21:10'
+	#'squeak_changestamp' : 'is 6/26/2024 22:57'
 }
 WBElement >> setupEventHandling [
 "pass event triggers from the element itself to the methods of the WBElement"

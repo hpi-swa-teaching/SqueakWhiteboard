@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/25/2024 16:33'
+	#'squeak_changestamp' : 'is 6/26/2024 23:09'
 }
 WBDynamicTextbox >> initialize [
 
@@ -25,9 +25,10 @@ WBDynamicTextbox >> initializeElement [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/25/2024 16:21'
+	#'squeak_changestamp' : 'is 6/26/2024 22:49'
 }
 WBDynamicTextbox >> initializeTextfield [
+	"muss das so, wenn supportsText true ist? Muss supportsText überhaupt true sein?"
 
 ]
 
