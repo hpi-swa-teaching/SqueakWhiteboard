@@ -50,7 +50,7 @@ WBResizeHandle >> frame: anObject [
 ]
 
 {
-	#category : #mouseEvents,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 6/23/2024 01:59'
 }
 WBResizeHandle >> handlesMouseDown: anEvent [
@@ -59,7 +59,7 @@ WBResizeHandle >> handlesMouseDown: anEvent [
 ]
 
 {
-	#category : #mouseEvents,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 6/23/2024 01:59'
 }
 WBResizeHandle >> handlesMouseOver: anEvent [
@@ -105,7 +105,7 @@ WBResizeHandle >> lastPosition: aPosition [
 ]
 
 {
-	#category : #mouseEvents,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 6/23/2024 02:00'
 }
 WBResizeHandle >> mouseDown: anEvent [
@@ -114,7 +114,7 @@ WBResizeHandle >> mouseDown: anEvent [
 ]
 
 {
-	#category : #mouseEvents,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 6/23/2024 02:00'
 }
 WBResizeHandle >> mouseEnter: anEvent [
@@ -123,7 +123,7 @@ WBResizeHandle >> mouseEnter: anEvent [
 ]
 
 {
-	#category : #mouseEvents,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 6/23/2024 02:00'
 }
 WBResizeHandle >> mouseLeave: aEvent [
@@ -132,7 +132,7 @@ WBResizeHandle >> mouseLeave: aEvent [
 ]
 
 {
-	#category : #mouseEvents,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 6/23/2024 02:00'
 }
 WBResizeHandle >> mouseMove: anEvent [

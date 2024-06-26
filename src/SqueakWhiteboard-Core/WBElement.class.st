@@ -436,13 +436,13 @@ WBElement >> extent [
 
 {
 	#category : #'morph functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 17:32'
+	#'squeak_changestamp' : 'JK 6/25/2024 15:43'
 }
 WBElement >> extent: anExtent [
 	
 	self morph extent: anExtent.
 	textField ifNotNil: [textField extent: anExtent - self textBorderOffset].
-	self setPopupPosition
+	self popUp ifNotNil: [self setPopupPosition]
 	
 	
 
@@ -621,9 +621,21 @@ WBElement >> makeColorButtons [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'is 6/23/2024 01:33'
+	#'squeak_changestamp' : 'JK 6/25/2024 15:33'
 }
 WBElement >> makePopUpAt: aPoint with: aCollection columns: aNumber [
+
+	self makePopWith: aCollection columns: aNumber.
+	self popUp center: aPoint - (self popUp bottomCenter - self popUp center)
+	
+	
+]
+
+{
+	#category : #popUp,
+	#'squeak_changestamp' : 'JK 6/25/2024 15:32'
+}
+WBElement >> makePopWith: aCollection columns: aNumber [
 
 	self popUp: 
 		(WBPopUp new
@@ -633,7 +645,6 @@ WBElement >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 			addButtons: aCollection;
 			yourself).
 	self morph addMorph: self popUp.
-	self popUp center: aPoint - (self popUp bottomCenter - self popUp center)
 	
 ]
 
@@ -802,11 +813,11 @@ WBElement >> right [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'is 6/18/2024 17:32'
+	#'squeak_changestamp' : 'JK 6/25/2024 16:01'
 }
 WBElement >> setPopupPosition [
-
-	^ self morph topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2))
+	self popUp center:  self topCenter - (0@10) - (0@(self popUp height/2))
+	
 ]
 
 {
@@ -823,13 +834,14 @@ WBElement >> setupEventHandling [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'is 6/23/2024 01:35'
+	#'squeak_changestamp' : 'JK 6/25/2024 15:53'
 }
 WBElement >> showPopUp [
 
 	self canvas elementToSpawn ifNil:
 		[self canvas deactivateElement.
-		self makePopUpAt: self setPopupPosition with: self buttonsForPopUpBar columns: nil] 
+		self makePopWith: self buttonsForPopUpBar columns: nil.
+		self setPopupPosition] 
 ]
 
 {
@@ -899,6 +911,15 @@ WBElement >> textField: aTextfield [
 WBElement >> top [
 
 	^ self morph top
+]
+
+{
+	#category : #'morph functionalities',
+	#'squeak_changestamp' : 'JK 6/25/2024 15:39'
+}
+WBElement >> topCenter [
+
+	^ self morph topCenter
 ]
 
 {
