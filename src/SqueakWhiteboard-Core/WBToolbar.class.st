@@ -37,12 +37,12 @@ WBToolbar class >> newWithCanvas: aCanvas [
 
 {
 	#category : #text,
-	#'squeak_changestamp' : 'si 6/25/2024 14:46'
+	#'squeak_changestamp' : 'nicloeser 6/26/2024 10:58'
 }
 WBToolbar class >> textForDeleteAll [
 
 	^ 'Do you really want to delete all elements on the canvas?
-	Click read for cancel.
+	Click red for cancel.
 	Click green for confirm.'
 ]
 
