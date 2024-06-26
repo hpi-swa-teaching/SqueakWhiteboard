@@ -186,11 +186,11 @@ WBCanvas >> drawingSurface [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/14/2024 13:11'
+	#'squeak_changestamp' : 'is 6/26/2024 15:56'
 }
-WBCanvas >> drawingSurface: anObject [
+WBCanvas >> drawingSurface: aSurface [
 
-	drawingSurface := anObject
+	drawingSurface := aSurface
 ]
 
 {

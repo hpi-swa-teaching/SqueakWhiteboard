@@ -127,10 +127,10 @@ WBCanvasTests >> testMouseDown [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'ACL 6/26/2024 13:40'
+	#'squeak_changestamp' : 'is 6/26/2024 15:58'
 }
 WBCanvasTests >> testMoveCanvas [
-	|rectangle aMouseButtonEvent aMouseMoveEvent|
+	| rectangle aMouseButtonEvent aMouseMoveEvent |
 	
 	self canvas createDrawingSurface.
 	rectangle := WBRectangle newWithCanvas: self canvas.
@@ -138,13 +138,15 @@ WBCanvasTests >> testMoveCanvas [
 	
 	aMouseButtonEvent := MouseButtonEvent new.
 	aMouseButtonEvent setType: #mouseDown position: (0@0) which: 4 buttons: aMouseButtonEvent class yellowButton hand: HandMorph new stamp: 0.
+	self halt.
+	self canvas mouseDown: aMouseButtonEvent.
 	
 	aMouseMoveEvent := MouseMoveEvent new.
-	aMouseMoveEvent setType: #mouseMove startPoint: (0@0) endPoint: (10@10) trail: {0@0. 10@10} buttons: aMouseMoveEvent class yellowButton hand: HandMorph stamp: 0.
+	aMouseMoveEvent setType: #mouseMove startPoint: (0@0) endPoint: (10@10) trail: {0@0. 10@10} buttons: aMouseMoveEvent class yellowButton hand: HandMorph new stamp: 0.
+	self canvas mouseMove: aMouseMoveEvent.
 	
-	aMouseButtonEvent setType: #mouseUp position: (10@10) which: 4 buttons: aMouseButtonEvent class yellowButton hand: HandMorph new stamp: 0.
-      
 	self assert: rectangle position = (30@30)
+	
 ]
 
 {
