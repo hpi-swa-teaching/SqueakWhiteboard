@@ -51,7 +51,7 @@ WBNote >> createVertecies [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/23/2024 01:43'
+	#'squeak_changestamp' : 'ACL 6/28/2024 15:43'
 }
 WBNote >> initialize [
 
@@ -63,7 +63,8 @@ WBNote >> initialize [
 		createVertecies;
 		makeShape;
 		initializeTextfield;
-		supportsText: true
+		supportsText: true;
+		borderWidth: 3
 ]
 
 {

@@ -165,7 +165,7 @@ WBElement >> bounds: someBounds [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 6/23/2024 16:08'
+	#'squeak_changestamp' : 'ACL 6/28/2024 15:45'
 }
 WBElement >> buttonFunctionalityForBorderColor [
 
