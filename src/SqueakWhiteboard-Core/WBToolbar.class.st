@@ -181,11 +181,11 @@ WBToolbar >> buttonFunctionalityForShapeChoosing [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'is 6/25/2024 15:34'
+	#'squeak_changestamp' : 'JK 6/30/2024 14:56'
 }
 WBToolbar >> buttonFunctionalityForTextbox [
 
-	^ [:aButton | self canvas spawnAnElement: (WBDynamicTextbox newWithCanvas: self canvas) At: aButton currentEvent]
+	^ [:aButton | self canvas spawnAnElement: (WBTextbox newWithCanvas: self canvas) At: aButton currentEvent]
 ]
 
 {

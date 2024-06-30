@@ -6,7 +6,8 @@ Class {
 	#superclass : #PluggableTextMorphPlus,
 	#instVars : [
 		'enabled',
-		'element'
+		'element',
+		'onChanged'
 	],
 	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 6/1/2024 17:19'
@@ -55,6 +56,17 @@ WBPluggableTextMorphPlus >> enabled: aBoolean [
 
 {
 	#category : #'event handling',
+	#'squeak_changestamp' : 'JK 6/30/2024 15:34'
+}
+WBPluggableTextMorphPlus >> handleKeystroke: anEvent [
+
+	super handleKeystroke: anEvent.
+	self onChanged value
+	
+]
+
+{
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 6/23/2024 01:48'
 }
 WBPluggableTextMorphPlus >> handlesKeyboard: anEvent [
@@ -93,7 +105,7 @@ WBPluggableTextMorphPlus >> hasUnacceptedEdits: aBoolean [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/23/2024 01:48'
+	#'squeak_changestamp' : 'JK 6/30/2024 15:34'
 }
 WBPluggableTextMorphPlus >> initialize [
 
@@ -103,6 +115,24 @@ WBPluggableTextMorphPlus >> initialize [
 		borderWidth: 0;
 		retractable: true;
 		wrapFlag: true
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JK 6/30/2024 15:59'
+}
+WBPluggableTextMorphPlus >> onChanged [
+
+	^ onChanged
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JK 6/30/2024 15:59'
+}
+WBPluggableTextMorphPlus >> onChanged: anObject [
+
+	onChanged := anObject
 ]
 
 {

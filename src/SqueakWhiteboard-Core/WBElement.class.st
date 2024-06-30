@@ -17,7 +17,8 @@ Class {
 		'lastMouseClick',
 		'doubleClickMaxDelta',
 		'supportsText',
-		'morph'
+		'morph',
+		'resizable'
 	],
 	#classInstVars : [
 		'globalColor'
@@ -37,7 +38,7 @@ WBElement class >> defaultSize [
 
 {
 	#category : #'instance creation',
-	#'squeak_changestamp' : 'si 6/20/2024 23:14'
+	#'squeak_changestamp' : 'JK 6/30/2024 15:58'
 }
 WBElement class >> newWithCanvas: aCanvas [
 
@@ -107,11 +108,13 @@ WBElement >> addOwnMorphTo: aMorph [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/23/2024 01:30'
+	#'squeak_changestamp' : 'JK 6/30/2024 15:40'
 }
 WBElement >> addResizeFrame [
-
-	self resizeFrame: (WBResizeFrame newWithParent: self)
+	
+	self resizable ifTrue: [
+		self resizeFrame: (WBResizeFrame newWithParent: self)
+	]
 	
 	
 
@@ -772,6 +775,24 @@ WBElement >> resetTextfield [
 	self canvas deactivateTextbox.
 	self textField delete.
 	self textField: nil
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JK 6/30/2024 15:47'
+}
+WBElement >> resizable [
+
+	^ resizable ifNil: [resizable := true]
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JK 6/30/2024 15:46'
+}
+WBElement >> resizable: anObject [
+
+	resizable := anObject
 ]
 
 {
