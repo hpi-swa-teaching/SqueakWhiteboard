@@ -10,7 +10,7 @@ Class {
 
 {
 	#category : #sizing,
-	#'squeak_changestamp' : 'is 6/23/2024 02:01'
+	#'squeak_changestamp' : 'JK 6/30/2024 21:18'
 }
 WBResizeBottomRight >> resize: movement [
 
@@ -30,10 +30,10 @@ WBResizeBottomRight >> resizeCursor [
 
 {
 	#category : #sizing,
-	#'squeak_changestamp' : 'is 6/23/2024 02:01'
+	#'squeak_changestamp' : 'JK 6/30/2024 21:14'
 }
 WBResizeBottomRight >> setLayout [
 
-	self center: frame bottomRight
+	self center: self frame bottomRight
 	
 ]

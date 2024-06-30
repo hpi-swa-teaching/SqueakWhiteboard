@@ -10,7 +10,7 @@ Class {
 
 {
 	#category : #sizing,
-	#'squeak_changestamp' : 'is 6/23/2024 01:55'
+	#'squeak_changestamp' : 'JK 6/30/2024 21:18'
 }
 WBResizeRight >> resize: movement [
 
@@ -28,11 +28,11 @@ WBResizeRight >> resizeCursor [
 
 {
 	#category : #sizing,
-	#'squeak_changestamp' : 'is 6/23/2024 01:55'
+	#'squeak_changestamp' : 'JK 6/30/2024 21:13'
 }
 WBResizeRight >> setLayout [
 
 	self height: self frame height - WBResizeFrame resizeWidth.
 	self width: WBResizeFrame resizeWidth.
-	self center: element rightCenter
+	self center: self frame rightCenter
 ]

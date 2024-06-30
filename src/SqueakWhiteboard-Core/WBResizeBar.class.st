@@ -5,8 +5,8 @@ Class {
 	#name : #WBResizeBar,
 	#superclass : #Morph,
 	#instVars : [
-		'element',
-		'lastPosition'
+		'lastPosition',
+		'frame'
 	],
 	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 6/23/2024 02:24'
@@ -33,20 +33,20 @@ WBResizeBar >> defaultCursor [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/23/2024 01:52'
+	#'squeak_changestamp' : 'JK 6/30/2024 21:20'
 }
 WBResizeBar >> frame [
 
-	^ element
+	^ frame
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/23/2024 01:53'
+	#'squeak_changestamp' : 'JK 6/30/2024 21:20'
 }
 WBResizeBar >> frame: anElement [
 
-	element := anElement
+	frame := anElement
 ]
 
 {
@@ -160,9 +160,9 @@ WBResizeBar >> resizeCursor [
 
 {
 	#category : #sizing,
-	#'squeak_changestamp' : 'is 6/23/2024 01:54'
+	#'squeak_changestamp' : 'JK 6/30/2024 21:20'
 }
 WBResizeBar >> setLayout [
 
-	self center: element position
+	self center: frame position
 ]
