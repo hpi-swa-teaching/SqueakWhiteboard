@@ -141,6 +141,24 @@ WBTextfieldTests >> testTextfieldActivation [
 
 {
 	#category : #testing,
+	#'squeak_changestamp' : 'is 6/26/2024 10:21'
+}
+WBTextfieldTests >> testTextfieldCursor [
+	| anElement aFirstMouseEvent prevCursor |
+	
+	anElement := WBRectangle newWithCanvas: self canvas.
+	aFirstMouseEvent := MouseButtonEvent new.
+	aFirstMouseEvent setType: #mouseDown position: anElement position which: 4 buttons: aFirstMouseEvent class redButton hand: HandMorph new stamp: 0.
+
+	prevCursor := Cursor currentCursor.
+	anElement textField textMorph mouseEnter: aFirstMouseEvent.
+	self assert: Cursor currentCursor = Cursor text.
+	anElement textField textMorph mouseLeave: aFirstMouseEvent.
+	self assert: Cursor currentCursor = prevCursor
+]
+
+{
+	#category : #testing,
 	#'squeak_changestamp' : 'is 6/21/2024 19:00'
 }
 WBTextfieldTests >> testTextfieldDeactivationViaCanvas [
@@ -233,7 +251,7 @@ WBTextfieldTests >> testTextfieldKeyboardEventHandling [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'is 6/22/2024 01:37'
+	#'squeak_changestamp' : 'is 6/26/2024 10:39'
 }
 WBTextfieldTests >> testTextfieldMouseEventHandling [
 	| anElement aFirstMouseEvent aSecondMouseEvent prevCursor |
@@ -253,13 +271,9 @@ WBTextfieldTests >> testTextfieldMouseEventHandling [
 	
 	self assert: (anElement textField handlesMouseOver: aFirstMouseEvent) = false.
 	self assert: (anElement textField handlesMouseDown: aFirstMouseEvent) = true.
-	self assert: (anElement textField textMorph handlesMouseDown: aFirstMouseEvent) = true.
+	self assert: (anElement textField textMorph handlesMouseDown: aFirstMouseEvent) = true
 	
-	prevCursor := Cursor currentCursor.
-	anElement textField textMorph mouseEnter: aFirstMouseEvent.
-	self assert: Cursor currentCursor = Cursor text.
-	anElement textField textMorph mouseLeave: aFirstMouseEvent.
-	self assert: Cursor currentCursor = prevCursor
+	
 ]
 
 {
