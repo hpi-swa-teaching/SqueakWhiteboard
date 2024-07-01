@@ -195,12 +195,13 @@ WBCanvas >> drawingSurface: anObject [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 6/18/2024 17:36'
+	#'squeak_changestamp' : 'is 6/25/2024 16:00'
 }
-WBCanvas >> dropElement: aMouseEvent [
+WBCanvas >> dropElement: anEvent [
 
-	self elementToSpawn removeDropShadow.
-	self elementToSpawn supportsText ifTrue: [self elementToSpawn activateTextbox: aMouseEvent].
+	self elementToSpawn 
+		removeDropShadow;
+		postDropRoutine: anEvent.
 	self elementToSpawn: nil 
 ]
 
@@ -413,7 +414,7 @@ WBCanvas >> spawnACopiedElement: anElement At: aPoint [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 6/23/2024 01:25'
+	#'squeak_changestamp' : 'is 7/1/2024 22:32'
 }
 WBCanvas >> spawnAnElement: anElement At: aMouseEvent [
 	
@@ -422,7 +423,6 @@ WBCanvas >> spawnAnElement: anElement At: aMouseEvent [
 			center: aMouseEvent cursorPoint;
 			dragOffset: anElement position - aMouseEvent cursorPoint;
 			canvas: self;
-			color: self globalColor;
 			addDropShadow;
 			yourself).
 	self addElement: anElement 

@@ -67,11 +67,11 @@ WBToolbar >> backgroundColor: aColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/25/2024 14:07'
+	#'squeak_changestamp' : 'is 7/1/2024 22:39'
 }
 WBToolbar >> buttonFunctionalityForArrow [
 
-	^ [:aButton | self canvas spawnAnElement: (WBLine new arrowHead: true) At: aButton currentEvent]
+	^ [:aButton | self canvas spawnAnElement: ((WBLine newWithCanvas: self canvas) arrowHead: true) At: aButton currentEvent]
 ]
 
 {
@@ -136,11 +136,11 @@ WBToolbar >> buttonFunctionalityForGlobalColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/25/2024 14:09'
+	#'squeak_changestamp' : 'is 7/1/2024 22:39'
 }
 WBToolbar >> buttonFunctionalityForLine [
 
-	^ [:aButton | self canvas spawnAnElement: (WBLine new arrowHead: false) At: aButton currentEvent]
+	^ [:aButton | self canvas spawnAnElement: ((WBLine newWithCanvas: self canvas) arrowHead: false) At: aButton currentEvent]
 ]
 
 {
@@ -177,6 +177,15 @@ WBToolbar >> buttonFunctionalityForRectangle [
 WBToolbar >> buttonFunctionalityForShapeChoosing [
 
 	^ [:aButton | self makePopUpAt: aButton rightCenter + (self class margin + (self buttonSize x / 2) @ 0) with: self createShapeChoosingButtons columns: 1]
+]
+
+{
+	#category : #'button functionalities',
+	#'squeak_changestamp' : 'JK 6/30/2024 14:56'
+}
+WBToolbar >> buttonFunctionalityForTextbox [
+
+	^ [:aButton | self canvas spawnAnElement: (WBTextbox newWithCanvas: self canvas) At: aButton currentEvent]
 ]
 
 {
@@ -270,7 +279,7 @@ WBToolbar >> createLineChoosingButtons [
 
 {
 	#category : #'button creation',
-	#'squeak_changestamp' : 'is 6/23/2024 02:04'
+	#'squeak_changestamp' : 'is 6/25/2024 15:46'
 }
 WBToolbar >> createShapeChoosingButtons [
 
@@ -282,7 +291,7 @@ WBToolbar >> createShapeChoosingButtons [
 
 {
 	#category : #'button creation',
-	#'squeak_changestamp' : 'si 6/25/2024 13:46'
+	#'squeak_changestamp' : 'is 6/25/2024 15:47'
 }
 WBToolbar >> createToolbarButtons [
 	
@@ -290,6 +299,7 @@ WBToolbar >> createToolbarButtons [
 		self getShapeChoosingButton.
 		self getLineChoosingButton.
 		self getNoteButton.
+		self getTextboxButton.
 		self getColorsButton.
 		self getDeleteAllButton})
 
@@ -464,6 +474,19 @@ WBToolbar >> getShapeChoosingButton [
 	^ WBButton new 
 		block: self buttonFunctionalityForShapeChoosing;
 		image: (ImageMorph new image: (self canvas images resize: WBImage loadShapeChoosingButtonImage to: self imageSize));
+		yourself
+			
+]
+
+{
+	#category : #'get buttons',
+	#'squeak_changestamp' : 'is 6/25/2024 15:36'
+}
+WBToolbar >> getTextboxButton [
+	
+	^ WBButton new 
+		block: self buttonFunctionalityForTextbox;
+		image: (ImageMorph new image: (self canvas images resize: WBImage loadTextboxButtonImage to: self imageSize));
 		yourself
 			
 ]

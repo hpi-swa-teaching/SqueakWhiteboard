@@ -6,10 +6,10 @@ Class {
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/25/2024 14:17'
+	#'squeak_changestamp' : 'is 7/1/2024 22:37'
 }
 WBLineChoosingPopUpTests >> testButtonFunctionality [
-	| button buttonForLine|
+	| button buttonForLine |
 
 	button := self canvas toolbar buttons at: 2.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).

@@ -17,7 +17,8 @@ Class {
 		'lastMouseClick',
 		'doubleClickMaxDelta',
 		'supportsText',
-		'morph'
+		'morph',
+		'resizable'
 	],
 	#classInstVars : [
 		'globalColor'
@@ -37,7 +38,7 @@ WBElement class >> defaultSize [
 
 {
 	#category : #'instance creation',
-	#'squeak_changestamp' : 'si 6/20/2024 23:14'
+	#'squeak_changestamp' : 'JK 6/30/2024 15:58'
 }
 WBElement class >> newWithCanvas: aCanvas [
 
@@ -107,11 +108,13 @@ WBElement >> addOwnMorphTo: aMorph [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/23/2024 01:30'
+	#'squeak_changestamp' : 'JK 6/30/2024 15:40'
 }
 WBElement >> addResizeFrame [
-
-	self resizeFrame: (WBResizeFrame newWithParent: self)
+	
+	self resizable ifTrue: [
+		self resizeFrame: (WBResizeFrame newWithParent: self)
+	]
 	
 	
 
@@ -449,25 +452,6 @@ WBElement >> extent: anExtent [
 ]
 
 {
-	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/23/2024 01:32'
-}
-WBElement >> handlesMouseDown: anEvent [
-
-	supportsText ifTrue: [^ (self textField enabled) not] ifFalse: [^true]
-	
-]
-
-{
-	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/18/2024 00:07'
-}
-WBElement >> handlesMouseOver: anEvent [
-
-	^ true
-]
-
-{
 	#category : #'morph functionalities',
 	#'squeak_changestamp' : 'is 6/18/2024 18:55'
 }
@@ -478,14 +462,15 @@ WBElement >> height: aHeight [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/23/2024 01:32'
+	#'squeak_changestamp' : 'is 7/1/2024 22:33'
 }
 WBElement >> initialize [
 	
 	super initialize.
 	self morph: 
 		self initializeElement;
-		extent: self class defaultSize.
+		extent: self class defaultSize;
+		color: self canvas globalColor.
 	self setupEventHandling.
 	self supportsText ifTrue: [self initializeTextfield]
 	
@@ -745,6 +730,15 @@ WBElement >> position: aPosition [
 ]
 
 {
+	#category : #'event handling',
+	#'squeak_changestamp' : 'is 6/25/2024 16:17'
+}
+WBElement >> postDropRoutine: anEvent [
+
+	supportsText ifTrue: [self activateTextbox: anEvent]
+]
+
+{
 	#category : #'morph functionalities',
 	#'squeak_changestamp' : 'is 6/18/2024 17:35'
 }
@@ -786,6 +780,24 @@ WBElement >> resetTextfield [
 
 {
 	#category : #accessing,
+	#'squeak_changestamp' : 'JK 6/30/2024 15:47'
+}
+WBElement >> resizable [
+
+	^ resizable ifNil: [resizable := true]
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'JK 6/30/2024 15:46'
+}
+WBElement >> resizable: anObject [
+
+	resizable := anObject
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'si 6/3/2024 15:53'
 }
 WBElement >> resizeFrame [
@@ -822,7 +834,7 @@ WBElement >> setPopupPosition [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/18/2024 21:10'
+	#'squeak_changestamp' : 'is 6/26/2024 22:57'
 }
 WBElement >> setupEventHandling [
 "pass event triggers from the element itself to the methods of the WBElement"

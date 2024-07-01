@@ -6,12 +6,12 @@ Class {
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 6/18/2024 23:56'
+	#'squeak_changestamp' : 'is 6/26/2024 11:32'
 }
 WBGlobalColorPopUpTests >> testButtonFunctionality [
 	| button buttonForColor |
 
-	button := self canvas toolbar buttons at: 4.
+	button := self canvas toolbar buttons at: 5.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	
 	buttonForColor := self canvas toolbar popUp submorphs at: 1. 
@@ -70,12 +70,12 @@ WBGlobalColorPopUpTests >> testButtonFunctionality [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'is 6/21/2024 18:53'
+	#'squeak_changestamp' : 'is 6/26/2024 11:32'
 }
 WBGlobalColorPopUpTests >> testButtonsOfPopUp [
 	| button |
 
-	button := self canvas toolbar buttons at: 4.
+	button := self canvas toolbar buttons at: 5.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	
 	self assert: self canvas toolbar popUp submorphs size = 9
@@ -83,12 +83,12 @@ WBGlobalColorPopUpTests >> testButtonsOfPopUp [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'is 6/21/2024 18:53'
+	#'squeak_changestamp' : 'is 6/26/2024 11:32'
 }
 WBGlobalColorPopUpTests >> testExistenceOfPopUp [
 	| button |
 
-	button := self canvas toolbar buttons at: 4.
+	button := self canvas toolbar buttons at: 5.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	
 	self assert: self canvas toolbar popUp notNil
@@ -96,12 +96,12 @@ WBGlobalColorPopUpTests >> testExistenceOfPopUp [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'is 6/21/2024 18:54'
+	#'squeak_changestamp' : 'is 6/26/2024 11:32'
 }
 WBGlobalColorPopUpTests >> testPopUpPlacementInX [
 	| button |
 
-	button := self canvas toolbar buttons at: 4.
+	button := self canvas toolbar buttons at: 5.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	
 	self assert: button right <= self canvas toolbar popUp left.	
@@ -110,12 +110,12 @@ WBGlobalColorPopUpTests >> testPopUpPlacementInX [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'is 6/18/2024 23:44'
+	#'squeak_changestamp' : 'is 6/26/2024 11:32'
 }
 WBGlobalColorPopUpTests >> testPopUpPlacementInY [
 	| button |
 
-	button := self canvas toolbar buttons at: 4.
+	button := self canvas toolbar buttons at: 5.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
 	
 	self assert: button center y - 200 < self canvas toolbar popUp top.	
