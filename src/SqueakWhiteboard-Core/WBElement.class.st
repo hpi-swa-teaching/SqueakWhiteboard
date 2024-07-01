@@ -462,14 +462,15 @@ WBElement >> height: aHeight [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/23/2024 01:32'
+	#'squeak_changestamp' : 'is 7/1/2024 22:33'
 }
 WBElement >> initialize [
 	
 	super initialize.
 	self morph: 
 		self initializeElement;
-		extent: self class defaultSize.
+		extent: self class defaultSize;
+		color: self canvas globalColor.
 	self setupEventHandling.
 	self supportsText ifTrue: [self initializeTextfield]
 	

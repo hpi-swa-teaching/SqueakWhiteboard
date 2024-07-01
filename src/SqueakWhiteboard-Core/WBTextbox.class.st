@@ -14,18 +14,8 @@ WBTextbox class >> defaultSize [
 ]
 
 {
-	#category : #'morph functionalities',
-	#'squeak_changestamp' : 'is 7/1/2024 00:22'
-}
-WBTextbox >> color: aColor [
-"The textbox should always be transparent"
-	
-	self morph color: Color transparent
-]
-
-{
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 7/1/2024 00:27'
+	#'squeak_changestamp' : 'is 7/1/2024 00:36'
 }
 WBTextbox >> initialize [
 	

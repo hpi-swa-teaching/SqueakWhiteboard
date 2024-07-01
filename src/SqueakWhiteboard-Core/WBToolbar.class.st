@@ -67,11 +67,11 @@ WBToolbar >> backgroundColor: aColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/25/2024 14:07'
+	#'squeak_changestamp' : 'is 7/1/2024 22:39'
 }
 WBToolbar >> buttonFunctionalityForArrow [
 
-	^ [:aButton | self canvas spawnAnElement: (WBLine new arrowHead: true) At: aButton currentEvent]
+	^ [:aButton | self canvas spawnAnElement: ((WBLine newWithCanvas: self canvas) arrowHead: true) At: aButton currentEvent]
 ]
 
 {
@@ -136,11 +136,11 @@ WBToolbar >> buttonFunctionalityForGlobalColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/25/2024 14:09'
+	#'squeak_changestamp' : 'is 7/1/2024 22:39'
 }
 WBToolbar >> buttonFunctionalityForLine [
 
-	^ [:aButton | self canvas spawnAnElement: (WBLine new arrowHead: false) At: aButton currentEvent]
+	^ [:aButton | self canvas spawnAnElement: ((WBLine newWithCanvas: self canvas) arrowHead: false) At: aButton currentEvent]
 ]
 
 {
