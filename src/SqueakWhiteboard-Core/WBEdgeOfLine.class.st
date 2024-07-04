@@ -57,7 +57,7 @@ WBEdgeOfLine >> buttonFunctionalityForDelete [
 
 {
 	#category : #'button creation',
-	#'squeak_changestamp' : 'si 6/20/2024 23:37'
+	#'squeak_changestamp' : 'ACL 7/4/2024 11:55'
 }
 WBEdgeOfLine >> buttonsForPopUpBar [
 	| aCollection |
@@ -66,6 +66,7 @@ WBEdgeOfLine >> buttonsForPopUpBar [
 	aCollection add: (WBButton new
 			block: self buttonFunctionalityForArrowSwitch;
 			backgroundColor: Color green).
+	aCollection removeAt: 4. 
 	^ aCollection
 ]
 
