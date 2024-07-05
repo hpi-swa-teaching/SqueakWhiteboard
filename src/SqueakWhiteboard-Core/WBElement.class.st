@@ -587,7 +587,7 @@ WBElement >> makeColorButtonWithColor: aColor [
 
 {
 	#category : #'button creation',
-	#'squeak_changestamp' : 'is 6/23/2024 01:33'
+	#'squeak_changestamp' : 'si 7/4/2024 12:59'
 }
 WBElement >> makeColorButtons [
 
@@ -601,6 +601,7 @@ WBElement >> makeColorButtons [
 		add: (self makeColorButtonWithColor: Color green);
 		add: (self makeColorButtonWithColor: Color gray);
 		add: (self makeColorButtonWithColor: Color black);
+		add: (WBButton new);
 		yourself
 ]
 
