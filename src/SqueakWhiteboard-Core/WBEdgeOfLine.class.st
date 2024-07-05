@@ -118,6 +118,28 @@ WBEdgeOfLine >> line: aLine [
 ]
 
 {
+	#category : #'button creation',
+	#'squeak_changestamp' : 'si 7/5/2024 11:52'
+}
+WBEdgeOfLine >> makeColorButtons [
+
+	^ OrderedCollection new
+		add: (self makeColorButtonWithColor: Color black);
+		add: (self makeColorButtonWithColor: Color gray darker);
+		add: (self makeColorButtonWithColor: Color gray lighter);
+		add: (self makeColorButtonWithColor: Color red);
+		add: (self makeColorButtonWithColor: Color orange);
+		add: (self makeColorButtonWithColor: Color yellow);
+		add: (self makeColorButtonWithColor: Color green);
+		add: (self makeColorButtonWithColor: Color cyan);
+		add: (self makeColorButtonWithColor: Color blue);
+		add: (self makeColorButtonWithColor: Color ocean);
+		add: (self makeColorButtonWithColor: Color magenta);
+		add: (self makeColorButtonWithColor: Color magenta muchDarker);
+		yourself
+]
+
+{
 	#category : #'event handling',
 	#'squeak_changestamp' : 'si 6/14/2024 11:46'
 }

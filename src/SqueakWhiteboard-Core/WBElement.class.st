@@ -225,6 +225,25 @@ WBElement >> buttonFunctionalityForDelete [
 ]
 
 {
+	#category : #'button functionalities',
+	#'squeak_changestamp' : 'si 7/5/2024 11:18'
+}
+WBElement >> buttonFunctionalityForTransparentBorderColor [
+
+	^ [:aButton | self morph borderColor: Color transparent.
+		self morph borderWidth: 3]
+]
+
+{
+	#category : #'button functionalities',
+	#'squeak_changestamp' : 'si 7/5/2024 11:15'
+}
+WBElement >> buttonFunctionalityForTransparentColor [
+
+	^ [:aButton |self morph color: Color transparent]
+]
+
+{
 	#category : #'button creation',
 	#'squeak_changestamp' : 'ACL 6/23/2024 15:51'
 }
@@ -554,20 +573,23 @@ WBElement >> makeBorderColorButtonWithColor: aColor [
 
 {
 	#category : #'button creation',
-	#'squeak_changestamp' : 'ACL 6/23/2024 15:54'
+	#'squeak_changestamp' : 'si 7/5/2024 11:44'
 }
 WBElement >> makeBorderColorButtons [
 
 	^ OrderedCollection new
-		add: (self makeBorderColorButtonWithColor: Color yellow);
-		add: (self makeBorderColorButtonWithColor: Color orange);
-		add: (self makeBorderColorButtonWithColor: Color red);
-		add: (self makeBorderColorButtonWithColor: Color magenta);
-		add: (self makeBorderColorButtonWithColor: Color blue);
-		add: (self makeBorderColorButtonWithColor: Color cyan);
-		add: (self makeBorderColorButtonWithColor: Color green);
-		add: (self makeBorderColorButtonWithColor: Color gray);
 		add: (self makeBorderColorButtonWithColor: Color black);
+		add: (self makeBorderColorButtonWithColor: Color gray);
+		add: (self makeTransparentBorderColorButton);
+		add: (self makeBorderColorButtonWithColor: Color red);
+		add: (self makeBorderColorButtonWithColor: Color orange);
+		add: (self makeBorderColorButtonWithColor: Color yellow);
+		add: (self makeBorderColorButtonWithColor: Color green);
+		add: (self makeBorderColorButtonWithColor: Color cyan);
+		add: (self makeBorderColorButtonWithColor: Color blue);
+		add: (self makeBorderColorButtonWithColor: Color ocean);
+		add: (self makeBorderColorButtonWithColor: Color magenta);
+		add: (self makeBorderColorButtonWithColor: Color magenta muchDarker);
 		yourself
 ]
 
@@ -587,21 +609,23 @@ WBElement >> makeColorButtonWithColor: aColor [
 
 {
 	#category : #'button creation',
-	#'squeak_changestamp' : 'si 7/4/2024 12:59'
+	#'squeak_changestamp' : 'si 7/5/2024 11:42'
 }
 WBElement >> makeColorButtons [
 
 	^ OrderedCollection new
-		add: (self makeColorButtonWithColor: Color yellow);
-		add: (self makeColorButtonWithColor: Color orange);
-		add: (self makeColorButtonWithColor: Color red);
-		add: (self makeColorButtonWithColor: Color magenta);
-		add: (self makeColorButtonWithColor: Color blue);
-		add: (self makeColorButtonWithColor: Color cyan);
-		add: (self makeColorButtonWithColor: Color green);
-		add: (self makeColorButtonWithColor: Color gray);
 		add: (self makeColorButtonWithColor: Color black);
-		add: (WBButton new);
+		add: (self makeColorButtonWithColor: Color gray);
+		add: (self makeTransparentColorButton);
+		add: (self makeColorButtonWithColor: Color red);
+		add: (self makeColorButtonWithColor: Color orange);
+		add: (self makeColorButtonWithColor: Color yellow);
+		add: (self makeColorButtonWithColor: Color green);
+		add: (self makeColorButtonWithColor: Color cyan);
+		add: (self makeColorButtonWithColor: Color blue);
+		add: (self makeColorButtonWithColor: Color ocean);
+		add: (self makeColorButtonWithColor: Color magenta);
+		add: (self makeColorButtonWithColor: Color magenta muchDarker);
 		yourself
 ]
 
@@ -632,6 +656,34 @@ WBElement >> makePopWith: aCollection columns: aNumber [
 			yourself).
 	self morph addMorph: self popUp.
 	
+]
+
+{
+	#category : #'button creation',
+	#'squeak_changestamp' : 'si 7/5/2024 11:18'
+}
+WBElement >> makeTransparentBorderColorButton [
+	
+	^ WBButton new 
+		color: Color white;
+		backgroundColor: Color white;
+		clickedColor: Color white muchDarker;
+		block: self buttonFunctionalityForTransparentBorderColor;
+		yourself
+]
+
+{
+	#category : #'button creation',
+	#'squeak_changestamp' : 'si 7/5/2024 11:18'
+}
+WBElement >> makeTransparentColorButton [
+	
+	^ WBButton new 
+		color: Color white;
+		backgroundColor: Color white;
+		clickedColor: Color white muchDarker;
+		block: self buttonFunctionalityForTransparentColor;
+		yourself
 ]
 
 {

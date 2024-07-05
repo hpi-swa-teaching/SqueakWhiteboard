@@ -43,7 +43,7 @@ WBElementPopUpTests >> testExistenceOfPopUp [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'is 7/1/2024 22:40'
+	#'squeak_changestamp' : 'si 7/5/2024 12:01'
 }
 WBElementPopUpTests >> testFunctionalityOfBorderColor [
 	| element mouseEvent buttonForColor |
@@ -58,41 +58,19 @@ WBElementPopUpTests >> testFunctionalityOfBorderColor [
 	element mouseDown: mouseEvent.
 	(element popUp submorphs at: 1) clickFunctionality: 	mouseEvent.
 		
+	self assert: element popUp popUp submorphs size = 12.
+		
 	buttonForColor := element popUp popUp submorphs at: 1. 
 	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
-	self assert: element morph borderColor = Color black.
-	
-	buttonForColor := element popUp popUp submorphs at: 2.
-	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
-	self assert: element morph borderColor = Color gray.
-	
-	buttonForColor := element popUp popUp submorphs at: 3.
-	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
-	self assert: element morph borderColor = Color green.
-	
-	buttonForColor := element popUp popUp submorphs at: 4.
-	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
-	self assert: element morph borderColor = Color cyan.
-	
-	buttonForColor := element popUp popUp submorphs at: 5.
-	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
-	self assert: element morph borderColor = Color blue.
+	self assert: element morph borderColor = Color magenta muchDarker.
 	
 	buttonForColor := element popUp popUp submorphs at: 6.
 	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
-	self assert: element morph borderColor = Color magenta.
+	self assert: element morph borderColor = Color green.
 	
-	buttonForColor := element popUp popUp submorphs at: 7.
+	buttonForColor := element popUp popUp submorphs at: 10.
 	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
-	self assert: element morph borderColor = Color red.
-	
-	buttonForColor := element popUp popUp submorphs at: 8.
-	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
-	self assert: element morph borderColor = Color orange.
-	
-	buttonForColor := element popUp popUp submorphs at: 9. 
-	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
-	self assert: element morph borderColor = Color yellow
+	self assert: element morph borderColor = Color transparent.
 ]
 
 {
@@ -117,7 +95,7 @@ WBElementPopUpTests >> testFunctionalityOfBorderColorPopUp [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'is 7/1/2024 22:40'
+	#'squeak_changestamp' : 'si 7/5/2024 11:59'
 }
 WBElementPopUpTests >> testFunctionalityOfColor [
 	| element mouseEvent buttonForColor |
@@ -130,43 +108,21 @@ WBElementPopUpTests >> testFunctionalityOfColor [
 	element := self canvas elements at: 1.
 	
 	element mouseDown: mouseEvent.
-	(element popUp submorphs at: 2) clickFunctionality: 	mouseEvent.
+	(element popUp submorphs at: 2) clickFunctionality: mouseEvent.
+	
+	self assert: element popUp popUp submorphs size = 12.
 		
 	buttonForColor := element popUp popUp submorphs at: 1. 
 	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
-	self assert: element color = Color black.
-	
-	buttonForColor := element popUp popUp submorphs at: 2.
-	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
-	self assert: element color = Color gray.
-	
-	buttonForColor := element popUp popUp submorphs at: 3.
-	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
-	self assert: element color = Color green.
-	
-	buttonForColor := element popUp popUp submorphs at: 4.
-	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
-	self assert: element color = Color cyan.
-	
-	buttonForColor := element popUp popUp submorphs at: 5.
-	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
-	self assert: element color = Color blue.
+	self assert: element color = Color magenta muchDarker.
 	
 	buttonForColor := element popUp popUp submorphs at: 6.
 	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
-	self assert: element color = Color magenta.
+	self assert: element color = Color green.
 	
-	buttonForColor := element popUp popUp submorphs at: 7.
+	buttonForColor := element popUp popUp submorphs at: 10.
 	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
-	self assert: element color = Color red.
-	
-	buttonForColor := element popUp popUp submorphs at: 8.
-	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
-	self assert: element color = Color orange.
-	
-	buttonForColor := element popUp popUp submorphs at: 9. 
-	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100@100)).
-	self assert: element color = Color yellow
+	self assert: element color = Color transparent.
 ]
 
 {
