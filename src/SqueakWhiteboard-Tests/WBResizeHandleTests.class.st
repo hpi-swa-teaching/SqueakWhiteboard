@@ -78,7 +78,7 @@ WBResizeHandleTests >> testMouseOver [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'is 6/26/2024 10:34'
+	#'squeak_changestamp' : 'ACL 7/7/2024 19:51'
 }
 WBResizeHandleTests >> testResizeCursor [
 	| aResizeHandleBottomLeft aResizeHandleBottomRight aResizeHandleTopLeft aResizeHandleTopRight aMouseEvent prevCursor |
@@ -93,21 +93,25 @@ WBResizeHandleTests >> testResizeCursor [
 	
 	aResizeHandleBottomLeft mouseEnter: aMouseEvent.
 	self assert: Cursor currentCursor = Cursor resizeBottomLeft.
+	
 	aResizeHandleBottomLeft mouseLeave: aMouseEvent.
 	self assert: Cursor currentCursor = prevCursor.
 	
 	aResizeHandleBottomRight mouseEnter: aMouseEvent.
 	self assert: Cursor currentCursor = Cursor resizeBottomRight.
+	
 	aResizeHandleBottomLeft mouseLeave: aMouseEvent.
 	self assert: Cursor currentCursor = prevCursor.
 	
 	aResizeHandleTopLeft mouseEnter: aMouseEvent.
 	self assert: Cursor currentCursor = Cursor resizeTopLeft.
+	
 	aResizeHandleBottomLeft mouseLeave: aMouseEvent.
 	self assert: Cursor currentCursor = prevCursor.
 	
 	aResizeHandleTopRight mouseEnter: aMouseEvent.
 	self assert: Cursor currentCursor = Cursor resizeTopRight.
+	
 	aResizeHandleBottomLeft mouseLeave: aMouseEvent.
 	self assert: Cursor currentCursor = prevCursor
 ]
