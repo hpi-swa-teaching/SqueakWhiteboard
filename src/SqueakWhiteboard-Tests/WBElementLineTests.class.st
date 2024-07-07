@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'is 7/1/2024 22:36'
+	#'squeak_changestamp' : 'ACL 7/7/2024 18:27'
 }
 WBElementLineTests >> testSpawningViaClicking [
 	| element mouseEvent1 mouseEvent2 |
@@ -17,7 +17,7 @@ WBElementLineTests >> testSpawningViaClicking [
 	mouseEvent2 setType: #mouseDown position: self canvas position + (200 @ 200) which: 4 buttons: mouseEvent2 class redButton hand: HandMorph new stamp: 0.
 	
 	element := ((WBLine newWithCanvas: self canvas) arrowHead: true).
-	self canvas spawnAnElement: (element) At: (MouseButtonEvent new position: self canvas position + (100@100)).
+	self canvas spawnAnElement: (element) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
 	element mouseUp: mouseEvent1.
 	element mouseUp: mouseEvent2.
 
