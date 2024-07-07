@@ -887,14 +887,14 @@ WBElement >> setPopupPosition [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/26/2024 22:57'
+	#'squeak_changestamp' : 'si 7/7/2024 17:51'
 }
 WBElement >> setupEventHandling [
 "pass event triggers from the element itself to the methods of the WBElement"
 	
 	self morph on: #mouseDown send: #mouseDown: to: self.
 	self morph on: #mouseUp send: #mouseUp: to: self.
-	self morph on: #mouseMove send: #mouseMove: to: self
+	self morph on: #mouseMove send: #mouseMove: to: self.
 ]
 
 {

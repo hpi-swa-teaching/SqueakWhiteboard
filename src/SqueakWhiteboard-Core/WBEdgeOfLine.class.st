@@ -84,6 +84,15 @@ WBEdgeOfLine >> checkArrwoDirection [
 ]
 
 {
+	#category : #'event handling',
+	#'squeak_changestamp' : 'si 7/7/2024 17:52'
+}
+WBEdgeOfLine >> handlesMouseOver: anEvent [
+
+	^ true
+]
+
+{
 	#category : #initialization,
 	#'squeak_changestamp' : 'si 6/20/2024 23:26'
 }
@@ -141,6 +150,24 @@ WBEdgeOfLine >> makeColorButtons [
 
 {
 	#category : #'event handling',
+	#'squeak_changestamp' : 'si 7/7/2024 17:54'
+}
+WBEdgeOfLine >> mouseEnter: anEvent [
+
+	self line edges do: [:d | d morph color: self line morph borderColor]
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'si 7/7/2024 17:49'
+}
+WBEdgeOfLine >> mouseLeave: anEvent [
+
+	self line edges do: [:d | d morph color: Color transparent]
+]
+
+{
+	#category : #'event handling',
 	#'squeak_changestamp' : 'si 6/14/2024 11:46'
 }
 WBEdgeOfLine >> mouseMove: anEvent [
@@ -172,6 +199,18 @@ WBEdgeOfLine >> setDefaultValues [
 		height: 10;
 		color: Color black;
 		supportsText: false
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'si 7/7/2024 17:53'
+}
+WBEdgeOfLine >> setupEventHandling [
+"pass event triggers from the element itself to the methods of the WBElement"
+	
+	super setupEventHandling.
+	self morph on: #mouseEnter send: #mouseEnter: to: self.
+	self morph on: #mouseLeave send: #mouseLeave: to: self
 ]
 
 {
