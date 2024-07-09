@@ -429,13 +429,13 @@ WBToolbar >> getLineButton [
 
 {
 	#category : #'get buttons',
-	#'squeak_changestamp' : 'si 6/25/2024 13:46'
+	#'squeak_changestamp' : 'is 7/9/2024 19:02'
 }
 WBToolbar >> getLineChoosingButton [
 
 	^ WBButton new 
 		block: self buttonFunctionalityForLineChoosing;
-		image: (ImageMorph new image: (self canvas images resize: WBImage loadShapeChoosingButtonImage to: self imageSize));
+		image: (ImageMorph new image: (self canvas images resize: WBImage loadLineChoosingButtonImage to: self imageSize));
 		yourself
 			
 ]
