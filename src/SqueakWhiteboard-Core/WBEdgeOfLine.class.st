@@ -38,12 +38,15 @@ WBEdgeOfLine >> buttonFunctionalityForColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'is 6/23/2024 01:44'
+	#'squeak_changestamp' : 'nicloeser 7/9/2024 11:31'
 }
 WBEdgeOfLine >> buttonFunctionalityForCopy [
-
+|copy|
+	
+	copy := self line veryDeepCopy.
+	copy state: 3.
 	^ [:aButton | self canvas deactivateElement. 
-		self canvas spawnACopiedElement: self line copy At: aButton currentEvent cursorPoint]
+		self canvas spawnACopiedLine: copy At: aButton currentEvent cursorPoint]
 ]
 
 {
@@ -168,7 +171,7 @@ WBEdgeOfLine >> mouseLeave: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'si 6/14/2024 11:46'
+	#'squeak_changestamp' : 'nicloeser 7/9/2024 18:15'
 }
 WBEdgeOfLine >> mouseMove: anEvent [
 

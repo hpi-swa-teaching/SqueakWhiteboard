@@ -195,7 +195,7 @@ WBCanvas >> drawingSurface: anObject [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 6/25/2024 16:00'
+	#'squeak_changestamp' : 'nicloeser 7/9/2024 11:33'
 }
 WBCanvas >> dropElement: anEvent [
 
@@ -410,6 +410,22 @@ WBCanvas >> spawnACopiedElement: anElement At: aPoint [
 			addDropShadow;
 			yourself).
 	self addElement: anElement
+]
+
+{
+	#category : #'creating elements',
+	#'squeak_changestamp' : 'nicloeser 7/9/2024 10:27'
+}
+WBCanvas >> spawnACopiedLine: anElement At: aPoint [
+	
+	self elementToSpawn: 
+		(anElement
+			center: aPoint;
+			dragOffset: anElement position - aPoint;
+			canvas: self;
+			yourself).
+	self addElement: anElement.
+	
 ]
 
 {

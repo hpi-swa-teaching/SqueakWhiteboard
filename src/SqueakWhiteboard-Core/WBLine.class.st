@@ -164,7 +164,7 @@ WBLine >> initialize [
 
 {
 	#category : #'event handeling',
-	#'squeak_changestamp' : 'si 7/7/2024 18:20'
+	#'squeak_changestamp' : 'nicloeser 7/9/2024 11:55'
 }
 WBLine >> mouseDown: anEvent [
 
@@ -176,7 +176,12 @@ WBLine >> mouseDown: anEvent [
 				self edges do: [:d | d mouseDown: anEvent].
 				self dragStart: anEvent.
 				(self edges at: 1) showPopUp.
-				self canvas activeElement: (self edges at: 1)]]
+				self canvas activeElement: (self edges at: 1)]].
+	self state = 3 ifTrue:
+		[(self canvas elementToSpawn) isNil ifFalse:
+				[self canvas dropElement: anEvent.
+				self spawnAttachmentsForCopy.
+				self state: 2.]]
 ]
 
 {
@@ -208,6 +213,36 @@ WBLine >> mouseUp: anEvent [
 WBLine >> showArrowHead [
 
 	self arrowHead isVisible: true
+]
+
+{
+	#category : #buildLine,
+	#'squeak_changestamp' : 'nicloeser 7/9/2024 18:12'
+}
+WBLine >> spawnAttachmentsForCopy [
+	
+	self edges: OrderedCollection new.
+	self edges add: ((WBEdgeOfLine newWithCanvas: self canvas)
+				canvas: self canvas;
+				center: (self morph vertices at: 2);
+				line: self;
+				yourself).
+	self edges add: ((WBEdgeOfLine newWithCanvas: self canvas)
+				canvas: self canvas;
+				center: (self morph vertices at: 1);
+				line: self;
+				yourself).
+	self canvas addElement: (self edges at: 1).
+	self canvas addElement: (self edges at: 2).
+	self hitbox: WBLineHitbox new.
+			self hitbox goBehind.
+			self hitbox line: self.
+			self addMorph: self hitbox.
+			self updateEdges
+	
+	
+
+	
 ]
 
 {
