@@ -98,14 +98,14 @@ WBButtonTests >> testButtonHoverColor [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'is 6/26/2024 10:42'
+	#'squeak_changestamp' : 'ACL 7/7/2024 18:19'
 }
 WBButtonTests >> testMouseDown [
 	| aButton aMouseEvent |
 	
 	aButton := self canvas toolbar buttons at: 1.
 	aMouseEvent := MouseButtonEvent new.
-	aMouseEvent setType: #mouseDown position: (aButton position + aButton extent + (1@1)) which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
+	aMouseEvent setType: #mouseDown position: (aButton position + aButton extent + (1 @ 1)) which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
 	self assert: (aButton handlesMouseOver: aMouseEvent) = true.
 	self assert: (aButton handlesMouseDown: aMouseEvent) = true.
 	

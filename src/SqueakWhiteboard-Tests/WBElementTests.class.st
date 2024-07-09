@@ -48,7 +48,7 @@ WBElementTests >> tearDown [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'is 6/26/2024 10:42'
+	#'squeak_changestamp' : 'ACL 7/7/2024 18:27'
 }
 WBElementTests >> testMouseDown [
 	| aMouseEvent anElement |
@@ -57,6 +57,7 @@ WBElementTests >> testMouseDown [
 	aMouseEvent := MouseButtonEvent new.
 	aMouseEvent setType: #mouseDown position: anElement position which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
 	self assert: (self canvas handlesMouseOver: aMouseEvent) = true.
+	
 	anElement supportsText: true.
 	self assert: (self canvas handlesMouseDown: aMouseEvent) = (anElement textField enabled) not.
 	
