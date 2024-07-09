@@ -164,7 +164,7 @@ WBLine >> initialize [
 
 {
 	#category : #'event handeling',
-	#'squeak_changestamp' : 'nicloeser 7/9/2024 11:55'
+	#'squeak_changestamp' : 'nicloeser 7/9/2024 18:25'
 }
 WBLine >> mouseDown: anEvent [
 
@@ -217,7 +217,7 @@ WBLine >> showArrowHead [
 
 {
 	#category : #buildLine,
-	#'squeak_changestamp' : 'nicloeser 7/9/2024 18:12'
+	#'squeak_changestamp' : 'nicloeser 7/9/2024 18:30'
 }
 WBLine >> spawnAttachmentsForCopy [
 	
@@ -234,11 +234,7 @@ WBLine >> spawnAttachmentsForCopy [
 				yourself).
 	self canvas addElement: (self edges at: 1).
 	self canvas addElement: (self edges at: 2).
-	self hitbox: WBLineHitbox new.
-			self hitbox goBehind.
-			self hitbox line: self.
-			self addMorph: self hitbox.
-			self updateEdges
+	self updateEdges
 	
 	
 
