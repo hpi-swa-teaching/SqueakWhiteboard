@@ -60,7 +60,7 @@ WBEdgeOfLine >> buttonFunctionalityForDelete [
 
 {
 	#category : #'button creation',
-	#'squeak_changestamp' : 'ACL 7/4/2024 11:55'
+	#'squeak_changestamp' : 'is 7/9/2024 21:14'
 }
 WBEdgeOfLine >> buttonsForPopUpBar [
 	| aCollection |
@@ -68,7 +68,8 @@ WBEdgeOfLine >> buttonsForPopUpBar [
 	aCollection := super buttonsForPopUpBar.
 	aCollection add: (WBButton new
 			block: self buttonFunctionalityForArrowSwitch;
-			backgroundColor: Color green).
+			backgroundColor: Color white;
+			image: (ImageMorph new image: (self canvas images resize: WBImage loadSmallToggleArrowButtonImage to: self imageSize))).
 	aCollection removeAt: 4. 
 	^ aCollection
 ]

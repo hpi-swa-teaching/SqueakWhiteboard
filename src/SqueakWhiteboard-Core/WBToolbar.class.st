@@ -267,13 +267,13 @@ WBToolbar >> createDeleteConfirmButtons [
 
 {
 	#category : #'button creation',
-	#'squeak_changestamp' : 'si 6/25/2024 13:43'
+	#'squeak_changestamp' : 'is 7/9/2024 20:46'
 }
 WBToolbar >> createLineChoosingButtons [
 
 	^OrderedCollection new
-		add: self getLineButton;
 		add: self getArrowButton;
+		add: self getLineButton;
 		yourself
 ]
 
@@ -319,13 +319,13 @@ WBToolbar >> deactivateElement [
 
 {
 	#category : #'get buttons',
-	#'squeak_changestamp' : 'si 6/25/2024 13:47'
+	#'squeak_changestamp' : 'is 7/9/2024 20:44'
 }
 WBToolbar >> getArrowButton [
 
 	^ WBButton new 
 		block: self buttonFunctionalityForArrow;
-		image: (ImageMorph new image: (self canvas images resize: WBImage loadCircleButtonImage to: self imageSize));
+		image: (ImageMorph new image: (self canvas images resize: WBImage loadArrowButtonImage to: self imageSize));
 		yourself
 	
 			
@@ -387,12 +387,13 @@ WBToolbar >> getDeleteAllButton [
 
 {
 	#category : #'get buttons',
-	#'squeak_changestamp' : 'is 6/23/2024 02:05'
+	#'squeak_changestamp' : 'is 7/9/2024 20:48'
 }
 WBToolbar >> getDeleteCancelButton [
 	
 	^ WBButton new 
 		block: self buttonFunctionalityForDeleteCancel;
+		image: (ImageMorph new image: (self canvas images resize: WBImage loadDenyButtonImage to: self imageSize));
 		backgroundColor: Color red muchLighter;
 		yourself
 	
@@ -401,12 +402,13 @@ WBToolbar >> getDeleteCancelButton [
 
 {
 	#category : #'get buttons',
-	#'squeak_changestamp' : 'is 6/23/2024 02:05'
+	#'squeak_changestamp' : 'is 7/9/2024 20:47'
 }
 WBToolbar >> getDeleteConfirmButton [
 	
 	^ WBButton new 
 		block: self buttonFunctionalityForDeleteConfirm;
+		image: (ImageMorph new image: (self canvas images resize: WBImage loadAcceptButtonImage to: self imageSize));
 		backgroundColor: Color green muchLighter;
 		yourself
 	
@@ -533,7 +535,7 @@ WBToolbar >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/23/2024 02:06'
+	#'squeak_changestamp' : 'is 7/9/2024 20:35'
 }
 WBToolbar >> placeButtons: someButtons [
 	

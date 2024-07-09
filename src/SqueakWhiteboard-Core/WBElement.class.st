@@ -245,23 +245,25 @@ WBElement >> buttonFunctionalityForTransparentColor [
 
 {
 	#category : #'button creation',
-	#'squeak_changestamp' : 'ACL 6/23/2024 15:51'
+	#'squeak_changestamp' : 'is 7/9/2024 21:15'
 }
 WBElement >> buttonsForPopUpBar [
 
 	^ OrderedCollection new
 		add: (WBButton new
 			block: self buttonFunctionalityForDelete;
-			backgroundColor: Color red);
+			backgroundColor: Color red;
+			image: (ImageMorph new image: (self canvas images resize: WBImage loadDenyButtonImage to: self imageSize)));
 		add: (WBButton new
 			block: self buttonFunctionalityForCopy;
-			backgroundColor: Color blue muchDarker);
+			backgroundColor: Color white;
+			image: (ImageMorph new image: (self canvas images resize: WBImage loadSmallDuplicateButtonImage to: self imageSize)));
 		add: (WBButton new
 			block: self buttonFunctionalityForColorPalette;
-			backgroundColor: Color gray);
+			image: (ImageMorph new image: (self canvas images resize: WBImage loadSmallColorsButtonImage to: self imageSize)));
 		add: (WBButton new
 			block: self buttonFunctionalityForBorderColorPalette;
-			backgroundColor: Color black);
+			image: (ImageMorph new image: (self canvas images resize: WBImage loadSmallBordercolorButtonImage to: self imageSize)));
 		yourself
 	
 ]
@@ -477,6 +479,15 @@ WBElement >> extent: anExtent [
 WBElement >> height: aHeight [
 
 	self morph height: aHeight
+]
+
+{
+	#category : #layout,
+	#'squeak_changestamp' : 'is 7/9/2024 22:41'
+}
+WBElement >> imageSize [
+
+	^ "self popUp sizeOfButton * 0.8 "15@15
 ]
 
 {

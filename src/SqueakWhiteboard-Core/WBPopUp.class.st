@@ -137,16 +137,16 @@ WBPopUp >> numberOfRows: aNumber [
 
 {
 	#category : #'adding buttons',
-	#'squeak_changestamp' : 'is 6/23/2024 01:51'
+	#'squeak_changestamp' : 'is 7/9/2024 21:53'
 }
 WBPopUp >> placeButton: aButton At: aPoint [
 
 	self addMorph: 
 		(aButton
-			extent: ((self sizeOfPopUp - 5) @(self sizeOfPopUp - 5));
+			extent: self sizeOfButton;
 			center: aPoint;
+			addImage;
 			yourself).
-	aButton image ifNotNil: [aButton addImage]
 ]
 
 {
@@ -197,6 +197,15 @@ WBPopUp >> setDefaultValues [
 		borderWidth: 1;
 		cornerStyle: #rounded;
 		cornerRadius: self class cornerRadius
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 7/9/2024 22:16'
+}
+WBPopUp >> sizeOfButton [	
+
+	^ (self sizeOfPopUp - 5) @ (self sizeOfPopUp - 5)
 ]
 
 {
