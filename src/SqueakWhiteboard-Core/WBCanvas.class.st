@@ -87,13 +87,14 @@ WBCanvas >> clampedPositionOfElement: anElement at: aPoint [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/18/2024 16:34'
+	#'squeak_changestamp' : 'si 7/10/2024 14:18'
 }
 WBCanvas >> createDrawingSurface [
 	
 	self drawingSurface: 
 		(Morph new 
 			extent: 0@0; 
+			color: Color transparent;
 			yourself).
 	self addMorph: self drawingSurface
 	
@@ -278,7 +279,7 @@ WBCanvas >> handlesMouseMove: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/23/2024 01:23'
+	#'squeak_changestamp' : 'si 7/10/2024 14:13'
 }
 WBCanvas >> handlesMouseOver: anEvent [
     

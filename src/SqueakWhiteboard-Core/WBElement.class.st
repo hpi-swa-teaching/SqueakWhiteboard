@@ -12,7 +12,6 @@ Class {
 		'canvas',
 		'popUp',
 		'resizeFrame',
-		'textBorderOffset',
 		'textField',
 		'lastMouseClick',
 		'doubleClickMaxDelta',
@@ -43,6 +42,15 @@ WBElement class >> defaultSize [
 WBElement class >> defaultTextBorderOffset [
 
 	^ 10
+]
+
+{
+	#category : #text,
+	#'squeak_changestamp' : 'si 7/10/2024 14:22'
+}
+WBElement class >> doubleClickMaxDelta [
+
+	^ 200
 ]
 
 {
@@ -382,32 +390,14 @@ WBElement >> delete [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/23/2024 01:31'
+	#'squeak_changestamp' : 'si 7/10/2024 14:22'
 }
 WBElement >> detectDoubleClick: anEvent [
 	| delta |
 	
 	self lastMouseClick ifNotNil: [delta := anEvent timeStamp - self lastMouseClick timeStamp].
-	(delta isNumber and: [delta < self doubleClickMaxDelta])
+	(delta isNumber and: [delta < self class doubleClickMaxDelta])
 		ifTrue: [self activateTextbox: anEvent]
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/11/2024 17:58'
-}
-WBElement >> doubleClickMaxDelta [
-
-	^ doubleClickMaxDelta ifNil: [doubleClickMaxDelta := 200]
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/11/2024 17:57'
-}
-WBElement >> doubleClickMaxDelta: aDelta [
-
-	doubleClickMaxDelta := aDelta
 ]
 
 {
@@ -471,12 +461,12 @@ WBElement >> extent [
 
 {
 	#category : #'morph functionalities',
-	#'squeak_changestamp' : 'JK 6/25/2024 15:43'
+	#'squeak_changestamp' : 'si 7/10/2024 14:31'
 }
 WBElement >> extent: anExtent [
 	
 	self morph extent: anExtent.
-	textField ifNotNil: [textField extent: anExtent - self textBorderOffset].
+	textField ifNotNil: [textField extent: anExtent - self class defaultTextBorderOffset].
 	self popUp ifNotNil: [self setPopupPosition]
 	
 	
@@ -528,14 +518,14 @@ WBElement >> initializeElement [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/23/2024 01:32'
+	#'squeak_changestamp' : 'si 7/10/2024 14:32'
 }
 WBElement >> initializeTextfield [
 	| textfield |
 
 	textfield := WBPluggableTextMorphPlus new.
 	textfield 
-		extent: self extent - (self textBorderOffset @ self textBorderOffset);
+		extent: self extent - (self class defaultTextBorderOffset @ self class defaultTextBorderOffset);
 		element: self.
 	textfield textMorph centered.
 	self morph addMorphCentered: textfield.
@@ -950,26 +940,6 @@ WBElement >> supportsText: aBoolean [
 	aBoolean 
 		ifTrue: [self textField ifNil: [self initializeTextfield]] 
 		ifFalse: [self textField ifNotNil: [self resetTextfield]]
-]
-
-{
-	#category : #appearance,
-	#'squeak_changestamp' : 'si 7/10/2024 13:38'
-}
-WBElement >> textBorderOffset [
-
-	^ textBorderOffset ifNil: [textBorderOffset := self class defaultTextBorderOffset]
-]
-
-{
-	#category : #appearance,
-	#'squeak_changestamp' : 'is 6/11/2024 17:25'
-}
-WBElement >> textBorderOffset: anOffset [
-
-	textBorderOffset := anOffset
-
-	
 ]
 
 {
