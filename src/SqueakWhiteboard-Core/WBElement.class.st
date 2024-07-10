@@ -28,12 +28,21 @@ Class {
 }
 
 {
-	#category : #'instance creation',
+	#category : #layout,
 	#'squeak_changestamp' : 'is 6/18/2024 22:28'
 }
 WBElement class >> defaultSize [
 
 	^ 100@100
+]
+
+{
+	#category : #layout,
+	#'squeak_changestamp' : 'si 7/10/2024 13:36'
+}
+WBElement class >> defaultTextBorderOffset [
+
+	^ 10
 ]
 
 {
@@ -49,11 +58,11 @@ WBElement class >> newWithCanvas: aCanvas [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'is 6/18/2024 00:25'
+	#'squeak_changestamp' : 'si 7/10/2024 12:10'
 }
 WBElement class >> sizeOfPopUpForStandardElement [
 
-	^ 20
+	^ 30
 ]
 
 {
@@ -178,7 +187,7 @@ WBElement >> buttonFunctionalityForBorderColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 6/26/2024 11:14'
+	#'squeak_changestamp' : 'si 7/10/2024 11:44'
 }
 WBElement >> buttonFunctionalityForBorderColorPalette [
 
@@ -197,7 +206,7 @@ WBElement >> buttonFunctionalityForColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 6/26/2024 11:14'
+	#'squeak_changestamp' : 'si 7/10/2024 11:44'
 }
 WBElement >> buttonFunctionalityForColorPalette [
 
@@ -207,12 +216,12 @@ WBElement >> buttonFunctionalityForColorPalette [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'is 6/23/2024 01:30'
+	#'squeak_changestamp' : 'si 7/10/2024 13:31'
 }
 WBElement >> buttonFunctionalityForCopy [
 
 	^ [:aButton | self canvas deactivateElement. 
-		self canvas spawnACopiedElement: self veryDeepCopy At: aButton currentEvent cursorPoint]
+		self canvas spawnAnElement: self veryDeepCopy At: aButton currentMouseEvent]
 ]
 
 {
@@ -226,11 +235,11 @@ WBElement >> buttonFunctionalityForDelete [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 7/5/2024 11:18'
+	#'squeak_changestamp' : 'si 7/10/2024 11:35'
 }
 WBElement >> buttonFunctionalityForTransparentBorderColor [
 
-	^ [:aButton | self morph borderColor: Color transparent.
+	^ [:aButton | self morph borderColor: self color.
 		self morph borderWidth: 3]
 ]
 
@@ -245,23 +254,27 @@ WBElement >> buttonFunctionalityForTransparentColor [
 
 {
 	#category : #'button creation',
-	#'squeak_changestamp' : 'ACL 6/23/2024 15:51'
+	#'squeak_changestamp' : 'si 7/10/2024 12:13'
 }
 WBElement >> buttonsForPopUpBar [
 
 	^ OrderedCollection new
 		add: (WBButton new
 			block: self buttonFunctionalityForDelete;
-			backgroundColor: Color red);
+			backgroundColor: Color red;
+			image: (ImageMorph new image: (self canvas images resize: WBImage loadDenyButtonImage to: self imageSize)));
 		add: (WBButton new
 			block: self buttonFunctionalityForCopy;
-			backgroundColor: Color blue muchDarker);
+			backgroundColor: Color white;
+			image: (ImageMorph new image: (self canvas images resize: WBImage loadSmallDuplicateButtonImage to: self imageSize)));
 		add: (WBButton new
 			block: self buttonFunctionalityForColorPalette;
-			backgroundColor: Color gray);
+			backgroundColor: Color white;
+			image: (ImageMorph new image: (self canvas images resize: WBImage loadSmallColorsButtonImage to: self imageSize)));
 		add: (WBButton new
 			block: self buttonFunctionalityForBorderColorPalette;
-			backgroundColor: Color black);
+			backgroundColor: Color white;
+			image: (ImageMorph new image: (self canvas images resize: WBImage loadSmallBordercolorButtonImage to: self imageSize)));
 		yourself
 	
 ]
@@ -480,6 +493,15 @@ WBElement >> height: aHeight [
 ]
 
 {
+	#category : #layout,
+	#'squeak_changestamp' : 'si 7/10/2024 11:57'
+}
+WBElement >> imageSize [
+
+	^ (self class sizeOfPopUpForStandardElement @ self class sizeOfPopUpForStandardElement) * 0.75
+]
+
+{
 	#category : #initialization,
 	#'squeak_changestamp' : 'is 7/1/2024 22:33'
 }
@@ -643,7 +665,7 @@ WBElement >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'JK 6/25/2024 15:32'
+	#'squeak_changestamp' : 'si 7/10/2024 11:44'
 }
 WBElement >> makePopWith: aCollection columns: aNumber [
 
@@ -932,11 +954,11 @@ WBElement >> supportsText: aBoolean [
 
 {
 	#category : #appearance,
-	#'squeak_changestamp' : 'is 6/23/2024 01:35'
+	#'squeak_changestamp' : 'si 7/10/2024 13:38'
 }
 WBElement >> textBorderOffset [
 
-	^ textBorderOffset ifNil: [textBorderOffset := 10]
+	^ textBorderOffset ifNil: [textBorderOffset := self class defaultTextBorderOffset]
 ]
 
 {

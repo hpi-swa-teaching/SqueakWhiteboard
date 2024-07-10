@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:24'
+	#'squeak_changestamp' : 'is 7/10/2024 00:30'
 }
 WBLineChoosingPopUpTests >> testButtonFunctionality [
 	| button buttonForLine |
@@ -14,12 +14,12 @@ WBLineChoosingPopUpTests >> testButtonFunctionality [
 	button := self canvas toolbar buttons at: 2.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
 	
-	buttonForLine := self canvas toolbar popUp submorphs at: 1. 
+	buttonForLine := self canvas toolbar popUp submorphs at: 2. 
 	buttonForLine clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
 	self assert: self canvas elementToSpawn notNil.
 	self assert: self canvas elementToSpawn arrowHead = true.
 	
-	buttonForLine := self canvas toolbar popUp submorphs at: 2. 
+	buttonForLine := self canvas toolbar popUp submorphs at: 1. 
 	buttonForLine clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
 	self assert: self canvas elementToSpawn notNil.
 	self assert: self canvas elementToSpawn arrowHead = false

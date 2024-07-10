@@ -1,4 +1,25 @@
 [
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'textures',
+			'Icon-Text.png'
+		],
+		#encoding : Class [ #PNGReadWriter ]
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'textures',
+			'Icon-Shape.png'
+		],
+		#encoding : @4
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'textures',
+			'Icon-Trashcan.png'
+		],
+		#encoding : @4
+	},
 	SquotTonelMapper {
 		#package : MCPackage {
 			#name : 'SqueakWhiteboard-Core'
@@ -9,62 +30,112 @@
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
-			'note.png'
+			'textures',
+			'Icon-Circle.png'
 		],
-		#encoding : Class [ #PNGReadWriter ]
-	},
-	SquotTonelMapper {
-		#package : MCPackage {
-			#name : 'SqueakWhiteboard-Tests'
-		},
-		#path : @4
+		#encoding : @4
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
-			'square2.png'
+			'textures',
+			'Icon-Note.png'
 		],
-		#encoding : @7
+		#encoding : @4
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
-			'delete_big.png'
+			'textures',
+			'Icon-Deny.png'
 		],
-		#encoding : @7
+		#encoding : @4
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
-			'line.png'
+			'textures',
+			'Icon-Accept.png'
 		],
-		#encoding : @7
+		#encoding : @4
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
-			'circle.png'
+			'textures',
+			'Icon-Small-Colorpicker.png'
 		],
-		#encoding : @7
+		#encoding : @4
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
-			'textbox.png'
+			'textures',
+			'Icon-Small-Colorpicker-Outline.png'
 		],
-		#encoding : @7
+		#encoding : @4
 	},
 	SquotTonelMapper {
 		#package : MCPackage {
 			#name : 'BaselineOfSqueakWhiteboard'
 		},
-		#path : @4
+		#path : @11
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
-			'colorsToolbar.png'
+			'textures',
+			'Icon-Arrow.png'
 		],
-		#encoding : @7
+		#encoding : @4
 	},
 	SquotImageMapper {
 		#path : FSAbsolutePath [
-			'shapechoosing.png'
+			'textures',
+			'Icon-Small-Duplicate.png'
 		],
-		#encoding : @7
+		#encoding : @4
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'textures',
+			'Icon-Colorpicker.png'
+		],
+		#encoding : @4
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'textures',
+			'Icon-Small-Toggle-Arrow.png'
+		],
+		#encoding : @4
+	},
+	SquotBlobMapper {
+		#path : FSAbsolutePath [
+			'textures',
+			'.DS_Store'
+		],
+		#encoding : 'bin'
+	},
+	SquotTonelMapper {
+		#package : MCPackage {
+			#name : 'SqueakWhiteboard-Tests'
+		},
+		#path : @11
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'textures',
+			'Icon-Linetool.png'
+		],
+		#encoding : @4
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'textures',
+			'Icon-Line.png'
+		],
+		#encoding : @4
+	},
+	SquotImageMapper {
+		#path : FSAbsolutePath [
+			'textures',
+			'Icon-Square.png'
+		],
+		#encoding : @4
 	}
 ]
