@@ -23,6 +23,15 @@ Class {
 
 {
 	#category : #accessing,
+	#'squeak_changestamp' : 'ACL 7/10/2024 16:18'
+}
+WBCanvas class >> DefaultFontSize [
+
+	^25
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'is 6/23/2024 01:27'
 }
 WBCanvas class >> WhiteBoardSize [
@@ -383,13 +392,13 @@ WBCanvas >> scale: aFactor [
 
 {
 	#category : #appearance,
-	#'squeak_changestamp' : 'ACL 7/10/2024 11:55'
+	#'squeak_changestamp' : 'ACL 7/10/2024 16:19'
 }
 WBCanvas >> showText: aString [
 
 	self text: (TextMorph new
 		contents: aString;
-		fontName: #Calibri pointSize: 25;
+		fontName: #Calibri pointSize: self class DefaultFontSize;
 		lock;
 		yourself).
 	self addMorph: text.

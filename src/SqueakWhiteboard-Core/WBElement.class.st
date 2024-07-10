@@ -28,6 +28,24 @@ Class {
 }
 
 {
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'ACL 7/10/2024 17:04'
+}
+WBElement class >> DefaultBorderColorColumns [
+
+	^ 3
+]
+
+{
+	#category : #'as yet unclassified',
+	#'squeak_changestamp' : 'ACL 7/10/2024 17:04'
+}
+WBElement class >> DefaultBorderWidth [
+
+	^ 3
+]
+
+{
 	#category : #'instance creation',
 	#'squeak_changestamp' : 'is 6/18/2024 22:28'
 }
@@ -167,22 +185,22 @@ WBElement >> bounds: someBounds [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 6/28/2024 15:45'
+	#'squeak_changestamp' : 'ACL 7/10/2024 17:00'
 }
 WBElement >> buttonFunctionalityForBorderColor [
 
 	^ [:aButton | self morph borderColor: aButton color.
-		self morph borderWidth: 3]
+		self morph borderWidth: self class DefaultBorderWidth]
 ]
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 6/26/2024 11:14'
+	#'squeak_changestamp' : 'ACL 7/10/2024 17:01'
 }
 WBElement >> buttonFunctionalityForBorderColorPalette [
 
 	^ [:aButton | (self popUp popUp) ifNotNil: [self popUp popUp delete].
-		self popUp makePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeBorderColorButtons columns: 3]
+		self popUp makePopUpAt: aButton topCenter - ( 0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeBorderColorButtons columns: self class DefaultBorderColorColumns]
 ]
 
 {
@@ -196,12 +214,12 @@ WBElement >> buttonFunctionalityForColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 6/26/2024 11:14'
+	#'squeak_changestamp' : 'ACL 7/10/2024 16:50'
 }
 WBElement >> buttonFunctionalityForColorPalette [
 
 	^ [:aButton | (self popUp popUp) ifNotNil: [self popUp popUp delete].
-		self popUp makePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: 3]
+		self popUp makePopUpAt: aButton topCenter - ( 0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: self class DefaultBorderColorColumns]
 ]
 
 {
@@ -225,12 +243,12 @@ WBElement >> buttonFunctionalityForDelete [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 7/5/2024 11:18'
+	#'squeak_changestamp' : 'ACL 7/10/2024 17:03'
 }
 WBElement >> buttonFunctionalityForTransparentBorderColor [
 
 	^ [:aButton | self morph borderColor: Color transparent.
-		self morph borderWidth: 3]
+		self morph borderWidth: self class DefaultBorderWidth]
 ]
 
 {

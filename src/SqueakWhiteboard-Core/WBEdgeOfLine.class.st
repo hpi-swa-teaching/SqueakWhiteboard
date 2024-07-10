@@ -12,6 +12,33 @@ Class {
 }
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'ACL 7/10/2024 16:21'
+}
+WBEdgeOfLine class >> DefaultCornerRadius [
+
+	^100
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'ACL 7/10/2024 16:23'
+}
+WBEdgeOfLine class >> DefaultHeight [
+
+^10
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'ACL 7/10/2024 16:22'
+}
+WBEdgeOfLine class >> DefaultWidth [
+
+	^10
+]
+
+{
 	#category : #resize,
 	#'squeak_changestamp' : 'ACL 7/10/2024 12:08'
 }
@@ -95,18 +122,12 @@ WBEdgeOfLine >> handlesMouseOver: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/20/2024 23:26'
+	#'squeak_changestamp' : 'ACL 7/10/2024 16:25'
 }
 WBEdgeOfLine >> initialize [
 
 	super initialize.
-	self
-		cornerStyle: #rounded;
-		cornerRadius: 100;
-		width: 10;
-		height: 10;
-		color: Color black;
-		supportsText: false
+	self setDefaultValues
 ]
 
 {
@@ -189,15 +210,15 @@ WBEdgeOfLine >> mouseUp: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/20/2024 23:24'
+	#'squeak_changestamp' : 'ACL 7/10/2024 16:25'
 }
 WBEdgeOfLine >> setDefaultValues [
 
 	self
 		cornerStyle: #rounded;
-		cornerRadius: 100;
-		width: 10;
-		height: 10;
+		cornerRadius: self class DefaultCornerRadius;
+		width: self class DefaultWidth;
+		height: self class DefaultHeight;
 		color: Color black;
 		supportsText: false
 ]
