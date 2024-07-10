@@ -45,7 +45,7 @@ WBElementPopUpTests >> testExistenceOfPopUp [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:28'
+	#'squeak_changestamp' : 'si 7/10/2024 13:25'
 }
 WBElementPopUpTests >> testFunctionalityOfBorderColor [
 	| element mouseEvent buttonForColor |
@@ -72,7 +72,7 @@ WBElementPopUpTests >> testFunctionalityOfBorderColor [
 	
 	buttonForColor := element popUp popUp submorphs at: 10.
 	buttonForColor clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
-	self assert: element morph borderColor = Color transparent.
+	self assert: element morph borderColor = element color
 ]
 
 {

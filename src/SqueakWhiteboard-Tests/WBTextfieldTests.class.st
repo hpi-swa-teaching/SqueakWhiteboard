@@ -115,7 +115,7 @@ WBTextfieldTests >> testSupportsText [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'ACL 7/7/2024 19:53'
+	#'squeak_changestamp' : 'si 7/10/2024 14:24'
 }
 WBTextfieldTests >> testTextfieldActivation [
 	| elements aFirstMouseEvent aSecondMouseEvent aThirdMouseEvent |
@@ -125,9 +125,9 @@ WBTextfieldTests >> testTextfieldActivation [
 	aFirstMouseEvent := MouseButtonEvent new.
 	aFirstMouseEvent setType: #mouseDown position: elements first position which: 4 buttons: aFirstMouseEvent class redButton hand: HandMorph new stamp: 0.
 	aSecondMouseEvent := MouseButtonEvent new.
-	aSecondMouseEvent setType: #mouseDown position: elements first position which: 4 buttons: aSecondMouseEvent class redButton hand: HandMorph new stamp: elements first doubleClickMaxDelta + 1.
+	aSecondMouseEvent setType: #mouseDown position: elements first position which: 4 buttons: aSecondMouseEvent class redButton hand: HandMorph new stamp: elements first class doubleClickMaxDelta + 1.
 	aThirdMouseEvent := MouseButtonEvent new.
-	aThirdMouseEvent setType: #mouseDown position: elements first position which: 4 buttons: aThirdMouseEvent class redButton hand: HandMorph new stamp: elements first doubleClickMaxDelta + 2.
+	aThirdMouseEvent setType: #mouseDown position: elements first position which: 4 buttons: aThirdMouseEvent class redButton hand: HandMorph new stamp: elements first class doubleClickMaxDelta + 2.
 	
 	elements do: [:anElement | 
 		anElement supportsText ifTrue: [
@@ -299,7 +299,7 @@ WBTextfieldTests >> testTextfieldMouseEventHandling [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'is 6/18/2024 22:50'
+	#'squeak_changestamp' : 'si 7/10/2024 16:04'
 }
 WBTextfieldTests >> testTextfieldResize [
 	| anElement elementBounds textfieldBounds |
@@ -309,29 +309,27 @@ WBTextfieldTests >> testTextfieldResize [
 	textfieldBounds := anElement textField bounds.
 	elementBounds := anElement bounds.
 	
-	self assert: elementBounds origin = ((textfieldBounds origin x - (anElement textBorderOffset/2)) @ (textfieldBounds origin y - (anElement textBorderOffset/2))).
-	self assert: elementBounds corner = ((textfieldBounds corner x + (anElement textBorderOffset/2)) @ (textfieldBounds corner y + (anElement textBorderOffset/2))).
+	self assert: elementBounds origin = ((textfieldBounds origin x - (anElement class defaultTextBorderOffset / 2)) @ (textfieldBounds origin y - (anElement class defaultTextBorderOffset / 2))).
+	self assert: elementBounds corner = ((textfieldBounds corner x + (anElement class defaultTextBorderOffset / 2)) @ (textfieldBounds corner y + (anElement class defaultTextBorderOffset / 2))).
 	
 	anElement extent: anElement extent * 0.25.
 	textfieldBounds := anElement textField bounds.
 	elementBounds := anElement bounds.
 	
-	self assert: elementBounds origin = ((textfieldBounds origin x - (anElement textBorderOffset/2)) @ (textfieldBounds origin y - (anElement textBorderOffset/2))).
-	self assert: elementBounds corner = ((textfieldBounds corner x + (anElement textBorderOffset/2)) @ (textfieldBounds corner y + (anElement textBorderOffset/2))).
+	self assert: elementBounds origin = ((textfieldBounds origin x - (anElement class defaultTextBorderOffset / 2)) @ (textfieldBounds origin y - (anElement class defaultTextBorderOffset / 2))).
+	self assert: elementBounds corner = ((textfieldBounds corner x + (anElement class defaultTextBorderOffset / 2)) @ (textfieldBounds corner y + (anElement class defaultTextBorderOffset / 2))).
 	
 	anElement extent: anElement extent * (-2).
 	textfieldBounds := anElement textField bounds.
 	elementBounds := anElement bounds.
 	
-	self assert: elementBounds origin = ((textfieldBounds origin x - (anElement textBorderOffset/2)) @ (textfieldBounds origin y - (anElement textBorderOffset/2))).
-	self assert: elementBounds corner = ((textfieldBounds corner x + (anElement textBorderOffset/2)) @ (textfieldBounds corner y + (anElement textBorderOffset/2)))
-	
-	
+	self assert: elementBounds origin = ((textfieldBounds origin x - (anElement class defaultTextBorderOffset / 2)) @ (textfieldBounds origin y - (anElement class defaultTextBorderOffset / 2))).
+	self assert: elementBounds corner = ((textfieldBounds corner x + (anElement class defaultTextBorderOffset / 2)) @ (textfieldBounds corner y + (anElement class defaultTextBorderOffset / 2)))
 ]
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'is 6/18/2024 22:50'
+	#'squeak_changestamp' : 'si 7/10/2024 14:33'
 }
 WBTextfieldTests >> testTextfieldSize [
 	| anElement textfieldBounds elementBounds |
@@ -340,8 +338,8 @@ WBTextfieldTests >> testTextfieldSize [
 	textfieldBounds := anElement textField bounds.
 	elementBounds := anElement  bounds.
 	
-	self assert: elementBounds origin = ((textfieldBounds origin x - (anElement textBorderOffset/2)) @ (textfieldBounds origin y - (anElement textBorderOffset/2))).
-	self assert: elementBounds corner = ((textfieldBounds corner x + (anElement textBorderOffset/2)) @ (textfieldBounds corner y + (anElement textBorderOffset/2)))
+	self assert: elementBounds origin = ((textfieldBounds origin x - (anElement class defaultTextBorderOffset / 2)) @ (textfieldBounds origin y - (anElement class defaultTextBorderOffset / 2))).
+	self assert: elementBounds corner = ((textfieldBounds corner x + (anElement class defaultTextBorderOffset / 2)) @ (textfieldBounds corner y + (anElement class defaultTextBorderOffset / 2)))
 	
 	
 	

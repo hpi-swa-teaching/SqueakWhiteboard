@@ -5,7 +5,6 @@ Class {
 	#name : #WBCanvas,
 	#superclass : #Morph,
 	#instVars : [
-		'scale',
 		'elementToSpawn',
 		'globalColor',
 		'elements',
@@ -88,13 +87,14 @@ WBCanvas >> clampedPositionOfElement: anElement at: aPoint [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/18/2024 16:34'
+	#'squeak_changestamp' : 'si 7/10/2024 14:18'
 }
 WBCanvas >> createDrawingSurface [
 	
 	self drawingSurface: 
 		(Morph new 
 			extent: 0@0; 
+			color: Color transparent;
 			yourself).
 	self addMorph: self drawingSurface
 	
@@ -279,7 +279,7 @@ WBCanvas >> handlesMouseMove: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/23/2024 01:23'
+	#'squeak_changestamp' : 'si 7/10/2024 14:13'
 }
 WBCanvas >> handlesMouseOver: anEvent [
     
@@ -306,16 +306,15 @@ WBCanvas >> images: anImage [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/23/2024 01:27'
+	#'squeak_changestamp' : 'si 7/10/2024 13:29'
 }
 WBCanvas >> initialize [
 	
 	super initialize.
 	self images: WBImage new.
-	self 
-		scale: 1.0;
-		height: (self class WhiteBoardSize * self scale);
-		width: (self class WhiteBoardSize * self scale * self widthToHeightRatio);
+	self
+		height: self class WhiteBoardSize;
+		width: (self class WhiteBoardSize * self widthToHeightRatio);
 		color: Color white;
 		borderWidth: 1;
 		borderColor: Color black;
@@ -364,29 +363,12 @@ WBCanvas >> removeText [
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/14/2024 13:19'
-}
-WBCanvas >> scale [
-
-	^ scale
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/14/2024 10:48'
-}
-WBCanvas >> scale: aFactor [
-	
-	scale := aFactor
-]
-
-{
 	#category : #'show text',
-	#'squeak_changestamp' : 'ACL 7/10/2024 11:55'
+	#'squeak_changestamp' : 'si 7/10/2024 17:30'
 }
 WBCanvas >> showText: aString [
 
+	self text ifNotNil: [self text abandon].
 	self text: (TextMorph new
 		contents: aString;
 		fontName: #Calibri pointSize: 25;
@@ -394,22 +376,6 @@ WBCanvas >> showText: aString [
 		yourself).
 	self addMorph: text.
 	self text center: self center
-]
-
-{
-	#category : #'creating elements',
-	#'squeak_changestamp' : 'is 6/23/2024 01:24'
-}
-WBCanvas >> spawnACopiedElement: anElement At: aPoint [
-
-	self elementToSpawn: 
-		(anElement
-			center: aPoint;
-			dragOffset: anElement position - aPoint;
-			canvas: self;
-			addDropShadow;
-			yourself).
-	self addElement: anElement
 ]
 
 {

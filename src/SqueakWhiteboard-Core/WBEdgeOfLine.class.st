@@ -39,15 +39,12 @@ WBEdgeOfLine >> buttonFunctionalityForColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:26'
+	#'squeak_changestamp' : 'si 7/10/2024 17:30'
 }
 WBEdgeOfLine >> buttonFunctionalityForCopy [
-|copy|
 	
-	^ [:aButton | self canvas deactivateElement. 
-		copy := self line veryDeepCopy.
-		copy state: 3.
-		self canvas spawnACopiedLine: copy At: aButton currentEvent cursorPoint]
+	^ [:aButton | self canvas deactivateElement.
+		self canvas spawnAnElement: (self line veryDeepCopy state: 3) At: aButton currentEvent]
 ]
 
 {
@@ -61,7 +58,7 @@ WBEdgeOfLine >> buttonFunctionalityForDelete [
 
 {
 	#category : #'button creation',
-	#'squeak_changestamp' : 'ACL 7/4/2024 11:55'
+	#'squeak_changestamp' : 'is 7/9/2024 21:14'
 }
 WBEdgeOfLine >> buttonsForPopUpBar [
 	| aCollection |
@@ -69,7 +66,8 @@ WBEdgeOfLine >> buttonsForPopUpBar [
 	aCollection := super buttonsForPopUpBar.
 	aCollection add: (WBButton new
 			block: self buttonFunctionalityForArrowSwitch;
-			backgroundColor: Color green).
+			backgroundColor: Color white;
+			image: (ImageMorph new image: (self canvas images resize: WBImage loadSmallToggleArrowButtonImage to: self imageSize))).
 	aCollection removeAt: 4. 
 	^ aCollection
 ]

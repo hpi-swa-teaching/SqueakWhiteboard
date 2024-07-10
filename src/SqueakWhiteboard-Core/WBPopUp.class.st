@@ -26,6 +26,15 @@ WBPopUp class >> cornerRadius [
 
 {
 	#category : #size,
+	#'squeak_changestamp' : 'si 7/10/2024 12:10'
+}
+WBPopUp class >> margin [
+
+	^ 5
+]
+
+{
+	#category : #size,
 	#'squeak_changestamp' : 'is 6/23/2024 01:49'
 }
 WBPopUp class >> sizeOfPopUp [
@@ -35,9 +44,9 @@ WBPopUp class >> sizeOfPopUp [
 
 {
 	#category : #size,
-	#'squeak_changestamp' : 'is 6/23/2024 01:49'
+	#'squeak_changestamp' : 'si 7/10/2024 11:32'
 }
-WBPopUp class >> sizeOfPopUpForStandardElement [
+WBPopUp class >> standardSizeOfPopUp [
 
 	^ 20
 ]
@@ -84,14 +93,14 @@ WBPopUp >> initialize [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'is 6/23/2024 01:51'
+	#'squeak_changestamp' : 'si 7/10/2024 11:32'
 }
 WBPopUp >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
 	self popUp: 
 		(WBPopUp new
 			setDefaultValues;
-			sizeOfPopUp: self class sizeOfPopUpForStandardElement;
+			sizeOfPopUp: self class standardSizeOfPopUp;
 			numberOfColumns: aNumber;
 			addButtons: aCollection;
 			yourself).
@@ -128,25 +137,25 @@ WBPopUp >> numberOfRows [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 5/27/2024 22:23'
+	#'squeak_changestamp' : 'si 7/10/2024 11:39'
 }
 WBPopUp >> numberOfRows: aNumber [
 
-	numberOfRows:= aNumber
+	numberOfRows := aNumber
 ]
 
 {
 	#category : #'adding buttons',
-	#'squeak_changestamp' : 'is 6/23/2024 01:51'
+	#'squeak_changestamp' : 'si 7/10/2024 11:39'
 }
 WBPopUp >> placeButton: aButton At: aPoint [
 
 	self addMorph: 
 		(aButton
-			extent: ((self sizeOfPopUp - 5) @(self sizeOfPopUp - 5));
+			extent: self sizeOfButton;
 			center: aPoint;
-			yourself).
-	aButton image ifNotNil: [aButton addImage]
+			addImage;
+			yourself)
 ]
 
 {
@@ -201,6 +210,15 @@ WBPopUp >> setDefaultValues [
 
 {
 	#category : #accessing,
+	#'squeak_changestamp' : 'si 7/10/2024 11:40'
+}
+WBPopUp >> sizeOfButton [	
+
+	^ (self sizeOfPopUp - self class margin) @ (self sizeOfPopUp - self class margin)
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'si 6/7/2024 00:40'
 }
 WBPopUp >> sizeOfPopUp [
@@ -215,4 +233,14 @@ WBPopUp >> sizeOfPopUp [
 WBPopUp >> sizeOfPopUp: aNumber [
 
 	sizeOfPopUp := aNumber
+]
+
+{
+	#category : #popUp,
+	#'squeak_changestamp' : 'si 7/10/2024 17:03'
+}
+WBPopUp >> tryToMakePopUpAt: aPoint with: aCollection columns: aNumber [
+
+	self popUp ifNotNil: [self popUp delete].
+	self makePopUpAt: aPoint with: aCollection columns: aNumber
 ]
