@@ -14,7 +14,6 @@ Class {
 		'resizeFrame',
 		'textField',
 		'lastMouseClick',
-		'doubleClickMaxDelta',
 		'supportsText',
 		'morph',
 		'resizable'
@@ -75,16 +74,17 @@ WBElement class >> sizeOfPopUpForStandardElement [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/23/2024 01:29'
+	#'squeak_changestamp' : 'si 7/10/2024 17:09'
 }
 WBElement >> activateTextbox: anEvent [
 	
-	self canvas deactivateTextbox.
-	self canvas deactivateElement.
+	self canvas 
+		deactivateTextbox;
+		deactivateElement;
+		activeTextbox: self.
 	self textField 
 		enabled: true;
-		mouseDown: anEvent.
-	self canvas activeTextbox: self
+		mouseDown: anEvent
 ]
 
 {
@@ -185,41 +185,39 @@ WBElement >> bounds: someBounds [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 6/28/2024 15:45'
+	#'squeak_changestamp' : 'si 7/10/2024 16:58'
 }
 WBElement >> buttonFunctionalityForBorderColor [
 
-	^ [:aButton | self morph borderColor: aButton color.
-		self morph borderWidth: 3]
+	^ [:aButton | self morph borderColor: aButton color]
 ]
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 7/10/2024 11:44'
+	#'squeak_changestamp' : 'si 7/10/2024 17:04'
 }
 WBElement >> buttonFunctionalityForBorderColorPalette [
 
-	^ [:aButton | (self popUp popUp) ifNotNil: [self popUp popUp delete].
-		self popUp makePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeBorderColorButtons columns: 3]
+	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeBorderColorButtons columns: 3]
 ]
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 17:32'
+	#'squeak_changestamp' : 'si 7/10/2024 17:00'
 }
 WBElement >> buttonFunctionalityForColor [
 
-	^ [:aButton |self morph color: aButton color]
+	^ [:aButton | self morph borderColor = self color ifTrue: [self morph borderColor: aButton color].
+		self morph color: aButton color]
 ]
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 7/10/2024 11:44'
+	#'squeak_changestamp' : 'si 7/10/2024 17:04'
 }
 WBElement >> buttonFunctionalityForColorPalette [
 
-	^ [:aButton | (self popUp popUp) ifNotNil: [self popUp popUp delete].
-		self popUp makePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: 3]
+	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: 3]
 ]
 
 {
@@ -243,21 +241,20 @@ WBElement >> buttonFunctionalityForDelete [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 7/10/2024 11:35'
+	#'squeak_changestamp' : 'si 7/10/2024 17:01'
 }
 WBElement >> buttonFunctionalityForTransparentBorderColor [
 
-	^ [:aButton | self morph borderColor: self color.
-		self morph borderWidth: 3]
+	^ [:aButton | self morph borderColor: self color]
 ]
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 7/5/2024 11:15'
+	#'squeak_changestamp' : 'si 7/10/2024 17:01'
 }
 WBElement >> buttonFunctionalityForTransparentColor [
 
-	^ [:aButton |self morph color: Color transparent]
+	^ [:aButton | self morph color: Color transparent]
 ]
 
 {
@@ -440,11 +437,11 @@ WBElement >> dragOffset: aPoint [
 
 {
 	#category : #drag,
-	#'squeak_changestamp' : 'is 6/23/2024 01:31'
+	#'squeak_changestamp' : 'si 7/10/2024 17:08'
 }
 WBElement >> dragStart: anEvent [
 
-	(self morph)
+	self morph
 		addDropShadow;
 		comeToFront.
 	self dragOffset: self position - anEvent cursorPoint
@@ -493,7 +490,7 @@ WBElement >> imageSize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 7/1/2024 22:33'
+	#'squeak_changestamp' : 'si 7/10/2024 17:14'
 }
 WBElement >> initialize [
 	
@@ -501,6 +498,7 @@ WBElement >> initialize [
 	self morph: 
 		self initializeElement;
 		extent: self class defaultSize;
+		borderWidth: 3;
 		color: self canvas globalColor.
 	self setupEventHandling.
 	self supportsText ifTrue: [self initializeTextfield]
@@ -518,18 +516,16 @@ WBElement >> initializeElement [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 7/10/2024 14:32'
+	#'squeak_changestamp' : 'si 7/10/2024 17:18'
 }
 WBElement >> initializeTextfield [
-	| textfield |
 
-	textfield := WBPluggableTextMorphPlus new.
-	textfield 
+	self textField: WBPluggableTextMorphPlus new.
+	self textField
 		extent: self extent - (self class defaultTextBorderOffset @ self class defaultTextBorderOffset);
 		element: self.
-	textfield textMorph centered.
-	self morph addMorphCentered: textfield.
-	self textField: textfield
+	self textField textMorph centered.
+	self morph addMorphCentered: self textField
 ]
 
 {
@@ -796,11 +792,11 @@ WBElement >> position: aPosition [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/25/2024 16:17'
+	#'squeak_changestamp' : 'si 7/10/2024 17:12'
 }
 WBElement >> postDropRoutine: anEvent [
 
-	supportsText ifTrue: [self activateTextbox: anEvent]
+	self supportsText ifTrue: [self activateTextbox: anEvent]
 ]
 
 {

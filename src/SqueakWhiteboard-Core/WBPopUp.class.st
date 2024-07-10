@@ -234,3 +234,13 @@ WBPopUp >> sizeOfPopUp: aNumber [
 
 	sizeOfPopUp := aNumber
 ]
+
+{
+	#category : #popUp,
+	#'squeak_changestamp' : 'si 7/10/2024 17:03'
+}
+WBPopUp >> tryToMakePopUpAt: aPoint with: aCollection columns: aNumber [
+
+	self popUp ifNotNil: [self popUp delete].
+	self makePopUpAt: aPoint with: aCollection columns: aNumber
+]

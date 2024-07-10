@@ -171,7 +171,7 @@ WBLine >> initialize [
 
 {
 	#category : #'event handeling',
-	#'squeak_changestamp' : 'si 7/10/2024 13:48'
+	#'squeak_changestamp' : 'si 7/10/2024 17:24'
 }
 WBLine >> mouseDown: anEvent [
 
@@ -188,7 +188,9 @@ WBLine >> mouseDown: anEvent [
 		[(self canvas elementToSpawn) isNil ifFalse:
 				[self canvas dropElement: anEvent.
 				self spawnAttachmentsForCopy.
-				self state: 2.]]
+				self state: 2.
+				self dragStart: anEvent.
+				self edges do: [:d | d mouseDown: anEvent].]]
 ]
 
 {
@@ -204,7 +206,7 @@ WBLine >> mouseMove: anEvent [
 
 {
 	#category : #'event handeling',
-	#'squeak_changestamp' : 'si 7/7/2024 18:18'
+	#'squeak_changestamp' : 'si 7/10/2024 17:22'
 }
 WBLine >> mouseUp: anEvent [
 
