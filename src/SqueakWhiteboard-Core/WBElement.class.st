@@ -46,11 +46,11 @@ WBElement class >> defaultTextBorderOffset [
 
 {
 	#category : #text,
-	#'squeak_changestamp' : 'si 7/10/2024 14:22'
+	#'squeak_changestamp' : 'si 7/10/2024 16:13'
 }
 WBElement class >> doubleClickMaxDelta [
 
-	^ 200
+	^ 200 
 ]
 
 {
