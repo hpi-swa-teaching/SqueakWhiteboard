@@ -531,7 +531,7 @@ WBToolbar >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/23/2024 02:06'
+	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:45'
 }
 WBToolbar >> placeButtons: someButtons [
 	
@@ -539,7 +539,7 @@ WBToolbar >> placeButtons: someButtons [
 		aButton 
 			margin:  WBToolbar margin;
 			extent: self buttonSize;
-			center: (self bounds origin x + self toolbarWidth/2)@(self bounds origin y + ((self buttonSize y + WBToolbar margin) * anIndex) ) - (0@self buttonSize y/2);
+			center: (self bounds origin x + self toolbarWidth / 2) @ (self bounds origin y + ((self buttonSize y + WBToolbar margin) * anIndex) ) - (0 @ self buttonSize y / 2);
 			addImage.
 		self addMorph: aButton].
 	self buttons: someButtons
@@ -566,14 +566,14 @@ WBToolbar >> popUp: aPopUp [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'is 6/23/2024 02:07'
+	#'squeak_changestamp' : 'nicloeser 7/10/2024 12:04'
 }
 WBToolbar >> setLayout [
 
 	self 
 		toolbarHeight: self canvas extent y * self toolbarCanvasSizeFactor y;
 		toolbarWidth: self canvas extent x * self toolbarCanvasSizeFactor x;
-		center: (canvas bounds origin x + self extent x / 2) @ (canvas bounds origin y + ((canvas bounds corner y - canvas bounds origin y))/2);
+		center: (self canvas bounds origin x + self extent x / 2) @ (self canvas bounds origin y + ((self canvas bounds corner y - self canvas bounds origin y))/2);
 		updateColor
 		
 ]

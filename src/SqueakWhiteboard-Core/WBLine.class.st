@@ -74,12 +74,12 @@ WBLine >> checkForArrowHead [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/18/2024 00:04'
+	#'squeak_changestamp' : 'nicloeser 7/10/2024 12:00'
 }
 WBLine >> color: aColor [
 
 	self borderColor: aColor.
-	(arrowHead class = WBArrowhead) ifTrue:
+	(self arrowHead class = WBArrowhead) ifTrue:
 		[self arrowHead 
 		color: aColor;
 		borderColor: aColor].
