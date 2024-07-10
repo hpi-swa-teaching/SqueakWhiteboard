@@ -38,15 +38,15 @@ WBEdgeOfLine >> buttonFunctionalityForColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'nicloeser 7/9/2024 11:31'
+	#'squeak_changestamp' : 'si 7/10/2024 13:46'
 }
 WBEdgeOfLine >> buttonFunctionalityForCopy [
-|copy|
+	|copy|
 	
 	copy := self line veryDeepCopy.
 	copy state: 3.
 	^ [:aButton | self canvas deactivateElement. 
-		self canvas spawnACopiedLine: copy At: aButton currentEvent cursorPoint]
+		self canvas spawnAnElement: copy At: aButton currentMouseEvent]
 ]
 
 {

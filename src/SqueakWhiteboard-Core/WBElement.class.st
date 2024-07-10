@@ -28,12 +28,21 @@ Class {
 }
 
 {
-	#category : #'instance creation',
+	#category : #layout,
 	#'squeak_changestamp' : 'is 6/18/2024 22:28'
 }
 WBElement class >> defaultSize [
 
 	^ 100@100
+]
+
+{
+	#category : #layout,
+	#'squeak_changestamp' : 'si 7/10/2024 13:36'
+}
+WBElement class >> defaultTextBorderOffset [
+
+	^ 10
 ]
 
 {
@@ -207,12 +216,12 @@ WBElement >> buttonFunctionalityForColorPalette [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'is 6/23/2024 01:30'
+	#'squeak_changestamp' : 'si 7/10/2024 13:31'
 }
 WBElement >> buttonFunctionalityForCopy [
 
 	^ [:aButton | self canvas deactivateElement. 
-		self canvas spawnACopiedElement: self veryDeepCopy At: aButton currentEvent cursorPoint]
+		self canvas spawnAnElement: self veryDeepCopy At: aButton currentMouseEvent]
 ]
 
 {
@@ -945,11 +954,11 @@ WBElement >> supportsText: aBoolean [
 
 {
 	#category : #appearance,
-	#'squeak_changestamp' : 'is 6/23/2024 01:35'
+	#'squeak_changestamp' : 'si 7/10/2024 13:38'
 }
 WBElement >> textBorderOffset [
 
-	^ textBorderOffset ifNil: [textBorderOffset := 10]
+	^ textBorderOffset ifNil: [textBorderOffset := self class defaultTextBorderOffset]
 ]
 
 {

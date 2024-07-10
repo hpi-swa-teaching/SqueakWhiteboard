@@ -65,20 +65,20 @@ WBToolbar >> backgroundColor: aColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'is 7/1/2024 22:39'
+	#'squeak_changestamp' : 'si 7/10/2024 13:22'
 }
 WBToolbar >> buttonFunctionalityForArrow [
 
-	^ [:aButton | self canvas spawnAnElement: ((WBLine newWithCanvas: self canvas) arrowHead: true) At: aButton currentEvent]
+	^ [:aButton | self canvas spawnAnElement: ((WBLine newWithCanvas: self canvas) arrowHead: true) At: aButton currentMouseEvent]
 ]
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 12:25'
+	#'squeak_changestamp' : 'si 7/10/2024 13:22'
 }
 WBToolbar >> buttonFunctionalityForCircle [
 
-	^ [:aButton | self canvas spawnAnElement: (WBCircle newWithCanvas: self canvas) At: aButton currentEvent]
+	^ [:aButton | self canvas spawnAnElement: (WBCircle newWithCanvas: self canvas) At: aButton currentMouseEvent]
 ]
 
 {
@@ -134,11 +134,11 @@ WBToolbar >> buttonFunctionalityForGlobalColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'is 7/1/2024 22:39'
+	#'squeak_changestamp' : 'si 7/10/2024 13:22'
 }
 WBToolbar >> buttonFunctionalityForLine [
 
-	^ [:aButton | self canvas spawnAnElement: ((WBLine newWithCanvas: self canvas) arrowHead: false) At: aButton currentEvent]
+	^ [:aButton | self canvas spawnAnElement: ((WBLine newWithCanvas: self canvas) arrowHead: false) At: aButton currentMouseEvent]
 ]
 
 {
@@ -152,20 +152,20 @@ WBToolbar >> buttonFunctionalityForLineChoosing [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 12:25'
+	#'squeak_changestamp' : 'si 7/10/2024 13:23'
 }
 WBToolbar >> buttonFunctionalityForNote [
 
-	^ [:aButton | self canvas spawnAnElement: (WBNote newWithCanvas: self canvas) At: aButton currentEvent]
+	^ [:aButton | self canvas spawnAnElement: (WBNote newWithCanvas: self canvas) At: aButton currentMouseEvent]
 ]
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 12:25'
+	#'squeak_changestamp' : 'si 7/10/2024 13:23'
 }
 WBToolbar >> buttonFunctionalityForRectangle [
 
-	^ [:aButton | self canvas spawnAnElement: (WBRectangle newWithCanvas: self canvas) At: aButton currentEvent]
+	^ [:aButton | self canvas spawnAnElement: (WBRectangle newWithCanvas: self canvas) At: aButton currentMouseEvent]
 ]
 
 {
@@ -179,11 +179,11 @@ WBToolbar >> buttonFunctionalityForShapeChoosing [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'JK 6/30/2024 14:56'
+	#'squeak_changestamp' : 'si 7/10/2024 13:23'
 }
 WBToolbar >> buttonFunctionalityForTextbox [
 
-	^ [:aButton | self canvas spawnAnElement: (WBTextbox newWithCanvas: self canvas) At: aButton currentEvent]
+	^ [:aButton | self canvas spawnAnElement: (WBTextbox newWithCanvas: self canvas) At: aButton currentMouseEvent]
 ]
 
 {
