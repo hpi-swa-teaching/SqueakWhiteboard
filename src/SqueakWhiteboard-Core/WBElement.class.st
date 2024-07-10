@@ -12,10 +12,8 @@ Class {
 		'canvas',
 		'popUp',
 		'resizeFrame',
-		'textBorderOffset',
 		'textField',
 		'lastMouseClick',
-		'doubleClickMaxDelta',
 		'supportsText',
 		'morph',
 		'resizable'
@@ -47,11 +45,11 @@ WBElement class >> defaultBorderWidth [
 
 {
 	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:23'
 }
 WBElement class >> defaultSize [
 
-	^ 100@100
+	^ 100 @ 100
 ]
 
 {
@@ -61,6 +59,24 @@ WBElement class >> defaultSize [
 WBElement class >> defaultSizeOfPopUp [
 
 	^ 20
+]
+
+{
+	#category : #layout,
+	#'squeak_changestamp' : 'si 7/10/2024 13:36'
+}
+WBElement class >> defaultTextBorderOffset [
+
+	^ 10
+]
+
+{
+	#category : #text,
+	#'squeak_changestamp' : 'si 7/10/2024 16:13'
+}
+WBElement class >> doubleClickMaxDelta [
+
+	^ 200 
 ]
 
 {
@@ -76,16 +92,17 @@ WBElement class >> newWithCanvas: aCanvas [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/23/2024 01:29'
+	#'squeak_changestamp' : 'si 7/10/2024 17:09'
 }
 WBElement >> activateTextbox: anEvent [
 	
-	self canvas deactivateTextbox.
-	self canvas deactivateElement.
+	self canvas 
+		deactivateTextbox;
+		deactivateElement;
+		activeTextbox: self.
 	self textField 
 		enabled: true;
-		mouseDown: anEvent.
-	self canvas activeTextbox: self
+		mouseDown: anEvent
 ]
 
 {
@@ -185,51 +202,49 @@ WBElement >> bounds: someBounds [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+	#'squeak_changestamp' : 'si 7/10/2024 16:58'
 }
 WBElement >> buttonFunctionalityForBorderColor [
 
-	^ [:aButton | self morph borderColor: aButton color.
-		self morph borderWidth: self class defaultBorderWidth]
+	^ [:aButton | self morph borderColor: aButton color]
 ]
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:22'
 }
 WBElement >> buttonFunctionalityForBorderColorPalette [
 
-	^ [:aButton | (self popUp popUp) ifNotNil: [self popUp popUp delete].
-		self popUp makePopUpAt: aButton topCenter - ( 0 @ (self class defaultSizeOfPopUp / 2)) with: self makeBorderColorButtons columns: self class defaultBorderColorColumns]
+	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeBorderColorButtons columns: self class defaultBorderColorColumns]
 ]
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'is 6/18/2024 17:32'
+	#'squeak_changestamp' : 'si 7/10/2024 17:00'
 }
 WBElement >> buttonFunctionalityForColor [
 
-	^ [:aButton |self morph color: aButton color]
+	^ [:aButton | self morph borderColor = self color ifTrue: [self morph borderColor: aButton color].
+		self morph color: aButton color]
 ]
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:21'
 }
 WBElement >> buttonFunctionalityForColorPalette [
 
-	^ [:aButton | (self popUp popUp) ifNotNil: [self popUp popUp delete].
-		self popUp makePopUpAt: aButton topCenter - ( 0 @ (self class defaultSizeOfPopUp / 2)) with: self makeColorButtons columns: self class defaultBorderColorColumns]
+	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: self class defaultBorderColorColumns]
 ]
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'is 6/23/2024 01:30'
+	#'squeak_changestamp' : 'si 7/10/2024 13:31'
 }
 WBElement >> buttonFunctionalityForCopy [
 
 	^ [:aButton | self canvas deactivateElement. 
-		self canvas spawnACopiedElement: self veryDeepCopy At: aButton currentEvent cursorPoint]
+		self canvas spawnAnElement: self veryDeepCopy At: aButton currentMouseEvent]
 ]
 
 {
@@ -243,42 +258,45 @@ WBElement >> buttonFunctionalityForDelete [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+	#'squeak_changestamp' : 'si 7/10/2024 17:01'
 }
 WBElement >> buttonFunctionalityForTransparentBorderColor [
 
-	^ [:aButton | self morph borderColor: Color transparent.
-		self morph borderWidth: self class defaultBorderWidth]
+	^ [:aButton | self morph borderColor: self color]
 ]
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 7/5/2024 11:15'
+	#'squeak_changestamp' : 'si 7/10/2024 17:01'
 }
 WBElement >> buttonFunctionalityForTransparentColor [
 
-	^ [:aButton |self morph color: Color transparent]
+	^ [:aButton | self morph color: Color transparent]
 ]
 
 {
 	#category : #'button creation',
-	#'squeak_changestamp' : 'ACL 6/23/2024 15:51'
+	#'squeak_changestamp' : 'si 7/10/2024 12:13'
 }
 WBElement >> buttonsForPopUpBar [
 
 	^ OrderedCollection new
 		add: (WBButton new
 			block: self buttonFunctionalityForDelete;
-			backgroundColor: Color red);
+			backgroundColor: Color red;
+			image: (ImageMorph new image: (self canvas images resize: WBImage loadDenyButtonImage to: self imageSize)));
 		add: (WBButton new
 			block: self buttonFunctionalityForCopy;
-			backgroundColor: Color blue muchDarker);
+			backgroundColor: Color white;
+			image: (ImageMorph new image: (self canvas images resize: WBImage loadSmallDuplicateButtonImage to: self imageSize)));
 		add: (WBButton new
 			block: self buttonFunctionalityForColorPalette;
-			backgroundColor: Color gray);
+			backgroundColor: Color white;
+			image: (ImageMorph new image: (self canvas images resize: WBImage loadSmallColorsButtonImage to: self imageSize)));
 		add: (WBButton new
 			block: self buttonFunctionalityForBorderColorPalette;
-			backgroundColor: Color black);
+			backgroundColor: Color white;
+			image: (ImageMorph new image: (self canvas images resize: WBImage loadSmallBordercolorButtonImage to: self imageSize)));
 		yourself
 	
 ]
@@ -386,32 +404,14 @@ WBElement >> delete [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'ACL 7/10/2024 11:57'
+	#'squeak_changestamp' : 'si 7/10/2024 17:30'
 }
 WBElement >> detectDoubleClick: anEvent [
 	| delta |
 	
 	self lastMouseClick ifNotNil: [delta := anEvent timeStamp - self lastMouseClick timeStamp].
-	(delta isNumber and: [delta < self doubleClickMaxDelta])
+	(delta isNumber and: [delta < self class doubleClickMaxDelta])
 		ifTrue: [self activateTextbox: anEvent]
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/11/2024 17:58'
-}
-WBElement >> doubleClickMaxDelta [
-
-	^ doubleClickMaxDelta ifNil: [doubleClickMaxDelta := 200]
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/11/2024 17:57'
-}
-WBElement >> doubleClickMaxDelta: aDelta [
-
-	doubleClickMaxDelta := aDelta
 ]
 
 {
@@ -454,11 +454,11 @@ WBElement >> dragOffset: aPoint [
 
 {
 	#category : #drag,
-	#'squeak_changestamp' : 'is 6/23/2024 01:31'
+	#'squeak_changestamp' : 'si 7/10/2024 17:08'
 }
 WBElement >> dragStart: anEvent [
 
-	(self morph)
+	self morph
 		addDropShadow;
 		comeToFront.
 	self dragOffset: self position - anEvent cursorPoint
@@ -475,12 +475,12 @@ WBElement >> extent [
 
 {
 	#category : #'morph functionalities',
-	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:58'
+	#'squeak_changestamp' : 'si 7/10/2024 14:31'
 }
 WBElement >> extent: anExtent [
 	
 	self morph extent: anExtent.
-	self textField ifNotNil: [self textField extent: anExtent - self textBorderOffset].
+	textField ifNotNil: [textField extent: anExtent - self class defaultTextBorderOffset].
 	self popUp ifNotNil: [self setPopupPosition]
 	
 	
@@ -497,8 +497,17 @@ WBElement >> height: aHeight [
 ]
 
 {
+	#category : #layout,
+	#'squeak_changestamp' : 'si 7/10/2024 11:57'
+}
+WBElement >> imageSize [
+
+	^ (self class sizeOfPopUpForStandardElement @ self class sizeOfPopUpForStandardElement) * 0.75
+]
+
+{
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:16'
 }
 WBElement >> initialize [
 	
@@ -506,6 +515,7 @@ WBElement >> initialize [
 	self morph: 
 		self initializeElement;
 		extent: self class defaultSize;
+		borderWidth: 3;
 		color: self canvas globalColor.
 	self setupEventHandling.
 	self supportsText ifTrue: [self initializeTextfield]
@@ -523,18 +533,16 @@ WBElement >> initializeElement [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/23/2024 01:32'
+	#'squeak_changestamp' : 'si 7/10/2024 17:18'
 }
 WBElement >> initializeTextfield [
-	| textfield |
 
-	textfield := WBPluggableTextMorphPlus new.
-	textfield 
-		extent: self extent - (self textBorderOffset @ self textBorderOffset);
+	self textField: WBPluggableTextMorphPlus new.
+	self textField
+		extent: self extent - (self class defaultTextBorderOffset @ self class defaultTextBorderOffset);
 		element: self.
-	textfield textMorph centered.
-	self morph addMorphCentered: textfield.
-	self textField: textfield
+	self textField textMorph centered.
+	self morph addMorphCentered: self textField
 ]
 
 {
@@ -660,7 +668,7 @@ WBElement >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:16'
 }
 WBElement >> makePopWith: aCollection columns: aNumber [
 
@@ -801,7 +809,7 @@ WBElement >> position: aPosition [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:59'
+	#'squeak_changestamp' : 'si 7/10/2024 17:30'
 }
 WBElement >> postDropRoutine: anEvent [
 
@@ -946,26 +954,6 @@ WBElement >> supportsText: aBoolean [
 	aBoolean 
 		ifTrue: [self textField ifNil: [self initializeTextfield]] 
 		ifFalse: [self textField ifNotNil: [self resetTextfield]]
-]
-
-{
-	#category : #appearance,
-	#'squeak_changestamp' : 'is 6/23/2024 01:35'
-}
-WBElement >> textBorderOffset [
-
-	^ textBorderOffset ifNil: [textBorderOffset := 10]
-]
-
-{
-	#category : #appearance,
-	#'squeak_changestamp' : 'is 6/11/2024 17:25'
-}
-WBElement >> textBorderOffset: anOffset [
-
-	textBorderOffset := anOffset
-
-	
 ]
 
 {

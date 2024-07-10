@@ -98,7 +98,7 @@ WBButtonTests >> testButtonHoverColor [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'ACL 7/10/2024 13:31'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:16'
 }
 WBButtonTests >> testMouseDown [
 	| aButton aMouseEvent |
@@ -110,14 +110,14 @@ WBButtonTests >> testMouseDown [
 	self assert: (aButton handlesMouseDown: aMouseEvent) = true.
 	
 	aButton mouseDown: aMouseEvent.
-	self assert: aButton currentEvent = nil.
+	self assert: aButton currentMouseEvent = nil.
 	
 	aButton mouseUp: aMouseEvent.
-	self assert: aButton currentEvent = nil.
+	self assert: aButton currentMouseEvent = nil.
 	
 	aMouseEvent position: aButton position.
 	aButton mouseUp: aMouseEvent.
-	self assert: aButton currentEvent = aMouseEvent
+	self assert: aButton currentMouseEvent = aMouseEvent
 	
 	
 	

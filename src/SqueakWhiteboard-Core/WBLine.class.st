@@ -15,6 +15,13 @@ Class {
 }
 
 {
+	#category : #'linemorph functionalities',
+	#'squeak_changestamp' : 'si 7/10/2024 13:45'
+}
+WBLine >> addDropShadow [
+]
+
+{
 	#category : #geometry,
 	#'squeak_changestamp' : 'is 6/18/2024 00:03'
 }
@@ -162,7 +169,7 @@ WBLine >> initialize [
 
 {
 	#category : #'event handeling',
-	#'squeak_changestamp' : 'ACL 7/10/2024 12:00'
+	#'squeak_changestamp' : 'si 7/10/2024 17:24'
 }
 WBLine >> mouseDown: anEvent [
 
@@ -173,13 +180,15 @@ WBLine >> mouseDown: anEvent [
 					deactivateTextbox.
 				self edges do: [:d | d mouseDown: anEvent].
 				self dragStart: anEvent.
-				(self edges at: 1) showPopUp.
-				self canvas activeElement: (self edges at: 1)]].
+				(self edges at: 2) showPopUp.
+				self canvas activeElement: (self edges at: 2)]].
 	self state = 3 ifTrue:
 		[(self canvas elementToSpawn) isNil ifFalse:
 				[self canvas dropElement: anEvent.
-				self spawnAttachmentsForCopy;
-					state: 2]]
+				self spawnAttachmentsForCopy.
+				self state: 2.
+				self dragStart: anEvent.
+				self edges do: [:d | d mouseDown: anEvent].]]
 ]
 
 {
@@ -195,7 +204,7 @@ WBLine >> mouseMove: anEvent [
 
 {
 	#category : #'event handeling',
-	#'squeak_changestamp' : 'si 7/7/2024 18:18'
+	#'squeak_changestamp' : 'si 7/10/2024 17:22'
 }
 WBLine >> mouseUp: anEvent [
 

@@ -11,7 +11,7 @@ Class {
 		'hoverColor',
 		'block',
 		'image',
-		'currentEvent'
+		'currentMouseEvent'
 	],
 	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 6/23/2024 02:12'
@@ -76,11 +76,11 @@ WBButton >> block: aBlock [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'si 6/19/2024 11:58'
+	#'squeak_changestamp' : 'si 7/10/2024 13:23'
 }
 WBButton >> clickFunctionality: anEvent [
 
-	self currentEvent: anEvent.
+	self currentMouseEvent: anEvent.
 	self block value: self
 ]
 
@@ -104,20 +104,20 @@ WBButton >> clickedColor: aColor [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/13/2024 10:58'
+	#'squeak_changestamp' : 'si 7/10/2024 13:21'
 }
-WBButton >> currentEvent [
+WBButton >> currentMouseEvent [
 
-	^ currentEvent
+	^ currentMouseEvent
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/14/2024 12:49'
+	#'squeak_changestamp' : 'si 7/10/2024 13:21'
 }
-WBButton >> currentEvent: anEvent [
+WBButton >> currentMouseEvent: anEvent [
 
-	currentEvent := anEvent
+	currentMouseEvent := anEvent
 ]
 
 {
