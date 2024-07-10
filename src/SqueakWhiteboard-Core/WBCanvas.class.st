@@ -353,7 +353,7 @@ WBCanvas >> mouseMove: anEvent [
 ]
 
 {
-	#category : #'show text',
+	#category : #appearance,
 	#'squeak_changestamp' : 'si 6/25/2024 15:08'
 }
 WBCanvas >> removeText [
@@ -382,7 +382,7 @@ WBCanvas >> scale: aFactor [
 ]
 
 {
-	#category : #'show text',
+	#category : #appearance,
 	#'squeak_changestamp' : 'ACL 7/10/2024 11:55'
 }
 WBCanvas >> showText: aString [

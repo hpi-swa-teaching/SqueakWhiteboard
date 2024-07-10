@@ -214,7 +214,7 @@ WBLine >> showArrowHead [
 ]
 
 {
-	#category : #buildLine,
+	#category : #'line building',
 	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:21'
 }
 WBLine >> spawnAttachmentsForCopy [
@@ -240,7 +240,7 @@ WBLine >> spawnAttachmentsForCopy [
 ]
 
 {
-	#category : #buildLine,
+	#category : #'line building',
 	#'squeak_changestamp' : 'si 7/7/2024 17:34'
 }
 WBLine >> spawnEdgeOfLineAt: aMouseEvent [
@@ -330,7 +330,7 @@ WBLine >> updateArrowHead [
 ]
 
 {
-	#category : #buildLine,
+	#category : #'line building',
 	#'squeak_changestamp' : 'si 7/5/2024 12:26'
 }
 WBLine >> updateEdges [

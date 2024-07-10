@@ -143,7 +143,7 @@ WBResizeHandle >> mouseMove: anEvent [
 ]
 
 {
-	#category : #sizing,
+	#category : #resize,
 	#'squeak_changestamp' : 'is 6/23/2024 02:00'
 }
 WBResizeHandle >> resize: movement [
@@ -161,7 +161,7 @@ WBResizeHandle >> resizeCursor [
 ]
 
 {
-	#category : #sizing,
+	#category : #resize,
 	#'squeak_changestamp' : 'is 6/23/2024 02:01'
 }
 WBResizeHandle >> setLayout [
