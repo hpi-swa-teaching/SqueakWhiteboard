@@ -383,10 +383,11 @@ WBCanvas >> scale: aFactor [
 
 {
 	#category : #'show text',
-	#'squeak_changestamp' : 'si 6/25/2024 14:48'
+	#'squeak_changestamp' : 'si 7/10/2024 12:15'
 }
 WBCanvas >> showText: aString [
 
+	self text ifNotNil: [self text abandon].
 	self text: (TextMorph new
 		contents: aString;
 		fontName: #Calibri pointSize: 25;

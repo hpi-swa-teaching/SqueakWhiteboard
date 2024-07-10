@@ -49,11 +49,11 @@ WBElement class >> newWithCanvas: aCanvas [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'is 6/18/2024 00:25'
+	#'squeak_changestamp' : 'si 7/10/2024 12:10'
 }
 WBElement class >> sizeOfPopUpForStandardElement [
 
-	^ 20
+	^ 30
 ]
 
 {
@@ -178,7 +178,7 @@ WBElement >> buttonFunctionalityForBorderColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 6/26/2024 11:14'
+	#'squeak_changestamp' : 'si 7/10/2024 11:44'
 }
 WBElement >> buttonFunctionalityForBorderColorPalette [
 
@@ -197,7 +197,7 @@ WBElement >> buttonFunctionalityForColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 6/26/2024 11:14'
+	#'squeak_changestamp' : 'si 7/10/2024 11:44'
 }
 WBElement >> buttonFunctionalityForColorPalette [
 
@@ -226,11 +226,11 @@ WBElement >> buttonFunctionalityForDelete [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 7/5/2024 11:18'
+	#'squeak_changestamp' : 'si 7/10/2024 11:35'
 }
 WBElement >> buttonFunctionalityForTransparentBorderColor [
 
-	^ [:aButton | self morph borderColor: Color transparent.
+	^ [:aButton | self morph borderColor: self color.
 		self morph borderWidth: 3]
 ]
 
@@ -245,7 +245,7 @@ WBElement >> buttonFunctionalityForTransparentColor [
 
 {
 	#category : #'button creation',
-	#'squeak_changestamp' : 'is 7/9/2024 21:15'
+	#'squeak_changestamp' : 'si 7/10/2024 12:13'
 }
 WBElement >> buttonsForPopUpBar [
 
@@ -260,9 +260,11 @@ WBElement >> buttonsForPopUpBar [
 			image: (ImageMorph new image: (self canvas images resize: WBImage loadSmallDuplicateButtonImage to: self imageSize)));
 		add: (WBButton new
 			block: self buttonFunctionalityForColorPalette;
+			backgroundColor: Color white;
 			image: (ImageMorph new image: (self canvas images resize: WBImage loadSmallColorsButtonImage to: self imageSize)));
 		add: (WBButton new
 			block: self buttonFunctionalityForBorderColorPalette;
+			backgroundColor: Color white;
 			image: (ImageMorph new image: (self canvas images resize: WBImage loadSmallBordercolorButtonImage to: self imageSize)));
 		yourself
 	
@@ -483,11 +485,11 @@ WBElement >> height: aHeight [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'is 7/9/2024 22:41'
+	#'squeak_changestamp' : 'si 7/10/2024 11:57'
 }
 WBElement >> imageSize [
 
-	^ "self popUp sizeOfButton * 0.8 "15@15
+	^ (self class sizeOfPopUpForStandardElement @ self class sizeOfPopUpForStandardElement) * 0.75
 ]
 
 {
@@ -654,7 +656,7 @@ WBElement >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'JK 6/25/2024 15:32'
+	#'squeak_changestamp' : 'si 7/10/2024 11:44'
 }
 WBElement >> makePopWith: aCollection columns: aNumber [
 
