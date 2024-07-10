@@ -211,11 +211,11 @@ WBElement >> buttonFunctionalityForBorderColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:22'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:28'
 }
 WBElement >> buttonFunctionalityForBorderColorPalette [
 
-	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeBorderColorButtons columns: self class defaultBorderColorColumns]
+	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class defaultSizeOfPopUp / 2)) with: self makeBorderColorButtons columns: self class defaultBorderColorColumns]
 ]
 
 {
@@ -230,11 +230,11 @@ WBElement >> buttonFunctionalityForColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:21'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:28'
 }
 WBElement >> buttonFunctionalityForColorPalette [
 
-	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: self class defaultBorderColorColumns]
+	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class defaultSizeOfPopUp / 2)) with: self makeColorButtons columns: self class defaultBorderColorColumns]
 ]
 
 {
@@ -498,11 +498,11 @@ WBElement >> height: aHeight [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'si 7/10/2024 11:57'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:27'
 }
 WBElement >> imageSize [
 
-	^ (self class sizeOfPopUpForStandardElement @ self class sizeOfPopUpForStandardElement) * 0.75
+	^ (self class defaultSizeOfPopUp @ self class defaultSizeOfPopUp) * 0.75
 ]
 
 {
