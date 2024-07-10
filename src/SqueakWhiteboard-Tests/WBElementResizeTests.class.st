@@ -40,7 +40,7 @@ WBElementResizeTests >> testRectangleResizeBottom [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:29'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
 }
 WBElementResizeTests >> testRectangleResizeBottomMin [
 	| rectangle frame |
@@ -54,7 +54,7 @@ WBElementResizeTests >> testRectangleResizeBottomMin [
 	frame := rectangle resizeFrame.
 	frame resizeBottom: 100.
 	
-	self assert: rectangle bottom = (100 + WBResizeFrame resizeWidth)
+	self assert: rectangle bottom = (100 + WBResizeFrame defaultResizeWidth)
 	
 ]
 
@@ -120,7 +120,7 @@ WBElementResizeTests >> testRectangleResizeLeftBorder [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:30'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
 }
 WBElementResizeTests >> testRectangleResizeLeftMin [
 	| rectangle frame |
@@ -134,7 +134,7 @@ WBElementResizeTests >> testRectangleResizeLeftMin [
 	frame := rectangle resizeFrame.
 	frame resizeLeft: 250.
 	
-	self assert: rectangle left = (200 - (WBResizeFrame resizeWidth))
+	self assert: rectangle left = (200 - (WBResizeFrame defaultResizeWidth))
 	
 ]
 
@@ -180,7 +180,7 @@ WBElementResizeTests >> testRectangleResizeRightBorder [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:31'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
 }
 WBElementResizeTests >> testRectangleResizeRightMin [
 	| rectangle frame |
@@ -194,7 +194,7 @@ WBElementResizeTests >> testRectangleResizeRightMin [
 	frame := rectangle resizeFrame.
 	frame resizeRight: 100.
 	
-	self assert: rectangle right = (100 + WBResizeFrame resizeWidth)
+	self assert: rectangle right = (100 + WBResizeFrame defaultResizeWidth)
 	
 ]
 
@@ -240,7 +240,7 @@ WBElementResizeTests >> testRectangleResizeTopBorder [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:32'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
 }
 WBElementResizeTests >> testRectangleResizeTopMin [
 	| rectangle frame |
@@ -254,6 +254,6 @@ WBElementResizeTests >> testRectangleResizeTopMin [
 	frame := rectangle resizeFrame.
 	frame resizeTop: 250.
 	
-	self assert: rectangle top = (200 - (WBResizeFrame resizeWidth))
+	self assert: rectangle top = (200 - (WBResizeFrame defaultResizeWidth))
 	
 ]

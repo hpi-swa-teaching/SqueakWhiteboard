@@ -69,13 +69,13 @@ WBResizeHandle >> handlesMouseOver: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/23/2024 01:59'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
 }
 WBResizeHandle >> initializeWithParent: aMorph [
 
 	super initialize.
 	self
- 		extent: WBResizeFrame resizeWidth@WBResizeFrame resizeWidth;
+ 		extent: WBResizeFrame defaultResizeWidth @ WBResizeFrame defaultResizeWidth;
 		frame: aMorph;
 		setLayout;
 		color: Color white;

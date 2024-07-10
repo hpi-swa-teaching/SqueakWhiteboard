@@ -28,11 +28,11 @@ WBResizeBottom >> resizeCursor [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 6/30/2024 21:12'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
 }
 WBResizeBottom >> setLayout [
 
-	self height: WBResizeFrame resizeWidth.
-	self width: self frame width - WBResizeFrame resizeWidth.
+	self height: WBResizeFrame defaultResizeWidth.
+	self width: self frame width - WBResizeFrame defaultResizeWidth.
 	self center: self frame bottomCenter
 ]

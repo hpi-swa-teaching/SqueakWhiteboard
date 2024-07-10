@@ -28,11 +28,11 @@ WBResizeRight >> resizeCursor [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 6/30/2024 21:13'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
 }
 WBResizeRight >> setLayout [
 
-	self height: self frame height - WBResizeFrame resizeWidth.
-	self width: WBResizeFrame resizeWidth.
+	self height: self frame height - WBResizeFrame defaultResizeWidth.
+	self width: WBResizeFrame defaultResizeWidth.
 	self center: self frame rightCenter
 ]

@@ -28,30 +28,39 @@ Class {
 }
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'ACL 7/10/2024 17:04'
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
 }
-WBElement class >> DefaultBorderColorColumns [
+WBElement class >> defaultBorderColorColumns [
 
 	^ 3
 ]
 
 {
-	#category : #'as yet unclassified',
-	#'squeak_changestamp' : 'ACL 7/10/2024 17:04'
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
 }
-WBElement class >> DefaultBorderWidth [
+WBElement class >> defaultBorderWidth [
 
 	^ 3
 ]
 
 {
-	#category : #'instance creation',
-	#'squeak_changestamp' : 'is 6/18/2024 22:28'
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
 }
 WBElement class >> defaultSize [
 
 	^ 100@100
+]
+
+{
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+}
+WBElement class >> defaultSizeOfPopUp [
+
+	^ 20
 ]
 
 {
@@ -63,15 +72,6 @@ WBElement class >> newWithCanvas: aCanvas [
 	^ self basicNew 
 		canvas: aCanvas;
 		initialize
-]
-
-{
-	#category : #popUp,
-	#'squeak_changestamp' : 'is 6/18/2024 00:25'
-}
-WBElement class >> sizeOfPopUpForStandardElement [
-
-	^ 20
 ]
 
 {
@@ -185,22 +185,22 @@ WBElement >> bounds: someBounds [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 7/10/2024 17:00'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
 }
 WBElement >> buttonFunctionalityForBorderColor [
 
 	^ [:aButton | self morph borderColor: aButton color.
-		self morph borderWidth: self class DefaultBorderWidth]
+		self morph borderWidth: self class defaultBorderWidth]
 ]
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 7/10/2024 17:01'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
 }
 WBElement >> buttonFunctionalityForBorderColorPalette [
 
 	^ [:aButton | (self popUp popUp) ifNotNil: [self popUp popUp delete].
-		self popUp makePopUpAt: aButton topCenter - ( 0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeBorderColorButtons columns: self class DefaultBorderColorColumns]
+		self popUp makePopUpAt: aButton topCenter - ( 0 @ (self class defaultSizeOfPopUp / 2)) with: self makeBorderColorButtons columns: self class defaultBorderColorColumns]
 ]
 
 {
@@ -214,12 +214,12 @@ WBElement >> buttonFunctionalityForColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 7/10/2024 16:50'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
 }
 WBElement >> buttonFunctionalityForColorPalette [
 
 	^ [:aButton | (self popUp popUp) ifNotNil: [self popUp popUp delete].
-		self popUp makePopUpAt: aButton topCenter - ( 0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: self class DefaultBorderColorColumns]
+		self popUp makePopUpAt: aButton topCenter - ( 0 @ (self class defaultSizeOfPopUp / 2)) with: self makeColorButtons columns: self class defaultBorderColorColumns]
 ]
 
 {
@@ -243,12 +243,12 @@ WBElement >> buttonFunctionalityForDelete [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 7/10/2024 17:03'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
 }
 WBElement >> buttonFunctionalityForTransparentBorderColor [
 
 	^ [:aButton | self morph borderColor: Color transparent.
-		self morph borderWidth: self class DefaultBorderWidth]
+		self morph borderWidth: self class defaultBorderWidth]
 ]
 
 {
@@ -498,7 +498,7 @@ WBElement >> height: aHeight [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 7/1/2024 22:33'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
 }
 WBElement >> initialize [
 	
@@ -660,14 +660,14 @@ WBElement >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'ACL 7/10/2024 11:58'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
 }
 WBElement >> makePopWith: aCollection columns: aNumber [
 
 	self popUp: 
 		(WBPopUp new
 			setDefaultValues;
-			sizeOfPopUp: self class sizeOfPopUpForStandardElement;
+			sizeOfPopUp: self class defaultSizeOfPopUp;
 			numberOfColumns: aNumber;
 			addButtons: aCollection;
 			yourself).

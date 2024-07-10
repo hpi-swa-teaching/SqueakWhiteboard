@@ -22,19 +22,19 @@ Class {
 }
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'ACL 7/10/2024 16:18'
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:05'
 }
-WBCanvas class >> DefaultFontSize [
+WBCanvas class >> defaultFontSize [
 
 	^25
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/23/2024 01:27'
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
 }
-WBCanvas class >> WhiteBoardSize [
+WBCanvas class >> defaultWhiteBoardSize [
 
 	^ 800
 ]
@@ -315,7 +315,7 @@ WBCanvas >> images: anImage [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/23/2024 01:27'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
 }
 WBCanvas >> initialize [
 	
@@ -323,8 +323,8 @@ WBCanvas >> initialize [
 	self images: WBImage new.
 	self 
 		scale: 1.0;
-		height: (self class WhiteBoardSize * self scale);
-		width: (self class WhiteBoardSize * self scale * self widthToHeightRatio);
+		height: (self class defaultWhiteBoardSize * self scale);
+		width: (self class defaultWhiteBoardSize * self scale * self widthToHeightRatio);
 		color: Color white;
 		borderWidth: 1;
 		borderColor: Color black;
@@ -392,13 +392,13 @@ WBCanvas >> scale: aFactor [
 
 {
 	#category : #appearance,
-	#'squeak_changestamp' : 'ACL 7/10/2024 16:19'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:05'
 }
 WBCanvas >> showText: aString [
 
 	self text: (TextMorph new
 		contents: aString;
-		fontName: #Calibri pointSize: self class DefaultFontSize;
+		fontName: #Calibri pointSize: self class defaultFontSize;
 		lock;
 		yourself).
 	self addMorph: text.

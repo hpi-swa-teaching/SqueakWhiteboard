@@ -12,30 +12,30 @@ Class {
 }
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'ACL 7/10/2024 16:21'
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
 }
-WBEdgeOfLine class >> DefaultCornerRadius [
+WBEdgeOfLine class >> defaultCornerRadius [
 
-	^100
+	^ 100
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'ACL 7/10/2024 16:23'
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
 }
-WBEdgeOfLine class >> DefaultHeight [
+WBEdgeOfLine class >> defaultHeight [
 
-^10
+	^ 10
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'ACL 7/10/2024 16:22'
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
 }
-WBEdgeOfLine class >> DefaultWidth [
+WBEdgeOfLine class >> defaultWidth [
 
-	^10
+	^ 10
 ]
 
 {
@@ -210,15 +210,15 @@ WBEdgeOfLine >> mouseUp: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/10/2024 16:25'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
 }
 WBEdgeOfLine >> setDefaultValues [
 
 	self
 		cornerStyle: #rounded;
-		cornerRadius: self class DefaultCornerRadius;
-		width: self class DefaultWidth;
-		height: self class DefaultHeight;
+		cornerRadius: self class defaultCornerRadius;
+		width: self class defaultWidth;
+		height: self class defaultHeight;
 		color: Color black;
 		supportsText: false
 ]

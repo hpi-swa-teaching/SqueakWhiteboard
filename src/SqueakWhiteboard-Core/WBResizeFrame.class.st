@@ -8,12 +8,18 @@ Class {
 		'handles',
 		'element'
 	],
-	#classVars : [
-		'ResizeWidth'
-	],
 	#category : #'SqueakWhiteboard-Core',
 	#'squeak_changestamp' : 'is 6/23/2024 02:25'
 }
+
+{
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
+}
+WBResizeFrame class >> defaultResizeWidth [
+
+	^ 20
+]
 
 {
 	#category : #'instance creation',
@@ -22,25 +28,6 @@ Class {
 WBResizeFrame class >> newWithParent: aMorph [
 
 	^ self new initializeWithParent: aMorph
-	
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/23/2024 01:56'
-}
-WBResizeFrame class >> resizeWidth [
-
-	^ ResizeWidth ifNil: [ResizeWidth := 20]
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/23/2024 01:56'
-}
-WBResizeFrame class >> resizeWidth: aNumber [
-
-	ResizeWidth := aNumber
 	
 ]
 
@@ -148,46 +135,46 @@ WBResizeFrame >> positionHandles [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/23/2024 01:57'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
 }
 WBResizeFrame >> resizeBottom: aYCoordinate [
 	| newYCoordinate |
 	
-	newYCoordinate := (aYCoordinate min: self element canvas bottom) max: (self top + ResizeWidth).
+	newYCoordinate := (aYCoordinate min: self element canvas bottom) max: (self top + self class defaultResizeWidth).
 	self height: newYCoordinate - self top
 ]
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/23/2024 01:58'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
 }
 WBResizeFrame >> resizeLeft: aXCoordinate [
 	| newXCoordinate |
 	
-	newXCoordinate := (aXCoordinate min: (self right - ResizeWidth)) max: self element canvas left.
+	newXCoordinate := (aXCoordinate min: (self right - self class defaultResizeWidth)) max: self element canvas left.
 	self width: self right - newXCoordinate.
 	self left: newXCoordinate
 ]
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/23/2024 01:58'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
 }
 WBResizeFrame >> resizeRight: aXCoordinate [
 	| newXCoordinate |
 	
-	newXCoordinate := (aXCoordinate min:  self element canvas right) max: (self left + ResizeWidth). 
+	newXCoordinate := (aXCoordinate min:  self element canvas right) max: (self left + self class defaultResizeWidth). 
 	self width: newXCoordinate - self left
 ]
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/23/2024 01:58'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
 }
 WBResizeFrame >> resizeTop: aYCoordinate [
 	| newYCoordinate |
 	
-	newYCoordinate := (aYCoordinate min: (self bottom - ResizeWidth)) max: self element canvas top.
+	newYCoordinate := (aYCoordinate min: (self bottom - self class defaultResizeWidth)) max: self element canvas top.
 	self height: self bottom - newYCoordinate.
 	self top: newYCoordinate
 ]

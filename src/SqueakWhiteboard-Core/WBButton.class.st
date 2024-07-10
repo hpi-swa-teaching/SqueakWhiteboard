@@ -18,10 +18,10 @@ Class {
 }
 
 {
-	#category : #size,
-	#'squeak_changestamp' : 'is 6/23/2024 01:27'
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
 }
-WBButton class >> cornerRadius [
+WBButton class >> defaultCornerRadius [
 
 	^ 20
 ]
@@ -121,6 +121,16 @@ WBButton >> currentEvent: anEvent [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:08'
+}
+WBButton >> defaultMargin [ 
+
+	^ margin
+	
+]
+
+{
 	#category : #'event handling',
 	#'squeak_changestamp' : 'is 5/19/2024 16:21'
 }
@@ -186,16 +196,6 @@ WBButton >> initialize [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/14/2024 12:51'
-}
-WBButton >> margin [ 
-
-	^ margin
-	
-]
-
-{
-	#category : #accessing,
 	#'squeak_changestamp' : 'is 6/23/2024 01:16'
 }
 WBButton >> margin: aMargin [
@@ -244,12 +244,12 @@ WBButton >> mouseUp: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/14/2024 12:50'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
 }
 WBButton >> setDefaultValues [
 
 	self
 		cornerStyle: #rounded;
-		cornerRadius: self class cornerRadius;
+		cornerRadius: self class defaultCornerRadius;
 		color: Color lightBlue
 ]
