@@ -38,7 +38,7 @@ WBEdgeOfLine >> buttonFunctionalityForColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:05'
+	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:26'
 }
 WBEdgeOfLine >> buttonFunctionalityForCopy [
 |copy|

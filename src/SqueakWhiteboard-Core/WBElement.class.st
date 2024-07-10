@@ -878,10 +878,11 @@ WBElement >> right [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'JK 6/25/2024 16:01'
+	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:22'
 }
 WBElement >> setPopupPosition [
-	self popUp center:  self topCenter - (0@10) - (0@(self popUp height/2))
+
+	self popUp center: self topCenter - (0 @ 10) - (0 @ (self popUp height/2))
 	
 ]
 

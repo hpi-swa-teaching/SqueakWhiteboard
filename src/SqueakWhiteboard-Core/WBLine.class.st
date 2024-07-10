@@ -164,7 +164,7 @@ WBLine >> initialize [
 
 {
 	#category : #'event handeling',
-	#'squeak_changestamp' : 'nicloeser 7/9/2024 18:25'
+	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:20'
 }
 WBLine >> mouseDown: anEvent [
 
@@ -180,8 +180,8 @@ WBLine >> mouseDown: anEvent [
 	self state = 3 ifTrue:
 		[(self canvas elementToSpawn) isNil ifFalse:
 				[self canvas dropElement: anEvent.
-				self spawnAttachmentsForCopy.
-				self state: 2.]]
+				self spawnAttachmentsForCopy;
+					state: 2.]]
 ]
 
 {
@@ -217,7 +217,7 @@ WBLine >> showArrowHead [
 
 {
 	#category : #buildLine,
-	#'squeak_changestamp' : 'nicloeser 7/9/2024 18:30'
+	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:21'
 }
 WBLine >> spawnAttachmentsForCopy [
 	
@@ -226,14 +226,14 @@ WBLine >> spawnAttachmentsForCopy [
 				canvas: self canvas;
 				center: (self morph vertices at: 2);
 				line: self;
-				yourself).
-	self edges add: ((WBEdgeOfLine newWithCanvas: self canvas)
+				yourself);
+				add: ((WBEdgeOfLine newWithCanvas: self canvas)
 				canvas: self canvas;
 				center: (self morph vertices at: 1);
 				line: self;
 				yourself).
-	self canvas addElement: (self edges at: 1).
-	self canvas addElement: (self edges at: 2).
+	self canvas addElement: (self edges at: 1);
+		addElement: (self edges at: 2).
 	self updateEdges
 	
 	
