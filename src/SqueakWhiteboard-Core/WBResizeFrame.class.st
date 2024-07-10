@@ -111,14 +111,14 @@ WBResizeFrame >> handles: anObject [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/23/2024 01:57'
+	#'squeak_changestamp' : 'nicloeser 7/10/2024 12:00'
 }
 WBResizeFrame >> initializeWithParent: aMorph [
 
 	super initialize.
 	self
 		element: aMorph;
-		bounds: element bounds;
+		bounds: self element bounds;
 		color: Color transparent;
 		borderColor: Color gray;
 		borderWidth: 1;
@@ -128,12 +128,12 @@ WBResizeFrame >> initializeWithParent: aMorph [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 6/23/2024 01:57'
+	#'squeak_changestamp' : 'nicloeser 7/10/2024 12:01'
 }
 WBResizeFrame >> position: aPosition [
 	
 	self element position: aPosition.
-	super position: element position.
+	super position: self element position.
 	self positionHandles
 ]
 

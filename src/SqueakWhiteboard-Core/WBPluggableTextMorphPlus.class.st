@@ -94,10 +94,10 @@ WBPluggableTextMorphPlus >> handlesMouseOver: anEvent [
 
 {
 	#category : #styling,
-	#'squeak_changestamp' : 'is 6/22/2024 00:20'
+	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:48'
 }
 WBPluggableTextMorphPlus >> hasUnacceptedEdits: aBoolean [
-	"overwrite hasUnacceptedEdits so that orange triangle doesn't appear"
+"overwrite hasUnacceptedEdits so that orange triangle doesn't appear"
 	
 	hasUnacceptedEdits := false
 

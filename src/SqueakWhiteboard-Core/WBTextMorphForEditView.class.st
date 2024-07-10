@@ -28,25 +28,24 @@ WBTextMorphForEditView >> handlesMouseDown: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/23/2024 02:03'
+	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:52'
 }
 WBTextMorphForEditView >> keyStroke: anEvent [
-	"When esc is pressed, the focus from the textfield should be removed"
-	| char |
+| char |
 	
 	((char := anEvent keyCharacter) = Character escape) ifTrue: 
-		[self editView element canvas deactivateTextbox]. "hurts law of demeter. Should be refactored in the near future"
+		[self editView element canvas deactivateTextbox].
 	super keyStroke: anEvent
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/25/2024 16:28'
+	#'squeak_changestamp' : 'nicloeser 7/10/2024 12:03'
 }
 WBTextMorphForEditView >> setDefaultContentsIfNil [
 	| toUse |
 	
-	text ifNil:
+	self text ifNil:
 		[toUse := self valueOfProperty: #defaultContents.
 		toUse ifNil: [toUse :='' asText].
 		text := toUse]

@@ -160,9 +160,9 @@ WBResizeBar >> resizeCursor [
 
 {
 	#category : #sizing,
-	#'squeak_changestamp' : 'JK 6/30/2024 21:20'
+	#'squeak_changestamp' : 'nicloeser 7/10/2024 12:00'
 }
 WBResizeBar >> setLayout [
 
-	self center: frame position
+	self center: self frame position
 ]

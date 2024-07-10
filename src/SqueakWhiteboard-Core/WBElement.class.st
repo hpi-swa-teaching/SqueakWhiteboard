@@ -458,12 +458,12 @@ WBElement >> extent [
 
 {
 	#category : #'morph functionalities',
-	#'squeak_changestamp' : 'JK 6/25/2024 15:43'
+	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:58'
 }
 WBElement >> extent: anExtent [
 	
 	self morph extent: anExtent.
-	textField ifNotNil: [textField extent: anExtent - self textBorderOffset].
+	self textField ifNotNil: [self textField extent: anExtent - self textBorderOffset].
 	self popUp ifNotNil: [self setPopupPosition]
 	
 	
@@ -784,11 +784,11 @@ WBElement >> position: aPosition [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/25/2024 16:17'
+	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:59'
 }
 WBElement >> postDropRoutine: anEvent [
 
-	supportsText ifTrue: [self activateTextbox: anEvent]
+	self supportsText ifTrue: [self activateTextbox: anEvent]
 ]
 
 {

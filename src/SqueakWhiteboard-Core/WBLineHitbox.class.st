@@ -9,10 +9,9 @@ Class {
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'si 7/7/2024 15:12'
+	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:47'
 }
 WBLineHitbox >> containsPoint: aPoint [ 
-"Extend the bounds to include the border area"
 
         ^ self isClickNearLine: aPoint
 ]
@@ -48,11 +47,11 @@ WBLineHitbox >> initialize [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'si 7/7/2024 15:11'
+	#'squeak_changestamp' : 'nicloeser 7/10/2024 12:00'
 }
 WBLineHitbox >> isClickNearLine: aPoint [
 
-	^ self point: aPoint isNearLineFrom: (self vertices at: 1) to: (self vertices at: 2) within: borderWidth / 2
+	^ self point: aPoint isNearLineFrom: (self vertices at: 1) to: (self vertices at: 2) within: self borderWidth / 2
 ]
 
 {
