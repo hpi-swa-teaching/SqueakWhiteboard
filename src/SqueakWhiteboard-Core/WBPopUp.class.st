@@ -43,15 +43,6 @@ WBPopUp class >> margin [
 ]
 
 {
-	#category : #size,
-	#'squeak_changestamp' : 'si 7/10/2024 11:32'
-}
-WBPopUp class >> standardSizeOfPopUp [
-
-	^ 20
-]
-
-{
 	#category : #'adding buttons',
 	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
 }
