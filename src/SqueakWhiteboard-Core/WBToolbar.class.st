@@ -10,7 +10,6 @@ Class {
 		'toolbarWidth',
 		'buttons',
 		'backgroundColor',
-		'aPoint',
 		'popUp'
 	],
 	#category : #'SqueakWhiteboard-Core',
@@ -531,15 +530,15 @@ WBToolbar >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:45'
+	#'squeak_changestamp' : 'ACL 7/10/2024 14:02'
 }
 WBToolbar >> placeButtons: someButtons [
 	
 	someButtons doWithIndex: [:aButton :anIndex| 
 		aButton 
-			margin:  WBToolbar margin;
+			margin:  self class margin;
 			extent: self buttonSize;
-			center: (self bounds origin x + self toolbarWidth / 2) @ (self bounds origin y + ((self buttonSize y + WBToolbar margin) * anIndex) ) - (0 @ self buttonSize y / 2);
+			center: (self bounds origin x + self toolbarWidth / 2) @ (self bounds origin y + ((self buttonSize y + self class margin) * anIndex) ) - (0 @ self buttonSize y / 2);
 			addImage.
 		self addMorph: aButton].
 	self buttons: someButtons

@@ -59,17 +59,15 @@ WBLine >> buttonsForPopUpBar [
 
 {
 	#category : #arrow,
-	#'squeak_changestamp' : 'ACL 7/10/2024 11:59'
+	#'squeak_changestamp' : 'ACL 7/10/2024 13:51'
 }
 WBLine >> checkForArrowHead [
 
 	self arrowHead
-		ifFalse: [self arrowHead: (WBArrowhead new isVisible: false).
-			self addMorph: self arrowHead.
-			self updateArrowHead]
-		ifTrue: [self arrowHead: (WBArrowhead new isVisible: true).
-			self addMorph: self arrowHead.
-			self updateArrowHead]
+		ifFalse: [self arrowHead: (WBArrowhead new isVisible: false)]
+		ifTrue: [self arrowHead: (WBArrowhead new isVisible: true)].
+	self addMorph: self arrowHead.
+	self updateArrowHead
 ]
 
 {

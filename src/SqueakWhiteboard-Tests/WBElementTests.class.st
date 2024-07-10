@@ -18,11 +18,11 @@ WBElementTests >> canvas [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/22/2024 00:50'
+	#'squeak_changestamp' : 'ACL 7/10/2024 13:47'
 }
-WBElementTests >> canvas: aCavas [
+WBElementTests >> canvas: aCanvas [
 
-	canvas := aCavas
+	canvas := aCanvas
 ]
 
 {

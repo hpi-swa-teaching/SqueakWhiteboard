@@ -272,10 +272,10 @@ WBTextfieldTests >> testTextfieldKeyboardEventHandling [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'is 6/26/2024 10:39'
+	#'squeak_changestamp' : 'ACL 7/10/2024 14:00'
 }
 WBTextfieldTests >> testTextfieldMouseEventHandling [
-	| anElement aFirstMouseEvent aSecondMouseEvent prevCursor |
+	| anElement aFirstMouseEvent aSecondMouseEvent |
 	
 	anElement := WBRectangle newWithCanvas: self canvas.
 	aFirstMouseEvent := MouseButtonEvent new.

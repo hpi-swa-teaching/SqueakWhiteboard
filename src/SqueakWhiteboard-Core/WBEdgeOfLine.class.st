@@ -39,10 +39,10 @@ WBEdgeOfLine >> buttonFunctionalityForColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:26'
+	#'squeak_changestamp' : 'ACL 7/10/2024 13:31'
 }
 WBEdgeOfLine >> buttonFunctionalityForCopy [
-|copy|
+	|copy|
 	
 	^ [:aButton | self canvas deactivateElement. 
 		copy := self line veryDeepCopy.
@@ -76,15 +76,12 @@ WBEdgeOfLine >> buttonsForPopUpBar [
 
 {
 	#category : #geometry,
-	#'squeak_changestamp' : 'is 6/23/2024 01:45'
+	#'squeak_changestamp' : 'ACL 7/10/2024 13:50'
 }
 WBEdgeOfLine >> checkArrwoDirection [
 
-	(self line edges at: 1) = self
-		ifTrue: 
-			[self switchDirection.
-			self line switchVisibilityOfArrowHead]
-		ifFalse: [self line switchVisibilityOfArrowHead] 
+	(self line edges at: 1) = self	ifTrue: [self switchDirection].
+	self line switchVisibilityOfArrowHead
 ]
 
 {

@@ -1,7 +1,11 @@
+"
+This class represent a concrete textbox
+"
 Class {
 	#name : #WBTextbox,
 	#superclass : #WBRectangularElement,
-	#category : #'SqueakWhiteboard-Core'
+	#category : #'SqueakWhiteboard-Core',
+	#'squeak_changestamp' : 'ACL 7/10/2024 13:44'
 }
 
 {

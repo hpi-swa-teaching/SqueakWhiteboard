@@ -81,15 +81,6 @@ WBImage class >> loadTextboxButtonImage [
 ]
 
 {
-	#category : #initialize,
-	#'squeak_changestamp' : 'nicloeser 5/27/2024 13:34'
-}
-WBImage >> initialize [
-
-	super initialize
-]
-
-{
 	#category : #edit,
 	#'squeak_changestamp' : 'is 6/23/2024 02:21'
 }
