@@ -299,7 +299,7 @@ WBTextfieldTests >> testTextfieldMouseEventHandling [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'si 7/10/2024 14:35'
+	#'squeak_changestamp' : 'si 7/10/2024 16:04'
 }
 WBTextfieldTests >> testTextfieldResize [
 	| anElement elementBounds textfieldBounds |
@@ -317,16 +317,14 @@ WBTextfieldTests >> testTextfieldResize [
 	elementBounds := anElement bounds.
 	
 	self assert: elementBounds origin = ((textfieldBounds origin x - (anElement class defaultTextBorderOffset / 2)) @ (textfieldBounds origin y - (anElement class defaultTextBorderOffset / 2))).
-	self assert: elementBounds corner = ((textfieldBounds origin x - (anElement class defaultTextBorderOffset / 2)) @ (textfieldBounds origin y - (anElement class defaultTextBorderOffset / 2))).
+	self assert: elementBounds corner = ((textfieldBounds corner x + (anElement class defaultTextBorderOffset / 2)) @ (textfieldBounds corner y + (anElement class defaultTextBorderOffset / 2))).
 	
 	anElement extent: anElement extent * (-2).
 	textfieldBounds := anElement textField bounds.
 	elementBounds := anElement bounds.
 	
 	self assert: elementBounds origin = ((textfieldBounds origin x - (anElement class defaultTextBorderOffset / 2)) @ (textfieldBounds origin y - (anElement class defaultTextBorderOffset / 2))).
-	self assert: elementBounds corner = ((textfieldBounds origin x - (anElement class defaultTextBorderOffset / 2)) @ (textfieldBounds origin y - (anElement class defaultTextBorderOffset / 2))).
-	
-	
+	self assert: elementBounds corner = ((textfieldBounds corner x + (anElement class defaultTextBorderOffset / 2)) @ (textfieldBounds corner y + (anElement class defaultTextBorderOffset / 2)))
 ]
 
 {
