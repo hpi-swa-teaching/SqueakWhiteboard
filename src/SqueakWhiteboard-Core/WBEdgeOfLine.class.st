@@ -13,9 +13,10 @@ Class {
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'si 6/14/2024 11:48'
+	#'squeak_changestamp' : 'ACL 7/10/2024 12:08'
 }
 WBEdgeOfLine >> addResizeFrame [
+"overwrites Method because the line should not have a resize frame."
 ]
 
 {

@@ -102,12 +102,12 @@ WBToolbar >> buttonFunctionalityForDeleteAll [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/25/2024 15:06'
+	#'squeak_changestamp' : 'ACL 7/10/2024 12:12'
 }
 WBToolbar >> buttonFunctionalityForDeleteCancel [
 
 	^ [:aButton | self deactivateElement.
-		self canvas removeText.]
+		self canvas removeText]
 ]
 
 {

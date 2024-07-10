@@ -59,17 +59,17 @@ WBLine >> buttonsForPopUpBar [
 
 {
 	#category : #arrow,
-	#'squeak_changestamp' : 'si 6/25/2024 14:10'
+	#'squeak_changestamp' : 'ACL 7/10/2024 11:59'
 }
 WBLine >> checkForArrowHead [
 
 	self arrowHead
 		ifFalse: [self arrowHead: (WBArrowhead new isVisible: false).
 			self addMorph: self arrowHead.
-			self updateArrowHead.]
+			self updateArrowHead]
 		ifTrue: [self arrowHead: (WBArrowhead new isVisible: true).
 			self addMorph: self arrowHead.
-			self updateArrowHead.]
+			self updateArrowHead]
 ]
 
 {
@@ -164,7 +164,7 @@ WBLine >> initialize [
 
 {
 	#category : #'event handeling',
-	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:20'
+	#'squeak_changestamp' : 'ACL 7/10/2024 12:00'
 }
 WBLine >> mouseDown: anEvent [
 
@@ -181,7 +181,7 @@ WBLine >> mouseDown: anEvent [
 		[(self canvas elementToSpawn) isNil ifFalse:
 				[self canvas dropElement: anEvent.
 				self spawnAttachmentsForCopy;
-					state: 2.]]
+					state: 2]]
 ]
 
 {

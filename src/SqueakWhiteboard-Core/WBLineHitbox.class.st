@@ -120,17 +120,13 @@ WBLineHitbox >> mouseUp: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'si 7/7/2024 15:11'
+	#'squeak_changestamp' : 'ACL 7/10/2024 12:10'
 }
 WBLineHitbox >> point: p isNearLineFrom: p1 to: p2 within: distance [
 	|slope b distanceToP|
-	"compute slope"
-	slope := (p2 y - p1 y)/(p2 x - p1 x).
-	
-	"compute b for line"
+
+	slope := (p2 y - p1 y) / (p2 x - p1 x).
 	b := p1 y - (slope * p1 x).
-	
-	"compute distance to p"
 	distanceToP := (((slope negated * p x) + (p y) - b) abs) / (slope * slope + 1) sqrt. 
-	^ distanceToP <= distance. 
+	^ distanceToP <= distance
 ]

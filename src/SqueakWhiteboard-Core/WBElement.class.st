@@ -108,13 +108,12 @@ WBElement >> addOwnMorphTo: aMorph [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'JK 6/30/2024 15:40'
+	#'squeak_changestamp' : 'ACL 7/10/2024 11:55'
 }
 WBElement >> addResizeFrame [
 	
 	self resizable ifTrue: [
-		self resizeFrame: (WBResizeFrame newWithParent: self)
-	]
+		self resizeFrame: (WBResizeFrame newWithParent: self)]
 	
 	
 
@@ -369,7 +368,7 @@ WBElement >> delete [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/23/2024 01:31'
+	#'squeak_changestamp' : 'ACL 7/10/2024 11:57'
 }
 WBElement >> detectDoubleClick: anEvent [
 	| delta |
@@ -408,7 +407,7 @@ WBElement >> dragEnd: anEvent [
 
 {
 	#category : #drag,
-	#'squeak_changestamp' : 'is 6/22/2024 00:48'
+	#'squeak_changestamp' : 'ACL 7/10/2024 11:57'
 }
 WBElement >> dragMove: mouseEvent [
 	| newPosition |
@@ -643,7 +642,7 @@ WBElement >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'JK 6/25/2024 15:32'
+	#'squeak_changestamp' : 'ACL 7/10/2024 11:58'
 }
 WBElement >> makePopWith: aCollection columns: aNumber [
 
@@ -654,7 +653,7 @@ WBElement >> makePopWith: aCollection columns: aNumber [
 			numberOfColumns: aNumber;
 			addButtons: aCollection;
 			yourself).
-	self morph addMorph: self popUp.
+	self morph addMorph: self popUp
 	
 ]
 

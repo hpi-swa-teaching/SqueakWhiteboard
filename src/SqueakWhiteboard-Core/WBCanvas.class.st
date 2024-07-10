@@ -103,13 +103,13 @@ WBCanvas >> createDrawingSurface [
 
 {
 	#category : #'handle elements',
-	#'squeak_changestamp' : 'si 6/25/2024 15:05'
+	#'squeak_changestamp' : 'ACL 7/10/2024 11:54'
 }
 WBCanvas >> deactivateElement [
 
 	self activeElement ifNotNil: 
 		[self activeElement deactivateElement.
-		self activeElement: nil].
+		self activeElement: nil]
 
 ]
 
@@ -383,7 +383,7 @@ WBCanvas >> scale: aFactor [
 
 {
 	#category : #'show text',
-	#'squeak_changestamp' : 'si 6/25/2024 14:48'
+	#'squeak_changestamp' : 'ACL 7/10/2024 11:55'
 }
 WBCanvas >> showText: aString [
 
@@ -393,7 +393,7 @@ WBCanvas >> showText: aString [
 		lock;
 		yourself).
 	self addMorph: text.
-	self text center: self center.
+	self text center: self center
 ]
 
 {
@@ -414,7 +414,7 @@ WBCanvas >> spawnACopiedElement: anElement At: aPoint [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'nicloeser 7/9/2024 10:27'
+	#'squeak_changestamp' : 'ACL 7/10/2024 11:55'
 }
 WBCanvas >> spawnACopiedLine: anElement At: aPoint [
 	
@@ -424,7 +424,7 @@ WBCanvas >> spawnACopiedLine: anElement At: aPoint [
 			dragOffset: anElement position - aPoint;
 			canvas: self;
 			yourself).
-	self addElement: anElement.
+	self addElement: anElement
 	
 ]
 
