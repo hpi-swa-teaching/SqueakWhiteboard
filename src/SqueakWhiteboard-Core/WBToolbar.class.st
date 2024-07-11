@@ -44,7 +44,7 @@ WBToolbar class >> textForDeleteAll [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'is 5/28/2024 15:41'
 }
 WBToolbar >> backgroundColor [
@@ -53,7 +53,7 @@ WBToolbar >> backgroundColor [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'is 5/28/2024 15:47'
 }
 WBToolbar >> backgroundColor: aColor [
@@ -186,7 +186,7 @@ WBToolbar >> buttonFunctionalityForTextbox [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBToolbar >> buttonSize [
@@ -304,7 +304,7 @@ WBToolbar >> createToolbarButtons [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'si 6/17/2024 13:43'
 }
 WBToolbar >> deactivateElement [
@@ -491,7 +491,7 @@ WBToolbar >> getTextboxButton [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'is 6/23/2024 02:09'
 }
 WBToolbar >> imageSize [
@@ -566,7 +566,7 @@ WBToolbar >> popUp: aPopUp [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'nicloeser 7/10/2024 12:04'
 }
 WBToolbar >> setLayout [
@@ -580,7 +580,7 @@ WBToolbar >> setLayout [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'is 6/23/2024 02:07'
 }
 WBToolbar >> toolbarCanvasSizeFactor [
@@ -589,7 +589,7 @@ WBToolbar >> toolbarCanvasSizeFactor [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'is 5/18/2024 17:16'
 }
 WBToolbar >> toolbarHeight [
@@ -598,7 +598,7 @@ WBToolbar >> toolbarHeight [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'is 5/18/2024 18:41'
 }
 WBToolbar >> toolbarHeight: aNumber [
@@ -608,7 +608,7 @@ WBToolbar >> toolbarHeight: aNumber [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'is 5/18/2024 17:17'
 }
 WBToolbar >> toolbarWidth [
@@ -617,7 +617,7 @@ WBToolbar >> toolbarWidth [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'is 6/23/2024 02:07'
 }
 WBToolbar >> toolbarWidth: aNumber [
@@ -627,7 +627,7 @@ WBToolbar >> toolbarWidth: aNumber [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'is 5/28/2024 15:45'
 }
 WBToolbar >> updateColor [
@@ -636,7 +636,7 @@ WBToolbar >> updateColor [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'is 6/23/2024 02:07'
 }
 WBToolbar >> updateDimensions [
