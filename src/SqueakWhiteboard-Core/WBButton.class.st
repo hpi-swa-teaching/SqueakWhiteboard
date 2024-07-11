@@ -121,6 +121,16 @@ WBButton >> currentMouseEvent: anEvent [
 ]
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
+}
+WBButton >> defaultMargin [ 
+
+	^ margin
+	
+]
+
+{
 	#category : #'event handling',
 	#'squeak_changestamp' : 'is 5/19/2024 16:21'
 }
@@ -182,16 +192,6 @@ WBButton >> initialize [
 
 	super initialize.
 	self setDefaultValues
-]
-
-{
-	#category : #accessing,
-	#'squeak_changestamp' : 'si 6/14/2024 12:51'
-}
-WBButton >> margin [ 
-
-	^ margin
-	
 ]
 
 {

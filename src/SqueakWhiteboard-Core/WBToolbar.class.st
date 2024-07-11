@@ -19,9 +19,9 @@ Class {
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'is 6/23/2024 02:03'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
 }
-WBToolbar class >> margin [ 
+WBToolbar class >> defaultMargin [ 
 
 	^ 20
 ]
@@ -83,21 +83,21 @@ WBToolbar >> buttonFunctionalityForCircle [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/25/2024 14:40'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
 }
 WBToolbar >> buttonFunctionalityForColorPalette [
 
-	^ [:aButton | self makePopUpAt: aButton rightCenter + (self class margin + (self buttonSize x * (3 / 2)) @ 0) with: self createColorButtons columns: 3]
+	^ [:aButton | self makePopUpAt: aButton rightCenter + (self class defaultMargin + (self buttonSize x * (3 / 2)) @ 0) with: self createColorButtons columns: 3]
 ]
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/25/2024 14:46'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
 }
 WBToolbar >> buttonFunctionalityForDeleteAll [
 
 	^ [:aButton | self canvas showText: self class textForDeleteAll.
-		self makePopUpAt: self canvas text bottomCenter + (0 @ (self class margin + self buttonSize x)) with: self createDeleteConfirmButtons columns: nil]
+		self makePopUpAt: self canvas text bottomCenter + (0 @ (self class defaultMargin + self buttonSize x)) with: self createDeleteConfirmButtons columns: nil]
 ]
 
 {
@@ -143,11 +143,11 @@ WBToolbar >> buttonFunctionalityForLine [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/25/2024 14:39'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
 }
 WBToolbar >> buttonFunctionalityForLineChoosing [
 
-	^ [:aButton | self makePopUpAt: aButton rightCenter + (self class margin + (self buttonSize x / 2) @ 0) with: self createLineChoosingButtons columns: 1]
+	^ [:aButton | self makePopUpAt: aButton rightCenter + (self class defaultMargin + (self buttonSize x / 2) @ 0) with: self createLineChoosingButtons columns: 1]
 ]
 
 {
@@ -170,11 +170,11 @@ WBToolbar >> buttonFunctionalityForRectangle [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/25/2024 14:39'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
 }
 WBToolbar >> buttonFunctionalityForShapeChoosing [
 
-	^ [:aButton | self makePopUpAt: aButton rightCenter + (self class margin + (self buttonSize x / 2) @ 0) with: self createShapeChoosingButtons columns: 1]
+	^ [:aButton | self makePopUpAt: aButton rightCenter + (self class defaultMargin + (self buttonSize x / 2) @ 0) with: self createShapeChoosingButtons columns: 1]
 ]
 
 {
@@ -188,11 +188,11 @@ WBToolbar >> buttonFunctionalityForTextbox [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'si 6/14/2024 12:12'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
 }
 WBToolbar >> buttonSize [
 
-	^ ((self toolbarWidth min: self toolbarHeight) - self class margin) @ ((self toolbarWidth min: self toolbarHeight) - self class margin)
+	^ ((self toolbarWidth min: self toolbarHeight) - self class defaultMargin) @ ((self toolbarWidth min: self toolbarHeight) - self class defaultMargin)
 ]
 
 {
@@ -533,15 +533,15 @@ WBToolbar >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 7/10/2024 17:30'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
 }
 WBToolbar >> placeButtons: someButtons [
 	
 	someButtons doWithIndex: [:aButton :anIndex| 
 		aButton 
-			margin:  WBToolbar margin;
+			margin:  WBToolbar defaultMargin;
 			extent: self buttonSize;
-			center: (self bounds origin x + self toolbarWidth / 2) @ (self bounds origin y + ((self buttonSize y + WBToolbar margin) * anIndex) ) - (0 @ self buttonSize y / 2);
+			center: (self bounds origin x + self toolbarWidth / 2) @ (self bounds origin y + ((self buttonSize y + WBToolbar defaultMargin) * anIndex) ) - (0 @ self buttonSize y / 2);
 			addImage.
 		self addMorph: aButton].
 	self buttons: someButtons

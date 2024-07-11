@@ -16,7 +16,7 @@ Class {
 }
 
 {
-	#category : #size,
+	#category : #defaults,
 	#'squeak_changestamp' : 'ACL 7/11/2024 12:12'
 }
 WBPopUp class >> defaultCornerRadius [
@@ -25,35 +25,26 @@ WBPopUp class >> defaultCornerRadius [
 ]
 
 {
-	#category : #size,
-	#'squeak_changestamp' : 'si 7/10/2024 12:10'
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
 }
-WBPopUp class >> margin [
+WBPopUp class >> defaultMargin [
 
 	^ 5
 ]
 
 {
-	#category : #size,
-	#'squeak_changestamp' : 'is 6/23/2024 01:49'
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:21'
 }
-WBPopUp class >> sizeOfPopUp [
-
-	^ 20
-]
-
-{
-	#category : #size,
-	#'squeak_changestamp' : 'si 7/10/2024 11:32'
-}
-WBPopUp class >> standardSizeOfPopUp [
+WBPopUp class >> defaultSizeOfPopUp [
 
 	^ 20
 ]
 
 {
 	#category : #'adding buttons',
-	#'squeak_changestamp' : 'is 6/23/2024 01:51'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:28'
 }
 WBPopUp >> addButtons: aList [
 
@@ -66,7 +57,7 @@ WBPopUp >> addButtons: aList [
 	row := 0. 
 	column := 0.
 	aList do: 
-		[:m | self placeButton: m At: self position + ((self sizeOfPopUp / 2) @ (self  sizeOfPopUp / 2)) + ((column * self sizeOfPopUp) @ (row * self sizeOfPopUp)).
+		[:m | self placeButton: m At: self position + ((self sizeOfPopUp / 2) @ (self sizeOfPopUp / 2)) + ((column * self sizeOfPopUp) @ (row * self sizeOfPopUp)).
 		column := column + 1.
 		(column  = (self numberOfColumns)) ifTrue: 
 			[column := 0.
@@ -93,14 +84,14 @@ WBPopUp >> initialize [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'si 7/10/2024 11:32'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:31'
 }
 WBPopUp >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
 	self popUp: 
 		(WBPopUp new
 			setDefaultValues;
-			sizeOfPopUp: self class standardSizeOfPopUp;
+			sizeOfPopUp: self class defaultSizeOfPopUp;
 			numberOfColumns: aNumber;
 			addButtons: aCollection;
 			yourself).
@@ -210,11 +201,11 @@ WBPopUp >> setDefaultValues [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 7/10/2024 11:40'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
 }
 WBPopUp >> sizeOfButton [	
 
-	^ (self sizeOfPopUp - self class margin) @ (self sizeOfPopUp - self class margin)
+	^ (self sizeOfPopUp - self class defaultMargin) @ (self sizeOfPopUp - self class defaultMargin)
 ]
 
 {
