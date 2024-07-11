@@ -1,10 +1,14 @@
+"
+This class creates a hitbox around each line and delegates all mouse events around it to its corresponding line
+"
 Class {
 	#name : #WBLineHitbox,
 	#superclass : #PolygonMorph,
 	#instVars : [
 		'line'
 	],
-	#category : #'SqueakWhiteboard-Core'
+	#category : #'SqueakWhiteboard-Core',
+	#'squeak_changestamp' : 'ACL 7/10/2024 13:43'
 }
 
 {

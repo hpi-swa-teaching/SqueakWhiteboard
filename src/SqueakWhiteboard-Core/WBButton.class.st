@@ -18,10 +18,10 @@ Class {
 }
 
 {
-	#category : #size,
-	#'squeak_changestamp' : 'is 6/23/2024 01:27'
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:12'
 }
-WBButton class >> cornerRadius [
+WBButton class >> defaultCornerRadius [
 
 	^ 20
 ]
@@ -244,12 +244,12 @@ WBButton >> mouseUp: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/14/2024 12:50'
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:11'
 }
 WBButton >> setDefaultValues [
 
 	self
 		cornerStyle: #rounded;
-		cornerRadius: self class cornerRadius;
+		cornerRadius: self class defaultCornerRadius;
 		color: Color lightBlue
 ]

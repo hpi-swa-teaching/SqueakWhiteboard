@@ -26,16 +26,34 @@ Class {
 }
 
 {
-	#category : #layout,
-	#'squeak_changestamp' : 'is 6/18/2024 22:28'
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:21'
 }
-WBElement class >> defaultSize [
+WBElement class >> defaultBorderColorColumns [
 
-	^ 100@100
+	^ 3
 ]
 
 {
-	#category : #layout,
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:21'
+}
+WBElement class >> defaultSize [
+
+	^ 100 @ 100
+]
+
+{
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:22'
+}
+WBElement class >> defaultSizeOfPopup [
+
+	^ 30
+]
+
+{
+	#category : #defaults,
 	#'squeak_changestamp' : 'si 7/10/2024 13:36'
 }
 WBElement class >> defaultTextBorderOffset [
@@ -61,15 +79,6 @@ WBElement class >> newWithCanvas: aCanvas [
 	^ self basicNew 
 		canvas: aCanvas;
 		initialize
-]
-
-{
-	#category : #popUp,
-	#'squeak_changestamp' : 'si 7/10/2024 12:10'
-}
-WBElement class >> sizeOfPopUpForStandardElement [
-
-	^ 30
 ]
 
 {
@@ -193,11 +202,11 @@ WBElement >> buttonFunctionalityForBorderColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 7/10/2024 17:04'
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:22'
 }
 WBElement >> buttonFunctionalityForBorderColorPalette [
 
-	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeBorderColorButtons columns: 3]
+	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class defaultSizeOfPopup / 2)) with: self makeBorderColorButtons columns: self class defaultBorderColorColumns]
 ]
 
 {
@@ -212,11 +221,11 @@ WBElement >> buttonFunctionalityForColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 7/10/2024 17:04'
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:22'
 }
 WBElement >> buttonFunctionalityForColorPalette [
 
-	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: 3]
+	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class defaultSizeOfPopup / 2)) with: self makeColorButtons columns: self class defaultBorderColorColumns]
 ]
 
 {
@@ -480,11 +489,11 @@ WBElement >> height: aHeight [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'si 7/10/2024 11:57'
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:22'
 }
 WBElement >> imageSize [
 
-	^ (self class sizeOfPopUpForStandardElement @ self class sizeOfPopUpForStandardElement) * 0.75
+	^ (self class defaultSizeOfPopup @ self class defaultSizeOfPopup) * 0.75
 ]
 
 {
@@ -650,14 +659,14 @@ WBElement >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'si 7/10/2024 17:30'
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:22'
 }
 WBElement >> makePopWith: aCollection columns: aNumber [
 
 	self popUp: 
 		(WBPopUp new
 			setDefaultValues;
-			sizeOfPopUp: self class sizeOfPopUpForStandardElement;
+			sizeOfPopUp: self class defaultSizeOfPopup;
 			numberOfColumns: aNumber;
 			addButtons: aCollection;
 			yourself).

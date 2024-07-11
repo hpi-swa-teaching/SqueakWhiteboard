@@ -21,10 +21,19 @@ Class {
 }
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/23/2024 01:27'
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:15'
 }
-WBCanvas class >> WhiteBoardSize [
+WBCanvas class >> defaultFontSize [
+
+	^ 25
+]
+
+{
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:14'
+}
+WBCanvas class >> defaultWhiteBoardSize [
 
 	^ 800
 ]
@@ -306,15 +315,15 @@ WBCanvas >> images: anImage [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 7/10/2024 13:29'
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:13'
 }
 WBCanvas >> initialize [
 	
 	super initialize.
 	self images: WBImage new.
 	self
-		height: self class WhiteBoardSize;
-		width: (self class WhiteBoardSize * self widthToHeightRatio);
+		height: self class defaultWhiteBoardSize;
+		width: (self class defaultWhiteBoardSize * self widthToHeightRatio);
 		color: Color white;
 		borderWidth: 1;
 		borderColor: Color black;
@@ -352,7 +361,7 @@ WBCanvas >> mouseMove: anEvent [
 ]
 
 {
-	#category : #'show text',
+	#category : #appearance,
 	#'squeak_changestamp' : 'si 6/25/2024 15:08'
 }
 WBCanvas >> removeText [
@@ -363,15 +372,15 @@ WBCanvas >> removeText [
 ]
 
 {
-	#category : #'show text',
-	#'squeak_changestamp' : 'si 7/10/2024 17:30'
+	#category : #appearance,
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:15'
 }
 WBCanvas >> showText: aString [
 
 	self text ifNotNil: [self text abandon].
 	self text: (TextMorph new
 		contents: aString;
-		fontName: #Calibri pointSize: 25;
+		fontName: #Calibri pointSize: self class defaultFontSize;
 		lock;
 		yourself).
 	self addMorph: text.

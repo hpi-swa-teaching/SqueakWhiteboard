@@ -17,9 +17,9 @@ Class {
 
 {
 	#category : #size,
-	#'squeak_changestamp' : 'is 6/23/2024 01:49'
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:12'
 }
-WBPopUp class >> cornerRadius [
+WBPopUp class >> defaultCornerRadius [
 
 	^ 7
 ]
@@ -196,7 +196,7 @@ WBPopUp >> popUpButtons: aNumber [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/23/2024 01:52'
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:12'
 }
 WBPopUp >> setDefaultValues [
 
@@ -205,7 +205,7 @@ WBPopUp >> setDefaultValues [
 		borderColor: Color gray;
 		borderWidth: 1;
 		cornerStyle: #rounded;
-		cornerRadius: self class cornerRadius
+		cornerRadius: self class defaultCornerRadius
 ]
 
 {

@@ -12,6 +12,33 @@ Class {
 }
 
 {
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:18'
+}
+WBEdgeOfLine class >> defaultCornerRadius [
+
+	^100
+]
+
+{
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:18'
+}
+WBEdgeOfLine class >> defaultHeight [
+
+	^10
+]
+
+{
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:19'
+}
+WBEdgeOfLine class >> defaultWidth [
+
+	^10
+]
+
+{
 	#category : #resize,
 	#'squeak_changestamp' : 'ACL 7/10/2024 12:08'
 }
@@ -21,11 +48,11 @@ WBEdgeOfLine >> addResizeFrame [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/21/2024 00:07'
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:16'
 }
 WBEdgeOfLine >> buttonFunctionalityForArrowSwitch [
 
-	^ [:aButton | self checkArrwoDirection]
+	^ [:aButton | self checkArrowDirection]
 ]
 
 {
@@ -74,15 +101,12 @@ WBEdgeOfLine >> buttonsForPopUpBar [
 
 {
 	#category : #geometry,
-	#'squeak_changestamp' : 'is 6/23/2024 01:45'
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:17'
 }
-WBEdgeOfLine >> checkArrwoDirection [
+WBEdgeOfLine >> checkArrowDirection [
 
-	(self line edges at: 1) = self
-		ifTrue: 
-			[self switchDirection.
-			self line switchVisibilityOfArrowHead]
-		ifFalse: [self line switchVisibilityOfArrowHead] 
+	(self line edges at: 1) = self	ifTrue: [self switchDirection].
+	self line switchVisibilityOfArrowHead
 ]
 
 {
@@ -96,18 +120,12 @@ WBEdgeOfLine >> handlesMouseOver: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/20/2024 23:26'
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:17'
 }
 WBEdgeOfLine >> initialize [
 
 	super initialize.
-	self
-		cornerStyle: #rounded;
-		cornerRadius: 100;
-		width: 10;
-		height: 10;
-		color: Color black;
-		supportsText: false
+	self setDefaultValues
 ]
 
 {
@@ -190,15 +208,15 @@ WBEdgeOfLine >> mouseUp: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/20/2024 23:24'
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:18'
 }
 WBEdgeOfLine >> setDefaultValues [
 
 	self
 		cornerStyle: #rounded;
-		cornerRadius: 100;
-		width: 10;
-		height: 10;
+		cornerRadius: self class defaultCornerRadius;
+		width: self class defaultWidth;
+		height: self class defaultHeight;
 		color: Color black;
 		supportsText: false
 ]
