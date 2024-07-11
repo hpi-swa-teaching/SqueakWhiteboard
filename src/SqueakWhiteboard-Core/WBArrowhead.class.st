@@ -13,32 +13,23 @@ Class {
 
 {
 	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/10/2024 17:14'
+	#'squeak_changestamp' : 'is 6/23/2024 01:28'
 }
-WBArrowhead class >> DefaultVertices [
+WBArrowhead class >> defaultVertices [
 
 	^ {0@0. 20@10. 0@20}
 ]
 
 {
-	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:10'
-}
-WBArrowhead class >> defaultVertices [
-
-	^ {0 @ 0. 20 @ 10. 0 @ 20}
-]
-
-{
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/10/2024 17:14'
+	#'squeak_changestamp' : 'is 6/23/2024 01:28'
 }
 WBArrowhead >> initialize [
 	
 	super initialize.
 	self
 		addFlexShellIfNecessary;
-		setVertices: self class DefaultVertices;
+		setVertices: self class defaultVertices;
 		fillStyle: Color black;
 		goBehind
 ]

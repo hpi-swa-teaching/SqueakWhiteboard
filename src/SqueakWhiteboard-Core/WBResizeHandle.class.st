@@ -69,13 +69,13 @@ WBResizeHandle >> handlesMouseOver: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
+	#'squeak_changestamp' : 'is 6/23/2024 01:59'
 }
 WBResizeHandle >> initializeWithParent: aMorph [
 
 	super initialize.
 	self
- 		extent: WBResizeFrame defaultResizeWidth @ WBResizeFrame defaultResizeWidth;
+ 		extent: WBResizeFrame resizeWidth@WBResizeFrame resizeWidth;
 		frame: aMorph;
 		setLayout;
 		color: Color white;
@@ -143,7 +143,7 @@ WBResizeHandle >> mouseMove: anEvent [
 ]
 
 {
-	#category : #resize,
+	#category : #sizing,
 	#'squeak_changestamp' : 'is 6/23/2024 02:00'
 }
 WBResizeHandle >> resize: movement [
@@ -161,7 +161,7 @@ WBResizeHandle >> resizeCursor [
 ]
 
 {
-	#category : #resize,
+	#category : #sizing,
 	#'squeak_changestamp' : 'is 6/23/2024 02:01'
 }
 WBResizeHandle >> setLayout [

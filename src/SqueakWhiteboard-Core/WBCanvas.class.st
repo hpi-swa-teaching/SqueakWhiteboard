@@ -21,21 +21,21 @@ Class {
 }
 
 {
-	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:15'
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/23/2024 01:27'
 }
-WBCanvas class >> defaultFontSize [
+WBCanvas class >> WhiteBoardSize [
 
-	^ 25
+	^ 800
 ]
 
 {
-	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:14'
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 7/11/2024 14:32'
 }
-WBCanvas class >> defaultWhiteBoardSize [
+WBCanvas class >> defaultGlobalColor [
 
-	^ 800
+	^ Color cyan
 ]
 
 {
@@ -148,7 +148,7 @@ WBCanvas >> deleteAllElements [
 
 {
 	#category : #drag,
-	#'squeak_changestamp' : 'is 6/18/2024 16:33'
+	#'squeak_changestamp' : 'si 7/11/2024 14:20'
 }
 WBCanvas >> dragMove: mouseEvent [
 	| newPosition |
@@ -177,7 +177,7 @@ WBCanvas >> dragOffset: anObject [
 
 {
 	#category : #drag,
-	#'squeak_changestamp' : 'si 6/14/2024 13:11'
+	#'squeak_changestamp' : 'si 7/11/2024 14:19'
 }
 WBCanvas >> dragStart: anEvent [
 
@@ -234,11 +234,11 @@ WBCanvas >> elementToSpawn: anElement [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/18/2024 16:35'
+	#'squeak_changestamp' : 'si 7/11/2024 14:27'
 }
 WBCanvas >> elements [
 
-	^ elements ifNil: [ elements := OrderedCollection new]
+	^ elements ifNil: [elements := OrderedCollection new]
 ]
 
 {
@@ -252,11 +252,11 @@ WBCanvas >> elements: aCollection [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/18/2024 16:36'
+	#'squeak_changestamp' : 'si 7/11/2024 14:33'
 }
 WBCanvas >> globalColor [
 
-	^ globalColor
+	^ globalColor ifNil: [globalColor := self class defaultGlobalColor]
 ]
 
 {
@@ -287,15 +287,6 @@ WBCanvas >> handlesMouseMove: anEvent [
 ]
 
 {
-	#category : #'event handling',
-	#'squeak_changestamp' : 'si 7/10/2024 14:13'
-}
-WBCanvas >> handlesMouseOver: anEvent [
-    
-	^ true
-]
-
-{
 	#category : #accessing,
 	#'squeak_changestamp' : 'si 6/14/2024 13:16'
 }
@@ -315,25 +306,16 @@ WBCanvas >> images: anImage [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
+	#'squeak_changestamp' : 'si 7/11/2024 14:33'
 }
 WBCanvas >> initialize [
 	
 	super initialize.
 	self images: WBImage new.
 	self
-		height: self class defaultWhiteBoardSize;
-		width: (self class defaultWhiteBoardSize * self widthToHeightRatio);
-		color: Color white;
-		borderWidth: 1;
-		borderColor: Color black;
-		elements: OrderedCollection new;
+		setLayout;
 		spawnToolbar;
-		openInWindowLabeled: #SqueakWhiteboard;
-		globalColor: Color cyan;
-		createDrawingSurface;
-		clipSubmorphs: true.
-	self toolbar comeToFront
+		openInWindowLabeled: #SqueakWhiteboard
 ]
 
 {
@@ -361,7 +343,7 @@ WBCanvas >> mouseMove: anEvent [
 ]
 
 {
-	#category : #appearance,
+	#category : #'show text',
 	#'squeak_changestamp' : 'si 6/25/2024 15:08'
 }
 WBCanvas >> removeText [
@@ -372,15 +354,31 @@ WBCanvas >> removeText [
 ]
 
 {
-	#category : #appearance,
-	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
+	#category : #initialization,
+	#'squeak_changestamp' : 'si 7/11/2024 14:30'
+}
+WBCanvas >> setLayout [
+
+	self
+		height: self class WhiteBoardSize;
+		width: (self class WhiteBoardSize * self widthToHeightRatio);
+		color: Color white;
+		borderColor: Color black;
+		borderWidth: 1;
+		createDrawingSurface;
+		clipSubmorphs: true
+]
+
+{
+	#category : #'show text',
+	#'squeak_changestamp' : 'si 7/10/2024 17:30'
 }
 WBCanvas >> showText: aString [
 
 	self text ifNotNil: [self text abandon].
 	self text: (TextMorph new
 		contents: aString;
-		fontName: #Calibri pointSize: self class defaultFontSize;
+		fontName: #Calibri pointSize: 25;
 		lock;
 		yourself).
 	self addMorph: text.
@@ -421,12 +419,13 @@ WBCanvas >> spawnAnElement: anElement At: aMouseEvent [
 
 {
 	#category : #'creating elements',
-	#'squeak_changestamp' : 'si 6/7/2024 22:29'
+	#'squeak_changestamp' : 'si 7/11/2024 14:29'
 }
 WBCanvas >> spawnToolbar [
 	
 	self toolbar: (WBToolbar newWithCanvas: self).
-	self addMorph: self toolbar
+	self addMorph: self toolbar.
+	self toolbar comeToFront
 	
 ]
 

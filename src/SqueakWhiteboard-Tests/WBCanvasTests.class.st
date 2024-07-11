@@ -48,12 +48,12 @@ WBCanvasTests >> tearDown [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:26'
+	#'squeak_changestamp' : 'si 7/11/2024 14:13'
 }
 WBCanvasTests >> testActiveElement [
 	| anActiveElement aMouseEvent |
 	
-	anActiveElement := WBRectangle newWithCanvas: self canvas.
+	anActiveElement := WBRectangularElement newWithCanvas: self canvas.
 	aMouseEvent := MouseButtonEvent new.
 	aMouseEvent setType: #mouseDown position: anActiveElement position which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
 	anActiveElement mouseDown: aMouseEvent.
@@ -64,13 +64,13 @@ WBCanvasTests >> testActiveElement [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'is 6/21/2024 23:52'
+	#'squeak_changestamp' : 'si 7/11/2024 14:13'
 }
 WBCanvasTests >> testClampElementToCanvas [
 	| aPoint anElement |
 	
 	aPoint := self canvas center.
-	anElement := WBRectangle newWithCanvas: self canvas.
+	anElement := WBRectangularElement newWithCanvas: self canvas.
 	self assert: (self canvas clampedPositionOfElement: anElement at: aPoint) = aPoint.
 	
 	aPoint := self canvas bounds corner + (anElement extent * 2).
@@ -82,17 +82,17 @@ WBCanvasTests >> testClampElementToCanvas [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:25'
+	#'squeak_changestamp' : 'si 7/11/2024 14:13'
 }
 WBCanvasTests >> testElementsCollection [
 	| elementToDelete |
 	
 	self assert: self canvas elements size = 0.
 	
-	self canvas addElement: (WBRectangle newWithCanvas: self canvas).
+	self canvas addElement: (WBRectangularElement newWithCanvas: self canvas).
 	self assert: self canvas elements size = 1.
 	
-	elementToDelete := WBRectangle newWithCanvas: self canvas.
+	elementToDelete := WBRectangularElement newWithCanvas: self canvas.
 	self canvas addElement: elementToDelete.
 	self assert: self canvas elements size = 2.
 	
@@ -104,7 +104,7 @@ WBCanvasTests >> testElementsCollection [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'is 6/26/2024 10:42'
+	#'squeak_changestamp' : 'si 7/11/2024 14:23'
 }
 WBCanvasTests >> testMouseDown [
 	| aMouseEvent |
@@ -112,19 +112,18 @@ WBCanvasTests >> testMouseDown [
 	aMouseEvent := MouseButtonEvent new.
 	aMouseEvent setType: #mouseDown position: (0 @ 0) which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
 	
-	self assert: (self canvas handlesMouseOver: aMouseEvent) = true.
 	self assert: (self canvas handlesMouseMove: aMouseEvent) = true.
 	self assert: (self canvas handlesMouseDown: aMouseEvent) = true
 ]
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:25'
+	#'squeak_changestamp' : 'si 7/11/2024 14:13'
 }
 WBCanvasTests >> testRectangleCreate [
 	|rectangle|
 	
-	rectangle := WBRectangle newWithCanvas: self canvas.
+	rectangle := WBRectangularElement newWithCanvas: self canvas.
 	
-	self assert: rectangle class = WBRectangle
+	self assert: rectangle class = WBRectangularElement
 ]

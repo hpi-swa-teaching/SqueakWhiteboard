@@ -93,7 +93,7 @@ WBPluggableTextMorphPlus >> handlesMouseOver: anEvent [
 ]
 
 {
-	#category : #appearance,
+	#category : #styling,
 	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:48'
 }
 WBPluggableTextMorphPlus >> hasUnacceptedEdits: aBoolean [

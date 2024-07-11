@@ -12,33 +12,6 @@ Class {
 }
 
 {
-	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
-}
-WBEdgeOfLine class >> defaultCornerRadius [
-
-	^ 100
-]
-
-{
-	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
-}
-WBEdgeOfLine class >> defaultHeight [
-
-	^ 10
-]
-
-{
-	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
-}
-WBEdgeOfLine class >> defaultWidth [
-
-	^ 10
-]
-
-{
 	#category : #resize,
 	#'squeak_changestamp' : 'ACL 7/10/2024 12:08'
 }
@@ -48,11 +21,11 @@ WBEdgeOfLine >> addResizeFrame [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:16'
+	#'squeak_changestamp' : 'si 6/21/2024 00:07'
 }
 WBEdgeOfLine >> buttonFunctionalityForArrowSwitch [
 
-	^ [:aButton | self checkArrowDirection]
+	^ [:aButton | self checkArrwoDirection]
 ]
 
 {
@@ -76,37 +49,50 @@ WBEdgeOfLine >> buttonFunctionalityForCopy [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/17/2024 11:32'
+	#'squeak_changestamp' : 'si 7/11/2024 15:22'
 }
 WBEdgeOfLine >> buttonFunctionalityForDelete [
 
-	^ [:aButton |self line delete]
+	^ [:aButton | self line delete]
 ]
 
 {
 	#category : #'button creation',
-	#'squeak_changestamp' : 'is 7/9/2024 21:14'
+	#'squeak_changestamp' : 'si 7/11/2024 15:46'
 }
 WBEdgeOfLine >> buttonsForPopUpBar [
-	| aCollection |
-	
-	aCollection := super buttonsForPopUpBar.
-	aCollection add: (WBButton new
+
+	^ OrderedCollection new
+		add: (WBButton new
+			block: self buttonFunctionalityForDelete;
+			backgroundColor: Color red;
+			image: (ImageMorph new image: (self canvas images resize: WBImage loadDenyButtonImage to: self imageSize)));
+		add: (WBButton new
+			block: self buttonFunctionalityForCopy;
+			backgroundColor: Color white;
+			image: (ImageMorph new image: (self canvas images resize: WBImage loadSmallDuplicateButtonImage to: self imageSize)));
+		add: (WBButton new
+			block: self buttonFunctionalityForColorPalette;
+			backgroundColor: Color white;
+			image: (ImageMorph new image: (self canvas images resize: WBImage loadSmallColorsButtonImage to: self imageSize)));
+		add: (WBButton new
 			block: self buttonFunctionalityForArrowSwitch;
 			backgroundColor: Color white;
-			image: (ImageMorph new image: (self canvas images resize: WBImage loadSmallToggleArrowButtonImage to: self imageSize))).
-	aCollection removeAt: 4. 
-	^ aCollection
+			image: (ImageMorph new image: (self canvas images resize: WBImage loadSmallToggleArrowButtonImage to: self imageSize)));
+		yourself
 ]
 
 {
 	#category : #geometry,
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:17'
+	#'squeak_changestamp' : 'is 6/23/2024 01:45'
 }
-WBEdgeOfLine >> checkArrowDirection [
+WBEdgeOfLine >> checkArrwoDirection [
 
-	(self line edges at: 1) = self	ifTrue: [self switchDirection].
-	self line switchVisibilityOfArrowHead
+	(self line edges at: 1) = self
+		ifTrue: 
+			[self switchDirection.
+			self line switchVisibilityOfArrowHead]
+		ifFalse: [self line switchVisibilityOfArrowHead] 
 ]
 
 {
@@ -120,12 +106,18 @@ WBEdgeOfLine >> handlesMouseOver: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
+	#'squeak_changestamp' : 'si 6/20/2024 23:26'
 }
 WBEdgeOfLine >> initialize [
 
 	super initialize.
-	self setDefaultValues
+	self
+		cornerStyle: #rounded;
+		cornerRadius: 100;
+		width: 10;
+		height: 10;
+		color: Color black;
+		supportsText: false
 ]
 
 {
@@ -208,17 +200,12 @@ WBEdgeOfLine >> mouseUp: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
+	#'squeak_changestamp' : 'si 7/11/2024 14:49'
 }
-WBEdgeOfLine >> setDefaultValues [
-
-	self
-		cornerStyle: #rounded;
-		cornerRadius: self class defaultCornerRadius;
-		width: self class defaultWidth;
-		height: self class defaultHeight;
-		color: Color black;
-		supportsText: false
+WBEdgeOfLine >> setLayout [
+	
+	super setLayout.
+	self borderWidth: 0
 ]
 
 {

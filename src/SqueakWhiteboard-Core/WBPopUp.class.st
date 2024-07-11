@@ -16,26 +16,17 @@ Class {
 }
 
 {
-	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:12'
+	#category : #size,
+	#'squeak_changestamp' : 'is 6/23/2024 01:49'
 }
-WBPopUp class >> defaultCornerRadius [
+WBPopUp class >> cornerRadius [
 
 	^ 7
 ]
 
 {
-	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
-}
-WBPopUp class >> defaultMargin [
-
-	^ 5
-]
-
-{
-	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/11/2024 13:21'
+	#category : #size,
+	#'squeak_changestamp' : 'si 7/11/2024 14:55'
 }
 WBPopUp class >> defaultSizeOfPopUp [
 
@@ -43,21 +34,31 @@ WBPopUp class >> defaultSizeOfPopUp [
 ]
 
 {
+	#category : #size,
+	#'squeak_changestamp' : 'si 7/10/2024 12:10'
+}
+WBPopUp class >> margin [
+
+	^ 5
+]
+
+{
 	#category : #'adding buttons',
-	#'squeak_changestamp' : 'si 7/11/2024 12:46'
+	#'squeak_changestamp' : 'si 7/11/2024 14:35'
 }
 WBPopUp >> addButtons: aList [
-
 	| row column |
-	self numberOfColumns ifNil: [self numberOfRows: 1.
-		self numberOfColumns: aList size.]
+	
+	self numberOfColumns ifNil: 
+		[self numberOfRows: 1.
+		self numberOfColumns: aList size]
 	ifNotNil: [self numberOfRows: (aList size / self numberOfColumns) ceiling].
 	self popUpButtons: aList size.
-	self extent: (self numberOfColumns  * self sizeOfPopUp ) @ (self numberOfRows * self sizeOfPopUp).
+	self extent: (self numberOfColumns  * self sizeOfPopUp) @ (self numberOfRows * self sizeOfPopUp).
 	row := 0. 
 	column := 0.
 	aList do: 
-		[:m | self placeButton: m At: self position + ((self sizeOfPopUp / 2) @ (self sizeOfPopUp / 2)) + ((column * self sizeOfPopUp) @ (row * self sizeOfPopUp)).
+		[:m | self placeButton: m At: self position + ((self sizeOfPopUp / 2) @ (self  sizeOfPopUp / 2)) + ((column * self sizeOfPopUp) @ (row * self sizeOfPopUp)).
 		column := column + 1.
 		(column  = (self numberOfColumns)) ifTrue: 
 			[column := 0.
@@ -74,15 +75,23 @@ WBPopUp >> handlesMouseDown: anEvent [
 ]
 
 {
+	#category : #initialization,
+	#'squeak_changestamp' : 'si 6/13/2024 12:19'
+}
+WBPopUp >> initialize [
+
+	super initialize
+]
+
+{
 	#category : #popUp,
-	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
+	#'squeak_changestamp' : 'si 7/11/2024 14:54'
 }
 WBPopUp >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
 	self popUp: 
 		(WBPopUp new
-			setDefaultValues;
-			sizeOfPopUp: self class defaultSizeOfPopUp;
+			setLayout;
 			numberOfColumns: aNumber;
 			addButtons: aCollection;
 			yourself).
@@ -177,26 +186,27 @@ WBPopUp >> popUpButtons: aNumber [
 ]
 
 {
-	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
+	#category : #layout,
+	#'squeak_changestamp' : 'si 7/11/2024 14:55'
 }
-WBPopUp >> setDefaultValues [
+WBPopUp >> setLayout [
 
 	self
 		color: Color veryVeryLightGray;
 		borderColor: Color gray;
 		borderWidth: 1;
 		cornerStyle: #rounded;
-		cornerRadius: self class defaultCornerRadius
+		cornerRadius: self class cornerRadius;
+		sizeOfPopUp: self class defaultSizeOfPopUp
 ]
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
+	#'squeak_changestamp' : 'si 7/10/2024 11:40'
 }
 WBPopUp >> sizeOfButton [	
 
-	^ (self sizeOfPopUp - self class defaultMargin) @ (self sizeOfPopUp - self class defaultMargin)
+	^ (self sizeOfPopUp - self class margin) @ (self sizeOfPopUp - self class margin)
 ]
 
 {

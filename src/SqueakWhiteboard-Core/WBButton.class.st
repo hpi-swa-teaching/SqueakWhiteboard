@@ -18,12 +18,21 @@ Class {
 }
 
 {
-	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:12'
+	#category : #size,
+	#'squeak_changestamp' : 'is 6/23/2024 01:27'
 }
-WBButton class >> defaultCornerRadius [
+WBButton class >> cornerRadius [
 
 	^ 20
+]
+
+{
+	#category : #defaults,
+	#'squeak_changestamp' : 'si 7/11/2024 14:52'
+}
+WBButton class >> defaultColor [
+
+	^ Color lightBlue
 ]
 
 {
@@ -121,16 +130,6 @@ WBButton >> currentMouseEvent: anEvent [
 ]
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
-}
-WBButton >> defaultMargin [ 
-
-	^ margin
-	
-]
-
-{
 	#category : #'event handling',
 	#'squeak_changestamp' : 'is 5/19/2024 16:21'
 }
@@ -186,12 +185,22 @@ WBButton >> image: anImage [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 5/23/2024 20:51'
+	#'squeak_changestamp' : 'si 7/11/2024 14:50'
 }
 WBButton >> initialize [
 
 	super initialize.
-	self setDefaultValues
+	self setLayout
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 6/14/2024 12:51'
+}
+WBButton >> margin [ 
+
+	^ margin
+	
 ]
 
 {
@@ -243,13 +252,13 @@ WBButton >> mouseUp: anEvent [
 ]
 
 {
-	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
+	#category : #layout,
+	#'squeak_changestamp' : 'si 7/11/2024 14:52'
 }
-WBButton >> setDefaultValues [
+WBButton >> setLayout [
 
 	self
 		cornerStyle: #rounded;
-		cornerRadius: self class defaultCornerRadius;
-		color: Color lightBlue
+		cornerRadius: self class cornerRadius;
+		color: self class defaultColor
 ]

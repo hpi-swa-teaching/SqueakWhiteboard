@@ -9,7 +9,7 @@ Class {
 }
 
 {
-	#category : #resize,
+	#category : #sizing,
 	#'squeak_changestamp' : 'JK 6/30/2024 21:18'
 }
 WBResizeTop >> resize: movement [
@@ -18,7 +18,7 @@ WBResizeTop >> resize: movement [
 ]
 
 {
-	#category : #resize,
+	#category : #sizing,
 	#'squeak_changestamp' : 'is 6/23/2024 01:56'
 }
 WBResizeTop >> resizeCursor [
@@ -27,12 +27,12 @@ WBResizeTop >> resizeCursor [
 ]
 
 {
-	#category : #resize,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
+	#category : #sizing,
+	#'squeak_changestamp' : 'JK 6/30/2024 21:17'
 }
 WBResizeTop >> setLayout [
 
-	self height: WBResizeFrame defaultResizeWidth.
-	self width: self frame width - WBResizeFrame defaultResizeWidth.
+	self height: WBResizeFrame resizeWidth.
+	self width: self frame width - WBResizeFrame resizeWidth.
 	self center: self frame topCenter
 ]

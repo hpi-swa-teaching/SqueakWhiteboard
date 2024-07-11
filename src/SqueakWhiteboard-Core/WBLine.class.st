@@ -15,6 +15,21 @@ Class {
 }
 
 {
+	#category : #'event handeling',
+	#'squeak_changestamp' : 'si 7/11/2024 15:10'
+}
+WBLine >> activateElement: anEvent [
+
+	(self canvas elementToSpawn) isNil ifTrue:
+	[self canvas 
+		deactivateElement;
+		deactivateTextbox.
+	self dragStart: anEvent.
+	(self edges at: 2) showPopUp.
+	self canvas activeElement: (self edges at: 2)]
+]
+
+{
 	#category : #'linemorph functionalities',
 	#'squeak_changestamp' : 'si 7/10/2024 13:45'
 }
@@ -66,15 +81,17 @@ WBLine >> buttonsForPopUpBar [
 
 {
 	#category : #arrow,
-	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
+	#'squeak_changestamp' : 'ACL 7/10/2024 11:59'
 }
 WBLine >> checkForArrowHead [
 
 	self arrowHead
-		ifFalse: [self arrowHead: (WBArrowhead new isVisible: false)]
-		ifTrue: [self arrowHead: (WBArrowhead new isVisible: true)].
-	self addMorph: self arrowHead.
-	self updateArrowHead
+		ifFalse: [self arrowHead: (WBArrowhead new isVisible: false).
+			self addMorph: self arrowHead.
+			self updateArrowHead]
+		ifTrue: [self arrowHead: (WBArrowhead new isVisible: true).
+			self addMorph: self arrowHead.
+			self updateArrowHead]
 ]
 
 {
@@ -122,10 +139,11 @@ WBLine >> dragEnd: anEvent [
 
 {
 	#category : #drag,
-	#'squeak_changestamp' : 'si 7/7/2024 18:10'
+	#'squeak_changestamp' : 'si 7/11/2024 15:07'
 }
 WBLine >> dragStart: anEvent [
 
+	self edges do: [:d | d dragStart: anEvent].
 	self dragOffset: self position - anEvent cursorPoint
 ]
 
@@ -158,37 +176,24 @@ WBLine >> hitbox: aMorph [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 7/11/2024 12:59'
+	#'squeak_changestamp' : 'si 7/5/2024 12:16'
 }
 WBLine >> initialize [
 
 	super initialize.
-	self morph setVertices: { 1 @ 1 . 1 @ 1 }.
+	self morph setVertices: { 1@1 . 1@1 }.
 	self state: 0
 ]
 
 {
 	#category : #'event handeling',
-	#'squeak_changestamp' : 'si 7/10/2024 17:24'
+	#'squeak_changestamp' : 'si 7/11/2024 15:04'
 }
 WBLine >> mouseDown: anEvent [
 
-	self state = 2 ifTrue: 
-		[(self canvas elementToSpawn) isNil ifTrue:
-				[self canvas 
-					deactivateElement;
-					deactivateTextbox.
-				self edges do: [:d | d mouseDown: anEvent].
-				self dragStart: anEvent.
-				(self edges at: 2) showPopUp.
-				self canvas activeElement: (self edges at: 2)]].
-	self state = 3 ifTrue:
-		[(self canvas elementToSpawn) isNil ifFalse:
-				[self canvas dropElement: anEvent.
-				self spawnAttachmentsForCopy.
-				self state: 2.
-				self dragStart: anEvent.
-				self edges do: [:d | d mouseDown: anEvent].]]
+	anEvent redButtonPressed ifTrue: 
+		[self state = 2 ifTrue: [self handleRedButtonClick: anEvent].
+		self state = 3 ifTrue:[self spawnCopiedLine: anEvent]]
 ]
 
 {
@@ -211,6 +216,18 @@ WBLine >> mouseUp: anEvent [
 	(self canvas elementToSpawn) isNil
 		ifTrue: [self dragEnd: anEvent]
 		ifFalse: [self spawnEdgeOfLineAt: anEvent]
+]
+
+{
+	#category : #layout,
+	#'squeak_changestamp' : 'si 7/11/2024 15:20'
+}
+WBLine >> setCreatedLayout [
+
+	self 
+		borderWidth: 2;
+		color: Color black;
+		checkForArrowHead.
 ]
 
 {
@@ -250,38 +267,72 @@ WBLine >> spawnAttachmentsForCopy [
 
 {
 	#category : #'line building',
-	#'squeak_changestamp' : 'si 7/7/2024 17:34'
+	#'squeak_changestamp' : 'si 7/11/2024 15:00'
 }
-WBLine >> spawnEdgeOfLineAt: aMouseEvent [
+WBLine >> spawnCopiedLine: anEvent [
+
+	(self canvas elementToSpawn) isNil ifFalse:
+		[self canvas dropElement: anEvent.
+		self spawnAttachmentsForCopy.
+		self state: 2.
+		self dragStart: anEvent.
+		self edges do: [:d | d mouseDown: anEvent].]
+]
+
+{
+	#category : #'line building',
+	#'squeak_changestamp' : 'si 7/11/2024 15:17'
+}
+WBLine >> spawnEdgeOfLineAt: anEvent [
 
 	(self state = 0) 
-		ifTrue:
-			[self edges add: ((WBEdgeOfLine newWithCanvas: self canvas)
-				canvas: self canvas;
-				center: aMouseEvent cursorPoint;
-				line: self;
-				yourself).
-				self state: 1]
-		ifFalse:
-			[self edges add: ((WBEdgeOfLine newWithCanvas: self canvas)
-			center: aMouseEvent cursorPoint;
-			canvas: self canvas;
+		ifTrue: [self spawnFirstEdgeAt: anEvent cursorPoint]
+		ifFalse: [self spawnSecondEdgeAt: anEvent]
+]
+
+{
+	#category : #'line building',
+	#'squeak_changestamp' : 'si 7/11/2024 15:15'
+}
+WBLine >> spawnFirstEdgeAt: aPoint [
+
+	self edges add: 
+		((WBEdgeOfLine newWithCanvas: self canvas)
+			center: aPoint;
 			line: self;
 			yourself).
-			self 
-				borderWidth: 2;
-				color: Color black;
-				checkForArrowHead.
-			self canvas 
-				addElement: (self edges at: 1);
-				addElement: (self edges at: 2);
-				dropElement: aMouseEvent.
-			self hitbox: WBLineHitbox new.
-			self hitbox goBehind.
-			self hitbox line: self.
-			self addMorph: self hitbox.
-			self updateEdges.
-			self state: 2]
+	self state: 1
+]
+
+{
+	#category : #'line building',
+	#'squeak_changestamp' : 'si 7/11/2024 15:19'
+}
+WBLine >> spawnHitbox [
+
+	self hitbox: WBLineHitbox new.
+	self hitbox goBehind.
+	self hitbox line: self.
+	self addMorph: self hitbox
+]
+
+{
+	#category : #'line building',
+	#'squeak_changestamp' : 'si 7/11/2024 15:25'
+}
+WBLine >> spawnSecondEdgeAt: anEvent [
+
+	self edges add: 
+		((WBEdgeOfLine newWithCanvas: self canvas)
+			center: anEvent cursorPoint;
+			line: self;
+			yourself).
+	self setCreatedLayout.
+	self canvas dropElement: anEvent.
+	self edges do: [:e | self canvas addMorph: e morph].
+	self spawnHitbox.
+	self updateEdges.
+	self state: 2
 ]
 
 {
@@ -340,12 +391,12 @@ WBLine >> updateArrowHead [
 
 {
 	#category : #'line building',
-	#'squeak_changestamp' : 'si 7/11/2024 13:02'
+	#'squeak_changestamp' : 'si 7/5/2024 12:26'
 }
 WBLine >> updateEdges [
 	
 	self setVertices: { (self edges at: 2) center . (self edges at: 1) center }.
-	self hitbox setVertices: { (self edges at: 2) center . (self edges at: 1) center}.
+	self hitbox setVertices: { (self edges at: 2) center . (self edges at: 1) center . (self edges at: 2) center}.
 	self updateArrowHead
 	
 ]

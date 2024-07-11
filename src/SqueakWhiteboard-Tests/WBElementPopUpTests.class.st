@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:27'
+	#'squeak_changestamp' : 'si 7/11/2024 14:13'
 }
 WBElementPopUpTests >> testButtonsOfPopUp [
 	| element mouseEvent |
@@ -14,7 +14,7 @@ WBElementPopUpTests >> testButtonsOfPopUp [
 	mouseEvent := MouseButtonEvent new.
 	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
 	
-	self canvas spawnAnElement: (WBRectangle newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
 	self canvas dropElement: mouseEvent.
 	element := self canvas elements at: 1.
 	
@@ -25,7 +25,7 @@ WBElementPopUpTests >> testButtonsOfPopUp [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:27'
+	#'squeak_changestamp' : 'si 7/11/2024 14:13'
 }
 WBElementPopUpTests >> testExistenceOfPopUp [
 	| element mouseEvent |
@@ -33,7 +33,7 @@ WBElementPopUpTests >> testExistenceOfPopUp [
 	mouseEvent := MouseButtonEvent new.
 	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
 	
-	self canvas spawnAnElement: (WBRectangle newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
 	self canvas dropElement: mouseEvent.
 	element := self canvas elements at: 1.
 	
@@ -45,7 +45,7 @@ WBElementPopUpTests >> testExistenceOfPopUp [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 7/10/2024 13:25'
+	#'squeak_changestamp' : 'si 7/11/2024 14:14'
 }
 WBElementPopUpTests >> testFunctionalityOfBorderColor [
 	| element mouseEvent buttonForColor |
@@ -53,7 +53,7 @@ WBElementPopUpTests >> testFunctionalityOfBorderColor [
 	mouseEvent := MouseButtonEvent new.
 	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
 	
-	self canvas spawnAnElement: (WBRectangle newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
 	self canvas dropElement: mouseEvent.
 	element := self canvas elements at: 1.
 	
@@ -77,7 +77,7 @@ WBElementPopUpTests >> testFunctionalityOfBorderColor [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:28'
+	#'squeak_changestamp' : 'si 7/11/2024 14:14'
 }
 WBElementPopUpTests >> testFunctionalityOfBorderColorPopUp [
 	| element mouseEvent |
@@ -85,7 +85,7 @@ WBElementPopUpTests >> testFunctionalityOfBorderColorPopUp [
 	mouseEvent := MouseButtonEvent new.
 	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
 	
-	self canvas spawnAnElement: (WBRectangle newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
 	self canvas dropElement: mouseEvent.
 	element := self canvas elements at: 1.
 	
@@ -97,7 +97,7 @@ WBElementPopUpTests >> testFunctionalityOfBorderColorPopUp [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:28'
+	#'squeak_changestamp' : 'si 7/11/2024 14:14'
 }
 WBElementPopUpTests >> testFunctionalityOfColor [
 	| element mouseEvent buttonForColor |
@@ -105,7 +105,7 @@ WBElementPopUpTests >> testFunctionalityOfColor [
 	mouseEvent := MouseButtonEvent new.
 	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
 	
-	self canvas spawnAnElement: (WBRectangle newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
 	self canvas dropElement: mouseEvent.
 	element := self canvas elements at: 1.
 	
@@ -129,7 +129,7 @@ WBElementPopUpTests >> testFunctionalityOfColor [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:28'
+	#'squeak_changestamp' : 'si 7/11/2024 14:14'
 }
 WBElementPopUpTests >> testFunctionalityOfColorPopUp [
 	| element mouseEvent |
@@ -137,7 +137,7 @@ WBElementPopUpTests >> testFunctionalityOfColorPopUp [
 	mouseEvent := MouseButtonEvent new.
 	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
 	
-	self canvas spawnAnElement: (WBRectangle newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
 	self canvas dropElement: mouseEvent.
 	element := self canvas elements at: 1.
 	
@@ -149,7 +149,7 @@ WBElementPopUpTests >> testFunctionalityOfColorPopUp [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:28'
+	#'squeak_changestamp' : 'si 7/11/2024 14:14'
 }
 WBElementPopUpTests >> testFunctionalityOfCopy [
 	| element mouseEvent |
@@ -157,7 +157,7 @@ WBElementPopUpTests >> testFunctionalityOfCopy [
 	mouseEvent := MouseButtonEvent new.
 	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
 	
-	self canvas spawnAnElement: (WBRectangle newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
 	self canvas dropElement: mouseEvent.
 	element := self canvas elements at: 1.
 	
@@ -169,7 +169,7 @@ WBElementPopUpTests >> testFunctionalityOfCopy [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:28'
+	#'squeak_changestamp' : 'si 7/11/2024 14:14'
 }
 WBElementPopUpTests >> testFunctionalityOfDelete [
 	| element mouseEvent |
@@ -177,7 +177,7 @@ WBElementPopUpTests >> testFunctionalityOfDelete [
 	mouseEvent := MouseButtonEvent new.
 	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
 	
-	self canvas spawnAnElement: (WBRectangle newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
 	self canvas dropElement: mouseEvent.
 	element := self canvas elements at: 1.
 	

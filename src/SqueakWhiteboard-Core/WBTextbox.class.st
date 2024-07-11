@@ -1,20 +1,16 @@
-"
-This class represent a concrete textbox
-"
 Class {
 	#name : #WBTextbox,
 	#superclass : #WBRectangularElement,
-	#category : #'SqueakWhiteboard-Core',
-	#'squeak_changestamp' : 'ACL 7/10/2024 13:44'
+	#category : #'SqueakWhiteboard-Core'
 }
 
 {
-	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+	#category : #'instance creation',
+	#'squeak_changestamp' : 'is 7/1/2024 00:29'
 }
 WBTextbox class >> defaultSize [
 
-	^ 15 @ 35
+	^ 15@35
 ]
 
 {

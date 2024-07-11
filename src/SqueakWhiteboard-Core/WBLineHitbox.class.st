@@ -1,5 +1,5 @@
 "
-This class creates a hitbox around each line and delegates all mouse events around it to its corresponding line
+This class acts as the hitbox for a corresponding line and delegates all mouse events to it. Its size depends on the border size of itself.
 "
 Class {
 	#name : #WBLineHitbox,
@@ -8,8 +8,17 @@ Class {
 		'line'
 	],
 	#category : #'SqueakWhiteboard-Core',
-	#'squeak_changestamp' : 'ACL 7/10/2024 13:43'
+	#'squeak_changestamp' : 'si 7/11/2024 15:30'
 }
+
+{
+	#category : #defaults,
+	#'squeak_changestamp' : 'si 7/11/2024 15:28'
+}
+WBLineHitbox class >> defaultBorderWidth [
+
+	^ 20
+]
 
 {
 	#category : #'event handling',
@@ -40,12 +49,12 @@ WBLineHitbox >> handlesMouseOver: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 7/7/2024 17:42'
+	#'squeak_changestamp' : 'si 7/11/2024 15:31'
 }
 WBLineHitbox >> initialize [
 
 	super initialize.
-	self borderWidth: 20.
+	self borderWidth: self class defaultBorderWidth.
 	self borderColor: Color transparent
 ]
 

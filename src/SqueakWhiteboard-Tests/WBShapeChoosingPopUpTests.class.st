@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:24'
+	#'squeak_changestamp' : 'si 7/11/2024 14:12'
 }
 WBShapeChoosingPopUpTests >> testButtonFunctionality [
 	| button buttonForShape |
@@ -16,11 +16,11 @@ WBShapeChoosingPopUpTests >> testButtonFunctionality [
 	
 	buttonForShape := self canvas toolbar popUp submorphs at: 1. 
 	buttonForShape clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
-	self assert: self canvas elementToSpawn class = WBRectangle.
+	self assert: self canvas elementToSpawn class = WBRectangularElement.
 	
 	buttonForShape := self canvas toolbar popUp submorphs at: 2. 
 	buttonForShape clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
-	self assert: self canvas elementToSpawn class = WBCircle
+	self assert: self canvas elementToSpawn class = WBCircularElement
 ]
 
 {

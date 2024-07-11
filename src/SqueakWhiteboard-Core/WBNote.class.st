@@ -13,12 +13,12 @@ Class {
 }
 
 {
-	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+	#category : #accessing,
+	#'squeak_changestamp' : 'is 6/23/2024 01:46'
 }
 WBNote class >> defaultSizeOfCorner [
 
-	^ 20 @ 20
+	^ 20@20
 ]
 
 {
@@ -51,7 +51,7 @@ WBNote >> createVertecies [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+	#'squeak_changestamp' : 'si 7/11/2024 14:18'
 }
 WBNote >> initialize [
 
@@ -59,12 +59,11 @@ WBNote >> initialize [
 	self 
 		sizeOfNote: self class defaultSize;
 	 	sizeOfCorner: self class defaultSizeOfCorner;
-		lineColor: self color muchDarker; 
+		lineColor: self color muchDarker;
 		createVertecies;
 		makeShape;
 		initializeTextfield;
-		supportsText: true;
-		borderWidth: 3
+		supportsText: true.
 ]
 
 {

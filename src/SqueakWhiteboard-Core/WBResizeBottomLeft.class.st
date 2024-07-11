@@ -9,7 +9,7 @@ Class {
 }
 
 {
-	#category : #resize,
+	#category : #sizing,
 	#'squeak_changestamp' : 'JK 6/30/2024 21:18'
 }
 WBResizeBottomLeft >> resize: movement [
@@ -19,7 +19,7 @@ WBResizeBottomLeft >> resize: movement [
 ]
 
 {
-	#category : #resize,
+	#category : #sizing,
 	#'squeak_changestamp' : 'is 6/23/2024 02:01'
 }
 WBResizeBottomLeft >> resizeCursor [
@@ -29,7 +29,7 @@ WBResizeBottomLeft >> resizeCursor [
 ]
 
 {
-	#category : #resize,
+	#category : #sizing,
 	#'squeak_changestamp' : 'JK 6/30/2024 21:14'
 }
 WBResizeBottomLeft >> setLayout [

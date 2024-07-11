@@ -26,52 +26,16 @@ Class {
 }
 
 {
-	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:21'
-}
-WBElement class >> defaultBorderColorColumns [
-
-	^ 3
-]
-
-{
-	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
-}
-WBElement class >> defaultBorderWidth [
-
-	^ 3
-]
-
-{
-	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
+	#category : #layout,
+	#'squeak_changestamp' : 'is 6/18/2024 22:28'
 }
 WBElement class >> defaultSize [
 
-	^ 100 @ 100
+	^ 100@100
 ]
 
 {
-	#category : #defaults,
-	#'squeak_changestamp' : 'si 7/11/2024 13:49'
-}
-WBElement class >> defaultSizeOfPopUp [
-
-	^ 30
-]
-
-{
-	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:22'
-}
-WBElement class >> defaultSizeOfPopup [
-
-	^ 30
-]
-
-{
-	#category : #defaults,
+	#category : #layout,
 	#'squeak_changestamp' : 'si 7/10/2024 13:36'
 }
 WBElement class >> defaultTextBorderOffset [
@@ -97,6 +61,30 @@ WBElement class >> newWithCanvas: aCanvas [
 	^ self basicNew 
 		canvas: aCanvas;
 		initialize
+]
+
+{
+	#category : #popUp,
+	#'squeak_changestamp' : 'si 7/10/2024 12:10'
+}
+WBElement class >> sizeOfPopUpForStandardElement [
+
+	^ 30
+]
+
+{
+	#category : #'event handling',
+	#'squeak_changestamp' : 'si 7/11/2024 14:44'
+}
+WBElement >> activateElement: anEvent [
+	
+	self canvas 
+		deactivateElement;
+		deactivateTextbox.
+	self dragStart: anEvent;
+		addResizeFrame;
+		showPopUp.
+	self canvas activeElement: self
 ]
 
 {
@@ -152,11 +140,12 @@ WBElement >> addOwnMorphTo: aMorph [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'si 7/11/2024 12:52'
+	#'squeak_changestamp' : 'ACL 7/10/2024 11:55'
 }
 WBElement >> addResizeFrame [
 	
-	self resizable ifTrue: [self resizeFrame: (WBResizeFrame newWithParent: self)]
+	self resizable ifTrue: [
+		self resizeFrame: (WBResizeFrame newWithParent: self)]
 	
 	
 
@@ -219,11 +208,11 @@ WBElement >> buttonFunctionalityForBorderColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:22'
+	#'squeak_changestamp' : 'si 7/10/2024 17:04'
 }
 WBElement >> buttonFunctionalityForBorderColorPalette [
 
-	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class defaultSizeOfPopup / 2)) with: self makeBorderColorButtons columns: self class defaultBorderColorColumns]
+	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeBorderColorButtons columns: 3]
 ]
 
 {
@@ -238,11 +227,11 @@ WBElement >> buttonFunctionalityForColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:28'
+	#'squeak_changestamp' : 'si 7/10/2024 17:04'
 }
 WBElement >> buttonFunctionalityForColorPalette [
 
-	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class defaultSizeOfPopUp / 2)) with: self makeColorButtons columns: self class defaultBorderColorColumns]
+	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: 3]
 ]
 
 {
@@ -496,6 +485,17 @@ WBElement >> extent: anExtent [
 ]
 
 {
+	#category : #'event handling',
+	#'squeak_changestamp' : 'si 7/11/2024 14:44'
+}
+WBElement >> handleRedButtonClick: anEvent [
+
+	(self canvas elementToSpawn) isNil 
+		ifTrue: [self activateElement: anEvent]
+		ifFalse: [self canvas dropElement: anEvent]
+]
+
+{
 	#category : #'morph functionalities',
 	#'squeak_changestamp' : 'is 6/18/2024 18:55'
 }
@@ -506,28 +506,24 @@ WBElement >> height: aHeight [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:27'
+	#'squeak_changestamp' : 'si 7/10/2024 11:57'
 }
 WBElement >> imageSize [
 
-	^ (self class defaultSizeOfPopUp @ self class defaultSizeOfPopUp) * 0.75
+	^ (self class sizeOfPopUpForStandardElement @ self class sizeOfPopUpForStandardElement) * 0.75
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:16'
+	#'squeak_changestamp' : 'si 7/11/2024 14:57'
 }
 WBElement >> initialize [
 	
 	super initialize.
-	self morph: 
-		self initializeElement;
-		extent: self class defaultSize;
-		borderWidth: 3;
-		color: self canvas globalColor.
-	self setupEventHandling.
+	self morph: self initializeElement.
+	self setLayout.
+	self setupEventHandling. 
 	self supportsText ifTrue: [self initializeTextfield]
-	
 ]
 
 {
@@ -676,14 +672,14 @@ WBElement >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:16'
+	#'squeak_changestamp' : 'si 7/11/2024 14:50'
 }
 WBElement >> makePopWith: aCollection columns: aNumber [
 
 	self popUp: 
 		(WBPopUp new
-			setDefaultValues;
-			sizeOfPopUp: self class defaultSizeOfPopUp;
+			setLayout;
+			sizeOfPopUp: self class sizeOfPopUpForStandardElement;
 			numberOfColumns: aNumber;
 			addButtons: aCollection;
 			yourself).
@@ -739,25 +735,14 @@ WBElement >> morph: aMorph [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 6/23/2024 01:34'
+	#'squeak_changestamp' : 'si 7/11/2024 14:39'
 }
 WBElement >> mouseDown: anEvent [
 	
-	anEvent redButtonPressed ifTrue: 
-		[(self canvas elementToSpawn) isNil 
-			ifTrue:
-				[self canvas 
-					deactivateElement;
-					deactivateTextbox.
-				self dragStart: anEvent;
-					addResizeFrame;
-					showPopUp.
-				self canvas activeElement: self]
-			ifFalse:
-				[self canvas dropElement: anEvent].
-		self 
-			detectDoubleClick: anEvent;
-			lastMouseClick: anEvent]
+	anEvent redButtonPressed ifTrue: [self handleRedButtonClick: anEvent].
+	self 
+		detectDoubleClick: anEvent;
+		lastMouseClick: anEvent
 ]
 
 {
@@ -910,12 +895,25 @@ WBElement >> right [
 ]
 
 {
+	#category : #layout,
+	#'squeak_changestamp' : 'si 7/11/2024 14:48'
+}
+WBElement >> setLayout [
+
+	self
+		extent: self class defaultSize;
+		borderWidth: 3;
+		color: self canvas globalColor;
+		borderColor: self canvas globalColor
+]
+
+{
 	#category : #popUp,
-	#'squeak_changestamp' : 'si 7/11/2024 13:49'
+	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:22'
 }
 WBElement >> setPopupPosition [
 
-	self popUp center: self topCenter - (0 @ self class defaultSizeOfPopUp * 0.5) - (0 @ (self popUp height/2))
+	self popUp center: self topCenter - (0 @ 10) - (0 @ (self popUp height/2))
 	
 ]
 

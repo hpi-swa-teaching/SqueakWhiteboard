@@ -6,7 +6,7 @@ Class {
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:26'
+	#'squeak_changestamp' : 'si 7/11/2024 14:13'
 }
 WBDeletePopUpTests >> testButtonFunctionalityForCancel [
 	| button buttonForCancel mouseEvent |
@@ -16,9 +16,9 @@ WBDeletePopUpTests >> testButtonFunctionalityForCancel [
 	button := self canvas toolbar buttons at: 6.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
 	
-	self canvas spawnAnElement: (WBRectangle newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
 	self canvas dropElement: mouseEvent.
-	self canvas spawnAnElement: (WBRectangle newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (200 @ 200)).
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (200 @ 200)).
 	self canvas dropElement: mouseEvent.
 	
 	buttonForCancel := self canvas toolbar popUp submorphs at: 1. 
@@ -31,7 +31,7 @@ WBDeletePopUpTests >> testButtonFunctionalityForCancel [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:26'
+	#'squeak_changestamp' : 'si 7/11/2024 14:13'
 }
 WBDeletePopUpTests >> testButtonFunctionalityForConfirm [
 	| button buttonForConfirm mouseEvent |
@@ -42,9 +42,9 @@ WBDeletePopUpTests >> testButtonFunctionalityForConfirm [
 		button := self canvas toolbar buttons at: 6.
 	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
 	
-	self canvas spawnAnElement: (WBRectangle newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
 	self canvas dropElement: mouseEvent.
-	self canvas spawnAnElement: (WBRectangle newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (200 @ 200)).
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (200 @ 200)).
 	self canvas dropElement: mouseEvent.
 	
 	buttonForConfirm := self canvas toolbar popUp submorphs at: 2. 

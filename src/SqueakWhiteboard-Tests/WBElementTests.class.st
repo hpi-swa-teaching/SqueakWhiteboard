@@ -18,11 +18,11 @@ WBElementTests >> canvas [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'ACL 7/10/2024 13:47'
+	#'squeak_changestamp' : 'is 6/22/2024 00:50'
 }
-WBElementTests >> canvas: aCanvas [
+WBElementTests >> canvas: aCavas [
 
-	canvas := aCanvas
+	canvas := aCavas
 ]
 
 {
@@ -48,15 +48,14 @@ WBElementTests >> tearDown [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:27'
+	#'squeak_changestamp' : 'si 7/11/2024 14:23'
 }
 WBElementTests >> testMouseDown [
 	| aMouseEvent anElement |
 	
-	anElement := WBRectangle newWithCanvas: self canvas.
+	anElement := WBRectangularElement newWithCanvas: self canvas.
 	aMouseEvent := MouseButtonEvent new.
 	aMouseEvent setType: #mouseDown position: anElement position which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
-	self assert: (self canvas handlesMouseOver: aMouseEvent) = true.
 	
 	anElement supportsText: true.
 	self assert: (self canvas handlesMouseDown: aMouseEvent) = (anElement textField enabled) not.
