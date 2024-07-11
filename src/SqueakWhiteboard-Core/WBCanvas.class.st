@@ -85,7 +85,7 @@ WBCanvas >> addElement: anElement [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'is 6/21/2024 21:10'
 }
 WBCanvas >> clampedPositionOfElement: anElement at: aPoint [

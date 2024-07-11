@@ -60,11 +60,11 @@ WBLineHitbox >> initialize [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'nicloeser 7/10/2024 12:00'
+	#'squeak_changestamp' : 'ACL 7/11/2024 16:36'
 }
 WBLineHitbox >> isClickNearLine: aPoint [
 
-	^ self point: aPoint isNearLineFrom: (self vertices at: 1) to: (self vertices at: 2) within: self borderWidth / 2
+	^ self point: aPoint isNearLineFrom: (self vertices first) to: (self vertices second) within: self borderWidth / 2
 ]
 
 {

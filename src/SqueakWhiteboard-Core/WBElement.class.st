@@ -505,7 +505,7 @@ WBElement >> height: aHeight [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'si 7/10/2024 11:57'
 }
 WBElement >> imageSize [

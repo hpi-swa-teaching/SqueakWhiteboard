@@ -38,13 +38,13 @@ WBLine >> addDropShadow [
 
 {
 	#category : #geometry,
-	#'squeak_changestamp' : 'is 6/18/2024 00:03'
+	#'squeak_changestamp' : 'ACL 7/11/2024 16:32'
 }
 WBLine >> angleForPoints [
 	| lengthX lengthY length sin |
 	
-	lengthX := (self edges at: 2) x - (self edges at: 1) x.
-	lengthY :=(self edges at: 2) y - (self edges at: 1) y.
+	lengthX := (self edges second) x - (self edges first) x.
+	lengthY :=(self edges second) y - (self edges first) y.
 	length := (lengthX squared + lengthY  squared) safeSquareRoot.
 	sin := lengthY / length.
 	^ sin arcSin * (36 / 2 * (3.141592))
@@ -96,7 +96,7 @@ WBLine >> checkForArrowHead [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'nicloeser 7/10/2024 12:00'
+	#'squeak_changestamp' : 'ACL 7/11/2024 16:40'
 }
 WBLine >> color: aColor [
 
@@ -105,8 +105,7 @@ WBLine >> color: aColor [
 		[self arrowHead 
 		color: aColor;
 		borderColor: aColor].
-	self edges isEmpty ifFalse:
-		[self edges do: [:e | e color: aColor]]
+	self edges isEmpty ifFalse: [self edges do: [:e | e color: aColor]]
 ]
 
 {
@@ -241,23 +240,23 @@ WBLine >> showArrowHead [
 
 {
 	#category : #'line building',
-	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:21'
+	#'squeak_changestamp' : 'ACL 7/11/2024 16:37'
 }
 WBLine >> spawnAttachmentsForCopy [
 	
 	self edges: OrderedCollection new.
 	self edges add: ((WBEdgeOfLine newWithCanvas: self canvas)
 				canvas: self canvas;
-				center: (self morph vertices at: 2);
+				center: self morph vertices second;
 				line: self;
 				yourself);
 				add: ((WBEdgeOfLine newWithCanvas: self canvas)
 				canvas: self canvas;
-				center: (self morph vertices at: 1);
+				center: self morph vertices first;
 				line: self;
 				yourself).
-	self canvas addElement: (self edges at: 1);
-		addElement: (self edges at: 2).
+	self canvas addElement: self edges first;
+		addElement: self edges second.
 	self updateEdges
 	
 	
@@ -281,13 +280,38 @@ WBLine >> spawnCopiedLine: anEvent [
 
 {
 	#category : #'line building',
-	#'squeak_changestamp' : 'si 7/11/2024 15:17'
+	#'squeak_changestamp' : 'ACL 7/11/2024 16:34'
 }
-WBLine >> spawnEdgeOfLineAt: anEvent [
+WBLine >> spawnEdgeOfLineAt: aMouseEvent [
 
 	(self state = 0) 
-		ifTrue: [self spawnFirstEdgeAt: anEvent cursorPoint]
-		ifFalse: [self spawnSecondEdgeAt: anEvent]
+		ifTrue:
+			[self edges add: ((WBEdgeOfLine newWithCanvas: self canvas)
+				canvas: self canvas;
+				center: aMouseEvent cursorPoint;
+				line: self;
+				yourself).
+				self state: 1]
+		ifFalse:
+			[self edges add: ((WBEdgeOfLine newWithCanvas: self canvas)
+			center: aMouseEvent cursorPoint;
+			canvas: self canvas;
+			line: self;
+			yourself).
+			self 
+				borderWidth: 2;
+				color: Color black;
+				checkForArrowHead.
+			self canvas 
+				addElement: self edges first;
+				addElement: self edges second;
+				dropElement: aMouseEvent.
+			self hitbox: WBLineHitbox new.
+			self hitbox goBehind.
+			self hitbox line: self.
+			self addMorph: self hitbox.
+			self updateEdges.
+			self state: 2]
 ]
 
 {
@@ -355,14 +379,14 @@ WBLine >> state: aState [
 
 {
 	#category : #geometry,
-	#'squeak_changestamp' : 'si 6/20/2024 23:58'
+	#'squeak_changestamp' : 'ACL 7/11/2024 16:35'
 }
 WBLine >> switchDirection [
 	| aPosition | 
 	
-	aPosition := (self edges at: 1) center.
-	(self edges at:1) center: (self edges at:2) center.
-	(self edges at:2) center: aPosition.
+	aPosition := self edges first center.
+	self edges first center: self edges second center.
+	self edges second center: aPosition.
 	self updateEdges
 ]
 
@@ -379,24 +403,24 @@ WBLine >> switchVisibilityOfArrowHead [
 
 {
 	#category : #arrow,
-	#'squeak_changestamp' : 'is 6/23/2024 01:41'
+	#'squeak_changestamp' : 'ACL 7/11/2024 16:35'
 }
 WBLine >> updateArrowHead [
 
-	((self edges at: 1) x > (self edges at: 2) x) 
+	((self edges first) x > (self edges second) x) 
 		ifFalse:[self arrowHead rotationDegrees: (-1 * self angleForPoints)] 
 		ifTrue:[self arrowHead rotationDegrees: (180 + self angleForPoints)].
-	self arrowHead center: (self edges at: 2) center
+	self arrowHead center: (self edges second) center
 ]
 
 {
 	#category : #'line building',
-	#'squeak_changestamp' : 'si 7/5/2024 12:26'
+	#'squeak_changestamp' : 'ACL 7/11/2024 16:36'
 }
 WBLine >> updateEdges [
 	
-	self setVertices: { (self edges at: 2) center . (self edges at: 1) center }.
-	self hitbox setVertices: { (self edges at: 2) center . (self edges at: 1) center . (self edges at: 2) center}.
+	self setVertices: { (self edges second) center . (self edges first) center }.
+	self hitbox setVertices: { (self edges second) center . (self edges first) center . (self edges second) center}.
 	self updateArrowHead
 	
 ]

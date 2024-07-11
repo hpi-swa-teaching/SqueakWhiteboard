@@ -43,7 +43,7 @@ WBToolbar class >> textForDeleteAll [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'is 5/28/2024 15:41'
 }
 WBToolbar >> backgroundColor [
@@ -52,7 +52,7 @@ WBToolbar >> backgroundColor [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'is 5/28/2024 15:47'
 }
 WBToolbar >> backgroundColor: aColor [
@@ -185,7 +185,7 @@ WBToolbar >> buttonFunctionalityForTextbox [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'si 7/11/2024 15:38'
 }
 WBToolbar >> buttonSize [
@@ -303,7 +303,7 @@ WBToolbar >> createToolbarButtons [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'si 6/17/2024 13:43'
 }
 WBToolbar >> deactivateElement [
@@ -490,7 +490,7 @@ WBToolbar >> getTextboxButton [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'is 6/23/2024 02:09'
 }
 WBToolbar >> imageSize [
@@ -565,7 +565,7 @@ WBToolbar >> popUp: aPopUp [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'si 7/11/2024 15:39'
 }
 WBToolbar >> setLayout [
@@ -579,7 +579,7 @@ WBToolbar >> setLayout [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
 	#'squeak_changestamp' : 'is 6/23/2024 02:07'
 }
 WBToolbar >> toolbarCanvasSizeFactor [
@@ -588,10 +588,58 @@ WBToolbar >> toolbarCanvasSizeFactor [
 ]
 
 {
-	#category : #layout,
+	#category : #appearance,
+	#'squeak_changestamp' : 'is 5/18/2024 17:16'
+}
+WBToolbar >> toolbarHeight [
+
+	^ toolbarHeight
+]
+
+{
+	#category : #appearance,
+	#'squeak_changestamp' : 'is 5/18/2024 18:41'
+}
+WBToolbar >> toolbarHeight: aNumber [
+
+	toolbarHeight := aNumber.
+	self updateDimensions
+]
+
+{
+	#category : #appearance,
+	#'squeak_changestamp' : 'is 5/18/2024 17:17'
+}
+WBToolbar >> toolbarWidth [
+
+	^ toolbarWidth
+]
+
+{
+	#category : #appearance,
+	#'squeak_changestamp' : 'is 6/23/2024 02:07'
+}
+WBToolbar >> toolbarWidth: aNumber [
+
+	toolbarWidth := aNumber.
+	self updateDimensions
+]
+
+{
+	#category : #appearance,
 	#'squeak_changestamp' : 'is 5/28/2024 15:45'
 }
 WBToolbar >> updateColor [
 
 	self backgroundColor ifNotNil: [self color: self backgroundColor]
+]
+
+{
+	#category : #appearance,
+	#'squeak_changestamp' : 'is 6/23/2024 02:07'
+}
+WBToolbar >> updateDimensions [
+
+	self toolbarHeight ifNotNil: [self height: self toolbarHeight].
+	self toolbarWidth ifNotNil: [self width: self toolbarWidth]
 ]

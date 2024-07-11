@@ -84,6 +84,16 @@ WBEdgeOfLine >> buttonsForPopUpBar [
 
 {
 	#category : #geometry,
+	#'squeak_changestamp' : 'ACL 7/11/2024 16:31'
+}
+WBEdgeOfLine >> checkArrowDirection [
+
+	self line edges first = self	ifTrue: [self switchDirection].
+	self line switchVisibilityOfArrowHead
+]
+
+{
+	#category : #geometry,
 	#'squeak_changestamp' : 'is 6/23/2024 01:45'
 }
 WBEdgeOfLine >> checkArrwoDirection [
