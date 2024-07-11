@@ -74,17 +74,8 @@ WBPopUp >> handlesMouseDown: anEvent [
 ]
 
 {
-	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/13/2024 12:19'
-}
-WBPopUp >> initialize [
-
-	super initialize
-]
-
-{
 	#category : #popUp,
-	#'squeak_changestamp' : 'ACL 7/11/2024 13:31'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBPopUp >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
@@ -187,7 +178,7 @@ WBPopUp >> popUpButtons: aNumber [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:12'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBPopUp >> setDefaultValues [
 

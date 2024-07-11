@@ -98,7 +98,7 @@ WBButtonTests >> testButtonHoverColor [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'si 7/10/2024 13:24'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:16'
 }
 WBButtonTests >> testMouseDown [
 	| aButton aMouseEvent |
@@ -109,11 +109,9 @@ WBButtonTests >> testMouseDown [
 	self assert: (aButton handlesMouseOver: aMouseEvent) = true.
 	self assert: (aButton handlesMouseDown: aMouseEvent) = true.
 	
-	"Test whether button actives on mouseUp"
 	aButton mouseDown: aMouseEvent.
 	self assert: aButton currentMouseEvent = nil.
 	
-	"Test whether button activates only if position of mouse is still above button. Currently the mouse isn't"
 	aButton mouseUp: aMouseEvent.
 	self assert: aButton currentMouseEvent = nil.
 	

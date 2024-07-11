@@ -13,29 +13,29 @@ Class {
 
 {
 	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:18'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
 }
 WBEdgeOfLine class >> defaultCornerRadius [
 
-	^100
+	^ 100
 ]
 
 {
 	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:18'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
 }
 WBEdgeOfLine class >> defaultHeight [
 
-	^10
+	^ 10
 ]
 
 {
 	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:19'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
 }
 WBEdgeOfLine class >> defaultWidth [
 
-	^10
+	^ 10
 ]
 
 {
@@ -120,7 +120,7 @@ WBEdgeOfLine >> handlesMouseOver: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:17'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBEdgeOfLine >> initialize [
 
@@ -208,7 +208,7 @@ WBEdgeOfLine >> mouseUp: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:18'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBEdgeOfLine >> setDefaultValues [
 

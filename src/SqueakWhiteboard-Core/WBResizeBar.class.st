@@ -50,7 +50,7 @@ WBResizeBar >> frame: anElement [
 ]
 
 {
-	#category : #mouseEvents,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 6/23/2024 01:53'
 }
 WBResizeBar >> handlesMouseDown: aEvent [
@@ -59,7 +59,7 @@ WBResizeBar >> handlesMouseDown: aEvent [
 ]
 
 {
-	#category : #mouseEvents,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 6/23/2024 01:53'
 }
 WBResizeBar >> handlesMouseOver: aEvent [
@@ -103,7 +103,7 @@ WBResizeBar >> lastPosition: anObject [
 ]
 
 {
-	#category : #mouseEvents,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 6/23/2024 01:53'
 }
 WBResizeBar >> mouseDown: mouseEvent [
@@ -112,7 +112,7 @@ WBResizeBar >> mouseDown: mouseEvent [
 ]
 
 {
-	#category : #mouseEvents,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 6/23/2024 01:53'
 }
 WBResizeBar >> mouseEnter: aEvent [
@@ -121,7 +121,7 @@ WBResizeBar >> mouseEnter: aEvent [
 ]
 
 {
-	#category : #mouseEvents,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 6/23/2024 01:53'
 }
 WBResizeBar >> mouseLeave: aEvent [
@@ -130,7 +130,7 @@ WBResizeBar >> mouseLeave: aEvent [
 ]
 
 {
-	#category : #mouseEvents,
+	#category : #'event handling',
 	#'squeak_changestamp' : 'is 6/23/2024 01:53'
 }
 WBResizeBar >> mouseMove: mouseEvent [
@@ -141,7 +141,7 @@ WBResizeBar >> mouseMove: mouseEvent [
 ]
 
 {
-	#category : #sizing,
+	#category : #resize,
 	#'squeak_changestamp' : 'is 6/23/2024 01:54'
 }
 WBResizeBar >> resize: movement [
@@ -159,7 +159,7 @@ WBResizeBar >> resizeCursor [
 ]
 
 {
-	#category : #sizing,
+	#category : #resize,
 	#'squeak_changestamp' : 'nicloeser 7/10/2024 12:00'
 }
 WBResizeBar >> setLayout [

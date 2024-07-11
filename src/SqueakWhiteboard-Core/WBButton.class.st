@@ -244,7 +244,7 @@ WBButton >> mouseUp: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:11'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBButton >> setDefaultValues [
 

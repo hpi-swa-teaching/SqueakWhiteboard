@@ -315,7 +315,7 @@ WBCanvas >> images: anImage [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:13'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBCanvas >> initialize [
 	
@@ -373,7 +373,7 @@ WBCanvas >> removeText [
 
 {
 	#category : #appearance,
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:15'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBCanvas >> showText: aString [
 

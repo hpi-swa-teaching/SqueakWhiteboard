@@ -13,12 +13,12 @@ Class {
 }
 
 {
-	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/23/2024 01:46'
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
 }
 WBNote class >> defaultSizeOfCorner [
 
-	^ 20@20
+	^ 20 @ 20
 ]
 
 {
@@ -51,7 +51,7 @@ WBNote >> createVertecies [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 6/28/2024 15:43'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
 }
 WBNote >> initialize [
 

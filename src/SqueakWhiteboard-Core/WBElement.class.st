@@ -36,11 +36,29 @@ WBElement class >> defaultBorderColorColumns [
 
 {
 	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:21'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+}
+WBElement class >> defaultBorderWidth [
+
+	^ 3
+]
+
+{
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBElement class >> defaultSize [
 
 	^ 100 @ 100
+]
+
+{
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+}
+WBElement class >> defaultSizeOfPopUp [
+
+	^ 20
 ]
 
 {
@@ -221,11 +239,11 @@ WBElement >> buttonFunctionalityForColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:22'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:28'
 }
 WBElement >> buttonFunctionalityForColorPalette [
 
-	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class defaultSizeOfPopup / 2)) with: self makeColorButtons columns: self class defaultBorderColorColumns]
+	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class defaultSizeOfPopUp / 2)) with: self makeColorButtons columns: self class defaultBorderColorColumns]
 ]
 
 {
@@ -489,16 +507,16 @@ WBElement >> height: aHeight [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:22'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:27'
 }
 WBElement >> imageSize [
 
-	^ (self class defaultSizeOfPopup @ self class defaultSizeOfPopup) * 0.75
+	^ (self class defaultSizeOfPopUp @ self class defaultSizeOfPopUp) * 0.75
 ]
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 7/10/2024 17:14'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:16'
 }
 WBElement >> initialize [
 	
@@ -659,14 +677,14 @@ WBElement >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'ACL 7/11/2024 12:22'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:16'
 }
 WBElement >> makePopWith: aCollection columns: aNumber [
 
 	self popUp: 
 		(WBPopUp new
 			setDefaultValues;
-			sizeOfPopUp: self class defaultSizeOfPopup;
+			sizeOfPopUp: self class defaultSizeOfPopUp;
 			numberOfColumns: aNumber;
 			addButtons: aCollection;
 			yourself).

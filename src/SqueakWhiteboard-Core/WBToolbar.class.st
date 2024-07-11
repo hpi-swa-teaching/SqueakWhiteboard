@@ -10,7 +10,6 @@ Class {
 		'toolbarWidth',
 		'buttons',
 		'backgroundColor',
-		'aPoint',
 		'popUp'
 	],
 	#category : #'SqueakWhiteboard-Core',
@@ -18,8 +17,8 @@ Class {
 }
 
 {
-	#category : #layout,
-	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:08'
 }
 WBToolbar class >> defaultMargin [ 
 
@@ -170,7 +169,7 @@ WBToolbar >> buttonFunctionalityForRectangle [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBToolbar >> buttonFunctionalityForShapeChoosing [
 
@@ -188,7 +187,7 @@ WBToolbar >> buttonFunctionalityForTextbox [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBToolbar >> buttonSize [
 
@@ -533,15 +532,15 @@ WBToolbar >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
+	#'squeak_changestamp' : 'ACL 7/10/2024 18:16'
 }
 WBToolbar >> placeButtons: someButtons [
 	
 	someButtons doWithIndex: [:aButton :anIndex| 
 		aButton 
-			margin:  WBToolbar defaultMargin;
+			margin:  self class defaultMargin;
 			extent: self buttonSize;
-			center: (self bounds origin x + self toolbarWidth / 2) @ (self bounds origin y + ((self buttonSize y + WBToolbar defaultMargin) * anIndex) ) - (0 @ self buttonSize y / 2);
+			center: (self bounds origin x + self toolbarWidth / 2) @ (self bounds origin y + ((self buttonSize y + self class defaultMargin) * anIndex) ) - (0 @ self buttonSize y / 2);
 			addImage.
 		self addMorph: aButton].
 	self buttons: someButtons
