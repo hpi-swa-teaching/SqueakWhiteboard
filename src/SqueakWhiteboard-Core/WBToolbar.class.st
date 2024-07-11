@@ -589,57 +589,9 @@ WBToolbar >> toolbarCanvasSizeFactor [
 
 {
 	#category : #appearance,
-	#'squeak_changestamp' : 'is 5/18/2024 17:16'
-}
-WBToolbar >> toolbarHeight [
-
-	^ toolbarHeight
-]
-
-{
-	#category : #appearance,
-	#'squeak_changestamp' : 'is 5/18/2024 18:41'
-}
-WBToolbar >> toolbarHeight: aNumber [
-
-	toolbarHeight := aNumber.
-	self updateDimensions
-]
-
-{
-	#category : #appearance,
-	#'squeak_changestamp' : 'is 5/18/2024 17:17'
-}
-WBToolbar >> toolbarWidth [
-
-	^ toolbarWidth
-]
-
-{
-	#category : #appearance,
-	#'squeak_changestamp' : 'is 6/23/2024 02:07'
-}
-WBToolbar >> toolbarWidth: aNumber [
-
-	toolbarWidth := aNumber.
-	self updateDimensions
-]
-
-{
-	#category : #appearance,
 	#'squeak_changestamp' : 'is 5/28/2024 15:45'
 }
 WBToolbar >> updateColor [
 
 	self backgroundColor ifNotNil: [self color: self backgroundColor]
-]
-
-{
-	#category : #appearance,
-	#'squeak_changestamp' : 'is 6/23/2024 02:07'
-}
-WBToolbar >> updateDimensions [
-
-	self toolbarHeight ifNotNil: [self height: self toolbarHeight].
-	self toolbarWidth ifNotNil: [self width: self toolbarWidth]
 ]
