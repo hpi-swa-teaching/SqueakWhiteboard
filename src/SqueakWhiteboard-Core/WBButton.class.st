@@ -19,7 +19,7 @@ Class {
 
 {
 	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:12'
 }
 WBButton class >> defaultCornerRadius [
 
@@ -122,7 +122,7 @@ WBButton >> currentMouseEvent: anEvent [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:08'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
 }
 WBButton >> defaultMargin [ 
 
@@ -244,7 +244,7 @@ WBButton >> mouseUp: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBButton >> setDefaultValues [
 

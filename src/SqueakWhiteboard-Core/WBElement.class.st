@@ -27,7 +27,7 @@ Class {
 
 {
 	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:21'
 }
 WBElement class >> defaultBorderColorColumns [
 
@@ -45,7 +45,7 @@ WBElement class >> defaultBorderWidth [
 
 {
 	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:23'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBElement class >> defaultSize [
 
@@ -62,7 +62,16 @@ WBElement class >> defaultSizeOfPopUp [
 ]
 
 {
-	#category : #layout,
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:22'
+}
+WBElement class >> defaultSizeOfPopup [
+
+	^ 30
+]
+
+{
+	#category : #defaults,
 	#'squeak_changestamp' : 'si 7/10/2024 13:36'
 }
 WBElement class >> defaultTextBorderOffset [
@@ -210,11 +219,11 @@ WBElement >> buttonFunctionalityForBorderColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:28'
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:22'
 }
 WBElement >> buttonFunctionalityForBorderColorPalette [
 
-	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class defaultSizeOfPopUp / 2)) with: self makeBorderColorButtons columns: self class defaultBorderColorColumns]
+	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class defaultSizeOfPopup / 2)) with: self makeBorderColorButtons columns: self class defaultBorderColorColumns]
 ]
 
 {

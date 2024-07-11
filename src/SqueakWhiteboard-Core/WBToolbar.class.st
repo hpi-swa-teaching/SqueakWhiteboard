@@ -82,21 +82,21 @@ WBToolbar >> buttonFunctionalityForCircle [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:34'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
 }
 WBToolbar >> buttonFunctionalityForColorPalette [
 
-	^ [:aButton | self makePopUpAt: aButton rightCenter + (WBToolbar defaultMargin + (self buttonSize x * (3 / 2)) @ 0) with: self createColorButtons columns: 3]
+	^ [:aButton | self makePopUpAt: aButton rightCenter + (self class defaultMargin + (self buttonSize x * (3 / 2)) @ 0) with: self createColorButtons columns: 3]
 ]
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:33'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
 }
 WBToolbar >> buttonFunctionalityForDeleteAll [
 
 	^ [:aButton | self canvas showText: self class textForDeleteAll.
-		self makePopUpAt: self canvas text bottomCenter + (0 @ (WBToolbar defaultMargin + self buttonSize x)) with: self createDeleteConfirmButtons columns: nil]
+		self makePopUpAt: self canvas text bottomCenter + (0 @ (self class defaultMargin + self buttonSize x)) with: self createDeleteConfirmButtons columns: nil]
 ]
 
 {
@@ -142,11 +142,11 @@ WBToolbar >> buttonFunctionalityForLine [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:33'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
 }
 WBToolbar >> buttonFunctionalityForLineChoosing [
 
-	^ [:aButton | self makePopUpAt: aButton rightCenter + (WBToolbar defaultMargin + (self buttonSize x / 2) @ 0) with: self createLineChoosingButtons columns: 1]
+	^ [:aButton | self makePopUpAt: aButton rightCenter + (self class defaultMargin + (self buttonSize x / 2) @ 0) with: self createLineChoosingButtons columns: 1]
 ]
 
 {
@@ -169,7 +169,7 @@ WBToolbar >> buttonFunctionalityForRectangle [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:08'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBToolbar >> buttonFunctionalityForShapeChoosing [
 
@@ -187,7 +187,7 @@ WBToolbar >> buttonFunctionalityForTextbox [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:08'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBToolbar >> buttonSize [
 

@@ -17,7 +17,7 @@ Class {
 
 {
 	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:12'
 }
 WBPopUp class >> defaultCornerRadius [
 
@@ -26,20 +26,20 @@ WBPopUp class >> defaultCornerRadius [
 
 {
 	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
+}
+WBPopUp class >> defaultMargin [
+
+	^ 5
+]
+
+{
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:21'
 }
 WBPopUp class >> defaultSizeOfPopUp [
 
 	^ 20
-]
-
-{
-	#category : #size,
-	#'squeak_changestamp' : 'si 7/10/2024 12:10'
-}
-WBPopUp class >> margin [
-
-	^ 5
 ]
 
 {
@@ -75,7 +75,7 @@ WBPopUp >> handlesMouseDown: anEvent [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBPopUp >> makePopUpAt: aPoint with: aCollection columns: aNumber [
 
@@ -178,7 +178,7 @@ WBPopUp >> popUpButtons: aNumber [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBPopUp >> setDefaultValues [
 
@@ -192,11 +192,11 @@ WBPopUp >> setDefaultValues [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 7/10/2024 11:40'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:33'
 }
 WBPopUp >> sizeOfButton [	
 
-	^ (self sizeOfPopUp - self class margin) @ (self sizeOfPopUp - self class margin)
+	^ (self sizeOfPopUp - self class defaultMargin) @ (self sizeOfPopUp - self class defaultMargin)
 ]
 
 {

@@ -21,6 +21,15 @@ WBArrowhead class >> DefaultVertices [
 ]
 
 {
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:10'
+}
+WBArrowhead class >> defaultVertices [
+
+	^ {0 @ 0. 20 @ 10. 0 @ 20}
+]
+
+{
 	#category : #initialization,
 	#'squeak_changestamp' : 'ACL 7/10/2024 17:14'
 }

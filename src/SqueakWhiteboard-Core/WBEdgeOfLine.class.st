@@ -48,11 +48,11 @@ WBEdgeOfLine >> addResizeFrame [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 6/21/2024 00:07'
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:16'
 }
 WBEdgeOfLine >> buttonFunctionalityForArrowSwitch [
 
-	^ [:aButton | self checkArrwoDirection]
+	^ [:aButton | self checkArrowDirection]
 ]
 
 {
@@ -101,9 +101,9 @@ WBEdgeOfLine >> buttonsForPopUpBar [
 
 {
 	#category : #geometry,
-	#'squeak_changestamp' : 'ACL 7/10/2024 13:50'
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:17'
 }
-WBEdgeOfLine >> checkArrwoDirection [
+WBEdgeOfLine >> checkArrowDirection [
 
 	(self line edges at: 1) = self	ifTrue: [self switchDirection].
 	self line switchVisibilityOfArrowHead
@@ -120,7 +120,7 @@ WBEdgeOfLine >> handlesMouseOver: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/10/2024 16:25'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBEdgeOfLine >> initialize [
 
@@ -208,7 +208,7 @@ WBEdgeOfLine >> mouseUp: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:07'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBEdgeOfLine >> setDefaultValues [
 

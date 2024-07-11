@@ -66,7 +66,7 @@ WBLine >> buttonsForPopUpBar [
 
 {
 	#category : #arrow,
-	#'squeak_changestamp' : 'ACL 7/10/2024 13:51'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBLine >> checkForArrowHead [
 

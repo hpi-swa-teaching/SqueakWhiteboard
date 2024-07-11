@@ -22,16 +22,16 @@ Class {
 
 {
 	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:05'
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:15'
 }
 WBCanvas class >> defaultFontSize [
 
-	^25
+	^ 25
 ]
 
 {
 	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+	#'squeak_changestamp' : 'ACL 7/11/2024 12:14'
 }
 WBCanvas class >> defaultWhiteBoardSize [
 
@@ -315,7 +315,7 @@ WBCanvas >> images: anImage [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:25'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBCanvas >> initialize [
 	
@@ -373,7 +373,7 @@ WBCanvas >> removeText [
 
 {
 	#category : #appearance,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:16'
+	#'squeak_changestamp' : 'ACL 7/11/2024 13:37'
 }
 WBCanvas >> showText: aString [
 
