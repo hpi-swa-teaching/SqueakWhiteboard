@@ -54,11 +54,11 @@ WBElement class >> defaultSize [
 
 {
 	#category : #defaults,
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+	#'squeak_changestamp' : 'si 7/11/2024 13:49'
 }
 WBElement class >> defaultSizeOfPopUp [
 
-	^ 20
+	^ 30
 ]
 
 {
@@ -143,12 +143,11 @@ WBElement >> addOwnMorphTo: aMorph [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'ACL 7/10/2024 11:55'
+	#'squeak_changestamp' : 'si 7/11/2024 12:52'
 }
 WBElement >> addResizeFrame [
 	
-	self resizable ifTrue: [
-		self resizeFrame: (WBResizeFrame newWithParent: self)]
+	self resizable ifTrue: [self resizeFrame: (WBResizeFrame newWithParent: self)]
 	
 	
 
@@ -903,11 +902,11 @@ WBElement >> right [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'nicloeser 7/10/2024 11:22'
+	#'squeak_changestamp' : 'si 7/11/2024 13:49'
 }
 WBElement >> setPopupPosition [
 
-	self popUp center: self topCenter - (0 @ 10) - (0 @ (self popUp height/2))
+	self popUp center: self topCenter - (0 @ self class defaultSizeOfPopUp * 0.5) - (0 @ (self popUp height/2))
 	
 ]
 

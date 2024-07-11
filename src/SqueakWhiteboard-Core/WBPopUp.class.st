@@ -44,7 +44,7 @@ WBPopUp class >> margin [
 
 {
 	#category : #'adding buttons',
-	#'squeak_changestamp' : 'ACL 7/10/2024 18:06'
+	#'squeak_changestamp' : 'si 7/11/2024 12:46'
 }
 WBPopUp >> addButtons: aList [
 
@@ -53,11 +53,11 @@ WBPopUp >> addButtons: aList [
 		self numberOfColumns: aList size.]
 	ifNotNil: [self numberOfRows: (aList size / self numberOfColumns) ceiling].
 	self popUpButtons: aList size.
-	self extent: (self numberOfColumns  * self class defaultSizeOfPopUp ) @ (self numberOfRows * self class defaultSizeOfPopUp).
+	self extent: (self numberOfColumns  * self sizeOfPopUp ) @ (self numberOfRows * self sizeOfPopUp).
 	row := 0. 
 	column := 0.
 	aList do: 
-		[:m | self placeButton: m At: self position + ((self class defaultSizeOfPopUp / 2) @ (self class defaultSizeOfPopUp / 2)) + ((column * self class defaultSizeOfPopUp) @ (row * self class defaultSizeOfPopUp)).
+		[:m | self placeButton: m At: self position + ((self sizeOfPopUp / 2) @ (self sizeOfPopUp / 2)) + ((column * self sizeOfPopUp) @ (row * self sizeOfPopUp)).
 		column := column + 1.
 		(column  = (self numberOfColumns)) ifTrue: 
 			[column := 0.

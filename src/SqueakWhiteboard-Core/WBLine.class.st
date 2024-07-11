@@ -158,12 +158,12 @@ WBLine >> hitbox: aMorph [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 7/5/2024 12:16'
+	#'squeak_changestamp' : 'si 7/11/2024 12:59'
 }
 WBLine >> initialize [
 
 	super initialize.
-	self morph setVertices: { 1@1 . 1@1 }.
+	self morph setVertices: { 1 @ 1 . 1 @ 1 }.
 	self state: 0
 ]
 
@@ -340,12 +340,12 @@ WBLine >> updateArrowHead [
 
 {
 	#category : #'line building',
-	#'squeak_changestamp' : 'si 7/5/2024 12:26'
+	#'squeak_changestamp' : 'si 7/11/2024 13:02'
 }
 WBLine >> updateEdges [
 	
 	self setVertices: { (self edges at: 2) center . (self edges at: 1) center }.
-	self hitbox setVertices: { (self edges at: 2) center . (self edges at: 1) center . (self edges at: 2) center}.
+	self hitbox setVertices: { (self edges at: 2) center . (self edges at: 1) center}.
 	self updateArrowHead
 	
 ]
