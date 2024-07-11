@@ -31,14 +31,15 @@ WBLine >> activateElement: anEvent [
 
 {
 	#category : #'linemorph functionalities',
-	#'squeak_changestamp' : 'si 7/10/2024 13:45'
+	#'squeak_changestamp' : 'si 7/11/2024 20:34'
 }
 WBLine >> addDropShadow [
+"overwrites Method because the line should not have a dropShadow."
 ]
 
 {
 	#category : #geometry,
-	#'squeak_changestamp' : 'ACL 7/11/2024 16:32'
+	#'squeak_changestamp' : 'si 7/11/2024 19:12'
 }
 WBLine >> angleForPoints [
 	| lengthX lengthY length sin |
@@ -47,7 +48,7 @@ WBLine >> angleForPoints [
 	lengthY :=(self edges second) y - (self edges first) y.
 	length := (lengthX squared + lengthY  squared) safeSquareRoot.
 	sin := lengthY / length.
-	^ sin arcSin * (36 / 2 * (3.141592))
+	^ sin arcSin * (36 / 2 * (Float pi))
 	
 	
 ]
@@ -193,6 +194,24 @@ WBLine >> mouseDown: anEvent [
 	anEvent redButtonPressed ifTrue: 
 		[self state = 2 ifTrue: [self handleRedButtonClick: anEvent].
 		self state = 3 ifTrue:[self spawnCopiedLine: anEvent]]
+]
+
+{
+	#category : #'event handeling',
+	#'squeak_changestamp' : 'si 7/11/2024 18:39'
+}
+WBLine >> mouseEnter: anEvent [
+
+	self edges do: [:d | d morph color: self morph borderColor]
+]
+
+{
+	#category : #'event handeling',
+	#'squeak_changestamp' : 'si 7/11/2024 18:39'
+}
+WBLine >> mouseLeave: anEvent [
+
+	self edges do: [:d | d morph color: Color transparent]
 ]
 
 {
@@ -415,12 +434,12 @@ WBLine >> updateArrowHead [
 
 {
 	#category : #'line building',
-	#'squeak_changestamp' : 'ACL 7/11/2024 16:36'
+	#'squeak_changestamp' : 'si 7/11/2024 18:13'
 }
 WBLine >> updateEdges [
 	
 	self setVertices: { (self edges second) center . (self edges first) center }.
-	self hitbox setVertices: { (self edges second) center . (self edges first) center . (self edges second) center}.
+	self hitbox setVertices: { (self edges second) center . (self edges first) center }.
 	self updateArrowHead
 	
 ]

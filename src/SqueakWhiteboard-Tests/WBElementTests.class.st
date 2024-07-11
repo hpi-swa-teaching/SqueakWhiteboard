@@ -8,6 +8,18 @@ Class {
 }
 
 {
+	#category : #'mouse click',
+	#'squeak_changestamp' : 'si 7/11/2024 21:43'
+}
+WBElementTests >> artificialMouseClick [
+	| mouseEvent |
+	
+	mouseEvent := MouseButtonEvent new.
+	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
+	^ mouseEvent
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'is 6/22/2024 00:50'
 }

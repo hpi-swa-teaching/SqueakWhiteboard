@@ -96,20 +96,20 @@ WBLineHitbox >> mouseDown: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'si 7/7/2024 17:49'
+	#'squeak_changestamp' : 'si 7/11/2024 18:38'
 }
 WBLineHitbox >> mouseEnter: anEvent [
 
-	self line edges do: [:d | d morph color: self line morph borderColor]
+	self line mouseEnter: anEvent
 ]
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'si 7/7/2024 17:46'
+	#'squeak_changestamp' : 'si 7/11/2024 18:40'
 }
 WBLineHitbox >> mouseLeave: anEvent [
 
-	self line edges do: [:d | d morph color: Color transparent]
+	self line mouseLeave: anEvent
 ]
 
 {

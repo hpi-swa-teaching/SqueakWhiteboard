@@ -22,20 +22,20 @@ Class {
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/23/2024 01:27'
-}
-WBCanvas class >> WhiteBoardSize [
-
-	^ 800
-]
-
-{
-	#category : #accessing,
 	#'squeak_changestamp' : 'si 7/11/2024 14:32'
 }
 WBCanvas class >> defaultGlobalColor [
 
 	^ Color cyan
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 7/11/2024 17:32'
+}
+WBCanvas class >> whiteBoardSize [
+
+	^ 800
 ]
 
 {
@@ -355,13 +355,13 @@ WBCanvas >> removeText [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 7/11/2024 14:30'
+	#'squeak_changestamp' : 'si 7/11/2024 17:32'
 }
 WBCanvas >> setLayout [
 
 	self
-		height: self class WhiteBoardSize;
-		width: (self class WhiteBoardSize * self widthToHeightRatio);
+		height: self class whiteBoardSize;
+		width: (self class whiteBoardSize * self widthToHeightRatio);
 		color: Color white;
 		borderColor: Color black;
 		borderWidth: 1;

@@ -104,6 +104,16 @@ WBCanvasTests >> testElementsCollection [
 
 {
 	#category : #testing,
+	#'squeak_changestamp' : 'si 7/11/2024 18:11'
+}
+WBCanvasTests >> testLayout [
+	
+	self assert: self canvas height = self canvas class whiteBoardSize.
+	self assert: self canvas width = (self canvas class whiteBoardSize * self canvas widthToHeightRatio)
+]
+
+{
+	#category : #testing,
 	#'squeak_changestamp' : 'si 7/11/2024 14:23'
 }
 WBCanvasTests >> testMouseDown [

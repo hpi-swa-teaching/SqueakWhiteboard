@@ -1,259 +1,254 @@
 Class {
 	#name : #WBElementResizeTests,
 	#superclass : #WBElementTests,
+	#instVars : [
+		'element'
+	],
 	#category : #'SqueakWhiteboard-Tests'
 }
 
 {
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 7/11/2024 20:40'
+}
+WBElementResizeTests >> element [
+
+	^ element
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 7/11/2024 20:40'
+}
+WBElementResizeTests >> element: anElement [
+
+	element := anElement
+]
+
+{
+	#category : #setUp,
+	#'squeak_changestamp' : 'si 7/11/2024 20:41'
+}
+WBElementResizeTests >> setUp [
+
+	super setUp.
+	self element: (WBRectangularElement newWithCanvas: self canvas).
+	self element position: 100 @ 100.
+	self element extent: 100 @ 100.
+]
+
+{
 	#category : #tests,
-	#'squeak_changestamp' : 'si 7/11/2024 14:14'
+	#'squeak_changestamp' : 'si 7/11/2024 20:41'
 }
 WBElementResizeTests >> testOpenFrame [
-	| rectangle |
 	
-	rectangle := WBRectangularElement newWithCanvas: self canvas.
-	rectangle addResizeFrame.
+	self element addResizeFrame.
 	
-	self assert: rectangle resizeFrame class = WBResizeFrame
+	self assert: self element resizeFrame class = WBResizeFrame
 	
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 7/11/2024 14:14'
+	#'squeak_changestamp' : 'si 7/11/2024 20:42'
 }
 WBElementResizeTests >> testRectangleResizeBottom [
-	| rectangle frame |
+	| frame |
 	
 	self canvas position: 0 @ 0.
 	self canvas extent: 300 @ 300.
-	rectangle := WBRectangularElement newWithCanvas: self canvas.
-	rectangle position: 100 @ 100.
-	rectangle extent: 100 @ 100.
-	rectangle addResizeFrame.
-	frame := rectangle resizeFrame.
+	self element addResizeFrame.
+	frame := self element resizeFrame.
 	frame resizeBottom: 250.
 	
-	self assert: rectangle bottom = 250
+	self assert: self element bottom = 250
 	
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 7/11/2024 14:14'
+	#'squeak_changestamp' : 'si 7/11/2024 20:43'
 }
 WBElementResizeTests >> testRectangleResizeBottomMin [
-	| rectangle frame |
+	| frame |
 	
 	self canvas position: 0 @ 0.
 	self canvas extent: 300 @ 300.
-	rectangle := WBRectangularElement newWithCanvas: self canvas.
-	rectangle position: 100 @ 100.
-	rectangle extent: 100 @ 100.
-	rectangle addResizeFrame.
-	frame := rectangle resizeFrame.
+	self element addResizeFrame.
+	frame := self element resizeFrame.
 	frame resizeBottom: 100.
 	
-	self assert: rectangle bottom = (100 + WBResizeFrame resizeWidth)
+	self assert: self element bottom = (100 + WBResizeFrame resizeWidth)
 	
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 7/11/2024 14:14'
+	#'squeak_changestamp' : 'si 7/11/2024 20:43'
 }
 WBElementResizeTests >> testRectangleResizeButtomBorder [
-	| rectangle frame |
+	| frame |
 	
 	self canvas position: 0 @ 0.
 	self canvas extent: 300 @ 300.
-	rectangle := WBRectangularElement newWithCanvas: self canvas.
-	rectangle position: 100 @ 100.
-	rectangle extent: 100 @ 100.
-	rectangle addResizeFrame.
-	frame := rectangle resizeFrame.
+	self element addResizeFrame.
+	frame := self element resizeFrame.
 	frame resizeBottom: 350.
 	
-	self assert: rectangle bottom = 300
+	self assert: self element bottom = 300
 	
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 7/11/2024 14:14'
+	#'squeak_changestamp' : 'si 7/11/2024 20:43'
 }
 WBElementResizeTests >> testRectangleResizeLeft [
-	| rectangle frame |
+	| frame |
 	
 	self canvas position: 0 @ 0.
 	self canvas extent: 300 @ 300.
-	rectangle := WBRectangularElement newWithCanvas: self canvas.
-	rectangle position: 100 @ 100.
-	rectangle extent: 100 @ 100.
-	rectangle addResizeFrame.
-	frame := rectangle resizeFrame.
+	self element addResizeFrame.
+	frame := self element resizeFrame.
 	frame resizeLeft: 50.
 	
-	self assert: rectangle left = 50
+	self assert: self element left = 50
 	
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 7/11/2024 14:14'
+	#'squeak_changestamp' : 'si 7/11/2024 20:43'
 }
 WBElementResizeTests >> testRectangleResizeLeftBorder [
-	| rectangle frame |
+	| frame |
 	
 	self canvas position: 0 @ 0.
 	self canvas extent: 300 @ 300.
-	rectangle := WBRectangularElement newWithCanvas: self canvas.
-	rectangle position: 100 @ 100.
-	rectangle extent: 100 @ 100.
-	rectangle addResizeFrame.
-	frame := rectangle resizeFrame.
+	self element addResizeFrame.
+	frame := self element resizeFrame.
 	frame resizeLeft: -10.
 	
-	self assert: rectangle left = 0
+	self assert: self element left = 0
 	
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 7/11/2024 14:14'
+	#'squeak_changestamp' : 'si 7/11/2024 20:44'
 }
 WBElementResizeTests >> testRectangleResizeLeftMin [
-	| rectangle frame |
+	| frame |
 	
 	self canvas position: 0 @ 0.
 	self canvas extent: 300 @ 300.
-	rectangle := WBRectangularElement newWithCanvas: self canvas.
-	rectangle position: 100 @ 100.
-	rectangle extent: 100 @ 100.
-	rectangle addResizeFrame.
-	frame := rectangle resizeFrame.
+	self element addResizeFrame.
+	frame := self element resizeFrame.
 	frame resizeLeft: 250.
 	
-	self assert: rectangle left = (200 - (WBResizeFrame resizeWidth))
+	self assert: self element left = (200 - (WBResizeFrame resizeWidth))
 	
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 7/11/2024 14:14'
+	#'squeak_changestamp' : 'si 7/11/2024 20:44'
 }
 WBElementResizeTests >> testRectangleResizeRight [
-	| rectangle frame |
+	| frame |
 	
 	self canvas position: 0 @ 0.
 	self canvas extent: 300 @ 300.
-	rectangle := WBRectangularElement newWithCanvas: self canvas.
-	rectangle position: 100 @ 100.
-	rectangle extent: 100 @ 100.
-	rectangle addResizeFrame.
-	frame := rectangle resizeFrame.
+	self element addResizeFrame.
+	frame := self element resizeFrame.
 	frame resizeRight: 250.
 	
-	self assert: rectangle right = 250
+	self assert: self element right = 250
 	
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 7/11/2024 14:14'
+	#'squeak_changestamp' : 'si 7/11/2024 20:44'
 }
 WBElementResizeTests >> testRectangleResizeRightBorder [
-	| rectangle frame |
+	| frame |
 	
 	self canvas position: 0 @ 0.
 	self canvas extent: 300 @ 300.
-	rectangle := WBRectangularElement newWithCanvas: self canvas.
-	rectangle position: 100 @ 100.
-	rectangle extent: 100 @ 100.
-	rectangle addResizeFrame.
-	frame := rectangle resizeFrame.
+	self element addResizeFrame.
+	frame := self element resizeFrame.
 	frame resizeRight: 350.
 	
-	self assert: rectangle right = 300
+	self assert: self element right = 300
 	
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 7/11/2024 14:14'
+	#'squeak_changestamp' : 'si 7/11/2024 20:44'
 }
 WBElementResizeTests >> testRectangleResizeRightMin [
-	| rectangle frame |
+	| frame |
 	
 	self canvas position: 0 @ 0.
 	self canvas extent: 300 @ 300.
-	rectangle := WBRectangularElement newWithCanvas: self canvas.
-	rectangle position: 100 @ 100.
-	rectangle extent: 100 @ 100.
-	rectangle addResizeFrame.
-	frame := rectangle resizeFrame.
+	self element addResizeFrame.
+	frame := self element resizeFrame.
 	frame resizeRight: 100.
 	
-	self assert: rectangle right = (100 + WBResizeFrame resizeWidth)
+	self assert: self element right = (100 + WBResizeFrame resizeWidth)
 	
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 7/11/2024 14:14'
+	#'squeak_changestamp' : 'si 7/11/2024 20:45'
 }
 WBElementResizeTests >> testRectangleResizeTop [
-	| rectangle frame |
+	| frame |
 	
 	self canvas position: 0 @ 0.
 	self canvas extent: 300 @ 300.
-	rectangle := WBRectangularElement newWithCanvas: self canvas.
-	rectangle position: 100 @ 100.
-	rectangle extent: 100 @ 100.
-	rectangle addResizeFrame.
-	frame := rectangle resizeFrame.
+	self element addResizeFrame.
+	frame := self element resizeFrame.
 	frame resizeTop: 50.
 	
-	self assert: rectangle top = 50
+	self assert: self element top = 50
 	
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 7/11/2024 14:14'
+	#'squeak_changestamp' : 'si 7/11/2024 20:45'
 }
 WBElementResizeTests >> testRectangleResizeTopBorder [
-	| rectangle frame |
+	| frame |
 	
 	self canvas position: 0 @ 0.
 	self canvas extent: 300 @ 300.
-	rectangle := WBRectangularElement newWithCanvas: self canvas.
-	rectangle position: 100 @ 100.
-	rectangle extent: 100 @ 100.
-	rectangle addResizeFrame.
-	frame := rectangle resizeFrame.
+	self element addResizeFrame.
+	frame := self element resizeFrame.
 	frame resizeTop: -10.
 	
-	self assert: rectangle top = 0
+	self assert: self element top = 0
 	
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 7/11/2024 14:14'
+	#'squeak_changestamp' : 'si 7/11/2024 20:45'
 }
 WBElementResizeTests >> testRectangleResizeTopMin [
-	| rectangle frame |
+	| frame |
 	
 	self canvas position: 0 @ 0.
 	self canvas extent: 300 @ 300.
-	rectangle := WBRectangularElement newWithCanvas: self canvas.
-	rectangle position: 100 @ 100.
-	rectangle extent: 100 @ 100.
-	rectangle addResizeFrame.
-	frame := rectangle resizeFrame.
+	self element addResizeFrame.
+	frame := self element resizeFrame.
 	frame resizeTop: 250.
 	
-	self assert: rectangle top = (200 - (WBResizeFrame resizeWidth))
+	self assert: self element top = (200 - (WBResizeFrame resizeWidth))
 	
 ]

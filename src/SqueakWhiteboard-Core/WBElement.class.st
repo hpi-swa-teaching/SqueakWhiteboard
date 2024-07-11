@@ -486,7 +486,7 @@ WBElement >> extent: anExtent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'si 7/11/2024 14:44'
+	#'squeak_changestamp' : 'si 7/11/2024 21:18'
 }
 WBElement >> handleRedButtonClick: anEvent [
 
@@ -735,7 +735,7 @@ WBElement >> morph: aMorph [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'si 7/11/2024 14:39'
+	#'squeak_changestamp' : 'si 7/11/2024 21:16'
 }
 WBElement >> mouseDown: anEvent [
 	
@@ -820,11 +820,12 @@ WBElement >> removeDropShadow [
 
 {
 	#category : #popUp,
-	#'squeak_changestamp' : 'is 6/18/2024 00:24'
+	#'squeak_changestamp' : 'si 7/11/2024 21:12'
 }
 WBElement >> removePopup [
 
-	self popUp ifNotNil: [self popUp delete]
+	self popUp ifNotNil: [self popUp delete].
+	self popUp: nil
 ]
 
 {
