@@ -3,7 +3,7 @@ An interactive whiteboard that can be used to plan, coordinate and brainstorm.
 
 # How To Use
 In order to start your experience, open a workspace and run "WBCanvas new".
-A "SqueakWhiteboard" window appears with a toolbar on the lefthandside from which you can invoke different functionalities.
+A "SqueakWhiteboard" window appears with a toolbar on the left-hand side from which you can invoke different functionalities.
 
 # What To Do
 The toolbar provides buttons to spawn different forms and kinds of elements which can be placed onto the canvas by clicking at the place you want the element to be.
@@ -15,13 +15,13 @@ Not satisfied how some of the elements look? Click on said element and resize it
 that appears after clicking on an element can be used to change the color of an element, to change the border color, to duplicate an element or to delete the current element.
 If you have spawned a line or an arrow you can convert them to the other one by clicking the right most button in the popup menu.
 If you want to add some text to an element (except for lines and arrows) just quickly double-click on an element and start typing!
-Of yourse you can also drag and drop elements anywhere on the canvas.
+Of course you can also drag and drop elements anywhere on the canvas.
 
-To change the color of all newly spaning element, click on the color wheel in the toolbar and select a color to your liking.
+To change the color of all newly spawning element, click on the color wheel in the toolbar and select a color to your liking.
 
-Sometimes the provided canvas seems to little for all your ideas. Just right click in the canvas and start dragging in order to expand the canvas.
+Sometimes the provided canvas seems too little for all your ideas. Just right click in the canvas and start dragging in order to expand the canvas.
 
-After some experimenting you might find a devasting error in your planning but don't worry, it happens to all of us! Just click on the trashcan in the toolbar and confirm to erase
+After some experimenting you might find a devastating error in your planning but don't worry, it happens to all of us! Just click on the trashcan in the toolbar and confirm to erase
 everything you have placed so far.
 
 # Architecture
