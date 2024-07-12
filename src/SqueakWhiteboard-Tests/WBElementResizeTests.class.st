@@ -27,14 +27,14 @@ WBElementResizeTests >> element: anElement [
 
 {
 	#category : #setUp,
-	#'squeak_changestamp' : 'si 7/11/2024 20:41'
+	#'squeak_changestamp' : 'is 7/12/2024 18:44'
 }
 WBElementResizeTests >> setUp [
 
 	super setUp.
 	self element: (WBRectangularElement newWithCanvas: self canvas).
 	self element position: 100 @ 100.
-	self element extent: 100 @ 100.
+	self element extent: 100 @ 100
 ]
 
 {

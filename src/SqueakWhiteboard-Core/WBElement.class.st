@@ -167,12 +167,11 @@ WBElement >> addOwnMorphTo: aMorph [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'ACL 7/10/2024 11:55'
+	#'squeak_changestamp' : 'is 7/12/2024 20:00'
 }
 WBElement >> addResizeFrame [
 	
-	self resizable ifTrue: [
-		self resizeFrame: (WBResizeFrame newWithParent: self)]
+	self resizable ifTrue: [self resizeFrame: (WBResizeFrame newWithParent: self)]
 	
 	
 

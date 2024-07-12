@@ -78,40 +78,74 @@ WBResizeHandleTests >> testMouseOver [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'ACL 7/7/2024 19:51'
+	#'squeak_changestamp' : 'is 7/12/2024 19:57'
 }
-WBResizeHandleTests >> testResizeCursor [
-	| aResizeHandleBottomLeft aResizeHandleBottomRight aResizeHandleTopLeft aResizeHandleTopRight aMouseEvent prevCursor |
+WBResizeHandleTests >> testResizeCursorBottomLeft [
+	| aResizeHandleBottomLeft  aMouseEvent |
 	
 	aResizeHandleBottomLeft := WBResizeBottomLeft new.
-	aResizeHandleBottomRight := WBResizeBottomRight new.
-	aResizeHandleTopLeft := WBResizeTopLeft new.
-	aResizeHandleTopRight := WBResizeTopRight new.
 	aMouseEvent := MouseButtonEvent new.
-	aMouseEvent setType: #mouseDown position: (0@0) which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
-	prevCursor := Cursor currentCursor.
+	aMouseEvent setType: #mouseDown position: (0 @ 0) which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
 	
 	aResizeHandleBottomLeft mouseEnter: aMouseEvent.
-	self assert: Cursor currentCursor = Cursor resizeBottomLeft.
+	self assert: Cursor currentCursor = aResizeHandleBottomLeft class resizeCursor.
 	
 	aResizeHandleBottomLeft mouseLeave: aMouseEvent.
-	self assert: Cursor currentCursor = prevCursor.
+	self assert: Cursor currentCursor = Cursor normal
+]
+
+{
+	#category : #testing,
+	#'squeak_changestamp' : 'is 7/12/2024 19:58'
+}
+WBResizeHandleTests >> testResizeCursorBottomRight [
+	| aResizeHandleBottomRight aMouseEvent |
+
+	aResizeHandleBottomRight := WBResizeBottomRight new.
+	aMouseEvent := MouseButtonEvent new.
+	aMouseEvent setType: #mouseDown position: (0 @ 0) which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
 	
 	aResizeHandleBottomRight mouseEnter: aMouseEvent.
-	self assert: Cursor currentCursor = Cursor resizeBottomRight.
+	self assert: Cursor currentCursor = aResizeHandleBottomRight class resizeCursor.
 	
-	aResizeHandleBottomLeft mouseLeave: aMouseEvent.
-	self assert: Cursor currentCursor = prevCursor.
+	aResizeHandleBottomRight mouseLeave: aMouseEvent.
+	self assert: Cursor currentCursor =  Cursor normal
+]
+
+{
+	#category : #testing,
+	#'squeak_changestamp' : 'is 7/12/2024 19:58'
+}
+WBResizeHandleTests >> testResizeCursorTopLeft [
+	| aResizeHandleTopLeft aMouseEvent |
+	
+	aResizeHandleTopLeft := WBResizeTopLeft new.
+	aMouseEvent := MouseButtonEvent new.
+	aMouseEvent setType: #mouseDown position: (0 @ 0) which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
 	
 	aResizeHandleTopLeft mouseEnter: aMouseEvent.
-	self assert: Cursor currentCursor = Cursor resizeTopLeft.
+	self assert: Cursor currentCursor = aResizeHandleTopLeft class resizeCursor.
 	
-	aResizeHandleBottomLeft mouseLeave: aMouseEvent.
-	self assert: Cursor currentCursor = prevCursor.
+	aResizeHandleTopLeft mouseLeave: aMouseEvent.
+	self assert: Cursor currentCursor =  Cursor normal
+	
+	
+]
+
+{
+	#category : #testing,
+	#'squeak_changestamp' : 'is 7/12/2024 19:58'
+}
+WBResizeHandleTests >> testResizeCursorTopRight [
+	| aResizeHandleTopRight aMouseEvent |
+
+	aResizeHandleTopRight := WBResizeTopRight new.
+	aMouseEvent := MouseButtonEvent new.
+	aMouseEvent setType: #mouseDown position: (0 @ 0) which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
 	
 	aResizeHandleTopRight mouseEnter: aMouseEvent.
-	self assert: Cursor currentCursor = Cursor resizeTopRight.
+	self assert: Cursor currentCursor = aResizeHandleTopRight class resizeCursor.
 	
-	aResizeHandleBottomLeft mouseLeave: aMouseEvent.
-	self assert: Cursor currentCursor = prevCursor
+	aResizeHandleTopRight mouseLeave: aMouseEvent.
+	self assert: Cursor currentCursor =  Cursor normal
 ]

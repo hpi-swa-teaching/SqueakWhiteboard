@@ -151,32 +151,32 @@ WBTextfieldTests >> testTextfieldActivation [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'si 7/11/2024 14:15'
+	#'squeak_changestamp' : 'is 7/12/2024 18:30'
 }
 WBTextfieldTests >> testTextfieldCursor [
-	| anElement aFirstMouseEvent prevCursor |
+	| anElement aMouseEvent prevCursor |
 	
 	anElement := WBRectangularElement newWithCanvas: self canvas.
-	aFirstMouseEvent := MouseButtonEvent new.
-	aFirstMouseEvent setType: #mouseDown position: anElement position which: 4 buttons: aFirstMouseEvent class redButton hand: HandMorph new stamp: 0.
+	aMouseEvent := MouseButtonEvent new.
+	aMouseEvent setType: #mouseDown position: anElement position which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
 
 	prevCursor := Cursor currentCursor.
-	anElement textField textMorph mouseEnter: aFirstMouseEvent.
+	anElement textField textMorph mouseEnter: aMouseEvent.
 	self assert: Cursor currentCursor = Cursor text.
 	
-	anElement textField textMorph mouseLeave: aFirstMouseEvent.
+	anElement textField textMorph mouseLeave: aMouseEvent.
 	self assert: Cursor currentCursor = prevCursor
 ]
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'si 7/11/2024 14:15'
+	#'squeak_changestamp' : 'is 7/12/2024 20:10'
 }
 WBTextfieldTests >> testTextfieldDeactivationViaCanvas [
 	| elements aFirstMouseEvent aSecondMouseEvent |
 	
 	elements := OrderedCollection withAll: 
-	{ WBRectangularElement newWithCanvas: self canvas. WBCircularElement newWithCanvas: self canvas. WBNote newWithCanvas: self canvas . WBLine newWithCanvas: self canvas . WBEdgeOfLine newWithCanvas: self canvas}.
+	{ WBRectangularElement newWithCanvas: self canvas. WBCircularElement newWithCanvas: self canvas. WBNote newWithCanvas: self canvas . WBLine newWithCanvas: self canvas . WBEdgeOfLine newWithCanvas: self canvas }.
 	aFirstMouseEvent := MouseButtonEvent new.
 	aFirstMouseEvent setType: #mouseDown position: elements first position which: 4 buttons: aFirstMouseEvent class redButton hand: HandMorph new stamp: 0.
 	aSecondMouseEvent := MouseButtonEvent new.

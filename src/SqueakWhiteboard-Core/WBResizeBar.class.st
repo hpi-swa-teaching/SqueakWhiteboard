@@ -33,6 +33,15 @@ WBResizeBar class >> newWithParent: aMorph [
 ]
 
 {
+	#category : #defaults,
+	#'squeak_changestamp' : 'is 7/12/2024 20:01'
+}
+WBResizeBar class >> resizeCursor [
+
+	^ self subclassResponsibility
+]
+
+{
 	#category : #cursor,
 	#'squeak_changestamp' : 'is 6/23/2024 01:53'
 }
@@ -61,18 +70,18 @@ WBResizeBar >> frame: anElement [
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'is 6/23/2024 01:53'
+	#'squeak_changestamp' : 'is 7/12/2024 19:59'
 }
-WBResizeBar >> handlesMouseDown: aEvent [
+WBResizeBar >> handlesMouseDown: anEvent [
 
 	^ true
 ]
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'is 6/23/2024 01:53'
+	#'squeak_changestamp' : 'is 7/12/2024 19:59'
 }
-WBResizeBar >> handlesMouseOver: aEvent [
+WBResizeBar >> handlesMouseOver: anEvent [
 
 	^ true
 ]
@@ -132,40 +141,40 @@ WBResizeBar >> mouseEnter: aEvent [
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'is 6/23/2024 01:53'
+	#'squeak_changestamp' : 'is 7/12/2024 19:59'
 }
-WBResizeBar >> mouseLeave: aEvent [
+WBResizeBar >> mouseLeave: anEvent [
 
 	self defaultCursor
 ]
 
 {
 	#category : #mouseEvents,
-	#'squeak_changestamp' : 'is 6/23/2024 01:53'
+	#'squeak_changestamp' : 'is 7/12/2024 19:59'
 }
-WBResizeBar >> mouseMove: mouseEvent [
+WBResizeBar >> mouseMove: anEvent [
 
-	self resize: (mouseEvent cursorPoint - self lastPosition).
-	self lastPosition: mouseEvent cursorPoint.
+	self resize: (anEvent cursorPoint - self lastPosition).
+	self lastPosition: anEvent cursorPoint.
 	self setLayout
 ]
 
 {
 	#category : #sizing,
-	#'squeak_changestamp' : 'is 6/23/2024 01:54'
+	#'squeak_changestamp' : 'is 7/12/2024 20:00'
 }
 WBResizeBar >> resize: movement [
 
-	^ self SubclassResponsibility
+	^ self subclassResponsibility
 ]
 
 {
 	#category : #cursor,
-	#'squeak_changestamp' : 'is 6/23/2024 01:53'
+	#'squeak_changestamp' : 'is 7/12/2024 15:09'
 }
 WBResizeBar >> resizeCursor [
 
-	Cursor move show
+	self class resizeCursor show
 ]
 
 {

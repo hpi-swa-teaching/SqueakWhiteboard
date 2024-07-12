@@ -27,14 +27,14 @@ WBMoveElementTests >> element: anElement [
 
 {
 	#category : #setUp,
-	#'squeak_changestamp' : 'si 7/12/2024 09:37'
+	#'squeak_changestamp' : 'is 7/12/2024 18:44'
 }
 WBMoveElementTests >> setUp [
 
 	super setUp.
 	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: self artificialMouseClick.
 	self canvas dropElement: self artificialMouseClick.
-	self element: (self canvas elements at: 1).
+	self element: (self canvas elements at: 1)
 ]
 
 {

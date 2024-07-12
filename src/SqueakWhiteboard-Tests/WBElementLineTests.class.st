@@ -27,10 +27,11 @@ WBElementLineTests >> line: aLine [
 
 {
 	#category : #setUp,
-	#'squeak_changestamp' : 'si 7/11/2024 18:20'
+	#'squeak_changestamp' : 'is 7/12/2024 18:44'
 }
 WBElementLineTests >> setUp [
 	| mouseEvent1 mouseEvent2 |
+	
 	super setUp.
 	mouseEvent1 := MouseButtonEvent new.
 	mouseEvent1 setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent1 class redButton hand: HandMorph new stamp: 0.
@@ -40,7 +41,7 @@ WBElementLineTests >> setUp [
 	line := ((WBLine newWithCanvas: self canvas) arrowHead: true).
 	self canvas spawnAnElement: (line) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
 	line mouseUp: mouseEvent1.
-	line mouseUp: mouseEvent2.
+	line mouseUp: mouseEvent2
 ]
 
 {

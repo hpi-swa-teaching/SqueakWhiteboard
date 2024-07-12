@@ -9,21 +9,21 @@ Class {
 }
 
 {
+	#category : #defaults,
+	#'squeak_changestamp' : 'is 7/12/2024 15:10'
+}
+WBResizeLeft class >> resizeCursor [
+
+	^ Cursor resizeLeft
+]
+
+{
 	#category : #sizing,
 	#'squeak_changestamp' : 'JK 6/30/2024 21:18'
 }
 WBResizeLeft >> resize: movement [
 
 	self frame resizeLeft: self center x + movement x
-]
-
-{
-	#category : #sizing,
-	#'squeak_changestamp' : 'is 6/23/2024 01:55'
-}
-WBResizeLeft >> resizeCursor [
-
-	Cursor resizeLeft show
 ]
 
 {
