@@ -90,7 +90,19 @@ MethodName
 8. Indent, align nested continuation lines **consistently**
 
 9. **Embrace Oneliners** and avoid to break them across lines
-10.     Use 
+10. if-statements: Use indentation only if statement becomes to long or when you have branching paths
+    ```smalltalk
+    aFirstBool ifTrue: [doSomething].
+    anObject isNil
+        ifFalse: [doSomething]
+        ifTrue: [doSometingElse].
+    VS.
+    aFirstBool
+        ifTrue: [doSomething].
+    anObject isNil ifFalse: [doSomething]
+        ifTrue: [doSometingElse].
+    ```
+11.     Use 
             INDENTATION
                 für Abgrenzung im logischen Fluss 
 12. **AVOID** line wraps
@@ -106,7 +118,7 @@ MethodName
     VS.
     self label: self model label.
     self minimumSize: 35 @ 7.
-    self when: #reactive perform: #reactiveWindow:.
+    self when: #reactive perform: #reactiveWindow:
     ```
 17.         NEW LINES 
             for ever 
