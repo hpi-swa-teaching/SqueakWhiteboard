@@ -1,80 +1,102 @@
 Class {
 	#name : #WBLineChoosingPopUpTests,
 	#superclass : #WBToolbarButtonTests,
+	#instVars : [
+		'lineChoosingButton'
+	],
 	#category : #'SqueakWhiteboard-Tests'
 }
 
 {
-	#category : #tests,
-	#'squeak_changestamp' : 'is 7/10/2024 00:30'
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 7/12/2024 11:21'
 }
-WBLineChoosingPopUpTests >> testButtonFunctionality [
-	| button buttonForLine |
+WBLineChoosingPopUpTests >> lineChoosingButton [
 
-	button := self canvas toolbar buttons at: 2.
-	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
-	
-	buttonForLine := self canvas toolbar popUp submorphs at: 2. 
-	buttonForLine clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
-	self assert: self canvas elementToSpawn notNil.
-	self assert: self canvas elementToSpawn arrowHead = true.
-	
-	buttonForLine := self canvas toolbar popUp submorphs at: 1. 
-	buttonForLine clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
-	self assert: self canvas elementToSpawn notNil.
-	self assert: self canvas elementToSpawn arrowHead = false
+	^ lineChoosingButton
+]
+
+{
+	#category : #accessing,
+	#'squeak_changestamp' : 'si 7/12/2024 11:21'
+}
+WBLineChoosingPopUpTests >> lineChoosingButton: aButton [
+
+	lineChoosingButton := aButton
+]
+
+{
+	#category : #setUp,
+	#'squeak_changestamp' : 'si 7/12/2024 11:22'
+}
+WBLineChoosingPopUpTests >> setUp [
+
+	super setUp.
+	self lineChoosingButton: (self getButtonWithFunctionality: self canvas toolbar buttonFunctionalityForLineChoosing from: self canvas toolbar submorphs)
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:24'
+	#'squeak_changestamp' : 'si 7/12/2024 11:48'
+}
+WBLineChoosingPopUpTests >> testButtonFunctionality [
+	| buttonForLine |	
+	
+	self lineChoosingButton clickFunctionality: self artificialMouseClick.
+	
+	buttonForLine := self getButtonWithFunctionality: self canvas toolbar buttonFunctionalityForLine from: self canvas toolbar popUp submorphs. 
+	buttonForLine clickFunctionality: self artificialMouseClick.
+	self assert: self canvas elementToSpawn notNil.
+	self assert: self canvas elementToSpawn arrowHead = false.
+	
+	buttonForLine := self getButtonWithFunctionality: self canvas toolbar buttonFunctionalityForArrow from: self canvas toolbar popUp submorphs. 
+	buttonForLine clickFunctionality: self artificialMouseClick.
+	self assert: self canvas elementToSpawn notNil.
+	self assert: self canvas elementToSpawn arrowHead = true.
+]
+
+{
+	#category : #tests,
+	#'squeak_changestamp' : 'si 7/12/2024 11:46'
 }
 WBLineChoosingPopUpTests >> testButtonsOfPopUp [
-	| button |
-
-	button := self canvas toolbar buttons at: 2.
-	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
+	
+	self lineChoosingButton clickFunctionality: self artificialMouseClick.
 	
 	self assert: self canvas toolbar popUp submorphs size = 2
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:24'
+	#'squeak_changestamp' : 'si 7/12/2024 11:45'
 }
 WBLineChoosingPopUpTests >> testExistenceOfPopUp [
-	| button |
-
-	button := self canvas toolbar buttons at: 2.
-	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
+	
+	self lineChoosingButton clickFunctionality: self artificialMouseClick. 
 	
 	self assert: self canvas toolbar popUp notNil
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:24'
+	#'squeak_changestamp' : 'si 7/12/2024 11:45'
 }
 WBLineChoosingPopUpTests >> testPopUpPlacementInX [
-	| button |
-
-	button := self canvas toolbar buttons at: 2.
-	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
 	
-	self assert: button right <= self canvas toolbar popUp left.	
-	self assert: self canvas toolbar popUp left <= (button right + 200)
+	self lineChoosingButton clickFunctionality: self artificialMouseClick.
+	
+	self assert: self lineChoosingButton right <= self canvas toolbar popUp left.	
+	self assert: self canvas toolbar popUp left <= (self lineChoosingButton right + 200)
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:24'
+	#'squeak_changestamp' : 'si 7/12/2024 11:45'
 }
 WBLineChoosingPopUpTests >> testPopUpPlacementInY [
-	| button |
-
-	button := self canvas toolbar buttons at: 2.
-	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
 	
-	self assert: button center y - 200 < self canvas toolbar popUp top.	
-	self assert: self canvas toolbar popUp bottom < (button center y + 500) 
+	self lineChoosingButton clickFunctionality: self artificialMouseClick.
+	
+	self assert: self lineChoosingButton center y - 200 < self canvas toolbar popUp top.	
+	self assert: self canvas toolbar popUp bottom < (self lineChoosingButton center y + 500) 
 ]

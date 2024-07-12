@@ -1,28 +1,58 @@
 Class {
 	#name : #WBDeletePopUpTests,
 	#superclass : #WBToolbarButtonTests,
+	#instVars : [
+		'buttonForDelete'
+	],
 	#category : #'SqueakWhiteboard-Tests'
 }
 
 {
+	#category : #asserting,
+	#'squeak_changestamp' : 'si 7/12/2024 11:12'
+}
+WBDeletePopUpTests >> buttonForDelete [
+
+	^ buttonForDelete
+]
+
+{
+	#category : #asserting,
+	#'squeak_changestamp' : 'si 7/12/2024 11:12'
+}
+WBDeletePopUpTests >> buttonForDelete: aButton [
+
+	buttonForDelete := aButton
+]
+
+{
+	#category : #setUp,
+	#'squeak_changestamp' : 'si 7/12/2024 11:13'
+}
+WBDeletePopUpTests >> setUp [
+
+	super setUp.
+	self buttonForDelete: (self getButtonWithFunctionality: self canvas toolbar buttonFunctionalityForDeleteAll from: self canvas toolbar submorphs)
+]
+
+{
 	#category : #tests,
-	#'squeak_changestamp' : 'si 7/11/2024 14:13'
+	#'squeak_changestamp' : 'si 7/12/2024 11:18'
 }
 WBDeletePopUpTests >> testButtonFunctionalityForCancel [
-	| button buttonForCancel mouseEvent |
+	| buttonForConfirm |
 	
-	mouseEvent := MouseButtonEvent new.
-	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
-	button := self canvas toolbar buttons at: 6.
-	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
+	self buttonForDelete clickFunctionality: self artificialMouseClick.
 	
-	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
-	self canvas dropElement: mouseEvent.
-	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (200 @ 200)).
-	self canvas dropElement: mouseEvent.
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: self artificialMouseClick.
+	self canvas dropElement: self artificialMouseClick.
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: self artificialMouseClick.
+	self canvas dropElement: self artificialMouseClick.
 	
-	buttonForCancel := self canvas toolbar popUp submorphs at: 1. 
-	buttonForCancel clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
+	self assert: self canvas elements size = 2.
+	
+	buttonForConfirm := self getButtonWithFunctionality: self canvas toolbar buttonFunctionalityForDeleteCancel from: canvas toolbar popUp submorphs. 
+	buttonForConfirm clickFunctionality: self artificialMouseClick.
 	
 	self assert: self canvas elements size = 2.
 	self assert: self canvas toolbar popUp = nil.
@@ -31,24 +61,22 @@ WBDeletePopUpTests >> testButtonFunctionalityForCancel [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'si 7/11/2024 14:13'
+	#'squeak_changestamp' : 'si 7/12/2024 11:18'
 }
 WBDeletePopUpTests >> testButtonFunctionalityForConfirm [
-	| button buttonForConfirm mouseEvent |
+	| buttonForConfirm |
 	
-	mouseEvent := MouseButtonEvent new.
-	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
+	self buttonForDelete clickFunctionality: self artificialMouseClick.
 	
-		button := self canvas toolbar buttons at: 6.
-	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: self artificialMouseClick.
+	self canvas dropElement: self artificialMouseClick.
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: self artificialMouseClick.
+	self canvas dropElement: self artificialMouseClick.
 	
-	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
-	self canvas dropElement: mouseEvent.
-	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: (MouseButtonEvent new position: self canvas position + (200 @ 200)).
-	self canvas dropElement: mouseEvent.
+	self assert: self canvas elements size = 2.
 	
-	buttonForConfirm := self canvas toolbar popUp submorphs at: 2. 
-	buttonForConfirm clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
+	buttonForConfirm := self getButtonWithFunctionality: self canvas toolbar buttonFunctionalityForDeleteConfirm from: canvas toolbar popUp submorphs. 
+	buttonForConfirm clickFunctionality: self artificialMouseClick.
 	
 	self assert: self canvas elements size = 0.
 	self assert: self canvas toolbar popUp = nil.
@@ -57,26 +85,22 @@ WBDeletePopUpTests >> testButtonFunctionalityForConfirm [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:21'
+	#'squeak_changestamp' : 'si 7/12/2024 11:15'
 }
 WBDeletePopUpTests >> testButtonsOfPopUp [
-	| button |
 
-	button := self canvas toolbar buttons at: 6.
-	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
+	self buttonForDelete clickFunctionality: self artificialMouseClick.
 	
 	self assert: self canvas toolbar popUp submorphs size = 2
 ]
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:21'
+	#'squeak_changestamp' : 'si 7/12/2024 11:14'
 }
 WBDeletePopUpTests >> testExistenceOfPopUp [
-	| button|
 
-	button := self canvas toolbar buttons at: 6.
-	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
+	self buttonForDelete clickFunctionality: self artificialMouseClick.
 	
 	self assert: self canvas toolbar popUp notNil.
 	self assert: self canvas text contents = WBToolbar textForDeleteAll
@@ -84,13 +108,11 @@ WBDeletePopUpTests >> testExistenceOfPopUp [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:21'
+	#'squeak_changestamp' : 'si 7/12/2024 11:15'
 }
 WBDeletePopUpTests >> testPopUpPlacementInX [
-	| button |
 
-	button := self canvas toolbar buttons at: 6.
-	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
+	self buttonForDelete clickFunctionality: self artificialMouseClick.
 	
 	self assert: (self canvas center x - 100) <= self canvas toolbar popUp left.	
 	self assert: self canvas toolbar popUp right <= (self canvas center x + 100)
@@ -98,13 +120,11 @@ WBDeletePopUpTests >> testPopUpPlacementInX [
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:21'
+	#'squeak_changestamp' : 'si 7/12/2024 11:15'
 }
 WBDeletePopUpTests >> testPopUpPlacementInY [
-	| button |
 
-	button := self canvas toolbar buttons at: 6.
-	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).
+	self buttonForDelete clickFunctionality: self artificialMouseClick.
 	
 	self assert: self canvas center y <= self canvas toolbar popUp top.	
 	self assert: self canvas toolbar popUp bottom <= (self canvas bottom)

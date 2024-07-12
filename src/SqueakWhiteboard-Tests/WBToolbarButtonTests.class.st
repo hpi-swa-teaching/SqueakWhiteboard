@@ -6,24 +6,26 @@ Class {
 
 {
 	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:19'
-}
-WBToolbarButtonTests >> testButtonFunctionality [
-	| button |
-
-	button := self canvas toolbar buttons at: 1.
-	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100))
-]
-
-{
-	#category : #tests,
-	#'squeak_changestamp' : 'ACL 7/7/2024 18:26'
+	#'squeak_changestamp' : 'si 7/12/2024 11:03'
 }
 WBToolbarButtonTests >> testNoteButtonFunctionality [
 	| button |
 
-	button := self canvas toolbar buttons at: 3.
-	button clickFunctionality: (MouseButtonEvent new position: self canvas position + (100 @ 100)).	
+	button := self getButtonWithFunctionality: self canvas toolbar buttonFunctionalityForNote from: self canvas toolbar submorphs.
+	button clickFunctionality: self artificialMouseClick.
 	
 	self assert: self canvas elementToSpawn class = WBNote
+]
+
+{
+	#category : #tests,
+	#'squeak_changestamp' : 'si 7/12/2024 11:05'
+}
+WBToolbarButtonTests >> testTextboxButtonFunctionality [
+	| button |
+
+	button := self getButtonWithFunctionality: self canvas toolbar buttonFunctionalityForTextbox from: self canvas toolbar submorphs.
+	button clickFunctionality: self artificialMouseClick.
+	
+	self assert: self canvas elementToSpawn class = WBTextbox
 ]

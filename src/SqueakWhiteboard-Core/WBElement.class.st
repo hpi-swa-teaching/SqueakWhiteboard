@@ -897,15 +897,19 @@ WBElement >> right [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'si 7/11/2024 14:48'
+	#'squeak_changestamp' : 'si 7/12/2024 11:38'
 }
 WBElement >> setLayout [
 
 	self
 		extent: self class defaultSize;
 		borderWidth: 3;
-		color: self canvas globalColor;
-		borderColor: self canvas globalColor
+		borderColor: self canvas globalColor.
+	self canvas globalColor = Color transparent
+		ifTrue: 
+			[self color: self canvas globalColor.
+			self borderColor: Color black]
+		ifFalse: [self color: self canvas globalColor]
 ]
 
 {

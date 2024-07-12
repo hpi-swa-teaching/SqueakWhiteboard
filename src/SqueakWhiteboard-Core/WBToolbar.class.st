@@ -165,6 +165,15 @@ WBToolbar >> buttonFunctionalityForTextbox [
 ]
 
 {
+	#category : #'button functionalities',
+	#'squeak_changestamp' : 'si 7/12/2024 11:35'
+}
+WBToolbar >> buttonFunctionalityForTransparentColor [
+
+	^ [:aButton | self canvas globalColor: Color transparent]
+]
+
+{
 	#category : #appearance,
 	#'squeak_changestamp' : 'si 7/11/2024 15:38'
 }
@@ -212,20 +221,23 @@ WBToolbar >> canvas: aCanvas [
 
 {
 	#category : #'button creation',
-	#'squeak_changestamp' : 'si 7/11/2024 15:32'
+	#'squeak_changestamp' : 'si 7/12/2024 11:34'
 }
 WBToolbar >> createColorButtons [
 
 	^ OrderedCollection new
-		add: (self getColorButtonWithColor: Color yellow);
-		add: (self getColorButtonWithColor: Color orange);
-		add: (self getColorButtonWithColor: Color red);
-		add: (self getColorButtonWithColor: Color magenta);
-		add: (self getColorButtonWithColor: Color blue);
-		add: (self getColorButtonWithColor: Color cyan);
-		add: (self getColorButtonWithColor: Color green);
-		add: (self getColorButtonWithColor: Color gray);
 		add: (self getColorButtonWithColor: Color black);
+		add: (self getColorButtonWithColor: Color gray);
+		add: (self getTransparentColorButton);
+		add: (self getColorButtonWithColor: Color red);
+		add: (self getColorButtonWithColor: Color orange);
+		add: (self getColorButtonWithColor: Color yellow);
+		add: (self getColorButtonWithColor: Color green);
+		add: (self getColorButtonWithColor: Color cyan);
+		add: (self getColorButtonWithColor: Color blue);
+		add: (self getColorButtonWithColor: Color ocean);
+		add: (self getColorButtonWithColor: Color magenta);
+		add: (self getColorButtonWithColor: Color magenta muchDarker);
 		yourself
 ]
 
@@ -467,6 +479,20 @@ WBToolbar >> getTextboxButton [
 		image: (ImageMorph new image: (self canvas images resize: WBImage loadTextboxButtonImage to: self imageSize));
 		yourself
 			
+]
+
+{
+	#category : #'get buttons',
+	#'squeak_changestamp' : 'si 7/12/2024 11:34'
+}
+WBToolbar >> getTransparentColorButton [
+
+	^ WBButton new 
+		color: Color white;
+		backgroundColor: Color white;
+		clickedColor: Color white muchDarker;
+		block: self buttonFunctionalityForTransparentColor;
+		yourself
 ]
 
 {
