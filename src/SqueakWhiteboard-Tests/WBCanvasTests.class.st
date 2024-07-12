@@ -8,6 +8,30 @@ Class {
 }
 
 {
+	#category : #'mouse click',
+	#'squeak_changestamp' : 'si 7/12/2024 09:57'
+}
+WBCanvasTests >> artificialMouseClick [
+	| mouseEvent |
+	
+	mouseEvent := MouseButtonEvent new.
+	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class redButton hand: HandMorph new stamp: 0.
+	^ mouseEvent
+]
+
+{
+	#category : #'mouse click',
+	#'squeak_changestamp' : 'si 7/12/2024 10:04'
+}
+WBCanvasTests >> artificialYellowMouseClick [
+	| mouseEvent |
+	
+	mouseEvent := MouseButtonEvent new.
+	mouseEvent setType: #mouseDown position: self canvas position + (100 @ 100) which: 4 buttons: mouseEvent class yellowButton hand: HandMorph new stamp: 0.
+	^ mouseEvent
+]
+
+{
 	#category : #accessing,
 	#'squeak_changestamp' : 'si 6/7/2024 00:30'
 }
@@ -48,18 +72,15 @@ WBCanvasTests >> tearDown [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'si 7/11/2024 14:13'
+	#'squeak_changestamp' : 'si 7/12/2024 10:02'
 }
-WBCanvasTests >> testActiveElement [
-	| anActiveElement aMouseEvent |
+WBCanvasTests >> testActivateElement [
 	
-	anActiveElement := WBRectangularElement newWithCanvas: self canvas.
-	aMouseEvent := MouseButtonEvent new.
-	aMouseEvent setType: #mouseDown position: anActiveElement position which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
-	anActiveElement mouseDown: aMouseEvent.
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: self artificialMouseClick.
+	self canvas dropElement: self artificialMouseClick.
+	(self canvas elements at: 1) mouseDown: self artificialMouseClick.
 	
-	self assert: self canvas activeElement = anActiveElement
-	
+	self assert: canvas activeElement = (self canvas elements at: 1)
 ]
 
 {
@@ -78,6 +99,53 @@ WBCanvasTests >> testClampElementToCanvas [
 	
 	aPoint := self canvas bounds origin - (anElement extent * 2).
 	self assert: (self canvas clampedPositionOfElement: anElement at: aPoint)  = (self canvas bounds origin)
+]
+
+{
+	#category : #testing,
+	#'squeak_changestamp' : 'si 7/12/2024 10:03'
+}
+WBCanvasTests >> testDeactivateElement [
+	
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: self artificialMouseClick.
+	self canvas dropElement: self artificialMouseClick.
+	(self canvas elements at: 1) mouseDown: self artificialMouseClick.
+	self canvas mouseDown: self artificialMouseClick.
+	
+	self assert: canvas activeElement isNil.
+	self assert: (self canvas elements at:1) popUp isNil
+]
+
+{
+	#category : #testing,
+	#'squeak_changestamp' : 'si 7/12/2024 10:14'
+}
+WBCanvasTests >> testDragAllElements [
+	| oldPosition1 oldPosition2 |
+	
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: self artificialMouseClick.
+	self canvas dropElement: self artificialMouseClick.
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: self artificialMouseClick.
+	self canvas dropElement: self artificialMouseClick.
+	oldPosition1 := (self canvas elements at: 1) position.
+	oldPosition2 := (self canvas elements at: 2) position.
+	
+	self canvas mouseDown: self artificialYellowMouseClick.
+	self canvas mouseMove: (self artificialYellowMouseClick position: (self artificialYellowMouseClick position + (5 @ 5))).
+	
+	self assert: (self canvas elements at: 1) position = (oldPosition1 + (5 @ 5)).
+	self assert: (self canvas elements at: 2) position = (oldPosition2 + (5 @ 5))
+]
+
+{
+	#category : #testing,
+	#'squeak_changestamp' : 'si 7/12/2024 10:07'
+}
+WBCanvasTests >> testDragStart [
+	
+	self canvas mouseDown: self artificialYellowMouseClick.
+	
+	self assert: self canvas dragOffset = (self canvas drawingSurface position - self artificialYellowMouseClick cursorPoint)
 ]
 
 {
@@ -124,16 +192,4 @@ WBCanvasTests >> testMouseDown [
 	
 	self assert: (self canvas handlesMouseMove: aMouseEvent) = true.
 	self assert: (self canvas handlesMouseDown: aMouseEvent) = true
-]
-
-{
-	#category : #testing,
-	#'squeak_changestamp' : 'si 7/11/2024 14:13'
-}
-WBCanvasTests >> testRectangleCreate [
-	|rectangle|
-	
-	rectangle := WBRectangularElement newWithCanvas: self canvas.
-	
-	self assert: rectangle class = WBRectangularElement
 ]
