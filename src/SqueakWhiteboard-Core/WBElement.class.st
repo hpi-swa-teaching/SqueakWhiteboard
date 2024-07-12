@@ -167,7 +167,7 @@ WBElement >> addOwnMorphTo: aMorph [
 
 {
 	#category : #resize,
-	#'squeak_changestamp' : 'is 7/12/2024 19:39'
+	#'squeak_changestamp' : 'is 7/12/2024 20:00'
 }
 WBElement >> addResizeFrame [
 	

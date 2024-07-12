@@ -170,13 +170,13 @@ WBTextfieldTests >> testTextfieldCursor [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'si 7/11/2024 14:15'
+	#'squeak_changestamp' : 'is 7/12/2024 20:10'
 }
 WBTextfieldTests >> testTextfieldDeactivationViaCanvas [
 	| elements aFirstMouseEvent aSecondMouseEvent |
 	
 	elements := OrderedCollection withAll: 
-	{ WBRectangularElement newWithCanvas: self canvas. WBCircularElement newWithCanvas: self canvas. WBNote newWithCanvas: self canvas . WBLine newWithCanvas: self canvas . WBEdgeOfLine newWithCanvas: self canvas}.
+	{ WBRectangularElement newWithCanvas: self canvas. WBCircularElement newWithCanvas: self canvas. WBNote newWithCanvas: self canvas . WBLine newWithCanvas: self canvas . WBEdgeOfLine newWithCanvas: self canvas }.
 	aFirstMouseEvent := MouseButtonEvent new.
 	aFirstMouseEvent setType: #mouseDown position: elements first position which: 4 buttons: aFirstMouseEvent class redButton hand: HandMorph new stamp: 0.
 	aSecondMouseEvent := MouseButtonEvent new.

@@ -28,10 +28,10 @@ WBTextMorphForEditView >> handlesMouseDown: anEvent [
 
 {
 	#category : #'event handling',
-	#'squeak_changestamp' : 'is 7/12/2024 19:39'
+	#'squeak_changestamp' : 'ACL 7/10/2024 12:15'
 }
 WBTextMorphForEditView >> keyStroke: anEvent [
-	| char |
+| char |
 	
 	((char := anEvent keyCharacter) = Character escape) ifTrue: 
 		[self editView element canvas deactivateTextbox].
