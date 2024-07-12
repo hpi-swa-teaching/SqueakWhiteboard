@@ -8,8 +8,7 @@ Hier finden Sie sämtliche Dokumentation für den Codestyle des SWT-Projekts Squ
 MethodName
     | y |
     
-    (true or: [false not] or: [nil isNil])
-        ifFalse: [self halt].
+    (true or: [false not] or: [nil isNil]) ifFalse: [self halt].
     y := self size + super size.
     {$a . #a . 'a’ . 1 . 1,0}
         do: [:each | Transcript
