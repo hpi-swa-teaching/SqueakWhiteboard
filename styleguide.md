@@ -6,17 +6,16 @@ Hier finden Sie sämtliche Dokumentation für den Codestyle des SWT-Projekts Squ
 
 ```smalltalk
 MethodName
-| y |
-
-(true or: [false not] or: [nil isNil])
-    ifFalse: [self halt].
-y := self size + super size.
-{$a . #a . 'a’ . 1 . 1,0}
-    do: [:each | Transcript
-        show: each class name;
-        show: each printString;
-        show: ' '].
-^ x < y
+    | y |
+    
+    (true or: [false not] or: [nil isNil]) ifFalse: [self halt].
+    y := self size + super size.
+    {$a . #a . 'a’ . 1 . 1,0}
+        do: [:each | Transcript
+            show: each class name;
+            show: each printString;
+            show: ' '].
+    ^ x < y
 ```
 
 ## Naming
@@ -91,7 +90,19 @@ y := self size + super size.
 8. Indent, align nested continuation lines **consistently**
 
 9. **Embrace Oneliners** and avoid to break them across lines
-10.     Use 
+10. if-statements: Use indentation only if statement becomes to long or when you have branching paths
+    ```smalltalk
+    aFirstBool ifTrue: [doSomething].
+    anObject isNil
+        ifFalse: [doSomething]
+        ifTrue: [doSometingElse].
+    VS.
+    aFirstBool
+        ifTrue: [doSomething].
+    anObject isNil ifFalse: [doSomething]
+        ifTrue: [doSometingElse].
+    ```
+11.     Use 
             INDENTATION
                 für Abgrenzung im logischen Fluss 
 12. **AVOID** line wraps
@@ -107,10 +118,10 @@ y := self size + super size.
     VS.
     self label: self model label.
     self minimumSize: 35 @ 7.
-    self when: #reactive perform: #reactiveWindow:.
+    self when: #reactive perform: #reactiveWindow:
     ```
 17.         NEW LINES 
-            for ever 
+            for every 
             new statement
 
 20. **60 Character** Code Line Width (Window Width)
