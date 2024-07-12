@@ -166,11 +166,12 @@ WBToolbar >> buttonFunctionalityForTextbox [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 7/12/2024 11:35'
+	#'squeak_changestamp' : 'si 7/12/2024 12:11'
 }
 WBToolbar >> buttonFunctionalityForTransparentColor [
 
-	^ [:aButton | self canvas globalColor: Color transparent]
+	^ [:aButton | self canvas globalColor: Color transparent.
+		self deactivateElement]
 ]
 
 {
