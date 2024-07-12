@@ -9,6 +9,15 @@ Class {
 }
 
 {
+	#category : #defaults,
+	#'squeak_changestamp' : 'is 7/12/2024 15:01'
+}
+WBResizeBottomRight class >> resizeCursor [
+
+	^ Cursor resizeBottomRight
+]
+
+{
 	#category : #sizing,
 	#'squeak_changestamp' : 'JK 6/30/2024 21:18'
 }
@@ -16,16 +25,6 @@ WBResizeBottomRight >> resize: movement [
 
 	self frame resizeRight: self center x + movement x.
 	self frame resizeBottom: self center y + movement y
-]
-
-{
-	#category : #sizing,
-	#'squeak_changestamp' : 'is 6/23/2024 02:01'
-}
-WBResizeBottomRight >> resizeCursor [
-
-	Cursor resizeBottomRight show
-	
 ]
 
 {

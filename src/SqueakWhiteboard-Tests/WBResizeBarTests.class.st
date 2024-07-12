@@ -76,19 +76,40 @@ WBResizeBarTests >> testMouseOver [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'ACL 7/7/2024 19:51'
+	#'squeak_changestamp' : 'is 7/12/2024 15:16'
 }
 WBResizeBarTests >> testResizeCursor [
-	| aResizeBar aMouseEvent prevCursor |
+	| aResizeBarTop aResizeBarBottom aResizeBarRight aResizeBarLeft aMouseEvent prevCursor |
 	
-	aResizeBar := WBResizeBar new.
+	aResizeBarTop := WBResizeTop new.
+	aResizeBarBottom := WBResizeBottom new.
+	aResizeBarRight := WBResizeRight new.
+	aResizeBarLeft := WBResizeLeft new.
 	aMouseEvent := MouseButtonEvent new.
-	aMouseEvent setType: #mouseDown position: aResizeBar position which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
+	aMouseEvent setType: #mouseDown position: (0 @ 0) which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
 	prevCursor := Cursor currentCursor.
 	
-	aResizeBar mouseEnter: aMouseEvent.
-	self assert: Cursor currentCursor = Cursor move.
+	aResizeBarBottom mouseEnter: aMouseEvent.
+	self assert: Cursor currentCursor = aResizeBarBottom class resizeCursor.
 	
-	aResizeBar mouseLeave: aMouseEvent.
+	aResizeBarBottom mouseLeave: aMouseEvent.
+	self assert: Cursor currentCursor = prevCursor.
+	
+	aResizeBarTop mouseEnter: aMouseEvent.
+	self assert: Cursor currentCursor = aResizeBarTop class resizeCursor.
+	
+	aResizeBarTop mouseLeave: aMouseEvent.
+	self assert: Cursor currentCursor = prevCursor.
+	
+	aResizeBarLeft mouseEnter: aMouseEvent.
+	self assert: Cursor currentCursor = aResizeBarLeft class resizeCursor.
+	
+	aResizeBarLeft mouseLeave: aMouseEvent.
+	self assert: Cursor currentCursor = prevCursor.
+	
+	aResizeBarRight mouseEnter: aMouseEvent.
+	self assert: Cursor currentCursor = aResizeBarRight class resizeCursor.
+	
+	aResizeBarRight mouseLeave: aMouseEvent.
 	self assert: Cursor currentCursor = prevCursor
 ]
