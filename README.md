@@ -15,7 +15,7 @@ Not satisfied how some of the elements look? Click on said element and resize it
 that appears after clicking on an element can be used to change the color of an element, to change the border color, to duplicate an element or to delete the current element.
 If you have spawned a line or an arrow you can convert them to the other one by clicking the right most button in the popup menu.
 If you want to add some text to an element (except for lines and arrows) just quickly double-click on an element and start typing!
-Of yourse you can also drage and drop them anywhere on the canvas.
+Of yourse you can also drag and drop elements anywhere on the canvas.
 
 To change the color of all newly spaning element, click on the color wheel in the toolbar and select a color to your liking.
 
