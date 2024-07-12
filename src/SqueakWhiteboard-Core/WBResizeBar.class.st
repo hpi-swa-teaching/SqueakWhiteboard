@@ -13,6 +13,16 @@ Class {
 }
 
 {
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/12/2024 12:08'
+}
+WBResizeBar class >> defaultExtent [
+
+	^ 20 @ 20
+	
+]
+
+{
 	#category : #'instance creation',
 	#'squeak_changestamp' : 'is 6/23/2024 01:50'
 }
@@ -69,13 +79,13 @@ WBResizeBar >> handlesMouseOver: aEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/23/2024 01:53'
+	#'squeak_changestamp' : 'ACL 7/12/2024 12:09'
 }
 WBResizeBar >> initializeWithParent: aMorph [
 
 	super initialize.
 	self
- 		extent: 20@20;
+ 		extent: self class defaultExtent;
 		frame: aMorph;
 		setLayout;
 		color: Color transparent.

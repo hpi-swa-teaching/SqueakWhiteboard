@@ -13,11 +13,11 @@ Class {
 
 {
 	#category : #defaults,
-	#'squeak_changestamp' : 'is 6/23/2024 01:28'
+	#'squeak_changestamp' : 'ACL 7/12/2024 11:55'
 }
 WBArrowhead class >> defaultVertices [
 
-	^ {0@0. 20@10. 0@20}
+	^ {0 @ 0. 20 @ 10. 0 @ 20}
 ]
 
 {

@@ -12,6 +12,33 @@ Class {
 }
 
 {
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/12/2024 11:57'
+}
+WBEdgeOfLine class >> defaultCornerRadius [
+
+	^100
+]
+
+{
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/12/2024 11:57'
+}
+WBEdgeOfLine class >> defaultHeight [
+
+	^10
+]
+
+{
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/12/2024 11:57'
+}
+WBEdgeOfLine class >> defaultWidth [
+
+	^10
+]
+
+{
 	#category : #resize,
 	#'squeak_changestamp' : 'ACL 7/10/2024 12:08'
 }
@@ -116,16 +143,16 @@ WBEdgeOfLine >> handlesMouseOver: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'si 6/20/2024 23:26'
+	#'squeak_changestamp' : 'ACL 7/12/2024 11:58'
 }
 WBEdgeOfLine >> initialize [
 
 	super initialize.
 	self
 		cornerStyle: #rounded;
-		cornerRadius: 100;
-		width: 10;
-		height: 10;
+		cornerRadius: self class defaultCornerRadius;
+		width: self class defaultWidth;
+		height: self class defaultHeight;
 		color: Color black;
 		supportsText: false
 ]
@@ -232,12 +259,12 @@ WBEdgeOfLine >> setupEventHandling [
 
 {
 	#category : #geometry,
-	#'squeak_changestamp' : 'si 6/21/2024 00:24'
+	#'squeak_changestamp' : 'ACL 7/12/2024 11:58'
 }
 WBEdgeOfLine >> switchDirection [
 
 	self line switchDirection.
 	self canvas deactivateElement.
-	(self line edges at: 2) showPopUp.
-	self canvas activeElement: (self line edges at: 2)
+	(self line edges second) showPopUp.
+	self canvas activeElement: (self line edges second)
 ]

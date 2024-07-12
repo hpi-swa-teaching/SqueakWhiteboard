@@ -13,6 +13,15 @@ Class {
 }
 
 {
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/12/2024 12:09'
+}
+WBResizeHandle class >> defaultBorderWidth [
+
+	^ 2
+]
+
+{
 	#category : #'instance creation',
 	#'squeak_changestamp' : 'is 6/23/2024 01:57'
 }
@@ -69,7 +78,7 @@ WBResizeHandle >> handlesMouseOver: anEvent [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/23/2024 01:59'
+	#'squeak_changestamp' : 'ACL 7/12/2024 12:09'
 }
 WBResizeHandle >> initializeWithParent: aMorph [
 
@@ -79,7 +88,7 @@ WBResizeHandle >> initializeWithParent: aMorph [
 		frame: aMorph;
 		setLayout;
 		color: Color white;
-		borderWidth: 2;
+		borderWidth: self class defaultBorderWidth;
 		borderColor: Color gray.
 	aMorph addMorph: self
 		

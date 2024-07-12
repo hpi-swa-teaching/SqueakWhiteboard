@@ -31,6 +31,15 @@ WBCanvas class >> defaultGlobalColor [
 
 {
 	#category : #accessing,
+	#'squeak_changestamp' : 'ACL 7/12/2024 11:56'
+}
+WBCanvas class >> defaultPointSize [
+
+	^ 25
+]
+
+{
+	#category : #accessing,
 	#'squeak_changestamp' : 'si 7/11/2024 17:32'
 }
 WBCanvas class >> whiteBoardSize [
@@ -371,14 +380,14 @@ WBCanvas >> setLayout [
 
 {
 	#category : #'show text',
-	#'squeak_changestamp' : 'si 7/10/2024 17:30'
+	#'squeak_changestamp' : 'ACL 7/12/2024 11:56'
 }
 WBCanvas >> showText: aString [
 
 	self text ifNotNil: [self text abandon].
 	self text: (TextMorph new
 		contents: aString;
-		fontName: #Calibri pointSize: 25;
+		fontName: #Calibri pointSize: self class defaultPointSize;
 		lock;
 		yourself).
 	self addMorph: text.

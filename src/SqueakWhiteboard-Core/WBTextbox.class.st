@@ -10,11 +10,11 @@ Class {
 
 {
 	#category : #'instance creation',
-	#'squeak_changestamp' : 'is 7/1/2024 00:29'
+	#'squeak_changestamp' : 'ACL 7/12/2024 12:10'
 }
 WBTextbox class >> defaultSize [
 
-	^ 15@35
+	^ 15 @ 35
 ]
 
 {

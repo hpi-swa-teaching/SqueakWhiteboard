@@ -15,8 +15,17 @@ Class {
 }
 
 {
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/12/2024 12:05'
+}
+WBLine class >> defaultBorderWidth [
+
+	^ 2
+]
+
+{
 	#category : #'event handeling',
-	#'squeak_changestamp' : 'si 7/11/2024 15:10'
+	#'squeak_changestamp' : 'ACL 7/12/2024 12:05'
 }
 WBLine >> activateElement: anEvent [
 
@@ -25,8 +34,8 @@ WBLine >> activateElement: anEvent [
 		deactivateElement;
 		deactivateTextbox.
 	self dragStart: anEvent.
-	(self edges at: 2) showPopUp.
-	self canvas activeElement: (self edges at: 2)]
+	(self edges second) showPopUp.
+	self canvas activeElement: (self edges second)]
 ]
 
 {
@@ -238,12 +247,12 @@ WBLine >> mouseUp: anEvent [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'si 7/11/2024 15:20'
+	#'squeak_changestamp' : 'ACL 7/12/2024 12:05'
 }
 WBLine >> setCreatedLayout [
 
 	self 
-		borderWidth: 2;
+		borderWidth: self class defaultBorderWidth;
 		color: Color black;
 		checkForArrowHead.
 ]

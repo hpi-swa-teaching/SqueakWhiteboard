@@ -26,16 +26,43 @@ Class {
 }
 
 {
-	#category : #layout,
-	#'squeak_changestamp' : 'is 6/18/2024 22:28'
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/12/2024 12:03'
 }
-WBElement class >> defaultSize [
+WBElement class >> defaultBorderWidth [
 
-	^ 100@100
+	^ 3
 ]
 
 {
-	#category : #layout,
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/12/2024 12:00'
+}
+WBElement class >> defaultButtonColumns [
+
+	^ 3
+]
+
+{
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/12/2024 12:21'
+}
+WBElement class >> defaultImageSizeFactor [
+
+	^ 0.75
+]
+
+{
+	#category : #defaults,
+	#'squeak_changestamp' : 'ACL 7/12/2024 12:04'
+}
+WBElement class >> defaultSize [
+
+	^ 100 @ 100
+]
+
+{
+	#category : #defaults,
 	#'squeak_changestamp' : 'si 7/10/2024 13:36'
 }
 WBElement class >> defaultTextBorderOffset [
@@ -208,11 +235,11 @@ WBElement >> buttonFunctionalityForBorderColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 7/10/2024 17:04'
+	#'squeak_changestamp' : 'ACL 7/12/2024 12:00'
 }
 WBElement >> buttonFunctionalityForBorderColorPalette [
 
-	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeBorderColorButtons columns: 3]
+	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeBorderColorButtons columns: self class defaultButtonColumns]
 ]
 
 {
@@ -227,11 +254,11 @@ WBElement >> buttonFunctionalityForColor [
 
 {
 	#category : #'button functionalities',
-	#'squeak_changestamp' : 'si 7/10/2024 17:04'
+	#'squeak_changestamp' : 'ACL 7/12/2024 12:00'
 }
 WBElement >> buttonFunctionalityForColorPalette [
 
-	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: 3]
+	^ [:aButton | self popUp tryToMakePopUpAt: aButton topCenter - (0 @ (self class sizeOfPopUpForStandardElement / 2)) with: self makeColorButtons columns: self class defaultButtonColumns]
 ]
 
 {
@@ -506,11 +533,11 @@ WBElement >> height: aHeight [
 
 {
 	#category : #appearance,
-	#'squeak_changestamp' : 'si 7/10/2024 11:57'
+	#'squeak_changestamp' : 'ACL 7/12/2024 12:21'
 }
 WBElement >> imageSize [
 
-	^ (self class sizeOfPopUpForStandardElement @ self class sizeOfPopUpForStandardElement) * 0.75
+	^ (self class sizeOfPopUpForStandardElement @ self class sizeOfPopUpForStandardElement) * self class defaultImageSizeFactor
 ]
 
 {
@@ -897,13 +924,13 @@ WBElement >> right [
 
 {
 	#category : #layout,
-	#'squeak_changestamp' : 'si 7/12/2024 11:38'
+	#'squeak_changestamp' : 'ACL 7/12/2024 12:30'
 }
 WBElement >> setLayout [
 
 	self
 		extent: self class defaultSize;
-		borderWidth: 3;
+		borderWidth: self class defaultBorderWidth;
 		borderColor: self canvas globalColor.
 	self canvas globalColor = Color transparent
 		ifTrue: 
