@@ -10,11 +10,11 @@ Class {
 
 {
 	#category : #defaults,
-	#'squeak_changestamp' : 'is 7/12/2024 15:02'
+	#'squeak_changestamp' : 'is 7/12/2024 18:40'
 }
 WBResizeTopLeft class >> resizeCursor [
 
-	^ Cursor resizeTopRight
+	^ Cursor resizeTopLeft
 ]
 
 {
