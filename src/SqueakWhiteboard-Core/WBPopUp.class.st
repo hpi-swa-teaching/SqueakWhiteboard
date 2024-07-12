@@ -26,20 +26,20 @@ WBPopUp class >> cornerRadius [
 
 {
 	#category : #size,
+	#'squeak_changestamp' : 'ACL 7/12/2024 12:12'
+}
+WBPopUp class >> defaultMargin [
+
+	^ 5
+]
+
+{
+	#category : #size,
 	#'squeak_changestamp' : 'si 7/11/2024 14:55'
 }
 WBPopUp class >> defaultSizeOfPopUp [
 
 	^ 20
-]
-
-{
-	#category : #size,
-	#'squeak_changestamp' : 'si 7/10/2024 12:10'
-}
-WBPopUp class >> margin [
-
-	^ 5
 ]
 
 {
@@ -211,11 +211,11 @@ WBPopUp >> setLayout [
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'si 7/10/2024 11:40'
+	#'squeak_changestamp' : 'ACL 7/12/2024 12:12'
 }
 WBPopUp >> sizeOfButton [	
 
-	^ (self sizeOfPopUp - self class margin) @ (self sizeOfPopUp - self class margin)
+	^ (self sizeOfPopUp - self class defaultMargin) @ (self sizeOfPopUp - self class defaultMargin)
 ]
 
 {

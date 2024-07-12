@@ -14,11 +14,11 @@ Class {
 
 {
 	#category : #accessing,
-	#'squeak_changestamp' : 'is 6/23/2024 01:46'
+	#'squeak_changestamp' : 'ACL 7/12/2024 12:08'
 }
 WBNote class >> defaultSizeOfCorner [
 
-	^ 20@20
+	^ 20 @ 20
 ]
 
 {
@@ -33,14 +33,14 @@ WBNote >> color: aColor [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 6/23/2024 01:42'
+	#'squeak_changestamp' : 'ACL 7/12/2024 12:07'
 }
 WBNote >> createVertecies [
 
 	self edges removeAll.
 	self edges 
 		add: self center - (self sizeOfNote/2);
-	 	add: self center + (((self sizeOfNote x / 2) - self sizeOfCorner y) @ (-1* (self sizeOfNote y/ 2)));
+	 	add: self center + (((self sizeOfNote x / 2) - self sizeOfCorner y) @ (-1* (self sizeOfNote y / 2)));
 		add: self center + ((self sizeOfNote x /  2) @ (-1 * ((self sizeOfNote y / 2) - self sizeOfCorner y)));
 		add: self center + (((self sizeOfNote x / 2) - self sizeOfCorner x) @ (-1 * ((self sizeOfNote y / 2) - self sizeOfCorner y)));
 		add: self center + (((self sizeOfNote x / 2) - self sizeOfCorner x) @ (-1* (self sizeOfNote y / 2)));
