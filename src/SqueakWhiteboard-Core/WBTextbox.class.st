@@ -19,19 +19,16 @@ WBTextbox class >> defaultSize [
 
 {
 	#category : #initialization,
-	#'squeak_changestamp' : 'is 7/1/2024 00:36'
+	#'squeak_changestamp' : 'is 7/12/2024 14:32'
 }
 WBTextbox >> initialize [
 	
 	self resizable: false.
 	super initialize.
-	self color: Color transparent.
-	self textField wrapFlag: false;
-		hResizing: #shrinkWrap;
-		vResizing: #shrinkWrap;
-		onChanged: [self resize];
-		position: self position.
-	self textField textMorph justified
+	self 
+		color: Color transparent;
+		setTextfield
+	
 ]
 
 {
@@ -41,4 +38,18 @@ WBTextbox >> initialize [
 WBTextbox >> resize [
 
 	self morph bounds: self textField bounds
+]
+
+{
+	#category : #appearance,
+	#'squeak_changestamp' : 'is 7/12/2024 14:32'
+}
+WBTextbox >> setTextfield [
+	
+	self textField wrapFlag: false;
+		hResizing: #shrinkWrap;
+		vResizing: #shrinkWrap;
+		onChanged: [self resize];
+		position: self position.
+	self textField textMorph justified
 ]
