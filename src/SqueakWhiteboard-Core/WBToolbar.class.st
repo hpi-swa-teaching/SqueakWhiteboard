@@ -7,7 +7,6 @@ Class {
 	#instVars : [
 		'canvas',
 		'buttons',
-		'backgroundColor',
 		'aPoint',
 		'popUp'
 	],
@@ -40,25 +39,6 @@ WBToolbar class >> newWithCanvas: aCanvas [
 WBToolbar class >> textForDeleteAll [
 
 	^ 'Do you really want to delete all elements on the canvas?'
-]
-
-{
-	#category : #appearance,
-	#'squeak_changestamp' : 'is 5/28/2024 15:41'
-}
-WBToolbar >> backgroundColor [
-
-	^ backgroundColor ifNil: [backgroundColor := Color gray]
-]
-
-{
-	#category : #appearance,
-	#'squeak_changestamp' : 'is 5/28/2024 15:47'
-}
-WBToolbar >> backgroundColor: aColor [
-
-	backgroundColor := aColor.
-	self updateColor
 ]
 
 {
@@ -566,7 +546,7 @@ WBToolbar >> popUp: aPopUp [
 
 {
 	#category : #appearance,
-	#'squeak_changestamp' : 'si 7/11/2024 15:39'
+	#'squeak_changestamp' : 'is 7/11/2024 22:35'
 }
 WBToolbar >> setLayout [
 
@@ -574,7 +554,7 @@ WBToolbar >> setLayout [
 		height: self canvas extent y * self toolbarCanvasSizeFactor y;
 		width: self canvas extent x * self toolbarCanvasSizeFactor x;
 		center: (self canvas bounds origin x + self extent x / 2) @ (self canvas bounds origin y + ((self canvas bounds corner y - self canvas bounds origin y))/2);
-		updateColor
+		color: Color gray
 		
 ]
 
@@ -585,13 +565,4 @@ WBToolbar >> setLayout [
 WBToolbar >> toolbarCanvasSizeFactor [
 
 	^ 0.075 @ 0.75
-]
-
-{
-	#category : #appearance,
-	#'squeak_changestamp' : 'is 5/28/2024 15:45'
-}
-WBToolbar >> updateColor [
-
-	self backgroundColor ifNotNil: [self color: self backgroundColor]
 ]
