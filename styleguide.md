@@ -121,7 +121,7 @@ MethodName
     self when: #reactive perform: #reactiveWindow:
     ```
 17.         NEW LINES 
-            for ever 
+            for every 
             new statement
 
 20. **60 Character** Code Line Width (Window Width)
