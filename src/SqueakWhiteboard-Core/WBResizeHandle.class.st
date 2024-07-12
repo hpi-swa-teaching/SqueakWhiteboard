@@ -33,11 +33,11 @@ WBResizeHandle class >> newWithParent: aMorph [
 
 {
 	#category : #defaults,
-	#'squeak_changestamp' : 'is 7/12/2024 15:03'
+	#'squeak_changestamp' : 'is 7/12/2024 19:38'
 }
 WBResizeHandle class >> resizeCursor [
 
-	^ self SubclassResponsibility
+	^ self subclassResponsibility
 ]
 
 {
@@ -162,11 +162,11 @@ WBResizeHandle >> mouseMove: anEvent [
 
 {
 	#category : #sizing,
-	#'squeak_changestamp' : 'is 6/23/2024 02:00'
+	#'squeak_changestamp' : 'is 7/12/2024 19:39'
 }
 WBResizeHandle >> resize: movement [
 
-	^ self SubclassResponsibility
+	^ self subclassResponsibility
 ]
 
 {
