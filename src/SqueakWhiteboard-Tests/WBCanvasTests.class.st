@@ -118,6 +118,24 @@ WBCanvasTests >> testDeactivateElement [
 
 {
 	#category : #testing,
+	#'squeak_changestamp' : 'si 7/12/2024 10:38'
+}
+WBCanvasTests >> testDeleteAll [
+	
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: self artificialMouseClick.
+	self canvas dropElement: self artificialMouseClick.
+	self canvas spawnAnElement: (WBRectangularElement newWithCanvas: self canvas) At: self artificialMouseClick.
+	self canvas dropElement: self artificialMouseClick.
+	
+	self assert: self canvas elements size = 2.
+	
+	self canvas deleteAllElements.
+	
+	self assert: self canvas elements size = 0
+]
+
+{
+	#category : #testing,
 	#'squeak_changestamp' : 'si 7/12/2024 10:14'
 }
 WBCanvasTests >> testDragAllElements [
@@ -182,14 +200,45 @@ WBCanvasTests >> testLayout [
 
 {
 	#category : #testing,
-	#'squeak_changestamp' : 'si 7/11/2024 14:23'
+	#'squeak_changestamp' : 'si 7/12/2024 10:35'
 }
 WBCanvasTests >> testMouseDown [
-	| aMouseEvent |
 	
-	aMouseEvent := MouseButtonEvent new.
-	aMouseEvent setType: #mouseDown position: (0 @ 0) which: 4 buttons: aMouseEvent class redButton hand: HandMorph new stamp: 0.
+	self assert: (self canvas handlesMouseMove: self artificialMouseClick) = true.
+	self assert: (self canvas handlesMouseDown: self artificialMouseClick) = true
+]
+
+{
+	#category : #testing,
+	#'squeak_changestamp' : 'si 7/12/2024 10:42'
+}
+WBCanvasTests >> testPositionOfTextOnCanvas [
 	
-	self assert: (self canvas handlesMouseMove: aMouseEvent) = true.
-	self assert: (self canvas handlesMouseDown: aMouseEvent) = true
+	self canvas showText: 'test'.
+	
+	self assert: self canvas text center = self canvas center
+]
+
+{
+	#category : #testing,
+	#'squeak_changestamp' : 'si 7/12/2024 10:43'
+}
+WBCanvasTests >> testRemoveText [
+	
+	self canvas showText: 'test'.
+	self canvas removeText.
+	
+	self assert: self canvas text isNil
+]
+
+{
+	#category : #testing,
+	#'squeak_changestamp' : 'si 7/12/2024 10:42'
+}
+WBCanvasTests >> testTextOnCanvas [
+	
+	self canvas showText: 'test'.
+	
+	self assert: self canvas text notNil.
+	self assert: self canvas text text asString = 'test'
 ]
