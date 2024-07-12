@@ -25,6 +25,7 @@ After some experimenting you might find a devasting error in your planning but d
 everything you have placed so far.
 
 # Architecture
-![architecture_squeakwhiteboard](https://github.com/user-attachments/assets/030f7590-aeb9-4602-8c11-24ea58ef6a4f)
+![architecture_squeakwhiteboard](https://github.com/user-attachments/assets/6958465b-6b16-410f-a89b-6ad05dfe26f9)
+
 The element classes are abstract classes which hold different kinds of morphs as instance variables and delegate all morph specific calls to those instance variables.
 All other classes should act as if the Element class with which they communicate is a morph and thus should not directly communicate with the morph instance variable.
